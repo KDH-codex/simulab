@@ -362,6 +362,94 @@
       transition: color 0.15s ease;
     }
 
+    /* 포털 우측 상단 액션 버튼 그룹 (북마크 & 공유하기) */
+    .portal-hero-topline {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.85rem;
+      flex-wrap: wrap;
+    }
+    .portal-action-group {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+    .btn-action-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.38rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      cursor: pointer;
+      border: 1px solid transparent;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      text-decoration: none;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+      user-select: none;
+    }
+    .btn-action-chip:hover {
+      transform: translateY(-1.5px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .btn-action-chip:active {
+      transform: translateY(0);
+    }
+    .btn-action-bookmark {
+      background: #fefce8;
+      border-color: #fef08a;
+      color: #854d0e;
+    }
+    .btn-action-bookmark:hover {
+      background: #fef08a;
+      border-color: #fde047;
+    }
+    .btn-action-share {
+      background: #eff6ff;
+      border-color: #dbeafe;
+      color: #1d4ed8;
+    }
+    .btn-action-share:hover {
+      background: #dbeafe;
+      border-color: #bfdbfe;
+    }
+
+    /* 반응형 구글 애드센스 광고 슬롯 (UX 최적화 컨테이너) */
+    .ad-slot-wrapper {
+      margin: 1.5rem 0 1rem;
+      padding: 0.75rem 1rem;
+      background: #f8fafc;
+      border: 1px dashed #cbd5e1;
+      border-radius: 14px;
+      text-align: center;
+      min-height: 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: border-color 0.2s ease;
+    }
+    .ad-slot-wrapper:hover {
+      border-color: #94a3b8;
+    }
+    .ad-slot-badge {
+      font-family: var(--font-mono, monospace);
+      font-size: 0.65rem;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+      color: #94a3b8;
+      margin-bottom: 0.35rem;
+      text-transform: uppercase;
+    }
+    .ad-slot-placeholder {
+      font-size: 0.82rem;
+      color: #64748b;
+      font-weight: 600;
+    }
+
     .search-empty-state {
       display: none;
       padding: 3rem 1rem;
@@ -376,8 +464,19 @@
   <main class="container">
     <!-- 포털 히어로 -->
     <section class="portal-hero">
-      <div class="portal-eyebrow">
-        <span>⚡</span> SIMULATION &amp; CALCULATION LAB
+      <div class="portal-hero-topline">
+        <div class="portal-eyebrow" style="margin-bottom: 0;">
+          <span>⚡</span> SIMULATION &amp; CALCULATION LAB
+        </div>
+        <!-- 우측 상단 북마크 & 공유하기 액션 버튼 -->
+        <div class="portal-action-group">
+          <button type="button" id="btnBookmark" class="btn-action-chip btn-action-bookmark" title="즐겨찾기에 추가">
+            <span>⭐</span> <span>북마크 추가</span>
+          </button>
+          <button type="button" id="btnShare" class="btn-action-chip btn-action-share" title="주소 복사 및 친구에게 공유">
+            <span>🔗</span> <span>공유하기</span>
+          </button>
+        </div>
       </div>
       <h1 class="portal-title">감이 아니라 숫자로, <em>SimuLab</em></h1>
       <p class="portal-sub">
@@ -400,6 +499,15 @@
         <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
         <input type="text" id="portal-search-input" placeholder="계산기 및 시뮬레이터 검색 (예: 아파트, 담배, 국민연금, 퇴직금, 평수)" aria-label="계산기 검색" />
         <kbd>/</kbd>
+      </div>
+
+      <!-- 상단 리더보드 광고 슬롯 (구글 애드센스 예정 구역) -->
+      <div class="ad-slot-wrapper" id="ad-hero-slot">
+        <span class="ad-slot-badge">SPONSORED (ADVERTISEMENT)</span>
+        <div class="ad-slot-placeholder">
+          <!-- 구글 애드센스 승인 후 인라인 광고 코드가 이 자리에 들어갑니다 -->
+          <span>광고가 게재될 공식 배너 영역입니다 (Google AdSense Responsive)</span>
+        </div>
       </div>
     </section>
 
@@ -996,6 +1104,46 @@
           if (e.key === '/' && document.activeElement !== searchInput) {
             e.preventDefault();
             searchInput.focus();
+          }
+        });
+      }
+
+      // 북마크(즐겨찾기) 버튼 이벤트
+      const btnBookmark = document.getElementById('btnBookmark');
+      if (btnBookmark) {
+        btnBookmark.addEventListener('click', () => {
+          const msg = '⭐ 키보드의 Ctrl + D (Mac은 ⌘ + D)를 누르시면 즐겨찾기에 추가됩니다!';
+          if (window.SimuLab && typeof window.SimuLab.showToast === 'function') {
+            window.SimuLab.showToast(msg);
+          } else {
+            alert(msg);
+          }
+        });
+      }
+
+      // 공유하기 버튼 이벤트 (Web Share API 지원 시 모바일 공유창, 미지원 시 클립보드 복사)
+      const btnShare = document.getElementById('btnShare');
+      if (btnShare) {
+        btnShare.addEventListener('click', () => {
+          const shareData = {
+            title: 'SimuLab — 감이 아니라 숫자로 | 계산기 & 미래 시뮬레이션',
+            text: '국민연금 조기수령, 퇴직금, 아파트 타임머신, 담배값 주식 시뮬까지 1초 만에 확인하세요!',
+            url: 'https://simulab.kr'
+          };
+
+          if (navigator.share && /mobile|android|iphone/i.test(navigator.userAgent)) {
+            navigator.share(shareData).catch(() => {});
+          } else {
+            navigator.clipboard.writeText('https://simulab.kr').then(() => {
+              const msg = '📋 시뮬랩 주소(https://simulab.kr)가 복사되었습니다! 친구나 단톡방에 공유해보세요.';
+              if (window.SimuLab && typeof window.SimuLab.showToast === 'function') {
+                window.SimuLab.showToast(msg);
+              } else {
+                alert(msg);
+              }
+            }).catch(() => {
+              alert('주소 복사에 실패했습니다: https://simulab.kr');
+            });
           }
         });
       }

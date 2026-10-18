@@ -3687,3 +3687,41 @@ a.gnb-link:hover {
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.9; transform: scale(0.995); }
 }
+
+/* ==========================================================================
+   구글 애드센스(Google AdSense) 공통 반응형 광고 슬롯 레이아웃
+   ========================================================================== */
+.ad-slot-wrapper {
+  margin: 1.5rem 0 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--bg-subtle, #f8fafc);
+  border: 1px dashed var(--border-strong, #cbd5e1);
+  border-radius: var(--radius-md, 14px);
+  text-align: center;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: border-color 0.2s ease;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.ad-slot-wrapper:hover {
+  border-color: var(--text-muted, #94a3b8);
+}
+.ad-slot-badge {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.65rem;
+  font-weight: 850;
+  letter-spacing: 0.08em;
+  color: var(--text-muted, #94a3b8);
+  margin-bottom: 0.35rem;
+  text-transform: uppercase;
+}
+.ad-slot-placeholder {
+  font-size: 0.82rem;
+  color: var(--text-muted, #64748b);
+  font-weight: 600;
+}
+
