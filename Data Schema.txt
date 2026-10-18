@@ -1,0 +1,20 @@
+{
+  "toolId": "leverage-etf-sim",
+  "version": "1.0.0",
+  "updatedAt": "2026-10-17T09:00:00Z",
+  "currentInputs": {
+    "initialCapital": 10000000,
+    "monthlyContribution": 1000000,
+    "annualReturnRate": 12.0,
+    "annualVolatility": 25.0,
+    "leverageMultiplier": 2,
+    "expenseRatio": 0.95,
+    "years": 10
+  },
+  "pinnedScenario": {
+    "label": "1배수 기본 지수 투자",
+    "finalValue": 310584000,
+    "cagr": 11.8,
+    "maxDrawdown": -22.4
+  }
+}

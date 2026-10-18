@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>투자 성향 동물 MBTI 16유형 테스트 — 나의 투자 페르소나 찾기 | SimuLab</title>
+  <meta name="description" content="8개 질문으로 알아보는 나의 투자 심리와 행동 패턴! 위험 성향, 퀀트/직관, 단기/장기, 시세차익/배당 등 4개 축으로 치타, 황소, 코끼리, 여우 등 나만의 투자 동물 페르소나를 매칭합니다." />
+  <link rel="stylesheet" href="../../assets/css/common.css" />
+  <style>
+    /* 투자 성향 동물 테스트 전용 스타일 */
+    .survey-progress-wrapper {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .survey-progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+    .survey-progress-bar-bg {
+      width: 100%;
+      height: 8px;
+      background: var(--border-color);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .survey-progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #6366f1, #3b82f6);
+      transition: width 0.3s ease;
+    }
+
+    /* 설문 카드 */
+    .survey-question-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      margin-bottom: 1.25rem;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .survey-question-card:hover {
+      border-color: #6366f1;
+    }
+    .survey-q-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .q-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #eef2ff;
+      color: #4f46e5;
+      font-size: 0.82rem;
+      font-weight: 800;
+      padding: 0.25rem 0.6rem;
+      border-radius: var(--radius-sm);
+      flex-shrink: 0;
+    }
+    .q-text {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.5;
+    }
+
+    .survey-options-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+    @media (min-width: 640px) {
+      .survey-options-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .survey-option-label {
+      display: flex;
+      align-items: center;
+      padding: 1rem 1.15rem;
+      background: var(--bg-primary);
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+    .survey-option-label:hover {
+      background: #f8fafc;
+      border-color: #cbd5e1;
+    }
+    .survey-option-label input[type="radio"] {
+      display: none;
+    }
+    .survey-option-label.selected {
+      border-color: #4f46e5;
+      background: #f5f3ff;
+      box-shadow: 0 0 0 1px #4f46e5;
+    }
+    .option-content {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .option-symbol {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--border-color);
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s, color 0.2s;
+    }
+    .survey-option-label.selected .option-symbol {
+      background: #4f46e5;
+      color: #ffffff;
+    }
+    .option-desc {
+      font-size: 0.88rem;
+      color: var(--text-primary);
+      line-height: 1.45;
+    }
+
+    /* 결과 카드 스타일 */
+    .animal-hero-card {
+      background: linear-gradient(135deg, #faf5ff 0%, #f0fdf4 100%);
+      border: 1.5px solid #e9d5ff;
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-md);
+    }
+    .animal-icon-large {
+      font-size: 4.5rem;
+      line-height: 1;
+      margin-bottom: 0.75rem;
+      display: inline-block;
+      animation: floatIcon 3s ease-in-out infinite;
+    }
+    @keyframes floatIcon {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    .animal-title-wrap {
+      margin-bottom: 1rem;
+    }
+    .animal-name-h2 {
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: #1e1b4b;
+      margin-bottom: 0.25rem;
+    }
+    .animal-sub-desc {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #7c3aed;
+    }
+    .animal-code-tag {
+      display: inline-block;
+      background: #312e81;
+      color: #ffffff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      margin-top: 0.5rem;
+      letter-spacing: 0.05em;
+    }
+    .animal-summary-p {
+      max-width: 680px;
+      margin: 1.25rem auto 0;
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: #334155;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius-md);
+      backdrop-filter: blur(4px);
+    }
+
+    /* 강점 / 약점 그리드 */
+    .traits-detail-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    @media (min-width: 640px) {
+      .traits-detail-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    .trait-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+    }
+    .trait-box h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .trait-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .trait-list li {
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    .bullet-check { color: #10b981; font-weight: 800; }
+    .bullet-warn { color: #f59e0b; font-weight: 800; }
+
+    /* 궁합 카드 */
+    .match-box-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+    .match-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      text-align: center;
+    }
+    .match-card-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
+    }
+    .match-card-val {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+  </style>
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main class="container" style="padding-top: 1.5rem; padding-bottom: 3rem;">
+    <!-- 페이지 제목 및 인트로 -->
+    <section class="page-header">
+      <h1 class="page-title">투자 성향 동물 MBTI</h1>
+      <p class="page-subtitle">
+        "나는 시장의 폭락 때 공격적으로 사들이는 치타일까, 아니면 10년 뒤를 내다보는 묵직한 코끼리일까?" 8개 핵심 투자 질문을 통해 위험 성향, 퀀트/직관, 단기/장기, 시세차익/배당 4가지 축을 정밀 분석하고 나만의 동물 페르소나와 맞춤형 전략을 처방받으세요.
+      </p>
+    </section>
+
+    <!-- 친구 초대 감지 배너 (URL 파라미터 감지 시 표시) -->
+    <div id="invite-banner" style="display: none; background: #fffbeb; border: 1.5px solid #fde68a; border-radius: var(--radius-md); padding: 1.15rem 1.25rem; margin-bottom: 1.5rem; box-shadow: var(--shadow-sm);">
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <span style="font-size: 1.8rem; line-height: 1;">💌</span>
+        <div>
+          <div style="font-size: 0.95rem; font-weight: 800; color: #92400e;">
+            <span id="invite-sender-name">친구</span> 님이 보낸 투자 궁합 초대장이 도착했습니다!
+          </div>
+          <div style="font-size: 0.85rem; color: #b45309; margin-top: 0.2rem;">
+            아래 8개 질문을 완료하시면 <strong>두 분의 실시간 투자 궁합 점수(0~100점)</strong>와 시너지가 즉시 공개됩니다.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 판정 브리핑 배너 -->
+    <div id="verdict-banner" class="verdict-banner" style="margin-bottom: 1.5rem;">
+      <div id="verdict-text" style="font-size: 0.95rem; line-height: 1.6;">
+        아래 8개 질문에 솔직하게 답변하시면 나만의 투자 동물 페르소나와 성향 분석표가 산출됩니다.
+      </div>
+    </div>
+
+    <!-- 설문 진행률 바 -->
+    <div class="survey-progress-wrapper">
+      <div class="survey-progress-header">
+        <span>질문 진행률</span>
+        <span id="progress-text">8 / 8 문항 완료 (100%)</span>
+      </div>
+      <div class="survey-progress-bar-bg">
+        <div id="progress-bar" class="survey-progress-bar-fill" style="width: 100%;"></div>
+      </div>
+    </div>
+
+    <!-- 8문항 설문 컨테이너 -->
+    <section style="margin-bottom: 2rem;">
+      <h2 class="step-section-title" style="font-size: 1.15rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--text-primary);">
+        1단계. 8대 투자 심리 문항 답변
+      </h2>
+      <div id="questions-container">
+        <!-- app.js에서 logic.js의 QUESTIONS를 기반으로 자동 렌더링 -->
+      </div>
+
+      <!-- 조작 버튼 그룹 -->
+      <div style="display: flex; gap: 0.75rem; margin-top: 1.5rem; flex-wrap: wrap;">
+        <button id="btn-calculate" class="btn btn-primary" style="flex: 2; min-width: 200px; padding: 0.9rem; font-size: 1rem; font-weight: 700;">
+          나의 투자 동물 페르소나 분석하기
+        </button>
+        <button id="btn-reset" class="btn btn-outline" style="flex: 1; min-width: 120px; padding: 0.9rem;">
+          답변 초기화
+        </button>
+        <button id="btn-share" class="btn btn-outline" style="flex: 1; min-width: 120px; padding: 0.9rem;">
+          결과 공유하기
+        </button>
+      </div>
+    </section>
+
+    <!-- 분석 결과 섹션 (초기에는 기본값으로 표시) -->
+    <section id="results-section" style="margin-bottom: 3rem;">
+      <h2 class="step-section-title" style="font-size: 1.15rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--text-primary);">
+        2단계. 투자 동물 페르소나 및 성향 진단서
+      </h2>
+
+      <!-- 동물 히어로 카드 -->
+      <div class="animal-hero-card">
+        <div id="animal-icon" class="animal-icon-large">🐆</div>
+        <div class="animal-title-wrap">
+          <h2 id="animal-name" class="animal-name-h2">치타 (Cheetah)</h2>
+          <div id="animal-subtitle" class="animal-sub-desc">냉철한 퀀트 스캘퍼 (초고속 단기 매매자)</div>
+          <span id="animal-code" class="animal-code-tag">HQSC</span>
+        </div>
+        <p id="animal-summary" class="animal-summary-p">
+          철저한 수치와 알고리즘 기반으로 기회가 오면 눈 깜짝할 사이에 낚아채는 민첩한 트레이더입니다. 감정을 철저히 배제하고 손절선을 칼같이 지킵니다.
+        </p>
+
+        <!-- 최고의 궁합 & 최악의 궁합 -->
+        <div class="match-box-wrap" style="max-width: 500px; margin: 1.25rem auto 0;">
+          <div class="match-card">
+            <div class="match-card-label">최고의 투자 짝꿍 (시너지)</div>
+            <div id="match-best" class="match-card-val" style="color: #10b981;">거북이 (HLSL)</div>
+          </div>
+          <div class="match-card">
+            <div class="match-card-label">주의해야 할 상극 (충돌)</div>
+            <div id="match-worst" class="match-card-val" style="color: #ef4444;">카멜레온 (HISC)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4대 축 핵심 지표 (KPI Grid) -->
+      <div class="kpi-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+        <div class="card stat-card" style="padding: 1.25rem;">
+          <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">위험 감수 성향</span>
+          <div id="kpi-risk" class="stat-value" style="font-size: 1.2rem; font-weight: 700; color: #ef4444; margin-top: 0.25rem;">공격적 (High Risk)</div>
+          <span style="font-size: 0.75rem; color: var(--text-muted);">변동성 수용도 평가</span>
+        </div>
+
+        <div class="card stat-card" style="padding: 1.25rem;">
+          <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">의사결정 스타일</span>
+          <div id="kpi-decision" class="stat-value" style="font-size: 1.2rem; font-weight: 700; color: #6366f1; margin-top: 0.25rem;">데이터 퀀트형 (Quant)</div>
+          <span style="font-size: 0.75rem; color: var(--text-muted);">통계 vs 직관 모멘텀</span>
+        </div>
+
+        <div class="card stat-card" style="padding: 1.25rem;">
+          <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">투자 시계 (보유 기간)</span>
+          <div id="kpi-horizon" class="stat-value" style="font-size: 1.2rem; font-weight: 700; color: #10b981; margin-top: 0.25rem;">단기 트레이딩 (Short)</div>
+          <span style="font-size: 0.75rem; color: var(--text-muted);">포지션 유지 기간</span>
+        </div>
+
+        <div class="card stat-card" style="padding: 1.25rem;">
+          <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">목표 수익 원천</span>
+          <div id="kpi-yield" class="stat-value" style="font-size: 1.2rem; font-weight: 700; color: #f59e0b; margin-top: 0.25rem;">시세 차익형 (Capital)</div>
+          <span style="font-size: 0.75rem; color: var(--text-muted);">자본이득 vs 배당흐름</span>
+        </div>
+      </div>
+
+      <!-- 강점 및 주의점 상세 -->
+      <div class="traits-detail-grid">
+        <div class="trait-box">
+          <h3 style="color: #065f46;">
+            <span>🛡️</span> 나의 독보적인 투자 강점
+          </h3>
+          <ul id="animal-strengths" class="trait-list">
+            <li><span class="bullet-check">✓</span> 뇌동매매를 하지 않고 사전에 검증된 규칙만 실행함</li>
+            <li><span class="bullet-check">✓</span> 손절이 빨라 하락장에서 계좌 원금을 방어함</li>
+            <li><span class="bullet-check">✓</span> 시장의 단기 비효율성과 변동성을 수익으로 전환하는 능력</li>
+          </ul>
+        </div>
+
+        <div class="trait-box">
+          <h3 style="color: #92400e;">
+            <span>⚠️</span> 계좌를 위협하는 위험 요인 & 처방
+          </h3>
+          <ul id="animal-weaknesses" class="trait-list">
+            <li><span class="bullet-warn">⚠</span> 잦은 거래로 인한 증권사 수수료 및 거래세 누적</li>
+            <li><span class="bullet-warn">⚠</span> 10배, 100배 오르는 장기 대형 텐배거 성장주를 조기 매도할 위험</li>
+            <li><span class="bullet-warn">⚠</span> 화면을 계속 쳐다보며 발생하는 극심한 정신적 피로도</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 추천 포트폴리오 가이드 -->
+      <div class="card" style="padding: 1.5rem; background: var(--card-bg); border: 1px solid var(--border-color); margin-top: 1.25rem;">
+        <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+          <span>💼</span> 맞춤형 추천 자산 배분 포트폴리오
+        </h3>
+        <p id="animal-portfolio" style="font-size: 0.95rem; line-height: 1.6; color: var(--text-secondary);">
+          변동성이 크고 유동성이 풍부한 레버리지 ETF 및 테크 대형주 60% + 단기 트레이딩 예수금 30% + 리스크 헷지용 달러 10%
+        </p>
+      </div>
+
+      <!-- 초대한 친구와의 실시간 투자 궁합 카드 (초대 링크 접속 시 표시) -->
+      <div id="partner-match-card" style="display: none; background: linear-gradient(135deg, #eff6ff 0%, #fdf2f8 100%); border: 1.5px solid #bfdbfe; border-radius: var(--radius-lg); padding: 1.75rem 1.5rem; margin-top: 1.5rem; box-shadow: var(--shadow-md);">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1rem; border-bottom: 1px dashed #93c5fd; padding-bottom: 0.75rem;">
+          <div>
+            <span style="display: inline-block; background: #2563eb; color: #ffffff; font-size: 0.75rem; font-weight: 800; padding: 0.2rem 0.55rem; border-radius: 999px; margin-bottom: 0.35rem;">실시간 1:1 투자 케미</span>
+            <h3 id="partner-match-names" style="font-size: 1.25rem; font-weight: 800; color: #1e3a8a; margin: 0;">
+              초대자 x 나의 투자 궁합 분석
+            </h3>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-size: 0.8rem; color: #64748b; font-weight: 600;">궁합 점수</div>
+            <div id="partner-match-score" style="font-size: 2rem; font-weight: 900; color: #2563eb; line-height: 1;">96점</div>
+            <div id="partner-match-grade" style="font-size: 0.85rem; font-weight: 700; color: #10b981;">S등급 (환상의 깐부)</div>
+          </div>
+        </div>
+
+        <div id="partner-match-title" style="font-size: 1.05rem; font-weight: 800; color: #1e293b; margin-bottom: 0.5rem;">
+          서로의 계좌를 지켜주는 환상의 깐부
+        </div>
+        <p id="partner-match-synergy" style="font-size: 0.9rem; line-height: 1.6; color: #334155; margin-bottom: 0.75rem;">
+          한 명이 무리하게 질주할 때 다른 한 명이 브레이크를 잡아주고, 망설일 때 용기를 주는 최상의 파트너십입니다.
+        </p>
+        <div style="background: rgba(255, 255, 255, 0.8); border-radius: var(--radius-sm); padding: 0.75rem 1rem; font-size: 0.84rem; color: #475569; line-height: 1.5;">
+          <strong>💡 함께 투자할 때 꿀팁:</strong> <span id="partner-match-caution">상대방의 다른 관점을 보완재로 인정하고 사전 손절 규칙을 공유하세요.</span>
+        </div>
+      </div>
+
+      <!-- 친구에게 내 결과 공유하고 궁합 맞춰보기 전용 바이럴 박스 -->
+      <div id="viral-invite-box" class="card" style="margin-top: 1.5rem; background: #f8fafc; border: 1.5px solid #cbd5e1; padding: 1.5rem; text-align: center;">
+        <h3 style="font-size: 1.1rem; font-weight: 800; color: #0f172a; margin-bottom: 0.4rem;">
+          💬 친구나 연인에게 보내서 우리 둘의 투자 궁합 맞춰보기
+        </h3>
+        <p style="font-size: 0.88rem; color: #475569; max-width: 580px; margin: 0 auto 1.25rem; line-height: 1.5;">
+          아래 버튼을 누르면 나의 동물 코드가 담긴 전용 초대 링크가 복사됩니다.<br>
+          친구가 이 링크로 테스트를 완료하면 두 사람의 <strong>실시간 투자 궁합 점수(%)</strong>가 자동으로 산출됩니다!
+        </p>
+        <div style="display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap;">
+          <button id="btn-copy-invite" class="btn btn-primary" style="padding: 0.8rem 1.5rem; font-size: 0.95rem;">
+            🔗 나만의 전용 궁합 초대 링크 복사하기
+          </button>
+          <button id="btn-copy-kakao-text" class="btn btn-kakao" style="padding: 0.8rem 1.35rem; font-size: 0.95rem;">
+            💬 카톡 공유용 문구 복사
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 교육용 아코디언 가이드 (초보자를 위한 행동경제학 안내) -->
+    <section class="card" style="padding: 1.75rem; margin-top: 2rem;">
+      <h2 class="step-section-title" style="font-size: 1.15rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--text-primary);">
+        3단계. 워런 버핏과 대니얼 카너먼이 말하는 투자 심리의 비밀
+      </h2>
+
+      <div class="accordion-item" style="border-bottom: 1px solid var(--border-color); padding: 1rem 0;">
+        <h3 style="font-size: 0.98rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;">
+          Q1. 왜 사람은 주식 시장에서 감정적으로 매매하면 반드시 패배할까요?
+        </h3>
+        <p style="font-size: 0.88rem; line-height: 1.65; color: var(--text-secondary);">
+          노벨경제학상 수상자 대니얼 카너먼(Daniel Kahneman)의 **전망 이론(Prospect Theory)**에 따르면, 인간은 같은 금액이라도 **이익을 얻었을 때의 기쁨보다 손실을 보았을 때의 고통을 약 2.5배 더 강하게 느낍니다(손실 회피 편향)**. 이로 인해 주가가 조금만 오르면 겁이 나서 급하게 팔아치우고(조기 익절), 주가가 폭락하면 본전 생각에 손절하지 못하고 물을 타다가 계좌가 파탄에 이르는 악순환을 겪게 됩니다.
+        </p>
+      </div>
+
+      <div class="accordion-item" style="border-bottom: 1px solid var(--border-color); padding: 1rem 0;">
+        <h3 style="font-size: 0.98rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;">
+          Q2. 16가지 투자 동물 유형 중 가장 '우월한' 유형이 따로 있나요?
+        </h3>
+        <p style="font-size: 0.88rem; line-height: 1.65; color: var(--text-secondary);">
+          전혀 그렇지 않습니다. 전설적인 투자자 중에서도 워런 버핏은 10년 이상 보유하는 **코끼리(HQLL)**에 가깝고, 헤지펀드의 제왕 르네상스 테크놀로지의 짐 사이먼스는 초단타 퀀트 트레이딩을 하는 **치타(HQSC)**였습니다. 피터 린치는 생활 속 직관과 기업 성장을 연결한 **황소(HILC)** 유형이었습니다. 핵심은 "남의 방식을 흉내 내는 것"이 아니라 **"나의 성향에 맞는 무기를 갈고닦아 시장의 변동성에 흔들리지 않는 원칙을 지키는 것"**입니다.
+        </p>
+      </div>
+
+      <div class="accordion-item" style="padding-top: 1rem;">
+        <h3 style="font-size: 0.98rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;">
+          Q3. 초보 투자자가 자신의 약점을 극복하는 가장 확실한 방법은?
+        </h3>
+        <p style="font-size: 0.88rem; line-height: 1.65; color: var(--text-secondary);">
+          나의 약점을 보완해 줄 수 있는 <strong>'자산 배분'</strong>과 <strong>'정기적 적립식 매수'</strong>입니다. 예를 들어 감정에 취약한 직관형 투자자라면 주식 비중의 70%는 S&P 500이나 나스닥 100 같은 인덱스 ETF에 자동이체로 묶어두고, 나머지 30% 한도 내에서만 개별 종목 투자를 즐기는 '코어-위성(Core-Satellite)' 전략을 추천합니다.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- 전역 공통 스크립트 및 모듈 바인딩 -->
+  <script src="../../assets/js/core-ui.js"></script>
+  <script src="logic.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

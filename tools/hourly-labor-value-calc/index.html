@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>시간당 노동 가치 계산기 — 내 진짜 시급과 소비의 노동시간 환산 | SimuLab</title>
+  <meta name="description" content="출퇴근 시간과 직장 유지 비용을 제외한 나의 '진짜 실질 시급'은 얼마일까? 내가 사려는 물건이 내 생명의 몇 시간과 맞바꾼 것인지 생생하게 환산합니다." />
+  <link rel="stylesheet" href="../../assets/css/common.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main class="container" style="padding-top: 1.5rem; padding-bottom: 3rem;">
+    <section class="page-header">
+      <h1 class="page-title">나의 진짜 시급 가치</h1>
+      <p class="page-subtitle">
+        "내가 받는 진짜 시급은 얼마이며, 이 소비는 내 며칠의 노동일까?" 베스트셀러 『돈이란 무엇인가』의 실질 임금 공식에 따라, 출퇴근 길바닥에 쏟는 시간과 품위유지비·교통비를 제외한 나의 ‘진짜 시급’을 밝혀내고 물건 가격을 노동 시간으로 치환합니다.
+      </p>
+    </section>
+
+    <!-- 판정 브리핑 배너 -->
+    <div id="verdict-banner" class="verdict-banner" style="margin-bottom: 1.5rem;">
+      <div id="verdict-text" style="font-size: 0.95rem; line-height: 1.6;">
+        급여와 출퇴근 시간을 입력하시면 당신의 진짜 시급과 소비의 가치가 여기에 브리핑됩니다.
+      </div>
+    </div>
+
+    <!-- 핵심 KPI 카드 4종 -->
+    <section class="kpi-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+      <div class="card stat-card" style="padding: 1.25rem;">
+        <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">나의 '진짜 실질 시급'</span>
+        <div id="card-real-wage" class="stat-value" style="font-size: 1.6rem; font-weight: 700; color: var(--primary-color); margin-top: 0.25rem;">-</div>
+        <span style="font-size: 0.75rem; color: var(--text-muted);">출퇴근·직장비용 차감 후</span>
+      </div>
+
+      <div class="card stat-card" style="padding: 1.25rem;">
+        <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">법정 명목 시급 (세전 209h)</span>
+        <div id="card-nominal-wage" class="stat-value" style="font-size: 1.6rem; font-weight: 700; color: var(--text-primary); margin-top: 0.25rem;">-</div>
+        <span style="font-size: 0.75rem; color: var(--text-muted);">계약서상의 겉보기 시급</span>
+      </div>
+
+      <div class="card stat-card" style="padding: 1.25rem;">
+        <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">목표 품목 환산 노동시간</span>
+        <div id="card-item-hours" class="stat-value" style="font-size: 1.6rem; font-weight: 700; color: #10b981; margin-top: 0.25rem;">-</div>
+        <span style="font-size: 0.75rem; color: var(--text-muted);">해당 제품 구매에 필요한 시간</span>
+      </div>
+
+      <div class="card stat-card" style="padding: 1.25rem;">
+        <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">환산 출근 근무일수</span>
+        <div id="card-item-days" class="stat-value" style="font-size: 1.6rem; font-weight: 700; color: #f59e0b; margin-top: 0.25rem;">-</div>
+        <span style="font-size: 0.75rem; color: var(--text-muted);">하루 8시간 기준 환산</span>
+      </div>
+    </section>
+
+    <!-- 입력 컨트롤 및 결과 그리드 -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem;">
+      <!-- 좌측: 입력 폼 -->
+      <div class="card" style="padding: 1.5rem;">
+        <h2 class="step-section-title" style="font-size: 1.15rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--text-primary);">
+          1. 나의 급여 및 근무·출퇴근 환경 설정
+        </h2>
+
+        <!-- [인풋 카드 1] 월 세전 총급여 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <span class="input-card-label">월 세전 총급여</span>
+            <span id="badge-monthly-salary" class="korean-amount-badge">350만 원</span>
+          </div>
+          <div class="input-group-modern">
+            <input type="number" id="monthly-salary-input" class="form-control" step="100000" min="500000" max="50000000" value="3500000" />
+            <span class="input-suffix-badge">원</span>
+          </div>
+          <input type="range" id="monthly-salary-slider" class="range-slider" min="1000000" max="15000000" step="100000" value="3500000" style="margin-top: 0.75rem;" />
+          <div class="slider-guide-row">
+            <span>100만원</span>
+            <span>750만원</span>
+            <span>1,500만원</span>
+          </div>
+          <div class="quick-chips-row">
+            <button type="button" class="quick-chip-btn" data-salary-preset="2500000">250만</button>
+            <button type="button" class="quick-chip-btn" data-salary-preset="3500000">350만</button>
+            <button type="button" class="quick-chip-btn" data-salary-preset="4500000">450만</button>
+            <button type="button" class="quick-chip-btn" data-salary-preset="6000000">600만</button>
+            <button type="button" class="quick-chip-btn" data-salary-add="500000">+50만</button>
+            <button type="button" class="quick-chip-btn" data-salary-add="1000000">+100만</button>
+          </div>
+        </div>
+
+        <!-- [인풋 카드 2] 근로 시간 (주당 계약 & 야근) -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.25rem;">
+          <div class="input-card" style="margin-bottom: 0;">
+            <div class="input-card-header">
+              <span class="input-card-label">주당 계약 근로</span>
+            </div>
+            <div class="input-group-modern">
+              <input type="number" id="work-hours-input" class="form-control" min="10" max="60" value="40" />
+              <span class="input-suffix-badge">시간</span>
+            </div>
+          </div>
+          <div class="input-card" style="margin-bottom: 0;">
+            <div class="input-card-header">
+              <span class="input-card-label">주당 야근·준비</span>
+            </div>
+            <div class="input-group-modern">
+              <input type="number" id="overtime-hours-input" class="form-control" min="0" max="40" value="4" />
+              <span class="input-suffix-badge">시간</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- [인풋 카드 3] 일일 왕복 출퇴근 소요시간 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <span class="input-card-label">일일 왕복 출퇴근 소요시간</span>
+          </div>
+          <div class="input-group-modern">
+            <input type="number" id="commute-mins-input" class="form-control" step="10" min="0" max="360" value="90" />
+            <span class="input-suffix-badge">분/일</span>
+          </div>
+          <input type="range" id="commute-mins-slider" class="range-slider" min="0" max="240" step="10" value="90" style="margin-top: 0.75rem;" />
+          <div class="slider-guide-row">
+            <span>0분</span>
+            <span>120분 (2시간)</span>
+            <span>240분</span>
+          </div>
+          <div class="quick-chips-row">
+            <button type="button" class="quick-chip-btn" data-commute-set="30">30분</button>
+            <button type="button" class="quick-chip-btn" data-commute-set="60">1시간</button>
+            <button type="button" class="quick-chip-btn" data-commute-set="90">1.5시간</button>
+            <button type="button" class="quick-chip-btn" data-commute-set="120">2시간</button>
+            <button type="button" class="quick-chip-btn" data-commute-add="30">+30분</button>
+          </div>
+        </div>
+
+        <!-- [인풋 카드 4] 월 직장 유지 필수 비용 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <span class="input-card-label">월 직장 유지 필수 비용 (교통비·품위유지·외식)</span>
+            <span id="badge-job-expenses" class="korean-amount-badge">45만 원</span>
+          </div>
+          <div class="input-group-modern">
+            <input type="number" id="job-expenses-input" class="form-control" step="50000" min="0" max="5000000" value="450000" />
+            <span class="input-suffix-badge">원/월</span>
+          </div>
+          <input type="range" id="job-expenses-slider" class="range-slider" min="0" max="1500000" step="50000" value="450000" style="margin-top: 0.75rem;" />
+          <div class="slider-guide-row">
+            <span>0원</span>
+            <span>75만원</span>
+            <span>150만원</span>
+          </div>
+          <div class="quick-chips-row">
+            <button type="button" class="quick-chip-btn" data-expense-set="300000">30만</button>
+            <button type="button" class="quick-chip-btn" data-expense-set="450000">45만</button>
+            <button type="button" class="quick-chip-btn" data-expense-set="600000">60만</button>
+            <button type="button" class="quick-chip-btn" data-expense-set="1000000">100만</button>
+            <button type="button" class="quick-chip-btn" data-expense-add="100000">+10만</button>
+          </div>
+        </div>
+
+        <!-- [인풋 카드 5] 환산하고 싶은 소비 품목 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <span class="input-card-label">환산하고 싶은 소비 품목</span>
+            <span id="badge-item-price" class="korean-amount-badge">150만 원</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-bottom: 0.5rem;">
+            <input type="text" id="item-name-input" class="form-control" value="최신 스마트폰" placeholder="품목명" />
+            <div class="input-group-modern">
+              <input type="number" id="item-price-input" class="form-control" step="50000" min="1000" value="1500000" placeholder="가격" />
+              <span class="input-suffix-badge">원</span>
+            </div>
+          </div>
+          <input type="range" id="item-price-slider" class="range-slider" min="10000" max="10000000" step="50000" value="1500000" style="margin-top: 0.5rem;" />
+          <div class="quick-chips-row">
+            <button type="button" class="quick-chip-btn" data-item-set="500000">50만</button>
+            <button type="button" class="quick-chip-btn" data-item-set="1000000">100만</button>
+            <button type="button" class="quick-chip-btn" data-item-set="1500000">150만</button>
+            <button type="button" class="quick-chip-btn" data-item-set="3000000">300만</button>
+            <button type="button" class="quick-chip-btn" data-item-add="500000">+50만</button>
+          </div>
+        </div>
+
+        <!-- 하단 액션 버튼 -->
+        <div style="margin-top: 1.5rem;">
+          <button type="button" id="share-btn" class="btn btn-outline" style="width: 100%;">분석 결과 공유 URL 복사</button>
+        </div>
+      </div>
+
+      <!-- 우측: 시급 비교 막대 차트 및 세부 통계 -->
+      <div class="card" style="padding: 1.5rem; display: flex; flex-direction: column;">
+        <h2 class="step-section-title" style="font-size: 1.15rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--text-primary);">
+          2. 명목 시급 vs 진짜 실질 시급 격차
+        </h2>
+
+        <!-- 세부 배지 -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.75rem; margin-bottom: 1rem; background: var(--bg-main); padding: 0.75rem; border-radius: 8px;">
+          <div>
+            <span style="font-size: 0.72rem; color: var(--text-muted);">주당 총 회사투입 시간</span>
+            <div id="stat-total-weekly-hours" style="font-size: 0.95rem; font-weight: 700;">-</div>
+          </div>
+          <div>
+            <span style="font-size: 0.72rem; color: var(--text-muted);">월 실질 가처분 소득</span>
+            <div id="stat-disposable-income" style="font-size: 0.95rem; font-weight: 700;">-</div>
+          </div>
+          <div>
+            <span style="font-size: 0.72rem; color: var(--text-muted);">실질 시급 할인율</span>
+            <div id="stat-wage-discount" style="font-size: 0.95rem; font-weight: 700; color: #ef4444;">-</div>
+          </div>
+          <div>
+            <span style="font-size: 0.72rem; color: var(--text-muted);">월 세후 실수령액</span>
+            <div id="stat-net-salary" style="font-size: 0.95rem; font-weight: 700; color: var(--primary-color);">-</div>
+          </div>
+        </div>
+
+        <div style="flex: 1; min-height: 280px; position: relative;">
+          <canvas id="wage-chart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- 일상 품목 노동 시간 환산 섹션 -->
+    <section class="card" style="padding: 1.5rem; margin-bottom: 2.5rem;">
+      <h2 class="step-section-title" style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-primary);">
+        3. 일상 소비 품목의 노동 시간 환산표
+      </h2>
+      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
+        나의 '진짜 실질 시급'을 기준으로, 우리가 무심코 결제하는 일상의 물건들이 내 인생의 몇 시간을 의미하는지 확인해 보세요.
+      </p>
+      <div id="benchmark-item-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0.75rem;">
+        <!-- JS 렌더링 -->
+      </div>
+    </section>
+
+    <!-- 전문가 가이드 아코디언 -->
+    <article class="seo-article card" style="padding: 1.5rem; margin-bottom: 2rem;">
+      <details class="expert-guide">
+        <summary style="font-weight: 700; font-size: 1.05rem; cursor: pointer; color: var(--text-primary);">
+          『돈이란 무엇인가(Your Money or Your Life)』의 화폐와 생명 에너지 (펼쳐보기)
+        </summary>
+        <div style="margin-top: 1rem; line-height: 1.7; font-size: 0.9rem; color: var(--text-secondary);">
+          <h3 style="font-size: 1rem; color: var(--text-primary); margin-top: 1rem;">1. "돈은 당신이 바친 생명의 시간이다"</h3>
+          <p>
+            조 도밍게즈(Joe Dominguez)와 비키 로빈(Vicki Robin)은 돈이란 '우리가 유한한 인생에서 바쳐서 얻은 생명 에너지(Life Energy)'라고 정의했습니다. 
+            단순히 150만원짜리 스마트폰을 사는 것이 아니라, 당신이 회사의 불편함과 피로를 견디며 바친 130시간의 생명 에너지를 스마트폰과 교환하는 것입니다.
+          </p>
+
+          <h3 style="font-size: 1rem; color: var(--text-primary); margin-top: 1rem;">2. 소비할 때 이 질문을 던져보세요</h3>
+          <p>
+            "이 물건은 내가 바친 N시간의 노동만큼 내 삶에 진정한 가치와 행복을 주는가?" 
+            이 질문 하나만으로도 불필요한 충동 소비와 과시형 지출을 자연스럽게 멈추고, 정말 소중한 곳에 돈과 시간을 쓰는 경제적 자유의 첫걸음을 뗄 수 있습니다.
+          </p>
+        </div>
+      </details>
+    </article>
+
+    <section id="legal-disclaimer"></section>
+    <section id="affiliate-disclosure"></section>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="../../assets/js/core-ui.js"></script>
+  <script src="./logic.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

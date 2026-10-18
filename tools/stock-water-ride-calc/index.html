@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ko" data-default-theme="light" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <title>주식 평단가 &amp; 물타기 계산기 (분할매수·목표 평단가 역산) | SimuLab Hub</title>
+  <meta name="description" content="기존 보유 주식에 추가 매수(물타기) 시 낮아지는 최종 평단가와 수익률을 계산하고, 원하는 목표 평단가까지 필요한 추가 매수 수량과 자금을 1초 만에 역산하세요." />
+  <link rel="canonical" href="https://simulab-hub.pages.dev/tools/stock-water-ride-calc/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="주식 평단가 & 물타기 계산기" />
+  <meta property="og:description" content="분할 매수 후 최종 평단가와 목표 평단가 달성을 위한 추가 매수 필요량을 실시간 계산하세요." />
+
+  <link rel="stylesheet" href="../../assets/css/common.css" />
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main class="container">
+    <section class="page-header">
+      <div class="page-header-badges">
+        <span class="brand-badge">EQUITY AVERAGE &amp; POSITION SIZING</span>
+      </div>
+      <h1 class="page-title">주식 평단가 물타기</h1>
+      <p class="page-subtitle">
+        하락장에서 추가 매수 시 <strong>최종 평단가가 얼마나 낮아지는지</strong> 즉시 계산하고,
+        <strong>"평단가를 얼마까지 내리려면 지금 몇 주를 더 사야 할까?"</strong>에 대한 필요 주식 수와 자금을 정밀 역산합니다.
+      </p>
+    </section>
+
+    <!-- 모드 선택 탭 버튼 -->
+    <div style="display: flex; gap: 0.5rem; margin-bottom: 1.25rem;">
+      <button type="button" class="mode-tab-btn active btn btn-primary" data-mode="water-ride" style="flex: 1; padding: 0.65rem; font-weight: 700;">
+        모드 1: 추가 매수 후 최종 평단가 계산
+      </button>
+      <button type="button" class="mode-tab-btn btn btn-secondary" data-mode="target-water-ride" style="flex: 1; padding: 0.65rem; font-weight: 700;">
+        모드 2: 목표 평단가 달성 필요량 역산
+      </button>
+    </div>
+
+    <section class="simulator-grid">
+      <!-- 좌측 입력 패널 -->
+      <div class="card">
+        <!-- 모드 1: 다회차 추가 매수 패널 -->
+        <div id="panel-water-ride">
+          <div class="step-section-title" style="margin-bottom: 0.85rem;">
+            <span class="step-badge">STEP 1</span> 매수 회차별 단가 및 수량 입력
+          </div>
+          <div class="card-header">
+            <h2 class="card-title">분할 매수 내역 입력</h2>
+            <button type="button" id="btn-add-order" class="btn btn-secondary" style="padding: 0.25rem 0.65rem; font-size: 0.78rem;">+ 매수 회차 추가</button>
+          </div>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>회차</th>
+                  <th>매수가격 (원)</th>
+                  <th>수량 (주)</th>
+                  <th style="text-align: right;">매수금액</th>
+                  <th>삭제</th>
+                </tr>
+              </thead>
+              <tbody id="orders-tbody"></tbody>
+            </table>
+          </div>
+
+          <!-- 현재 시장 주가 인풋 카드 -->
+          <div class="input-card" style="margin-top: 1.25rem;">
+            <div class="input-card-header">
+              <label for="input-cur-market-price" class="input-card-label">현재 시장 주가 (선택 사항)</label>
+              <span id="badge-cur-market-price" class="korean-amount-badge">7.2만 원</span>
+            </div>
+            <div class="input-group-modern">
+              <input type="number" id="input-cur-market-price" class="form-control" value="72000" step="any" min="0" placeholder="현재 주가를 입력하면 손익률을 확인합니다" />
+              <span class="input-suffix-badge">원</span>
+            </div>
+            <div class="quick-chips-row">
+              <button type="button" class="quick-chip-btn" data-chip-set="input-cur-market-price" data-val="60000">6만</button>
+              <button type="button" class="quick-chip-btn" data-chip-set="input-cur-market-price" data-val="70000">7만</button>
+              <button type="button" class="quick-chip-btn" data-chip-set="input-cur-market-price" data-val="72000">7.2만</button>
+              <button type="button" class="quick-chip-btn" data-chip-set="input-cur-market-price" data-val="80000">8만</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 모드 2: 목표 평단가 역산 패널 -->
+        <div id="panel-target-water-ride" style="display: none;">
+          <div class="step-section-title" style="margin-bottom: 0.85rem;">
+            <span class="step-badge">STEP 1</span> 목표 평단가 및 추가 매수 주가 설정
+          </div>
+          <div class="card-header">
+            <h2 class="card-title">목표 평단가 역산 조건</h2>
+          </div>
+
+          <!-- [인풋 카드 1] 현재 내 보유 평단가 -->
+          <div class="input-card">
+            <div class="input-card-header">
+              <label for="input-target-cur-avg" class="input-card-label">현재 내 보유 평단가</label>
+              <span id="badge-target-cur-avg" class="korean-amount-badge">8.5만 원</span>
+            </div>
+            <div class="input-group-modern">
+              <input type="number" id="input-target-cur-avg" class="form-control" value="85000" step="any" min="0" />
+              <span class="input-suffix-badge">원</span>
+            </div>
+            <div class="quick-chips-row">
+              <button type="button" class="quick-chip-btn" data-chip-set="input-target-cur-avg" data-val="50000">5만</button>
+              <button type="button" class="quick-chip-btn" data-chip-set="input-target-cur-avg" data-val="70000">7만</button>
+              <button type="button" class="quick-chip-btn" data-chip-set="input-target-cur-avg" data-val="85000">8.5만</button>
+              <button type="button" class="quick-chip-btn" data-chip-set="input-target-cur-avg" data-val="100000">10만</button>
+              <button type="button" class="quick-chip-btn" data-chip-add="input-target-cur-avg" data-val="10000">+1만</button>
+            </div>
+          </div>
+
+          <!-- [인풋 카드 2] 현재 보유 수량 -->
+          <div class="input-card">
+            <div class="input-card-header">
+              <label for="input-target-cur-qty" class="input-card-label">현재 보유 수량</label>
+              <span id="badge-target-cur-qty" class="control-value-badge">100주</span>
+            </div>
+            <div class="input-group-modern">
+              <input type="number" id="input-target-cur-qty" class="form-control" value="100" step="1" min="1" />
+              <span class="input-suffix-badge">주</span>
+            </div>
+            <div class="quick-chips-row">
+              <button type="button" class="quick-chip-btn" data-chip-set="input-target-cur-qty" data-val="10">10주</button>
+              <button type="button" class="quick-chip-btn" data-chip-set="input-target-cur-qty" data-val="50">50주</button>
+              <button type="button" class="quick-chip-btn" data-chip-set="input-target-cur-qty" data-val="100">100주</button>
+              <button type="button" class="quick-chip-btn" data-chip-set="input-target-cur-qty" data-val="500">500주</button>
+              <button type="button" class="quick-chip-btn" data-chip-add="input-target-cur-qty" data-val="50">+50주</button>
+            </div>
+          </div>
+
+          <!-- [인풋 카드 3] 희망하는 목표 평단가 -->
+          <div class="input-card">
+            <div class="input-card-header">
+              <label for="input-target-goal-avg" class="input-card-label">희망하는 목표 평단가</label>
+              <span id="badge-target-goal-avg" class="korean-amount-badge">7.5만 원</span>
+            </div>
+            <div class="input-group-modern">
+              <input type="number" id="input-target-goal-avg" class="form-control" value="75000" step="any" min="0" />
+              <span class="input-suffix-badge">원</span>
+            </div>
+            <div class="quick-chips-row">
+              <button type="button" class="quick-chip-btn" data-chip-set="input-target-goal-avg" data-val="60000">6만</button>
+              <button type="button" class="quick-chip-btn" data-chip-set="input-target-goal-avg" data-val="70000">7만</button>
+              <button type="button" class="quick-chip-btn" data-chip-set="input-target-goal-avg" data-val="75000">7.5만</button>
+              <button type="button" class="quick-chip-btn" data-chip-set="input-target-goal-avg" data-val="80000">8만</button>
+            </div>
+            <small style="color: var(--text-muted); display: block; margin-top: 0.35rem;">현재 보유 평단가보다 낮아야 합니다.</small>
+          </div>
+
+          <!-- [인풋 카드 4] 추가 매수할 현재 주가 -->
+          <div class="input-card">
+            <div class="input-card-header">
+              <label for="input-target-add-price" class="input-card-label">추가 매수할 현재 주가</label>
+              <span id="badge-target-add-price" class="korean-amount-badge">6.5만 원</span>
+            </div>
+            <div class="input-group-modern">
+              <input type="number" id="input-target-add-price" class="form-control" value="65000" step="any" min="0" />
+              <span class="input-suffix-badge">원</span>
+            </div>
+            <div class="quick-chips-row">
+              <button type="button" class="quick-chip-btn" data-chip-set="input-target-add-price" data-val="50000">5만</button>
+              <button type="button" class="quick-chip-btn" data-chip-set="input-target-add-price" data-val="60000">6만</button>
+              <button type="button" class="quick-chip-btn" data-chip-set="input-target-add-price" data-val="65000">6.5만</button>
+              <button type="button" class="quick-chip-btn" data-chip-set="input-target-add-price" data-val="70000">7만</button>
+            </div>
+            <small style="color: var(--text-muted); display: block; margin-top: 0.35rem;">목표 평단가보다 낮아야 평단가를 낮출 수 있습니다.</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- 우측 계산 결과 패널 -->
+      <div>
+        <div id="verdict-banner" class="verdict-banner">
+          <div class="verdict-eyebrow">실시간 평단가 &amp; 물타기 분석 브리핑</div>
+          <p id="verdict-text" class="verdict-text">
+            매수 내역을 입력하면 최종 평단가와 변화율이 계산됩니다.
+          </p>
+        </div>
+
+        <div class="kpi-grid" style="margin-top: 1.25rem;">
+          <div class="kpi-card">
+            <span class="kpi-label">최종 평균단가</span>
+            <span id="kpi-avg-price" class="kpi-value text-accent">0원</span>
+            <span class="kpi-sub">가중평균 매수단가</span>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">총 보유 수량</span>
+            <span id="kpi-total-qty" class="kpi-value" style="color: var(--text-primary);">0주</span>
+            <span class="kpi-sub">누적 보유 주식 수</span>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">총 투입 자금</span>
+            <span id="kpi-total-money" class="kpi-value" style="color: var(--text-primary);">0원</span>
+            <span class="kpi-sub">누적 총 투자원금</span>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">평단가 변화 / 총합</span>
+            <span id="kpi-drop-pct" class="kpi-value text-success">0.0%</span>
+            <span class="kpi-sub">최초 대비 인하 효과</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 스폰서 광고 영역 -->
+    <aside class="ad-slot" aria-label="스폰서 광고 영역">
+      <span>SPONSORED · Google AdSense Responsive Display Unit</span>
+    </aside>
+
+    <!-- 전문가 해설 아코디언 -->
+    <article class="seo-article card">
+      <details class="expert-guide">
+        <summary>
+          <span class="expert-guide-title">전문가 해설</span>
+          <span class="expert-guide-meta">물타기 수학적 공식 · 리스크 관리 원칙 · 자주 묻는 질문</span>
+        </summary>
+        <div class="expert-guide-body">
+          <h2>물타기(추가 매수)의 수학적 원리와 리스크 관리</h2>
+          <p>
+            물타기는 주가가 하락했을 때 추가로 주식을 매수하여 보유 주식의 <strong>평균 매수단가(가중평균)</strong>를 낮추는 전략입니다.
+            평단가가 낮아지면 주가가 조금만 반등해도 본전 탈출이나 수익 전환이 빨라지는 장점이 있습니다.
+          </p>
+
+          <h3>1. 목표 평단가 역산 공식의 유도</h3>
+          <p>
+            현재 보유 주식 $Q_1$주, 평단가 $P_1$, 추가 매수할 가격 $P_{\text{add}}$일 때 목표 평단가 $P_{\text{target}}$을 만들기 위한 추가 매수량 $Q_{\text{add}}$는 다음과 같습니다:
+          </p>
+          <div class="formula-box">
+            $$\frac{P_1 \times Q_1 + P_{\text{add}} \times Q_{\text{add}}}{Q_1 + Q_{\text{add}}} = P_{\text{target}}$$
+            $$Q_{\text{add}} = Q_1 \times \frac{P_1 - P_{\text{target}}}{P_{\text{target}} - P_{\text{add}}}$$
+          </div>
+          <p>
+            여기서 중요한 점은 <strong>추가 매수 가격($P_{\text{add}}$)이 목표 평단가($P_{\text{target}}$)에 가까울수록 필요한 주식 수($Q_{\text{add}}$)가 기하급수적으로 폭증</strong>한다는 사실입니다.
+            무리하게 평단가를 내리려다 계좌 비중이 과도하게 쏠리지 않도록 비중 관리가 필수적입니다.
+          </p>
+
+          <h2>자주 묻는 질문 (FAQ)</h2>
+          <details class="faq-item" open>
+            <summary>Q1. 무제한 물타기가 위험한 이유는 무엇인가요?</summary>
+            <div class="faq-answer">
+              주가가 지속적으로 하락하는 기업에 계속 물을 타면, 포트폴리오 내 특정 종목 비중이 70~80% 이상으로 커져 전체 계좌의 치명적인 손실(MDD)로 이어집니다.
+              반드시 기업의 펀더멘털과 현금 비중 원칙을 세운 후 분할 매수를 집행해야 합니다.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Q2. 물타기와 불타기의 차이는 무엇인가요?</summary>
+            <div class="faq-answer">
+              물타기는 하락할 때 평단가를 낮추기 위해 매수하는 것이며, 불타기는 상승 추세가 확인된 종목의 수익을 극대화하기 위해 평단가를 올리면서도 추가 매수하는 피라미딩 전략입니다.
+            </div>
+          </details>
+        </div>
+      </details>
+
+      <div id="affiliate-disclosure"></div>
+    </article>
+  </main>
+
+  <div id="legal-disclaimer"></div>
+  <footer id="site-footer"></footer>
+
+  <script src="../../assets/js/core-ui.js"></script>
+  <script src="./logic.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,1005 @@
+<!doctype html>
+<!--
+  ==========================================================================
+  SimuLab Hub v3.5 — 시뮬레이션 특화 & 모던 타일 그리드 포털 (index.html)
+  --------------------------------------------------------------------------
+  - [핵심 차별화 브랜딩] "단순 계산기가 아닌 미래 시뮬레이션 전문 랩 (SimuLab)"
+  - [시각적 차별화] SIM(시뮬레이터) vs CALC(계산기) 듀얼 배지 & 카테고리별 프리미엄 그라디언트
+  - [빠른 색인 기능] 상단 스티키(Sticky) 카테고리 네비게이션 탭 바 (원터치 스무스 스크롤)
+  - [직장인·퇴직자 특화] 국민연금 조기수령 손익분기, 퇴직금, 실업급여, 월급 실수령액 전진 배치
+  ==========================================================================
+-->
+<html lang="ko" data-default-theme="light" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light" />
+  <title>SimuLab — 감이 아니라 숫자로 | 계산기 + 미래 시뮬레이션 전문 허브</title>
+  <meta name="description" content="단순 계산을 넘어 미래를 예측합니다. 직장인 퇴직금·국민연금 조기수령 손익분기·실업급여부터 부동산 평수, 주담대 DSR, 소비 기회비용 시뮬레이션까지 단 1초 만에 실행하세요." />
+  <link rel="canonical" href="https://simulab.kr/" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="apple-touch-icon" href="assets/icons/icon-192.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="SimuLab" />
+  <meta name="theme-color" content="#2563eb" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="SimuLab — 감이 아니라 숫자로" />
+  <meta property="og:description" content="직장인 퇴직금, 국민연금 조기수령, 실업급여, 부동산 평수, 주식 퀀트 시뮬레이터 모음" />
+
+  <link rel="stylesheet" href="./assets/css/common.css" />
+
+  <style>
+    /* ---------- 모던 포털 히어로 ---------- */
+    .portal-hero {
+      padding: 3rem 0 1.5rem;
+      text-align: left;
+    }
+    .portal-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: #ffffff;
+      text-transform: uppercase;
+      margin-bottom: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
+    }
+    .portal-title {
+      font-size: clamp(1.85rem, 4.4vw, 2.85rem);
+      font-weight: 950;
+      letter-spacing: -0.035em;
+      line-height: 1.25;
+      color: var(--text-primary);
+    }
+    .portal-title em {
+      font-style: normal;
+      background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .portal-sub {
+      margin-top: 0.95rem;
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      max-width: 720px;
+      line-height: 1.65;
+    }
+
+    /* 포털 차별화 배너 (계산기 + 시뮬레이션 강조) */
+    .portal-usp-banner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.25rem;
+    }
+    .usp-pill {
+      font-size: 0.8rem;
+      font-weight: 750;
+      padding: 0.35rem 0.75rem;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .usp-pill-sim {
+      background: rgba(124, 58, 237, 0.08);
+      color: #6d28d9;
+      border: 1px solid rgba(124, 58, 237, 0.2);
+    }
+    .usp-pill-calc {
+      background: rgba(37, 99, 235, 0.08);
+      color: #1d4ed8;
+      border: 1px solid rgba(37, 99, 235, 0.2);
+    }
+
+    /* ---------- 실시간 검색 바 ---------- */
+    .portal-search-wrap {
+      position: relative;
+      max-width: 600px;
+      margin: 1.75rem 0 1rem;
+    }
+    .portal-search-wrap input {
+      width: 100%;
+      font: inherit;
+      font-size: 1.02rem;
+      padding: 0.95rem 3.5rem 0.95rem 2.9rem;
+      border: 1.5px solid var(--border-color);
+      border-radius: 16px;
+      background: #ffffff;
+      color: var(--text-primary);
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .portal-search-wrap input:focus {
+      outline: none;
+      border-color: #2563eb;
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+    }
+    .portal-search-wrap svg {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      width: 20px;
+      height: 20px;
+      transform: translateY(-50%);
+      stroke: var(--text-muted);
+      fill: none;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+    }
+    .portal-search-wrap kbd {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      border: 1px solid var(--border-color);
+      background: var(--bg-subtle);
+      border-radius: 6px;
+      padding: 0.15rem 0.45rem;
+    }
+
+    /* ---------- 상단 스티키(Sticky) 대분류 색인 탭 바 ---------- */
+    .sticky-cat-nav-wrapper {
+      position: sticky;
+      top: 60px; /* 헤더 바로 아래 */
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1.5px solid var(--border-color);
+      margin: 0 -1.5rem 2rem;
+      padding: 0.65rem 1.5rem;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
+    }
+    .sticky-cat-nav {
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .sticky-cat-nav::-webkit-scrollbar { display: none; }
+    .cat-nav-btn {
+      white-space: nowrap;
+      font-size: 0.84rem;
+      font-weight: 750;
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-color);
+      background: #ffffff;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      text-decoration: none;
+    }
+    .cat-nav-btn:hover {
+      color: #2563eb;
+      border-color: #93c5fd;
+      background: #eff6ff;
+    }
+    .cat-nav-btn.active {
+      background: #1e293b;
+      color: #ffffff;
+      border-color: #1e293b;
+      box-shadow: 0 3px 8px rgba(15, 23, 42, 0.15);
+    }
+
+    /* ---------- 모던 카드 섹션 컨테이너 ---------- */
+    .calc-hub-section {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 1.85rem 1.6rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.02);
+      scroll-margin-top: 130px; /* 앵커 이동 시 스티키 헤더에 가려지지 않게 여백 */
+    }
+    .calc-hub-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.85rem;
+      border-bottom: 1.5px solid #f1f5f9;
+    }
+    .calc-hub-title {
+      font-size: 1.25rem;
+      font-weight: 850;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+    .calc-hub-count {
+      font-size: 0.78rem;
+      font-weight: 750;
+      color: var(--text-muted);
+      background: var(--bg-subtle);
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+    }
+
+    /* ---------- 차별화 모던 타일 그리드 ---------- */
+    .calc-tile-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(135px, 1fr));
+      gap: 1.5rem 1rem;
+    }
+    @media (max-width: 640px) {
+      .calc-tile-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.25rem 0.6rem;
+      }
+      .calc-hub-section {
+        padding: 1.25rem 0.9rem;
+      }
+      .sticky-cat-nav-wrapper {
+        margin: 0 -1rem 1.5rem;
+        padding: 0.55rem 1rem;
+      }
+    }
+    @media (max-width: 380px) {
+      .calc-tile-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* 개별 타일 링크 컴포넌트 */
+    .calc-tile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+      color: var(--text-primary);
+      padding: 0.5rem 0.25rem;
+      border-radius: 16px;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .calc-tile:hover {
+      transform: translateY(-4px);
+    }
+    .calc-tile:hover .calc-tile-icon {
+      box-shadow: 0 12px 24px -4px rgba(37, 99, 235, 0.18);
+      transform: scale(1.05);
+    }
+    .calc-tile:hover .calc-tile-name {
+      color: #2563eb;
+    }
+
+    /* 타일 아이콘 박스 */
+    .calc-tile-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 19px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.85rem;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.04);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+    }
+
+    /* 시뮬레이션 vs 계산기 듀얼 배지 */
+    .tile-badge-sim {
+      position: absolute;
+      top: -6px;
+      left: -6px;
+      background: linear-gradient(135deg, #7c3aed, #4f46e5);
+      color: #ffffff;
+      font-size: 0.58rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      padding: 0.16rem 0.42rem;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(124, 58, 237, 0.35);
+      line-height: 1;
+    }
+    .tile-badge-calc {
+      position: absolute;
+      top: -6px;
+      left: -6px;
+      background: linear-gradient(135deg, #0284c7, #2563eb);
+      color: #ffffff;
+      font-size: 0.58rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      padding: 0.16rem 0.42rem;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
+      line-height: 1;
+    }
+    .tile-badge-hot {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background: #ef4444;
+      color: #ffffff;
+      font-size: 0.6rem;
+      font-weight: 850;
+      padding: 0.12rem 0.35rem;
+      border-radius: 999px;
+      border: 1.5px solid #ffffff;
+      line-height: 1;
+      box-shadow: 0 2px 5px rgba(239, 68, 68, 0.3);
+    }
+
+    /* 테마별 아이콘 그라디언트 색감 */
+    .theme-job { background: linear-gradient(135deg, #eff6ff, #dbeafe); border-color: #bfdbfe; }
+    .theme-realty { background: linear-gradient(135deg, #fffbeb, #fef3c7); border-color: #fde68a; }
+    .theme-stock { background: linear-gradient(135deg, #f0fdf4, #dcfce7); border-color: #bbf7d0; }
+    .theme-sim { background: linear-gradient(135deg, #faf5ff, #f3e8ff); border-color: #e9d5ff; }
+    .theme-life { background: linear-gradient(135deg, #f0f9ff, #e0f2fe); border-color: #bae6fd; }
+    .theme-fun { background: linear-gradient(135deg, #fff1f2, #ffe4e6); border-color: #fecdd3; }
+
+    /* 타일 텍스트 */
+    .calc-tile-name {
+      margin-top: 0.7rem;
+      font-size: 0.85rem;
+      font-weight: 750;
+      text-align: center;
+      line-height: 1.35;
+      color: #1e293b;
+      word-break: keep-all;
+      transition: color 0.15s ease;
+    }
+
+    .search-empty-state {
+      display: none;
+      padding: 3rem 1rem;
+      text-align: center;
+      color: var(--text-secondary);
+    }
+  </style>
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main class="container">
+    <!-- 포털 히어로 -->
+    <section class="portal-hero">
+      <div class="portal-eyebrow">
+        <span>⚡</span> SIMULATION &amp; CALCULATION LAB
+      </div>
+      <h1 class="portal-title">감이 아니라 숫자로, <em>SimuLab</em></h1>
+      <p class="portal-sub">
+        단순 사칙연산 계산기를 넘어 <strong>시간과 변수에 따른 미래 나비효과를 직접 시뮬레이션</strong>합니다.<br/>
+        국민연금 조기수령 손익분기, 직장인 퇴직금, 부동산 평수 환산부터 소비 기회비용과 주식 퀀트까지 1초 만에 확인하세요.
+      </p>
+
+      <!-- 포털 차별화 배너 -->
+      <div class="portal-usp-banner">
+        <span class="usp-pill usp-pill-sim">
+          <strong>[🔬 SIM]</strong> 미래 예측 &amp; 복리 시뮬레이터 (14종)
+        </span>
+        <span class="usp-pill usp-pill-calc">
+          <strong>[⚡ CALC]</strong> 2026년 법령 반영 신속 간이 계산기 (23종)
+        </span>
+      </div>
+
+      <!-- 실시간 검색 바 -->
+      <div class="portal-search-wrap">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="text" id="portal-search-input" placeholder="계산기 및 시뮬레이터 검색 (예: 아파트, 담배, 국민연금, 퇴직금, 평수)" aria-label="계산기 검색" />
+        <kbd>/</kbd>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         상단 스티키(Sticky) 빠른 대분류 색인 탭 바
+         ====================================================================== -->
+    <div class="sticky-cat-nav-wrapper">
+      <nav class="sticky-cat-nav" aria-label="대분류 빠른 색인">
+        <a href="#sec-popular" class="cat-nav-btn active">🔥 인기 TOP</a>
+        <a href="#sec-job" class="cat-nav-btn">💼 직장인·퇴직</a>
+        <a href="#sec-realty" class="cat-nav-btn">🏠 부동산·대출</a>
+        <a href="#sec-stock" class="cat-nav-btn">📈 주식·재테크</a>
+        <a href="#sec-insight" class="cat-nav-btn">💡 미래 시뮬레이션</a>
+        <a href="#sec-life" class="cat-nav-btn">🌿 생활·편의</a>
+        <a href="#sec-fun" class="cat-nav-btn">🎲 여가·모임</a>
+      </nav>
+    </div>
+
+    <!-- 검색 결과 없음 상태 -->
+    <div id="search-empty-state" class="search-empty-state">
+      <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🔍</div>
+      <p style="font-weight: 700; font-size: 1.1rem; color: var(--text-primary); margin: 0 0 0.3rem;">일치하는 도구를 찾을 수 없습니다.</p>
+      <p style="font-size: 0.88rem; color: var(--text-muted); margin: 0;">다른 검색어를 입력하시거나 상단 대분류 탭을 눌러 둘러보세요.</p>
+    </div>
+
+    <!-- ======================================================================
+         섹션 1: 🔥 가장 많이 찾는 계산기 & 시뮬레이터 (TOP 인기)
+         ====================================================================== -->
+    <section id="sec-popular" class="calc-hub-section">
+      <div class="calc-hub-header">
+        <div class="calc-hub-title">
+          <span>🔥</span> 가장 많이 찾는 계산기 &amp; 시뮬레이터
+        </div>
+        <span class="calc-hub-count">인기 TOP 10</span>
+      </div>
+      <div class="calc-tile-grid">
+        <!-- 0-1. 그때 그 아파트 샀다면 (SIM) -->
+        <a href="tools/past-apt-timemachine/index.html" class="calc-tile" data-keywords="그때 그 아파트 샀다면 마래푸 은마 반포자이 헬리오시티 부동산 타임머신 폭등 수익률">
+          <div class="calc-tile-icon theme-realty">
+            <span class="tile-badge-sim">SIM</span>
+            <span class="tile-badge-hot">NEW</span>
+            🏢
+          </div>
+          <div class="calc-tile-name">그때 그 아파트 샀다면</div>
+        </a>
+
+        <!-- 0-2. 담배값 주식 투자 시뮬 (SIM) -->
+        <a href="tools/smoking-wealth-sim/index.html" class="calc-tile" data-keywords="담배값 주식 투자 시뮬 금연 재테크 sp500 복리 제네시스 타르 수명">
+          <div class="calc-tile-icon theme-sim">
+            <span class="tile-badge-sim">SIM</span>
+            <span class="tile-badge-hot">NEW</span>
+            🚬
+          </div>
+          <div class="calc-tile-name">담배값 주식 투자 시뮬</div>
+        </a>
+
+        <!-- 1. 국민연금 조기수령 (SIM) -->
+        <a href="tools/national-pension-sim/index.html" class="calc-tile" data-keywords="국민연금 조기수령 연기연금 손익분기 은퇴 퇴직 골든크로스">
+          <div class="calc-tile-icon theme-sim">
+            <span class="tile-badge-sim">SIM</span>
+            <span class="tile-badge-hot">HOT</span>
+            🏛️
+          </div>
+          <div class="calc-tile-name">국민연금 조기수령 시뮬</div>
+        </a>
+
+        <!-- 2. 직장인 퇴직금 (CALC) -->
+        <a href="tools/severance-pay-calc/index.html" class="calc-tile" data-keywords="퇴직금 직장인 근로기준법 평균임금 통상임금 irp">
+          <div class="calc-tile-icon theme-job">
+            <span class="tile-badge-calc">CALC</span>
+            <span class="tile-badge-hot">HOT</span>
+            📋
+          </div>
+          <div class="calc-tile-name">직장인 퇴직금 계산기</div>
+        </a>
+
+        <!-- 3. 소비 vs 투자 기회비용 (SIM) -->
+        <a href="tools/opportunity-cost-calc/index.html" class="calc-tile" data-keywords="기회비용 신차 명품 복리 투자 sp500 배당">
+          <div class="calc-tile-icon theme-sim">
+            <span class="tile-badge-sim">SIM</span>
+            <span class="tile-badge-hot">HOT</span>
+            ⚡
+          </div>
+          <div class="calc-tile-name">소비 투자 기회비용</div>
+        </a>
+
+        <!-- 4. 실업급여 (CALC) -->
+        <a href="tools/unemployment-benefit-calc/index.html" class="calc-tile" data-keywords="실업급여 구직급여 고용보험 퇴직 권고사직 일수">
+          <div class="calc-tile-icon theme-job">
+            <span class="tile-badge-calc">CALC</span>
+            <span class="tile-badge-hot">HOT</span>
+            💼
+          </div>
+          <div class="calc-tile-name">실업급여 모의계산기</div>
+        </a>
+
+        <!-- 5. 월급 실수령액 (CALC) -->
+        <a href="tools/salary-net-calc/index.html" class="calc-tile" data-keywords="월급 실수령액 연봉 4대보험 소득세 세후">
+          <div class="calc-tile-icon theme-job">
+            <span class="tile-badge-calc">CALC</span>
+            💰
+          </div>
+          <div class="calc-tile-name">월급 실수령액 계산기</div>
+        </a>
+
+        <!-- 6. 부동산 평수 ㎡ (CALC) -->
+        <a href="tools/area-pyeong-calc/index.html" class="calc-tile" data-keywords="평수 제곱미터 ㎡ 국평 84 59 아파트 분양가">
+          <div class="calc-tile-icon theme-realty">
+            <span class="tile-badge-calc">CALC</span>
+            📐
+          </div>
+          <div class="calc-tile-name">부동산 평수 ㎡ 환산기</div>
+        </a>
+
+        <!-- 7. 주담대 & DSR (SIM) -->
+        <a href="tools/loan-mortgage-calc/index.html" class="calc-tile" data-keywords="주담대 대출 한도 dsr ltv 주택담보대출 이자">
+          <div class="calc-tile-icon theme-realty">
+            <span class="tile-badge-sim">SIM</span>
+            🏠
+          </div>
+          <div class="calc-tile-name">주담대 한도 &amp; DSR</div>
+        </a>
+
+        <!-- 8. 퍼센트 할인율 (CALC) -->
+        <a href="tools/percent-discount-calc/index.html" class="calc-tile" data-keywords="퍼센트 할인율 쇼핑 세일 인상률 비율">
+          <div class="calc-tile-icon theme-life">
+            <span class="tile-badge-calc">CALC</span>
+            🛍️
+          </div>
+          <div class="calc-tile-name">퍼센트 할인율 계산기</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         섹션 2: 💼 직장인·퇴직자 필수 시뮬레이터 & 계산기
+         ====================================================================== -->
+    <section id="sec-job" class="calc-hub-section">
+      <div class="calc-hub-header">
+        <div class="calc-hub-title">
+          <span>💼</span> 직장인·퇴직자 필수 도구
+        </div>
+        <span class="calc-hub-count">5종</span>
+      </div>
+      <div class="calc-tile-grid">
+        <!-- 국민연금 조기수령 -->
+        <a href="tools/national-pension-sim/index.html" class="calc-tile" data-keywords="국민연금 조기수령 연기연금 손익분기 은퇴 퇴직 골든크로스">
+          <div class="calc-tile-icon theme-sim">
+            <span class="tile-badge-sim">SIM</span>
+            <span class="tile-badge-hot">HOT</span>
+            🏛️
+          </div>
+          <div class="calc-tile-name">국민연금 조기수령 시뮬</div>
+        </a>
+
+        <!-- 직장인 퇴직금 -->
+        <a href="tools/severance-pay-calc/index.html" class="calc-tile" data-keywords="퇴직금 직장인 근로기준법 평균임금 통상임금 irp">
+          <div class="calc-tile-icon theme-job">
+            <span class="tile-badge-calc">CALC</span>
+            📋
+          </div>
+          <div class="calc-tile-name">직장인 퇴직금 계산기</div>
+        </a>
+
+        <!-- 실업급여 -->
+        <a href="tools/unemployment-benefit-calc/index.html" class="calc-tile" data-keywords="실업급여 구직급여 고용보험 퇴직 권고사직 일수">
+          <div class="calc-tile-icon theme-job">
+            <span class="tile-badge-calc">CALC</span>
+            💼
+          </div>
+          <div class="calc-tile-name">실업급여 모의계산기</div>
+        </a>
+
+        <!-- 월급 실수령액 -->
+        <a href="tools/salary-net-calc/index.html" class="calc-tile" data-keywords="월급 실수령액 연봉 4대보험 소득세 세후">
+          <div class="calc-tile-icon theme-job">
+            <span class="tile-badge-calc">CALC</span>
+            💰
+          </div>
+          <div class="calc-tile-name">월급 실수령액 계산기</div>
+        </a>
+
+        <!-- 시간당 노동 가치 -->
+        <a href="tools/hourly-labor-value-calc/index.html" class="calc-tile" data-keywords="시급 노동가치 진짜시급 출퇴근 야근 연봉">
+          <div class="calc-tile-icon theme-job">
+            <span class="tile-badge-calc">CALC</span>
+            ⏱️
+          </div>
+          <div class="calc-tile-name">나의 진짜 시급 가치</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         섹션 3: 🏠 부동산·대출 계산기
+         ====================================================================== -->
+    <section id="sec-realty" class="calc-hub-section">
+      <div class="calc-hub-header">
+        <div class="calc-hub-title">
+          <span>🏠</span> 부동산·대출 계산기
+        </div>
+        <span class="calc-hub-count">5종</span>
+      </div>
+      <div class="calc-tile-grid">
+        <a href="tools/past-apt-timemachine/index.html" class="calc-tile" data-keywords="그때 그 아파트 샀다면 마래푸 은마 반포자이 헬리오시티 부동산 타임머신 폭등 수익률">
+          <div class="calc-tile-icon theme-realty">
+            <span class="tile-badge-sim">SIM</span>
+            <span class="tile-badge-hot">NEW</span>
+            🏢
+          </div>
+          <div class="calc-tile-name">그때 그 아파트 샀다면</div>
+        </a>
+
+        <a href="tools/loan-mortgage-calc/index.html" class="calc-tile" data-keywords="주담대 대출 한도 dsr ltv 주택담보대출 이자">
+          <div class="calc-tile-icon theme-realty">
+            <span class="tile-badge-sim">SIM</span>
+            🏠
+          </div>
+          <div class="calc-tile-name">주담대 한도 &amp; DSR</div>
+        </a>
+
+        <a href="tools/area-pyeong-calc/index.html" class="calc-tile" data-keywords="평수 제곱미터 ㎡ 국평 84 59 아파트 분양가">
+          <div class="calc-tile-icon theme-realty">
+            <span class="tile-badge-calc">CALC</span>
+            📐
+          </div>
+          <div class="calc-tile-name">부동산 평수 ㎡ 환산기</div>
+        </a>
+
+        <a href="tools/jeonse-wolse-sim/index.html" class="calc-tile" data-keywords="전세 월세 전환율 주거 기회비용 보증금">
+          <div class="calc-tile-icon theme-realty">
+            <span class="tile-badge-sim">SIM</span>
+            🔄
+          </div>
+          <div class="calc-tile-name">전세 vs 월세 손익</div>
+        </a>
+
+        <a href="tools/capital-gains-tax-sim/index.html" class="calc-tile" data-keywords="양도세 부동산 1주택 비과세 장특공제 양도소득세">
+          <div class="calc-tile-icon theme-realty">
+            <span class="tile-badge-calc">CALC</span>
+            📉
+          </div>
+          <div class="calc-tile-name">부동산 양도세 계산기</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         섹션 4: 📈 주식·재테크·배당 시뮬레이터
+         ====================================================================== -->
+    <section id="sec-stock" class="calc-hub-section">
+      <div class="calc-hub-header">
+        <div class="calc-hub-title">
+          <span>📈</span> 주식·재테크·배당
+        </div>
+        <span class="calc-hub-count">7종</span>
+      </div>
+      <div class="calc-tile-grid">
+        <a href="tools/leverage-etf-sim/index.html" class="calc-tile" data-keywords="레버리지 etf 백테스팅 tqqq soxl 퀀트 mdd 기술지표">
+          <div class="calc-tile-icon theme-stock">
+            <span class="tile-badge-sim">SIM</span>
+            📈
+          </div>
+          <div class="calc-tile-name">주식 ETF 퀀트 시뮬</div>
+        </a>
+
+        <a href="tools/dividend-tax-sim/index.html" class="calc-tile" data-keywords="배당 복리 세금 종합과세 건보료 schd jepi drip">
+          <div class="calc-tile-icon theme-stock">
+            <span class="tile-badge-sim">SIM</span>
+            💵
+          </div>
+          <div class="calc-tile-name">배당 복리 &amp; 세금</div>
+        </a>
+
+        <a href="tools/dividend-goal-calc/index.html" class="calc-tile" data-keywords="배당목표 월배당 투자금 파이어족 배당금">
+          <div class="calc-tile-icon theme-stock">
+            <span class="tile-badge-calc">CALC</span>
+            🏦
+          </div>
+          <div class="calc-tile-name">월 배당 목표금액 계산기</div>
+        </a>
+
+        <a href="tools/stock-profit-calc/index.html" class="calc-tile" data-keywords="주식 수익률 거래세 수수료 실질수익 본전매도가">
+          <div class="calc-tile-icon theme-stock">
+            <span class="tile-badge-calc">CALC</span>
+            📊
+          </div>
+          <div class="calc-tile-name">주식 실질 수익률 계산기</div>
+        </a>
+
+        <a href="tools/stock-water-ride-calc/index.html" class="calc-tile" data-keywords="물타기 평단가 분할매수 주식 평단">
+          <div class="calc-tile-icon theme-stock">
+            <span class="tile-badge-calc">CALC</span>
+            💧
+          </div>
+          <div class="calc-tile-name">주식 평단가 물타기</div>
+        </a>
+
+        <a href="tools/stock-target-compound-calc/index.html" class="calc-tile" data-keywords="목표가 복리수익 복리이자 목표수익률">
+          <div class="calc-tile-icon theme-stock">
+            <span class="tile-badge-calc">CALC</span>
+            🎯
+          </div>
+          <div class="calc-tile-name">목표가 &amp; 복리 수익</div>
+        </a>
+
+        <a href="tools/missed-investment-calc/index.html" class="calc-tile" data-keywords="과거투자 그때샀더라면 삼성전자 애플 비트코인 후회">
+          <div class="calc-tile-icon theme-stock">
+            <span class="tile-badge-sim">SIM</span>
+            🚀
+          </div>
+          <div class="calc-tile-name">과거 그때 샀더라면</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         섹션 5: 💡 미래 나비효과 시뮬레이션 (특화 랩)
+         ====================================================================== -->
+    <section id="sec-insight" class="calc-hub-section">
+      <div class="calc-hub-header">
+        <div class="calc-hub-title">
+          <span>💡</span> 미래 나비효과 시뮬레이션
+        </div>
+        <span class="calc-hub-count">6종</span>
+      </div>
+      <div class="calc-tile-grid">
+        <a href="tools/smoking-wealth-sim/index.html" class="calc-tile" data-keywords="담배값 주식 투자 시뮬 금연 재테크 sp500 복리 제네시스 타르 수명">
+          <div class="calc-tile-icon theme-sim">
+            <span class="tile-badge-sim">SIM</span>
+            <span class="tile-badge-hot">NEW</span>
+            🚬
+          </div>
+          <div class="calc-tile-name">담배값 주식 투자 시뮬</div>
+        </a>
+
+        <a href="tools/opportunity-cost-calc/index.html" class="calc-tile" data-keywords="기회비용 신차 명품 복리 투자 sp500 배당">
+          <div class="calc-tile-icon theme-sim">
+            <span class="tile-badge-sim">SIM</span>
+            ⚡
+          </div>
+          <div class="calc-tile-name">소비 투자 기회비용</div>
+        </a>
+
+        <a href="tools/coffee-opportunity-calc/index.html" class="calc-tile" data-keywords="커피값 기회비용 tqqq 스노우볼 소액투자">
+          <div class="calc-tile-icon theme-sim">
+            <span class="tile-badge-sim">SIM</span>
+            ☕
+          </div>
+          <div class="calc-tile-name">커피값 투자 기회비용</div>
+        </a>
+
+        <a href="tools/retirement-survival-sim/index.html" class="calc-tile" data-keywords="은퇴자금 조기소진 노후 파이어족 은퇴생존">
+          <div class="calc-tile-icon theme-sim">
+            <span class="tile-badge-sim">SIM</span>
+            🏖️
+          </div>
+          <div class="calc-tile-name">은퇴자금 조기소진</div>
+        </a>
+
+        <a href="tools/inflation-purchasing-power-calc/index.html" class="calc-tile" data-keywords="인플레이션 물가 화폐가치 구매력 과거물가 짜장면">
+          <div class="calc-tile-icon theme-sim">
+            <span class="tile-badge-sim">SIM</span>
+            📉
+          </div>
+          <div class="calc-tile-name">화폐가치 하락 인플레</div>
+        </a>
+
+        <a href="tools/logistics-roi-calc/index.html" class="calc-tile" data-keywords="물류 자동화 roi bep 설비투자 npv 회수기간">
+          <div class="calc-tile-icon theme-sim">
+            <span class="tile-badge-sim">SIM</span>
+            🏢
+          </div>
+          <div class="calc-tile-name">물류 자동화 ROI 분석</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         섹션 6: 🌿 생활·편의 계산기
+         ====================================================================== -->
+    <section id="sec-life" class="calc-hub-section">
+      <div class="calc-hub-header">
+        <div class="calc-hub-title">
+          <span>🌿</span> 생활·편의 계산기
+        </div>
+        <span class="calc-hub-count">5종</span>
+      </div>
+      <div class="calc-tile-grid">
+        <a href="tools/korean-age-calc/index.html" class="calc-tile" data-keywords="만나이 나이 띠 생년월일 dday 12간지">
+          <div class="calc-tile-icon theme-life">
+            <span class="tile-badge-calc">CALC</span>
+            🎂
+          </div>
+          <div class="calc-tile-name">만나이 띠 계산기</div>
+        </a>
+
+        <a href="tools/percent-discount-calc/index.html" class="calc-tile" data-keywords="퍼센트 할인율 쇼핑 세일 인상률 비율">
+          <div class="calc-tile-icon theme-life">
+            <span class="tile-badge-calc">CALC</span>
+            🛍️
+          </div>
+          <div class="calc-tile-name">퍼센트 할인율 계산기</div>
+        </a>
+
+        <a href="tools/diet-bmr-tdee-calc/index.html" class="calc-tile" data-keywords="다이어트 bmr tdee 기초대사량 유지칼로리 식단">
+          <div class="calc-tile-icon theme-life">
+            <span class="tile-badge-calc">CALC</span>
+            🥗
+          </div>
+          <div class="calc-tile-name">다이어트 BMR·TDEE</div>
+        </a>
+
+        <a href="tools/caffeine-sleep-calc/index.html" class="calc-tile" data-keywords="카페인 반감기 커피 수면 꿀잠 에너지드링크">
+          <div class="calc-tile-icon theme-life">
+            <span class="tile-badge-calc">CALC</span>
+            ☕
+          </div>
+          <div class="calc-tile-name">카페인 반감기 &amp; 꿀잠</div>
+        </a>
+
+        <a href="tools/running-zone-calc/index.html" class="calc-tile" data-keywords="러닝 zone2 심박수 유산소 달리기 칼로리">
+          <div class="calc-tile-icon theme-life">
+            <span class="tile-badge-calc">CALC</span>
+            🏃
+          </div>
+          <div class="calc-tile-name">러닝 Zone 2 심박수</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         섹션 7: 🎲 여가·모임 & 감성·심리
+         ====================================================================== -->
+    <section id="sec-fun" class="calc-hub-section">
+      <div class="calc-hub-header">
+        <div class="calc-hub-title">
+          <span>🎲</span> 여가·모임 &amp; 감성·심리
+        </div>
+        <span class="calc-hub-count">8종</span>
+      </div>
+      <div class="calc-tile-grid">
+        <a href="tools/lotto-draw-sim/index.html" class="calc-tile" data-keywords="로또 1등 무한 시뮬레이터 확률 당첨">
+          <div class="calc-tile-icon theme-fun">
+            <span class="tile-badge-sim">SIM</span>
+            🎰
+          </div>
+          <div class="calc-tile-name">로또 1등 무한 시뮬</div>
+        </a>
+
+        <a href="tools/ladder-draw-game/index.html" class="calc-tile" data-keywords="사다리타기 복불복 내기 게임 모임 술자리 벌칙">
+          <div class="calc-tile-icon theme-fun">
+            <span class="tile-badge-calc">CALC</span>
+            🪜
+          </div>
+          <div class="calc-tile-name">인터랙티브 사다리타기</div>
+        </a>
+
+        <a href="tools/dutch-pay-roulette/index.html" class="calc-tile" data-keywords="더치페이 뿜빠이 모임 엔빵 지각비 룰렛">
+          <div class="calc-tile-icon theme-fun">
+            <span class="tile-badge-calc">CALC</span>
+            🍕
+          </div>
+          <div class="calc-tile-name">센스있는 더치페이</div>
+        </a>
+
+        <a href="tools/lotto-tax-interest-calc/index.html" class="calc-tile" data-keywords="로또 세후 실수령액 33% 세금 이자 예금이자">
+          <div class="calc-tile-icon theme-fun">
+            <span class="tile-badge-calc">CALC</span>
+            💎
+          </div>
+          <div class="calc-tile-name">로또 세후 수령액 이자</div>
+        </a>
+
+        <a href="tools/saju-wealth-sim/index.html" class="calc-tile" data-keywords="사주 만세력 오행 재물운 부자사주 투자운">
+          <div class="calc-tile-icon theme-fun">
+            <span class="tile-badge-sim">SIM</span>
+            🔮
+          </div>
+          <div class="calc-tile-name">사주 오행 &amp; 재물운</div>
+        </a>
+
+        <a href="tools/invest-animal-mbti/index.html" class="calc-tile" data-keywords="동물 mbti 투자성향 행동경제학 심리테스트">
+          <div class="calc-tile-icon theme-fun">
+            <span class="tile-badge-sim">SIM</span>
+            🦊
+          </div>
+          <div class="calc-tile-name">투자 성향 동물 MBTI</div>
+        </a>
+
+        <a href="tools/love-animal-attachment/index.html" class="calc-tile" data-keywords="연애 애착유형 사랑의동물 궁합 심리테스트 연인">
+          <div class="calc-tile-icon theme-fun">
+            <span class="tile-badge-sim">SIM</span>
+            🐱
+          </div>
+          <div class="calc-tile-name">연애 동물 애착 심리</div>
+        </a>
+
+        <a href="tools/life-hourglass-sim/index.html" class="calc-tile" data-keywords="모래시계 인생 부모님 반려동물 아이 청춘 시간">
+          <div class="calc-tile-icon theme-fun">
+            <span class="tile-badge-sim">SIM</span>
+            ⏳
+          </div>
+          <div class="calc-tile-name">내 인생의 모래시계</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- 법적 면책 조항 컨테이너 -->
+    <div id="disclaimer-container"></div>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="./assets/js/core-ui.js"></script>
+  <script>
+    // ---------- 스티키 탭 활성화 및 실시간 검색 스크립트 ----------
+    document.addEventListener('DOMContentLoaded', () => {
+      'use strict';
+
+      const searchInput = document.getElementById('portal-search-input');
+      const emptyState = document.getElementById('search-empty-state');
+      const allTiles = document.querySelectorAll('.calc-tile');
+      const sections = document.querySelectorAll('.calc-hub-section');
+      const navButtons = document.querySelectorAll('.cat-nav-btn');
+
+      // 스크롤 시 현재 보고 있는 섹션의 네비 버튼 하이라이트
+      window.addEventListener('scroll', () => {
+        const scrollPos = window.scrollY + 160;
+        sections.forEach((sec) => {
+          const top = sec.offsetTop;
+          const height = sec.offsetHeight;
+          const id = sec.getAttribute('id');
+          if (scrollPos >= top && scrollPos < top + height) {
+            navButtons.forEach((btn) => {
+              btn.classList.toggle('active', btn.getAttribute('href') === `#${id}`);
+            });
+          }
+        });
+      });
+
+      // 스무스 스크롤 이동
+      navButtons.forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+          const targetId = btn.getAttribute('href');
+          if (targetId.startsWith('#')) {
+            e.preventDefault();
+            const targetEl = document.querySelector(targetId);
+            if (targetEl) {
+              targetEl.scrollIntoView({ behavior: 'smooth' });
+              navButtons.forEach((b) => b.classList.remove('active'));
+              btn.classList.add('active');
+            }
+          }
+        });
+      });
+
+      // 검색 필터링 함수
+      function filterTools(query) {
+        const q = (query || '').trim().toLowerCase();
+        let totalVisible = 0;
+
+        allTiles.forEach((tile) => {
+          const name = (tile.querySelector('.calc-tile-name')?.textContent || '').toLowerCase();
+          const keywords = (tile.getAttribute('data-keywords') || '').toLowerCase();
+          const isMatch = !q || name.includes(q) || keywords.includes(q);
+
+          if (isMatch) {
+            tile.style.display = 'flex';
+            totalVisible++;
+          } else {
+            tile.style.display = 'none';
+          }
+        });
+
+        sections.forEach((sec) => {
+          if (q) {
+            const hasVisible = Array.from(sec.querySelectorAll('.calc-tile')).some((t) => t.style.display !== 'none');
+            sec.style.display = hasVisible ? 'block' : 'none';
+          } else {
+            sec.style.display = 'block';
+          }
+        });
+
+        if (emptyState) {
+          emptyState.style.display = (q && totalVisible === 0) ? 'block' : 'none';
+        }
+      }
+
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => filterTools(e.target.value));
+
+        document.addEventListener('keydown', (e) => {
+          if (e.key === '/' && document.activeElement !== searchInput) {
+            e.preventDefault();
+            searchInput.focus();
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

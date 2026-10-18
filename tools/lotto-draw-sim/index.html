@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>로또 1등 당첨 무한 시뮬레이터 — 1초에 100장씩 사보면 몇 년 걸릴까? | SimuLab</title>
+  <meta name="description" content="동행복권 실제 1등 확률(8,145,060분의 1) 기반 초고속 자동 추첨 시뮬레이터. 1등이 나올 때까지 수십만 게임을 돌려보며 탕진하는 원금과 현실 확률을 온몸으로 체감해 보세요." />
+  <link rel="stylesheet" href="../../assets/css/common.css" />
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main class="container" style="padding-top: 1.5rem; padding-bottom: 3rem;">
+    <section class="page-header">
+      <h1 class="page-title">로또 1등 당첨 시뮬레이터</h1>
+      <p class="page-subtitle">
+        "내가 매주 로또를 사면 평생 1등에 당첨될 수 있을까?" 1/8,145,060이라는 극악의 수학적 확률을 직접 체감할 수 있는 초고속 무한 추첨 시뮬레이터입니다. 1등이 나올 때까지 몇 백년의 세월과 얼마의 돈이 허공으로 사라지는지 확인해 보세요.
+      </p>
+    </section>
+
+    <!-- 판정 브리핑 배너 -->
+    <div id="verdict-banner" class="verdict-banner" style="margin-bottom: 1.5rem;">
+      <div id="verdict-text" style="font-size: 0.95rem; line-height: 1.6;">
+        아래 버튼을 눌러 로또 구매를 시작하시면 실시간 탕진 금액과 당첨 현황이 여기에 브리핑됩니다.
+      </div>
+    </div>
+
+    <!-- 핵심 KPI 카드 4종 -->
+    <section class="kpi-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+      <div class="card stat-card" style="padding: 1.25rem;">
+        <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">총 구매 탕진액 (원금)</span>
+        <div id="card-total-cost" class="stat-value" style="font-size: 1.6rem; font-weight: 700; color: #ef4444; margin-top: 0.25rem;">0원</div>
+        <span style="font-size: 0.75rem; color: var(--text-muted);">게임당 1,000원 기준 누적액</span>
+      </div>
+
+      <div class="card stat-card" style="padding: 1.25rem;">
+        <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">총 당첨 회수액</span>
+        <div id="card-total-prize" class="stat-value" style="font-size: 1.6rem; font-weight: 700; color: #10b981; margin-top: 0.25rem;">0원</div>
+        <span style="font-size: 0.75rem; color: var(--text-muted);">1~5등 누적 상금 총합</span>
+      </div>
+
+      <div class="card stat-card" style="padding: 1.25rem;">
+        <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">순손익 (수익 - 원금)</span>
+        <div id="card-net-profit" class="stat-value" style="font-size: 1.6rem; font-weight: 700; color: var(--primary-color); margin-top: 0.25rem;">0원</div>
+        <span style="font-size: 0.75rem; color: var(--text-muted);">복권방에 기부한 순수 손실</span>
+      </div>
+
+      <div class="card stat-card" style="padding: 1.25rem;">
+        <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">환산 소요 연수</span>
+        <div id="card-years-spent" class="stat-value" style="font-size: 1.6rem; font-weight: 700; color: #f59e0b; margin-top: 0.25rem;">0년</div>
+        <span style="font-size: 0.75rem; color: var(--text-muted);">매주 1만원(10게임) 구매 시 환산</span>
+      </div>
+    </section>
+
+    <!-- 당첨 번호 표시 및 컨트롤 패널 -->
+    <div class="card" style="padding: 1.75rem; margin-bottom: 2.5rem; text-align: center;">
+      <h2 class="step-section-title" style="font-size: 1.15rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
+        1. 이번 회차 목표 당첨 번호
+      </h2>
+      <div id="winning-balls-container" style="margin: 1.25rem 0;">
+        <!-- JS 렌더링 -->
+      </div>
+      <div>
+        <button type="button" id="btn-new-winning" class="btn btn-sm btn-outline">새 당첨 번호 뽑기</button>
+      </div>
+
+      <hr style="border: none; border-top: 1px solid var(--border-color); margin: 1.5rem 0;" />
+
+      <!-- 구매 컨트롤 버튼들 -->
+      <h3 style="font-size: 1rem; font-weight: 600; color: var(--text-primary); margin-bottom: 1rem;">
+        2. 로또 번호 자동 구매 컨트롤러
+      </h3>
+      <div style="display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap;">
+        <button type="button" id="btn-buy-5" class="btn btn-outline">5게임 구매 (5천원)</button>
+        <button type="button" id="btn-buy-100" class="btn btn-outline">100게임 구매 (10만원)</button>
+        <button type="button" id="btn-buy-1000" class="btn btn-outline">1,000게임 고속 구매 (100만원)</button>
+        <button type="button" id="btn-auto-toggle" class="btn btn-primary">1등 나올 때까지 무한 구매</button>
+        <button type="button" id="btn-reset" class="btn btn-outline">초기화</button>
+      </div>
+    </div>
+
+    <!-- 등수별 상세 당첨 통계 테이블 -->
+    <section class="card" style="padding: 1.5rem; margin-bottom: 2.5rem;">
+      <h2 class="step-section-title" style="font-size: 1.15rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
+        3. 등수별 당첨 통계 및 실시간 손익 대조표
+      </h2>
+
+      <!-- 실시간 구매원금 · 당첨금 · 순손실 지표 바 (모바일 및 PC 최적화 6분할 그리드) -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.75rem; margin-bottom: 1.25rem; background: var(--bg-main); padding: 0.85rem; border-radius: 8px; border: 1px solid var(--border-color);">
+        <div>
+          <span style="font-size: 0.72rem; color: var(--text-muted); display: block;">총 구매 게임 수</span>
+          <div id="stat-total-games" style="font-size: 0.95rem; font-weight: 700;">0게임</div>
+        </div>
+        <div>
+          <span style="font-size: 0.72rem; color: var(--text-muted); display: block;">현재까지 구매원금</span>
+          <div id="stat-total-cost" style="font-size: 0.95rem; font-weight: 700; color: #ef4444;">0원</div>
+        </div>
+        <div>
+          <span style="font-size: 0.72rem; color: var(--text-muted); display: block;">누적 당첨 회수액</span>
+          <div id="stat-total-prize" style="font-size: 0.95rem; font-weight: 700; color: #10b981;">0원</div>
+        </div>
+        <div>
+          <span style="font-size: 0.72rem; color: var(--text-muted); display: block;">현재까지 순손실액</span>
+          <div id="stat-net-loss" style="font-size: 0.95rem; font-weight: 700; color: #dc2626;">0원</div>
+        </div>
+        <div>
+          <span style="font-size: 0.72rem; color: var(--text-muted); display: block;">1등 당첨 횟수</span>
+          <div id="stat-rank1-count" style="font-size: 0.95rem; font-weight: 700; color: #10b981;">0회</div>
+        </div>
+        <div>
+          <span style="font-size: 0.72rem; color: var(--text-muted); display: block;">2·3등 당첨 횟수</span>
+          <div id="stat-rank23-count" style="font-size: 0.95rem; font-weight: 700; color: var(--primary-color);">0회 / 0회</div>
+        </div>
+      </div>
+
+      <div style="overflow-x: auto;">
+        <table class="data-table" style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+          <thead>
+            <tr style="border-bottom: 2px solid var(--border-color); background: var(--bg-main);">
+              <th style="padding: 0.6rem; text-align: left;">등수 및 조건</th>
+              <th style="padding: 0.6rem; text-align: right;">이론상 당첨 확률</th>
+              <th style="padding: 0.6rem; text-align: right;">평균 당첨금</th>
+              <th style="padding: 0.6rem; text-align: right;">실제 당첨 횟수</th>
+              <th style="padding: 0.6rem; text-align: right;">누적 당첨 금액</th>
+            </tr>
+          </thead>
+          <tbody id="lotto-stats-table-body">
+            <!-- JS 렌더링 -->
+          </tbody>
+          <tfoot id="lotto-stats-table-foot" style="border-top: 2px solid var(--border-color); font-weight: 700; background: var(--bg-main);">
+            <!-- JS 렌더링 (합계 및 최종 손익) -->
+          </tfoot>
+        </table>
+      </div>
+
+      <!-- 🚨 현실 자각 타임: 날려버린 기회비용 체감 분석판 -->
+      <div id="reality-check-section" style="margin-top: 1.75rem; padding: 1.25rem; border-radius: 12px; background: linear-gradient(135deg, rgba(239, 68, 68, 0.05) 0%, rgba(245, 158, 11, 0.05) 100%); border: 1px dashed rgba(239, 68, 68, 0.35);">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <h3 style="font-size: 1.05rem; font-weight: 700; color: #dc2626; margin: 0; display: flex; align-items: center; gap: 0.35rem;">
+                <span>💸</span> <span>현실 자각 타임! 날려버린 기회비용</span>
+              </h3>
+              <span id="reality-theme-badge" class="badge" style="font-size: 0.72rem; padding: 0.2rem 0.5rem; background: #fee2e2; color: #b91c1c; border-radius: 12px; font-weight: 600;">
+                🍕 배부른 먹거리 컨셉
+              </span>
+            </div>
+            <p id="reality-check-sub" style="font-size: 0.8rem; color: var(--text-secondary); margin: 0.25rem 0 0 0;">
+              현재까지 복권방에 기부한 순손실액으로 살 수 있었던 실제 물건들입니다.
+            </p>
+          </div>
+          <button type="button" id="btn-shuffle-reality" class="btn btn-sm btn-outline" style="font-weight: 600; display: inline-flex; align-items: center; gap: 0.35rem; cursor: pointer;">
+            <span>🎲</span> <span>다르게 자각해보기</span>
+          </button>
+        </div>
+
+        <!-- 5개 현실 아이템 카드 그리드 -->
+        <div id="reality-cards-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 0.75rem;">
+          <!-- JS 렌더링 -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 전문가 가이드 아코디언 -->
+    <article class="seo-article card" style="padding: 1.5rem; margin-bottom: 2rem;">
+      <details class="expert-guide">
+        <summary style="font-weight: 700; font-size: 1.05rem; cursor: pointer; color: var(--text-primary);">
+          로또의 수학적 기대값과 '벼락 맞을 확률'의 진실 (펼쳐보기)
+        </summary>
+        <div style="margin-top: 1rem; line-height: 1.7; font-size: 0.9rem; color: var(--text-secondary);">
+          <h3 style="font-size: 1rem; color: var(--text-primary); margin-top: 1rem;">1. 814만 분의 1은 얼마나 희박한 확률인가?</h3>
+          <p>
+            로또 1등에 당첨될 확률(1/8,145,060)은 사람이 길을 가다가 벼락에 맞을 확률(약 1/600,000)보다 훨씬 낮습니다. 
+            만약 매주 10만원(100게임)씩 1년 내내 사더라도 당첨 확률은 고작 0.06%에 불과하며, 100년을 사도 6%가 채 되지 않습니다.
+          </p>
+
+          <h3 style="font-size: 1rem; color: var(--text-primary); margin-top: 1rem;">2. 복권의 수학적 환급률(기대값)은 단 50%</h3>
+          <p>
+            로또 판매금 1,000원 중 절반(500원)은 정부의 복권기금과 발행비용으로 먼저 공제되고, 나머지 500원만이 당첨금으로 환급됩니다. 
+            즉, 사면 살수록 무조건 원금의 절반이 사라지는 구조적 음(-)의 기댓값을 가지고 있습니다. 복권은 인생역전의 재테크 수단이 아닌, '일주일의 소소한 희망을 사는 엔터테인먼트'로만 가볍게 즐기는 것이 건강합니다.
+          </p>
+        </div>
+      </details>
+    </article>
+
+    <section id="legal-disclaimer"></section>
+    <section id="affiliate-disclosure"></section>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="../../assets/js/core-ui.js"></script>
+  <script src="./logic.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

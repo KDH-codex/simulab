@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ko" data-default-theme="light" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('simulab_theme_dividend-tax-sim');
+        var theme = 'light'; /* v2: 라이트 단일 테마 */
+        document.documentElement.setAttribute('data-theme', theme);
+        document.querySelector('meta[name="color-scheme"]').setAttribute('content', theme);
+      } catch (e) {}
+    })();
+  </script>
+
+  <title>배당성장주(SCHD·JEPI·JEPQ) 복리 재투자 &amp; 금융소득종합과세(2,000만원)·건보료 시뮬레이터 | SimuLab Analytics</title>
+  <meta name="description" content="미국 배당성장주(SCHD, JEPI, JEPQ) 적립식 투자 시 배당 재투자(DRIP) 복리 효과와 연 배당금 2,000만원 초과 시 금융소득종합과세 및 건강보험료 부담, 절세계좌(ISA·연금저축) 과세이연 효과를 정밀 비교하세요." />
+  <link rel="canonical" href="https://simulab-hub.pages.dev/tools/dividend-tax-sim/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="배당성장주(SCHD·JEPI) 복리 재투자 & 금융소득종합과세 시뮬레이터" />
+  <meta property="og:description" content="월 목표 배당금 달성 시점과 금융소득종합과세(연 2,000만원)·건보료 절세 전략을 실시간 차트로 확인하세요." />
+
+  <link rel="stylesheet" href="../../assets/css/common.css" />
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main class="container">
+    <section class="page-header">
+      <div class="page-meta-row">
+        <span class="brand-badge">DIVIDEND SNOWBALL &amp; TAX</span>
+        <span class="brand-badge">SCHD · JEPI · JEPQ · 금융소득종합과세 2,000만원</span>
+      </div>
+      <h1 class="page-title">배당 복리 & 세금 계산기</h1>
+      <p class="page-subtitle">
+        <strong>"매달 배당주를 모으면 몇 년 뒤 월배당 200만원이 될까? 연 배당 2,000만원이 넘어 세금·건보료 폭탄을 맞진 않을까?"</strong><br />
+        실제 인기 배당 ETF 종목 데이터를 원클릭으로 불러와 일반 해외직투 계좌와 절세 계좌(ISA·연금저축)의 세후 실수령액을 한눈에 비교하세요.
+      </p>
+      <div style="margin-top: 0.5rem;">
+        <span class="live-api-pill" style="font-size: 0.74rem; background: var(--bg-surface); padding: 0.25rem 0.65rem; border-radius: 9999px; border: 1px solid var(--border-color); color: var(--text-muted); display: inline-flex; align-items: center; gap: 0.3rem;">
+          ⚖️ 2026년 현행 소득세법 기준 (금융소득종합과세·배당분리과세 등 세법 개정 시 변경될 수 있습니다)
+        </span>
+      </div>
+    </section>
+
+    <!-- 실제 배당 ETF 종목 원클릭 선택 바 & 실시간 환율 API 연동 상태 -->
+    <section class="market-ticker-box" aria-label="실제 배당 ETF 종목 선택 및 실시간 환율">
+      <div class="market-ticker-top">
+        <div class="market-ticker-label">
+          <span>실제 인기 배당 ETF 원클릭 적용 (클릭 시 실제 시가배당률 · 배당성장률 · 주가상승률 자동 입력)</span>
+        </div>
+        <span id="live-fx-badge" class="live-api-pill">
+          <span class="live-dot"></span>
+          <span>USD/KRW 1,385.0원 (환율 API 연동중)</span>
+        </span>
+      </div>
+      <div class="ticker-grid" role="group" aria-label="대표 배당 ETF 선택">
+        <button type="button" class="ticker-btn active" data-preset="schd">
+          <div class="ticker-btn-top">
+            <span class="ticker-symbol">SCHD</span>
+            <span class="ticker-tag">배당성장 정석</span>
+          </div>
+          <span class="ticker-name">미국배당다우존스 (배당+주가 성장)</span>
+          <span class="ticker-stats">배당률 3.6% · 배당성장 연 9.8%</span>
+        </button>
+
+        <button type="button" class="ticker-btn" data-preset="jepi">
+          <div class="ticker-btn-top">
+            <span class="ticker-symbol">JEPI</span>
+            <span class="ticker-tag">S&amp;P500 월배당</span>
+          </div>
+          <span class="ticker-name">JPMorgan 커버드콜 월배당</span>
+          <span class="ticker-stats">배당률 7.8% · 배당성장 연 1.5%</span>
+        </button>
+
+        <button type="button" class="ticker-btn" data-preset="jepq">
+          <div class="ticker-btn-top">
+            <span class="ticker-symbol">JEPQ</span>
+            <span class="ticker-tag">나스닥 초고배당</span>
+          </div>
+          <span class="ticker-name">나스닥100 커버드콜 월배당</span>
+          <span class="ticker-stats">배당률 9.6% · 배당성장 연 2.5%</span>
+        </button>
+
+        <button type="button" class="ticker-btn" data-preset="fire">
+          <div class="ticker-btn-top">
+            <span class="ticker-symbol">TIGER 미배당</span>
+            <span class="ticker-tag">절세계좌 추천</span>
+          </div>
+          <span class="ticker-name">한국판 SCHD (ISA·연금저축용)</span>
+          <span class="ticker-stats">배당률 3.6% · 과세이연 최적화</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="simulator-grid" aria-label="배당성장 및 절세 시뮬레이터 조작 영역">
+      <!-- 좌측: 눈높이 질문형 STEP 컨트롤 카드 -->
+      <aside class="card">
+        <div class="card-header">
+          <h2 class="card-title">내 배당 투자 조건 설정</h2>
+          <button type="button" id="btn-reset" class="btn" style="padding: 0.3rem 0.65rem; font-size: 0.76rem;">
+            초기화
+          </button>
+        </div>
+
+        <div class="step-section-title">
+          <span class="step-badge">STEP 1</span>
+          <span>얼마를 투자하고 배당금을 다시 모을까요?</span>
+        </div>
+
+        <!-- 배당 재투자(DRIP) 여부 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <span class="input-card-label">받은 배당금 재투자(DRIP) 여부</span>
+          </div>
+          <div class="segmented-control" role="group" aria-label="배당 재투자 방식">
+            <button type="button" class="segment-btn active" data-drip="1">세후 배당금 전액 재투자</button>
+            <button type="button" class="segment-btn" data-drip="0">배당금 바로 현금 소비</button>
+          </div>
+          <p class="control-help" style="margin-top: 0.5rem; margin-bottom: 0;">배당금으로 주식을 다시 사모아야(DRIP) 복리 스노우볼이 폭발합니다.</p>
+        </div>
+
+        <!-- [인풋 카드 1] 처음 시작하는 목돈 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <label for="input-initialPrincipal" class="input-card-label">초기 투자 목돈</label>
+            <span id="badge-initialPrincipal" class="korean-amount-badge">5,000만 원</span>
+          </div>
+          <div class="input-group-modern">
+            <input type="number" id="input-initialPrincipal" class="form-control" min="0" max="1000000" step="100" value="5000" />
+            <span class="input-suffix-badge">만원</span>
+          </div>
+          <input type="range" id="slider-initialPrincipal" class="range-slider" min="0" max="50000" step="500" value="5000" aria-label="초기 거치금 슬라이더" style="margin-top: 0.75rem;" />
+          <div class="slider-guide-row">
+            <span>0원</span>
+            <span>2.5억</span>
+            <span>5억</span>
+          </div>
+          <div class="quick-chips-row">
+            <button type="button" class="quick-chip-btn" data-chip-set="input-initialPrincipal" data-val="1000">1천만</button>
+            <button type="button" class="quick-chip-btn" data-chip-set="input-initialPrincipal" data-val="3000">3천만</button>
+            <button type="button" class="quick-chip-btn" data-chip-set="input-initialPrincipal" data-val="5000">5천만</button>
+            <button type="button" class="quick-chip-btn" data-chip-set="input-initialPrincipal" data-val="10000">1억</button>
+            <button type="button" class="quick-chip-btn" data-chip-add="input-initialPrincipal" data-val="1000">+1천만</button>
+            <button type="button" class="quick-chip-btn" data-chip-add="input-initialPrincipal" data-val="5000">+5천만</button>
+          </div>
+          <p id="usd-equiv-div" class="control-help" style="margin-top: 0.5rem; margin-bottom: 0;">실시간 환율 기준 달러 환산 투자금이 자동 계산됩니다.</p>
+        </div>
+
+        <!-- [인풋 카드 2] 매달 적립할 금액 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <label for="input-monthlyContribution" class="input-card-label">매달 적립할 금액</label>
+            <span id="badge-monthlyContribution" class="korean-amount-badge">150만 원</span>
+          </div>
+          <div class="input-group-modern">
+            <input type="number" id="input-monthlyContribution" class="form-control" min="0" max="50000" step="10" value="150" />
+            <span class="input-suffix-badge">만원/월</span>
+          </div>
+          <input type="range" id="slider-monthlyContribution" class="range-slider" min="0" max="1000" step="10" value="150" aria-label="월 적립금 슬라이더" style="margin-top: 0.75rem;" />
+          <div class="slider-guide-row">
+            <span>0원</span>
+            <span>500만원</span>
+            <span>1,000만원</span>
+          </div>
+          <div class="quick-chips-row">
+            <button type="button" class="quick-chip-btn" data-chip-set="input-monthlyContribution" data-val="50">50만</button>
+            <button type="button" class="quick-chip-btn" data-chip-set="input-monthlyContribution" data-val="100">100만</button>
+            <button type="button" class="quick-chip-btn" data-chip-set="input-monthlyContribution" data-val="150">150만</button>
+            <button type="button" class="quick-chip-btn" data-chip-set="input-monthlyContribution" data-val="200">200만</button>
+            <button type="button" class="quick-chip-btn" data-chip-add="input-monthlyContribution" data-val="10">+10만</button>
+            <button type="button" class="quick-chip-btn" data-chip-add="input-monthlyContribution" data-val="50">+50만</button>
+          </div>
+        </div>
+
+        <div class="step-section-title">
+          <span class="step-badge">STEP 2</span>
+          <span>종목의 배당률과 매년 배당 인상률은?</span>
+        </div>
+
+        <!-- [인풋 카드 3] 현재 시가배당률 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <label for="input-initialDividendYield" class="input-card-label">현재 시가배당률</label>
+            <span id="badge-initialDividendYield" class="control-value-badge">3.6%</span>
+          </div>
+          <div class="input-group-modern">
+            <input type="number" id="input-initialDividendYield" class="form-control" min="0.5" max="25.0" step="0.1" value="3.6" />
+            <span class="input-suffix-badge">%</span>
+          </div>
+          <input type="range" id="slider-initialDividendYield" class="range-slider" min="1.0" max="15.0" step="0.2" value="3.6" aria-label="초기 시가배당률 슬라이더" style="margin-top: 0.75rem;" />
+          <div class="quick-chips-row">
+            <button type="button" class="quick-chip-btn" data-chip-set="input-initialDividendYield" data-val="3.6">SCHD 3.6%</button>
+            <button type="button" class="quick-chip-btn" data-chip-set="input-initialDividendYield" data-val="7.8">JEPI 7.8%</button>
+            <button type="button" class="quick-chip-btn" data-chip-set="input-initialDividendYield" data-val="9.6">JEPQ 9.6%</button>
+          </div>
+          <p class="control-help" style="margin-top: 0.5rem; margin-bottom: 0;">SCHD는 약 3.6%, 고배당 커버드콜(JEPI·JEPQ)은 7.8~9.6% 수준입니다.</p>
+        </div>
+
+        <!-- [인풋 카드 4] 연간 배당성장률 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <label for="input-dividendGrowthRate" class="input-card-label">연간 배당성장률</label>
+            <span id="badge-dividendGrowthRate" class="control-value-badge">연 8.5%</span>
+          </div>
+          <div class="input-group-modern">
+            <input type="number" id="input-dividendGrowthRate" class="form-control" min="0.0" max="25.0" step="0.5" value="8.5" />
+            <span class="input-suffix-badge">%</span>
+          </div>
+          <input type="range" id="slider-dividendGrowthRate" class="range-slider" min="0.0" max="18.0" step="0.5" value="8.5" aria-label="연간 배당성장률 슬라이더" style="margin-top: 0.75rem;" />
+          <div class="quick-chips-row">
+            <button type="button" class="quick-chip-btn" data-chip-set="input-dividendGrowthRate" data-val="3.0">보수적 3%</button>
+            <button type="button" class="quick-chip-btn" data-chip-set="input-dividendGrowthRate" data-val="6.0">평균 6%</button>
+            <button type="button" class="quick-chip-btn" data-chip-set="input-dividendGrowthRate" data-val="9.8">SCHD 9.8%</button>
+            <button type="button" class="quick-chip-btn" data-chip-set="input-dividendGrowthRate" data-val="12.0">고성장 12%</button>
+          </div>
+          <p class="control-help" style="margin-top: 0.5rem; margin-bottom: 0;">기업이 이익을 늘려 매년 주당 배당금을 인상해 주는 비율입니다.</p>
+        </div>
+
+        <!-- [인풋 카드 5] 연간 주가 상승률 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <label for="input-priceAppreciationRate" class="input-card-label">연간 주가 상승률</label>
+            <span id="badge-priceAppreciationRate" class="control-value-badge">연 6.0%</span>
+          </div>
+          <div class="input-group-modern">
+            <input type="number" id="input-priceAppreciationRate" class="form-control" min="-10.0" max="25.0" step="0.5" value="6.0" />
+            <span class="input-suffix-badge">%</span>
+          </div>
+          <input type="range" id="slider-priceAppreciationRate" class="range-slider" min="-5.0" max="15.0" step="0.5" value="6.0" aria-label="연간 주가 상승률 슬라이더" style="margin-top: 0.75rem;" />
+        </div>
+
+        <div class="step-section-title">
+          <span class="step-badge">STEP 3</span>
+          <span>투자 기간과 내 연봉(종합소득세율) 구간은?</span>
+        </div>
+
+        <!-- [인풋 카드 6] 총 투자 기간 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <label for="input-investmentYears" class="input-card-label">총 투자 기간</label>
+            <span id="badge-investmentYears" class="control-value-badge">15년</span>
+          </div>
+          <div class="input-group-modern">
+            <input type="number" id="input-investmentYears" class="form-control" min="1" max="40" step="1" value="15" />
+            <span class="input-suffix-badge">년</span>
+          </div>
+          <input type="range" id="slider-investmentYears" class="range-slider" min="3" max="35" step="1" value="15" aria-label="투자 기간 슬라이더" style="margin-top: 0.75rem;" />
+          <div class="quick-chips-row">
+            <button type="button" class="quick-chip-btn" data-chip-set="input-investmentYears" data-val="5">5년</button>
+            <button type="button" class="quick-chip-btn" data-chip-set="input-investmentYears" data-val="10">10년</button>
+            <button type="button" class="quick-chip-btn" data-chip-set="input-investmentYears" data-val="15">15년</button>
+            <button type="button" class="quick-chip-btn" data-chip-set="input-investmentYears" data-val="20">20년</button>
+            <button type="button" class="quick-chip-btn" data-chip-set="input-investmentYears" data-val="30">30년</button>
+          </div>
+        </div>
+
+        <!-- [인풋 카드 7] 내 종합소득세율 -->
+        <div class="input-card" style="margin-bottom: 0.25rem;">
+          <div class="input-card-header">
+            <label for="input-marginalTaxRatePct" class="input-card-label">내 종합소득세율 (연 배당 2천만 초과 시)</label>
+            <span id="badge-marginalTaxRatePct" class="control-value-badge">26.4%</span>
+          </div>
+          <div class="input-group-modern">
+            <input type="number" id="input-marginalTaxRatePct" class="form-control" min="15.4" max="49.5" step="0.5" value="26.4" />
+            <span class="input-suffix-badge">%</span>
+          </div>
+          <input type="range" id="slider-marginalTaxRatePct" class="range-slider" min="15.4" max="49.5" step="1.1" value="26.4" aria-label="종합소득 한계세율 슬라이더" style="margin-top: 0.75rem;" />
+          <div class="quick-chips-row">
+            <button type="button" class="quick-chip-btn" data-chip-set="input-marginalTaxRatePct" data-val="15.4">기본 15.4%</button>
+            <button type="button" class="quick-chip-btn" data-chip-set="input-marginalTaxRatePct" data-val="26.4">연봉 5천~8.8천 (26.4%)</button>
+            <button type="button" class="quick-chip-btn" data-chip-set="input-marginalTaxRatePct" data-val="38.5">연봉 8.8천~1.5억 (38.5%)</button>
+          </div>
+          <p class="control-help" style="margin-top: 0.5rem; margin-bottom: 0;">연봉 5,000만~8,800만원 직장인은 26.4%, 8,800만원 초과는 38.5%입니다.</p>
+        </div>
+      </aside>
+
+      <!-- 우측: 한 줄 결론 브리핑 + KPI + 차트 + 테이블 -->
+      <div>
+        <div class="card">
+          <!-- 핵심 강조: 눈높이 실시간 한 줄 결론 브리핑 -->
+          <div id="verdict-banner" class="verdict-banner">
+            <div class="verdict-header">
+              <span class="verdict-eyebrow">핵심 결론 브리핑 · DIVIDEND &amp; TAX VERDICT</span>
+              <span id="verdict-q-tag" class="verdict-q-tag">Q. 이 조건이면 월배당 얼마를 받고 세금은 얼마나 낼까요?</span>
+            </div>
+            <div id="verdict-text" class="verdict-text">
+              배당 복리 및 세금 데이터를 계산 중입니다...
+            </div>
+          </div>
+
+          <div
+            id="pinned-comparison-banner"
+            style="display: none; margin-bottom: 1rem; padding: 0.75rem 1rem; border-radius: 8px; background-color: var(--accent-soft); border: 1px solid var(--accent-primary); font-size: 0.85rem;"
+          ></div>
+
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <div class="kpi-label">최종 월 세후 배당금 (일반계좌)</div>
+              <div id="kpi-monthly-div" class="kpi-value text-accent">-</div>
+              <div id="kpi-monthly-div-sub" class="kpi-sub">-</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-label">금융소득종합과세 (연 2,000만)</div>
+              <div id="kpi-tax-status" class="kpi-value text-success">-</div>
+              <div id="kpi-tax-status-sub" class="kpi-sub">-</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-label">최종 평가자산 (일반계좌)</div>
+              <div id="kpi-final-asset" class="kpi-value">-</div>
+              <div id="kpi-final-asset-sub" class="kpi-sub">-</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-label">절세계좌(ISA·연금) 자산 우위</div>
+              <div id="kpi-tax-saved" class="kpi-value text-success">-</div>
+              <div id="kpi-tax-saved-sub" class="kpi-sub">-</div>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.65rem; flex-wrap: wrap; gap: 0.5rem;">
+            <span style="font-size: 0.82rem; font-weight: 700; color: var(--text-primary);">차트 비교 기준 (일반 해외직투 계좌 vs 절세 계좌)</span>
+            <div class="segmented-control" style="width: auto; min-width: 280px;">
+              <button type="button" class="segment-btn active" data-chart-mode="dividend">① 월 세후 배당금 비교</button>
+              <button type="button" class="segment-btn" data-chart-mode="asset">② 총 평가자산 스노우볼 비교</button>
+            </div>
+          </div>
+
+          <div class="chart-container">
+            <canvas id="sim-canvas" class="chart-canvas" aria-label="배당성장주 일반계좌 vs 절세계좌 시계열 비교 차트"></canvas>
+          </div>
+
+          <div class="action-bar">
+            <button type="button" id="btn-pin-scenario" class="btn btn-primary">
+              현재 조건 고정 (Case A 비교)
+            </button>
+            <button type="button" id="btn-share-url" class="btn">
+              배당 시뮬레이션 URL 공유
+            </button>
+            <button type="button" id="btn-export-png" class="btn">
+              차트 이미지(PNG) 저장
+            </button>
+            <button type="button" id="btn-export-csv" class="btn">
+              연차별 배당·세금표(CSV) 다운로드
+            </button>
+          </div>
+
+          <div id="legal-disclaimer"></div>
+        </div>
+
+        <div class="card" style="margin-top: 1.25rem;">
+          <div class="card-header">
+            <h2 class="card-title">연차별 세전·세후 배당금 및 금융소득종합과세(2,000만원) 도달표</h2>
+            <span style="font-size: 0.76rem; color: var(--text-muted);">YoC = 내가 넣은 원금 대비 매년 받는 배당률</span>
+          </div>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>경과 연차</th>
+                  <th>누적 투자원금</th>
+                  <th>연간 세전 배당금</th>
+                  <th>일반계좌 월 세후배당</th>
+                  <th>절세계좌 월 세후배당</th>
+                  <th>원금대비 배당률(YoC)</th>
+                  <th>과세 구간 상태</th>
+                </tr>
+              </thead>
+              <tbody id="yearly-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <aside class="ad-slot" aria-label="스폰서 광고 영역">
+      <span>SPONSORED · Google AdSense Responsive Display Unit (CLS Guard Applied)</span>
+    </aside>
+
+    <article class="seo-article card">
+      <details class="expert-guide">
+        <summary><span class="expert-guide-title">전문가 해설</span><span class="expert-guide-meta">수식 · 가정 · 용어 · 자주 묻는 질문</span></summary>
+        <div class="expert-guide-body">
+      <h2>배당성장주(SCHD) 3중 복리 스노우볼과 금융소득종합과세·건보료 완벽 해설</h2>
+      <p>
+        미국 대표 배당성장 ETF인 <strong>SCHD(Schwab U.S. Dividend Equity ETF)</strong>나 한국판 미국배당다우존스 ETF에 장기 적립식으로 투자하는 핵심 이유는
+        단순히 현재의 시가배당률(약 3.6%) 때문이 아닙니다.
+        기업이 매년 배당금을 늘려주는 <strong>배당성장률(Dividend Growth Rate)</strong>과 받은 배당금으로 주식을 다시 매수하는 <strong>배당 재투자(DRIP)</strong>가 결합될 때,
+        10년~15년 뒤에는 내가 투입한 원금 대비 배당률(<strong>YoC, Yield on Cost</strong>)이 10%~15% 이상으로 폭발하기 때문입니다.
+      </p>
+
+      <h3>1. 연 배당금 2,000만원의 벽: 금융소득종합과세와 건강보험료 폭탄</h3>
+      <ul>
+        <li>
+          <strong>연 2,000만원 이하 (분리과세 구간):</strong>
+          배당소득세 14%와 지방소득세 1.4%를 합친 <strong>15.4% 원천징수</strong>만으로 모든 세금 납부 의무가 끝납니다. 직장가입자의 경우 추가 건강보험료도 부과되지 않습니다.
+        </li>
+        <li>
+          <strong>연 2,000만원 초과 (금융소득종합과세 + 건보료 부과 구간):</strong>
+          2,000만원을 초과한 금액은 본인의 근로소득·사업소득과 합산되어 <strong>종합소득 누진세율(지방세 포함 6.6% ~ 최대 49.5%)</strong>로 과세되며, 초과분에 대해 약 <strong>8%의 보수외소득월액 건강보험료</strong>가 추가로 부과됩니다.
+        </li>
+      </ul>
+
+      <div class="formula-box">
+        1) 투자원금 대비 배당률 (YoC) = (연간 세전 배당금 ÷ 누적 투입 원금) × 100<br />
+        2) 일반계좌 초과 세액 = MAX(0, 연 배당금 − 2,000만원) × (종합소득 한계세율 − 15.4% + 건보료율 약 8%)<br />
+        3) 절세계좌(연금저축·IRP·ISA) 과세이연 효과 = 운용 기간 중 배당세 0% 전액 재투자 → 만 55세 이후 연금 수령 시 3.3%~5.5% 저율 분리과세
+      </div>
+
+      <h2>자주 묻는 질문 (FAQ)</h2>
+
+      <details class="faq-item" open>
+        <summary>Q1. 연 배당금이 2,000만원을 넘지 않게 하려면 어떤 계좌를 활용해야 하나요?</summary>
+        <div class="faq-answer">
+          <strong>중개형 ISA(개인종합자산관리계좌)</strong>와 <strong>연금저축펀드·IRP</strong> 계좌를 최우선으로 활용해야 합니다.
+          이 절세 계좌들 안에서 국내 상장 미국배당다우존스(TIGER, SOL, ACE 등) ETF를 모아가면, 운용 기간 동안 발생하는 배당소득세(15.4%)를 전혀 떼지 않고 100% 원금으로 재투자(과세이연)할 수 있으며, 금융소득종합과세 2,000만원 한도 계산에서도 완전히 제외됩니다.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Q2. 원금 대비 배당률(YoC, Yield on Cost)이란 무엇인가요?</summary>
+        <div class="faq-answer">
+          현재 주가 대비 배당률이 아니라 <strong>내가 실제로 내 주머니에서 꺼내 투자한 누적 원금 대비 매년 들어오는 배당금의 비율</strong>입니다.
+          예를 들어 초기 시가배당률이 3.6%인 배당성장주를 15년간 꾸준히 적립하고 배당금을 재투자하면, 주가 상승과 배당 인상 덕분에 15년 뒤에는 내 원금 대비 매년 12~15% 이상의 현금흐름이 창출됩니다.
+        </div>
+      </details>
+
+      </div>
+      </details>
+
+      <div id="affiliate-disclosure"></div>
+    </article>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="../../assets/js/core-ui.js"></script>
+  <script src="../../assets/js/chart-engine.js"></script>
+  <script src="../../assets/js/seo-schema.js"></script>
+  <script src="../../assets/js/market-data.js"></script>
+  <script src="./logic.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

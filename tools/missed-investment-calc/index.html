@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>매도 후 상승분 &amp; 손실 방어 계산기 — 그때 안 팔았다면 얼마였을까? | SimuLab</title>
+  <meta name="description" content="과거에 익절하거나 손절한 주식, 지금까지 쥐고 있었다면 얼마였을까요? 60종 실측 시세와 연동하여 놓친 추가 상승분과 배당금, 또는 하락을 피해 방어한 손실금을 계산합니다." />
+  <link rel="stylesheet" href="../../assets/css/common.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main class="container" style="padding-top: 1.5rem; padding-bottom: 3rem;">
+    <section class="page-header">
+      <h1 class="page-title">과거 그때 샀더라면</h1>
+      <p class="page-subtitle">
+        "내가 익절하고 떠난 그 주식, 지금까지 가만히 두었다면 얼마였을까?" 60종의 미국·국내 대표 종목 및 레버리지 ETF의 실시간 시세와 연동하여, 매도 후 추가 상승분과 놓친 배당금을 확인하거나 하락장을 피해 성공적으로 방어한 손실금을 분석합니다.
+      </p>
+    </section>
+
+    <!-- 판정 브리핑 배너 -->
+    <div id="verdict-banner" class="verdict-banner" style="margin-bottom: 1.5rem;">
+      <div id="verdict-text" style="font-size: 0.95rem; line-height: 1.6;">
+        종목과 매도가격을 입력하시면 매도 후 성과 비교 결과가 여기에 표시됩니다.
+      </div>
+    </div>
+
+    <!-- 핵심 KPI 카드 4종 -->
+    <section class="kpi-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+      <div class="card stat-card" style="padding: 1.25rem;">
+        <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">매도 당시 총 회수금</span>
+        <div id="card-sold-total" class="stat-value" style="font-size: 1.6rem; font-weight: 700; color: var(--text-primary); margin-top: 0.25rem;">-</div>
+        <span style="font-size: 0.75rem; color: var(--text-muted);">매도 당시 챙긴 현금 원금</span>
+      </div>
+
+      <div class="card stat-card" style="padding: 1.25rem;">
+        <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">현재까지 보유 시 평가액</span>
+        <div id="card-current-total" class="stat-value" style="font-size: 1.6rem; font-weight: 700; color: var(--primary-color); margin-top: 0.25rem;">-</div>
+        <span style="font-size: 0.75rem; color: var(--text-muted);">현재 주가 기준 환산 자산</span>
+      </div>
+
+      <div class="card stat-card" style="padding: 1.25rem;">
+        <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">기회 손익 (차액)</span>
+        <div id="card-diff-total" class="stat-value" style="font-size: 1.6rem; font-weight: 700; color: #10b981; margin-top: 0.25rem;">-</div>
+        <span style="font-size: 0.75rem; color: var(--text-muted);">놓친 상승분 / 방어한 손실</span>
+      </div>
+
+      <div class="card stat-card" style="padding: 1.25rem;">
+        <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">매도 후 주가 변동률</span>
+        <div id="card-change-pct" class="stat-value" style="font-size: 1.6rem; font-weight: 700; color: #f59e0b; margin-top: 0.25rem;">-</div>
+        <span style="font-size: 0.75rem; color: var(--text-muted);">매도가 대비 현재 주가 추이</span>
+      </div>
+    </section>
+
+    <!-- 입력 컨트롤 및 결과 그리드 -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem;">
+      <!-- 좌측: 입력 폼 -->
+      <div class="card" style="padding: 1.5rem;">
+        <h2 class="step-section-title" style="font-size: 1.15rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--text-primary);">
+          1. 매도 종목 및 당시 거래 내역 설정
+        </h2>
+
+        <!-- [인풋 카드 1] 종목 및 거래 통화 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <span class="input-card-label">종목 및 거래 통화</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 0.5rem;">
+            <select id="symbol-select" class="form-control">
+              <!-- JS 렌더링 -->
+            </select>
+            <select id="currency-select" class="form-control">
+              <option value="$" selected>USD ($)</option>
+              <option value="원">KRW (원)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- [인풋 카드 2] 매도 당시 주가 & 현재 주가 -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.25rem;">
+          <div class="input-card" style="margin-bottom: 0;">
+            <div class="input-card-header">
+              <span class="input-card-label">매도 당시 주가</span>
+            </div>
+            <div class="input-group-modern">
+              <input type="number" id="sold-price-input" class="form-control" step="any" min="0" value="50" />
+              <span id="unit-sold-price" class="input-suffix-badge">$</span>
+            </div>
+          </div>
+          <div class="input-card" style="margin-bottom: 0;">
+            <div class="input-card-header">
+              <span class="input-card-label">현재 실측 주가</span>
+            </div>
+            <div class="input-group-modern">
+              <input type="number" id="current-price-input" class="form-control" step="any" min="0" value="138.25" />
+              <span id="unit-current-price" class="input-suffix-badge">$</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- [인풋 카드 3] 매도 수량 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <span class="input-card-label">매도 수량 (주)</span>
+            <span id="badge-quantity" class="control-value-badge">100주</span>
+          </div>
+          <div class="input-group-modern">
+            <input type="number" id="quantity-input" class="form-control" step="1" min="1" max="1000000" value="100" />
+            <span class="input-suffix-badge">주</span>
+          </div>
+          <input type="range" id="quantity-slider" class="range-slider" min="1" max="1000" step="5" value="100" style="margin-top: 0.75rem;" />
+          <div class="slider-guide-row">
+            <span>1주</span>
+            <span>500주</span>
+            <span>1,000주</span>
+          </div>
+          <div class="quick-chips-row">
+            <button type="button" class="quick-chip-btn" data-qty-preset="10">10주</button>
+            <button type="button" class="quick-chip-btn" data-qty-preset="50">50주</button>
+            <button type="button" class="quick-chip-btn" data-qty-preset="100">100주</button>
+            <button type="button" class="quick-chip-btn" data-qty-preset="500">500주</button>
+            <button type="button" class="quick-chip-btn" data-qty-add="50">+50주</button>
+          </div>
+        </div>
+
+        <!-- [인풋 카드 4] 경과 기간 및 배당률 -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.25rem;">
+          <div class="input-card" style="margin-bottom: 0;">
+            <div class="input-card-header">
+              <span class="input-card-label">경과 기간</span>
+            </div>
+            <div class="input-group-modern">
+              <input type="number" id="holding-years-input" class="form-control" step="0.5" min="0.1" max="10" value="1.5" />
+              <span class="input-suffix-badge">년</span>
+            </div>
+          </div>
+          <div class="input-card" style="margin-bottom: 0;">
+            <div class="input-card-header">
+              <span class="input-card-label">연 배당수익률</span>
+            </div>
+            <div class="input-group-modern">
+              <input type="number" id="dividend-yield-input" class="form-control" step="0.1" min="0" max="20" value="0.5" />
+              <span class="input-suffix-badge">%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 하단 액션 버튼 -->
+        <div style="margin-top: 1.5rem;">
+          <button type="button" id="share-btn" class="btn btn-outline" style="width: 100%;">분석 결과 공유 URL 복사</button>
+        </div>
+      </div>
+
+      <!-- 우측: 비교 막대 차트 및 세부 통계 -->
+      <div class="card" style="padding: 1.5rem; display: flex; flex-direction: column;">
+        <h2 class="step-section-title" style="font-size: 1.15rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--text-primary);">
+          2. 매도 회수금 vs 현재 가치 비교
+        </h2>
+
+        <!-- 세부 배지 -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.75rem; margin-bottom: 1rem; background: var(--bg-main); padding: 0.75rem; border-radius: 8px;">
+          <div>
+            <span style="font-size: 0.72rem; color: var(--text-muted);">1주당 가격 차이</span>
+            <div id="stat-price-diff" style="font-size: 0.95rem; font-weight: 700;">-</div>
+          </div>
+          <div>
+            <span style="font-size: 0.72rem; color: var(--text-muted);">놓친 추정 배당금</span>
+            <div id="stat-missed-div" style="font-size: 0.95rem; font-weight: 700; color: #10b981;">-</div>
+          </div>
+          <div>
+            <span style="font-size: 0.72rem; color: var(--text-muted);">원화 환산 기회손익</span>
+            <div id="stat-krw-diff" style="font-size: 0.95rem; font-weight: 700; color: var(--primary-color);">-</div>
+          </div>
+          <div>
+            <span style="font-size: 0.72rem; color: var(--text-muted);">투자 심리 판정</span>
+            <div id="stat-psy-note" style="font-size: 0.95rem; font-weight: 700;">-</div>
+          </div>
+        </div>
+
+        <div style="flex: 1; min-height: 280px; position: relative;">
+          <canvas id="comparison-chart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- 전문가 가이드 아코디언 -->
+    <article class="seo-article card" style="padding: 1.5rem; margin-bottom: 2rem;">
+      <details class="expert-guide">
+        <summary style="font-weight: 700; font-size: 1.05rem; cursor: pointer; color: var(--text-primary);">
+          후회 없는 매매를 위한 투자 심리학: '포모(FOMO)'를 이겨내는 법 (펼쳐보기)
+        </summary>
+        <div style="margin-top: 1rem; line-height: 1.7; font-size: 0.9rem; color: var(--text-secondary);">
+          <h3 style="font-size: 1rem; color: var(--text-primary); margin-top: 1rem;">1. "수익 실현은 결코 실패가 아닙니다"</h3>
+          <p>
+            월가의 유명한 격언 중 "수익을 실현해서 파산한 투자자는 없다"는 말이 있습니다. 내가 팔고 나서 주가가 더 올랐다고 해서 당시의 매도 결정이 틀렸던 것은 아닙니다. 
+            당신은 당시 주어진 정보와 위험 선호도 하에서 가장 합리적인 리스크 관리를 수행한 것입니다.
+          </p>
+
+          <h3 style="font-size: 1rem; color: var(--text-primary); margin-top: 1rem;">2. 지나간 버스 대신 다음 정거장을 준비하세요</h3>
+          <p>
+            매도 후 폭등한 차트를 보며 자책하는 '사후과잉확신 편향(Hindsight Bias)'은 뇌동매매와 고점 추격매수의 주원인이 됩니다. 
+            확보된 현금을 소중히 여기며, 새로운 저평가 우량주나 배당주를 발굴하는 데 에너지를 집중하는 것이 장기 복리 승자의 태도입니다.
+          </p>
+        </div>
+      </details>
+    </article>
+
+    <section id="legal-disclaimer"></section>
+    <section id="affiliate-disclosure"></section>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="../../assets/js/core-ui.js"></script>
+  <script src="../../assets/js/market-data.js"></script>
+  <script src="./logic.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

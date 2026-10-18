@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>월 배당 목표 달성 계산기 — 목표 배당금까지 필요한 원금과 기간 역산 | SimuLab</title>
+  <meta name="description" content="월 50만원, 100만원, 300만원 배당금을 받으려면 얼마가 필요할까? 배당수익률과 세금(15.4%), 배당성장률, 매월 적립금을 반영하여 목표 도달 시점과 대표 배당주 포트폴리오를 시뮬레이션합니다." />
+  <link rel="stylesheet" href="../../assets/css/common.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <!-- 상단 공통 헤더 -->
+  <header id="site-header"></header>
+
+  <main class="container" style="padding-top: 1.5rem; padding-bottom: 3rem;">
+    <!-- 상단 페이지 타이틀 -->
+    <section class="page-header">
+      <h1 class="page-title">월 배당 목표금액 계산기</h1>
+      <p class="page-subtitle">
+        "매달 안정적인 배당 월급을 받으려면 투자금이 얼마나 필요할까?" 목표 월 배당금(세후)을 설정하면 연 배당수익률과 배당소득세(15.4%), 복리 재투자를 반영하여 필요한 총 원금과 매월 적립 시 목표 도달까지 걸리는 기간을 정확하게 역산합니다.
+      </p>
+    </section>
+
+    <!-- 판정 브리핑 배너 -->
+    <div id="verdict-banner" class="verdict-banner" style="margin-bottom: 1.5rem;">
+      <div id="verdict-text" style="font-size: 0.95rem; line-height: 1.6;">
+        시뮬레이션 조건을 설정하시면 목표 달성을 위한 최적의 로드맵이 여기에 표시됩니다.
+      </div>
+    </div>
+
+    <!-- 핵심 요약 카드 4종 -->
+    <section class="kpi-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+      <div class="card stat-card" style="padding: 1.25rem;">
+        <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">목표 달성 필요 총 원금</span>
+        <div id="card-required-capital" class="stat-value" style="font-size: 1.6rem; font-weight: 700; color: var(--primary-color); margin-top: 0.25rem;">-</div>
+        <span style="font-size: 0.75rem; color: var(--text-muted);">세후 월 배당 기준 일시불 필요액</span>
+      </div>
+
+      <div class="card stat-card" style="padding: 1.25rem;">
+        <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">목표 도달 예상 기간</span>
+        <div id="card-time-to-target" class="stat-value" style="font-size: 1.6rem; font-weight: 700; color: #10b981; margin-top: 0.25rem;">-</div>
+        <span style="font-size: 0.75rem; color: var(--text-muted);">현재 적립금 및 재투자 유지 시</span>
+      </div>
+
+      <div class="card stat-card" style="padding: 1.25rem;">
+        <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">현재 보유금 기준 월 배당</span>
+        <div id="card-current-dividend" class="stat-value" style="font-size: 1.6rem; font-weight: 700; color: var(--text-primary); margin-top: 0.25rem;">-</div>
+        <span style="font-size: 0.75rem; color: var(--text-muted);">현재 시드머니의 세후 월 수령액</span>
+      </div>
+
+      <div class="card stat-card" style="padding: 1.25rem;">
+        <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">추가 필요 자금 (부족액)</span>
+        <div id="card-capital-shortfall" class="stat-value" style="font-size: 1.6rem; font-weight: 700; color: #f59e0b; margin-top: 0.25rem;">-</div>
+        <span style="font-size: 0.75rem; color: var(--text-muted);">필요 원금 대비 현재 부족분</span>
+      </div>
+    </section>
+
+    <!-- 입력 컨트롤 및 결과 그리드 -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem;">
+      <!-- 좌측: 입력 폼 -->
+      <div class="card" style="padding: 1.5rem;">
+        <h2 class="step-section-title" style="font-size: 1.15rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--text-primary);">
+          1. 나의 배당 목표 &amp; 자금 조건 설정
+        </h2>
+
+        <!-- [인풋 카드 1] 목표 월 배당금 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <span class="input-card-label">목표 월 배당금 (세후 실수령액)</span>
+            <span id="badge-target-monthly" class="korean-amount-badge">100만 원</span>
+          </div>
+          <div class="input-group-modern">
+            <input type="number" id="target-monthly-input" class="form-control" step="100000" min="50000" max="50000000" value="1000000" />
+            <span class="input-suffix-badge">원/월</span>
+          </div>
+          <input type="range" id="target-monthly-slider" class="range-slider" min="100000" max="5000000" step="50000" value="1000000" style="margin-top: 0.75rem;" />
+          <div class="slider-guide-row">
+            <span>10만원</span>
+            <span>250만원</span>
+            <span>500만원</span>
+          </div>
+          <div class="quick-chips-row">
+            <button type="button" class="quick-chip-btn" data-target-preset="500000">50만</button>
+            <button type="button" class="quick-chip-btn" data-target-preset="1000000">100만</button>
+            <button type="button" class="quick-chip-btn" data-target-preset="2000000">200만</button>
+            <button type="button" class="quick-chip-btn" data-target-preset="3000000">300만</button>
+            <button type="button" class="quick-chip-btn" data-target-add="500000">+50만</button>
+            <button type="button" class="quick-chip-btn" data-target-add="1000000">+100만</button>
+          </div>
+        </div>
+
+        <!-- [인풋 카드 2] 예상 연 배당수익률 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <span class="input-card-label">예상 연 배당수익률</span>
+          </div>
+          <div class="input-group-modern">
+            <input type="number" id="dividend-yield-input" class="form-control" step="0.1" min="0.5" max="25" value="4.5" />
+            <span class="input-suffix-badge">%</span>
+          </div>
+          <input type="range" id="dividend-yield-slider" class="range-slider" min="1" max="15" step="0.1" value="4.5" style="margin-top: 0.75rem;" />
+          <div class="quick-chips-row">
+            <button type="button" class="quick-chip-btn" data-yield-preset="3.6">SCHD 3.6%</button>
+            <button type="button" class="quick-chip-btn" data-yield-preset="5.2">리얼티인컴 5.2%</button>
+            <button type="button" class="quick-chip-btn" data-yield-preset="7.5">JEPI 7.5%</button>
+          </div>
+        </div>
+
+        <!-- [인풋 카드 3] 현재 보유 시드머니 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <span class="input-card-label">현재 보유 시드머니 (초기 원금)</span>
+            <span id="badge-initial-capital" class="korean-amount-badge">2,000만 원</span>
+          </div>
+          <div class="input-group-modern">
+            <input type="number" id="initial-capital-input" class="form-control" step="1000000" min="0" max="2000000000" value="20000000" />
+            <span class="input-suffix-badge">원</span>
+          </div>
+          <input type="range" id="initial-capital-slider" class="range-slider" min="0" max="200000000" step="1000000" value="20000000" style="margin-top: 0.75rem;" />
+          <div class="slider-guide-row">
+            <span>0원</span>
+            <span>1억</span>
+            <span>2억</span>
+          </div>
+          <div class="quick-chips-row">
+            <button type="button" class="quick-chip-btn" data-capital-preset="10000000">1천만</button>
+            <button type="button" class="quick-chip-btn" data-capital-preset="30000000">3천만</button>
+            <button type="button" class="quick-chip-btn" data-capital-preset="50000000">5천만</button>
+            <button type="button" class="quick-chip-btn" data-capital-preset="100000000">1억</button>
+            <button type="button" class="quick-chip-btn" data-capital-add="10000000">+1천만</button>
+            <button type="button" class="quick-chip-btn" data-capital-add="50000000">+5천만</button>
+          </div>
+        </div>
+
+        <!-- [인풋 카드 4] 매월 추가 적립 금액 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <span class="input-card-label">매월 추가 적립 금액</span>
+            <span id="badge-monthly-contrib" class="korean-amount-badge">50만 원</span>
+          </div>
+          <div class="input-group-modern">
+            <input type="number" id="monthly-contrib-input" class="form-control" step="100000" min="0" max="50000000" value="500000" />
+            <span class="input-suffix-badge">원/월</span>
+          </div>
+          <input type="range" id="monthly-contrib-slider" class="range-slider" min="0" max="5000000" step="100000" value="500000" style="margin-top: 0.75rem;" />
+          <div class="slider-guide-row">
+            <span>0원</span>
+            <span>250만원</span>
+            <span>500만원</span>
+          </div>
+          <div class="quick-chips-row">
+            <button type="button" class="quick-chip-btn" data-contrib-preset="300000">30만</button>
+            <button type="button" class="quick-chip-btn" data-contrib-preset="500000">50만</button>
+            <button type="button" class="quick-chip-btn" data-contrib-preset="1000000">100만</button>
+            <button type="button" class="quick-chip-btn" data-contrib-preset="1500000">150만</button>
+            <button type="button" class="quick-chip-btn" data-contrib-add="100000">+10만</button>
+            <button type="button" class="quick-chip-btn" data-contrib-add="500000">+50만</button>
+          </div>
+        </div>
+
+        <!-- [인풋 카드 5] 과세 유형 및 계좌 선택 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <span class="input-card-label">과세 유형 (계좌 선택)</span>
+          </div>
+          <select id="tax-type-select" class="form-control">
+            <option value="general" selected>일반 위탁계좌 (배당소득세 15.4%)</option>
+            <option value="isa">ISA 계좌 (비과세 200~400만 + 초과 9.9% 분리과세)</option>
+            <option value="pension">연금저축/IRP (과세이연 + 연금수령 시 5.5%)</option>
+            <option value="custom">직접 세율 입력</option>
+          </select>
+        </div>
+
+        <!-- 직접 세율 입력 창 -->
+        <div id="custom-tax-wrapper" class="input-card" style="display: none;">
+          <div class="input-card-header">
+            <span class="input-card-label">직접 입력 세율</span>
+          </div>
+          <div class="input-group-modern">
+            <input type="number" id="custom-tax-input" class="form-control" step="0.1" min="0" max="50" value="15.4" />
+            <span class="input-suffix-badge">%</span>
+          </div>
+        </div>
+
+        <!-- 고급 옵션: 배당성장률 및 주가상승률 -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.25rem;">
+          <div class="input-card" style="margin-bottom: 0;">
+            <div class="input-card-header">
+              <span class="input-card-label">연간 배당성장률</span>
+            </div>
+            <div class="input-group-modern">
+              <input type="number" id="dividend-growth-input" class="form-control" step="0.5" min="0" max="20" value="4.0" />
+              <span class="input-suffix-badge">%</span>
+            </div>
+          </div>
+          <div class="input-card" style="margin-bottom: 0;">
+            <div class="input-card-header">
+              <span class="input-card-label">연간 주가상승률</span>
+            </div>
+            <div class="input-group-modern">
+              <input type="number" id="price-growth-input" class="form-control" step="0.5" min="-10" max="30" value="4.0" />
+              <span class="input-suffix-badge">%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 배당 재투자 체크박스 -->
+        <div class="input-card" style="margin-bottom: 1.25rem;">
+          <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; font-size: 0.9rem; font-weight: 600;">
+            <input type="checkbox" id="reinvest-check" checked style="width: 18px; height: 18px;" />
+            <span>배당금 자동 재투자 (DRIP) 적용하여 복리 가속</span>
+          </label>
+          <p style="font-size: 0.78rem; color: var(--text-muted); margin: 0.25rem 0 0 1.6rem;">
+            목표를 달성할 때까지 지급받은 배당금을 전액 주식 재매수에 투입합니다.
+          </p>
+        </div>
+
+        <!-- 하단 액션 버튼들 -->
+        <div style="display: flex; gap: 0.5rem; margin-top: 1.5rem;">
+          <button type="button" id="share-btn" class="btn btn-outline" style="flex: 1;">조건 공유 URL 복사</button>
+          <button type="button" id="export-csv-btn" class="btn btn-outline" style="flex: 1;">CSV 다운로드</button>
+        </div>
+      </div>
+
+      <!-- 우측: 자산 및 배당금 성장 시뮬레이션 차트 -->
+      <div class="card" style="padding: 1.5rem; display: flex; flex-direction: column;">
+        <h2 class="step-section-title" style="font-size: 1.15rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--text-primary);">
+          2. 자산 규모 및 월 배당금 성장 궤적
+        </h2>
+
+        <!-- 세부 지표 배지 -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.75rem; margin-bottom: 1rem; background: var(--bg-main); padding: 0.75rem; border-radius: 8px;">
+          <div>
+            <span style="font-size: 0.72rem; color: var(--text-muted);">목표 연간 세전 배당금</span>
+            <div id="stat-annual-gross" style="font-size: 0.95rem; font-weight: 700;">-</div>
+          </div>
+          <div>
+            <span style="font-size: 0.72rem; color: var(--text-muted);">목표 연간 세후 배당금</span>
+            <div id="stat-annual-net" style="font-size: 0.95rem; font-weight: 700; color: #10b981;">-</div>
+          </div>
+          <div>
+            <span style="font-size: 0.72rem; color: var(--text-muted);">적용 실효세율</span>
+            <div id="stat-tax-rate" style="font-size: 0.95rem; font-weight: 700;">-</div>
+          </div>
+          <div>
+            <span style="font-size: 0.72rem; color: var(--text-muted);">현재 목표 달성률</span>
+            <div id="stat-progress-pct" style="font-size: 0.95rem; font-weight: 700; color: var(--primary-color);">-</div>
+          </div>
+        </div>
+
+        <div style="flex: 1; min-height: 320px; position: relative;">
+          <canvas id="growth-chart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- 대표 배당주 포트폴리오 비교 섹션 -->
+    <section class="card" style="padding: 1.5rem; margin-bottom: 2rem;">
+      <h2 style="font-size: 1.15rem; font-weight: 700; color: var(--text-primary); margin-bottom: 1rem;">
+        대표 배당주로 목표 월 배당금 만들 때 필요한 투자금 비교
+      </h2>
+      <div style="overflow-x: auto;">
+        <table class="data-table" style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
+          <thead>
+            <tr style="border-bottom: 2px solid var(--border-color); background: var(--bg-main);">
+              <th style="padding: 0.75rem;">종목명 (티커)</th>
+              <th style="padding: 0.75rem;">대표 배당 특성</th>
+              <th style="padding: 0.75rem;">시가배당률</th>
+              <th style="padding: 0.75rem;">목표 달성 필요 원금</th>
+              <th style="padding: 0.75rem;">월 배당 특징 &amp; 주의점</th>
+            </tr>
+          </thead>
+          <tbody id="portfolio-compare-tbody">
+            <!-- JS 동적 생성 -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 전문가 가이드 아코디언 -->
+    <article class="seo-article card" style="padding: 1.5rem; margin-bottom: 2rem;">
+      <details class="expert-guide">
+        <summary style="font-weight: 700; font-size: 1.05rem; cursor: pointer; color: var(--text-primary);">
+          배당 투자 목표 수립 가이드 &amp; 금융소득종합과세(2,000만원) 주의점 (펼쳐보기)
+        </summary>
+        <div style="margin-top: 1rem; line-height: 1.7; font-size: 0.9rem; color: var(--text-secondary);">
+          <h3 style="font-size: 1rem; color: var(--text-primary); margin-top: 1rem;">1. 시가배당률의 함정과 배당 성장</h3>
+          <p>
+            배당률이 8~10%를 넘는 초고배당주나 커버드콜 ETF는 단기적으로 현금흐름을 빠르게 만들어주지만, 주가(원금)가 서서히 녹아내리는 원금 잠식(Nav Erosion) 위험이 있습니다. 
+            장기적으로 월 배당금을 늘려가려면 **SCHD, VIG처럼 매년 주당 배당금을 올려주는 배당성장주**와 배당 재투자(DRIP)를 조합하는 것이 가장 안전한 은퇴 전략입니다.
+          </p>
+
+          <h3 style="font-size: 1rem; color: var(--text-primary); margin-top: 1rem;">2. 연 배당금 2,000만원 초과 시 세금 폭탄 예방</h3>
+          <p>
+            목표 월 배당금이 세전 167만원(연 2,000만원)을 초과하게 되면 금융소득종합과세 대상자가 되어 타 근로·사업 소득과 합산 과세되며, 건강보험료가 추가 부과될 수 있습니다. 
+            따라서 **중개형 ISA(국내 상장 해외 ETF 비과세)**와 **연금저축/IRP(과세이연 및 5.5% 저율과세)** 계좌를 적극 활용하여 절세 계좌 내에서 배당금을 수령하는 전략이 필수적입니다.
+          </p>
+        </div>
+      </details>
+    </article>
+
+    <section id="legal-disclaimer"></section>
+    <section id="affiliate-disclosure"></section>
+  </main>
+
+  <!-- 하단 공통 푸터 -->
+  <footer id="site-footer"></footer>
+
+  <script src="../../assets/js/core-ui.js"></script>
+  <script src="./logic.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

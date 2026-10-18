@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>은퇴 생존 기간 계산기 — 내 노후 자산, 몇 살까지 버틸까? | SimuLab</title>
+  <meta name="description" content="파이어족 및 은퇴 준비자를 위한 자산 고갈 시뮬레이터. 인플레이션, 투자 수익률, 국민연금 수령액과 4% 룰을 종합하여 내 순자산의 생존 기간을 계산합니다." />
+  <link rel="stylesheet" href="../../assets/css/common.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main class="container" style="padding-top: 1.5rem; padding-bottom: 3rem;">
+    <section class="page-header">
+      <h1 class="page-title">은퇴자금 조기소진 계산기</h1>
+      <p class="page-subtitle">
+        "내가 모은 은퇴 자금으로 매달 생활비를 쓰면 몇 세까지 버틸 수 있을까?" 은퇴 전 저축액 축적부터 은퇴 후 인플레이션(물가상승), 국민연금 수령, 자산 운용 수익률을 종합하여 자산이 0원이 되는 고갈 시점과 트리니티 4% 룰 안전성을 분석합니다.
+      </p>
+    </section>
+
+    <!-- 판정 브리핑 배너 -->
+    <div id="verdict-banner" class="verdict-banner" style="margin-bottom: 1.5rem;">
+      <div id="verdict-text" style="font-size: 0.95rem; line-height: 1.6;">
+        은퇴 조건과 자산을 입력하시면 노후 생존 가능 연령이 여기에 브리핑됩니다.
+      </div>
+    </div>
+
+    <!-- 핵심 KPI 카드 4종 -->
+    <section class="kpi-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+      <div class="card stat-card" style="padding: 1.25rem;">
+        <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">자산 고갈 예상 나이</span>
+        <div id="card-depletion-age" class="stat-value" style="font-size: 1.6rem; font-weight: 700; color: #10b981; margin-top: 0.25rem;">-</div>
+        <span style="font-size: 0.75rem; color: var(--text-muted);">은퇴 자금 지속 한계점</span>
+      </div>
+
+      <div class="card stat-card" style="padding: 1.25rem;">
+        <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">은퇴 시점 예상 순자산</span>
+        <div id="card-retire-asset" class="stat-value" style="font-size: 1.6rem; font-weight: 700; color: var(--primary-color); margin-top: 0.25rem;">-</div>
+        <span style="font-size: 0.75rem; color: var(--text-muted);">은퇴 첫날 보유 총자산</span>
+      </div>
+
+      <div class="card stat-card" style="padding: 1.25rem;">
+        <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">첫해 인출률 (4% 룰)</span>
+        <div id="card-withdrawal-rate" class="stat-value" style="font-size: 1.6rem; font-weight: 700; color: var(--text-primary); margin-top: 0.25rem;">-</div>
+        <span style="font-size: 0.75rem; color: var(--text-muted);">안전 기준: 4.0% 이하</span>
+      </div>
+
+      <div class="card stat-card" style="padding: 1.25rem;">
+        <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">평생 총 국민연금 수령액</span>
+        <div id="card-total-pension" class="stat-value" style="font-size: 1.6rem; font-weight: 700; color: #f59e0b; margin-top: 0.25rem;">-</div>
+        <span style="font-size: 0.75rem; color: var(--text-muted);">물가상승 반영 누적 수령액</span>
+      </div>
+    </section>
+
+    <!-- 입력 컨트롤 및 결과 그리드 -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem;">
+      <!-- 좌측: 입력 폼 (토스/카카오뱅크 스타일 프리미엄 핀테크 인풋 카드) -->
+      <div class="card" style="padding: 1.5rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+          <h2 class="step-section-title" style="font-size: 1.15rem; font-weight: 700; color: var(--text-primary); margin: 0;">
+            1. 은퇴 계획 및 보유 자산 설정
+          </h2>
+          <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 500;">실시간 자동 연산</span>
+        </div>
+
+        <!-- [카드 1] 현재 나이 & 목표 은퇴 나이 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <span class="input-card-label">🎂 나의 연령 계획</span>
+            <span id="badge-years-to-retire" class="korean-amount-badge">은퇴까지 10년 남음</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.75rem;">
+            <div>
+              <span style="font-size: 0.75rem; color: var(--text-secondary); display: block; margin-bottom: 0.3rem;">현재 나이</span>
+              <div class="input-group-modern">
+                <input type="number" id="current-age-input" class="form-control" min="20" max="80" value="45" />
+                <span class="input-suffix-badge">세</span>
+              </div>
+            </div>
+            <div>
+              <span style="font-size: 0.75rem; color: var(--text-secondary); display: block; margin-bottom: 0.3rem;">목표 은퇴 나이</span>
+              <div class="input-group-modern">
+                <input type="number" id="retire-age-input" class="form-control" min="30" max="85" value="55" />
+                <span class="input-suffix-badge">세</span>
+              </div>
+            </div>
+          </div>
+          <input type="range" id="retire-age-slider" class="range-slider" min="35" max="75" step="1" value="55" />
+          <div class="slider-guide-row">
+            <span>35세 조기은퇴</span>
+            <span>55세 (기본)</span>
+            <span>75세 정년</span>
+          </div>
+        </div>
+
+        <!-- [카드 2] 현재 보유 순자산 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <span class="input-card-label">💰 현재 보유 순자산 (금융자산)</span>
+            <span id="badge-current-asset" class="korean-amount-badge">✨ 4억 원</span>
+          </div>
+          <div class="input-group-modern">
+            <input type="number" id="current-asset-input" class="form-control" step="10000000" min="0" max="5000000000" value="400000000" />
+            <span class="input-suffix-badge">원</span>
+          </div>
+          <input type="range" id="current-asset-slider" class="range-slider" min="0" max="2000000000" step="10000000" value="400000000" style="margin-top: 0.65rem;" />
+          <div class="slider-guide-row">
+            <span>0원</span>
+            <span>10억원</span>
+            <span>20억원</span>
+          </div>
+          <!-- 퀵 조절 칩 버튼들 -->
+          <div class="quick-chips-row">
+            <button type="button" class="quick-chip-btn" data-target="current-asset-input" data-add="10000000">+1천만</button>
+            <button type="button" class="quick-chip-btn" data-target="current-asset-input" data-add="50000000">+5천만</button>
+            <button type="button" class="quick-chip-btn" data-target="current-asset-input" data-add="100000000">+1억</button>
+            <button type="button" class="quick-chip-btn" data-target="current-asset-input" data-add="500000000">+5억</button>
+            <button type="button" class="quick-chip-btn is-reset" data-target="current-asset-input" data-set="0">0원 초기화</button>
+          </div>
+        </div>
+
+        <!-- [카드 3] 은퇴 전 매월 추가 저축/투자액 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <span class="input-card-label">📈 은퇴 전 매월 추가 저축/투자</span>
+            <span id="badge-monthly-save" class="korean-amount-badge">✨ 월 150만 원</span>
+          </div>
+          <div class="input-group-modern">
+            <input type="number" id="monthly-save-input" class="form-control" step="100000" min="0" max="50000000" value="1500000" />
+            <span class="input-suffix-badge">원 / 월</span>
+          </div>
+          <input type="range" id="monthly-save-slider" class="range-slider" min="0" max="10000000" step="100000" value="1500000" style="margin-top: 0.65rem;" />
+          <div class="slider-guide-row">
+            <span>0원</span>
+            <span>월 500만원</span>
+            <span>월 1,000만원</span>
+          </div>
+          <div class="quick-chips-row">
+            <button type="button" class="quick-chip-btn" data-target="monthly-save-input" data-add="100000">+10만</button>
+            <button type="button" class="quick-chip-btn" data-target="monthly-save-input" data-add="300000">+30만</button>
+            <button type="button" class="quick-chip-btn" data-target="monthly-save-input" data-add="500000">+50만</button>
+            <button type="button" class="quick-chip-btn" data-target="monthly-save-input" data-add="1000000">+100만</button>
+            <button type="button" class="quick-chip-btn is-reset" data-target="monthly-save-input" data-set="0">0원 초기화</button>
+          </div>
+        </div>
+
+        <!-- [카드 4] 은퇴 후 월 희망 생활비 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <span class="input-card-label">☕ 은퇴 후 월 희망 생활비 (현재가치)</span>
+            <span id="badge-monthly-expense" class="korean-amount-badge">✨ 월 250만 원</span>
+          </div>
+          <div class="input-group-modern">
+            <input type="number" id="monthly-expense-input" class="form-control" step="100000" min="500000" max="30000000" value="2500000" />
+            <span class="input-suffix-badge">원 / 월</span>
+          </div>
+          <input type="range" id="monthly-expense-slider" class="range-slider" min="1000000" max="10000000" step="100000" value="2500000" style="margin-top: 0.65rem;" />
+          <div class="slider-guide-row">
+            <span>월 100만원</span>
+            <span>월 500만원</span>
+            <span>월 1,000만원</span>
+          </div>
+          <div class="quick-chips-row">
+            <button type="button" class="quick-chip-btn" data-target="monthly-expense-input" data-add="100000">+10만</button>
+            <button type="button" class="quick-chip-btn" data-target="monthly-expense-input" data-add="300000">+30만</button>
+            <button type="button" class="quick-chip-btn" data-target="monthly-expense-input" data-add="500000">+50만</button>
+            <button type="button" class="quick-chip-btn" data-target="monthly-expense-input" data-add="1000000">+100만</button>
+            <button type="button" class="quick-chip-btn is-reset" data-target="monthly-expense-input" data-set="2000000">기본 200만</button>
+          </div>
+        </div>
+
+        <!-- [카드 5] 연 투자 수익률 & 물가상승률 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <span class="input-card-label">📊 경제 및 자산 운용 가정</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+            <div>
+              <span style="font-size: 0.75rem; color: var(--text-secondary); display: block; margin-bottom: 0.3rem;">연 투자 운용 수익률</span>
+              <div class="input-group-modern">
+                <input type="number" id="inv-return-input" class="form-control" step="0.5" min="0" max="15" value="5.0" />
+                <span class="input-suffix-badge">% / 연</span>
+              </div>
+            </div>
+            <div>
+              <span style="font-size: 0.75rem; color: var(--text-secondary); display: block; margin-bottom: 0.3rem;">연 물가상승률</span>
+              <div class="input-group-modern">
+                <input type="number" id="inflation-input" class="form-control" step="0.1" min="0" max="10" value="2.5" />
+                <span class="input-suffix-badge">% / 연</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- [카드 6] 국민연금 개시 나이 & 월 예상액 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <span class="input-card-label">🛡️ 국민연금 보완 계획</span>
+            <span id="badge-pension-monthly" class="korean-amount-badge">✨ 월 80만 원</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+            <div>
+              <span style="font-size: 0.75rem; color: var(--text-secondary); display: block; margin-bottom: 0.3rem;">수령 개시 나이</span>
+              <div class="input-group-modern">
+                <input type="number" id="pension-age-input" class="form-control" min="60" max="70" value="65" />
+                <span class="input-suffix-badge">세</span>
+              </div>
+            </div>
+            <div>
+              <span style="font-size: 0.75rem; color: var(--text-secondary); display: block; margin-bottom: 0.3rem;">예상 월 수령액</span>
+              <div class="input-group-modern">
+                <input type="number" id="pension-monthly-input" class="form-control" step="50000" min="0" value="800000" />
+                <span class="input-suffix-badge">원</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 하단 액션 버튼들 -->
+        <div style="display: flex; gap: 0.5rem; margin-top: 1.5rem;">
+          <button type="button" id="share-btn" class="btn btn-outline" style="flex: 1;">조건 공유 URL 복사</button>
+          <button type="button" id="export-csv-btn" class="btn btn-outline" style="flex: 1;">CSV 다운로드</button>
+        </div>
+      </div>
+
+      <!-- 우측: 자산 잔액 추이 차트 -->
+      <div class="card" style="padding: 1.5rem; display: flex; flex-direction: column;">
+        <h2 class="step-section-title" style="font-size: 1.15rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--text-primary);">
+          2. 은퇴 후 연령별 자산 잔액 추이 (고갈 궤적)
+        </h2>
+
+        <!-- 세부 배지 -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.75rem; margin-bottom: 1rem; background: var(--bg-main); padding: 0.75rem; border-radius: 8px;">
+          <div>
+            <span style="font-size: 0.72rem; color: var(--text-muted);">은퇴 준비 기간</span>
+            <div id="stat-years-left" style="font-size: 0.95rem; font-weight: 700;">-</div>
+          </div>
+          <div>
+            <span style="font-size: 0.72rem; color: var(--text-muted);">은퇴 첫해 월 생활비</span>
+            <div id="stat-first-expense" style="font-size: 0.95rem; font-weight: 700;">-</div>
+          </div>
+          <div>
+            <span style="font-size: 0.72rem; color: var(--text-muted);">운용 수익률</span>
+            <div id="stat-inv-return" style="font-size: 0.95rem; font-weight: 700; color: #10b981;">-</div>
+          </div>
+          <div>
+            <span style="font-size: 0.72rem; color: var(--text-muted);">인출 안정성</span>
+            <div id="stat-safety-badge" style="font-size: 0.95rem; font-weight: 700; color: var(--primary-color);">-</div>
+          </div>
+        </div>
+
+        <div style="flex: 1; min-height: 320px; position: relative;">
+          <canvas id="asset-chart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- 연도별 상세 테이블 -->
+    <section class="card" style="padding: 1.5rem; margin-bottom: 2.5rem;">
+      <h2 class="step-section-title" style="font-size: 1.15rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
+        3. 은퇴 후 연령별 생활비 지출 및 자산 잔액 상세표
+      </h2>
+      <div style="overflow-x: auto;">
+        <table class="data-table" style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+          <thead>
+            <tr style="border-bottom: 2px solid var(--border-color); background: var(--bg-main);">
+              <th style="padding: 0.6rem; text-align: center;">나이</th>
+              <th style="padding: 0.6rem; text-align: right;">잔여 은퇴 자산</th>
+              <th style="padding: 0.6rem; text-align: right;">연간 생활비 지출</th>
+              <th style="padding: 0.6rem; text-align: right;">국민연금 수령액</th>
+              <th style="padding: 0.6rem; text-align: right;">자산 순인출액</th>
+              <th style="padding: 0.6rem; text-align: center;">상태</th>
+            </tr>
+          </thead>
+          <tbody id="yearly-table-body">
+            <!-- JS 렌더링 -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 전문가 가이드 아코디언 -->
+    <article class="seo-article card" style="padding: 1.5rem; margin-bottom: 2rem;">
+      <details class="expert-guide">
+        <summary style="font-weight: 700; font-size: 1.05rem; cursor: pointer; color: var(--text-primary);">
+          트리니티 스터디(Trinity Study) '4% 룰'과 은퇴 자산 관리 핵심 (펼쳐보기)
+        </summary>
+        <div style="margin-top: 1rem; line-height: 1.7; font-size: 0.9rem; color: var(--text-secondary);">
+          <h3 style="font-size: 1rem; color: var(--text-primary); margin-top: 1rem;">1. 4% 룰(Safe Withdrawal Rate)이란?</h3>
+          <p>
+            미국 트리니티 대학의 연구진이 발표한 역사적 백테스팅 결과로, 주식 50%와 채권 50% 포트폴리오를 보유했을 때 은퇴 첫해 자산의 4%를 인출하고 매년 인플레이션만큼 인출액을 늘려가도 30년 이상 자산이 고갈되지 않을 확률이 95% 이상이라는 이론입니다.
+            만약 첫해 인출률이 5%를 초과하면 초반 하락장(수익률 순서 위험, Sequence of Returns Risk)을 맞았을 때 조기 고갈될 위험이 급격히 증가합니다.
+          </p>
+
+          <h3 style="font-size: 1rem; color: var(--text-primary); margin-top: 1rem;">2. 인플레이션과 국민연금의 강력한 방어력</h3>
+          <p>
+            물가상승률이 연 2.5%만 지속되어도 20년 뒤 화폐 가치는 약 40% 하락합니다. 
+            그러나 대한민국의 국민연금은 매년 전년도 전국 소비자물가변동률을 반영하여 수령액이 100% 인상되는 유일한 실질 연금입니다. 
+            따라서 국민연금 수령 개시 연령(65세)까지의 '소득 크레바스(은퇴 후 연금 수령 전까지의 공백기)'를 어떻게 버티느냐가 성공적인 조기 은퇴의 핵심입니다.
+          </p>
+        </div>
+      </details>
+    </article>
+
+    <section id="legal-disclaimer"></section>
+    <section id="affiliate-disclosure"></section>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="../../assets/js/core-ui.js"></script>
+  <script src="./logic.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

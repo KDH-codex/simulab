@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ko" data-default-theme="light" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <title>월급 실수령액 & 세후 연봉 계산기 (2026년 4대보험 요율·비과세 식대) | SimuLab Hub</title>
+  <meta name="description" content="2026년 최신 4대보험 요율(국민연금 4.5%, 건강보험 3.545%, 고용보험 0.9%)과 비과세 식대 20만원, 소득세 간이세액표를 자동 반영하여 통장에 꽂히는 진짜 월급 실수령액을 즉시 계산합니다." />
+  <link rel="canonical" href="https://simulab.kr/tools/salary-net-calc/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="월급 실수령액 & 세후 연봉 계산기 | SimuLab Hub" />
+  <meta property="og:description" content="연봉과 월급에서 4대보험과 세금을 뗀 진짜 내 통장 입금액을 확인하세요." />
+
+  <link rel="stylesheet" href="../../assets/css/common.css" />
+  <style>
+    .korean-amount-badge {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--accent-primary);
+      background: var(--accent-soft);
+      padding: 0.2rem 0.55rem;
+      border-radius: 6px;
+    }
+    .highlight-result-box {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(30, 64, 175, 0.02));
+      border: 1.5px solid rgba(37, 99, 235, 0.25);
+      border-radius: 16px;
+      padding: 1.5rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .highlight-result-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      margin-bottom: 0.4rem;
+    }
+    .highlight-result-amount {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 900;
+      color: #16a34a;
+      letter-spacing: -0.02em;
+    }
+    .highlight-result-korean {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-top: 0.25rem;
+    }
+  </style>
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main class="container">
+    <section class="page-header">
+      <div class="page-header-badges">
+        <span class="brand-badge">SALARY &amp; TAX LAB</span>
+      </div>
+      <h1 class="page-title">월급 실수령액 계산기</h1>
+      <p class="page-subtitle">
+        세전 월급이나 연봉을 입력하면 <strong>2026년 4대보험 요율과 비과세 식대, 부양가족 수</strong>를 자동 반영하여
+        매월 통장에 진짜로 들어오는 <strong>세후 실수령액과 총 공제 세금</strong>을 1초 만에 산출합니다.
+      </p>
+    </section>
+
+    <section class="simulator-grid">
+      <!-- 좌측: 입력 패널 -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">급여 및 공제 조건 설정</h2>
+          <button type="button" id="btn-reset" class="btn btn-secondary" style="padding: 0.25rem 0.65rem; font-size: 0.78rem;">초기화</button>
+        </div>
+
+        <!-- 1. 급여 모드 선택 -->
+        <div class="step-section-title" style="margin-bottom: 0.85rem;">
+          <span class="step-badge">STEP 1</span> 급여 기준 선택
+        </div>
+
+        <div class="input-card">
+          <div style="display: flex; gap: 1.5rem; padding: 0.35rem 0;">
+            <label style="display: flex; align-items: center; gap: 0.4rem; cursor: pointer; font-size: 0.9rem; font-weight: 700;">
+              <input type="radio" name="salary-mode" value="salary" checked /> 월급 기준 (기본급+수당)
+            </label>
+            <label style="display: flex; align-items: center; gap: 0.4rem; cursor: pointer; font-size: 0.9rem; font-weight: 700;">
+              <input type="radio" name="salary-mode" value="annual" /> 연봉 기준 (계약 연봉)
+            </label>
+          </div>
+        </div>
+
+        <!-- 급여 금액 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <label id="label-amount" for="input-amount" class="input-card-label">세전 월급여 (기본급+수당)</label>
+            <span id="badge-amount" class="korean-amount-badge">350만 원</span>
+          </div>
+          <div class="input-group-modern">
+            <input type="number" id="input-amount" class="form-control" step="10000" min="0" value="3500000" />
+            <span id="unit-salary-label" class="input-suffix-badge">원 / 월</span>
+          </div>
+          <div class="quick-chips-row" id="salary-chips-container">
+            <button type="button" class="quick-chip-btn chip-btn" data-set="2500000">250만</button>
+            <button type="button" class="quick-chip-btn chip-btn" data-set="3500000">350만</button>
+            <button type="button" class="quick-chip-btn chip-btn" data-set="5000000">500만</button>
+            <button type="button" class="quick-chip-btn chip-btn" data-add="100000">+10만</button>
+            <button type="button" class="quick-chip-btn chip-btn" data-add="500000">+50만</button>
+          </div>
+        </div>
+
+        <!-- 2. 비과세 및 부양가족 -->
+        <div class="step-section-title" style="margin: 1.25rem 0 0.85rem;">
+          <span class="step-badge">STEP 2</span> 비과세 및 부양가족 공제
+        </div>
+
+        <!-- 비과세 식대 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <label for="input-meal" class="input-card-label">비과세 식대 (월 최대 20만원)</label>
+            <span id="badge-meal" class="korean-amount-badge">20만 원</span>
+          </div>
+          <div class="input-group-modern">
+            <input type="number" id="input-meal" class="form-control" step="10000" min="0" max="1000000" value="200000" />
+            <span class="input-suffix-badge">원 / 월</span>
+          </div>
+        </div>
+
+        <!-- 부양가족 및 20세 이하 자녀 -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+          <div class="input-card">
+            <div class="input-card-header">
+              <label for="input-dependents" class="input-card-label">부양가족 수 (본인포함)</label>
+            </div>
+            <div class="input-group-modern">
+              <input type="number" id="input-dependents" class="form-control" min="1" max="15" value="1" />
+              <span class="input-suffix-badge">명</span>
+            </div>
+          </div>
+          <div class="input-card">
+            <div class="input-card-header">
+              <label for="input-children" class="input-card-label">20세 이하 자녀 수</label>
+            </div>
+            <div class="input-group-modern">
+              <input type="number" id="input-children" class="form-control" min="0" max="10" value="0" />
+              <span class="input-suffix-badge">명</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 우측: 결과 요약 패널 -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">실수령액 및 공제 내역</h2>
+        </div>
+
+        <!-- 하이라이트: 월 세후 실수령액 -->
+        <div class="highlight-result-box">
+          <div class="highlight-result-title">매월 통장에 입금되는 예상 실수령액</div>
+          <div id="stat-net-monthly" class="highlight-result-amount">0원</div>
+          <div id="stat-net-monthly-korean" class="highlight-result-korean">0원</div>
+        </div>
+
+        <!-- 핵심 요약 지표 -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.25rem;">
+          <div style="padding: 0.85rem; border: 1px solid var(--border-color); border-radius: 12px; background: var(--bg-card);">
+            <div style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.2rem;">세전 월급여</div>
+            <div id="stat-gross-monthly" style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary);">-</div>
+          </div>
+          <div style="padding: 0.85rem; border: 1px solid var(--border-color); border-radius: 12px; background: var(--bg-card);">
+            <div style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.2rem;">월 총 공제액 (세금+보험)</div>
+            <div id="stat-total-deductions" style="font-size: 0.95rem; font-weight: 700; color: #dc2626;">-</div>
+          </div>
+        </div>
+
+        <!-- 연간 실수령액 안내 -->
+        <div style="border: 1px solid var(--border-color); border-radius: 12px; padding: 0.85rem 1rem; margin-bottom: 1.25rem; background: var(--bg-card); display: flex; justify-content: space-between; align-items: center;">
+          <span style="font-size: 0.88rem; font-weight: 700; color: var(--text-secondary);">연간 총 세후 실수령액</span>
+          <span id="stat-net-annual" style="font-size: 1.05rem; font-weight: 800; color: var(--accent-primary);">-</span>
+        </div>
+
+        <!-- 4대보험 세부 공제 내역 표 -->
+        <div style="border: 1px solid var(--border-color); border-radius: 12px; padding: 1rem; background: var(--bg-card); margin-bottom: 1.25rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; border-bottom: 1.5px solid var(--border-color); padding-bottom: 0.4rem;">
+            <strong style="font-size: 0.88rem; color: var(--text-primary);">🛡️ 4대 보험료 합계</strong>
+            <strong id="detail-total-insurance" style="color: #dc2626; font-size: 0.95rem;">0원</strong>
+          </div>
+          <div style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.8;">
+            <div style="display: flex; justify-content: space-between;">
+              <span>• 국민연금 (4.5%):</span>
+              <span id="detail-pension">0원</span>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+              <span>• 건강보험 (3.545%):</span>
+              <span id="detail-health">0원</span>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+              <span>• 장기요양보험 (건보료 12.95%):</span>
+              <span id="detail-care">0원</span>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+              <span>• 고용보험 (0.9%):</span>
+              <span id="detail-emp">0원</span>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; margin: 0.85rem 0 0.6rem; border-top: 1px dashed var(--border-color); border-bottom: 1.5px solid var(--border-color); padding: 0.6rem 0 0.4rem;">
+            <strong style="font-size: 0.88rem; color: var(--text-primary);">🏛️ 소득세 및 지방세 합계</strong>
+            <strong id="detail-total-tax" style="color: #dc2626; font-size: 0.95rem;">0원</strong>
+          </div>
+          <div style="font-size: 0.82rem; color: var(--text-secondary); line-height: 1.8;">
+            <div style="display: flex; justify-content: space-between;">
+              <span>• 근로소득세:</span>
+              <span id="detail-income-tax">0원</span>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+              <span>• 지방소득세 (소득세의 10%):</span>
+              <span id="detail-local-tax">0원</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="background: var(--bg-subtle); border-radius: 10px; padding: 0.85rem; font-size: 0.78rem; line-height: 1.6; color: var(--text-secondary);">
+          * 2026년 기준 법정 4대보험 요율이 적용되었습니다. 실제 급여 명세서의 세액은 회사의 연말정산 공제 항목, 비과세 수당(차량유지비, 육아수당 등)에 따라 일부 차이가 발생할 수 있습니다.
+        </div>
+      </div>
+    </section>
+
+    <!-- 법적 면책 조항 컨테이너 -->
+    <div id="disclaimer-container"></div>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="../../assets/js/core-ui.js"></script>
+  <script src="logic.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

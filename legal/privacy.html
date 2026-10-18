@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko" data-default-theme="light" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <title>개인정보처리방침 및 쿠키 정책 | SimuLab Analytics Hub</title>
+  <meta name="description" content="SimuLab Hub의 개인정보처리방침, 100% 클라이언트 사이드 데이터 처리 원칙 및 Google AdSense/Analytics 쿠키 정책 안내" />
+  <link rel="stylesheet" href="../assets/css/common.css" />
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main class="container">
+    <article class="seo-article card">
+      <h1>개인정보처리방침 및 쿠키(Cookie) 정책</h1>
+      <p><strong>시행일자:</strong> 2026년 10월 17일</p>
+      <p>
+        <strong>SimuLab Analytics Hub</strong>(이하 "본 사이트")는 이용자의 개인정보를 중요시하며, 「개인정보 보호법」 및 관련 법령을 철저히 준수합니다.
+        본 사이트는 별도의 회원가입이나 백엔드 데이터베이스(DB) 없이 동작하는 <strong>100% 클라이언트 사이드(Client-Side) 정적 웹 애플리케이션</strong>으로 설계되었습니다.
+      </p>
+
+      <h2>1. 수집하는 개인정보 항목 및 처리 방식 (무서버 아키텍처)</h2>
+      <ul>
+        <li>
+          <strong>시뮬레이션 입력 데이터의 비수집 원칙:</strong>
+          이용자가 각 계산기 및 시뮬레이터에 입력하는 금액, 수익률, 대출 조건, 기업 원가(CAPEX/OPEX), 신체 나이, 심박수 등의 모든 수치는 외부 서버로 일절 전송되거나 저장되지 않습니다.
+        </li>
+        <li>
+          <strong>브라우저 로컬 저장소(localStorage) 활용:</strong>
+          이용자의 편의를 위해 최근 설정값이나 고정(Pin)한 비교 시나리오 데이터는 오직 이용자 본인의 웹 브라우저 내부(<code>localStorage</code>)에만 저장되며, 브라우저 캐시 삭제 시 즉시 소멸됩니다.
+        </li>
+      </ul>
+
+      <h2>2. 자동 수집 정보 및 쿠키(Cookie)의 사용 목적</h2>
+      <p>
+        본 사이트는 서비스 품질 향상, 방문 통계 분석 및 무료 서비스 유지를 위한 광고 게재를 위해 제3자 서비스(Google Analytics 4, Google AdSense)를 이용하며, 이 과정에서 브라우저 쿠키(Cookie) 및 익명화된 접속 로그가 사용될 수 있습니다.
+      </p>
+      <ul>
+        <li>
+          <strong>Google Analytics (GA4):</strong> 방문자 수, 페이지 체류 시간, 기기 유형 등 개인을 식별할 수 없는 익명 통계 데이터를 분석하여 시뮬레이터 UI/UX 개선에 활용합니다.
+        </li>
+        <li>
+          <strong>Google AdSense (구글 애드센스):</strong> Google을 포함한 제3자 광고 사업자는 쿠키를 사용하여 이용자의 본 사이트 또는 다른 웹사이트 방문 기록을 기반으로 맞춤형 광고를 제공할 수 있습니다.
+        </li>
+      </ul>
+
+      <h2>3. 쿠키(Cookie) 설정 거부 및 맞춤형 광고 해제 방법</h2>
+      <p>이용자는 언제든지 쿠키 설치에 대한 선택권을 가지고 있으며, 아래 방법을 통해 쿠키 저장을 거부하거나 맞춤형 광고 설정을 해제할 수 있습니다.</p>
+      <ol>
+        <li>
+          <strong>구글 광고 설정 제어:</strong>
+          <a href="https://myadcenter.google.com/" target="_blank" rel="noopener noreferrer">Google 내 광고 센터(My Ad Center)</a>에서 맞춤형 광고를 직접 비활성화할 수 있습니다.
+        </li>
+        <li>
+          <strong>웹 브라우저 설정 변경:</strong>
+          사용하시는 브라우저(Chrome, Edge, Safari 등)의 [설정] → [개인정보 보호 및 보안] → [쿠키 및 기타 사이트 데이터] 메뉴에서 모든 쿠키를 차단하거나 사이트 종료 시 삭제하도록 설정할 수 있습니다.
+        </li>
+      </ol>
+
+      <h2>4. 개인정보 보호책임자 및 문의처</h2>
+      <p>
+        본 사이트의 개인정보처리방침이나 서비스 이용과 관련하여 궁금하신 사항은 <a href="./about.html">서비스 소개 및 문의 안내</a> 페이지에 기재된 공식 연락처로 문의해 주시기 바랍니다.
+      </p>
+    </article>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="../assets/js/core-ui.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      window.SimuLab.initCommonUI('legal');
+    });
+  </script>
+</body>
+</html>

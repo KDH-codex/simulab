@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ko" data-default-theme="light" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <title>소비 vs 투자 기회비용 계산기 (신차·명품·배달 대신 S&P500 복리) | SimuLab Hub</title>
+  <meta name="description" content="신차 3,500만원, 명품백 400만원, 매일 배달음식과 커피값을 오늘 쓰는 대신 미국 S&P500 지수나 배당주에 복리 투자했을 때 10년, 20년 뒤 얼마의 자산 격차가 생기는지 실시간 시뮬레이션합니다." />
+  <link rel="canonical" href="https://simulab.kr/tools/opportunity-cost-calc/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="소비 vs 투자 기회비용 계산기 | SimuLab Hub" />
+  <meta property="og:description" content="그 돈으로 차를 사지 않고 S&P500에 투자했다면 얼마가 되었을까? 직관적인 복리 기회비용과 실물 자산 격차를 확인하세요." />
+
+  <link rel="stylesheet" href="../../assets/css/common.css" />
+  <style>
+    .korean-amount-badge {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--accent-primary);
+      background: var(--accent-soft);
+      padding: 0.2rem 0.55rem;
+      border-radius: 6px;
+    }
+    .spend-preset-btn.active,
+    .asset-preset-btn.active,
+    .period-btn.active {
+      background: var(--accent-primary) !important;
+      color: #ffffff !important;
+      border-color: var(--accent-primary) !important;
+    }
+    .highlight-result-box {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(30, 64, 175, 0.02));
+      border: 1.5px solid rgba(37, 99, 235, 0.25);
+      border-radius: 16px;
+      padding: 1.5rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .highlight-result-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      margin-bottom: 0.4rem;
+    }
+    .highlight-result-amount {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-weight: 900;
+      color: var(--accent-primary);
+      letter-spacing: -0.02em;
+    }
+    .highlight-result-korean {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-top: 0.25rem;
+    }
+    .comparison-pill {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 0.75rem 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .comparison-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+    .comparison-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .comparison-val {
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+  </style>
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main class="container">
+    <section class="page-header">
+      <div class="page-header-badges">
+        <span class="brand-badge">INSIGHT &amp; OPPORTUNITY LAB</span>
+      </div>
+      <h1 class="page-title">소비 vs 투자 기회비용</h1>
+      <p class="page-subtitle">
+        신차 구매, 명품백, 매일 마시는 커피와 배달음식. <strong>“이 돈을 소비하지 않고 미국 S&amp;P500이나 배당주에 복리 투자했다면?”</strong>
+        시간이 지나면서 벌어지는 놀라운 <strong>자산 격차와 실물 부동산·평생 연금 가치</strong>를 한눈에 체감하세요.
+      </p>
+    </section>
+
+    <section class="simulator-grid">
+      <!-- 좌측: 입력 패널 -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">소비 및 투자 조건 설정</h2>
+          <button type="button" id="btn-reset" class="btn btn-secondary" style="padding: 0.25rem 0.65rem; font-size: 0.78rem;">초기화</button>
+        </div>
+
+        <!-- 1. 인기 소비 프리셋 -->
+        <div class="step-section-title" style="margin-bottom: 0.85rem;">
+          <span class="step-badge">STEP 1</span> 일상 소비 항목 선택
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.45rem; margin-bottom: 1rem;">
+          <button type="button" class="spend-preset-btn active btn btn-secondary" data-preset="car" style="font-size: 0.82rem; padding: 0.55rem 0.2rem;">🚗 신차 3,500만</button>
+          <button type="button" class="spend-preset-btn btn btn-secondary" data-preset="luxury_bag" style="font-size: 0.82rem; padding: 0.55rem 0.2rem;">👜 명품백 400만</button>
+          <button type="button" class="spend-preset-btn btn btn-secondary" data-preset="phone" style="font-size: 0.82rem; padding: 0.55rem 0.2rem;">📱 최신폰 180만</button>
+          <button type="button" class="spend-preset-btn btn btn-secondary" data-preset="delivery" style="font-size: 0.82rem; padding: 0.55rem 0.2rem;">🛵 배달 월 25만</button>
+          <button type="button" class="spend-preset-btn btn btn-secondary" data-preset="coffee" style="font-size: 0.82rem; padding: 0.55rem 0.2rem;">☕ 커피 월 15만</button>
+          <button type="button" class="spend-preset-btn btn btn-secondary" data-preset="smoking" style="font-size: 0.82rem; padding: 0.55rem 0.2rem;">🚬 담배 월 13.5만</button>
+        </div>
+
+        <!-- 지출 유형 (일시불 vs 월 반복) -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <span class="input-card-label">지출 방식 선택</span>
+          </div>
+          <div style="display: flex; gap: 1rem; padding: 0.25rem 0;">
+            <label style="display: flex; align-items: center; gap: 0.4rem; cursor: pointer; font-size: 0.88rem; font-weight: 600;">
+              <input type="radio" name="spend-type" value="lump" checked /> 1회성 목돈 지출 (신차/명품/전자기기)
+            </label>
+            <label style="display: flex; align-items: center; gap: 0.4rem; cursor: pointer; font-size: 0.88rem; font-weight: 600;">
+              <input type="radio" name="spend-type" value="recurring" /> 매월 반복 지출 (배달/커피/구독)
+            </label>
+          </div>
+        </div>
+
+        <!-- 지출 금액 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <label for="input-amount" class="input-card-label">소비 금액</label>
+            <span id="badge-amount" class="korean-amount-badge">3,500만 원</span>
+          </div>
+          <div class="input-group-modern">
+            <input type="number" id="input-amount" class="form-control" step="10000" min="0" value="35000000" />
+            <span id="amount-unit-label" class="input-suffix-badge">원</span>
+          </div>
+          <div class="quick-chips-row">
+            <button type="button" class="quick-chip-btn chip-btn" data-set="10000000">1,000만</button>
+            <button type="button" class="quick-chip-btn chip-btn" data-set="35000000">3,500만</button>
+            <button type="button" class="quick-chip-btn chip-btn" data-set="50000000">5,000만</button>
+            <button type="button" class="quick-chip-btn chip-btn" data-add="5000000">+500만</button>
+            <button type="button" class="quick-chip-btn chip-btn" data-add="10000000">+1,000만</button>
+          </div>
+        </div>
+
+        <!-- 2. 투자 조건 -->
+        <div class="step-section-title" style="margin: 1.25rem 0 0.85rem;">
+          <span class="step-badge">STEP 2</span> 투자 자산 및 기간 설정
+        </div>
+
+        <!-- 기대 수익률 프리셋 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <span class="input-card-label">투자 대상 및 연평균 기대수익률</span>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.4rem; margin-bottom: 0.6rem;">
+            <button type="button" class="asset-preset-btn active btn btn-secondary" data-asset="sp500" style="font-size: 0.8rem;">S&amp;P500 (연 8%)</button>
+            <button type="button" class="asset-preset-btn btn btn-secondary" data-asset="dividend" style="font-size: 0.8rem;">배당성장 (연 6%)</button>
+            <button type="button" class="asset-preset-btn btn btn-secondary" data-asset="nasdaq" style="font-size: 0.8rem;">나스닥100 (연 12%)</button>
+          </div>
+          <div class="input-group-modern">
+            <input type="number" id="input-return" class="form-control" step="0.5" min="1" max="50" value="8" />
+            <span class="input-suffix-badge">% / 년</span>
+          </div>
+        </div>
+
+        <!-- 투자 기간 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <span class="input-card-label">복리 투자 기간</span>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.4rem; margin-bottom: 0.6rem;">
+            <button type="button" class="period-btn btn btn-secondary" data-years="5">5년</button>
+            <button type="button" class="period-btn active btn btn-secondary" data-years="10">10년</button>
+            <button type="button" class="period-btn btn btn-secondary" data-years="20">20년</button>
+            <button type="button" class="period-btn btn btn-secondary" data-years="30">30년</button>
+          </div>
+          <div class="input-group-modern">
+            <input type="number" id="input-years" class="form-control" step="1" min="1" max="50" value="10" />
+            <span class="input-suffix-badge">년</span>
+          </div>
+        </div>
+
+        <!-- 감가상각률 (1회성일 때만) -->
+        <div id="group-deprec" class="input-card">
+          <div class="input-card-header">
+            <label for="input-deprec" class="input-card-label">물품 연간 가치하락률 (감가상각)</label>
+          </div>
+          <div class="input-group-modern">
+            <input type="number" id="input-deprec" class="form-control" step="1" min="0" max="100" value="12" />
+            <span class="input-suffix-badge">% / 년</span>
+          </div>
+          <div style="font-size: 0.76rem; color: var(--text-muted); margin-top: 0.35rem;">
+            * 자동차: 연 10~15%, 명품: 연 15~20%, 전자기기: 연 30% 수준
+          </div>
+        </div>
+      </div>
+
+      <!-- 우측: 결과 요약 패널 -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">미래 가치 및 자산 격차</h2>
+        </div>
+
+        <!-- 하이라이트: 투자 시 미래 복리 자산 -->
+        <div class="highlight-result-box">
+          <div class="highlight-result-title">투자했다면 불어났을 미래 자산</div>
+          <div id="stat-future-value" class="highlight-result-amount">0원</div>
+          <div id="stat-future-korean" class="highlight-result-korean">0원</div>
+        </div>
+
+        <!-- 비교 카드: 소비 잔존가치 vs 총 자산 격차 -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.25rem;">
+          <div style="padding: 0.85rem; border: 1px solid var(--border-color); border-radius: 12px; background: var(--bg-card);">
+            <div style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.2rem;">소비 물품 남은 가치</div>
+            <div id="stat-residual-value" style="font-size: 0.95rem; font-weight: 700; color: #dc2626;">0원</div>
+          </div>
+          <div style="padding: 0.85rem; border: 1px solid var(--border-color); border-radius: 12px; background: var(--bg-card);">
+            <div style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.2rem;">자산 증식 배수</div>
+            <div id="stat-multiplier" style="font-size: 0.95rem; font-weight: 800; color: var(--accent-primary);">0배</div>
+          </div>
+        </div>
+
+        <!-- 총 기회비용 격차 배너 -->
+        <div style="border: 1px solid var(--border-color); border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem; background: var(--bg-card);">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 0.92rem; font-weight: 700; color: var(--text-primary);">⚡ 최종 기회비용 격차</span>
+            <span id="stat-opportunity-gap" style="font-size: 1.25rem; font-weight: 900; color: #2563eb;">0원</span>
+          </div>
+          <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.4rem;">
+            (투자 시 자산에서 소비 물품의 잔존 중고가를 뺀 순수 경제적 손실 격차)
+          </div>
+        </div>
+
+        <!-- 체감형 실물 비교 배너 -->
+        <div style="margin-bottom: 1.25rem;">
+          <div style="font-size: 0.88rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.65rem;">
+            💡 이 돈의 실생활 체감 가치는?
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem;">
+            <div class="comparison-pill">
+              <span class="comparison-icon">🏠</span>
+              <div>
+                <div class="comparison-label">부동산 가치 환산</div>
+                <div id="stat-real-estate" class="comparison-val">-</div>
+              </div>
+            </div>
+            <div class="comparison-pill">
+              <span class="comparison-icon">💰</span>
+              <div>
+                <div class="comparison-label">평생 배당 연금 (연 5%)</div>
+                <div id="stat-monthly-dividend" class="comparison-val">-</div>
+              </div>
+            </div>
+            <div class="comparison-pill">
+              <span class="comparison-icon">🍗</span>
+              <div>
+                <div class="comparison-label">치킨 환산 (마리)</div>
+                <div id="stat-chicken-count" class="comparison-val">-</div>
+              </div>
+            </div>
+            <div class="comparison-pill">
+              <span class="comparison-icon">✈️</span>
+              <div>
+                <div class="comparison-label">해외여행 환산 (200만)</div>
+                <div id="stat-travel-count" class="comparison-val">-</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 연도별 누적 추이 프로그레스 바 -->
+        <div style="border: 1px solid var(--border-color); border-radius: 12px; padding: 1rem; background: var(--bg-card);">
+          <div style="font-size: 0.88rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.75rem;">
+            📈 시간 경과에 따른 복리 자산 추이
+          </div>
+          <div id="breakdown-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 법적 면책 조항 컨테이너 -->
+    <div id="disclaimer-container"></div>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="../../assets/js/core-ui.js"></script>
+  <script src="logic.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

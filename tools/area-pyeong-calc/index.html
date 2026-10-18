@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko" data-default-theme="light" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <title>부동산 평수 ㎡ 환산기 (국민평형 84㎡ 59㎡·평당 분양가 계산) | SimuLab Hub</title>
+  <meta name="description" content="아파트 제곱미터(㎡)와 평수를 양방향으로 1초 만에 환산합니다. 84㎡(34평형), 59㎡(25평형) 원클릭 프리셋과 평당 분양가 ↔ ㎡당 단가 자동 계산을 지원합니다." />
+  <link rel="canonical" href="https://simulab.kr/tools/area-pyeong-calc/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="부동산 평수 ㎡ 환산기 | SimuLab Hub" />
+  <meta property="og:description" content="아파트 평수와 제곱미터(㎡), 평당 분양가를 즉시 환산하세요." />
+
+  <link rel="stylesheet" href="../../assets/css/common.css" />
+  <style>
+    .korean-amount-badge {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--accent-primary);
+      background: var(--accent-soft);
+      padding: 0.2rem 0.55rem;
+      border-radius: 6px;
+    }
+    .preset-area-btn.active {
+      background: var(--accent-primary) !important;
+      color: #ffffff !important;
+      border-color: var(--accent-primary) !important;
+    }
+    .highlight-result-box {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(30, 64, 175, 0.02));
+      border: 1.5px solid rgba(37, 99, 235, 0.25);
+      border-radius: 16px;
+      padding: 1.5rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .highlight-result-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      margin-bottom: 0.4rem;
+    }
+    .highlight-result-amount {
+      font-size: clamp(2.2rem, 5vw, 3rem);
+      font-weight: 900;
+      color: #2563eb;
+      letter-spacing: -0.02em;
+    }
+  </style>
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main class="container">
+    <section class="page-header">
+      <div class="page-header-badges">
+        <span class="brand-badge">REAL ESTATE &amp; AREA LAB</span>
+      </div>
+      <h1 class="page-title">부동산 평수 ㎡ 환산기</h1>
+      <p class="page-subtitle">
+        아파트 분양 공고의 전용면적 <strong>84㎡(국평 34평형), 59㎡(25평형)</strong>를 1초 만에 평수로 상호 환산하고,
+        <strong>평당 분양가와 ㎡당 단가</strong>까지 실시간으로 비교 계산해 드립니다.
+      </p>
+    </section>
+
+    <section class="simulator-grid">
+      <!-- 좌측 입력 -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">면적 입력 및 빠른 프리셋</h2>
+        </div>
+
+        <div class="step-section-title" style="margin-bottom: 0.85rem;">
+          <span class="step-badge">STEP 1</span> 인기 아파트 평형 선택
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.45rem; margin-bottom: 1.25rem;">
+          <button type="button" class="preset-area-btn btn btn-secondary" data-sqm="59" style="font-size: 0.8rem; padding: 0.6rem 0.2rem;">59㎡ (25평)</button>
+          <button type="button" class="preset-area-btn active btn btn-secondary" data-sqm="84" style="font-size: 0.8rem; padding: 0.6rem 0.2rem;">84㎡ (34평)</button>
+          <button type="button" class="preset-area-btn btn btn-secondary" data-sqm="114" style="font-size: 0.8rem; padding: 0.6rem 0.2rem;">114㎡ (45평)</button>
+          <button type="button" class="preset-area-btn btn btn-secondary" data-sqm="33" style="font-size: 0.8rem; padding: 0.6rem 0.2rem;">33㎡ (10평)</button>
+        </div>
+
+        <!-- ㎡ 입력 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <label for="input-sqm" class="input-card-label">제곱미터 (㎡)</label>
+          </div>
+          <div class="input-group-modern">
+            <input type="number" id="input-sqm" class="form-control" step="0.1" min="0" value="84" />
+            <span class="input-suffix-badge">㎡</span>
+          </div>
+        </div>
+
+        <!-- 평수 입력 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <label for="input-pyeong" class="input-card-label">평수 (평)</label>
+          </div>
+          <div class="input-group-modern">
+            <input type="number" id="input-pyeong" class="form-control" step="0.1" min="0" value="25.4" />
+            <span class="input-suffix-badge">평</span>
+          </div>
+        </div>
+
+        <!-- 평당가 환산 -->
+        <div class="step-section-title" style="margin: 1.25rem 0 0.85rem;">
+          <span class="step-badge">STEP 2</span> 평당 분양가 ↔ ㎡당 단가
+        </div>
+
+        <div class="input-card">
+          <div class="input-card-header">
+            <label for="input-unit-price" class="input-card-label">평당 분양가</label>
+            <span id="badge-unit-price" class="korean-amount-badge">3,000만 원</span>
+          </div>
+          <div class="input-group-modern">
+            <input type="number" id="input-unit-price" class="form-control" step="1000000" min="0" value="30000000" />
+            <span class="input-suffix-badge">원 / 평</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 우측 결과 -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">환산 결과</h2>
+        </div>
+
+        <div class="highlight-result-box">
+          <div class="highlight-result-title">환산 면적</div>
+          <div id="stat-main-result" class="highlight-result-amount">25.41 평</div>
+          <div id="stat-sub-result" style="font-size: 1rem; font-weight: 700; color: var(--text-primary); margin-top: 0.3rem;">84 ㎡</div>
+        </div>
+
+        <div style="border: 1px solid var(--border-color); border-radius: 12px; padding: 1rem; background: var(--bg-card); margin-bottom: 1.25rem;">
+          <div style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.25rem;">평당 3,000만원 기준 환산 단가:</div>
+          <div id="stat-price-converted" style="font-size: 1.2rem; font-weight: 800; color: var(--accent-primary);">㎡당 약 9,074,999원</div>
+        </div>
+
+        <div style="background: var(--bg-subtle); border-radius: 10px; padding: 0.9rem; font-size: 0.8rem; line-height: 1.6; color: var(--text-secondary);">
+          <strong style="color: var(--text-primary);">📌 대한민국 아파트 면적 법정 상식:</strong>
+          <ul style="margin: 0.4rem 0 0 1rem; padding: 0;">
+            <li><strong>법정 계량단위</strong>: 2007년부터 '평' 단위 사용이 금지되고 <strong>제곱미터(㎡)</strong> 표기가 의무화되었습니다. (1평 = 약 3.3058㎡)</li>
+            <li><strong>전용면적 vs 공급면적</strong>: 분양 공고의 '84㎡'는 순수 현관문 안쪽의 <strong>전용면적(실평수 약 25.4평)</strong>이며, 계단·복도 등 공용면적을 합치면 통상 <strong>34평형</strong>으로 부릅니다.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 법적 면책 조항 컨테이너 -->
+    <div id="disclaimer-container"></div>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="../../assets/js/core-ui.js"></script>
+  <script src="logic.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>센스있는 더치페이 & 뿜빠이 복불복 계산기 — 카톡 정산 문구 자동완성 | SimuLab</title>
+  <meta name="description" content="회식과 모임 정산의 스트레스 끝! 1/N 균등 분할부터 100원/1,000원 단위 절사, 지각자 벌금 가산, 비음주자 할인, 1명 몰아주기 복불복까지. 카톡 정산 문구 원클릭 복사 제공." />
+  <link rel="stylesheet" href="../../assets/css/common.css" />
+  <style>
+    /* 더치페이 계산기 전용 스타일 */
+    .mode-tab-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .mode-tab-label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0.85rem 0.6rem;
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: center;
+    }
+    .mode-tab-label:hover {
+      background: #f8fafc;
+      border-color: #cbd5e1;
+    }
+    .mode-tab-label input[type="radio"] {
+      display: none;
+    }
+    .mode-tab-label:has(input:checked) {
+      border-color: #2563eb;
+      background: #eff6ff;
+      box-shadow: 0 0 0 1px #2563eb;
+    }
+    .mode-icon {
+      font-size: 1.4rem;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .mode-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+    .mode-desc {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      margin-top: 0.15rem;
+    }
+  </style>
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main class="container" style="padding-top: 1.5rem; padding-bottom: 3rem;">
+    <!-- 페이지 제목 및 인트로 -->
+    <section class="page-header">
+      <h1 class="page-title">센스있는 더치페이 계산기</h1>
+      <p class="page-subtitle">
+        "10원 단위 자투리 잔돈, 누가 얼마 내야 하지?" 100원·1,000원 단위 깔끔 절사부터 지각자 벌금 가산, 술 안 마신 멤버 할인, 1명 몰아주기 복불복까지! 카카오톡 단톡방 전용 정산 문구를 즉시 복사해 드립니다.
+      </p>
+    </section>
+
+    <!-- 판정 브리핑 배너 -->
+    <div id="verdict-banner" class="verdict-banner" style="margin-bottom: 1.5rem;">
+      <div id="verdict-text" style="font-size: 0.95rem; line-height: 1.6;">
+        총 결제 금액과 인원수를 입력하시면 깔끔한 1인당 분담금과 정산표가 산출됩니다.
+      </div>
+    </div>
+
+    <!-- 핵심 KPI 카드 4종 -->
+    <section class="kpi-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+      <div class="card stat-card" style="padding: 1.25rem;">
+        <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">1인당 기본 분담금</span>
+        <div id="kpi-per-person" class="stat-value" style="font-size: 1.5rem; font-weight: 700; color: #2563eb; margin-top: 0.25rem;">30,000원</div>
+        <span style="font-size: 0.75rem; color: var(--text-muted);">절사 단위 적용 기준</span>
+      </div>
+
+      <div class="card stat-card" style="padding: 1.25rem;">
+        <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">실제 총 수금 예정액</span>
+        <div id="kpi-total-collected" class="stat-value" style="font-size: 1.5rem; font-weight: 700; color: var(--text-primary); margin-top: 0.25rem;">120,000원</div>
+        <span style="font-size: 0.75rem; color: var(--text-muted);">멤버 수금 합계액</span>
+      </div>
+
+      <div class="card stat-card" style="padding: 1.25rem;">
+        <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">자투리 잉여/부족금</span>
+        <div id="kpi-diff-amount" class="stat-value" style="font-size: 1.4rem; font-weight: 700; color: #10b981; margin-top: 0.25rem;">+0원 (딱 맞음)</div>
+        <span style="font-size: 0.75rem; color: var(--text-muted);">총무 수고비 또는 할인차액</span>
+      </div>
+
+      <div class="card stat-card" style="padding: 1.25rem;">
+        <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">현재 적용된 모드</span>
+        <div id="kpi-active-mode" class="stat-value" style="font-size: 1.3rem; font-weight: 700; color: #8b5cf6; margin-top: 0.25rem;">1/N 균등 분할</div>
+        <span style="font-size: 0.75rem; color: var(--text-muted);">룰 기반 차등 계산</span>
+      </div>
+    </section>
+
+    <!-- 입력 컨트롤 및 결과 그리드 -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+      <!-- 좌측: 입력 폼 -->
+      <div class="card" style="padding: 1.5rem;">
+        <h2 class="step-section-title" style="font-size: 1.15rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--text-primary);">
+          1단계. 결제 금액 & 정산 룰 설정
+        </h2>
+
+        <!-- 모드 선택 탭 -->
+        <div class="mode-tab-grid">
+          <label class="mode-tab-label">
+            <input type="radio" name="calc-mode" value="equal" checked />
+            <span class="mode-icon">⚖️</span>
+            <span class="mode-title">기본 1/N</span>
+            <span class="mode-desc">정확한 균등 분할</span>
+          </label>
+          <label class="mode-tab-label">
+            <input type="radio" name="calc-mode" value="late" />
+            <span class="mode-icon">⏰</span>
+            <span class="mode-title">지각자 가산</span>
+            <span class="mode-desc">늦은 사람 벌금 추가</span>
+          </label>
+          <label class="mode-tab-label">
+            <input type="radio" name="calc-mode" value="non_drinker" />
+            <span class="mode-icon">🧃</span>
+            <span class="mode-title">비음주 할인</span>
+            <span class="mode-desc">술 안 마신 사람 배려</span>
+          </label>
+          <label class="mode-tab-label">
+            <input type="radio" name="calc-mode" value="roulette" />
+            <span class="mode-icon">🎰</span>
+            <span class="mode-title">몰아주기</span>
+            <span class="mode-desc">1명 40% 복불복</span>
+          </label>
+        </div>
+
+        <!-- 1. 총 결제 금액 인풋 카드 -->
+        <div class="input-card" style="margin-bottom: 1rem;">
+          <div class="input-header">
+            <label for="input-total-amount" class="input-title">총 결제 금액</label>
+            <span id="badge-total-amount" class="input-badge">12만 원</span>
+          </div>
+          <div class="input-group">
+            <input type="number" id="input-total-amount" class="input-field" value="120000" step="1000" min="0" />
+            <span class="input-unit">원</span>
+          </div>
+          <div class="quick-chips">
+            <button type="button" class="chip-btn" data-target="input-total-amount" data-set="50000">5만</button>
+            <button type="button" class="chip-btn" data-target="input-total-amount" data-set="100000">10만</button>
+            <button type="button" class="chip-btn" data-target="input-total-amount" data-set="150000">15만</button>
+            <button type="button" class="chip-btn" data-target="input-total-amount" data-set="200000">20만</button>
+            <button type="button" class="chip-btn" data-target="input-total-amount" data-add="10000">+1만</button>
+            <button type="button" class="chip-btn" data-target="input-total-amount" data-add="50000">+5만</button>
+          </div>
+        </div>
+
+        <!-- 2. 총 인원수 인풋 카드 -->
+        <div class="input-card" style="margin-bottom: 1rem;">
+          <div class="input-header">
+            <label for="input-member-count" class="input-title">총 인원수</label>
+            <span id="badge-member-count" class="input-badge">4명</span>
+          </div>
+          <div class="input-group">
+            <input type="number" id="input-member-count" class="input-field" value="4" min="1" max="50" />
+            <span class="input-unit">명</span>
+          </div>
+          <div class="quick-chips">
+            <button type="button" class="chip-btn" data-target="input-member-count" data-set="2">2명</button>
+            <button type="button" class="chip-btn" data-target="input-member-count" data-set="3">3명</button>
+            <button type="button" class="chip-btn" data-target="input-member-count" data-set="4">4명</button>
+            <button type="button" class="chip-btn" data-target="input-member-count" data-set="5">5명</button>
+            <button type="button" class="chip-btn" data-target="input-member-count" data-set="6">6명</button>
+            <button type="button" class="chip-btn" data-target="input-member-count" data-set="8">8명</button>
+            <button type="button" class="chip-btn" data-target="input-member-count" data-add="1">+1명</button>
+            <button type="button" class="chip-btn" data-target="input-member-count" data-add="-1">-1명</button>
+          </div>
+        </div>
+
+        <!-- 절사 단위 및 방식 -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1rem;">
+          <div class="input-card">
+            <div class="input-header">
+              <label for="select-round-unit" class="input-title">절사 단위</label>
+            </div>
+            <select id="select-round-unit" class="form-select" style="width: 100%; padding: 0.65rem; border-radius: 8px; border: 1.5px solid var(--border-color); font-size: 0.9rem; background: var(--bg-card); color: var(--text-primary);">
+              <option value="1000" selected>1,000원 단위 (깔끔)</option>
+              <option value="100">100원 단위</option>
+              <option value="1">1원 단위 (원단위 맞춤)</option>
+            </select>
+          </div>
+          <div class="input-card">
+            <div class="input-header">
+              <label for="select-round-mode" class="input-title">절사 방식</label>
+            </div>
+            <select id="select-round-mode" class="form-select" style="width: 100%; padding: 0.65rem; border-radius: 8px; border: 1.5px solid var(--border-color); font-size: 0.9rem; background: var(--bg-card); color: var(--text-primary);">
+              <option value="ceil" selected>올림 (총무 손해 방지)</option>
+              <option value="floor">내림 (참가자 할인)</option>
+              <option value="round">반올림</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- 서브 패널: 지각자 가산 설정 -->
+        <div id="panel-late" style="display: none; background: #fffbeb; border: 1.5px solid #fde68a; border-radius: var(--radius-md); padding: 1rem; margin-bottom: 1rem;">
+          <div style="font-size: 0.88rem; font-weight: 700; color: #92400e; margin-bottom: 0.5rem;">⏰ 지각자 가산 세부 설정</div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+            <div>
+              <label for="input-late-count" style="font-size: 0.78rem; color: #78350f; display: block; margin-bottom: 0.25rem;">지각자 인원수</label>
+              <input type="number" id="input-late-count" class="form-input" value="1" min="1" max="10" style="width: 100%; padding: 0.5rem; border-radius: 6px; border: 1px solid #fde68a;" />
+            </div>
+            <div>
+              <label for="input-late-penalty" style="font-size: 0.78rem; color: #78350f; display: block; margin-bottom: 0.25rem;">1인당 추가 벌금(원)</label>
+              <input type="number" id="input-late-penalty" class="form-input" value="10000" step="1000" min="0" style="width: 100%; padding: 0.5rem; border-radius: 6px; border: 1px solid #fde68a;" />
+            </div>
+          </div>
+        </div>
+
+        <!-- 서브 패널: 비음주자 할인 설정 -->
+        <div id="panel-non-drinker" style="display: none; background: #f0fdf4; border: 1.5px solid #bbf7d0; border-radius: var(--radius-md); padding: 1rem; margin-bottom: 1rem;">
+          <div style="font-size: 0.88rem; font-weight: 700; color: #166534; margin-bottom: 0.5rem;">🧃 비음주자 할인 세부 설정</div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem;">
+            <div>
+              <label for="input-non-drinker-count" style="font-size: 0.78rem; color: #14532d; display: block; margin-bottom: 0.25rem;">비음주자 수</label>
+              <input type="number" id="input-non-drinker-count" class="form-input" value="1" min="1" max="10" style="width: 100%; padding: 0.5rem; border-radius: 6px; border: 1px solid #bbf7d0;" />
+            </div>
+            <div>
+              <label for="input-non-drinker-discount" style="font-size: 0.78rem; color: #14532d; display: block; margin-bottom: 0.25rem;">할인율 (%)</label>
+              <input type="number" id="input-non-drinker-discount" class="form-input" value="30" min="10" max="80" step="5" style="width: 100%; padding: 0.5rem; border-radius: 6px; border: 1px solid #bbf7d0;" />
+            </div>
+          </div>
+        </div>
+
+        <!-- 버튼 그룹 -->
+        <div style="display: flex; gap: 0.75rem; margin-top: 1.25rem;">
+          <button type="button" class="btn btn-primary" id="btn-calculate" style="flex: 2; padding: 0.85rem; font-weight: 700;">
+            정산하기
+          </button>
+          <button type="button" class="btn btn-outline" id="btn-reset" style="flex: 1; padding: 0.85rem;">
+            초기화
+          </button>
+        </div>
+      </div>
+
+      <!-- 우측: 멤버별 정산표 및 카톡 문구 프리뷰 -->
+      <div class="card" style="padding: 1.5rem;">
+        <h2 class="step-section-title" style="font-size: 1.15rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
+          2단계. 멤버별 분담금 & 카톡 복사
+        </h2>
+
+        <!-- 멤버별 분담표 -->
+        <div style="max-height: 240px; overflow-y: auto; margin-bottom: 1.25rem; border: 1px solid var(--border-color); border-radius: var(--radius-md);">
+          <table style="width: 100%; border-collapse: collapse; font-size: 0.86rem; text-align: left;">
+            <thead style="background: var(--bg-main); border-bottom: 1px solid var(--border-color); position: sticky; top: 0;">
+              <tr>
+                <th style="padding: 0.6rem 0.75rem;">멤버</th>
+                <th style="padding: 0.6rem 0.75rem;">역할 / 구분</th>
+                <th style="padding: 0.6rem 0.75rem; text-align: right;">최종 입금액</th>
+              </tr>
+            </thead>
+            <tbody id="member-table-body">
+              <!-- app.js에서 동적 생성 -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- 카카오톡 공유 문구 박스 -->
+        <div style="background: #fef08a; border: 1px solid #facc15; border-radius: var(--radius-md); padding: 1.25rem; color: #713f12;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <strong style="font-size: 0.88rem; display: flex; align-items: center; gap: 0.3rem;">
+              <span>💬</span> 카카오톡 단톡방 전송용 정산 문구
+            </strong>
+            <button type="button" id="btn-copy-kakao" class="btn btn-primary" style="padding: 0.35rem 0.75rem; font-size: 0.8rem; background: #eab308; border-color: #ca8a04; color: #ffffff;">
+              문구 복사하기
+            </button>
+          </div>
+          <pre id="kakao-preview-text" style="font-family: var(--font-mono); font-size: 0.82rem; line-height: 1.5; white-space: pre-wrap; margin: 0; background: #ffffff; padding: 0.85rem; border-radius: 6px; border: 1px solid #fef08a; max-height: 160px; overflow-y: auto;">
+            <!-- app.js 동적 렌더링 -->
+          </pre>
+        </div>
+      </div>
+    </div>
+
+    <!-- SEO 전문 가이드 및 FAQ -->
+    <article class="card" style="padding: 1.75rem; margin-top: 2rem;">
+      <h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
+        완벽하고 센스있는 회식·모임 더치페이 가이드
+      </h2>
+      <p style="font-size: 0.88rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1rem;">
+        즐겁게 끝난 회식이나 파티 뒤에 가장 곤란한 순간이 바로 <strong>'애매한 자투리 금액'과 '불공평한 술값 계산'</strong>입니다. 10원 단위까지 정확히 나누면 송금하는 사람도, 받는 총무도 번거롭고 불쾌해지기 마련입니다.
+      </p>
+
+      <h3 style="font-size: 1.05rem; font-weight: 700; margin: 1.25rem 0 0.5rem; color: var(--text-primary);">
+        1. 1,000원 단위 올림(Ceil)을 추천하는 이유
+      </h3>
+      <p style="font-size: 0.88rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1rem;">
+        총 결제 금액을 인원수로 나눴을 때 1,000원 단위로 올림하여 걷으면, 계산과 송금이 매우 간편해질 뿐만 아니라 발생하는 수천 원의 잉여금은 <strong>총무의 수고비(커피 한 잔)나 다음 모임 적립금</strong>으로 활용되어 총무가 사비로 손해를 보는 일을 원천 차단할 수 있습니다.
+      </p>
+
+      <h3 style="font-size: 1.05rem; font-weight: 700; margin: 1.25rem 0 0.5rem; color: var(--text-primary);">
+        2. 비음주자와 지각자를 배려하는 스마트 정산
+      </h3>
+      <p style="font-size: 0.88rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1rem;">
+        술을 전혀 마시지 않은 멤버에게 주류 비용이 포함된 전체 금액의 1/N을 요구하면 모임의 만족도가 크게 떨어집니다. 본 계산기의 <strong>[비음주 할인 모드]</strong>를 활용해 20~30% 할인을 자동 적용하고, 늦게 온 지각자에게는 합리적인 벌금을 부과하여 모두가 납득하는 공정한 정산을 진행해 보세요.
+      </p>
+    </article>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <!-- 전역 공통 스크립트 및 모듈 바인딩 -->
+  <script src="../../assets/js/core-ui.js"></script>
+  <script src="logic.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

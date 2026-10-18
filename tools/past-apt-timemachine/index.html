@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ko" data-default-theme="light" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <title>그때 그 아파트 샀다면 (부동산 타임머신·실거래가 시뮬레이션) | SimuLab Hub</title>
+  <meta name="description" content="2013년 바닥, 2017년 불장 초기에 대치 은마, 반포자이, 마포래미안푸르지오를 내 종잣돈과 대출로 샀다면 지금 내 순자산은 얼마가 되었을까? 부동산 타임머신 시뮬레이션." />
+  <link rel="canonical" href="https://simulab.kr/tools/past-apt-timemachine/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="그때 그 아파트 샀다면 (부동산 타임머신) | SimuLab Hub" />
+  <meta property="og:description" content="2014년에 마래푸 6억에 샀으면 지금 +12억 벌고 자가 보유 중... 내 인생 최대 실수 영수증을 확인하세요." />
+
+  <link rel="stylesheet" href="../../assets/css/common.css" />
+  <style>
+    .korean-amount-badge {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--accent-primary);
+      background: var(--accent-soft);
+      padding: 0.2rem 0.55rem;
+      border-radius: 6px;
+    }
+    .apt-preset-btn.active, .year-btn.active, .ltv-chip-btn.active {
+      background: var(--accent-primary) !important;
+      color: #ffffff !important;
+      border-color: var(--accent-primary) !important;
+    }
+    .receipt-card {
+      background: #fffef7;
+      border: 2px dashed #d1d5db;
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+      position: relative;
+    }
+    .receipt-title {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      border-bottom: 1.5px solid #e5e7eb;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+      display: flex;
+      justify-content: space-between;
+    }
+    .highlight-profit-box {
+      background: linear-gradient(135deg, rgba(22, 163, 74, 0.08), rgba(37, 99, 235, 0.03));
+      border: 1.5px solid rgba(22, 163, 74, 0.25);
+      border-radius: 14px;
+      padding: 1.25rem;
+      text-align: center;
+      margin-bottom: 1.25rem;
+    }
+    .highlight-profit-amount {
+      font-size: clamp(2rem, 5vw, 2.7rem);
+      font-weight: 950;
+      color: #16a34a;
+      letter-spacing: -0.02em;
+    }
+  </style>
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main class="container">
+    <section class="page-header">
+      <div class="page-header-badges">
+        <span class="brand-badge">REAL ESTATE &amp; TIMEMACHINE LAB</span>
+        <span class="brand-badge" style="background: rgba(124, 58, 237, 0.12); color: #7c3aed;">SIMULATOR</span>
+      </div>
+      <h1 class="page-title">그때 그 아파트 샀다면</h1>
+      <p class="page-subtitle">
+        <strong>“2013년 하우스푸어 시절, 혹은 2017년에 그 아파트를 전세 말고 대출 끼고 샀더라면?”</strong>
+        당시 매매가와 국토교통부 현재 실거래가를 바탕으로, <strong>내 초기 종잣돈 대비 순자산 증가액과 놓친 기회비용</strong>을 시뮬레이션합니다.
+      </p>
+    </section>
+
+    <section class="simulator-grid">
+      <!-- 좌측: 입력 패널 -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">타임머신 단지 및 시점 선택</h2>
+        </div>
+
+        <div class="step-section-title" style="margin-bottom: 0.85rem;">
+          <span class="step-badge">STEP 1</span> 대표 아파트 단지 선택
+        </div>
+
+        <!-- 아파트 프리셋 -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.45rem; margin-bottom: 1.25rem;">
+          <button type="button" class="apt-preset-btn active btn btn-secondary" data-apt="mapo_raemian" style="font-size: 0.82rem; padding: 0.6rem 0.2rem;">마포래미안푸르지오</button>
+          <button type="button" class="apt-preset-btn btn btn-secondary" data-apt="eunma" style="font-size: 0.82rem; padding: 0.6rem 0.2rem;">대치 은마아파트</button>
+          <button type="button" class="apt-preset-btn btn btn-secondary" data-apt="banpo_xi" style="font-size: 0.82rem; padding: 0.6rem 0.2rem;">반포자이 (서초)</button>
+          <button type="button" class="apt-preset-btn btn btn-secondary" data-apt="jamsil_els" style="font-size: 0.82rem; padding: 0.6rem 0.2rem;">잠실 엘스 (송파)</button>
+          <button type="button" class="apt-preset-btn btn btn-secondary" data-apt="bundang_parkview" style="font-size: 0.82rem; padding: 0.6rem 0.2rem;">분당 파크뷰</button>
+        </div>
+
+        <div class="step-section-title" style="margin-bottom: 0.85rem;">
+          <span class="step-badge">STEP 2</span> 과거 매수 시점 선택
+        </div>
+
+        <!-- 매수 연도 선택 -->
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.45rem; margin-bottom: 1.25rem;">
+          <button type="button" class="year-btn btn btn-secondary" data-year="2006">2006년</button>
+          <button type="button" class="year-btn btn btn-secondary" data-year="2013">2013년 (바닥)</button>
+          <button type="button" class="year-btn active btn btn-secondary" data-year="2014">2014년 (입주)</button>
+          <button type="button" class="year-btn btn btn-secondary" data-year="2017">2017년 (초기)</button>
+        </div>
+        <input type="hidden" id="input-year" value="2014" />
+
+        <!-- 가격 확인/수정 -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+          <div class="input-card">
+            <div class="input-card-header">
+              <label for="input-past-price" class="input-card-label">당시 매수가격</label>
+              <span id="badge-past-price" class="korean-amount-badge">6억 2,000만</span>
+            </div>
+            <div class="input-group-modern">
+              <input type="number" id="input-past-price" class="form-control" step="10000000" min="0" value="620000000" />
+              <span class="input-suffix-badge">원</span>
+            </div>
+          </div>
+          <div class="input-card">
+            <div class="input-card-header">
+              <label for="input-current-price" class="input-card-label">현재 실거래 시세</label>
+              <span id="badge-current-price" class="korean-amount-badge">18억 5,000만</span>
+            </div>
+            <div class="input-group-modern">
+              <input type="number" id="input-current-price" class="form-control" step="10000000" min="0" value="1850000000" />
+              <span class="input-suffix-badge">원</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 대출 비율 LTV -->
+        <div class="step-section-title" style="margin: 1.25rem 0 0.85rem;">
+          <span class="step-badge">STEP 3</span> 당시 대출 비율 (레버리지)
+        </div>
+
+        <div class="input-card">
+          <div class="input-card-header">
+            <label class="input-card-label">주택담보대출 LTV 비율</label>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.45rem; margin-bottom: 0.5rem;">
+            <button type="button" class="ltv-chip-btn btn btn-secondary" data-ltv="0">0% (올현금)</button>
+            <button type="button" class="ltv-chip-btn btn btn-secondary" data-ltv="40">40% 대출</button>
+            <button type="button" class="ltv-chip-btn active btn btn-secondary" data-ltv="50">50% 대출</button>
+            <button type="button" class="ltv-chip-btn btn btn-secondary" data-ltv="60">60% 대출</button>
+          </div>
+          <input type="hidden" id="input-ltv" value="50" />
+          <input type="hidden" id="input-rate" value="3.5" />
+          <div style="font-size: 0.78rem; color: var(--text-muted);">
+            * LTV 50% 가정 시: 당시 내 돈 3억 1,000만원만 있으면 매수 가능했습니다.
+          </div>
+        </div>
+      </div>
+
+      <!-- 우측: 결과 요약 영수증 패널 -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">타임머신 결과 영수증</h2>
+          <button type="button" id="btn-copy-receipt" class="btn btn-secondary" style="font-size: 0.78rem; padding: 0.3rem 0.65rem;">
+            📋 영수증 공유 복사
+          </button>
+        </div>
+
+        <!-- 영수증 스타일 컨테이너 -->
+        <div class="receipt-card">
+          <div class="receipt-title">
+            <span>MEMORIES &amp; REAL ESTATE RECEIPT</span>
+            <span id="stat-grade-title">🏆 벼락부자 패스</span>
+          </div>
+
+          <!-- 하이라이트 박스 -->
+          <div class="highlight-profit-box">
+            <div style="font-size: 0.85rem; font-weight: 700; color: var(--text-secondary); margin-bottom: 0.3rem;">대출이자 뺀 최종 순수익</div>
+            <div id="stat-net-profit" class="highlight-profit-amount">+10억 9,960만원</div>
+            <div id="stat-net-profit-korean" style="font-size: 1rem; font-weight: 800; color: #16a34a; margin-top: 0.25rem;">-</div>
+          </div>
+
+          <!-- 세부 영수증 항목 -->
+          <div style="font-size: 0.85rem; line-height: 2; border-top: 1px dashed #d1d5db; padding-top: 0.75rem; color: var(--text-primary);">
+            <div style="display: flex; justify-content: space-between;">
+              <span style="color: var(--text-secondary);">• 당시 내 실투자 종잣돈:</span>
+              <strong id="stat-seed-money">3억 1,000만원</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+              <span style="color: var(--text-secondary);">• 순수 아파트 시세차익:</span>
+              <strong id="stat-gain-gross" style="color: #2563eb;">+12억 3,000만원</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+              <span style="color: var(--text-secondary);">• 보유 기간 대출이자 누적액:</span>
+              <strong id="stat-interest" style="color: #dc2626;">-1억 3,040만원</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; border-top: 1.5px solid #e5e7eb; margin-top: 0.4rem; padding-top: 0.4rem;">
+              <span style="font-weight: 800;">• 내 종잣돈 대비 수익률 (ROE):</span>
+              <strong id="stat-roe" style="font-size: 1.15rem; font-weight: 900; color: #16a34a;">+354.7%</strong>
+            </div>
+          </div>
+
+          <!-- 풍자 한마디 코멘트 -->
+          <div style="margin-top: 1rem; padding: 0.75rem; background: rgba(37, 99, 235, 0.05); border-radius: 8px; text-align: center; font-size: 0.82rem; color: #1e40af; font-weight: 750;">
+            <span id="stat-receipt-comment">"그때 샀으면 평생 직장 월급을 20년 치 한 번에 번 셈입니다..."</span>
+          </div>
+        </div>
+
+        <div style="background: var(--bg-subtle); border-radius: 10px; padding: 0.85rem; font-size: 0.78rem; line-height: 1.6; color: var(--text-secondary); margin-top: 1.25rem;">
+          * 실거래가 데이터는 국토교통부 공개 실거래가 통계를 기초로 산출된 추정치입니다. 실제 매매 시 발생하는 취득세, 재산세, 종부세 및 양도소득세는 별도이며 본 결과는 시뮬레이션 참고용입니다.
+        </div>
+      </div>
+    </section>
+
+    <!-- 법적 면책 조항 컨테이너 -->
+    <div id="disclaimer-container"></div>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="../../assets/js/core-ui.js"></script>
+  <script src="logic.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

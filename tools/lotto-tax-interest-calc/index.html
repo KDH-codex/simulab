@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>로또 세후 실수령액 &amp; 당첨금 월이자 계산기 — 1등 당첨되면 통장에 얼마 꽂힐까? | SimuLab</title>
+  <meta name="description" content="로또 1등, 2등 당첨금 입력 시 22%/33% 세금을 공제한 통장 입금 실수령액과, 은행 예금 및 배당 투자 시 매월 평생 들어오는 세후 이자를 시뮬레이션합니다." />
+  <link rel="stylesheet" href="../../assets/css/common.css" />
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main class="container" style="padding-top: 1.5rem; padding-bottom: 3rem;">
+    <section class="page-header">
+      <h1 class="page-title">로또 세후 수령액 & 이자</h1>
+      <p class="page-subtitle">
+        "로또 1등 25억에 당첨되면 세금 떼고 통장에 진짜 들어오는 돈은 얼마일까?" 3억원 이하 22%, 3억원 초과 33% 복권 소득세율을 적용하여 최종 실수령액을 산출하고, 은행 예금과 배당 투자 시 매월 숨만 쉬어도 들어오는 월 이자 소득을 계산합니다.
+      </p>
+      <div style="margin-top: 0.5rem;">
+        <span class="live-api-pill" style="font-size: 0.74rem; background: var(--bg-surface); padding: 0.25rem 0.65rem; border-radius: 9999px; border: 1px solid var(--border-color); color: var(--text-muted); display: inline-flex; align-items: center; gap: 0.3rem;">
+          ⚖️ 2026년 현행 소득세법 기준 (복권 당첨금 기타소득 분리과세 세율 적용)
+        </span>
+      </div>
+    </section>
+
+    <!-- 판정 브리핑 배너 -->
+    <div id="verdict-banner" class="verdict-banner" style="margin-bottom: 1.5rem;">
+      <div id="verdict-text" style="font-size: 0.95rem; line-height: 1.6;">
+        당첨금을 입력하시면 세금 공제 내역과 월 이자 수익이 여기에 브리핑됩니다.
+      </div>
+    </div>
+
+    <!-- 핵심 KPI 카드 4종 -->
+    <section class="kpi-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+      <div class="card stat-card" style="padding: 1.25rem;">
+        <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">세후 최종 실수령액 (통장 입금)</span>
+        <div id="card-net-payout" class="stat-value" style="font-size: 1.6rem; font-weight: 700; color: #10b981; margin-top: 0.25rem;">-</div>
+        <span style="font-size: 0.75rem; color: var(--text-muted);">원천징수 완료 후 내 계좌 금액</span>
+      </div>
+
+      <div class="card stat-card" style="padding: 1.25rem;">
+        <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">총 납부 세금 (공제액)</span>
+        <div id="card-total-tax" class="stat-value" style="font-size: 1.6rem; font-weight: 700; color: #ef4444; margin-top: 0.25rem;">-</div>
+        <span style="font-size: 0.75rem; color: var(--text-muted);">소득세 + 지방소득세 총합</span>
+      </div>
+
+      <div class="card stat-card" style="padding: 1.25rem;">
+        <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">은행 예금 시 매월 세후 이자</span>
+        <div id="card-monthly-interest" class="stat-value" style="font-size: 1.6rem; font-weight: 700; color: var(--primary-color); margin-top: 0.25rem;">-</div>
+        <span style="font-size: 0.75rem; color: var(--text-muted);">정기예금 세후 순수 월 수령액</span>
+      </div>
+
+      <div class="card stat-card" style="padding: 1.25rem;">
+        <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">4% 룰 안전 은퇴 월 생활비</span>
+        <div id="card-monthly-fire" class="stat-value" style="font-size: 1.6rem; font-weight: 700; color: #f59e0b; margin-top: 0.25rem;">-</div>
+        <span style="font-size: 0.75rem; color: var(--text-muted);">원금 보존 조기은퇴 가능 금액</span>
+      </div>
+    </section>
+
+    <!-- 입력 컨트롤 및 결과 그리드 -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem;">
+      <!-- 좌측: 입력 폼 -->
+      <div class="card" style="padding: 1.5rem;">
+        <h2 class="step-section-title" style="font-size: 1.15rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--text-primary);">
+          1. 로또 당첨금 및 운용 금리 설정
+        </h2>
+
+        <!-- [인풋 카드 1] 로또 당첨금액 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <span class="input-card-label">로또 당첨금액</span>
+            <span id="badge-prize-amount" class="korean-amount-badge">25억 원</span>
+          </div>
+          <div class="input-group-modern">
+            <input type="number" id="prize-amount-input" class="form-control" step="100000000" min="50000" max="100000000000" value="2500000000" />
+            <span class="input-suffix-badge">원</span>
+          </div>
+          <input type="range" id="prize-amount-slider" class="range-slider" min="100000000" max="5000000000" step="50000000" value="2500000000" style="margin-top: 0.75rem;" />
+          <div class="slider-guide-row">
+            <span>1억</span>
+            <span>25억 (평균 1등)</span>
+            <span>50억</span>
+          </div>
+          <div class="quick-chips-row">
+            <button type="button" class="quick-chip-btn" data-prize-preset="1500000000">15억</button>
+            <button type="button" class="quick-chip-btn" data-prize-preset="2000000000">20억</button>
+            <button type="button" class="quick-chip-btn" data-prize-preset="2500000000">25억</button>
+            <button type="button" class="quick-chip-btn" data-prize-preset="3000000000">30억</button>
+            <button type="button" class="quick-chip-btn" data-prize-add="100000000">+1억</button>
+            <button type="button" class="quick-chip-btn" data-prize-add="500000000">+5억</button>
+          </div>
+        </div>
+
+        <!-- [인풋 카드 2] 정기예금 금리 & 배당 투자 수익률 (2열 배치) -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.25rem;">
+          <div class="input-card" style="margin-bottom: 0;">
+            <div class="input-card-header">
+              <span class="input-card-label">정기예금 금리</span>
+            </div>
+            <div class="input-group-modern">
+              <input type="number" id="deposit-rate-input" class="form-control" step="0.1" min="1" max="10" value="3.5" />
+              <span class="input-suffix-badge">%</span>
+            </div>
+          </div>
+
+          <div class="input-card" style="margin-bottom: 0;">
+            <div class="input-card-header">
+              <span class="input-card-label">배당 수익률</span>
+            </div>
+            <div class="input-group-modern">
+              <input type="number" id="dividend-rate-input" class="form-control" step="0.1" min="1" max="15" value="4.5" />
+              <span class="input-suffix-badge">%</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <button type="button" id="share-btn" class="btn btn-outline" style="width: 100%;">계산 결과 공유 URL 복사</button>
+        </div>
+      </div>
+
+      <!-- 우측: 세금 공제 상세 및 월 현금흐름 분석 -->
+      <div class="card" style="padding: 1.5rem; display: flex; flex-direction: column;">
+        <h2 class="step-section-title" style="font-size: 1.15rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--text-primary);">
+          2. 세금 분액 및 월 현금흐름 요약
+        </h2>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.75rem; margin-bottom: 1rem; background: var(--bg-main); padding: 0.75rem; border-radius: 8px;">
+          <div>
+            <span style="font-size: 0.72rem; color: var(--text-muted);">실효 세율</span>
+            <div id="stat-effective-tax" style="font-size: 0.95rem; font-weight: 700; color: #ef4444;">-</div>
+          </div>
+          <div>
+            <span style="font-size: 0.72rem; color: var(--text-muted);">3억 이하 세금 (22%)</span>
+            <div id="stat-tax-under3" style="font-size: 0.95rem; font-weight: 700;">-</div>
+          </div>
+          <div>
+            <span style="font-size: 0.72rem; color: var(--text-muted);">3억 초과 세금 (33%)</span>
+            <div id="stat-tax-over3" style="font-size: 0.95rem; font-weight: 700;">-</div>
+          </div>
+          <div>
+            <span style="font-size: 0.72rem; color: var(--text-muted);">배당 투자 시 월배당</span>
+            <div id="stat-monthly-dividend" style="font-size: 0.95rem; font-weight: 700; color: #10b981;">-</div>
+          </div>
+        </div>
+
+        <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.25rem; line-height: 1.8; font-size: 0.9rem;">
+          <h3 style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;">통장에 들어온 후 인생 시뮬레이션:</h3>
+          <ul style="padding-left: 1.2rem; color: var(--text-secondary); margin: 0;">
+            <li><strong>아무것도 안 하고 예금만 할 때:</strong> 매달 약 400~500만원의 이자가 통장에 자동 입금되어 대한민국 상위 소득자 수준의 월급이 무한 생성됩니다.</li>
+            <li><strong>우량 배당주(SCHD·리츠 등)에 분산할 때:</strong> 연 4.5% 기준 매월 약 500~600만원의 세후 배당금과 함께 인플레이션 방어 효과를 누릴 수 있습니다.</li>
+            <li><strong>원금 보존 4% 룰 적용 시:</strong> 원금을 거의 갉아먹지 않고 매월 안정적으로 은퇴 생활을 누릴 수 있습니다.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- 전문가 가이드 아코디언 -->
+    <article class="seo-article card" style="padding: 1.5rem; margin-bottom: 2rem;">
+      <details class="expert-guide">
+        <summary style="font-weight: 700; font-size: 1.05rem; cursor: pointer; color: var(--text-primary);">
+          로또 당첨금 수령 절차와 금융소득종합과세 주의점 (펼쳐보기)
+        </summary>
+        <div style="margin-top: 1rem; line-height: 1.7; font-size: 0.9rem; color: var(--text-secondary);">
+          <h3 style="font-size: 1rem; color: var(--text-primary); margin-top: 1rem;">1. 1등 당첨금 수령 방법</h3>
+          <p>
+            로또 1등에 당첨된 경우, 신분증과 당첨 복권 실물을 지참하고 **농협은행 본점(서울 서대문)**을 직접 방문해야 합니다. 
+            당첨금은 무조건 '분리과세'로 원천징수(22% 또는 33%)되므로, 5월 종합소득세 신고 때 다른 근로·사업소득과 합산 과세되지 않습니다.
+          </p>
+
+          <h3 style="font-size: 1rem; color: var(--text-primary); margin-top: 1rem;">2. 다음 해부터 발생하는 '이자소득' 주의</h3>
+          <p>
+            당첨금 자체는 분리과세로 끝나지만, 그 당첨금을 은행에 넣어두어 발생하는 **예금 이자나 배당금이 연간 2,000만원을 초과**하면 다음 해부터 금융소득종합과세 및 건강보험료 인상이 적용됩니다. 
+            따라서 절세계좌(ISA)와 비과세 상품을 최대한 활용하고, 배당성장 및 자산 배분 전략을 전문가와 상의하여 분산하는 것이 부를 지키는 열쇠입니다.
+          </p>
+        </div>
+      </details>
+    </article>
+
+    <section id="legal-disclaimer"></section>
+    <section id="affiliate-disclosure"></section>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="../../assets/js/core-ui.js"></script>
+  <script src="./logic.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

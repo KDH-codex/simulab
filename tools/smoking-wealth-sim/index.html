@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>담배값 주식 투자 시뮬 | 시뮬랩 (SimuLab)</title>
+  <meta name="description" content="매일 피우는 담배 한 갑 대신 미국 S&P 500 ETF에 적립식으로 투자했다면? 10년, 20년 복리 자산 형성 결과와 내 몸이 돌려받는 건강 영수증(타르, 수명 연장)을 1초 만에 시뮬레이션합니다." />
+  <meta name="keywords" content="담배값 주식, 담배값 투자, 금연 재테크, 스노우볼 복리, S&P500 적립식, 담배값 계산기, 금연 효과, 시뮬랩" />
+  <link rel="canonical" href="https://simulab.kr/tools/smoking-wealth-sim/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="담배값 주식 투자 시뮬 | 시뮬랩" />
+  <meta property="og:description" content="매일 태우던 담배값, S&P 500에 넣었다면 제네시스를 샀을까? 복리 자산과 건강 회복 결과를 확인해보세요." />
+  <meta property="og:url" content="https://simulab.kr/tools/smoking-wealth-sim/" />
+
+  <link rel="stylesheet" href="../../assets/css/style.css" />
+  <link rel="stylesheet" href="../../assets/css/common.css" />
+  <style>
+    .simulator-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+    @media (max-width: 860px) {
+      .simulator-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    /* 담배값 주식 투자 시뮬 특화 스타일링 */
+    .hero-profit-card {
+      background: linear-gradient(135deg, #064e3b 0%, #065f46 100%);
+      border-radius: var(--radius-lg, 16px);
+      padding: 1.5rem;
+      color: #ffffff;
+      text-align: center;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 10px 25px rgba(6, 78, 59, 0.25);
+    }
+    .hero-profit-sub {
+      font-size: 0.85rem;
+      opacity: 0.9;
+      font-weight: 600;
+    }
+    .hero-profit-value {
+      font-size: 2.2rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      color: #a7f3d0;
+      margin: 0.35rem 0;
+    }
+    .hero-profit-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.18);
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+    .equivalent-banner {
+      background: #f0fdf4;
+      border: 1px dashed #86efac;
+      border-radius: var(--radius-md, 12px);
+      padding: 0.85rem 1rem;
+      font-size: 0.95rem;
+      color: #166534;
+      margin-bottom: 1.25rem;
+      text-align: center;
+    }
+    .chart-bar-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      margin-bottom: 1.25rem;
+    }
+    .chart-bar-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+    .chart-bar-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--text-secondary, #64748b);
+    }
+    .chart-bar-track {
+      background: #f1f5f9;
+      height: 12px;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .chart-bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      transition: width 0.4s ease;
+    }
+    .health-receipt {
+      background: #fafaf9;
+      border: 1px solid #e7e5e4;
+      border-radius: var(--radius-md, 12px);
+      padding: 1.1rem;
+      margin-bottom: 1.25rem;
+    }
+    .health-receipt-header {
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: #44403c;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .health-receipt-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.65rem;
+    }
+    .health-receipt-item {
+      background: #ffffff;
+      padding: 0.65rem 0.85rem;
+      border-radius: 8px;
+      border: 1px solid #f5f5f4;
+    }
+    .health-receipt-label {
+      font-size: 0.75rem;
+      color: #78716c;
+      margin-bottom: 0.2rem;
+    }
+    .health-receipt-val {
+      font-size: 0.95rem;
+      font-weight: 850;
+      color: #1c1917;
+    }
+    .share-result-btn {
+      width: 100%;
+      padding: 0.85rem;
+      background: #fef08a;
+      border: 1px solid #fde047;
+      border-radius: var(--radius-md, 12px);
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: #713f12;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      transition: all 0.2s ease;
+    }
+    .share-result-btn:hover {
+      background: #fde047;
+      transform: translateY(-1px);
+    }
+  </style>
+</head>
+<body>
+  <div id="siteHeader"></div>
+
+  <main class="container">
+    <section class="page-header">
+      <div class="page-header-badges">
+        <span class="brand-badge">LIFESTYLE &amp; WEALTH SIMULATION</span>
+        <span class="brand-badge" style="background: rgba(16, 185, 129, 0.12); color: #059669;">SIMULATOR</span>
+      </div>
+      <h1 class="page-title">담배값 주식 투자 시뮬</h1>
+      <p class="page-subtitle">
+        <strong>“매일 태우던 담배 한 갑, 미국 S&P 500에 적립식 투자했다면 지금 얼마가 되었을까요?”</strong>
+        단순 저축 금액과 주식 복리 자산 형성 결과, 그리고 흡연을 참아내어 <strong>내 몸이 돌려받은 타르·수명 회복 건강 영수증</strong>을 확인하세요.
+      </p>
+    </section>
+
+    <section class="simulator-grid">
+      <!-- 좌측: 입력 패널 -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">나의 흡연 습관 및 투자 기간 설정</h2>
+        </div>
+
+        <!-- 1. 하루 흡연량 -->
+        <div class="input-card" style="margin-bottom: 1.25rem;">
+          <div class="input-card-header">
+            <label for="packsInput" class="input-card-label">하루 흡연량 (갑)</label>
+            <span class="korean-amount-badge" style="color: #059669;"><input type="number" id="packsInput" value="1" step="0.5" min="0.1" max="5" style="width: 48px; border:none; text-align:right; font-weight:800; outline:none; background:transparent;"> 갑</span>
+          </div>
+          <input type="range" id="packsSlider" class="range-slider" min="0.5" max="3" step="0.5" value="1" style="width: 100%; margin: 0.5rem 0;" />
+          <div class="quick-chips">
+            <button type="button" class="btn btn-secondary quick-chip pack-preset-btn" data-pack="0.5">반 갑 (0.5)</button>
+            <button type="button" class="btn btn-secondary quick-chip pack-preset-btn active" data-pack="1">한 갑 (1.0)</button>
+            <button type="button" class="btn btn-secondary quick-chip pack-preset-btn" data-pack="1.5">한 갑 반 (1.5)</button>
+            <button type="button" class="btn btn-secondary quick-chip pack-preset-btn" data-pack="2">두 갑 (2.0)</button>
+          </div>
+        </div>
+
+        <!-- 2. 금연 및 투자 기간 -->
+        <div class="input-card" style="margin-bottom: 1.25rem;">
+          <div class="input-card-header">
+            <label for="yearsSlider" class="input-card-label">금연 및 적립 투자 기간</label>
+            <span id="yearsDisplay" class="korean-amount-badge" style="color: #059669; font-weight: 850;">10년</span>
+          </div>
+          <input type="range" id="yearsSlider" class="range-slider" min="1" max="30" step="1" value="10" style="width: 100%; margin: 0.5rem 0;" />
+          <div class="quick-chips">
+            <button type="button" class="btn btn-secondary quick-chip year-preset-btn" data-year="3">3년</button>
+            <button type="button" class="btn btn-secondary quick-chip year-preset-btn" data-year="5">5년</button>
+            <button type="button" class="btn btn-secondary quick-chip year-preset-btn active" data-year="10">10년</button>
+            <button type="button" class="btn btn-secondary quick-chip year-preset-btn" data-year="20">20년</button>
+          </div>
+        </div>
+
+        <!-- 3. 한 갑 가격 -->
+        <div class="input-card" style="margin-bottom: 1.25rem;">
+          <div class="input-card-header">
+            <label for="priceInput" class="input-card-label">담배 한 갑 가격</label>
+            <span class="korean-amount-badge">표준 4,500원</span>
+          </div>
+          <div class="input-group-modern">
+            <input type="number" id="priceInput" class="form-control" value="4500" step="100" min="1000" />
+            <span class="input-suffix-badge">원</span>
+          </div>
+        </div>
+
+        <!-- 4. 기대 수익률 가이드 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <label for="customRateInput" class="input-card-label">미국 S&amp;P 500 연평균 기대수익률</label>
+            <span class="korean-amount-badge" style="color: #64748b;">연 8.0% (과거 50년 실질평균)</span>
+          </div>
+          <input type="hidden" id="customRateInput" value="8" />
+        </div>
+      </div>
+
+      <!-- 우측: 결과 패널 -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">시뮬레이션 분석 결과</h2>
+        </div>
+
+        <!-- 헤어로 하이라이트 -->
+        <div class="hero-profit-card">
+          <div class="hero-profit-sub">미국 S&amp;P 500 ETF 복리 투자 시</div>
+          <div class="hero-profit-value" id="heroAssetVal">2,630만 원</div>
+          <div class="hero-profit-badge" id="heroProfitTag">원금 대비 +1,000만 원 (+60.5%)</div>
+        </div>
+
+        <!-- 비유 박스 -->
+        <div class="equivalent-banner" id="equivalentBanner">
+          💡 이 돈이면 <strong>현대 아반떼 신차 전액 일시불 🚘</strong> 구매가 가능합니다!
+        </div>
+
+        <!-- 자산군별 비교 차트 -->
+        <div class="chart-bar-group">
+          <!-- 원금 -->
+          <div class="chart-bar-row">
+            <div class="chart-bar-meta">
+              <span>📦 단순 저축 (원금 누적)</span>
+              <span id="principalVal">1,642만 원</span>
+            </div>
+            <div class="chart-bar-track">
+              <div id="barPrincipal" class="chart-bar-fill" style="width: 40%; background: #94a3b8;"></div>
+            </div>
+          </div>
+
+          <!-- 시중 적금 -->
+          <div class="chart-bar-row">
+            <div class="chart-bar-meta">
+              <span>🏦 은행 적금 (연 3.5%)</span>
+              <span id="savingsVal">1,960만 원</span>
+            </div>
+            <div class="chart-bar-track">
+              <div id="barSavings" class="chart-bar-fill" style="width: 50%; background: #3b82f6;"></div>
+            </div>
+          </div>
+
+          <!-- S&P 500 -->
+          <div class="chart-bar-row">
+            <div class="chart-bar-meta">
+              <span style="color: #059669;">📈 미국 S&amp;P 500 (연 8.0%)</span>
+              <span id="sp500Val" style="color: #059669;">2,630만 원</span>
+            </div>
+            <div class="chart-bar-track">
+              <div id="barSp500" class="chart-bar-fill" style="width: 70%; background: #10b981;"></div>
+            </div>
+          </div>
+
+          <!-- 나스닥 100 -->
+          <div class="chart-bar-row">
+            <div class="chart-bar-meta">
+              <span style="color: #7c3aed;">🚀 나스닥 100 / 빅테크 (연 12.0%)</span>
+              <span id="nasdaqVal" style="color: #7c3aed;">3,460만 원</span>
+            </div>
+            <div class="chart-bar-track">
+              <div id="barNasdaq" class="chart-bar-fill" style="width: 100%; background: #8b5cf6;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 건강 회복 영수증 -->
+        <div class="health-receipt">
+          <div class="health-receipt-header">
+            <span>🫁</span>
+            <span>내 몸이 돌려받은 건강 영수증</span>
+          </div>
+          <div class="health-receipt-grid">
+            <div class="health-receipt-item">
+              <div class="health-receipt-label">안 피운 담배</div>
+              <div class="health-receipt-val" id="healthCigarettes">73,000 개비</div>
+            </div>
+            <div class="health-receipt-item">
+              <div class="health-receipt-label">흡입 방어한 타르</div>
+              <div class="health-receipt-val" id="healthTar">438g (종이컵 6.7컵)</div>
+            </div>
+            <div class="health-receipt-item">
+              <div class="health-receipt-label">되찾은 기대 수명</div>
+              <div class="health-receipt-val" id="healthLife">약 557일 (1.5년)</div>
+            </div>
+            <div class="health-receipt-item">
+              <div class="health-receipt-label">아낀 흡연 시간</div>
+              <div class="health-receipt-val" id="healthTime">약 8,516시간 (354일)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 공유 버튼 -->
+        <button type="button" id="copyResultBtn" class="share-result-btn">
+          <span>💬</span>
+          <span>내 시뮬레이션 결과 복사 &amp; 친구에게 공유하기</span>
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <div id="siteFooter"></div>
+
+  <script src="../../assets/js/core-ui.js"></script>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

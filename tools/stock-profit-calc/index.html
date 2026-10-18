@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ko" data-default-theme="light" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <title>주식 실질 수익률 계산기 (증권거래세 0.20%·수수료·본전 매도가) | SimuLab Hub</title>
+  <meta name="description" content="매수가, 매도가, 수량만 입력하면 2026년 증권거래세(0.20%)와 증권사 수수료를 자동 차감한 실질 세후 순손익, 실제 수익률, 본전 매도가격을 1초 만에 계산합니다." />
+  <link rel="canonical" href="https://simulab-hub.pages.dev/tools/stock-profit-calc/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="주식 실질 수익률 & 제세공과금 계산기" />
+  <meta property="og:description" content="증권거래세와 매매 수수료를 차감한 진짜 내 통장 입금액과 손익분기 가격을 실시간 확인하세요." />
+
+  <link rel="stylesheet" href="../../assets/css/common.css" />
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main class="container">
+    <section class="page-header">
+      <div class="page-header-badges">
+        <span class="brand-badge">EQUITY TRADING &amp; TAX LAB</span>
+      </div>
+      <h1 class="page-title">주식 실질 수익률 계산기</h1>
+      <p class="page-subtitle">
+        매수가, 매도가, 수량만 입력하면 <strong>2026년 증권거래세(0.20%)와 증권사 매수·매도 수수료</strong>를 자동 반영하여
+        단순 표면 수익률이 아닌 <strong>실제 내 통장에 꽂히는 세후 순이익과 본전 매도가격</strong>을 즉시 산출합니다.
+      </p>
+    </section>
+
+    <section class="simulator-grid">
+      <!-- 좌측: 매매 입력 파라미터 패널 -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">주식 매매 조건 입력</h2>
+          <button type="button" id="btn-reset" class="btn btn-secondary" style="padding: 0.25rem 0.65rem; font-size: 0.78rem;">초기화</button>
+        </div>
+
+        <div class="step-section-title" style="margin-bottom: 0.85rem;">
+          <span class="step-badge">STEP 1</span> 투자 시장 및 매매 조건 입력
+        </div>
+
+        <!-- 투자 시장 선택 카드 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <span class="input-card-label">투자 시장 선택</span>
+          </div>
+          <div style="display: flex; gap: 0.5rem;">
+            <button type="button" class="market-preset-btn active btn btn-secondary" data-market="KR" style="flex: 1; font-weight: 700;">국내주식 (KRW)</button>
+            <button type="button" class="market-preset-btn btn btn-secondary" data-market="US" style="flex: 1; font-weight: 700;">해외/미국주식 (USD)</button>
+          </div>
+        </div>
+
+        <!-- [인풋 카드 1] 1주당 매수가격 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <label for="input-buy-price" class="input-card-label">1주당 매수가격</label>
+            <span id="badge-buy-price" class="korean-amount-badge">7만 원</span>
+          </div>
+          <div class="input-group-modern">
+            <input type="number" id="input-buy-price" class="form-control" step="any" min="0" value="70000" />
+            <span id="unit-buy-price" class="input-suffix-badge currency-unit-label">원</span>
+          </div>
+          <div class="quick-chips-row" id="buy-price-chips">
+            <button type="button" class="quick-chip-btn" data-buy-set="50000">5만</button>
+            <button type="button" class="quick-chip-btn" data-buy-set="70000">7만</button>
+            <button type="button" class="quick-chip-btn" data-buy-set="100000">10만</button>
+            <button type="button" class="quick-chip-btn" data-buy-add="10000">+1만</button>
+            <button type="button" class="quick-chip-btn" data-buy-add="50000">+5만</button>
+          </div>
+        </div>
+
+        <!-- [인풋 카드 2] 1주당 매도가격 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <label for="input-sell-price" class="input-card-label">1주당 매도가격</label>
+            <span id="badge-sell-price" class="korean-amount-badge">8.4만 원</span>
+          </div>
+          <div class="input-group-modern">
+            <input type="number" id="input-sell-price" class="form-control" step="any" min="0" value="84000" />
+            <span id="unit-sell-price" class="input-suffix-badge currency-unit-label">원</span>
+          </div>
+          <div class="quick-chips-row">
+            <button type="button" class="quick-chip-btn" data-sell-pct="1">+1%</button>
+            <button type="button" class="quick-chip-btn" data-sell-pct="3">+3%</button>
+            <button type="button" class="quick-chip-btn" data-sell-pct="5">+5%</button>
+            <button type="button" class="quick-chip-btn" data-sell-pct="10">+10%</button>
+            <button type="button" class="quick-chip-btn" data-sell-pct="20">+20%</button>
+          </div>
+        </div>
+
+        <!-- [인풋 카드 3] 매매 수량 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <label for="input-quantity" class="input-card-label">매매 수량</label>
+            <span id="badge-quantity" class="control-value-badge">100주</span>
+          </div>
+          <div class="input-group-modern">
+            <input type="number" id="input-quantity" class="form-control" step="1" min="1" value="100" />
+            <span class="input-suffix-badge">주</span>
+          </div>
+          <div class="quick-chips-row">
+            <button type="button" class="quick-chip-btn" data-qty-set="10">10주</button>
+            <button type="button" class="quick-chip-btn" data-qty-set="50">50주</button>
+            <button type="button" class="quick-chip-btn" data-qty-set="100">100주</button>
+            <button type="button" class="quick-chip-btn" data-qty-set="500">500주</button>
+            <button type="button" class="quick-chip-btn" data-qty-add="10">+10주</button>
+            <button type="button" class="quick-chip-btn" data-qty-add="50">+50주</button>
+          </div>
+        </div>
+
+        <details style="margin-top: 1.25rem; border: 1px solid var(--border-color); border-radius: 8px; padding: 0.75rem;">
+          <summary style="font-size: 0.84rem; font-weight: 600; cursor: pointer; color: var(--text-secondary);">
+            수수료 및 증권거래세율 직접 설정
+          </summary>
+          <div style="margin-top: 0.85rem; display: grid; gap: 0.75rem;">
+            <div>
+              <label for="input-buy-fee-rate" style="font-size: 0.8rem; color: var(--text-muted); display: block; margin-bottom: 0.2rem;">매수 증권사 수수료율 (%)</label>
+              <input type="number" id="input-buy-fee-rate" class="form-control" step="0.001" min="0" value="0.015" />
+            </div>
+            <div>
+              <label for="input-sell-fee-rate" style="font-size: 0.8rem; color: var(--text-muted); display: block; margin-bottom: 0.2rem;">매도 증권사 수수료율 (%)</label>
+              <input type="number" id="input-sell-fee-rate" class="form-control" step="0.001" min="0" value="0.015" />
+            </div>
+            <div>
+              <label for="input-tax-rate" style="font-size: 0.8rem; color: var(--text-muted); display: block; margin-bottom: 0.2rem;">증권거래세율 (%) - 2026년 국내 0.20%</label>
+              <input type="number" id="input-tax-rate" class="form-control" step="0.01" min="0" value="0.20" />
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <!-- 우측: 계산 결과 대시보드 -->
+      <div>
+        <!-- 핵심 결론 브리핑 배너 -->
+        <div id="verdict-banner" class="verdict-banner">
+          <div class="verdict-eyebrow">실시간 수익률 &amp; 손익분기 판정</div>
+          <p id="verdict-text" class="verdict-text">
+            매매 정보를 입력하면 실질 세후 손익과 본전 매도가격이 계산됩니다.
+          </p>
+        </div>
+
+        <!-- 4대 핵심 KPI 카드 -->
+        <div class="kpi-grid" style="margin-top: 1.25rem;">
+          <div class="kpi-card">
+            <span class="kpi-label">실질 세후 순손익</span>
+            <span id="kpi-net-profit" class="kpi-value text-success">0원</span>
+            <span class="kpi-sub">수수료·세금 공제 후</span>
+          </div>
+
+          <div class="kpi-card">
+            <span class="kpi-label">실질 세후 수익률</span>
+            <span id="kpi-net-rate" class="kpi-value text-success">+0.00%</span>
+            <span class="kpi-sub">순수 원금 대비 수익률</span>
+          </div>
+
+          <div class="kpi-card">
+            <span class="kpi-label">총 제세공과금 합계</span>
+            <span id="kpi-total-fees" class="kpi-value" style="color: var(--text-primary);">0원</span>
+            <span class="kpi-sub">매매수수료 + 증권거래세</span>
+          </div>
+
+          <div class="kpi-card">
+            <span class="kpi-label">손익분기(본전) 매도가</span>
+            <span id="kpi-break-even" class="kpi-value text-accent">0원</span>
+            <span class="kpi-sub">순이익 0원이 되는 가격</span>
+          </div>
+        </div>
+
+        <!-- 상세 정산 명세 테이블 -->
+        <div class="card" style="margin-top: 1.25rem;">
+          <div class="card-header">
+            <h2 class="card-title">매매 상세 정산 내역</h2>
+            <button type="button" id="btn-share-url" class="btn btn-secondary" style="padding: 0.25rem 0.65rem; font-size: 0.78rem;">계산 결과 링크 공유</button>
+          </div>
+          <div class="table-responsive">
+            <table class="data-table">
+              <tbody>
+                <tr>
+                  <th style="width: 50%;">총 매수 대금 (원금)</th>
+                  <td id="val-total-buy" style="text-align: right; font-weight: 700;">0원</td>
+                </tr>
+                <tr>
+                  <th>총 매도 대금</th>
+                  <td id="val-total-sell" style="text-align: right; font-weight: 700;">0원</td>
+                </tr>
+                <tr>
+                  <th>단순 매매차익 (세전 표면 손익)</th>
+                  <td id="val-gross-profit" style="text-align: right;">0원 (+0.00%)</td>
+                </tr>
+                <tr>
+                  <th>매수 증권사 수수료</th>
+                  <td id="val-buy-fee" style="text-align: right; color: var(--text-muted);">0원</td>
+                </tr>
+                <tr>
+                  <th>매도 증권사 수수료</th>
+                  <td id="val-sell-fee" style="text-align: right; color: var(--text-muted);">0원</td>
+                </tr>
+                <tr>
+                  <th>증권거래세</th>
+                  <td id="val-tax" style="text-align: right; color: var(--color-danger);">0원</td>
+                </tr>
+                <tr>
+                  <th>제세공과금 총액</th>
+                  <td id="val-total-fees-table" style="text-align: right; font-weight: 700; color: var(--color-danger);">0원</td>
+                </tr>
+                <tr style="background-color: var(--bg-subtle);">
+                  <th>1주당 세후 순수익</th>
+                  <td id="val-net-profit-share" style="text-align: right; font-weight: 800; color: var(--accent-primary);">0원</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 스폰서 광고 영역 -->
+    <aside class="ad-slot" aria-label="스폰서 광고 영역">
+      <span>SPONSORED · Google AdSense Responsive Display Unit</span>
+    </aside>
+
+    <!-- 전문가 해설 아코디언 -->
+    <article class="seo-article card">
+      <details class="expert-guide">
+        <summary>
+          <span class="expert-guide-title">전문가 해설</span>
+          <span class="expert-guide-meta">증권거래세 수식 · 손익분기점 원리 · 자주 묻는 질문</span>
+        </summary>
+        <div class="expert-guide-body">
+          <h2>주식 매매 시 발생하는 실질 비용과 2026년 세금 완벽 가이드</h2>
+          <p>
+            주식 시장에서 매매할 때 단순히 "매도가 − 매수가"로 계산한 금액이 내 주머니에 고스란히 들어오지 않습니다.
+            증권사 매매 수수료와 국가에 납부하는 증권거래세가 매수·매도 단계마다 차감되기 때문입니다.
+          </p>
+
+          <h3>1. 2026년 국내 주식 증권거래세율</h3>
+          <p>
+            국내 유가증권(코스피) 및 코스닥 주식 매도 시 발생하는 증권거래세율은 <strong>0.20%</strong>(농어촌특별세 포함)입니다.
+            손실을 보고 팔더라도 거래세는 매도 금액 전체에 대해 부과되므로, 잦은 매매는 원금을 빠르게 갉아먹는 주원인이 됩니다.
+          </p>
+
+          <h3>2. 손익분기 매도가(본전 가격) 계산 수식</h3>
+          <div class="formula-box">
+            본전 매도가 = [매수단가 × (1 + 매수수수료율)] ÷ [1 − 매도수수료율 − 증권거래세율]
+          </div>
+          <p>
+            예를 들어 1주당 70,000원에 매수했을 때, 수수료와 거래세(합계 약 0.23%)를 감안하면 최소 <strong>70,162원</strong> 이상으로 매도해야만 실질적으로 손해를 보지 않습니다.
+          </p>
+        </div>
+      </details>
+    </article>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="../../assets/js/core-ui.js"></script>
+  <script src="./logic.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

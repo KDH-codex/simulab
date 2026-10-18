@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko" data-default-theme="light" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <title>서비스 소개 및 문의 안내 (About Us) | SimuLab Analytics Hub</title>
+  <meta name="description" content="SimuLab Hub의 설립 목적, 순수 함수 기반 수학적 검증 원칙, 클라이언트 사이드 아키텍처 소개 및 문의처 안내" />
+  <link rel="stylesheet" href="../assets/css/common.css" />
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main class="container">
+    <article class="seo-article card">
+      <h1>SimuLab Analytics Hub 소개 (About Us)</h1>
+      <p>
+        <strong>SimuLab Analytics Hub</strong>는 투자자, 주택 실수요자, 비즈니스 기획자, 그리고 러너들이 일상과 실무에서 마주하는 복잡한 수학·재무·스포츠 과학 공식을
+        누구나 직관적인 슬라이더와 60fps 실시간 차트로 검증할 수 있도록 설계된 <strong>엔터프라이즈급 마이크로 웹 시뮬레이터 허브</strong>입니다.
+      </p>
+
+      <h2>3대 핵심 엔지니어링 원칙</h2>
+      <ol>
+        <li>
+          <strong>투명한 수학적 공식 공개:</strong>
+          블랙박스처럼 결과 숫자만 제시하지 않습니다. 모든 시뮬레이터 하단에 실제 코드에 적용된 수학 공식(변동성 끌림 수식, 원리금·원금균등 할부 및 스트레스 DSR 역산식, NPV/BEP 방정식, 카르보넨 여유 심박수 공식)과 변수 정의를 상세히 공개합니다.
+        </li>
+        <li>
+          <strong>Zero-Latency 인터랙티브 경험:</strong>
+          입력창에 숫자를 타이핑하고 버튼을 누르는 구식 방식에서 벗어나, 슬라이더를 움직이는 즉시 60fps Canvas 차트가 반응하고 시나리오 A/B를 고정 비교할 수 있는 환경을 제공합니다.
+        </li>
+        <li>
+          <strong>완벽한 프라이버시 보장 (100% Client-Side):</strong>
+          귀하의 소득·대출 정보나 기업의 기밀 원가 데이터를 서버로 수집하지 않습니다. 모든 계산은 오직 귀하의 기기 브라우저 내부에서만 수행됩니다.
+        </li>
+      </ol>
+
+      <h2>오류 제보 및 신규 시뮬레이터 제안 문의</h2>
+      <p>
+        수식 개선 의견, 버그 제보, 혹은 새롭게 추가되었으면 하는 시뮬레이터 주제가 있다면 아래 공식 이메일로 언제든 연락해 주시기 바랍니다.
+      </p>
+      <div class="formula-box">
+        Official Contact: contact@simulab-hub.example.com<br />
+        Operating Hours: Mon–Fri 10:00 ~ 18:00 (KST)
+      </div>
+    </article>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="../assets/js/core-ui.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      window.SimuLab.initCommonUI('legal');
+    });
+  </script>
+</body>
+</html>

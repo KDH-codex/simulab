@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="ko" data-default-theme="light" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('simulab_theme_leverage-etf-sim');
+        var theme = 'light'; /* v2: 라이트 단일 테마 */
+        document.documentElement.setAttribute('data-theme', theme);
+        document.querySelector('meta[name="color-scheme"]').setAttribute('content', theme);
+      } catch (e) {}
+    })();
+  </script>
+
+  <title>주식·ETF 퀀트 시뮬레이터 — 60종 백테스팅·차트분석·미래수익률 | SimuLab</title>
+  <meta name="description" content="미국 빅테크 TOP 20, 국내 대형주 TOP 20, 레버리지·배당 ETF 등 60종 자산의 구간 백테스팅(2015~2026 최신)과 기술적 캔들 차트 분석 및 미래 복리 시뮬레이션을 확인하세요." />
+  <link rel="canonical" href="https://simulab-hub.pages.dev/tools/leverage-etf-sim/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="주식·ETF 퀀트 시뮬레이터 — 감이 아니라 숫자로" />
+  <meta property="og:description" content="글로벌 주식 60종의 과거 백테스팅, 현재 기술적 차트 지표, 미래 수익률 시뮬레이션을 한 화면에서 분석합니다." />
+
+  <link rel="stylesheet" href="../../assets/css/common.css" />
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main class="container">
+    <section class="page-header">
+      <div class="page-header-badges">
+        <span class="brand-badge">GLOBAL 60 ASSETS · QUANT &amp; TECHNICAL CHART LAB</span>
+        <span class="brand-badge">주식 40종 + ETF 20종 · 과거·현재·미래 통합 분석</span>
+      </div>
+      <h1 class="page-title">주식·ETF 퀀트 시뮬레이터</h1>
+      <p class="page-subtitle">
+        <strong>"내가 고른 레버리지 종목을 특정 기간(폭락장·상승장·최근 2026.10.17까지)에 적립식으로 모았다면 얼마가 됐을까? 그리고 오늘(2026.10.17) 주가 차트 위치에서는 어떻게 대응해야 할까?"</strong><br />
+        아래 10개 인기 종목 중 하나를 클릭하고 <strong>① 기간별 실전 백테스팅(2015~2026.10.17), ② 최신 주가 차트 분석 &amp; 퀀트 제안, ③ 낙폭(MDD)·회복 탄력성, ④ 음의 복리 수식</strong> 탭을 깊이 있게 탐색해 보세요.
+      </p>
+    </section>
+
+    <!-- [개편 1] 60종 자산(레버리지·미국·국내·배당) 통합 티커 바 & 카테고리/검색 시스템 -->
+    <section class="compact-ticker-bar" aria-label="투자 자산 60종 선택 및 실시간 요약 바">
+      <div class="compact-ticker-top-row">
+        <div class="compact-ticker-left">
+          <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted);">분석 종목:</span>
+          <div id="current-ticker-display" class="current-ticker-pill">
+            <span id="current-ticker-symbol">TQQQ</span>
+            <span id="current-ticker-name" style="font-size: 0.76rem; color: var(--text-secondary); font-weight: 600;">나스닥100 3배</span>
+            <span id="current-ticker-price" style="font-family: var(--font-mono); font-size: 0.82rem; font-weight: 700; color: var(--text-primary);">$68.21</span>
+          </div>
+          <span id="current-ticker-stat" class="current-ticker-stat">
+            200일선 대비 <strong id="current-ticker-gap" class="text-success">+5.2%</strong> · <span id="current-ticker-rsi">RSI 32.6</span>
+          </span>
+          <span id="live-fx-badge" class="live-api-pill" style="font-size: 0.7rem; padding: 0.15rem 0.5rem;">
+            <span class="live-dot"></span>
+            <span>기준일 2026.10.17 · USD/KRW 1,385.0원</span>
+          </span>
+        </div>
+
+        <!-- 실시간 검색 인풋 -->
+        <div class="ticker-search-box">
+          <input type="text" id="input-ticker-search" class="ticker-search-input" placeholder="60종 빠른 검색 (예: NVDA, 삼성전자, 배당, 3배...)" aria-label="종목 검색" />
+          <button type="button" id="btn-clear-search" class="ticker-search-clear-btn" aria-label="검색어 지우기" style="display: none;">×</button>
+        </div>
+      </div>
+
+      <!-- 4대 카테고리 필터 탭 바 -->
+      <div class="ticker-category-nav" role="tablist" aria-label="자산 카테고리 선택">
+        <button type="button" class="ticker-cat-btn active" data-asset-cat="lev_10">
+          <span>레버리지 10종</span>
+        </button>
+        <button type="button" class="ticker-cat-btn" data-asset-cat="us_top20">
+          <span>해외 TOP 20</span>
+        </button>
+        <button type="button" class="ticker-cat-btn" data-asset-cat="kr_top20">
+          <span>국내 TOP 20</span>
+        </button>
+        <button type="button" class="ticker-cat-btn" data-asset-cat="dividend_10">
+          <span>배당 TOP 10</span>
+        </button>
+        <button type="button" class="ticker-cat-btn" data-asset-cat="all">
+          <span>전체 (60종)</span>
+        </button>
+      </div>
+
+      <!-- 빠른 전환 칩 목록 (가로 스크롤 & 카테고리/검색 필터 동적 생성) -->
+      <div id="quick-ticker-chips-container" class="quick-ticker-chips scrollable-chips" role="group" aria-label="60대 대표 자산 원클릭 퀵 칩 목록">
+        <!-- JS initTickerPills()에서 60개 칩 자동 렌더링 -->
+      </div>
+    </section>
+
+    <!-- 4대 딥다이브 탭 바 (컴팩트 티커 바 바로 하단에 가로 전체 너비로 한 줄 배치) -->
+    <nav class="fullwidth-tab-bar" aria-label="레버리지 ETF 4대 심층 분석 탭">
+      <div class="fullwidth-tab-grid" role="tablist">
+        <button type="button" class="fullwidth-tab-btn deep-tab-btn active" data-deep-tab="historical">
+          <span class="fullwidth-tab-eyebrow">STEP 01 · BACKTEST</span>
+          <span class="fullwidth-tab-title"><span>과거 시나리오 &amp; 백테스팅</span></span>
+        </button>
+        <button type="button" class="fullwidth-tab-btn deep-tab-btn" data-deep-tab="drawdown">
+          <span class="fullwidth-tab-eyebrow">STEP 02 · DRAWDOWN</span>
+          <span class="fullwidth-tab-title"><span>과거 낙폭 &amp; 회복력</span></span>
+        </button>
+        <button type="button" class="fullwidth-tab-btn deep-tab-btn" data-deep-tab="technical">
+          <span class="fullwidth-tab-eyebrow">STEP 03 · TECHNICAL</span>
+          <span class="fullwidth-tab-title"><span>현재 기술지표</span></span>
+        </button>
+        <button type="button" class="fullwidth-tab-btn deep-tab-btn" data-deep-tab="formula">
+          <span class="fullwidth-tab-eyebrow">STEP 04 · SIMULATION</span>
+          <span class="fullwidth-tab-title"><span>미래 시뮬레이션</span></span>
+        </button>
+      </div>
+    </nav>
+
+    <section class="simulator-grid" aria-label="시뮬레이터 조작 및 결과 영역">
+      <!-- 좌측: 탭 맥락 연동(Context-Aware) 조건 설정 카드 -->
+      <aside class="card">
+        <div class="card-header">
+          <h2 class="card-title">내 투자금 &amp; 시뮬레이션 조건</h2>
+          <button type="button" id="btn-reset" class="btn" style="padding: 0.3rem 0.65rem; font-size: 0.76rem;">
+            초기화
+          </button>
+        </div>
+
+        <!-- [공통 STEP 1] 초기 원금 & 매월 적립금 -->
+        <div class="step-section-title">
+          <span class="step-badge">STEP 1</span>
+          <span>얼마의 원금과 월 적립금으로 실험할까요?</span>
+        </div>
+
+        <!-- 초기 거치 원금 모던 인풋 카드 -->
+        <div class="input-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.15rem; margin-bottom: 1.15rem; box-shadow: 0 1px 3px rgba(0,0,0,0.02);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <label for="input-initialCapital" style="font-size: 0.88rem; font-weight: 700; color: var(--text-primary);">초기 거치 원금</label>
+            <span id="badge-initialCapital" style="font-size: 0.78rem; font-weight: 700; color: var(--primary-color); background: var(--bg-main); padding: 0.2rem 0.55rem; border-radius: 9999px; border: 1px solid var(--border-color);">1,000만 원</span>
+          </div>
+          <div class="input-group" style="display: flex; align-items: center; background: var(--bg-main); border: 1.5px solid var(--border-color); border-radius: 8px; padding: 0.4rem 0.75rem; margin-bottom: 0.6rem; transition: border-color 0.15s ease;">
+            <input type="number" id="input-initialCapital" class="number-input" min="0" max="1000000" step="100" value="1000" style="border: none; background: transparent; font-size: 1.15rem; font-weight: 700; text-align: right; width: 100%; outline: none; padding-right: 0.35rem;" />
+            <span style="font-size: 0.95rem; font-weight: 600; color: var(--text-secondary); white-space: nowrap;">만원</span>
+          </div>
+          <div style="margin-bottom: 0.6rem;">
+            <input type="range" id="slider-initialCapital" class="range-slider" min="0" max="50000" step="100" value="1000" aria-label="초기 거치금 슬라이더" style="width: 100%;" />
+          </div>
+          <!-- 빠른 금액 조절 칩 -->
+          <div style="display: flex; gap: 0.35rem; flex-wrap: wrap; margin-bottom: 0.4rem;">
+            <button type="button" class="btn btn-chip chip-btn" data-target="input-initialCapital" data-val="0" style="padding: 0.25rem 0.55rem; font-size: 0.76rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-main); cursor: pointer;">0원 (적립만)</button>
+            <button type="button" class="btn btn-chip chip-btn" data-target="input-initialCapital" data-val="500" style="padding: 0.25rem 0.55rem; font-size: 0.76rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-main); cursor: pointer;">500만</button>
+            <button type="button" class="btn btn-chip chip-btn" data-target="input-initialCapital" data-val="1000" style="padding: 0.25rem 0.55rem; font-size: 0.76rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-main); cursor: pointer;">1,000만</button>
+            <button type="button" class="btn btn-chip chip-btn" data-target="input-initialCapital" data-val="3000" style="padding: 0.25rem 0.55rem; font-size: 0.76rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-main); cursor: pointer;">3,000만</button>
+            <button type="button" class="btn btn-chip chip-btn" data-target="input-initialCapital" data-val="5000" style="padding: 0.25rem 0.55rem; font-size: 0.76rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-main); cursor: pointer;">5,000만</button>
+            <button type="button" class="btn btn-chip chip-btn" data-target="input-initialCapital" data-val="10000" style="padding: 0.25rem 0.55rem; font-size: 0.76rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-main); cursor: pointer;">1억</button>
+          </div>
+          <p id="usd-equiv-initial" class="control-help" style="font-size: 0.75rem; color: var(--text-muted); margin: 0;">백테스팅 시작 시점에 한 번에 넣는 초기 목돈입니다.</p>
+        </div>
+
+        <!-- 매월 추가 적립금 모던 인풋 카드 -->
+        <div class="input-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.15rem; margin-bottom: 1.25rem; box-shadow: 0 1px 3px rgba(0,0,0,0.02);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+            <label for="input-monthlyContribution" style="font-size: 0.88rem; font-weight: 700; color: var(--text-primary);">매월 추가 적립금</label>
+            <span id="badge-monthlyContribution" style="font-size: 0.78rem; font-weight: 700; color: var(--primary-color); background: var(--bg-main); padding: 0.2rem 0.55rem; border-radius: 9999px; border: 1px solid var(--border-color);">100만 원</span>
+          </div>
+          <div class="input-group" style="display: flex; align-items: center; background: var(--bg-main); border: 1.5px solid var(--border-color); border-radius: 8px; padding: 0.4rem 0.75rem; margin-bottom: 0.6rem; transition: border-color 0.15s ease;">
+            <input type="number" id="input-monthlyContribution" class="number-input" min="0" max="100000" step="10" value="100" style="border: none; background: transparent; font-size: 1.15rem; font-weight: 700; text-align: right; width: 100%; outline: none; padding-right: 0.35rem;" />
+            <span style="font-size: 0.95rem; font-weight: 600; color: var(--text-secondary); white-space: nowrap;">만원/월</span>
+          </div>
+          <div style="margin-bottom: 0.6rem;">
+            <input type="range" id="slider-monthlyContribution" class="range-slider" min="0" max="2000" step="10" value="100" aria-label="월 적립금 슬라이더" style="width: 100%;" />
+          </div>
+          <!-- 빠른 적립금 조절 칩 -->
+          <div style="display: flex; gap: 0.35rem; flex-wrap: wrap; margin-bottom: 0.4rem;">
+            <button type="button" class="btn btn-chip chip-btn" data-target="input-monthlyContribution" data-val="0" style="padding: 0.25rem 0.55rem; font-size: 0.76rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-main); cursor: pointer;">0원 (거치식)</button>
+            <button type="button" class="btn btn-chip chip-btn" data-target="input-monthlyContribution" data-val="30" style="padding: 0.25rem 0.55rem; font-size: 0.76rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-main); cursor: pointer;">30만</button>
+            <button type="button" class="btn btn-chip chip-btn" data-target="input-monthlyContribution" data-val="50" style="padding: 0.25rem 0.55rem; font-size: 0.76rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-main); cursor: pointer;">50만</button>
+            <button type="button" class="btn btn-chip chip-btn" data-target="input-monthlyContribution" data-val="100" style="padding: 0.25rem 0.55rem; font-size: 0.76rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-main); cursor: pointer;">100만</button>
+            <button type="button" class="btn btn-chip chip-btn" data-target="input-monthlyContribution" data-val="200" style="padding: 0.25rem 0.55rem; font-size: 0.76rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-main); cursor: pointer;">200만</button>
+            <button type="button" class="btn btn-chip chip-btn" data-target="input-monthlyContribution" data-val="300" style="padding: 0.25rem 0.55rem; font-size: 0.76rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-main); cursor: pointer;">300만</button>
+          </div>
+          <p class="control-help" style="font-size: 0.75rem; color: var(--text-muted); margin: 0;">0원으로 두면 '순수 거치식', 금액을 높이면 '폭락장 물타기(DCA)' 효과를 볼 수 있습니다.</p>
+        </div>
+
+        <!-- [탭 1 & 탭 2 연동 STEP 2] 백테스팅 기간 & 역사적 국면 프리셋 (우측에서 좌측으로 통합 이동) -->
+        <div id="sidebar-step-historical" class="sidebar-context-section">
+          <div class="step-section-title">
+            <span class="step-badge">STEP 2</span>
+            <span>백테스팅 기간 및 시장 국면 프리셋</span>
+          </div>
+
+          <div class="control-group">
+            <div class="control-label-row">
+              <label class="control-label">백테스팅 기간 직접 지정 (년·월 단위)</label>
+            </div>
+            <div class="ym-picker-row">
+              <div class="ym-picker-box">
+                <select id="select-start-year" class="ym-select" aria-label="시작 연도">
+                  <option value="2015" selected>2015년</option>
+                  <option value="2016">2016년</option>
+                  <option value="2017">2017년</option>
+                  <option value="2018">2018년</option>
+                  <option value="2019">2019년</option>
+                  <option value="2020">2020년</option>
+                  <option value="2021">2021년</option>
+                  <option value="2022">2022년</option>
+                  <option value="2023">2023년</option>
+                  <option value="2024">2024년</option>
+                  <option value="2025">2025년</option>
+                  <option value="2026">2026년</option>
+                </select>
+                <select id="select-start-month" class="ym-select" aria-label="시작 월">
+                  <option value="1" selected>01월</option>
+                  <option value="2">02월</option>
+                  <option value="3">03월</option>
+                  <option value="4">04월</option>
+                  <option value="5">05월</option>
+                  <option value="6">06월</option>
+                  <option value="7">07월</option>
+                  <option value="8">08월</option>
+                  <option value="9">09월</option>
+                  <option value="10">10월</option>
+                  <option value="11">11월</option>
+                  <option value="12">12월</option>
+                </select>
+              </div>
+              <span style="font-weight: 700; color: var(--text-muted); text-align: center;">~</span>
+              <div class="ym-picker-box">
+                <select id="select-end-year" class="ym-select" aria-label="종료 연도">
+                  <option value="2015">2015년</option>
+                  <option value="2016">2016년</option>
+                  <option value="2017">2017년</option>
+                  <option value="2018">2018년</option>
+                  <option value="2019">2019년</option>
+                  <option value="2020">2020년</option>
+                  <option value="2021">2021년</option>
+                  <option value="2022">2022년</option>
+                  <option value="2023">2023년</option>
+                  <option value="2024">2024년</option>
+                  <option value="2025">2025년</option>
+                  <option value="2026" selected>2026년</option>
+                </select>
+                <select id="select-end-month" class="ym-select" aria-label="종료 월">
+                  <option value="1">01월</option>
+                  <option value="2">02월</option>
+                  <option value="3">03월</option>
+                  <option value="4">04월</option>
+                  <option value="5">05월</option>
+                  <option value="6">06월</option>
+                  <option value="7">07월</option>
+                  <option value="8">08월</option>
+                  <option value="9">09월</option>
+                  <option value="10" selected>10월 (최신)</option>
+                  <option value="11">11월</option>
+                  <option value="12">12월</option>
+                </select>
+              </div>
+            </div>
+            <div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 0.35rem;">
+              * 기본 종료 시점은 전일자 최신 마감월(2026년 10월)로 자동 세팅됩니다.
+            </div>
+          </div>
+
+          <div class="control-group">
+            <div class="control-label-row">
+              <label class="control-label">역사적 시장 국면 빠른 선택</label>
+            </div>
+            <div class="regime-presets" role="group" aria-label="역사적 시장 국면 빠른 선택" style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.35rem;">
+              <button type="button" class="regime-btn active" data-regime="full" style="padding: 0.3rem 0.4rem; font-size: 0.72rem;">전체 12년 (2015~)</button>
+              <button type="button" class="regime-btn" data-regime="recent1Y" style="padding: 0.3rem 0.4rem; font-size: 0.72rem;">최근 1년 최신장</button>
+              <button type="button" class="regime-btn" data-regime="aiCycle" style="padding: 0.3rem 0.4rem; font-size: 0.72rem;">AI 슈퍼사이클</button>
+              <button type="button" class="regime-btn" data-regime="rateHikeBear" style="padding: 0.3rem 0.4rem; font-size: 0.72rem;">금리인상 폭락</button>
+              <button type="button" class="regime-btn" data-regime="covidBull" style="padding: 0.3rem 0.4rem; font-size: 0.72rem;">코로나 유동성</button>
+              <button type="button" class="regime-btn" data-regime="sidewaysBox" style="padding: 0.3rem 0.4rem; font-size: 0.72rem;">미중분쟁 등락</button>
+            </div>
+            <div id="regime-desc-note" class="control-help" style="margin-top: 0.4rem; font-size: 0.74rem;">
+              선택한 역사적 구간의 실제 수익률로 적립식(DCA) vs 거치식을 비교합니다.
+            </div>
+          </div>
+        </div>
+
+        <!-- [탭 4 전용 STEP 2] 수식 시뮬레이션용 배수·변동성 변수 (탭 4 선택 시에만 표시!) -->
+        <div id="sidebar-step-formula" class="sidebar-context-section hidden">
+          <div class="step-section-title">
+            <span class="step-badge">STEP 2</span>
+            <span>수식 시뮬레이션용 배수·변동성 변수 (탭 4 연동)</span>
+          </div>
+
+          <!-- 레버리지 배수 선택 -->
+          <div class="input-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 1rem; margin-bottom: 1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.02);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+              <span style="font-size: 0.88rem; font-weight: 700; color: var(--text-primary);">레버리지 배수</span>
+              <span class="control-value-badge" style="font-size: 0.75rem;">일일 리밸런싱</span>
+            </div>
+            <div class="segmented-control" role="group" aria-label="레버리지 배수 선택" style="display: flex; gap: 0.35rem;">
+              <button type="button" class="segment-btn" data-leverage="1" style="flex: 1; padding: 0.4rem; font-weight: 700;">1x (기본)</button>
+              <button type="button" class="segment-btn" data-leverage="2" style="flex: 1; padding: 0.4rem; font-weight: 700;">2x (2배)</button>
+              <button type="button" class="segment-btn active" data-leverage="3" style="flex: 1; padding: 0.4rem; font-weight: 700;">3x (3배)</button>
+            </div>
+          </div>
+
+          <!-- 기대수익률 인풋 카드 -->
+          <div class="input-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 1rem; margin-bottom: 1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.02);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+              <label for="input-annualReturnRate" style="font-size: 0.85rem; font-weight: 700; color: var(--text-primary);">기초지수 연 기대수익률 (μ)</label>
+              <span id="badge-annualReturnRate" style="font-size: 0.78rem; font-weight: 700; color: var(--primary-color);">14.5%</span>
+            </div>
+            <div class="input-group" style="display: flex; align-items: center; background: var(--bg-main); border: 1.5px solid var(--border-color); border-radius: 8px; padding: 0.35rem 0.65rem; margin-bottom: 0.5rem;">
+              <input type="number" id="input-annualReturnRate" class="number-input" min="-40" max="60" step="0.5" value="14.5" style="border: none; background: transparent; font-size: 1.05rem; font-weight: 700; text-align: right; width: 100%; outline: none; padding-right: 0.3rem;" />
+              <span style="font-size: 0.9rem; font-weight: 600; color: var(--text-secondary); white-space: nowrap;">%</span>
+            </div>
+            <input type="range" id="slider-annualReturnRate" class="range-slider" min="-20" max="40" step="0.5" value="14.5" aria-label="연 기대수익률 슬라이더" style="width: 100%; margin-bottom: 0.4rem;" />
+            <div style="display: flex; gap: 0.3rem; flex-wrap: wrap;">
+              <button type="button" class="btn btn-chip chip-btn" data-target="input-annualReturnRate" data-val="0" style="padding: 0.2rem 0.45rem; font-size: 0.74rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-main); cursor: pointer;">0% (횡보장)</button>
+              <button type="button" class="btn btn-chip chip-btn" data-target="input-annualReturnRate" data-val="8" style="padding: 0.2rem 0.45rem; font-size: 0.74rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-main); cursor: pointer;">8% (평균)</button>
+              <button type="button" class="btn btn-chip chip-btn" data-target="input-annualReturnRate" data-val="14.5" style="padding: 0.2rem 0.45rem; font-size: 0.74rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-main); cursor: pointer;">14.5% (나스닥)</button>
+              <button type="button" class="btn btn-chip chip-btn" data-target="input-annualReturnRate" data-val="25" style="padding: 0.2rem 0.45rem; font-size: 0.74rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-main); cursor: pointer;">25% (대세상승)</button>
+            </div>
+          </div>
+
+          <!-- 변동성 인풋 카드 -->
+          <div class="input-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 1rem; margin-bottom: 1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.02);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+              <label for="input-annualVolatility" style="font-size: 0.85rem; font-weight: 700; color: var(--text-primary);">기초지수 연 변동성 (σ)</label>
+              <span id="badge-annualVolatility" style="font-size: 0.78rem; font-weight: 700; color: #ef4444;">23.5%</span>
+            </div>
+            <div class="input-group" style="display: flex; align-items: center; background: var(--bg-main); border: 1.5px solid var(--border-color); border-radius: 8px; padding: 0.35rem 0.65rem; margin-bottom: 0.5rem;">
+              <input type="number" id="input-annualVolatility" class="number-input" min="0" max="90" step="0.5" value="23.5" style="border: none; background: transparent; font-size: 1.05rem; font-weight: 700; text-align: right; width: 100%; outline: none; padding-right: 0.3rem;" />
+              <span style="font-size: 0.9rem; font-weight: 600; color: var(--text-secondary); white-space: nowrap;">%</span>
+            </div>
+            <input type="range" id="slider-annualVolatility" class="range-slider" min="5" max="65" step="0.5" value="23.5" aria-label="연 변동성 슬라이더" style="width: 100%; margin-bottom: 0.4rem;" />
+            <div style="display: flex; gap: 0.3rem; flex-wrap: wrap;">
+              <button type="button" class="btn btn-chip chip-btn" data-target="input-annualVolatility" data-val="15" style="padding: 0.2rem 0.45rem; font-size: 0.74rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-main); cursor: pointer;">15% (S&P500)</button>
+              <button type="button" class="btn btn-chip chip-btn" data-target="input-annualVolatility" data-val="23.5" style="padding: 0.2rem 0.45rem; font-size: 0.74rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-main); cursor: pointer;">23.5% (QQQ)</button>
+              <button type="button" class="btn btn-chip chip-btn" data-target="input-annualVolatility" data-val="40" style="padding: 0.2rem 0.45rem; font-size: 0.74rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-main); cursor: pointer;">40% (반도체 SOX)</button>
+            </div>
+          </div>
+
+          <!-- 운용보수 및 기간 인풋 카드 -->
+          <div class="input-card" style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 1rem; margin-bottom: 1rem; box-shadow: 0 1px 3px rgba(0,0,0,0.02);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+              <label for="input-expenseRatio" style="font-size: 0.85rem; font-weight: 700; color: var(--text-primary);">연 운용보수 (%)</label>
+              <span id="badge-expenseRatio" style="font-size: 0.78rem; font-weight: 700; color: var(--primary-color);">0.88%</span>
+            </div>
+            <div class="input-group" style="display: flex; align-items: center; background: var(--bg-main); border: 1.5px solid var(--border-color); border-radius: 8px; padding: 0.35rem 0.65rem; margin-bottom: 0.4rem;">
+              <input type="number" id="input-expenseRatio" class="number-input" min="0" max="10" step="0.05" value="0.88" style="border: none; background: transparent; font-size: 1.05rem; font-weight: 700; text-align: right; width: 100%; outline: none; padding-right: 0.3rem;" />
+              <span style="font-size: 0.9rem; font-weight: 600; color: var(--text-secondary); white-space: nowrap;">%</span>
+            </div>
+            <input type="range" id="slider-expenseRatio" class="range-slider" min="0" max="5" step="0.05" value="0.88" aria-label="연 운용보수 슬라이더" style="width: 100%; margin-bottom: 0.75rem;" />
+
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+              <label for="input-years" style="font-size: 0.85rem; font-weight: 700; color: var(--text-primary);">시뮬레이션 기간</label>
+              <span id="badge-years" style="font-size: 0.78rem; font-weight: 700; color: var(--primary-color);">10년</span>
+            </div>
+            <div class="input-group" style="display: flex; align-items: center; background: var(--bg-main); border: 1.5px solid var(--border-color); border-radius: 8px; padding: 0.35rem 0.65rem; margin-bottom: 0.4rem;">
+              <input type="number" id="input-years" class="number-input" min="1" max="40" step="1" value="10" style="border: none; background: transparent; font-size: 1.05rem; font-weight: 700; text-align: right; width: 100%; outline: none; padding-right: 0.3rem;" />
+              <span style="font-size: 0.9rem; font-weight: 600; color: var(--text-secondary); white-space: nowrap;">년</span>
+            </div>
+            <input type="range" id="slider-years" class="range-slider" min="1" max="30" step="1" value="10" aria-label="투자 기간 슬라이더" style="width: 100%; margin-bottom: 0.4rem;" />
+            <div style="display: flex; gap: 0.3rem; flex-wrap: wrap;">
+              <button type="button" class="btn btn-chip chip-btn" data-target="input-years" data-val="3" style="padding: 0.2rem 0.45rem; font-size: 0.74rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-main); cursor: pointer;">3년</button>
+              <button type="button" class="btn btn-chip chip-btn" data-target="input-years" data-val="5" style="padding: 0.2rem 0.45rem; font-size: 0.74rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-main); cursor: pointer;">5년</button>
+              <button type="button" class="btn btn-chip chip-btn" data-target="input-years" data-val="10" style="padding: 0.2rem 0.45rem; font-size: 0.74rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-main); cursor: pointer;">10년</button>
+              <button type="button" class="btn btn-chip chip-btn" data-target="input-years" data-val="20" style="padding: 0.2rem 0.45rem; font-size: 0.74rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-main); cursor: pointer;">20년</button>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- 우측: 한 줄 결론 배너 + 4대 KPI 요약 카드 + 차트 + 제안 + 테이블 (최상단으로 쑥 올라옴) -->
+      <div>
+        <div class="card">
+          <!-- [핵심 강조] 눈높이 실시간 한 줄 결론 브리핑 (최상단 노출) -->
+          <div id="verdict-banner" class="verdict-banner compact">
+            <div class="verdict-header">
+              <span class="verdict-eyebrow">실시간 핵심 결론 브리핑 · LIVE VERDICT</span>
+              <span id="verdict-q-tag" class="verdict-q-tag">Q. 선택한 종목과 구간에서 어떤 결과가 나왔을까요?</span>
+            </div>
+            <div id="verdict-text" class="verdict-text">
+              시뮬레이션 데이터를 계산 중입니다...
+            </div>
+          </div>
+
+          <div
+            id="pinned-comparison-banner"
+            class="affiliate-disclosure-box"
+            style="display: none; margin-top: 0; margin-bottom: 1rem;"
+          ></div>
+
+          <!-- [탭 2 전용] 최신 주가(2026.10.17 실제 종가) 기술적 지표 입력 & 4대 차트 요소 진단 바 (기본 숨김, 탭 2 선택 시 표시) -->
+          <div id="tech-analyzer-panel" style="display: none;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.55rem;">
+              <span style="font-size: 0.83rem; font-weight: 700; color: var(--text-primary);">
+                야후 파이낸스 실제 마감 주가 &amp; 기술적 지표 (SOXL $93.67 · TQQQ $68.21 · UPRO $146.43 등 실측 반영)
+                <span id="live-quote-status" style="font-size: 0.74rem; font-weight: 600; color: var(--color-success); margin-left: 0.35rem;">● Yahoo Finance 실측치 적용됨</span>
+              </span>
+              <div style="display: flex; align-items: center; gap: 0.45rem; flex-wrap: wrap;">
+                <label for="input-tech-date" style="font-size: 0.75rem; font-weight: 600; color: var(--text-secondary);">조회 기준일:</label>
+                <input
+                  type="date"
+                  id="input-tech-date"
+                  value="2026-10-17"
+                  style="padding: 0.22rem 0.45rem; font-size: 0.76rem; border-radius: 6px; border: 1px solid var(--border-color); background: var(--bg-surface); color: var(--text-primary); font-family: var(--font-mono);"
+                />
+                <button type="button" id="btn-sync-live-quote" class="btn btn-primary" style="padding: 0.25rem 0.65rem; font-size: 0.74rem;">
+                  실시간 야후 파이낸스 시세 동기화
+                </button>
+                <button type="button" id="btn-reset-tech" class="btn" style="padding: 0.25rem 0.6rem; font-size: 0.74rem;">
+                  실측 마감가 복원
+                </button>
+              </div>
+            </div>
+
+            <div class="tech-input-bar">
+              <div class="tech-mini-field">
+                <label for="input-tech-price">
+                  현재 주가 (Yahoo 마감가)
+                  <span class="tooltip-icon" data-tooltip="종목의 실제 최근 마감 종가입니다. 값을 직접 변경하여 기술적 지표를 재시뮬레이션할 수 있습니다.">?</span>
+                </label>
+                <input type="number" id="input-tech-price" step="0.01" value="68.21" />
+              </div>
+              <div class="tech-mini-field">
+                <label for="input-tech-sma200">
+                  200일 이동평균선
+                  <span class="tooltip-icon" data-tooltip="장기 대세 상승장과 하락장을 가르는 생명선입니다. 주가가 200일선 위에 있으면 강세장(Risk-On), 아래에 있으면 변동성 위험 구간(Risk-Off)입니다.">?</span>
+                </label>
+                <input type="number" id="input-tech-sma200" step="0.01" value="64.82" />
+              </div>
+              <div class="tech-mini-field">
+                <label for="input-tech-sma50">
+                  50일 이동평균선
+                  <span class="tooltip-icon" data-tooltip="중기 추세 방향을 나타내는 기준선입니다. 200일선과의 골든크로스/데드크로스 및 단기 지지선 역할을 합니다.">?</span>
+                </label>
+                <input type="number" id="input-tech-sma50" step="0.01" value="74.63" />
+              </div>
+              <div class="tech-mini-field">
+                <label for="input-tech-rsi">
+                  RSI (14일 상대강도)
+                  <span class="tooltip-icon" data-tooltip="70 이상은 단기 과매수(과열) 구간, 30 이하는 단기 과매도(침체·기술적 반등 기대) 구간을 의미합니다.">?</span>
+                </label>
+                <input type="number" id="input-tech-rsi" min="1" max="99" step="0.1" value="32.6" />
+              </div>
+            </div>
+
+            <!-- [신설] 시가-종가 봉차트(일·주·월·년) & 일목균형표·볼린저·스토캐스틱·트레이딩뷰 퀀트 지표 툴바 -->
+            <div class="quant-chart-toolbar" aria-label="봉차트 주기 및 기술적 보조지표 설정 툴바">
+              <div class="toolbar-row">
+                <div class="toolbar-group">
+                  <span class="toolbar-label">차트 주기 (Timeframe)</span>
+                  <div class="tf-btn-group" role="group" aria-label="차트 주기 선택">
+                    <button type="button" class="tf-btn active" data-tf="1D">일봉 (1D)</button>
+                    <button type="button" class="tf-btn" data-tf="1W">주봉 (1W)</button>
+                    <button type="button" class="tf-btn" data-tf="1M">월봉 (1M)</button>
+                    <button type="button" class="tf-btn" data-tf="1Y">년봉 (1Y)</button>
+                  </div>
+                  <div class="chart-type-group" role="group" aria-label="봉차트 선차트 전환">
+                    <button type="button" class="chart-style-btn active" data-chart-style="candle">시가·종가 봉차트</button>
+                    <button type="button" class="chart-style-btn" data-chart-style="line">종가 선차트</button>
+                  </div>
+                </div>
+
+                <div class="toolbar-group">
+                  <label for="select-sub-indicator" class="toolbar-label">하단 오실레이터</label>
+                  <select id="select-sub-indicator" class="subchart-select" aria-label="하단 보조지표 선택">
+                    <option value="stochastic" selected>스토캐스틱 슬로우 (Stochastic Slow 14,3,3)</option>
+                    <option value="squeeze">LazyBear 스퀴즈 모멘텀 (TradingView 1위)</option>
+                    <option value="macd">MACD 오실레이터 (12, 26, 9)</option>
+                    <option value="rsi">RSI(14) &amp; 래리 코너스 단기 RSI(2)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="toolbar-row">
+                <div class="toolbar-group">
+                  <span class="toolbar-label">메인 차트 중첩 지표 (복수 선택)</span>
+                  <button type="button" class="overlay-chip active" data-overlay="sma">
+                    이동평균선 (20·50·200)
+                  </button>
+                  <button type="button" class="overlay-chip active" data-overlay="ichimoku">
+                    일목균형표 구름대 (9·26·52)
+                  </button>
+                  <button type="button" class="overlay-chip active" data-overlay="bollinger">
+                    볼린저밴드 (20, 2σ)
+                  </button>
+                  <button type="button" class="overlay-chip active" data-overlay="supertrend">
+                    SuperTrend 매매타점 (▲BUY/▼SELL)
+                  </button>
+                  <button type="button" class="overlay-chip" data-overlay="donchian">
+                    터틀 돈치안 채널 (20/10)
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 우측 상단 4대 KPI 요약 카드 (탭에 따라 레이블과 수치가 동적으로 변화) -->
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <div id="kpi-label-1" class="kpi-label">구간 최종 평가금액 (적립식)</div>
+              <div id="kpi-final-value" class="kpi-value text-accent">-</div>
+              <div id="kpi-final-sub" class="kpi-sub">-</div>
+            </div>
+            <div class="kpi-card">
+              <div id="kpi-label-2" class="kpi-label">구간 연평균 복리 (CAGR)</div>
+              <div id="kpi-cagr" class="kpi-value">-</div>
+              <div id="kpi-cagr-sub" class="kpi-sub">-</div>
+            </div>
+            <div class="kpi-card">
+              <div id="kpi-label-3" class="kpi-label">거치식 단독 vs 적립식 비교</div>
+              <div id="kpi-drag" class="kpi-value text-warning">-</div>
+              <div id="kpi-drag-sub" class="kpi-sub">-</div>
+            </div>
+            <div class="kpi-card">
+              <div id="kpi-label-4" class="kpi-label">구간 내 최악의 해 / MDD</div>
+              <div id="kpi-mdd" class="kpi-value text-danger">-</div>
+              <div id="kpi-mdd-sub" class="kpi-sub">-</div>
+            </div>
+          </div>
+
+          <!-- Canvas 메인 차트 영역 -->
+          <div class="chart-container">
+            <canvas id="sim-canvas" class="chart-canvas" aria-label="레버리지 ETF 백테스팅 및 기술적 지표 분석 차트"></canvas>
+          </div>
+
+          <!-- [탭 2 전용] 트레이딩뷰 & 월가 퀀트 5대 알고리즘 시그널 보드 + 3대 대응 제안 리포트 박스 -->
+          <div id="proposal-box" class="proposal-box" style="display: none;">
+            <div class="algo-board-box" style="margin-top: 0; margin-bottom: 0.85rem; background: var(--bg-card);">
+              <div class="proposal-box-header" style="margin-bottom: 0.35rem;">
+                <div class="proposal-box-title">
+                  트레이딩뷰 &amp; 월가 퀀트 5대 기술적 지표 구간 분석
+                  <span class="tooltip-icon" data-tooltip="5대 핵심 기술적 지표 수식(스퀴즈 모멘텀, 슈퍼트렌드, 일목균형표, 코너스RSI, 터틀 채널)의 구간 분석 현황입니다. 본 지표는 과거 차트 수식에 의한 계산 결과이며 개별 종목에 대한 투자 자문이나 매매 권유가 아닙니다.">?</span>
+                </div>
+                <span id="algo-tf-badge" class="proposal-badge badge-success">일봉(1D) 실측</span>
+              </div>
+              <div id="algo-signal-grid" class="algo-grid"></div>
+            </div>
+
+            <!-- 접이식 3대 퀀트 심층 대응 리포트 (기본은 접힘, 클릭 시 열림) -->
+            <div id="proposal-accordion-card" class="accordion-card">
+              <button type="button" class="accordion-header-btn" data-accordion-target="proposal-accordion-card" aria-label="3대 퀀트 심층 분석 시나리오 리포트 접기/펼치기">
+                <span style="display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;">
+                  <span>3대 퀀트 심층 분석 시나리오 리포트 (200일선 법칙 · 볼린저밴드 · 켈리 최적 배수)</span>
+                  <span id="quant-score-pill" class="quant-score-pill" style="font-size: 0.72rem; padding: 0.12rem 0.5rem;">지표 점수: 78점</span>
+                </span>
+                <span class="accordion-icon">▼</span>
+              </button>
+              <div class="accordion-content">
+                <div id="proposal-list" class="proposal-list"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="action-bar">
+            <button type="button" id="btn-pin-scenario" class="btn btn-primary">
+              현재 조건 고정 (Case A 비교)
+            </button>
+            <button type="button" id="btn-share-url" class="btn">
+              결과 URL 공유
+            </button>
+            <button type="button" id="btn-export-png" class="btn">
+              차트 이미지(PNG) 저장
+            </button>
+            <button type="button" id="btn-export-csv" class="btn">
+              분석 데이터(CSV) 다운로드
+            </button>
+          </div>
+
+          <div id="legal-disclaimer"></div>
+        </div>
+
+        <!-- 하단 상세 데이터 테이블 카드 (접이식 아코디언 패널: 기본 닫힘, 원클릭 열람) -->
+        <div id="data-table-accordion-card" class="accordion-card" style="margin-top: 1.35rem;">
+          <button type="button" class="accordion-header-btn" data-accordion-target="data-table-accordion-card" aria-label="상세 비교 데이터 테이블 접기/펼치기">
+            <div>
+              <span id="table-title" style="font-size: 0.86rem; font-weight: 700;">월단위 실전 백테스팅 상세 비교표</span>
+              <div id="table-subtitle" style="font-size: 0.74rem; color: var(--text-muted); font-weight: normal; margin-top: 0.15rem;">선택하신 기간의 매월 실제 수익률 및 누적 평가액 (클릭하여 열람 ▾)</div>
+            </div>
+            <span class="accordion-icon">▼</span>
+          </button>
+          <div class="accordion-content" style="padding: 0;">
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead id="yearly-table-head">
+                  <tr>
+                    <th>연도 / 시점</th>
+                    <th>누적 투자원금</th>
+                    <th>1배수 기초지수 평가액</th>
+                    <th>레버리지 적립식 평가액</th>
+                    <th>원금 대비 수익률</th>
+                    <th>연간 수익률 (1X vs 레버리지)</th>
+                  </tr>
+                </thead>
+                <tbody id="yearly-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 애드센스 안전 지대 (테이블/인터랙션 요소와 최소 40px 안전 거리 확보) -->
+    <div class="ad-safe-zone">
+      <aside class="ad-slot" aria-label="스폰서 광고 영역">
+        <span>SPONSORED DISPLAY SLOT · CLS-SAFE FIXED CONTAINER</span>
+      </aside>
+    </div>
+
+    <!-- SEO 교육용 심층 가이드 (3단 핵심 카드 요약 + 네이티브 접이식 구조) -->
+    <article class="seo-article card">
+      <details class="expert-guide">
+        <summary><span class="expert-guide-title">전문가 해설</span><span class="expert-guide-meta">수식 · 가정 · 용어 · 자주 묻는 질문</span></summary>
+        <div class="expert-guide-body">
+      <h2>레버리지 ETF 실전 백테스팅 핵심 원리와 200일 이동평균선·기술적 지표 분석 가이드</h2>
+      <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; margin-bottom: 1.25rem;">
+        <strong>TQQQ, SOXL, UPRO, FNGU, NVDL, TSLL</strong> 등 2배·3배 레버리지 ETF는 상승장에서는 경이로운 양(+)의 복리 효과를 발휘하지만,
+        횡보장과 하락장에서는 <strong>변동성 잠식(Volatility Drag)</strong>으로 인해 기초지수가 제자리로 돌아와도 원금이 심각하게 훼손되는 특성을 지닙니다.
+        본 가이드는 감에 의존하지 않고 역사적 구간 백테스팅과 통계적 지표를 활용한 객관적 시뮬레이션 원리를 정리합니다.
+      </p>
+
+      <!-- 3단 핵심 요약 카드 그리드 -->
+      <div class="seo-summary-grid">
+        <div class="seo-takeaway-card">
+          <div class="takeaway-badge">KEY RULE 01</div>
+          <div class="takeaway-title">200일 이동평균선 법칙</div>
+          <div class="takeaway-desc">
+            가예드(M. Gayed) 퀀트 논문에 따르면 200 SMA 상회 시 일일 변동성이 억제되어 2X/3X 복리 폭발력이 극대화되고, 하회 시 변동성이 급증하므로 1X 또는 현금 방어가 수학적으로 유리합니다.
+          </div>
+        </div>
+        <div class="seo-takeaway-card">
+          <div class="takeaway-badge">KEY RULE 02</div>
+          <div class="takeaway-desc">
+            <div class="takeaway-title">변동성 잠식(Itô) 공식</div>
+            실효 성장률 g(L) = L·μ − 0.5·L²·σ² − c 공식에 따라 변동성(σ)이 높을수록 제곱(L²) 비례로 원금이 깎여나가며, 횡보장에서는 지수 대비 큰 누적 손실이 발생합니다.
+          </div>
+        </div>
+        <div class="seo-takeaway-card">
+          <div class="takeaway-badge">KEY RULE 03</div>
+          <div class="takeaway-desc">
+            <div class="takeaway-title">켈리 최적 배수(Kelly)</div>
+            나스닥100(σ≈23%)의 장기 최적 레버리지는 약 1.9x~2.2x입니다. 변동성이 50%를 초과하는 개별주 레버리지는 장기 보유 시 수학적 기댓값이 급감하므로 단기 추세용으로 적합합니다.
+          </div>
+        </div>
+      </div>
+
+      <!-- 접이식 세부 논문 및 실전 분석 (검색엔진 100% 인덱싱 유지) -->
+      <details class="seo-folding-details" open>
+        <summary>1. 찰스 다우 어워드 수상작 "Leverage for the Long Run" 심층 해설</summary>
+        <div class="details-body">
+          <p>
+            마이클 가예드(Michael Gayed)의 <em>"Leverage for the Long Run"</em> 논문에 따르면,
+            주식 시장의 일일 변동성(σ)은 주가가 <strong>200일 이동평균선 위에 있을 때(정배열 상승장)는 현저히 낮게 유지</strong>되고,
+            반대로 주가가 <strong>200일 이동평균선 아래로 내려갈 때(역배열 하락장) 폭발적으로 증가</strong>하는 특성이 있습니다.
+          </p>
+          <ul style="padding-left: 1.2rem; line-height: 1.7; font-size: 0.85rem; color: var(--text-muted);">
+            <li><strong>200일선 상회 구간 (Risk-On):</strong> 추세 상승 동력이 변동성 잠식 손실보다 크므로 2배·3배 레버리지 ETF의 양의 복리 효과가 온전히 누적됩니다.</li>
+            <li><strong>200일선 하회 구간 (Risk-Off):</strong> 2008년 글로벌 금융위기나 2022년 긴축기처럼 주가가 200일선 아래에 머무를 때는 일일 등락폭이 커져 -75%~-85% 이상의 영구 자본 손실 위험이 발생합니다. 이 시기에는 1배수 지수로의 전환이나 소액 분할 적립식(DCA) 대응이 권장됩니다.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="seo-folding-details">
+        <summary>2. 이토 보조정리(Itô's Lemma)와 켈리 공식(Kelly Criterion) 수식 분해</summary>
+        <div class="details-body">
+          <div class="formula-box" style="margin-bottom: 0.75rem;">
+            1) 일일 리밸런싱 실효 복리 성장률: g(L) = L · μ − 0.5 · L² · σ² − c<br />
+            2) 장기 기하평균을 극대화하는 켈리 최적 배수: L* = (μ − r_f) ÷ σ²<br /><br />
+            • 나스닥100 (μ ≈ 12%, σ ≈ 23.5%): L* ≈ 1.9x ~ 2.2x → QLD(2배) 또는 TQQQ+현금 혼합 모델이 장기 최적<br />
+            • 반도체·개별 테크주 (σ ≈ 35% ~ 60%): 변동성 제곱 항(-0.5·L²·σ²)에 의해 3배수 장기 거치 시 기하수익률이 마이너스로 붕괴되므로 동적 손절 또는 적립식 분할 매수가 필수적입니다.
+          </div>
+          <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
+            위 수식에서 c는 운용보수 및 스왑 차입 금리(비용)를 나타냅니다. 고금리 환경에서는 차입 비용(c)이 증가하여 레버리지 ETF의 복리 수익률을 추가로 잠식하게 됩니다.
+          </p>
+        </div>
+      </details>
+
+      <details class="seo-folding-details">
+        <summary>3. 실전 적립식(DCA) vs 거치식(Lump-sum) 역사적 시뮬레이션 교훈</summary>
+        <div class="details-body">
+          <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6;">
+            2022년 초 고점에서 시작된 거치식 투자는 나스닥 -33% 하락 기간 동안 TQQQ -80%, SOXL -86%라는 치명적인 MDD를 겪었습니다.
+            그러나 매월 일정 금액을 분할 매수한 적립식(DCA) 시뮬레이션에서는 바닥권(2022년 10월~12월)에서 낮은 단가로 좌수를 대량 매집하여, 2023년 반등장 초기에 원금 회복 및 높은 수익률 전환을 기록했습니다.
+          </p>
+        </div>
+      </details>
+
+      <h2 style="margin-top: 1.5rem;">자주 묻는 질문 (FAQ)</h2>
+
+      <details class="faq-item" open>
+        <summary>Q1. 2022년 폭락장(-80%)에서 시작했는데도 적립식(DCA) 계좌가 빠르게 플러스 전환된 이유는 무엇인가요?</summary>
+        <div class="faq-answer">
+          우측 상단 <strong>[탭 1. 기간별 실전 백테스팅]</strong>에서 프리셋 <strong>[금리인상 폭락 &amp; 적립식 회복 (2022~2024)]</strong>을 클릭해 보세요.
+          2022년 초에 거치식으로만 넣은 원금은 -79%(TQQQ)~-85%(SOXL) 폭락 후 회복에 오랜 시간이 걸렸지만,
+          매월 꾸준히 적립식(DCA)으로 투입한 자금은 2022년 말 바닥권에서 1/5 가격에 엄청난 주식 수(좌수)를 매집했기 때문에 2023년 반등장에서 폭발적인 수익률로 계좌 전체를 견인했습니다.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Q2. [탭 2]의 기술적 차트 분석에서 임의의 단가나 200일선을 직접 넣어 시뮬레이션할 수 있나요?</summary>
+        <div class="faq-answer">
+          네, 가능합니다! <strong>[탭 2. 기술적 지표 현황 &amp; 시나리오]</strong>를 누르시면 종목별 최근 마감 기준 스냅샷이 기본 세팅되어 있으며,
+          좌측 또는 입력칸에 원하시는 <strong>기준 시뮬레이션 단가, 200일 이동평균선, 50일 이동평균선, RSI(14) 수치</strong>를 직접 입력하시면 즉시 이격도, 볼린저밴드 위치, 52주 낙폭 및 기술적 지표 시나리오가 실시간으로 재계산됩니다.
+        </div>
+      </details>
+
+      </div>
+      </details>
+
+      <div id="affiliate-disclosure"></div>
+    </article>
+  </main>
+
+  <!-- 애드센스 규정 준수 다운로드 & 공유 완료 안내 모달 (Intermission Modal) -->
+  <div id="action-result-modal" class="simulab-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-action-title">
+    <div class="simulab-modal">
+      <div class="modal-header">
+        <div class="modal-title-box">
+          
+          <span id="modal-action-title" class="modal-title">분석 데이터 준비 완료</span>
+        </div>
+        <button type="button" id="btn-close-modal" class="modal-close-icon" aria-label="팝업 닫기">×</button>
+      </div>
+      <div class="modal-body">
+        <p id="modal-action-desc" class="modal-message">
+          요청하신 레버리지 ETF 시뮬레이션 분석 데이터가 성공적으로 생성 및 저장되었습니다.
+        </p>
+        <div class="modal-ad-zone" aria-label="스폰서 디스플레이 광고 영역">
+          <div style="font-size: 0.72rem; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 0.4rem;">SPONSORED ADVERTISEMENT</div>
+          <div style="width: 300px; height: 250px; background: rgba(255,255,255,0.03); border: 1px dashed var(--border-strong); display: flex; align-items: center; justify-content: center; border-radius: 6px; text-align: center; padding: 1rem;">
+            <span>300 × 250 SPONSORED DISPLAY SLOT<br /><small style="color:var(--text-muted); font-size: 0.7rem;">(애드센스 규정 준수 안전 컨테이너)</small></span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="btn-modal-confirm" class="btn btn-primary" style="padding: 0.5rem 1.2rem; font-size: 0.85rem;">
+          확인 (시뮬레이터로 계속하기)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <footer id="site-footer"></footer>
+
+  <script src="../../assets/js/core-ui.js"></script>
+  <script src="../../assets/js/chart-engine.js"></script>
+  <script src="../../assets/js/seo-schema.js"></script>
+  <script src="../../assets/js/ohlc-data.js"></script>
+  <script src="../../assets/js/market-data.js"></script>
+  <script src="./logic.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

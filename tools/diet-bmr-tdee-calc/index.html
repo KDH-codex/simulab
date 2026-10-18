@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>다이어트 BMR·TDEE 계산기 — 식단 탄단지 칼로리 처방 | SimuLab</title>
+  <meta name="description" content="미플린-세인트 지어 공식 기반 기초대사량(BMR)과 일일 총 에너지 소비량(TDEE)을 정밀 산출하고, 감량·유지·벌크업 목표별 일일 탄수화물·단백질·지방(g) 매크로를 즉시 처방합니다." />
+  <link rel="stylesheet" href="../../assets/css/common.css" />
+  <style>
+    /* 다이어트 계산기 전용 스타일 */
+    .gender-radio-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+    .gender-label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.75rem;
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-md);
+      background: var(--bg-card);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .gender-label input[type="radio"] { display: none; }
+    .gender-label:has(input:checked) {
+      border-color: #2563eb;
+      background: #eff6ff;
+      color: #2563eb;
+    }
+
+    .macro-bar-card {
+      display: flex;
+      height: 14px;
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 1rem 0 0.5rem;
+      background: #e2e8f0;
+    }
+    .macro-segment {
+      height: 100%;
+      transition: width 0.3s ease;
+    }
+    .macro-carbs { background: #3b82f6; }
+    .macro-protein { background: #10b981; }
+    .macro-fat { background: #f59e0b; }
+
+    .macro-badge-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    .macro-badge-item {
+      padding: 0.85rem 0.6rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-color);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main class="container" style="padding-top: 1.5rem; padding-bottom: 3rem;">
+    <!-- 페이지 제목 및 인트로 -->
+    <section class="page-header">
+      <h1 class="page-title">다이어트 BMR·TDEE</h1>
+      <p class="page-subtitle">
+        "내가 하루에 몇 칼로리를 먹어야 살이 빠질까?" 과학적인 미플린-세인트 지어(Mifflin-St Jeor) 공식을 기반으로 기초대사량(BMR)과 활동 대사량(TDEE)을 정밀 산출하고, 체중 감량·유지·벌크업에 맞는 최적의 하루 탄수화물·단백질·지방(g) 식단 매크로를 즉시 처방해 드립니다.
+      </p>
+    </section>
+
+    <!-- 판정 브리핑 배너 -->
+    <div id="verdict-banner" class="verdict-banner" style="margin-bottom: 1.5rem;">
+      <div id="verdict-text" style="font-size: 0.95rem; line-height: 1.6;">
+        신체 정보와 활동량을 입력하시면 기초대사량과 맞춤 식단 칼로리가 산출됩니다.
+      </div>
+    </div>
+
+    <!-- 핵심 KPI 스탯 카드 4종 -->
+    <section class="kpi-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+      <div class="card stat-card" style="padding: 1.25rem;">
+        <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">하루 권장 섭취 칼로리</span>
+        <div id="kpi-target-calories" class="stat-value" style="font-size: 1.6rem; font-weight: 800; color: #2563eb; margin-top: 0.25rem;">2,143 kcal</div>
+        <span id="kpi-goal-text" style="font-size: 0.75rem; color: var(--text-muted);">완만한 감량 목표</span>
+      </div>
+
+      <div class="card stat-card" style="padding: 1.25rem;">
+        <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">일일 총 에너지 소비량 (TDEE)</span>
+        <div id="kpi-tdee" class="stat-value" style="font-size: 1.6rem; font-weight: 800; color: var(--text-primary); margin-top: 0.25rem;">2,443 kcal</div>
+        <span style="font-size: 0.75rem; color: var(--text-muted);">현재 체중 유지 칼로리</span>
+      </div>
+
+      <div class="card stat-card" style="padding: 1.25rem;">
+        <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">순수 기초대사량 (BMR)</span>
+        <div id="kpi-bmr" class="stat-value" style="font-size: 1.5rem; font-weight: 700; color: #10b981; margin-top: 0.25rem;">1,576 kcal</div>
+        <span style="font-size: 0.75rem; color: var(--text-muted);">숨만 쉬어도 타는 칼로리</span>
+      </div>
+
+      <div class="card stat-card" style="padding: 1.25rem;">
+        <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">주당 예상 체중 변화</span>
+        <div id="kpi-weight-change" class="stat-value" style="font-size: 1.5rem; font-weight: 700; color: #f59e0b; margin-top: 0.25rem;">-0.27 kg/주</div>
+        <span id="kpi-bmi-text" style="font-size: 0.75rem; color: var(--text-muted);">BMI: 23.5 (정상)</span>
+      </div>
+    </section>
+
+    <!-- 메인 시뮬레이션 그리드 -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+      <!-- 좌측: 신체 정보 및 활동량 입력 -->
+      <div class="card" style="padding: 1.5rem;">
+        <h2 class="step-section-title" style="font-size: 1.15rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--text-primary);">
+          1단계. 신체 정보 & 다이어트 목표 설정
+        </h2>
+
+        <!-- 성별 선택 라디오 -->
+        <label style="display: block; font-size: 0.85rem; font-weight: 600; color: var(--text-secondary); margin-bottom: 0.4rem;">생물학적 성별</label>
+        <div class="gender-radio-grid">
+          <label class="gender-label">
+            <input type="radio" name="input-gender" value="male" checked />
+            <span>남성 (Male)</span>
+          </label>
+          <label class="gender-label">
+            <input type="radio" name="input-gender" value="female" />
+            <span>여성 (Female)</span>
+          </label>
+        </div>
+
+        <!-- 1. 나이 인풋 카드 -->
+        <div class="input-card" style="margin-bottom: 1rem;">
+          <div class="input-header">
+            <label for="input-age" class="input-title">나이 (만 나이)</label>
+            <span id="badge-age" class="input-badge">30세</span>
+          </div>
+          <div class="input-group">
+            <input type="number" id="input-age" class="input-field" value="30" min="10" max="100" />
+            <span class="input-unit">세</span>
+          </div>
+          <div class="quick-chips">
+            <button type="button" class="chip-btn" data-target="input-age" data-set="20">20세</button>
+            <button type="button" class="chip-btn" data-target="input-age" data-set="30">30세</button>
+            <button type="button" class="chip-btn" data-target="input-age" data-set="40">40세</button>
+            <button type="button" class="chip-btn" data-target="input-age" data-set="50">50세</button>
+            <button type="button" class="chip-btn" data-target="input-age" data-add="1">+1세</button>
+            <button type="button" class="chip-btn" data-target="input-age" data-add="-1">-1세</button>
+          </div>
+        </div>
+
+        <!-- 2. 키 인풋 카드 -->
+        <div class="input-card" style="margin-bottom: 1rem;">
+          <div class="input-header">
+            <label for="input-height" class="input-title">키 (신장)</label>
+            <span id="badge-height" class="input-badge">175 cm</span>
+          </div>
+          <div class="input-group">
+            <input type="number" id="input-height" class="input-field" value="175" min="100" max="230" />
+            <span class="input-unit">cm</span>
+          </div>
+          <div class="quick-chips">
+            <button type="button" class="chip-btn" data-target="input-height" data-set="160">160</button>
+            <button type="button" class="chip-btn" data-target="input-height" data-set="165">165</button>
+            <button type="button" class="chip-btn" data-target="input-height" data-set="170">170</button>
+            <button type="button" class="chip-btn" data-target="input-height" data-set="175">175</button>
+            <button type="button" class="chip-btn" data-target="input-height" data-set="180">180</button>
+            <button type="button" class="chip-btn" data-target="input-height" data-add="1">+1cm</button>
+            <button type="button" class="chip-btn" data-target="input-height" data-add="-1">-1cm</button>
+          </div>
+        </div>
+
+        <!-- 3. 체중 인풋 카드 -->
+        <div class="input-card" style="margin-bottom: 1rem;">
+          <div class="input-header">
+            <label for="input-weight" class="input-title">체중 (몸무게)</label>
+            <span id="badge-weight" class="input-badge">72 kg</span>
+          </div>
+          <div class="input-group">
+            <input type="number" id="input-weight" class="input-field" value="72" min="30" max="250" step="0.5" />
+            <span class="input-unit">kg</span>
+          </div>
+          <div class="quick-chips">
+            <button type="button" class="chip-btn" data-target="input-weight" data-set="55">55kg</button>
+            <button type="button" class="chip-btn" data-target="input-weight" data-set="65">65kg</button>
+            <button type="button" class="chip-btn" data-target="input-weight" data-set="72">72kg</button>
+            <button type="button" class="chip-btn" data-target="input-weight" data-set="80">80kg</button>
+            <button type="button" class="chip-btn" data-target="input-weight" data-add="1">+1kg</button>
+            <button type="button" class="chip-btn" data-target="input-weight" data-add="-1">-1kg</button>
+          </div>
+        </div>
+
+        <!-- 활동 수준 선택 -->
+        <div class="input-card" style="margin-bottom: 1rem;">
+          <div class="input-header">
+            <label for="select-activity" class="input-title">평소 일상 활동 및 운동 수준</label>
+          </div>
+          <select id="select-activity" class="form-select" style="width: 100%; padding: 0.65rem; border-radius: 8px; border: 1.5px solid var(--border-color); font-size: 0.9rem; background: var(--bg-card); color: var(--text-primary);">
+            <option value="sedentary">좌식 생활 (운동 거의 안 함, 주로 앉아 있음)</option>
+            <option value="light">가벼운 활동 (주 1~2회 가벼운 산책·운동)</option>
+            <option value="moderate" selected>보통 활동 (주 3~5회 규칙적 헬스·유산소)</option>
+            <option value="active">활발한 활동 (주 6~7회 강도 높은 트레이닝)</option>
+            <option value="very_active">선수급 활동 (하루 2회 운동 또는 격렬한 육체 노동)</option>
+          </select>
+        </div>
+
+        <!-- 목표 선택 -->
+        <div class="input-card" style="margin-bottom: 1.25rem;">
+          <div class="input-header">
+            <label for="select-goal" class="input-title">다이어트 & 체중 관리 목표</label>
+          </div>
+          <select id="select-goal" class="form-select" style="width: 100%; padding: 0.65rem; border-radius: 8px; border: 1.5px solid var(--border-color); font-size: 0.9rem; background: var(--bg-card); color: var(--text-primary);">
+            <option value="cut_aggressive">빠른 체지방 감량 (-500 kcal/일, 약 -0.5kg/주)</option>
+            <option value="cut_moderate" selected>완만한 건강 감량 (-300 kcal/일, 약 -0.3kg/주)</option>
+            <option value="maintain">현재 체중 유지 (체형 유지 및 대사 안정화)</option>
+            <option value="bulk_clean">클린 린매스업 (+300 kcal/일, 체지방 억제 근육 증가)</option>
+            <option value="bulk_heavy">체중 및 근력 증량 (+500 kcal/일, 파워 벌크업)</option>
+          </select>
+        </div>
+
+        <!-- 버튼 바 -->
+        <div style="display: flex; gap: 0.75rem;">
+          <button type="button" class="btn btn-primary" id="btn-calculate" style="flex: 2; padding: 0.85rem; font-weight: 700;">
+            식단 매크로 계산하기
+          </button>
+          <button type="button" class="btn btn-outline" id="btn-reset" style="flex: 1; padding: 0.85rem;">
+            초기화
+          </button>
+        </div>
+      </div>
+
+      <!-- 우측: 탄단지 영양소 매크로 처방전 및 도넛 차트 -->
+      <div class="card" style="padding: 1.5rem;">
+        <h2 class="step-section-title" style="font-size: 1.15rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
+          2단계. 일일 영양소(탄·단·지) 맞춤 처방전
+        </h2>
+
+        <!-- Canvas 도넛 차트 -->
+        <div style="position: relative; width: 100%; height: 210px; display: flex; justify-content: center; align-items: center;">
+          <canvas id="macro-chart-canvas" width="400" height="210" style="display: block; max-width: 100%; height: 100%;"></canvas>
+        </div>
+
+        <!-- 탄단지 프로그레스 바 -->
+        <div class="macro-bar-card">
+          <div id="bar-carbs" class="macro-segment macro-carbs" style="width: 50%;"></div>
+          <div id="bar-protein" class="macro-segment macro-protein" style="width: 25%;"></div>
+          <div id="bar-fat" class="macro-segment macro-fat" style="width: 25%;"></div>
+        </div>
+
+        <!-- 영양소별 상세 g수 뱃지 그리드 -->
+        <div class="macro-badge-grid">
+          <div class="macro-badge-item" style="background: #eff6ff; border-color: #bfdbfe;">
+            <div style="font-size: 0.78rem; font-weight: 700; color: #1e40af;">탄수화물 (Carbs)</div>
+            <div id="val-carbs-g" style="font-size: 1.35rem; font-weight: 800; color: #2563eb; margin: 0.2rem 0;">268 g</div>
+            <div id="val-carbs-kcal" style="font-size: 0.74rem; color: #64748b;">1,072 kcal (50%)</div>
+          </div>
+
+          <div class="macro-badge-item" style="background: #f0fdf4; border-color: #bbf7d0;">
+            <div style="font-size: 0.78rem; font-weight: 700; color: #166534;">단백질 (Protein)</div>
+            <div id="val-protein-g" style="font-size: 1.35rem; font-weight: 800; color: #10b981; margin: 0.2rem 0;">130 g</div>
+            <div id="val-protein-kcal" style="font-size: 0.74rem; color: #64748b;">520 kcal (24%)</div>
+          </div>
+
+          <div class="macro-badge-item" style="background: #fffbeb; border-color: #fde68a;">
+            <div style="font-size: 0.78rem; font-weight: 700; color: #92400e;">지방 (Fat)</div>
+            <div id="val-fat-g" style="font-size: 1.35rem; font-weight: 800; color: #d97706; margin: 0.2rem 0;">60 g</div>
+            <div id="val-fat-kcal" style="font-size: 0.74rem; color: #64748b;">540 kcal (26%)</div>
+          </div>
+        </div>
+
+        <!-- 영양 섭취 실전 꿀팁 -->
+        <div style="margin-top: 1.25rem; padding: 1rem; background: var(--bg-main); border-radius: 8px; font-size: 0.82rem; line-height: 1.6; color: var(--text-secondary);">
+          <strong style="color: var(--text-primary); display: block; margin-bottom: 0.35rem;">💡 트레이너의 실전 다이어트 팁:</strong>
+          • 단백질은 체중 1kg당 약 1.6g~2.0g(닭가슴살 3~4팩 분량)으로 근손실을 방지합니다.<br/>
+          • 과도한 절식(기초대사량 미만 섭취)은 근육 손실과 요요현상을 초래하므로 절대 권장하지 않습니다.
+        </div>
+      </div>
+    </div>
+
+    <!-- SEO 전문 가이드 및 FAQ 아티클 -->
+    <article class="card" style="padding: 1.75rem; margin-top: 2rem;">
+      <h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
+        기초대사량(BMR)과 활동대사량(TDEE) 완벽 가이드
+      </h2>
+      <p style="font-size: 0.88rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1rem;">
+        체중 조절의 핵심은 <strong>에너지 수지 균형(Energy Balance)</strong>입니다. 내가 소비하는 칼로리보다 적게 먹으면 살이 빠지고(칼로리 적자), 더 많이 먹으면 찝니다(칼로리 잉여).
+      </p>
+
+      <h3 style="font-size: 1.05rem; font-weight: 700; margin: 1.25rem 0 0.5rem; color: var(--text-primary);">
+        1. 기초대사량 (BMR, Basal Metabolic Rate)이란?
+      </h3>
+      <p style="font-size: 0.88rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1rem;">
+        아무런 활동을 하지 않고 가만히 누워 숨만 쉬어도 심장 박동, 체온 유지, 세포 재생을 위해 생명 유지를 목적으로 소비되는 최소한의 칼로리입니다. 본 계산기는 현존하는 가장 오차가 적은 <strong>미플린-세인트 지어(Mifflin-St Jeor) 공식</strong>을 적용합니다.
+      </p>
+
+      <h3 style="font-size: 1.05rem; font-weight: 700; margin: 1.25rem 0 0.5rem; color: var(--text-primary);">
+        2. TDEE (Total Daily Energy Expenditure)란?
+      </h3>
+      <p style="font-size: 0.88rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 1rem;">
+        기초대사량에 소화 대사(TEF)와 직업적 활동, 운동 소비 칼로리(NEAT/EAT)를 모두 합산한 <strong>'진짜 하루 총 에너지 소비량'</strong>입니다. 즉, TDEE만큼 먹으면 현재 몸무게가 1g도 변하지 않고 완벽하게 유지됩니다.
+      </p>
+    </article>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <!-- 스크립트 체인 -->
+  <script src="../../assets/js/core-ui.js"></script>
+  <script src="./logic.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

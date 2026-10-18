@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>커피값 기회비용 계산기 — 매일 4,500원 주식에 넣었다면? | SimuLab</title>
+  <meta name="description" content="매일 마시는 커피 한 잔, 담배 한 갑, 배달팁 4,500원. 만약 TQQQ, SOXL, SPY, SCHD, 엔비디아에 적립 투자했다면 지금 얼마가 되었을까요? 실물 물품 환산과 복리 시뮬레이션을 제공합니다." />
+  <link rel="stylesheet" href="../../assets/css/common.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main class="container" style="padding-top: 1.5rem; padding-bottom: 3rem;">
+    <section class="page-header">
+      <h1 class="page-title">커피값 투자 기회비용</h1>
+      <p class="page-subtitle">
+        "내가 습관처럼 결제한 커피 한 잔(4,500원), 사실 얼마짜리였을까?" 일상의 소액 지출을 미국 대표 지수 ETF나 빅테크 주식에 적립 투자했을 때의 미래 가치를 시뮬레이션하고, 최신 전자기기나 자동차 등 실물 물품으로 유쾌하게 환산해 드립니다.
+      </p>
+    </section>
+
+    <!-- 판정 브리핑 배너 -->
+    <div id="verdict-banner" class="verdict-banner" style="margin-bottom: 1.5rem;">
+      <div id="verdict-text" style="font-size: 0.95rem; line-height: 1.6;">
+        조건을 설정하시면 커피값의 놀라운 미래 투자 가치가 여기에 브리핑됩니다.
+      </div>
+    </div>
+
+    <!-- 핵심 KPI 카드 4종 -->
+    <section class="kpi-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+      <div class="card stat-card" style="padding: 1.25rem;">
+        <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">총 커피 지출액 (원금)</span>
+        <div id="card-total-spent" class="stat-value" style="font-size: 1.6rem; font-weight: 700; color: var(--text-primary); margin-top: 0.25rem;">-</div>
+        <span style="font-size: 0.75rem; color: var(--text-muted);">해당 기간 동안 소비한 원금</span>
+      </div>
+
+      <div class="card stat-card" style="padding: 1.25rem;">
+        <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">주식 투자 평가 금액</span>
+        <div id="card-final-accumulated" class="stat-value" style="font-size: 1.6rem; font-weight: 700; color: var(--primary-color); margin-top: 0.25rem;">-</div>
+        <span style="font-size: 0.75rem; color: var(--text-muted);">복리 적립 투자 시 최종 자산</span>
+      </div>
+
+      <div class="card stat-card" style="padding: 1.25rem;">
+        <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">불어난 순수익금</span>
+        <div id="card-total-profit" class="stat-value" style="font-size: 1.6rem; font-weight: 700; color: #10b981; margin-top: 0.25rem;">-</div>
+        <span style="font-size: 0.75rem; color: var(--text-muted);">커피값 대비 자본 소득</span>
+      </div>
+
+      <div class="card stat-card" style="padding: 1.25rem;">
+        <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">커피 1잔당 미래 가치</span>
+        <div id="card-future-cup-cost" class="stat-value" style="font-size: 1.6rem; font-weight: 700; color: #f59e0b; margin-top: 0.25rem;">-</div>
+        <span style="font-size: 0.75rem; color: var(--text-muted);">투자 가치로 환산한 1잔 가격</span>
+      </div>
+    </section>
+
+    <!-- 입력 컨트롤 및 결과 그리드 -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem;">
+      <!-- 좌측: 입력 폼 -->
+      <div class="card" style="padding: 1.5rem;">
+        <h2 class="step-section-title" style="font-size: 1.15rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--text-primary);">
+          1. 나의 일상 지출 습관 설정
+        </h2>
+
+        <!-- [인풋 카드 1] 1회/일일 소비 금액 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <span class="input-card-label">1회/일일 소비 금액</span>
+            <span id="badge-daily-expense" class="korean-amount-badge">4,500원</span>
+          </div>
+          <div class="input-group-modern">
+            <input type="number" id="daily-expense-input" class="form-control" step="500" min="500" max="100000" value="4500" />
+            <span class="input-suffix-badge">원</span>
+          </div>
+          <input type="range" id="daily-expense-slider" class="range-slider" min="1000" max="30000" step="500" value="4500" style="margin-top: 0.75rem;" />
+          <div class="slider-guide-row">
+            <span>1,000원</span>
+            <span>15,000원</span>
+            <span>30,000원</span>
+          </div>
+          <div class="quick-chips-row">
+            <button type="button" class="quick-chip-btn" data-expense-preset="4500">아메리카노 (4,500원)</button>
+            <button type="button" class="quick-chip-btn" data-expense-preset="5000">라떼 (5,000원)</button>
+            <button type="button" class="quick-chip-btn" data-expense-preset="4000">배달팁 (4,000원)</button>
+            <button type="button" class="quick-chip-btn" data-expense-preset="20000">외식 (20,000원)</button>
+            <button type="button" class="quick-chip-btn" data-expense-add="1000">+1,000원</button>
+          </div>
+        </div>
+
+        <!-- [인풋 카드 2] 소비 빈도 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <span class="input-card-label">소비 빈도</span>
+          </div>
+          <select id="frequency-select" class="form-control">
+            <option value="everyday" selected>매일 마심 (주 7일 · 월 약 30.4회)</option>
+            <option value="weekday">출근하는 평일만 (주 5일 · 월 약 21.7회)</option>
+            <option value="three">가끔 마심 (주 3회 · 월 약 13회)</option>
+          </select>
+        </div>
+
+        <!-- [인풋 카드 3] 비교 투자 대상 종목 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <span class="input-card-label">비교할 주식 / ETF</span>
+          </div>
+          <select id="target-symbol-select" class="form-control">
+            <option value="TQQQ" selected>나스닥 3배 레버리지 (TQQQ · 연평균 약 38.5%)</option>
+            <option value="SOXL">반도체 3배 레버리지 (SOXL · 연평균 약 44.2%)</option>
+            <option value="QQQ">미국 나스닥 100 (QQQ · 연평균 약 18.2%)</option>
+            <option value="SPY">미국 S&amp;P 500 (SPY · 연평균 약 13.5%)</option>
+            <option value="SCHD">미국 배당성장주 (SCHD · 연평균 약 12.8%)</option>
+            <option value="NVDA">엔비디아 (NVDA · AI 대장주)</option>
+            <option value="005930">삼성전자 (국내 대표주)</option>
+          </select>
+        </div>
+
+        <!-- [인풋 카드 4] 투자 기간 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <span class="input-card-label">기간 설정</span>
+          </div>
+          <select id="duration-years-select" class="form-control">
+            <option value="1">최근 1년</option>
+            <option value="3">최근 3년</option>
+            <option value="5" selected>최근 5년 (추천)</option>
+            <option value="10">장기 10년</option>
+          </select>
+        </div>
+
+        <!-- 하단 액션 버튼들 -->
+        <div style="display: flex; gap: 0.5rem; margin-top: 1.5rem;">
+          <button type="button" id="share-btn" class="btn btn-outline" style="flex: 1;">결과 공유 URL 복사</button>
+          <button type="button" id="export-csv-btn" class="btn btn-outline" style="flex: 1;">CSV 다운로드</button>
+        </div>
+      </div>
+
+      <!-- 우측: 자산 성장 비교 차트 -->
+      <div class="card" style="padding: 1.5rem; display: flex; flex-direction: column;">
+        <h2 class="step-section-title" style="font-size: 1.15rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--text-primary);">
+          2. 단순 지출액 vs 주식 복리 평가액 비교
+        </h2>
+
+        <!-- 세부 배지 -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 0.75rem; margin-bottom: 1rem; background: var(--bg-main); padding: 0.75rem; border-radius: 8px;">
+          <div>
+            <span style="font-size: 0.72rem; color: var(--text-muted);">월 환산 저축액</span>
+            <div id="stat-monthly-save" style="font-size: 0.95rem; font-weight: 700;">-</div>
+          </div>
+          <div>
+            <span style="font-size: 0.72rem; color: var(--text-muted);">총 소비 잔수</span>
+            <div id="stat-total-cups" style="font-size: 0.95rem; font-weight: 700;">-</div>
+          </div>
+          <div>
+            <span style="font-size: 0.72rem; color: var(--text-muted);">연평균 수익률(CAGR)</span>
+            <div id="stat-cagr" style="font-size: 0.95rem; font-weight: 700; color: #10b981;">-</div>
+          </div>
+          <div>
+            <span style="font-size: 0.72rem; color: var(--text-muted);">원금 대비 총 수익률</span>
+            <div id="stat-total-roi" style="font-size: 0.95rem; font-weight: 700; color: var(--primary-color);">-</div>
+          </div>
+        </div>
+
+        <div style="flex: 1; min-height: 300px; position: relative;">
+          <canvas id="coffee-chart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <!-- 실물 물품 환산 섹션 -->
+    <section class="card" style="padding: 1.5rem; margin-bottom: 2.5rem;">
+      <h2 class="step-section-title" style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-primary);">
+        3. 커피값 대신 주식을 샀다면 손에 쥘 수 있었던 것들
+      </h2>
+      <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
+        매일의 사소한 커피 소비가 모여 최신 전자기기나 해외여행, 자동차가 되는 마법을 확인해 보세요.
+      </p>
+      <div id="real-item-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0.75rem;">
+        <!-- JS 렌더링 -->
+      </div>
+    </section>
+
+    <!-- 연도별 상세 테이블 -->
+    <section class="card" style="padding: 1.5rem; margin-bottom: 2.5rem;">
+      <h2 class="step-section-title" style="font-size: 1.15rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-primary);">
+        4. 연도별 적립식 성과 상세표
+      </h2>
+      <div style="overflow-x: auto;">
+        <table class="data-table" style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+          <thead>
+            <tr style="border-bottom: 2px solid var(--border-color); background: var(--bg-main);">
+              <th style="padding: 0.6rem; text-align: center;">연차</th>
+              <th style="padding: 0.6rem; text-align: right;">단순 지출 누적액</th>
+              <th style="padding: 0.6rem; text-align: right;">주식 복리 평가액</th>
+              <th style="padding: 0.6rem; text-align: right;">불어난 순수익</th>
+              <th style="padding: 0.6rem; text-align: right;">수익률</th>
+            </tr>
+          </thead>
+          <tbody id="yearly-table-body">
+            <!-- JS 렌더링 -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 전문가 가이드 아코디언 -->
+    <article class="seo-article card" style="padding: 1.5rem; margin-bottom: 2rem;">
+      <details class="expert-guide">
+        <summary style="font-weight: 700; font-size: 1.05rem; cursor: pointer; color: var(--text-primary);">
+          라테 요인(Latte Factor)과 소액 적립식 투자의 심리학 (펼쳐보기)
+        </summary>
+        <div style="margin-top: 1rem; line-height: 1.7; font-size: 0.9rem; color: var(--text-secondary);">
+          <h3 style="font-size: 1rem; color: var(--text-primary); margin-top: 1rem;">1. 데이비드 바흐의 '라테 팩터(Latte Factor)'</h3>
+          <p>
+            재정 전문가 데이비드 바흐(David Bach)는 무의식적으로 매일 지출하는 4~5달러의 커피, 스낵, 구독료 등을 '라테 팩터'라 명명했습니다. 
+            하루 한 잔의 커피값은 작아 보이지만, 10년~20년간 복리로 투자하면 수천만 원에서 수억 원에 달하는 거대한 은퇴 자산이 될 수 있음을 시사합니다.
+          </p>
+
+          <h3 style="font-size: 1rem; color: var(--text-primary); margin-top: 1rem;">2. 무조건 참는 것이 아닌 '자각과 균형'</h3>
+          <p>
+            이 계산기의 목적은 커피를 절대 마시지 말라는 금욕을 강요하는 것이 아닙니다. 
+            내가 습관처럼 결제하는 소액 소비의 기회비용을 명확히 자각하고, 
+            하루 단 5,000원이라도 꾸준히 미래 성장 자산에 투자하는 습관을 들이는 것이 부의 추월차선으로 들어서는 첫걸음입니다.
+          </p>
+        </div>
+      </details>
+    </article>
+
+    <section id="legal-disclaimer"></section>
+    <section id="affiliate-disclosure"></section>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="../../assets/js/core-ui.js"></script>
+  <script src="./logic.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

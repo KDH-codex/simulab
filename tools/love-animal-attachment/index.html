@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>연애 유형 & 사랑의 동물 애착 심리테스트 — 존 보울비 애착이론 | SimuLab</title>
+  <meta name="description" content="8개 질문으로 알아보는 나의 연애 심리와 애착 유형! 안정형(골든리트리버·돌고래), 불안형(아기고양이·토끼), 회피형(사막여우·올빼미), 혼란형(고슴도치·늑대) 중 나의 동물 페르소나와 연인 궁합을 확인하세요." />
+  <link rel="stylesheet" href="../../assets/css/common.css" />
+  <style>
+    /* 연애 동물 테스트 전용 스타일 */
+    .survey-progress-wrapper {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .survey-progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+    .survey-progress-bar-bg {
+      width: 100%;
+      height: 8px;
+      background: var(--border-color);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .survey-progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #ec4899, #f43f5e);
+      transition: width 0.3s ease;
+    }
+
+    /* 설문 카드 */
+    .survey-question-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      margin-bottom: 1.25rem;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .survey-question-card:hover {
+      border-color: #f43f5e;
+    }
+    .survey-q-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .q-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffe4e6;
+      color: #e11d48;
+      font-size: 0.82rem;
+      font-weight: 800;
+      padding: 0.25rem 0.6rem;
+      border-radius: var(--radius-sm);
+      flex-shrink: 0;
+    }
+    .q-text {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.5;
+    }
+
+    .survey-options-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+    @media (min-width: 640px) {
+      .survey-options-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .survey-option-label {
+      display: flex;
+      align-items: center;
+      padding: 1rem 1.15rem;
+      background: var(--bg-primary);
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+    .survey-option-label:hover {
+      background: #fff1f2;
+      border-color: #fecdd3;
+    }
+    .survey-option-label input[type="radio"] {
+      display: none;
+    }
+    .survey-option-label.selected {
+      border-color: #e11d48;
+      background: #fff1f2;
+      box-shadow: 0 0 0 1px #e11d48;
+    }
+    .option-content {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .option-symbol {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--border-color);
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s, color 0.2s;
+    }
+    .survey-option-label.selected .option-symbol {
+      background: #e11d48;
+      color: #ffffff;
+    }
+    .option-desc {
+      font-size: 0.88rem;
+      color: var(--text-primary);
+      line-height: 1.45;
+    }
+
+    /* 결과 카드 스타일 */
+    .animal-hero-card {
+      background: linear-gradient(135deg, #fff1f2 0%, #fdf4ff 100%);
+      border: 1.5px solid #fbcfe8;
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-md);
+    }
+    .animal-icon-large {
+      font-size: 4.5rem;
+      line-height: 1;
+      margin-bottom: 0.75rem;
+      display: inline-block;
+      animation: floatHeart 2.5s ease-in-out infinite;
+    }
+    @keyframes floatHeart {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-6px) scale(1.05); }
+    }
+    .animal-title-wrap {
+      margin-bottom: 1rem;
+    }
+    .animal-name-h2 {
+      font-size: 1.85rem;
+      font-weight: 800;
+      color: #881337;
+      margin-bottom: 0.25rem;
+    }
+    .animal-sub-desc {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #e11d48;
+    }
+    .animal-code-tag {
+      display: inline-block;
+      background: #9f1239;
+      color: #ffffff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      margin-top: 0.5rem;
+      letter-spacing: 0.05em;
+    }
+    .animal-summary-p {
+      max-width: 680px;
+      margin: 1.25rem auto 0;
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: #4c0519;
+      background: rgba(255, 255, 255, 0.75);
+      padding: 1rem 1.25rem;
+      border-radius: var(--radius-md);
+      backdrop-filter: blur(4px);
+    }
+
+    /* 강점 / 약점 그리드 */
+    .traits-detail-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    @media (min-width: 640px) {
+      .traits-detail-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    .trait-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+    }
+    .trait-box h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .trait-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .trait-list li {
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    .bullet-check { color: #10b981; font-weight: 800; }
+    .bullet-warn { color: #f59e0b; font-weight: 800; }
+
+    /* 궁합 카드 */
+    .match-box-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+    .match-card {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      text-align: center;
+    }
+    .match-card-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
+    }
+    .match-card-val {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--text-primary);
+    }
+  </style>
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main class="container" style="padding-top: 1.5rem; padding-bottom: 3rem;">
+    <!-- 페이지 제목 및 인트로 -->
+    <section class="page-header">
+      <h1 class="page-title">연애 동물 애착 심리테스트</h1>
+      <p class="page-subtitle">
+        "연락이 조금만 늦어져도 불안한 아기고양이일까, 아니면 혼자만의 동굴이 필요한 사막여우일까?" 존 보울비(John Bowlby)의 성인 애착 이론을 바탕으로 8개 질문을 통해 관계 불안과 친밀 회피 2가지 축을 정밀 분석하고, 나의 사랑의 동물 페르소나와 연인 궁합을 처방받으세요.
+      </p>
+    </section>
+
+    <!-- 친구 초대 감지 배너 (URL 파라미터 감지 시 표시) -->
+    <div id="invite-banner" style="display: none; background: #fff1f2; border: 1.5px solid #fecdd3; border-radius: var(--radius-md); padding: 1.15rem 1.25rem; margin-bottom: 1.5rem; box-shadow: var(--shadow-sm);">
+      <div style="display: flex; align-items: center; gap: 0.75rem;">
+        <span style="font-size: 1.8rem; line-height: 1;">💌</span>
+        <div>
+          <div style="font-size: 0.95rem; font-weight: 800; color: #9f1239;">
+            <span id="invite-sender-name">연인/친구</span> 님이 보낸 연애 궁합 초대장이 도착했습니다!
+          </div>
+          <div style="font-size: 0.85rem; color: #be123c; margin-top: 0.2rem;">
+            아래 8개 질문을 완료하시면 <strong>두 사람의 실시간 연애 궁합 점수(0~100점)</strong>와 갈등 처방전이 즉시 공개됩니다.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 판정 브리핑 배너 -->
+    <div id="verdict-banner" class="verdict-banner" style="margin-bottom: 1.5rem;">
+      <div id="verdict-text" style="font-size: 0.95rem; line-height: 1.6;">
+        아래 8개 질문에 솔직하게 답변하시면 나의 사랑의 동물 페르소나와 애착 분석표가 산출됩니다.
+      </div>
+    </div>
+
+    <!-- 설문 진행률 바 -->
+    <div class="survey-progress-wrapper">
+      <div class="survey-progress-header">
+        <span>질문 진행률</span>
+        <span id="progress-text">8 / 8 문항 완료 (100%)</span>
+      </div>
+      <div class="survey-progress-bar-bg">
+        <div id="progress-bar" class="survey-progress-bar-fill" style="width: 100%;"></div>
+      </div>
+    </div>
+
+    <!-- 8문항 설문 컨테이너 -->
+    <section style="margin-bottom: 2rem;">
+      <h2 class="step-section-title" style="font-size: 1.15rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--text-primary);">
+        1단계. 8대 연애 애착 심리 문항 답변
+      </h2>
+      <div id="questions-container">
+        <!-- app.js에서 LOVE_QUESTIONS 기반 동적 렌더링 -->
+      </div>
+
+      <!-- 조작 버튼 그룹 -->
+      <div style="display: flex; gap: 0.75rem; margin-top: 1.5rem; flex-wrap: wrap;">
+        <button id="btn-calculate" class="btn btn-primary" style="flex: 2; min-width: 200px; padding: 0.9rem; font-size: 1rem; font-weight: 700; background: #e11d48; border-color: #e11d48;">
+          나의 사랑의 동물 페르소나 분석하기
+        </button>
+        <button id="btn-reset" class="btn btn-outline" style="flex: 1; min-width: 120px; padding: 0.9rem;">
+          답변 초기화
+        </button>
+        <button id="btn-share" class="btn btn-outline" style="flex: 1; min-width: 120px; padding: 0.9rem;">
+          결과 공유하기
+        </button>
+      </div>
+    </section>
+
+    <!-- 분석 결과 섹션 -->
+    <section id="results-section" style="margin-bottom: 3rem;">
+      <h2 class="step-section-title" style="font-size: 1.15rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--text-primary);">
+        2단계. 사랑의 동물 페르소나 및 연애 진단서
+      </h2>
+
+      <!-- 동물 히어로 카드 -->
+      <div class="animal-hero-card">
+        <div id="animal-icon" class="animal-icon-large">🐶</div>
+        <div class="animal-title-wrap">
+          <h2 id="animal-name" class="animal-name-h2">골든리트리버</h2>
+          <div id="animal-subtitle" class="animal-sub-desc">사랑이 넘치는 태양 같은 수호천사</div>
+          <span id="animal-code" class="animal-code-tag">안정-헌신형</span>
+        </div>
+        <p id="animal-summary" class="animal-summary-p">
+          연인을 온전히 신뢰하며 언제나 따뜻하고 변함없는 사랑을 베풉니다. 자존감이 높아 상대의 사소한 변화에 휘둘리지 않고, 갈등이 생겨도 회피하지 않고 솔직하게 대화로 풀어냅니다.
+        </p>
+
+        <!-- 최고의 궁합 & 최악의 궁합 -->
+        <div class="match-box-wrap" style="max-width: 500px; margin: 1.25rem auto 0;">
+          <div class="match-card">
+            <div class="match-card-label">최고의 사랑 짝꿍 (시너지)</div>
+            <div id="match-best" class="match-card-val" style="color: #10b981;">아기고양이 (불안을 잠재워줌)</div>
+          </div>
+          <div class="match-card">
+            <div class="match-card-label">주의해야 할 상극 (충돌)</div>
+            <div id="match-worst" class="match-card-val" style="color: #ef4444;">사막여우 (지나친 독립성)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4대 축 핵심 지표 (KPI Grid) -->
+      <div class="kpi-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+        <div class="card stat-card" style="padding: 1.25rem;">
+          <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">핵심 애착 유형</span>
+          <div id="kpi-attachment-type" class="stat-value" style="font-size: 1.2rem; font-weight: 700; color: #e11d48; margin-top: 0.25rem;">안정-헌신형</div>
+          <span style="font-size: 0.75rem; color: var(--text-muted);">성인 애착 4대 분류</span>
+        </div>
+
+        <div class="card stat-card" style="padding: 1.25rem;">
+          <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">관계 불안 차원 (Anxiety)</span>
+          <div id="kpi-anxiety" class="stat-value" style="font-size: 1.2rem; font-weight: 700; color: #10b981; margin-top: 0.25rem;">낮음 (안정 신뢰형)</div>
+          <span style="font-size: 0.75rem; color: var(--text-muted);">연락 지연·이별 두려움</span>
+        </div>
+
+        <div class="card stat-card" style="padding: 1.25rem;">
+          <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">친밀 회피 차원 (Avoidance)</span>
+          <div id="kpi-avoidance" class="stat-value" style="font-size: 1.2rem; font-weight: 700; color: #3b82f6; margin-top: 0.25rem;">낮음 (친밀 교감형)</div>
+          <span style="font-size: 0.75rem; color: var(--text-muted);">동굴 속 독립성 추구도</span>
+        </div>
+
+        <div class="card stat-card" style="padding: 1.25rem;">
+          <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">페르소나 영문명</span>
+          <div id="kpi-love-style" class="stat-value" style="font-size: 1.15rem; font-weight: 700; color: #8b5cf6; margin-top: 0.25rem;">Golden Retriever</div>
+          <span style="font-size: 0.75rem; color: var(--text-muted);">상징 동물 명칭</span>
+        </div>
+      </div>
+
+      <!-- 강점 및 주의점 상세 -->
+      <div class="traits-detail-grid">
+        <div class="trait-box">
+          <h3 style="color: #065f46;">
+            <span>💖</span> 나의 빛나는 연애 강점
+          </h3>
+          <ul id="animal-strengths" class="trait-list">
+            <li><span class="bullet-check">✓</span> 상대방에게 안정감과 무한한 자존감 회복을 선물함</li>
+            <li><span class="bullet-check">✓</span> 밀당을 하지 않고 진솔하며 솔직한 애정 표현</li>
+            <li><span class="bullet-check">✓</span> 불안형이나 회피형 연인의 상처까지 보듬어주는 치유력</li>
+          </ul>
+        </div>
+
+        <div class="trait-box">
+          <h3 style="color: #9f1239;">
+            <span>⚠️</span> 주의해야 할 사랑의 덫 & 처방
+          </h3>
+          <ul id="animal-cautions" class="trait-list">
+            <li><span class="bullet-warn">⚠</span> 자신의 힘듦을 참고 배려하다가 혼자 지칠 수 있음</li>
+            <li><span class="bullet-warn">⚠</span> 상대가 자신의 호의를 당연하게 여기지 않도록 경계 필요</li>
+            <li><span class="bullet-warn">⚠</span> 연인에게도 가끔은 응석을 부리고 기대는 연습이 필요함</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 이상적인 연애 스타일 -->
+      <div class="card" style="padding: 1.5rem; background: var(--card-bg); border: 1px solid var(--border-color);">
+        <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+          <span>🕊️</span> 내가 가장 행복해지는 이상적인 연애 스타일
+        </h3>
+        <p id="animal-ideal-style" style="font-size: 0.95rem; line-height: 1.6; color: var(--text-secondary);">
+          서로를 존중하며 함께 성장하는 건강하고 따뜻한 동반자 연애
+        </p>
+      </div>
+
+      <!-- 초대한 친구/연인과의 실시간 궁합 카드 -->
+      <div id="partner-match-card" style="display: none; background: linear-gradient(135deg, #fff1f2 0%, #fdf4ff 100%); border: 1.5px solid #fecdd3; border-radius: var(--radius-lg); padding: 1.75rem 1.5rem; margin-top: 1.5rem; box-shadow: var(--shadow-md);">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1rem; border-bottom: 1px dashed #f43f5e; padding-bottom: 0.75rem;">
+          <div>
+            <span style="display: inline-block; background: #e11d48; color: #ffffff; font-size: 0.75rem; font-weight: 800; padding: 0.2rem 0.55rem; border-radius: 999px; margin-bottom: 0.35rem;">실시간 1:1 연애 케미</span>
+            <h3 id="partner-match-names" style="font-size: 1.25rem; font-weight: 800; color: #881337; margin: 0;">
+              초대자 x 나의 연애 궁합 분석
+            </h3>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-size: 0.8rem; color: #64748b; font-weight: 600;">궁합 점수</div>
+            <div id="partner-match-score" style="font-size: 2rem; font-weight: 900; color: #e11d48; line-height: 1;">95점</div>
+            <div id="partner-match-grade" style="font-size: 0.85rem; font-weight: 700; color: #10b981;">S등급 (천생연분)</div>
+          </div>
+        </div>
+
+        <div id="partner-match-title" style="font-size: 1.05rem; font-weight: 800; color: #1e293b; margin-bottom: 0.5rem;">
+          불안을 녹여주는 구원투수와 사랑꾼
+        </div>
+        <p id="partner-match-synergy" style="font-size: 0.9rem; line-height: 1.6; color: #334155; margin-bottom: 0.75rem;">
+          안정형의 흔들림 없는 다정함이 불안형의 두려움을 눈 녹듯 사라지게 해주는 최고의 힐링 궁합입니다.
+        </p>
+        <div style="background: rgba(255, 255, 255, 0.85); border-radius: var(--radius-sm); padding: 0.75rem 1rem; font-size: 0.84rem; color: #475569; line-height: 1.5;">
+          <strong>💌 둘만의 사랑 처방전:</strong> <span id="partner-match-prescription">안정형은 아낌없이 확신을 주고, 불안형은 확인 질문을 줄이면 완벽합니다.</span>
+        </div>
+      </div>
+
+      <!-- 친구/연인 초대 전용 바이럴 박스 -->
+      <div id="viral-invite-box" class="card" style="margin-top: 1.5rem; background: #fff5f5; border: 1.5px solid #fecdd3; padding: 1.5rem; text-align: center;">
+        <h3 style="font-size: 1.1rem; font-weight: 800; color: #9f1239; margin-bottom: 0.4rem;">
+          💘 연인이나 썸남썸녀에게 보내서 우리 둘의 연애 궁합 맞춰보기
+        </h3>
+        <p style="font-size: 0.88rem; color: #881337; max-width: 580px; margin: 0 auto 1.25rem; line-height: 1.5;">
+          아래 버튼을 누르면 나의 사랑 동물 코드가 담긴 전용 초대 링크가 복사됩니다.<br>
+          상대방이 이 링크로 테스트를 완료하면 두 사람의 <strong>실시간 연애 궁합 점수(%)</strong>와 처방전이 자동으로 산출됩니다!
+        </p>
+        <div style="display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap;">
+          <button id="btn-copy-invite" class="btn btn-primary" style="padding: 0.8rem 1.5rem; font-size: 0.95rem; background: linear-gradient(135deg, #e11d48, #be123c); border-color: #be123c;">
+            🔗 나만의 전용 연애 궁합 초대 링크 복사
+          </button>
+          <button id="btn-copy-kakao-text" class="btn btn-kakao" style="padding: 0.8rem 1.35rem; font-size: 0.95rem;">
+            💬 카톡 공유용 문구 복사
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 교육용 아코디언 가이드 (초보자를 위한 애착 심리학 안내) -->
+    <section class="card" style="padding: 1.75rem; margin-top: 2rem;">
+      <h2 class="step-section-title" style="font-size: 1.15rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--text-primary);">
+        3단계. 심리학자 존 보울비가 밝혀낸 사랑의 애착 지도
+      </h2>
+
+      <div class="accordion-item" style="border-bottom: 1px solid var(--border-color); padding: 1rem 0;">
+        <h3 style="font-size: 0.98rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;">
+          Q1. 성인 애착 이론(Adult Attachment Theory)이란 무엇인가요?
+        </h3>
+        <p style="font-size: 0.88rem; line-height: 1.65; color: var(--text-secondary);">
+          영국의 정신분석학자 존 보울비(John Bowlby)가 창시한 이론으로, 어린 시절 주 양육자와의 관계 경험이 무의식적인 기억으로 남아 성인이 된 후 <strong>'연인과 친밀한 관계를 맺는 독특한 패턴'</strong>을 결정한다는 심리학 법칙입니다. 사람은 저마다 '불안(연락과 사랑 확인)'과 '회피(거리 두기와 독립성)'의 고유한 렌즈를 통해 연애를 바라봅니다.
+        </p>
+      </div>
+
+      <div class="accordion-item" style="border-bottom: 1px solid var(--border-color); padding: 1rem 0;">
+        <h3 style="font-size: 0.98rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;">
+          Q2. 불안형과 회피형은 왜 자석처럼 서로에게 끌리면서도 싸울까요?
+        </h3>
+        <p style="font-size: 0.88rem; line-height: 1.65; color: var(--text-secondary);">
+          심리학에서 가장 유명한 **'불안-회피의 덫(Anxious-Avoidant Trap)'** 때문입니다. 불안형은 회피형의 쿨하고 독립적인 모습에 매력을 느끼고, 회피형은 불안형의 뜨거운 열정과 헌신에 끌립니다. 하지만 친밀감이 깊어지면 회피형은 구속감을 느껴 뒤로 물러서고(동굴 입장), 불안형은 버림받을까 두려워 더 강하게 매달리면서(추격전) 서로에게 극심한 상처를 남기게 됩니다.
+        </p>
+      </div>
+
+      <div class="accordion-item" style="padding-top: 1rem;">
+        <h3 style="font-size: 0.98rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;">
+          Q3. 불안형이나 회피형도 안정형으로 바뀔 수 있나요?
+        </h3>
+        <p style="font-size: 0.88rem; line-height: 1.65; color: var(--text-secondary);">
+          충분히 가능하며, 이를 **'획득된 안정형(Earned Secure)'**이라고 부릅니다. 흔들림 없이 따뜻한 신뢰를 주는 안정형 파트너를 만나 건강한 연애를 경험하거나, 자신의 애착 상처를 있는 그대로 인정하고 솔직하게 감정을 표현하는 훈련을 통해 누구나 성숙하고 편안한 안정형으로 나아갈 수 있습니다.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- 전역 공통 스크립트 및 모듈 바인딩 -->
+  <script src="../../assets/js/core-ui.js"></script>
+  <script src="logic.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

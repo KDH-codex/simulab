@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="ko" data-default-theme="light" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <title>직장인 퇴직금 계산기 (2026년 평균임금·통상임금 비교·IRP 절세) | SimuLab Hub</title>
+  <meta name="description" content="입사일과 퇴사일, 최근 3개월 급여 및 상여금을 입력하면 근로기준법상 1일 평균임금과 통상임금을 자동 비교하여 예상 퇴직금, 2026년 퇴직소득세, IRP 30% 감면액을 즉시 계산합니다." />
+  <link rel="canonical" href="https://simulab.kr/tools/severance-pay-calc/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="직장인 퇴직금 계산기 | SimuLab Hub" />
+  <meta property="og:description" content="근로기준법 제34조 기준 1일 평균임금과 통상임금을 자동 비교하여 진짜 내 통장에 꽂히는 세후 퇴직금을 계산하세요." />
+
+  <link rel="stylesheet" href="../../assets/css/common.css" />
+  <style>
+    .korean-amount-badge {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--accent-primary);
+      background: var(--accent-soft);
+      padding: 0.2rem 0.55rem;
+      border-radius: 6px;
+    }
+    .period-preset-btn.active {
+      background: var(--accent-primary) !important;
+      color: #ffffff !important;
+      border-color: var(--accent-primary) !important;
+    }
+    .highlight-result-box {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.06), rgba(30, 64, 175, 0.02));
+      border: 1.5px solid rgba(37, 99, 235, 0.2);
+      border-radius: 16px;
+      padding: 1.5rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .highlight-result-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      margin-bottom: 0.4rem;
+    }
+    .highlight-result-amount {
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      font-weight: 900;
+      color: var(--accent-primary);
+      letter-spacing: -0.02em;
+    }
+    .highlight-result-korean {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-top: 0.25rem;
+    }
+  </style>
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main class="container">
+    <section class="page-header">
+      <div class="page-header-badges">
+        <span class="brand-badge">LABOR &amp; SALARY LAB</span>
+      </div>
+      <h1 class="page-title">직장인 퇴직금 계산기</h1>
+      <p class="page-subtitle">
+        입사일과 퇴사일, 최근 3개월 급여와 연간 상여금을 입력하면 <strong>근로기준법상 1일 평균임금과 통상임금을 자동 비교</strong>하여
+        예상 퇴직금 총액과 <strong>2026년 퇴직소득세, IRP 연금 수령 시 30% 감면 절세액</strong>까지 실시간으로 계산해 드립니다.
+      </p>
+    </section>
+
+    <!-- 1년 미만 근무 시 경고 배너 -->
+    <div id="warning-not-qualified" class="alert-box alert-warning" style="display: none; margin-bottom: 1.5rem;">
+      <strong>⚠️ 법정 퇴직금 미발생 안내</strong>: 근로자퇴직급여 보장법 제4조에 따라 계속근로기간이 1년(365일) 미만인 근로자는 법정 퇴직금 지급 대상에서 제외됩니다.
+    </div>
+
+    <!-- 통상임금 적용 알림 배너 -->
+    <div id="stat-ordinary-notice" class="alert-box alert-info" style="display: none; margin-bottom: 1.5rem;"></div>
+
+    <section class="simulator-grid">
+      <!-- 좌측: 입력 패널 -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">재직 기간 및 급여 입력</h2>
+          <button type="button" id="btn-reset" class="btn btn-secondary" style="padding: 0.25rem 0.65rem; font-size: 0.78rem;">초기화</button>
+        </div>
+
+        <!-- 1. 재직 기간 -->
+        <div class="step-section-title" style="margin-bottom: 0.85rem;">
+          <span class="step-badge">STEP 1</span> 입사일 및 퇴사일 설정
+        </div>
+
+        <div class="input-card">
+          <div class="input-card-header">
+            <span class="input-card-label">빠른 근속기간 프리셋</span>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.4rem;">
+            <button type="button" class="period-preset-btn btn btn-secondary" data-years="1">1년</button>
+            <button type="button" class="period-preset-btn active btn btn-secondary" data-years="3">3년</button>
+            <button type="button" class="period-preset-btn btn btn-secondary" data-years="5">5년</button>
+            <button type="button" class="period-preset-btn btn btn-secondary" data-years="10">10년</button>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+          <div class="input-card">
+            <div class="input-card-header">
+              <label for="input-join-date" class="input-card-label">입사일</label>
+            </div>
+            <input type="date" id="input-join-date" class="form-control" />
+          </div>
+          <div class="input-card">
+            <div class="input-card-header">
+              <label for="input-leave-date" class="input-card-label">퇴사일 (마지막근무 다음날)</label>
+            </div>
+            <input type="date" id="input-leave-date" class="form-control" />
+          </div>
+        </div>
+
+        <!-- 2. 급여 내역 -->
+        <div class="step-section-title" style="margin: 1.25rem 0 0.85rem;">
+          <span class="step-badge">STEP 2</span> 최근 3개월 월급여 내역
+        </div>
+
+        <!-- 기본급 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <label for="input-base-pay" class="input-card-label">월 기본급</label>
+            <span id="badge-base-pay" class="korean-amount-badge">350만 원</span>
+          </div>
+          <div class="input-group-modern">
+            <input type="number" id="input-base-pay" class="form-control" step="10000" min="0" value="3500000" />
+            <span class="input-suffix-badge">원</span>
+          </div>
+          <div class="quick-chips-row">
+            <button type="button" class="quick-chip-btn chip-btn" data-target="input-base-pay" data-set="2500000">250만</button>
+            <button type="button" class="quick-chip-btn chip-btn" data-target="input-base-pay" data-set="3500000">350만</button>
+            <button type="button" class="quick-chip-btn chip-btn" data-target="input-base-pay" data-set="5000000">500만</button>
+            <button type="button" class="quick-chip-btn chip-btn" data-target="input-base-pay" data-add="100000">+10만</button>
+            <button type="button" class="quick-chip-btn chip-btn" data-target="input-base-pay" data-add="500000">+50만</button>
+          </div>
+        </div>
+
+        <!-- 기타 고정수당 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <label for="input-allowance" class="input-card-label">월 기타수당 (직책/식대 등)</label>
+            <span id="badge-allowance" class="korean-amount-badge">30만 원</span>
+          </div>
+          <div class="input-group-modern">
+            <input type="number" id="input-allowance" class="form-control" step="10000" min="0" value="300000" />
+            <span class="input-suffix-badge">원</span>
+          </div>
+          <div class="quick-chips-row">
+            <button type="button" class="quick-chip-btn chip-btn" data-target="input-allowance" data-set="0">0원</button>
+            <button type="button" class="quick-chip-btn chip-btn" data-target="input-allowance" data-set="200000">20만</button>
+            <button type="button" class="quick-chip-btn chip-btn" data-target="input-allowance" data-set="500000">50만</button>
+            <button type="button" class="quick-chip-btn chip-btn" data-target="input-allowance" data-add="100000">+10만</button>
+          </div>
+        </div>
+
+        <!-- 3. 연간 상여금 및 연차수당 -->
+        <div class="step-section-title" style="margin: 1.25rem 0 0.85rem;">
+          <span class="step-badge">STEP 3</span> 연간 상여금 및 연차수당
+        </div>
+
+        <!-- 연간 상여금 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <label for="input-bonus" class="input-card-label">연간 상여금 총액 (최근 1년)</label>
+            <span id="badge-bonus" class="korean-amount-badge">350만 원</span>
+          </div>
+          <div class="input-group-modern">
+            <input type="number" id="input-bonus" class="form-control" step="10000" min="0" value="3500000" />
+            <span class="input-suffix-badge">원</span>
+          </div>
+          <div class="quick-chips-row">
+            <button type="button" class="quick-chip-btn chip-btn" data-target="input-bonus" data-set="0">없음(0원)</button>
+            <button type="button" class="quick-chip-btn chip-btn" data-target="input-bonus" data-set="2000000">200만</button>
+            <button type="button" class="quick-chip-btn chip-btn" data-target="input-bonus" data-set="5000000">500만</button>
+            <button type="button" class="quick-chip-btn chip-btn" data-target="input-bonus" data-add="1000000">+100만</button>
+          </div>
+        </div>
+
+        <!-- 미사용 연차수당 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <label for="input-leave-pay" class="input-card-label">연차유급휴가 미사용 수당 (최근 1년)</label>
+            <span id="badge-leave-pay" class="korean-amount-badge">50만 원</span>
+          </div>
+          <div class="input-group-modern">
+            <input type="number" id="input-leave-pay" class="form-control" step="10000" min="0" value="500000" />
+            <span class="input-suffix-badge">원</span>
+          </div>
+          <div class="quick-chips-row">
+            <button type="button" class="quick-chip-btn chip-btn" data-target="input-leave-pay" data-set="0">0원</button>
+            <button type="button" class="quick-chip-btn chip-btn" data-target="input-leave-pay" data-set="500000">50만</button>
+            <button type="button" class="quick-chip-btn chip-btn" data-target="input-leave-pay" data-set="1000000">100만</button>
+            <button type="button" class="quick-chip-btn chip-btn" data-target="input-leave-pay" data-add="200000">+20만</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 우측: 결과 요약 패널 -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">퇴직금 시뮬레이션 결과</h2>
+        </div>
+
+        <!-- 하이라이트 박스: 세전 예상 퇴직금 -->
+        <div class="highlight-result-box">
+          <div class="highlight-result-title">예상 법정 퇴직금 (세전)</div>
+          <div id="stat-severance-gross" class="highlight-result-amount">0원</div>
+          <div id="stat-severance-korean" class="highlight-result-korean">0원</div>
+        </div>
+
+        <!-- 핵심 지표 그리드 -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.25rem;">
+          <div style="padding: 0.85rem; border: 1px solid var(--border-color); border-radius: 12px; background: var(--bg-card);">
+            <div style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.2rem;">총 재직기간</div>
+            <div id="stat-work-days" style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary);">-</div>
+          </div>
+          <div style="padding: 0.85rem; border: 1px solid var(--border-color); border-radius: 12px; background: var(--bg-card);">
+            <div style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.2rem;">1일 적용 평균임금</div>
+            <div id="stat-daily-wage" style="font-size: 0.95rem; font-weight: 700; color: var(--accent-primary);">-</div>
+          </div>
+        </div>
+
+        <!-- 세후 실수령액 및 IRP 혜택 안내 -->
+        <div style="border: 1px solid var(--border-color); border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem; background: var(--bg-card);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem;">
+            <span style="font-size: 0.85rem; color: var(--text-secondary);">예상 퇴직소득세 (지방세 포함)</span>
+            <span id="stat-tax-total" style="font-size: 0.92rem; font-weight: 700; color: #dc2626;">0원</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; padding-top: 0.5rem; border-top: 1px dashed var(--border-color);">
+            <span style="font-size: 0.92rem; font-weight: 700; color: var(--text-primary);">일시금 수령 시 세후 실수령액</span>
+            <span id="stat-severance-net" style="font-size: 1.15rem; font-weight: 800; color: #16a34a;">0원</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; align-items: center; padding-top: 0.5rem; border-top: 1px dashed var(--border-color); background: rgba(37, 99, 235, 0.04); margin: 0.5rem -0.5rem -0.5rem; padding: 0.6rem 0.5rem; border-radius: 8px;">
+            <span style="font-size: 0.85rem; font-weight: 700; color: var(--accent-primary);">💡 IRP 계좌 이전 시 절세액 (30% 감면)</span>
+            <span id="stat-irp-savings" style="font-size: 0.95rem; font-weight: 800; color: var(--accent-primary);">0원</span>
+          </div>
+        </div>
+
+        <!-- 상세 내역 아코디언 -->
+        <details class="dir-guide" style="border: 1px solid var(--border-color); border-radius: 10px; padding: 0.75rem 1rem; margin-bottom: 1.25rem;">
+          <summary style="font-weight: 700; font-size: 0.88rem; cursor: pointer; color: var(--text-primary);">
+            3개월 임금 산정 세부 내역 보기
+          </summary>
+          <div style="margin-top: 0.75rem; font-size: 0.82rem; color: var(--text-secondary); line-height: 1.7;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
+              <span>• 최근 3개월 기본급+수당 합계:</span>
+              <strong id="detail-3m-pay">0원</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
+              <span>• 상여금 반영액 (연간 상여 × 3/12):</span>
+              <strong id="detail-bonus-part">0원</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem;">
+              <span>• 연차수당 반영액 (미사용수당 × 3/12):</span>
+              <strong id="detail-leave-part">0원</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 0.3rem; border-top: 1px solid var(--border-color); padding-top: 0.3rem;">
+              <span>• 3개월 총 임금 합계:</span>
+              <strong id="detail-total-part" style="color: var(--accent-primary);">0원</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between;">
+              <span>• 3개월 총 일수:</span>
+              <strong id="detail-days-part">91일</strong>
+            </div>
+          </div>
+        </details>
+
+        <!-- 근로기준법 및 퇴직급여보장법 안내 -->
+        <div style="background: var(--bg-subtle); border-radius: 10px; padding: 0.9rem; font-size: 0.8rem; line-height: 1.6; color: var(--text-secondary);">
+          <strong style="color: var(--text-primary);">📌 퇴직금 법적 상식 체크포인트:</strong>
+          <ul style="margin: 0.4rem 0 0 1rem; padding: 0;">
+            <li><strong>지급 기한</strong>: 퇴직일로부터 <strong>14일 이내</strong>에 지급해야 합니다 (당사자 합의 시 연장 가능).</li>
+            <li><strong>통상임금 비교 원칙</strong>: 산출된 1일 평균임금이 통상임금보다 적으면 법에 따라 <strong>통상임금을 평균임금으로 적용</strong>합니다.</li>
+            <li><strong>IRP 의무화</strong>: 55세 이전 퇴직 시 개인형 퇴직연금(IRP) 계좌로의 이전이 원칙이며, 연금으로 수령 시 퇴직소득세의 30%(10년 초과 시 40%)가 감면됩니다.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 법적 면책 조항 컨테이너 -->
+    <div id="disclaimer-container"></div>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="../../assets/js/core-ui.js"></script>
+  <script src="logic.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

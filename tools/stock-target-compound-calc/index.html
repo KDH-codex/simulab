@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ko" data-default-theme="light" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <title>주식 목표가 &amp; 복리 계산기 (세후 목표가·72법칙 스노우볼) | SimuLab Hub</title>
+  <meta name="description" content="희망하는 목표 수익률을 달성하기 위한 필요 매도가격을 세금·수수료를 반영해 역산하고, 적립식 복리 스노우볼 및 72법칙 자산 배가 기간을 시뮬레이션하세요." />
+  <link rel="canonical" href="https://simulab-hub.pages.dev/tools/stock-target-compound-calc/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="주식 목표가 & 복리 계산기" />
+  <meta property="og:description" content="세후 목표가 도달 시점과 72법칙 적립식 복리 자산 성장을 실시간 계산하세요." />
+
+  <link rel="stylesheet" href="../../assets/css/common.css" />
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main class="container">
+    <section class="page-header">
+      <div class="page-header-badges">
+        <span class="brand-badge">EQUITY TARGET &amp; COMPOUND LAB</span>
+      </div>
+      <h1 class="page-title">목표가 & 복리 수익</h1>
+      <p class="page-subtitle">
+        내 매수가 기준 <strong>목표 수익률(+10%·+30%·+100%)을 달성하기 위해 얼마에 팔아야 하는지</strong> 세금을 감안해 계산하고,
+        매월 적립 시 <strong>복리로 불어나는 미래 자산 스노우볼</strong>을 연차별로 시뮬레이션합니다.
+      </p>
+    </section>
+
+    <!-- 모드 선택 탭 버튼 -->
+    <div style="display: flex; gap: 0.5rem; margin-bottom: 1.25rem;">
+      <button type="button" class="mode-tab-btn active btn btn-primary" data-mode="target-price" style="flex: 1; padding: 0.65rem; font-weight: 700;">
+        모드 1: 목표 수익률 달성 매도가 계산
+      </button>
+      <button type="button" class="mode-tab-btn btn btn-secondary" data-mode="compound" style="flex: 1; padding: 0.65rem; font-weight: 700;">
+        모드 2: 적립식 복리 스노우볼 (72 법칙)
+      </button>
+    </div>
+
+    <section class="simulator-grid">
+      <!-- 좌측 입력 패널 -->
+      <div class="card">
+        <!-- 모드 1: 목표가 입력 패널 -->
+        <div id="panel-target-price">
+          <div class="step-section-title" style="margin-bottom: 0.85rem;">
+            <span class="step-badge">STEP 1</span> 목표 수익률 및 매수가격 설정
+          </div>
+          <div class="card-header">
+            <h2 class="card-title">목표가 계산 조건</h2>
+          </div>
+
+          <!-- [인풋 카드 1] 1주당 매수가격 -->
+          <div class="input-card">
+            <div class="input-card-header">
+              <label for="input-target-buy-price" class="input-card-label">1주당 매수가격</label>
+              <span id="badge-target-buy-price" class="korean-amount-badge">7만 원</span>
+            </div>
+            <div class="input-group-modern">
+              <input type="number" id="input-target-buy-price" class="form-control" value="70000" step="any" min="0" />
+              <span class="input-suffix-badge">원</span>
+            </div>
+            <div class="quick-chips-row">
+              <button type="button" class="quick-chip-btn" data-chip-set="input-target-buy-price" data-val="50000">5만</button>
+              <button type="button" class="quick-chip-btn" data-chip-set="input-target-buy-price" data-val="70000">7만</button>
+              <button type="button" class="quick-chip-btn" data-chip-set="input-target-buy-price" data-val="100000">10만</button>
+              <button type="button" class="quick-chip-btn" data-chip-add="input-target-buy-price" data-val="10000">+1만</button>
+              <button type="button" class="quick-chip-btn" data-chip-add="input-target-buy-price" data-val="50000">+5만</button>
+            </div>
+          </div>
+
+          <!-- [인풋 카드 2] 보유 수량 -->
+          <div class="input-card">
+            <div class="input-card-header">
+              <label for="input-target-qty" class="input-card-label">보유 수량</label>
+              <span id="badge-target-qty" class="control-value-badge">100주</span>
+            </div>
+            <div class="input-group-modern">
+              <input type="number" id="input-target-qty" class="form-control" value="100" step="1" min="1" />
+              <span class="input-suffix-badge">주</span>
+            </div>
+            <div class="quick-chips-row">
+              <button type="button" class="quick-chip-btn" data-chip-set="input-target-qty" data-val="10">10주</button>
+              <button type="button" class="quick-chip-btn" data-chip-set="input-target-qty" data-val="50">50주</button>
+              <button type="button" class="quick-chip-btn" data-chip-set="input-target-qty" data-val="100">100주</button>
+              <button type="button" class="quick-chip-btn" data-chip-set="input-target-qty" data-val="500">500주</button>
+              <button type="button" class="quick-chip-btn" data-chip-add="input-target-qty" data-val="50">+50주</button>
+            </div>
+          </div>
+
+          <!-- [인풋 카드 3] 희망 목표 수익률 -->
+          <div class="input-card">
+            <div class="input-card-header">
+              <label for="input-target-profit-rate" class="input-card-label">희망 목표 수익률</label>
+            </div>
+            <div class="input-group-modern">
+              <input type="number" id="input-target-profit-rate" class="form-control" value="30" step="any" />
+              <span class="input-suffix-badge">%</span>
+            </div>
+            <div class="quick-chips-row">
+              <button type="button" class="quick-chip-btn rate-preset-btn" data-rate="10">+10%</button>
+              <button type="button" class="quick-chip-btn rate-preset-btn" data-rate="30">+30%</button>
+              <button type="button" class="quick-chip-btn rate-preset-btn" data-rate="50">+50%</button>
+              <button type="button" class="quick-chip-btn rate-preset-btn" data-rate="100">+100%</button>
+            </div>
+          </div>
+
+          <div class="input-card" style="margin-top: 1rem;">
+            <label style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.88rem; cursor: pointer; margin: 0;">
+              <input type="checkbox" id="checkbox-include-tax" checked style="width: 18px; height: 18px;" />
+              <span style="font-weight: 600;">증권거래세(0.20%) 및 수수료(0.015%) 공제 후 계산</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- 모드 2: 복리 계산 패널 -->
+        <div id="panel-compound" style="display: none;">
+          <div class="step-section-title" style="margin-bottom: 0.85rem;">
+            <span class="step-badge">STEP 1</span> 적립식 복리 스노우볼 조건 설정
+          </div>
+          <div class="card-header">
+            <h2 class="card-title">복리 시뮬레이션 조건</h2>
+          </div>
+
+          <!-- [인풋 카드 4] 초기 투자 원금 -->
+          <div class="input-card">
+            <div class="input-card-header">
+              <label for="input-compound-init" class="input-card-label">초기 투자 원금</label>
+              <span id="badge-compound-init" class="korean-amount-badge">1,000만 원</span>
+            </div>
+            <div class="input-group-modern">
+              <input type="number" id="input-compound-init" class="form-control" value="10000000" step="100000" min="0" />
+              <span class="input-suffix-badge">원</span>
+            </div>
+            <div class="quick-chips-row">
+              <button type="button" class="quick-chip-btn" data-chip-set="input-compound-init" data-val="5000000">500만</button>
+              <button type="button" class="quick-chip-btn" data-chip-set="input-compound-init" data-val="10000000">1천만</button>
+              <button type="button" class="quick-chip-btn" data-chip-set="input-compound-init" data-val="30000000">3천만</button>
+              <button type="button" class="quick-chip-btn" data-chip-set="input-compound-init" data-val="50000000">5천만</button>
+              <button type="button" class="quick-chip-btn" data-chip-set="input-compound-init" data-val="100000000">1억</button>
+            </div>
+          </div>
+
+          <!-- [인풋 카드 5] 매월 추가 적립금 -->
+          <div class="input-card">
+            <div class="input-card-header">
+              <label for="input-compound-monthly" class="input-card-label">매월 추가 적립금</label>
+              <span id="badge-compound-monthly" class="korean-amount-badge">100만 원</span>
+            </div>
+            <div class="input-group-modern">
+              <input type="number" id="input-compound-monthly" class="form-control" value="1000000" step="50000" min="0" />
+              <span class="input-suffix-badge">원/월</span>
+            </div>
+            <div class="quick-chips-row">
+              <button type="button" class="quick-chip-btn" data-chip-set="input-compound-monthly" data-val="300000">30만</button>
+              <button type="button" class="quick-chip-btn" data-chip-set="input-compound-monthly" data-val="500000">50만</button>
+              <button type="button" class="quick-chip-btn" data-chip-set="input-compound-monthly" data-val="1000000">100만</button>
+              <button type="button" class="quick-chip-btn" data-chip-set="input-compound-monthly" data-val="1500000">150만</button>
+              <button type="button" class="quick-chip-btn" data-chip-add="input-compound-monthly" data-val="500000">+50만</button>
+            </div>
+          </div>
+
+          <!-- [인풋 카드 6] 연평균 복리 수익률 -->
+          <div class="input-card">
+            <div class="input-card-header">
+              <label for="input-compound-rate" class="input-card-label">연평균 복리 수익률</label>
+            </div>
+            <div class="input-group-modern">
+              <input type="number" id="input-compound-rate" class="form-control" value="10" step="0.1" min="0" />
+              <span class="input-suffix-badge">%</span>
+            </div>
+            <div class="quick-chips-row">
+              <button type="button" class="quick-chip-btn" data-chip-set="input-compound-rate" data-val="5">안정형 5%</button>
+              <button type="button" class="quick-chip-btn" data-chip-set="input-compound-rate" data-val="8">우량배당 8%</button>
+              <button type="button" class="quick-chip-btn" data-chip-set="input-compound-rate" data-val="10">S&amp;P500 10%</button>
+              <button type="button" class="quick-chip-btn" data-chip-set="input-compound-rate" data-val="15">나스닥 15%</button>
+            </div>
+            <small style="color: var(--text-muted); display: block; margin-top: 0.35rem;">S&amp;P 500 역사적 연평균 복리 약 10%</small>
+          </div>
+
+          <!-- [인풋 카드 7] 투자 기간 -->
+          <div class="input-card">
+            <div class="input-card-header">
+              <label for="input-compound-years" class="input-card-label">투자 기간</label>
+            </div>
+            <div class="input-group-modern">
+              <input type="number" id="input-compound-years" class="form-control" value="10" step="1" min="1" max="50" />
+              <span class="input-suffix-badge">년</span>
+            </div>
+            <div class="quick-chips-row">
+              <button type="button" class="quick-chip-btn" data-chip-set="input-compound-years" data-val="5">5년</button>
+              <button type="button" class="quick-chip-btn" data-chip-set="input-compound-years" data-val="10">10년</button>
+              <button type="button" class="quick-chip-btn" data-chip-set="input-compound-years" data-val="15">15년</button>
+              <button type="button" class="quick-chip-btn" data-chip-set="input-compound-years" data-val="20">20년</button>
+              <button type="button" class="quick-chip-btn" data-chip-set="input-compound-years" data-val="30">30년</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 우측 결과 패널 -->
+      <div>
+        <div id="verdict-banner" class="verdict-banner">
+          <div class="verdict-eyebrow">실시간 목표가 &amp; 복리 스노우볼 브리핑</div>
+          <p id="verdict-text" class="verdict-text">
+            조건을 입력하면 계산 결과가 실시간으로 표시됩니다.
+          </p>
+        </div>
+
+        <div class="kpi-grid" style="margin-top: 1.25rem;">
+          <div class="kpi-card">
+            <span id="kpi-1-title" class="kpi-label">목표 매도가격</span>
+            <span id="kpi-1-val" class="kpi-value text-accent">0원</span>
+            <span id="kpi-1-sub" class="kpi-sub">수익률 달성가</span>
+          </div>
+          <div class="kpi-card">
+            <span id="kpi-2-title" class="kpi-label">세후 순수익금</span>
+            <span id="kpi-2-val" class="kpi-value text-success">0원</span>
+            <span id="kpi-2-sub" class="kpi-sub">순이익금</span>
+          </div>
+          <div class="kpi-card">
+            <span id="kpi-3-title" class="kpi-label">총 매도 대금</span>
+            <span id="kpi-3-val" class="kpi-value" style="color: var(--text-primary);">0원</span>
+            <span id="kpi-3-sub" class="kpi-sub">평가액</span>
+          </div>
+          <div class="kpi-card">
+            <span id="kpi-4-title" class="kpi-label">총 제세공과금</span>
+            <span id="kpi-4-val" class="kpi-value text-danger">0원</span>
+            <span id="kpi-4-sub" class="kpi-sub">세금 및 수수료</span>
+          </div>
+        </div>
+
+        <!-- 모드 2 전용 연차별 복리 테이블 카드 -->
+        <div id="table-card-compound" class="card" style="margin-top: 1.25rem; display: none;">
+          <div class="card-header">
+            <h2 class="card-title">연차별 적립식 복리 자산 성장표</h2>
+          </div>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>경과 연차</th>
+                  <th>총 투입원금</th>
+                  <th>복리 총자산</th>
+                  <th>누적 이자수익</th>
+                  <th>수익률</th>
+                </tr>
+              </thead>
+              <tbody id="compound-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 스폰서 광고 영역 -->
+    <aside class="ad-slot" aria-label="스폰서 광고 영역">
+      <span>SPONSORED · Google AdSense Responsive Display Unit</span>
+    </aside>
+
+    <!-- 전문가 해설 아코디언 -->
+    <article class="seo-article card">
+      <details class="expert-guide">
+        <summary>
+          <span class="expert-guide-title">전문가 해설</span>
+          <span class="expert-guide-meta">72 법칙 원리 · 세후 목표가 공식 · 자주 묻는 질문</span>
+        </summary>
+        <div class="expert-guide-body">
+          <h2>아인슈타인이 극찬한 복리의 마법과 72 법칙</h2>
+          <p>
+            알베르트 아인슈타인은 "복리는 인류의 8번째 불가사의다. 이를 이해하는 자는 돈을 벌고, 이해하지 못하는 자는 대가를 치른다"고 말했습니다.
+            복리는 발생한 이자와 수익이 다시 원금에 합쳐져 새로운 수익을 창출하는 눈덩이(스노우볼) 효과입니다.
+          </p>
+
+          <h3>1. 내 돈이 2배가 되는 시간: 72의 법칙 (Rule of 72)</h3>
+          <p>
+            복리 투자에서 자산이 원금의 정확히 2배가 되는 데 걸리는 기간(년)을 가장 쉽게 암산하는 공식이 바로 <strong>72의 법칙</strong>입니다.
+          </p>
+          <div class="formula-box">
+            자산 2배 소요 기간(년) &asymp; 72 &divide; 연평균 복리 수익률(%)
+          </div>
+          <p>
+            - 연 수익률 <strong>6%</strong>: 72 &divide; 6 = <strong>12년</strong> 소요<br />
+            - 연 수익률 <strong>10%</strong> (S&amp;P500 평균): 72 &divide; 10 = <strong>7.2년</strong> 소요<br />
+            - 연 수익률 <strong>15%</strong> (나스닥 성장주): 72 &divide; 15 = <strong>4.8년</strong> 소요
+          </p>
+
+          <h2>자주 묻는 질문 (FAQ)</h2>
+          <details class="faq-item" open>
+            <summary>Q1. 단리와 복리의 차이는 얼마나 큰가요?</summary>
+            <div class="faq-answer">
+              원금 1,000만원을 연 10%로 30년간 투자했을 때, 단리는 이자 3,000만원을 더해 총 4,000만원이 되지만, 복리는 원금의 약 17.4배인 <strong>1억 7,449만원</strong>으로 폭발적인 차이가 발생합니다.
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Q2. 세후 목표가 계산 시 거래세와 수수료는 어떻게 반영되나요?</summary>
+            <div class="faq-answer">
+              매수 시 증권사 수수료(0.015%)가 원금에 가산되고, 매도 시 증권거래세(0.20%)와 매도 수수료가 매도 대금에서 차감됩니다. 이 모든 비용을 제하고 순수하게 목표 수익률을 얻기 위해 역산된 정확한 호가격을 제시합니다.
+            </div>
+          </details>
+        </div>
+      </details>
+
+      <div id="affiliate-disclosure"></div>
+    </article>
+  </main>
+
+  <div id="legal-disclaimer"></div>
+  <footer id="site-footer"></footer>
+
+  <script src="../../assets/js/core-ui.js"></script>
+  <script src="./logic.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

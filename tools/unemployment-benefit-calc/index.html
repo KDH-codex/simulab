@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ko" data-default-theme="light" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <title>실업급여 모의계산기 (2026년 상한액 66,000원·소정급여일수·수급자격) | SimuLab Hub</title>
+  <meta name="description" content="퇴직 전 3개월 급여와 나이, 고용보험 가입기간만 입력하면 2026년 최신 상한액(66,000원)과 하한액을 자동 반영한 총 실업급여 수령액과 소정급여일수(120일~270일)를 1초 만에 모의 계산합니다." />
+  <link rel="canonical" href="https://simulab.kr/tools/unemployment-benefit-calc/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="실업급여 모의계산기 | SimuLab Hub" />
+  <meta property="og:description" content="퇴직 후 내가 받을 수 있는 총 실업급여와 수급 기간을 즉시 확인하세요." />
+
+  <link rel="stylesheet" href="../../assets/css/common.css" />
+  <style>
+    .korean-amount-badge {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--accent-primary);
+      background: var(--accent-soft);
+      padding: 0.2rem 0.55rem;
+      border-radius: 6px;
+    }
+    .period-chip-btn.active {
+      background: var(--accent-primary) !important;
+      color: #ffffff !important;
+      border-color: var(--accent-primary) !important;
+    }
+    .highlight-result-box {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(22, 163, 74, 0.03));
+      border: 1.5px solid rgba(37, 99, 235, 0.25);
+      border-radius: 16px;
+      padding: 1.5rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .highlight-result-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      margin-bottom: 0.4rem;
+    }
+    .highlight-result-amount {
+      font-size: clamp(2rem, 5vw, 2.7rem);
+      font-weight: 900;
+      color: #16a34a;
+      letter-spacing: -0.02em;
+    }
+    .highlight-result-korean {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-top: 0.25rem;
+    }
+  </style>
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main class="container">
+    <section class="page-header">
+      <div class="page-header-badges">
+        <span class="brand-badge">EMPLOYMENT &amp; JOB LAB</span>
+      </div>
+      <h1 class="page-title">실업급여 모의계산기</h1>
+      <p class="page-subtitle">
+        퇴직 전 3개월 월급과 연령, 고용보험 가입기간을 입력하면 <strong>2026년 법정 상한액(1일 66,000원)과 하한액</strong>을 자동 적용하여
+        내가 받을 수 있는 <strong>총 실업급여(구직급여) 수령액과 소정급여일수</strong>를 실시간으로 모의 계산해 드립니다.
+      </p>
+    </section>
+
+    <section class="simulator-grid">
+      <!-- 좌측: 입력 패널 -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">퇴직 조건 및 고용보험 정보</h2>
+        </div>
+
+        <!-- 퇴직 전 평균 월급여 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <label for="input-salary" class="input-card-label">퇴직 전 3개월 평균 월급여 (세전)</label>
+            <span id="badge-salary" class="korean-amount-badge">300만 원</span>
+          </div>
+          <div class="input-group-modern">
+            <input type="number" id="input-salary" class="form-control" step="10000" min="0" value="3000000" />
+            <span class="input-suffix-badge">원 / 월</span>
+          </div>
+          <div class="quick-chips-row">
+            <button type="button" class="quick-chip-btn chip-btn" data-set="2200000">220만</button>
+            <button type="button" class="quick-chip-btn chip-btn" data-set="3000000">300만</button>
+            <button type="button" class="quick-chip-btn chip-btn" data-set="4000000">400만</button>
+            <button type="button" class="quick-chip-btn chip-btn" data-add="200000">+20만</button>
+            <button type="button" class="quick-chip-btn chip-btn" data-add="500000">+50만</button>
+          </div>
+        </div>
+
+        <!-- 고용보험 가입기간 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <label class="input-card-label">고용보험 총 가입기간 (근속 기간)</label>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.35rem; margin-bottom: 0.5rem;">
+            <button type="button" class="period-chip-btn btn btn-secondary" data-years="0.8">1년 미만</button>
+            <button type="button" class="period-chip-btn btn btn-secondary" data-years="2">1~3년</button>
+            <button type="button" class="period-chip-btn active btn btn-secondary" data-years="4">3~5년</button>
+            <button type="button" class="period-chip-btn btn btn-secondary" data-years="7">5~10년</button>
+            <button type="button" class="period-chip-btn btn btn-secondary" data-years="11">10년 이상</button>
+          </div>
+          <input type="hidden" id="input-years" value="4" />
+        </div>
+
+        <!-- 퇴직 당시 만 나이 및 근로시간 -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+          <div class="input-card">
+            <div class="input-card-header">
+              <label for="input-age" class="input-card-label">퇴직 시 만 나이</label>
+            </div>
+            <div class="input-group-modern">
+              <input type="number" id="input-age" class="form-control" min="18" max="75" value="35" />
+              <span class="input-suffix-badge">세</span>
+            </div>
+          </div>
+          <div class="input-card">
+            <div class="input-card-header">
+              <label for="input-hours" class="input-card-label">1일 소정근로시간</label>
+            </div>
+            <div class="input-group-modern">
+              <input type="number" id="input-hours" class="form-control" min="4" max="8" value="8" />
+              <span class="input-suffix-badge">시간</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 우측: 결과 요약 패널 -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">모의 계산 결과</h2>
+        </div>
+
+        <!-- 하이라이트 박스: 총 예상 수급액 -->
+        <div class="highlight-result-box">
+          <div class="highlight-result-title">총 예상 실업급여 (구직급여)</div>
+          <div id="stat-total-benefit" class="highlight-result-amount">0원</div>
+          <div id="stat-total-benefit-korean" class="highlight-result-korean">0원</div>
+        </div>
+
+        <!-- 핵심 지표 카드 -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.25rem;">
+          <div style="padding: 0.85rem; border: 1px solid var(--border-color); border-radius: 12px; background: var(--bg-card);">
+            <div style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.2rem;">1일 구직급여액</div>
+            <div id="stat-daily-benefit" style="font-size: 1rem; font-weight: 800; color: #2563eb;">-</div>
+          </div>
+          <div style="padding: 0.85rem; border: 1px solid var(--border-color); border-radius: 12px; background: var(--bg-card);">
+            <div style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.2rem;">총 소정급여일수</div>
+            <div id="stat-benefit-days" style="font-size: 1rem; font-weight: 800; color: #16a34a;">-</div>
+          </div>
+        </div>
+
+        <div style="border: 1px solid var(--border-color); border-radius: 12px; padding: 1rem; background: var(--bg-card); margin-bottom: 1.25rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 0.88rem; font-weight: 700; color: var(--text-secondary);">30일 환산 월 수령액</span>
+            <strong id="stat-monthly-benefit" style="font-size: 1.15rem; font-weight: 800; color: var(--text-primary);">-</strong>
+          </div>
+          <div id="stat-benefit-desc" style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.4rem;">-</div>
+        </div>
+
+        <!-- 실업급여 수급 필수 조건 안내 -->
+        <div style="background: var(--bg-subtle); border-radius: 10px; padding: 0.9rem; font-size: 0.8rem; line-height: 1.6; color: var(--text-secondary);">
+          <strong style="color: var(--text-primary);">📌 실업급여(구직급여) 수급 필수 요건 체크:</strong>
+          <ul style="margin: 0.4rem 0 0 1rem; padding: 0;">
+            <li><strong>피보험 단위기간</strong>: 퇴직 전 18개월간 고용보험 가입기간이 <strong>180일 이상</strong>이어야 합니다.</li>
+            <li><strong>비자발적 퇴사</strong>: 권고사직, 계약만료, 경영상 해고 등 <strong>비자발적 사유</strong>여야 합니다 (단, 임금체불·원거리 발령 등 정당한 사유가 인정되는 자진퇴사는 예외적으로 수급 가능).</li>
+            <li><strong>신청 기한</strong>: 퇴직일 다음 날부터 <strong>12개월 이내</strong>에 전액 수령해야 하므로, 퇴직 직후 바로 관할 고용센터에 신청해야 합니다.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 법적 면책 조항 컨테이너 -->
+    <div id="disclaimer-container"></div>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="../../assets/js/core-ui.js"></script>
+  <script src="logic.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

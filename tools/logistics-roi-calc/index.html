@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<!--
+  ==========================================================================
+  [도구 3] B2B 설비 도입 ROI 및 손익분기점(BEP) 시뮬레이터 (index.html)
+  파일 경로: tools/logistics-roi-calc/index.html
+  --------------------------------------------------------------------------
+  [모던 프리미엄 핀테크 UI 리팩토링]
+  - 일체형 인풋 카드(.input-card) 및 실시간 한글 금액 읽기 배지 탑재
+  - 원터치 빠른 조절 퀵 칩(+1,000만, +5,000만 등) 제공
+  - 로컬 file:// 및 모바일 완벽 호환, 100% 클라이언트 연산
+  ==========================================================================
+-->
+<html lang="ko" data-default-theme="light" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('simulab_theme_logistics-roi-calc');
+        var theme = 'light'; /* v2: 라이트 단일 테마 */
+        document.documentElement.setAttribute('data-theme', theme);
+        document.querySelector('meta[name="color-scheme"]').setAttribute('content', theme);
+      } catch (e) {}
+    })();
+  </script>
+
+  <title>B2B 설비 도입 ROI 및 손익분기점(BEP)·회수기간 시뮬레이터 | SimuLab Analytics</title>
+  <meta name="description" content="물류 자동화 설비, 로봇, 키오스크 도입 시 초기 투자비(CAPEX), 인건비 절감액, 월 유지보수비(OPEX)를 기반으로 투자 회수 기간(Payback Period)과 순현재가치(NPV)를 즉시 계산하세요." />
+  <link rel="canonical" href="https://simulab-hub.pages.dev/tools/logistics-roi-calc/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="B2B 설비 도입 ROI 및 손익분기점(BEP) 시뮬레이터" />
+  <meta property="og:description" content="초기 설비 투자비(CAPEX)를 몇 개월 만에 회수하는지 실시간 골든크로스 차트와 품의서용 CSV 표로 확인하세요." />
+
+  <link rel="stylesheet" href="../../assets/css/common.css" />
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main class="container">
+    <!-- 엔터프라이즈 페이지 헤더 섹션 (h1 단일 태그) -->
+    <section class="page-header">
+      <div class="page-meta-row">
+        <span class="brand-badge">B2B CORPORATE FINANCE</span>
+        <span class="brand-badge">CAPEX · OPEX · NPV · PAYBACK</span>
+      </div>
+      <h1 class="page-title">물류 자동화 ROI 분석</h1>
+      <p class="page-desc">
+        초기 설비 투자비(CAPEX)와 월 인건비 절감액, 운영 유지비(OPEX)를 조절하여 <strong>몇 개월 만에 본전을 회수(Payback Period)</strong>하고 누적 흑자로 전환하는지 정밀 시뮬레이션합니다.
+      </p>
+    </section>
+
+    <!-- 시뮬레이터 메인 그리드 -->
+    <section class="simulator-grid" aria-label="설비 ROI 시뮬레이터 조작 및 결과 영역">
+      <!-- 좌측: 입력 컨트롤 카드 -->
+      <aside class="card">
+        <div class="card-header">
+          <h2 class="card-title">설비 투자 변수 (CAPEX / OPEX)</h2>
+          <button type="button" id="btn-reset" class="btn" style="padding: 0.3rem 0.65rem; font-size: 0.76rem;">
+            초기화
+          </button>
+        </div>
+
+        <div class="step-section-title">
+          <span class="step-badge">STEP 1</span>
+          도입하려는 자동화 설비와 초기 투자비(CAPEX)는?
+        </div>
+
+        <!-- 실무 업종별 빠른 프리셋 선택 -->
+        <div class="control-group">
+          <div class="control-label-row">
+            <label class="control-label">실무 업종별 빠른 프리셋</label>
+          </div>
+          <div class="segmented-control" role="group" aria-label="실무 설비 프리셋 선택">
+            <button type="button" class="segment-btn active" data-preset="packaging">물류 포장기</button>
+            <button type="button" class="segment-btn" data-preset="kiosk">서빙로봇·키오스크</button>
+            <button type="button" class="segment-btn" data-preset="agv">공장 AGV 설비</button>
+          </div>
+        </div>
+
+        <!-- 1. 초기 설비 투자비 (CAPEX, 만원) -->
+        <div class="input-card">
+          <div class="input-header">
+            <label for="input-capex" class="input-title">초기 설비 도입비 (CAPEX)</label>
+            <span id="badge-capex" class="input-badge">5,000만 원</span>
+          </div>
+          <div class="input-group">
+            <input type="number" id="input-capex" class="input-field" min="10" max="1000000" step="100" value="5000" />
+            <span class="input-unit">만 원</span>
+          </div>
+          <div class="quick-chips">
+            <button type="button" class="chip-btn" data-target="input-capex" data-add="1000">+1,000만</button>
+            <button type="button" class="chip-btn" data-target="input-capex" data-add="5000">+5,000만</button>
+            <button type="button" class="chip-btn" data-target="input-capex" data-add="10000">+1억</button>
+            <button type="button" class="chip-btn chip-reset" data-target="input-capex" data-set="5000">초기화</button>
+          </div>
+          <div class="slider-row">
+            <input type="range" id="slider-capex" class="range-slider" min="100" max="50000" step="100" value="5000" aria-label="초기 설비 도입비 슬라이더" />
+          </div>
+          <p class="control-help" style="margin-top: 0.35rem; font-size: 0.75rem; color: var(--text-muted);">
+            장비 구매비, 설치 공사비, 시스템 연동(SI) 구축비 등 초기에 지출되는 목돈입니다.
+          </p>
+        </div>
+
+        <div class="step-section-title">
+          <span class="step-badge">STEP 2</span>
+          매달 얼마를 아끼고 유지비(OPEX)는 얼마 나가나요?
+        </div>
+
+        <!-- 2. 월 인건비 절감액 (만원/월) -->
+        <div class="input-card">
+          <div class="input-header">
+            <label for="input-monthlyLaborSavings" class="input-title">월 인건비 절감액</label>
+            <span id="badge-monthlyLaborSavings" class="input-badge">350만 원</span>
+          </div>
+          <div class="input-group">
+            <input type="number" id="input-monthlyLaborSavings" class="input-field" min="0" max="50000" step="10" value="350" />
+            <span class="input-unit">만 원/월</span>
+          </div>
+          <div class="quick-chips">
+            <button type="button" class="chip-btn" data-target="input-monthlyLaborSavings" data-add="50">+50만</button>
+            <button type="button" class="chip-btn" data-target="input-monthlyLaborSavings" data-add="100">+100만</button>
+            <button type="button" class="chip-btn" data-target="input-monthlyLaborSavings" data-add="300">+300만</button>
+            <button type="button" class="chip-btn chip-reset" data-target="input-monthlyLaborSavings" data-set="350">초기화</button>
+          </div>
+          <div class="slider-row">
+            <input type="range" id="slider-monthlyLaborSavings" class="range-slider" min="0" max="3000" step="10" value="350" aria-label="월 인건비 절감액 슬라이더" />
+          </div>
+          <p class="control-help" style="margin-top: 0.35rem; font-size: 0.75rem; color: var(--text-muted);">
+            기본급 외에 4대보험·퇴직충당금·식대를 포함한 실제 절감 인건비(실부담액)를 입력하세요.
+          </p>
+        </div>
+
+        <!-- 3. 처리량 향상에 따른 월 추가 매출이익 (만원/월) -->
+        <div class="input-card">
+          <div class="input-header">
+            <label for="input-monthlyThroughputGain" class="input-title">처리량 증가 월 추가이익</label>
+            <span id="badge-monthlyThroughputGain" class="input-badge">120만 원</span>
+          </div>
+          <div class="input-group">
+            <input type="number" id="input-monthlyThroughputGain" class="input-field" min="0" max="50000" step="10" value="120" />
+            <span class="input-unit">만 원/월</span>
+          </div>
+          <div class="quick-chips">
+            <button type="button" class="chip-btn" data-target="input-monthlyThroughputGain" data-add="30">+30만</button>
+            <button type="button" class="chip-btn" data-target="input-monthlyThroughputGain" data-add="50">+50만</button>
+            <button type="button" class="chip-btn" data-target="input-monthlyThroughputGain" data-add="100">+100만</button>
+            <button type="button" class="chip-btn chip-reset" data-target="input-monthlyThroughputGain" data-set="120">초기화</button>
+          </div>
+          <div class="slider-row">
+            <input type="range" id="slider-monthlyThroughputGain" class="range-slider" min="0" max="2000" step="10" value="120" aria-label="월 추가이익 슬라이더" />
+          </div>
+        </div>
+
+        <!-- 4. 월 유지보수·전력·구독비 (OPEX, 만원/월) -->
+        <div class="input-card">
+          <div class="input-header">
+            <label for="input-monthlyOpex" class="input-title">월 운영 유지보수비 (OPEX)</label>
+            <span id="badge-monthlyOpex" class="input-badge">70만 원</span>
+          </div>
+          <div class="input-group">
+            <input type="number" id="input-monthlyOpex" class="input-field" min="0" max="50000" step="5" value="70" />
+            <span class="input-unit">만 원/월</span>
+          </div>
+          <div class="quick-chips">
+            <button type="button" class="chip-btn" data-target="input-monthlyOpex" data-add="10">+10만</button>
+            <button type="button" class="chip-btn" data-target="input-monthlyOpex" data-add="30">+30만</button>
+            <button type="button" class="chip-btn" data-target="input-monthlyOpex" data-add="50">+50만</button>
+            <button type="button" class="chip-btn chip-reset" data-target="input-monthlyOpex" data-set="70">초기화</button>
+          </div>
+          <div class="slider-row">
+            <input type="range" id="slider-monthlyOpex" class="range-slider" min="0" max="1500" step="5" value="70" aria-label="월 운영 유지보수비 슬라이더" />
+          </div>
+        </div>
+
+        <div class="step-section-title">
+          <span class="step-badge">STEP 3</span>
+          자본 조달 금리(할인율) &amp; 분석 기간 설정
+        </div>
+
+        <!-- 5. 연간 자본할인율 / 조달금리 (%) -->
+        <div class="input-card">
+          <div class="input-header">
+            <label for="input-discountRate" class="input-title">연 자본할인율 / 대출금리</label>
+            <span id="badge-discountRate" class="input-badge">6.0%</span>
+          </div>
+          <div class="input-group">
+            <input type="number" id="input-discountRate" class="input-field" min="0" max="30" step="0.5" value="6.0" />
+            <span class="input-unit">%</span>
+          </div>
+          <div class="quick-chips">
+            <button type="button" class="chip-btn" data-target="input-discountRate" data-set="3.0">3%</button>
+            <button type="button" class="chip-btn" data-target="input-discountRate" data-set="5.0">5%</button>
+            <button type="button" class="chip-btn" data-target="input-discountRate" data-set="6.0">6%</button>
+            <button type="button" class="chip-btn" data-target="input-discountRate" data-set="8.0">8%</button>
+          </div>
+          <div class="slider-row">
+            <input type="range" id="slider-discountRate" class="range-slider" min="0" max="20" step="0.5" value="6.0" aria-label="연 자본할인율 슬라이더" />
+          </div>
+        </div>
+
+        <!-- 6. 분석 기간 (개월) -->
+        <div class="input-card" style="margin-bottom: 0.25rem;">
+          <div class="input-header">
+            <label for="input-analysisMonths" class="input-title">분석 기간</label>
+            <span id="badge-analysisMonths" class="input-badge">36개월</span>
+          </div>
+          <div class="input-group">
+            <input type="number" id="input-analysisMonths" class="input-field" min="6" max="60" step="1" value="36" />
+            <span class="input-unit">개월</span>
+          </div>
+          <div class="quick-chips">
+            <button type="button" class="chip-btn" data-target="input-analysisMonths" data-set="24">24개월(2년)</button>
+            <button type="button" class="chip-btn" data-target="input-analysisMonths" data-set="36">36개월(3년)</button>
+            <button type="button" class="chip-btn" data-target="input-analysisMonths" data-set="48">48개월(4년)</button>
+            <button type="button" class="chip-btn" data-target="input-analysisMonths" data-set="60">60개월(5년)</button>
+          </div>
+          <div class="slider-row">
+            <input type="range" id="slider-analysisMonths" class="range-slider" min="12" max="60" step="6" value="36" aria-label="분석 기간 슬라이더" />
+          </div>
+        </div>
+      </aside>
+
+      <!-- 우측: 핵심 결론 배너, KPI 요약 카드, Canvas 차트, 액션 바, 상세 테이블 -->
+      <div>
+        <div class="card">
+          <!-- 실시간 한 줄 핵심 결론 배너 -->
+          <div id="verdict-banner" class="verdict-banner">
+            <div class="verdict-eyebrow">설비 도입 손익분기점(BEP) &amp; 투자 타당성 핵심 결론</div>
+            <div id="verdict-text" class="verdict-main-text">투자 회수 기간과 NPV를 분석하고 있습니다...</div>
+          </div>
+
+          <!-- 고정된 시나리오(Case A) 비교 알림 배너 -->
+          <div
+            id="pinned-comparison-banner"
+            style="display: none; margin-bottom: 1rem; padding: 0.75rem 1rem; border-radius: var(--radius-md); background-color: var(--accent-soft); border: 1px solid var(--accent-primary); font-size: 0.85rem;"
+          ></div>
+
+          <!-- KPI 요약 카드 4종 -->
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <div class="kpi-label">손익분기점 (BEP 회수기간)</div>
+              <div id="kpi-bep" class="kpi-value text-success">-</div>
+              <div id="kpi-bep-sub" class="kpi-sub">-</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-label">월 순현금흐름 (Net CF)</div>
+              <div id="kpi-monthly-cf" class="kpi-value">-</div>
+              <div id="kpi-monthly-cf-sub" class="kpi-sub">-</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-label">순현재가치 (NPV)</div>
+              <div id="kpi-npv" class="kpi-value text-accent">-</div>
+              <div id="kpi-npv-sub" class="kpi-sub">-</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-label">분석기간 총 투자수익률 (ROI)</div>
+              <div id="kpi-roi" class="kpi-value text-success">-</div>
+              <div id="kpi-roi-sub" class="kpi-sub">-</div>
+            </div>
+          </div>
+
+          <!-- CLS 방지 고정 높이 Canvas 차트 컨테이너 -->
+          <div class="chart-container">
+            <canvas id="sim-canvas" class="chart-canvas" aria-label="설비 투자 누적 순현금흐름 및 손익분기점 돌파 차트"></canvas>
+          </div>
+
+          <!-- 주요 기능 액션 바 -->
+          <div class="action-bar">
+            <button type="button" id="btn-pin-scenario" class="btn btn-primary">
+              현재 조건 고정 (Case A 비교)
+            </button>
+            <button type="button" id="btn-share-url" class="btn">
+              품의서 공유 URL 복사
+            </button>
+            <button type="button" id="btn-export-png" class="btn">
+              결재 첨부용 차트(PNG) 저장
+            </button>
+            <button type="button" id="btn-export-csv" class="btn">
+              월별 현금흐름표(CSV) 다운로드
+            </button>
+          </div>
+
+          <!-- 법적 면책 조항 -->
+          <div id="legal-disclaimer"></div>
+        </div>
+
+        <!-- 분기별 누적 현금흐름 요약 테이블 -->
+        <div class="card" style="margin-top: 1.25rem;">
+          <div class="card-header">
+            <h2 class="card-title">주요 시점별 누적 현금흐름 및 BEP 달성 현황</h2>
+            <span style="font-size: 0.76rem; color: var(--text-muted);">전체 월별 상세 데이터는 [CSV 다운로드]로 확인 가능</span>
+          </div>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>경과 시점</th>
+                  <th>월 순현금흐름</th>
+                  <th>누적 순현금흐름 (명목)</th>
+                  <th>할인 누적 현금흐름 (NPV)</th>
+                  <th>누적 ROI</th>
+                  <th>BEP 상태</th>
+                </tr>
+              </thead>
+              <tbody id="period-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 애드센스 광고 슬롯 -->
+    <aside class="ad-slot" aria-label="스폰서 광고 영역">
+      <span>SPONSORED · Google AdSense Responsive Display Unit (CLS Guard Applied)</span>
+    </aside>
+
+    <!-- US-04: SEO 가이드, B2B 재무 공식 해설 및 FAQ 섹션 -->
+    <article class="seo-article card">
+      <details class="expert-guide">
+        <summary><span class="expert-guide-title">전문가 해설</span><span class="expert-guide-meta">수식 · 가정 · 용어 · 자주 묻는 질문</span></summary>
+        <div class="expert-guide-body">
+      <h2>B2B 설비 투자 ROI·손익분기점(BEP)·순현재가치(NPV) 실무 완벽 가이드</h2>
+      <p>
+        물류 센터의 자동 포장기(Auto-Bagger), 제조 공장의 무인운반차(AGV), 혹은 외식·리테일 매장의 서빙 로봇과 키오스크를 도입할 때
+        경영진과 재무팀이 가장 먼저 묻는 질문은 단 하나입니다.
+        <strong>"초기 투자비(CAPEX)가 얼마이고, 정확히 몇 개월 뒤에 손익분기점(BEP)을 넘어 본전을 회수하는가?"</strong>
+        본 시뮬레이터는 복잡한 엑셀 재무 모델링 없이도 설비 도입 기안서(품의서)에 바로 첨부할 수 있는 정밀 타당성 분석 지표를 산출합니다.
+      </p>
+
+      <h3>1. 핵심 변수 정의: CAPEX vs OPEX vs 순현금흐름(Net Cash Flow)</h3>
+      <ul>
+        <li>
+          <strong>CAPEX (Capital Expenditure, 자본적 지출):</strong>
+          기계 장치 구매비, 초기 설치 공사비, 시스템 연동(SI) 구축비 등 도입 초기에 일시적으로 지출되는 총 투자 원금입니다.
+        </li>
+        <li>
+          <strong>Gross Benefit (월간 총 효익):</strong>
+          설비 도입을 통해 매월 절감되는 인건비(급여, 4대 보험, 퇴직충당금, 야간수당 등)와 병목 공정 해소를 통한 처리량(Throughput) 증가분(추가 매출총이익)의 합계입니다.
+        </li>
+        <li>
+          <strong>OPEX (Operating Expenditure, 운영 비용):</strong>
+          설비를 가동하기 위해 매월 고정 또는 변동으로 지출되는 전기요금, 정기 유지보수 계약비, 소모품 교체비, 클라우드 S/W 구독료입니다.
+        </li>
+      </ul>
+
+      <h3>2. 시뮬레이터에 적용된 3대 재무 타당성 공식</h3>
+      <p>
+        본 도구의 계산 엔진(<code>logic.js</code>)은 기업 재무관리(Corporate Finance) 표준 수식을 그대로 적용합니다.
+      </p>
+      <div class="formula-box">
+        1) 월 순현금흐름 (CF) = (월 인건비 절감액 + 월 추가 매출이익) − 월 운영 유지비(OPEX)<br />
+        2) 단순 회수기간 (Simple Payback Period) = 초기 투자비(CAPEX) ÷ 월 순현금흐름(CF)<br />
+        3) 순현재가치 (NPV) = −CAPEX + Σ [ CF_t ÷ (1 + r_m)^t ]  (단, t = 1 ~ N개월)<br />
+        4) 총 투자수익률 (ROI %) = [ (총 누적 순현금흐름 − CAPEX) ÷ CAPEX ] × 100
+      </div>
+
+      <h3>3. 왜 단순 회수기간뿐만 아니라 순현재가치(NPV)를 함께 봐야 할까요?</h3>
+      <p>
+        오늘 지출하는 5,000만원의 현금 가치와 3년 뒤에 나눠서 회수하는 5,000만원의 가치는 같지 않습니다.
+        기업이 설비를 구매하기 위해 은행 대출을 받거나 내부 유보금을 사용하면 그에 따른 <strong>기회비용(자본할인율, WACC 또는 조달금리)</strong>이 발생하기 때문입니다.
+        차트에서 파란색 실선(명목 누적 현금흐름)과 초록색 실선(할인율 반영 누적 NPV)이 기준선(<code>Y = 0원</code>)을 뚫고 올라가는 지점이 바로 <strong>진정한 손익분기 골든크로스(Break-Even Point)</strong>입니다.
+        분석 기간 종료 시점의 <strong>NPV가 0원보다 크면(NPV &gt; 0)</strong> 자본 조달 비용을 제하고도 기업 가치를 순증시키는 타당한 투자로 판단합니다.
+      </p>
+
+      <h2>자주 묻는 질문 (FAQ)</h2>
+
+      <details class="faq-item" open>
+        <summary>Q1. 실무에서 물류·제조 자동화 설비의 적정 투자 회수 기간(Payback Period) 기준은 몇 개월인가요?</summary>
+        <div class="faq-answer">
+          업종과 설비 내구연한에 따라 다르지만, 일반적인 중소·중견 물류센터 및 매장 자동화 기기(포장기, 키오스크, 서빙 로봇 등)는 <strong>12개월~18개월 이내</strong>에 손익분기점(BEP)을 돌파할 때 투자 매력도가 매우 높은 것으로 평가합니다. 대형 스마트팩토리 설비(AGV, 자동창고 AS/RS)의 경우 <strong>24개월~36개월 이내</strong> 회수를 표준 타당성 기준으로 삼습니다.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Q2. 구매(일시불 CAPEX) 방식과 렌탈·리스(월 OPEX) 방식은 어떻게 비교할 수 있나요?</summary>
+        <div class="faq-answer">
+          먼저 일시불 구매 조건(예: 초기 투자비 5,000만원, 월 유지비 70만원)을 입력한 뒤 <strong>[현재 조건 고정 (Case A 비교)]</strong> 버튼을 누릅니다.
+          그다음 렌탈 조건(예: 초기 보증금/설치비 300만원, 월 렌탈료 포함 유지비 220만원)으로 슬라이더를 변경하면 36개월 뒤 어느 방식이 최종 순이익 면에서 유리한지 즉시 비교됩니다.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Q3. 인건비 절감액을 계산할 때 기본급만 넣어야 하나요?</summary>
+        <div class="faq-answer">
+          아닙니다. 실제 기업이 부담하는 <strong>실질 인건비(Fully Loaded Labor Cost)</strong>를 입력해야 정확합니다.
+          월 기본급 외에도 사업자 부담 4대 보험료(약 10~11%), 퇴직급여충당금(약 8.3%), 식대·복리후생비, 구인 및 교육 비용을 합산하면 통상 명목 급여의 <strong>1.2배~1.3배</strong>를 실제 인건비 절감액으로 산정하는 것이 정확합니다.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Q4. 기안서(품의서)에 차트와 표를 첨부하려면 어떻게 해야 하나요?</summary>
+        <div class="faq-answer">
+          차트 하단의 <strong>[결재 첨부용 차트(PNG) 저장]</strong> 버튼을 누르면 고해상도 그래프 이미지가 즉시 다운로드되어 파워포인트(PPT)나 워드 보고서에 바로 붙여넣을 수 있으며,
+          <strong>[월별 현금흐름표(CSV) 다운로드]</strong>를 누르면 엑셀에서 바로 열리는 상세 현금흐름표를 얻으실 수 있습니다.
+        </div>
+      </details>
+      </div>
+      </details>
+
+      <!-- 표시광고법 준수 제휴 마케팅 고지 -->
+      <div id="affiliate-disclosure"></div>
+    </article>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <!-- 로컬 file:// 직접 실행 및 웹 배포 호환 표준 스크립트 체인 -->
+  <script src="../../assets/js/core-ui.js"></script>
+  <script src="../../assets/js/chart-engine.js"></script>
+  <script src="../../assets/js/seo-schema.js"></script>
+  <script src="./logic.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

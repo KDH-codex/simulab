@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>인터랙티브 사다리타기 게임 — 캔버스 애니메이션 & 복불복 벌칙 | SimuLab</title>
+  <meta name="description" content="2명부터 12명까지! 커피 쏘기, 점심 내기, 청소 당번 등 실시간 HTML5 캔버스 애니메이션으로 즐기는 공정하고 투명한 무작위 사다리타기 게임. 전체 결과 즉시 보기와 카톡 공유 지원." />
+  <link rel="stylesheet" href="../../assets/css/common.css" />
+  <style>
+    /* 사다리타기 전용 스타일 */
+    .ladder-board-card {
+      background: #ffffff;
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 2rem;
+    }
+    .canvas-wrapper {
+      position: relative;
+      width: 100%;
+      background: #f8fafc;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      margin: 1.25rem 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 400px;
+    }
+    #ladder-canvas {
+      display: block;
+      width: 100%;
+      height: 420px;
+      cursor: pointer;
+    }
+    /* 인원수 카운터 */
+    .counter-badge-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 999px;
+      padding: 0.25rem 0.5rem;
+    }
+    .counter-btn {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1px solid var(--border-color);
+      background: #ffffff;
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s ease;
+    }
+    .counter-btn:hover {
+      background: #3b82f6;
+      color: #ffffff;
+      border-color: #3b82f6;
+    }
+    .counter-val {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      min-width: 36px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main class="container" style="padding-top: 1.5rem; padding-bottom: 3rem;">
+    <!-- 페이지 제목 및 인트로 -->
+    <section class="page-header">
+      <h1 class="page-title">인터랙티브 사다리타기</h1>
+      <p class="page-subtitle">
+        "오늘 점심이나 커피 쏠 사람 누구?" 2명부터 최대 12명까지 지원하는 실시간 HTML5 Canvas 사다리타기 게임입니다. 수학적 일대일 대응(전단사 함수) 원리로 중복 없이 100% 공정하게 추첨하며, 부드러운 애니메이션과 카톡 결과 공유를 제공합니다.
+      </p>
+    </section>
+
+    <!-- 판정 브리핑 배너 -->
+    <div id="verdict-banner" class="verdict-banner" style="margin-bottom: 1.5rem;">
+      <div id="verdict-text" style="font-size: 0.95rem; line-height: 1.6;">
+        참가자 이름과 벌칙을 설정한 뒤 [사다리 타기 시작]을 누르면 추첨이 진행됩니다.
+      </div>
+    </div>
+
+    <!-- 핵심 KPI 카드 4종 -->
+    <section class="kpi-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+      <div class="card stat-card" style="padding: 1.25rem;">
+        <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">총 참가자 수</span>
+        <div id="kpi-total-players" class="stat-value" style="font-size: 1.4rem; font-weight: 700; color: #3b82f6; margin-top: 0.25rem;">4명</div>
+        <span style="font-size: 0.75rem; color: var(--text-muted);">2명 ~ 12명 선택 가능</span>
+      </div>
+
+      <div class="card stat-card" style="padding: 1.25rem;">
+        <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">벌칙 및 당첨 항목</span>
+        <div id="kpi-total-prizes" class="stat-value" style="font-size: 1.4rem; font-weight: 700; color: #ec4899; margin-top: 0.25rem;">4개</div>
+        <span style="font-size: 0.75rem; color: var(--text-muted);">1:1 무작위 자동 매칭</span>
+      </div>
+
+      <div class="card stat-card" style="padding: 1.25rem;">
+        <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">사다리 가로선 층수</span>
+        <div id="kpi-ladder-layers" class="stat-value" style="font-size: 1.4rem; font-weight: 700; color: #10b981; margin-top: 0.25rem;">8단</div>
+        <span style="font-size: 0.75rem; color: var(--text-muted);">복잡도 자동 최적화</span>
+      </div>
+
+      <div class="card stat-card" style="padding: 1.25rem;">
+        <span class="stat-label" style="font-size: 0.82rem; color: var(--text-secondary);">게임 진행 상태</span>
+        <div id="kpi-game-status" class="stat-value" style="font-size: 1.3rem; font-weight: 700; color: #3b82f6; margin-top: 0.25rem;">준비 완료</div>
+        <span style="font-size: 0.75rem; color: var(--text-muted);">실시간 캔버스 추첨</span>
+      </div>
+    </section>
+
+    <!-- 설정 및 사다리 캔버스 영역 -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+      <!-- 좌측: 참가자 및 벌칙 설정 패널 -->
+      <div class="card" style="padding: 1.5rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+          <h2 class="step-section-title" style="font-size: 1.15rem; font-weight: 700; color: var(--text-primary); margin: 0;">
+            1단계. 참가자 & 벌칙 설정
+          </h2>
+          <!-- 인원수 카운터 -->
+          <div class="counter-badge-wrap">
+            <button type="button" class="counter-btn" id="btn-count-minus" aria-label="인원수 감소">-</button>
+            <span class="counter-val" id="participant-count">4명</span>
+            <button type="button" class="counter-btn" id="btn-count-plus" aria-label="인원수 증가">+</button>
+          </div>
+        </div>
+
+        <!-- 빠른 추천 프리셋 -->
+        <div style="margin-bottom: 1rem;">
+          <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); display: block; margin-bottom: 0.4rem;">빠른 프리셋 선택:</span>
+          <div class="preset-chip-group">
+            <button type="button" class="btn-preset active" data-preset="coffee">☕ 커피 내기</button>
+            <button type="button" class="btn-preset" data-preset="lunch">🍱 점심 쏘기</button>
+            <button type="button" class="btn-preset" data-preset="cleaning">🧹 청소 당번</button>
+            <button type="button" class="btn-preset" data-preset="random">🎲 순번 뽑기</button>
+          </div>
+        </div>
+
+        <!-- 참가자 & 벌칙 입력 인풋 리스트 -->
+        <div id="inputs-container" style="max-height: 380px; overflow-y: auto; padding-right: 0.25rem;">
+          <!-- app.js에서 동적 생성 -->
+        </div>
+
+        <!-- 재설정 및 새 사다리 버튼 -->
+        <button type="button" class="btn btn-outline" id="btn-reset-ladder" style="width: 100%; padding: 0.75rem; margin-top: 1rem; font-size: 0.9rem;">
+          🔄 사다리 선 다시 섞기
+        </button>
+      </div>
+
+      <!-- 우측: 인터랙티브 캔버스 보드 -->
+      <div class="ladder-board-card">
+        <h2 class="step-section-title" style="font-size: 1.15rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.75rem;">
+          2단계. 실시간 사다리 보드
+        </h2>
+
+        <!-- Canvas 렌더링 래퍼 -->
+        <div class="canvas-wrapper">
+          <canvas id="ladder-canvas"></canvas>
+        </div>
+
+        <!-- 게임 실행 컨트롤 버튼 바 -->
+        <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+          <button type="button" class="btn btn-primary" id="btn-start-game" style="flex: 2; min-width: 180px; padding: 0.85rem; font-size: 1rem; font-weight: 800;">
+            ▶ 사다리 타기 시작!
+          </button>
+          <button type="button" class="btn btn-outline" id="btn-show-all" style="flex: 1; min-width: 130px; padding: 0.85rem; font-weight: 700;">
+            ⚡ 전체 결과 한눈에
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3단계. 추첨 결과 테이블 (추첨 완료 시 활성화) -->
+    <section id="results-container" class="card" style="display: none; padding: 1.75rem; margin-bottom: 2rem;">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.25rem;">
+        <h2 class="step-section-title" style="font-size: 1.15rem; font-weight: 700; color: var(--text-primary); margin: 0;">
+          3단계. 최종 사다리타기 추첨 결과표
+        </h2>
+        <button type="button" class="btn btn-kakao" id="btn-copy-result" style="padding: 0.55rem 1.15rem; font-size: 0.88rem; font-weight: 750;">
+          💬 카톡 공유용 결과 복사
+        </button>
+      </div>
+
+      <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.95rem;">
+          <thead>
+            <tr style="background: var(--bg-secondary);">
+              <th style="padding: 0.75rem 1rem; border-bottom: 2px solid var(--border-color); text-align: center; color: var(--text-secondary);">참가자</th>
+              <th style="padding: 0.75rem 1rem; border-bottom: 2px solid var(--border-color); text-align: center; color: var(--text-secondary); width: 60px;">이동</th>
+              <th style="padding: 0.75rem 1rem; border-bottom: 2px solid var(--border-color); text-align: center; color: var(--text-secondary);">당첨 / 벌칙 결과</th>
+            </tr>
+          </thead>
+          <tbody id="results-table-body">
+            <!-- app.js에서 렌더링 -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 교육용 아코디언 가이드 (초보자를 위한 수학적 원리 안내) -->
+    <section class="card" style="padding: 1.75rem;">
+      <h2 class="step-section-title" style="font-size: 1.15rem; font-weight: 700; margin-bottom: 1.25rem; color: var(--text-primary);">
+        4단계. 사다리타기의 수학: 왜 절대 중복 당첨이 없을까?
+      </h2>
+
+      <div class="accordion-item" style="border-bottom: 1px solid var(--border-color); padding: 1rem 0;">
+        <h3 style="font-size: 0.98rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;">
+          Q1. 사다리타기에서 두 사람이 같은 결과에 도착할 확률이 0%인 이유는?
+        </h3>
+        <p style="font-size: 0.88rem; line-height: 1.65; color: var(--text-secondary);">
+          수학의 군론(Group Theory)과 이산수학에서 사다리타기는 <strong>'순열(Permutation)'</strong>과 <strong>'일대일 대응(Bijection, 전단사 함수)'</strong>을 시각화한 것입니다. 가로선 하나를 만날 때마다 인접한 두 레일의 위치가 교환(Swap)될 뿐이므로, 경로가 서로 얽히더라도 출발선 N개와 도착선 N개는 수학적으로 항상 1:1로만 매칭되며 중복이나 누락이 절대 발생할 수 없습니다.
+        </p>
+      </div>
+
+      <div class="accordion-item" style="border-bottom: 1px solid var(--border-color); padding: 1rem 0;">
+        <h3 style="font-size: 0.98rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;">
+          Q2. 사다리타기에서 가로선 위치를 조작해 특정 사람을 걸리게 할 수 있나요?
+        </h3>
+        <p style="font-size: 0.88rem; line-height: 1.65; color: var(--text-secondary);">
+          SimuLab의 사다리타기 엔진은 암호학적으로 안전한 의사 난수(PRNG)를 기반으로 층마다 가로선을 무작위 배치합니다. 사람이 손으로 긋는 사다리는 습관적으로 가운데 줄에 가로선을 많이 그어 양 끝 사람이 덜 걸리는 편향(Bias)이 생기지만, 본 엔진은 모든 레일에 균등한 확률로 가로선을 분배하여 <strong>참가자 전원이 수학적으로 완전히 동일한 당첨 확률(1/N)</strong>을 갖도록 보장합니다.
+        </p>
+      </div>
+
+      <div class="accordion-item" style="padding-top: 1rem;">
+        <h3 style="font-size: 0.98rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;">
+          Q3. 회사 회식이나 스터디에서 가장 센스 있게 활용하는 꿀팁은?
+        </h3>
+        <p style="font-size: 0.88rem; line-height: 1.65; color: var(--text-secondary);">
+          한 사람에게 모든 금액을 몰아주는 잔인한 방식 대신, <strong>'차등 결제 룰'</strong>을 적용해 보세요! 예를 들어 4명이서 5만원이 나왔다면, [1등: 25,000원], [2등: 15,000원], [3등: 10,000원], [4등: 면제(0원)] 형태로 벌칙을 설정하면 모두가 웃으면서 기분 좋게 식사비를 정산할 수 있습니다.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- 전역 공통 스크립트 및 모듈 바인딩 -->
+  <script src="../../assets/js/core-ui.js"></script>
+  <script src="logic.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
