@@ -760,6 +760,15 @@
     const prefix = getRootPrefix();
     initTheme(activeToolId);
 
+    // 0) 사용자 행동 및 방문 경로 자동 추적기(tracker.js) 비동기 로드
+    if (!document.getElementById('simulab-tracker-script')) {
+      const trackerScript = document.createElement('script');
+      trackerScript.id = 'simulab-tracker-script';
+      trackerScript.src = prefix + 'assets/js/tracker.js';
+      trackerScript.async = true;
+      document.head.appendChild(trackerScript);
+    }
+
     // 1) 상단 헤더 주입 (v2: 카테고리 메가메뉴 + 모바일 햄버거)
     const headerEl = document.getElementById('site-header');
     if (headerEl) {
