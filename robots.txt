@@ -1,10 +1,20 @@
-# SimuLab Hub - 검색엔진 크롤러 허용 규칙 (robots.txt)
-# Googlebot, Google AdSense(Mediapartners-Google), Yeti(네이버), Bingbot 등 모든 주요 검색 로봇의 전체 수집을 허용합니다.
+# SimuLab (simulab.kr) - 검색엔진 크롤러 수집 가이드 (robots.txt)
+# Googlebot, Naver Yeti, Bingbot 등 주요 검색엔진의 전체 수집을 환영합니다.
 
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /tools/admin-dashboard/
 
+# 네이버 검색 로봇 (Yeti) 전용 수집 규칙
+User-agent: Yeti
+Allow: /
+Disallow: /admin/
+Disallow: /tools/admin-dashboard/
+
+# 구글 애드센스 광고 심사 크롤러
 User-agent: Mediapartners-Google
 Allow: /
 
+# 전체 사이트맵 위치 안내
 Sitemap: https://simulab.kr/sitemap.xml
