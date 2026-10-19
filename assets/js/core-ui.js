@@ -344,25 +344,26 @@
     return String(text).replace(/[&<>"']/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
   }
 
-  /* [v2] 상단 헤더(메가메뉴 + 모바일 햄버거) HTML 생성 */
+  /* [v2.5] 차분하고 모던한 2중 레이어 상단 헤더 HTML 생성 */
   function buildHeaderHtml(prefix, activeToolId) {
     const groups = SITE_MENU.map((cat) => {
       const isActive = cat.items.some((it) => it.tool && it.tool === activeToolId);
       const links = cat.items
         .map((it) => {
-          const hotBadge = it.hot ? '<span class="badge-hot">HOT</span>' : '';
           return it.soon
             ? `<span class="gnb-link is-soon" aria-disabled="true"><span>${escapeHtml(it.title)}</span><em>준비 중</em></span>`
-            : `<a class="gnb-link" href="${prefix}${it.href}"><span style="display:flex;align-items:center;justify-content:space-between;"><span>${escapeHtml(it.title)}</span>${hotBadge}</span><small>${escapeHtml(it.sub)}</small></a>`;
+            : `<a class="gnb-link" href="${prefix}${it.href}"><span class="gnb-link-title">${escapeHtml(it.title)}</span><small>${escapeHtml(it.sub)}</small></a>`;
         })
         .join('');
 
-      const hotCategoryBadge = cat.hot ? '<span class="badge-hot">HOT</span>' : '';
-      const catIcon = cat.icon ? `<span style="margin-right:0.3rem;">${cat.icon}</span>` : '';
-
       return `
         <li class="gnb-item${isActive ? ' is-active' : ''}">
-          <button type="button" class="gnb-btn" aria-haspopup="true" aria-expanded="false">${catIcon}${escapeHtml(cat.label)}${hotCategoryBadge}</button>
+          <button type="button" class="gnb-btn" aria-haspopup="true" aria-expanded="false">
+            <span>${escapeHtml(cat.label)}</span>
+            <svg class="gnb-chevron" viewBox="0 0 16 16" width="10" height="10" fill="currentColor">
+              <path d="M3.2 5.5a.75.75 0 0 1 1.06 0L8 9.24l3.74-3.74a.75.75 0 1 1 1.06 1.06l-4.27 4.27a.75.75 0 0 1-1.06 0L3.2 6.56a.75.75 0 0 1 0-1.06z"/>
+            </svg>
+          </button>
           <div class="gnb-panel">${links}</div>
         </li>`;
     }).join('');
@@ -371,10 +372,12 @@
       <div class="container header-inner">
         <a href="${prefix}index.html" class="brand-logo" aria-label="SimuLab 홈">
           <span class="brand-logo-mark">SL</span>
-          <span>SimuLab</span>
+          <span class="brand-logo-text">SimuLab</span>
         </a>
         <nav class="gnb" id="gnb-nav" aria-label="주요 메뉴">
-          <ul class="gnb-list">${groups}</ul>
+          <div class="gnb-pill-track">
+            <ul class="gnb-list">${groups}</ul>
+          </div>
         </nav>
         <div class="header-actions" style="display: flex; align-items: center; gap: 0.6rem;">
           <button type="button" class="btn-save-site" id="btn-save-site" title="스마트폰 홈 화면 또는 PC 바탕화면에 바로가기 아이콘 저장">
