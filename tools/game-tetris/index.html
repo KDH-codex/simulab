@@ -139,7 +139,7 @@
     /* 모바일 터치 가상 컨트롤러 */
     .mobile-controls {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(6, 1fr);
       gap: 0.5rem;
       width: 100%;
       max-width: 380px;
@@ -147,6 +147,13 @@
       user-select: none;
       -webkit-user-select: none;
       touch-action: manipulation;
+    }
+
+    .touch-btn-span2 {
+      grid-column: span 2;
+    }
+    .touch-btn-span3 {
+      grid-column: span 3;
     }
 
     .touch-btn {
@@ -367,30 +374,28 @@
 
       <!-- 모바일 전용 온스크린 가상 터치패드 -->
       <div class="mobile-controls" aria-label="모바일 가상 컨트롤러">
-        <button type="button" class="touch-btn" id="touchHold">
-          <span>📦</span>
-          <span class="touch-btn-sub">HOLD</span>
+        <!-- 1행: 좌로, 우로, 즉시 낙하 (각 2칸씩 3등분) -->
+        <button type="button" class="touch-btn touch-btn-span2" id="touchLeft">
+          <span>◀</span>
+          <span class="touch-btn-sub">좌로</span>
         </button>
-        <button type="button" class="touch-btn" id="touchRotate">
-          <span>↻</span>
-          <span class="touch-btn-sub">회전</span>
+        <button type="button" class="touch-btn touch-btn-span2" id="touchRight">
+          <span>▶</span>
+          <span class="touch-btn-sub">우로</span>
         </button>
-        <button type="button" class="touch-btn" id="touchHardDrop" style="background: rgba(37, 99, 235, 0.08); border-color: rgba(37, 99, 235, 0.3);">
+        <button type="button" class="touch-btn touch-btn-span2" id="touchHardDrop" style="background: rgba(37, 99, 235, 0.08); border-color: rgba(37, 99, 235, 0.3);">
           <span>⤓</span>
           <span class="touch-btn-sub" style="color: var(--accent-primary); font-weight: 700;">즉시 낙하</span>
         </button>
 
-        <button type="button" class="touch-btn" id="touchLeft">
-          <span>◀</span>
-          <span class="touch-btn-sub">좌로</span>
+        <!-- 2행: HOLD, 회전 (각 3칸씩 2등분, 내리기 삭제) -->
+        <button type="button" class="touch-btn touch-btn-span3" id="touchHold">
+          <span>📦</span>
+          <span class="touch-btn-sub">HOLD</span>
         </button>
-        <button type="button" class="touch-btn" id="touchDown">
-          <span>▼</span>
-          <span class="touch-btn-sub">내리기</span>
-        </button>
-        <button type="button" class="touch-btn" id="touchRight">
-          <span>▶</span>
-          <span class="touch-btn-sub">우로</span>
+        <button type="button" class="touch-btn touch-btn-span3" id="touchRotate">
+          <span>↻</span>
+          <span class="touch-btn-sub">회전</span>
         </button>
       </div>
 

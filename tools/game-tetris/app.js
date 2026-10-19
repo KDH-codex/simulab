@@ -40,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // 모바일 터치 버튼
   const touchLeft = document.getElementById('touchLeft');
   const touchRight = document.getElementById('touchRight');
-  const touchDown = document.getElementById('touchDown');
   const touchRotate = document.getElementById('touchRotate');
   const touchHardDrop = document.getElementById('touchHardDrop');
   const touchHold = document.getElementById('touchHold');
@@ -559,10 +558,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   bindTouch(touchLeft, () => move(-1));
   bindTouch(touchRight, () => move(1));
-  bindTouch(touchDown, () => drop());
-  bindTouch(touchRotate, () => rotate());
   bindTouch(touchHardDrop, () => hardDrop());
   bindTouch(touchHold, () => hold());
+  bindTouch(touchRotate, () => rotate());
 
   // 상단 버튼 액션 리스너
   if (btnStart) btnStart.addEventListener('click', startGame);
