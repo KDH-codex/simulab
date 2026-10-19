@@ -293,6 +293,19 @@
       ],
     },
     {
+      id: 'game',
+      label: '미니게임',
+      icon: '🎮',
+      hot: true,
+      desc: '잠시 쉬어가는 힐링 타임! 클래식 레트로 테트리스, 스피드 타자 산성비, 벽돌 깨기, 사이버 핀볼 등 가볍고 몰입감 넘치는 아케이드 게임 모음입니다.',
+      items: [
+        { title: '레트로 테트리스', sub: '정통 7블록 · 고스트 착지 · 모바일 터치패드', href: 'tools/game-tetris/index.html', tool: 'game-tetris', hot: true },
+        { title: '스피드 타자 산성비', sub: '하늘에서 떨어지는 금융 단어 격추', href: 'tools/game-typing/index.html', tool: 'game-typing', soon: true },
+        { title: '네온 벽돌 깨기', sub: '공 분열 & 레이저 아이템 알카노이드', href: 'tools/game-brick-breaker/index.html', tool: 'game-brick-breaker', soon: true },
+        { title: '사이버 핀볼', sub: '2D 물리 반발력 & 플리퍼 조작 아케이드', href: 'tools/game-pinball/index.html', tool: 'game-pinball', soon: true },
+      ],
+    },
+    {
       id: 'health',
       label: '헬스·생활',
       icon: '🏃',

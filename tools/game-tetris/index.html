@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="ko" data-default-theme="light" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="color-scheme" content="light" />
+  <title>레트로 테트리스 | SimuLab Hub</title>
+  <meta name="description" content="추억의 클래식 테트리스 미니게임을 PC와 모바일에서 무료로 즐겨보세요! 7가지 블록 회전, 고스트 가이드, 홀드 보관 및 모바일 가상 터치패드를 완벽 지원합니다." />
+  <link rel="canonical" href="https://simulab.kr/tools/game-tetris/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="레트로 테트리스 — 무료 클래식 블록 게임 | SimuLab Hub" />
+  <meta property="og:description" content="설치 없이 브라우저에서 바로 즐기는 정통 레트로 테트리스! 키보드와 모바일 터치패드를 모두 지원합니다." />
+
+  <link rel="stylesheet" href="../../assets/css/common.css" />
+  <style>
+    /* 테트리스 아케이드 전용 스타일 */
+    .tetris-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .tetris-arena-container {
+      display: flex;
+      gap: 1.25rem;
+      justify-content: center;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    /* 메인 게임 보드 프레임 */
+    .canvas-frame {
+      background: #0f172a;
+      border: 3px solid #1e293b;
+      border-radius: 16px;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35), 0 0 20px rgba(59, 130, 246, 0.15);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #tetrisCanvas {
+      display: block;
+      background: #090d16;
+    }
+
+    /* 오버레이 모달 (게임오버 / 일시정지) */
+    .game-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 23, 42, 0.88);
+      backdrop-filter: blur(4px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #ffffff;
+      z-index: 10;
+      text-align: center;
+      padding: 1.5rem;
+    }
+
+    .game-overlay.hidden {
+      display: none !important;
+    }
+
+    .overlay-title {
+      font-size: 1.8rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #38bdf8, #818cf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .overlay-score {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #94a3b8;
+      margin-bottom: 1.5rem;
+    }
+
+    /* 사이드 정보 패널 */
+    .tetris-side-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      width: 180px;
+    }
+
+    .side-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 0.85rem 1rem;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    }
+
+    .side-box-title {
+      font-size: 0.76rem;
+      font-weight: 750;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 0.35rem;
+    }
+
+    .side-box-val {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--accent-primary);
+      letter-spacing: -0.02em;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .mini-canvas-frame {
+      background: #0f172a;
+      border: 1px solid #1e293b;
+      border-radius: 10px;
+      margin: 0.3rem auto 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100px;
+      height: 80px;
+    }
+
+    /* 모바일 터치 가상 컨트롤러 */
+    .mobile-controls {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+      width: 100%;
+      max-width: 380px;
+      margin: 0 auto;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+    }
+
+    .touch-btn {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-color);
+      border-radius: 14px;
+      padding: 1rem 0.5rem;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.2rem;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
+      transition: all 0.1s ease;
+      touch-action: manipulation;
+    }
+
+    .touch-btn:active {
+      transform: scale(0.92);
+      background: var(--accent-soft);
+      border-color: var(--accent-primary);
+      color: var(--accent-primary);
+    }
+
+    .touch-btn-sub {
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    /* 키보드 조작 가이드 박스 */
+    .keyboard-guide {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 1rem;
+      width: 100%;
+      max-width: 480px;
+      font-size: 0.8rem;
+    }
+
+    .key-badge {
+      display: inline-block;
+      padding: 0.15rem 0.45rem;
+      font-family: inherit;
+      font-size: 0.75rem;
+      font-weight: 700;
+      background: var(--accent-soft);
+      color: var(--accent-primary);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      margin: 0 0.15rem;
+    }
+
+    @media (max-width: 640px) {
+      .page-header {
+        display: none !important; /* 모바일에서는 게임 몰입 및 공간 확보를 위해 헤더 숨김 */
+      }
+      .tetris-wrapper {
+        gap: 0.4rem !important;
+        padding-top: 0.25rem;
+      }
+      .tetris-arena-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.35rem !important;
+        width: 100%;
+      }
+      .tetris-side-panel {
+        display: flex !important;
+        flex-direction: row !important;
+        width: 100% !important;
+        max-width: 320px !important;
+        gap: 0.25rem !important;
+      }
+      .side-box {
+        flex: 1;
+        padding: 0.25rem 0.15rem !important;
+        border-radius: 8px !important;
+      }
+      .side-box-val {
+        font-size: 0.95rem !important;
+      }
+      .side-box-title {
+        font-size: 0.6rem !important;
+        margin-bottom: 0.1rem !important;
+      }
+      .mini-canvas-frame {
+        width: 44px !important;
+        height: 36px !important;
+        margin: 0.1rem auto 0 !important;
+      }
+      .canvas-frame {
+        max-height: 40vh !important;
+        width: auto !important;
+        border-radius: 12px !important;
+        border-width: 2px !important;
+      }
+      #tetrisCanvas {
+        height: 40vh !important;
+        width: auto !important;
+        max-width: 220px !important;
+      }
+      .mobile-controls {
+        gap: 0.35rem !important;
+        max-width: 320px !important;
+      }
+      .touch-btn {
+        padding: 0.6rem 0.25rem !important;
+        font-size: 1.1rem !important;
+        border-radius: 10px !important;
+      }
+      .touch-btn-sub {
+        font-size: 0.58rem !important;
+      }
+      .keyboard-guide {
+        display: none; /* 모바일에서는 키보드 가이드 숨김 */
+      }
+    }
+  </style>
+
+  <!-- Google AdSense (Auto Ads & Verification) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9815778998394475" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main class="container">
+    <section class="page-header">
+      <div class="page-header-badges">
+        <span class="brand-badge">ARCADE &amp; RETRO LAB</span>
+        <span class="badge" style="background: #10b981; color: #ffffff;">무료 플레이</span>
+      </div>
+      <h1 class="page-title">레트로 테트리스</h1>
+      <p class="page-subtitle">
+        두뇌 회전과 순발력을 깨우는 정통 클래식 테트리스! <strong>PC 키보드와 스마트폰 터치패드</strong>를 모두 지원하며,
+        고스트 착지 가이드와 블록 보관(Hold) 기능으로 더욱 쾌적하게 즐길 수 있습니다.
+      </p>
+    </section>
+
+    <!-- 테트리스 게임 메인 영역 -->
+    <div class="tetris-wrapper">
+      <div class="tetris-arena-container">
+        <!-- 1. 좌측 보조 패널: 블록 홀드 (Hold) -->
+        <div class="tetris-side-panel">
+          <div class="side-box">
+            <div class="side-box-title">보관 (HOLD)</div>
+            <div class="mini-canvas-frame">
+              <canvas id="holdCanvas" width="90" height="70"></canvas>
+            </div>
+            <div style="font-size: 0.68rem; color: var(--text-muted); margin-top: 0.35rem;">(Shift / C)</div>
+          </div>
+          <div class="side-box">
+            <div class="side-box-title">최고 점수</div>
+            <div id="statHighScore" class="side-box-val" style="color: #f59e0b;">0</div>
+          </div>
+          <div class="side-box">
+            <div class="side-box-title">효과음</div>
+            <button type="button" id="btnSoundToggle" class="btn btn-secondary" style="font-size: 0.78rem; padding: 0.3rem 0.6rem; width: 100%;">
+              🔊 ON
+            </button>
+          </div>
+        </div>
+
+        <!-- 2. 중앙 메인 캔버스 (10 × 20) -->
+        <div class="canvas-frame">
+          <canvas id="tetrisCanvas" width="280" height="560"></canvas>
+
+          <!-- 오버레이 화면 (시작 / 일시정지 / 게임오버) -->
+          <div id="gameOverlay" class="game-overlay">
+            <div id="overlayTitle" class="overlay-title">RETRO TETRIS</div>
+            <div id="overlayScore" class="overlay-score">시작 버튼을 눌러 게임을 즐기세요!</div>
+            <button type="button" id="btnOverlayAction" class="btn btn-primary" style="padding: 0.8rem 2rem; font-size: 1.05rem; font-weight: 800; border-radius: 12px;">
+              게임 시작 (Enter)
+            </button>
+          </div>
+        </div>
+
+        <!-- 3. 우측 정보 패널: 다음 블록, 점수, 레벨, 줄 수 -->
+        <div class="tetris-side-panel">
+          <div class="side-box">
+            <div class="side-box-title">다음 블록 (NEXT)</div>
+            <div class="mini-canvas-frame">
+              <canvas id="nextCanvas" width="90" height="70"></canvas>
+            </div>
+          </div>
+          <div class="side-box">
+            <div class="side-box-title">현재 점수</div>
+            <div id="statScore" class="side-box-val">0</div>
+          </div>
+          <div class="side-box">
+            <div class="side-box-title">현재 레벨</div>
+            <div id="statLevel" class="side-box-val" style="color: #8b5cf6;">1</div>
+          </div>
+          <div class="side-box">
+            <div class="side-box-title">클리어 라인</div>
+            <div id="statLines" class="side-box-val" style="color: #10b981;">0</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 게임 컨트롤 버튼 (시작, 일시정지, 재도전) -->
+      <div style="display: flex; gap: 0.6rem; justify-content: center; width: 100%;">
+        <button type="button" id="btnStart" class="btn btn-primary" style="padding: 0.65rem 1.25rem; font-weight: 750;">
+          ▶ 게임 시작
+        </button>
+        <button type="button" id="btnPause" class="btn btn-secondary" style="padding: 0.65rem 1.25rem;">
+          ⏸ 일시정지 (P)
+        </button>
+        <button type="button" id="btnRestart" class="btn btn-secondary" style="padding: 0.65rem 1.25rem;">
+          🔄 다시 시작
+        </button>
+      </div>
+
+      <!-- 모바일 전용 온스크린 가상 터치패드 -->
+      <div class="mobile-controls" aria-label="모바일 가상 컨트롤러">
+        <button type="button" class="touch-btn" id="touchHold">
+          <span>📦</span>
+          <span class="touch-btn-sub">HOLD</span>
+        </button>
+        <button type="button" class="touch-btn" id="touchRotate">
+          <span>↻</span>
+          <span class="touch-btn-sub">회전</span>
+        </button>
+        <button type="button" class="touch-btn" id="touchHardDrop" style="background: rgba(37, 99, 235, 0.08); border-color: rgba(37, 99, 235, 0.3);">
+          <span>⤓</span>
+          <span class="touch-btn-sub" style="color: var(--accent-primary); font-weight: 700;">즉시 낙하</span>
+        </button>
+
+        <button type="button" class="touch-btn" id="touchLeft">
+          <span>◀</span>
+          <span class="touch-btn-sub">좌로</span>
+        </button>
+        <button type="button" class="touch-btn" id="touchDown">
+          <span>▼</span>
+          <span class="touch-btn-sub">내리기</span>
+        </button>
+        <button type="button" class="touch-btn" id="touchRight">
+          <span>▶</span>
+          <span class="touch-btn-sub">우로</span>
+        </button>
+      </div>
+
+      <!-- PC 키보드 단축키 안내 -->
+      <div class="keyboard-guide">
+        <div style="font-weight: 800; color: var(--text-primary); margin-bottom: 0.5rem;">⌨️ PC 키보드 단축키 안내</div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem; color: var(--text-secondary);">
+          <div><span class="key-badge">←</span> <span class="key-badge">→</span> : 좌우 이동</div>
+          <div><span class="key-badge">↑</span> 또는 <span class="key-badge">X</span> : 시계방향 회전</div>
+          <div><span class="key-badge">↓</span> : 소프트 드롭 (빨리 내리기)</div>
+          <div><span class="key-badge">Space</span> : 하드 드롭 (즉시 바닥 낙하)</div>
+          <div><span class="key-badge">Shift</span> 또는 <span class="key-badge">C</span> : 블록 보관 (Hold)</div>
+          <div><span class="key-badge">P</span> 또는 <span class="key-badge">Esc</span> : 일시정지 (Pause)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 법적 면책 조항 컨테이너 -->
+    <div id="legal-disclaimer"></div>
+
+    <!-- Google AdSense Responsive In-Feed/Display Unit -->
+    <div class="ad-slot-wrapper" aria-label="스폰서 광고">
+      <span class="ad-slot-badge">SPONSORED (ADVERTISEMENT)</span>
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-9815778998394475"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>
+           (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="../../assets/js/core-ui.js"></script>
+  <script src="logic.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
