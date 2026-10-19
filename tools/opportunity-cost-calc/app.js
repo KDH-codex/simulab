@@ -251,7 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
       runCalculation();
       showToast('기본값(3,500만원 신차 vs S&P500 10년)으로 복원되었습니다.');
     });
-  });
+  }
 
   // 초기 실행
   runCalculation();
