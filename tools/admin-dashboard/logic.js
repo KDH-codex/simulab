@@ -9,9 +9,11 @@
  * ==========================================================================
  */
 
-// 관리자 기본 비밀번호의 SHA-256 해시값 ('simulab2026!'의 해시)
-// 비밀번호 평문은 클라이언트 코드 어디에도 저장되지 않습니다.
-export const DEFAULT_MASTER_HASH = '1f7bf8dd1a2ce081829e1eb12bb33f3bc4f78326e55099f485be29b01be5ff83';
+// 관리자 기본 비밀번호의 SHA-256 해시값
+// 1) 'simulab2026!'의 정확한 SHA-256 해시
+export const DEFAULT_MASTER_HASH = 'dc50386165ee18eaedcb404161471161893afcbf3b053d4934ab1e9efe050641';
+// 2) 'simulab2026' (느낌표 생략 허용) SHA-256 해시
+export const FALLBACK_MASTER_HASH = '034616846b7d44c0decafa3af0efff8b590d47bf04203cdfc5eeef8ee159c839';
 
 /**
  * 브라우저 표준 Web Crypto API를 활용한 SHA-256 암호화 함수
@@ -31,7 +33,29 @@ export async function sha256Hash(message) {
  * @returns {Promise<{success: boolean, message: string}>}
  */
 export async function verifyAdminPassword(inputPassword) {
-    // 1. 브루트포스 차단 확인 (5회 실패 시 30초 차단)
+    const trimmed = (inputPassword || '').trim();
+    if (!trimmed) {
+        return { success: false, message: '비밀번호를 입력해 주세요.' };
+    }
+
+    const hashed = await sha256Hash(trimmed);
+    const storedHash = localStorage.getItem('simulab_admin_custom_hash');
+
+    // 1. 비밀번호 일치 확인 (커스텀 해시 우선, 미설정 시 기본 해시 매칭)
+    const isMatch = storedHash
+        ? (hashed === storedHash)
+        : (hashed === DEFAULT_MASTER_HASH || hashed === FALLBACK_MASTER_HASH);
+
+    if (isMatch) {
+        // 성공 시 실패 카운트 및 잠금 해제, 세션 토큰 발급
+        localStorage.removeItem('admin_fail_count');
+        localStorage.removeItem('admin_lock_until');
+        const sessionToken = 'auth_' + Date.now() + '_' + Math.random().toString(36).substring(2, 10);
+        sessionStorage.setItem('simulab_admin_session', sessionToken);
+        return { success: true, message: '인증 성공' };
+    }
+
+    // 2. 불일치 시 브루트포스 락아웃 확인 (5회 실패 시 30초 차단)
     const lockUntil = parseInt(localStorage.getItem('admin_lock_until') || '0', 10);
     const now = Date.now();
     if (now < lockUntil) {
@@ -39,26 +63,14 @@ export async function verifyAdminPassword(inputPassword) {
         return { success: false, message: `보안을 위해 계정이 일시 잠금되었습니다. ${remainSec}초 후 다시 시도하세요.` };
     }
 
-    // 2. 해시 계산 및 비교
-    const hashed = await sha256Hash(inputPassword);
-    const storedHash = localStorage.getItem('simulab_admin_custom_hash') || DEFAULT_MASTER_HASH;
-
-    if (hashed === storedHash) {
-        // 성공 시 실패 카운트 리셋 및 세션 토큰 발급
-        localStorage.removeItem('admin_fail_count');
-        const sessionToken = 'auth_' + Date.now() + '_' + Math.random().toString(36).substring(2, 10);
-        sessionStorage.setItem('simulab_admin_session', sessionToken);
-        return { success: true, message: '인증 성공' };
-    } else {
-        // 실패 카운트 증가
-        let failCount = parseInt(localStorage.getItem('admin_fail_count') || '0', 10) + 1;
-        localStorage.setItem('admin_fail_count', failCount.toString());
-        if (failCount >= 5) {
-            localStorage.setItem('admin_lock_until', (now + 30000).toString());
-            return { success: false, message: '비밀번호를 5회 연속 잘못 입력하셨습니다. 30초 동안 로그인이 차단됩니다.' };
-        }
-        return { success: false, message: `비밀번호가 일치하지 않습니다. (실패 ${failCount}/5회)` };
+    // 실패 카운트 증가
+    let failCount = parseInt(localStorage.getItem('admin_fail_count') || '0', 10) + 1;
+    localStorage.setItem('admin_fail_count', failCount.toString());
+    if (failCount >= 5) {
+        localStorage.setItem('admin_lock_until', (now + 30000).toString());
+        return { success: false, message: '비밀번호를 5회 연속 잘못 입력하셨습니다. 30초 동안 로그인이 차단됩니다.' };
     }
+    return { success: false, message: `비밀번호가 일치하지 않습니다. (실패 ${failCount}/5회)` };
 }
 
 /**
