@@ -756,7 +756,27 @@
     `;
   }
 
+  let isCommonUiInitialized = false;
+
+  function autoDetectToolId() {
+    if (typeof window === 'undefined') return 'home';
+    const path = window.location.pathname;
+    const match = path.match(/\/tools\/([^\/]+)/);
+    if (match) return match[1];
+    if (path.includes('admin')) return 'admin-dashboard';
+    return 'home';
+  }
+
   function initCommonUI(activeToolId = 'home') {
+    if (isCommonUiInitialized) return;
+    isCommonUiInitialized = true;
+
+    // 만약 activeToolId가 기본값 'home'인데 실제 URL이 특정 도구 경로라면 자동 감지
+    if (activeToolId === 'home') {
+      const detected = autoDetectToolId();
+      if (detected !== 'home') activeToolId = detected;
+    }
+
     const prefix = getRootPrefix();
     initTheme(activeToolId);
 
@@ -779,7 +799,16 @@
     enhancePageHeader(prefix, activeToolId);
 
     // 2) 카테고리별 맞춤형 스마트 법적 면책 조항(Disclaimer) 주입
-    const disclaimerEl = document.getElementById('legal-disclaimer');
+    let disclaimerEl = document.getElementById('legal-disclaimer') || document.getElementById('disclaimer-container');
+    if (!disclaimerEl && activeToolId !== 'home' && activeToolId !== 'admin-dashboard') {
+      // id 요소가 누락된 도구인 경우 메인 컨테이너 최하단에 자동 생성하여 주입
+      const mainEl = document.querySelector('main.container') || document.querySelector('main');
+      if (mainEl) {
+        disclaimerEl = document.createElement('div');
+        disclaimerEl.id = 'legal-disclaimer';
+        mainEl.appendChild(disclaimerEl);
+      }
+    }
     if (disclaimerEl) {
       disclaimerEl.className = 'legal-disclaimer-box';
       disclaimerEl.innerHTML = buildSmartDisclaimerHtml(activeToolId);
@@ -1129,4 +1158,18 @@
     exportCanvasToPng,
     exportDataToCsv,
   });
+
+  // 페이지 로드 시 initCommonUI 자동 실행 (개별 도구 app.js에서 미호출 시에도 100% 면책조항/헤더 보장)
+  if (typeof document !== 'undefined') {
+    const runAutoInit = () => {
+      if (!isCommonUiInitialized) {
+        initCommonUI(autoDetectToolId());
+      }
+    };
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', runAutoInit);
+    } else {
+      runAutoInit();
+    }
+  }
 })(typeof window !== 'undefined' ? window : globalThis);
