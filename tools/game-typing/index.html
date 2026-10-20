@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ko" data-default-theme="light" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="color-scheme" content="light" />
+  <!-- SEO 메타태그: 15자 이내 도구명 규칙 준수 (스피드 타자 산성비) -->
+  <title>스피드 타자 산성비 | SimuLab Hub</title>
+  <meta name="description" content="추억의 한메타자교사 산성비 스타일 타자 연습 미니게임! 금융, 재테크, 사자성어 단어를 타이핑해 격추하고 분당 타수(CPM) 측정 및 TOP 10 명예의 전당에 도전하세요." />
+  <link rel="canonical" href="https://simulab.kr/tools/game-typing/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="스피드 타자 산성비 — 레트로 한글 타자 연습 게임 | SimuLab Hub" />
+  <meta property="og:description" content="하늘에서 비처럼 쏟아지는 단어를 신속하게 격추하세요! 폭탄·빙결·하트 아이템과 실시간 타수(CPM) 측정 및 명예의 전당 랭킹 탑재." />
+
+  <link rel="stylesheet" href="../../assets/css/common.css" />
+  <style>
+    /* 스피드 타자 산성비 전용 스타일 */
+    .typing-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.15rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* 상단 레트로 전광판 패널 */
+    .typing-scoreboard {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.2rem;
+      width: 100%;
+      max-width: 350px;
+      box-sizing: border-box;
+      background: #0f172a;
+      border: 2px solid #334155;
+      border-radius: 14px;
+      padding: 0.65rem 0.35rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    }
+
+    .scoreboard-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-width: 0;
+      overflow: hidden;
+    }
+
+    .scoreboard-label {
+      font-size: 0.6rem;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      color: #94a3b8;
+      text-transform: uppercase;
+      margin-bottom: 0.15rem;
+      white-space: nowrap;
+    }
+
+    .scoreboard-val {
+      font-family: 'SF Mono', 'Roboto Mono', 'Courier New', monospace;
+      font-size: clamp(0.75rem, 2.8vw, 1.05rem);
+      font-weight: 900;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+    }
+
+    .val-score {
+      color: #38bdf8;
+      text-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+    }
+
+    .val-lives {
+      color: #f43f5e;
+      letter-spacing: -0.08em;
+      font-size: clamp(0.7rem, 2.5vw, 0.95rem);
+    }
+
+    .val-cpm {
+      color: #10b981;
+      text-shadow: 0 0 10px rgba(16, 185, 129, 0.4);
+    }
+
+    .val-level {
+      color: #f59e0b;
+    }
+
+    /* 캔버스 뷰포트 프레임 (반응형 350px) */
+    .typing-arena {
+      position: relative;
+      width: 100%;
+      max-width: 350px;
+      aspect-ratio: 400 / 520;
+      background: #090d16;
+      border: 3px solid #1e293b;
+      border-radius: 18px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(16, 185, 129, 0.15);
+      overflow: hidden;
+      box-sizing: border-box;
+      touch-action: manipulation;
+    }
+
+    #typingCanvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+      background: #090d16;
+    }
+
+    /* 캔버스 오버레이 */
+    .typing-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(9, 13, 22, 0.88);
+      backdrop-filter: blur(4px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #ffffff;
+      z-index: 10;
+      text-align: center;
+      padding: 1.5rem;
+      box-sizing: border-box;
+    }
+
+    .typing-overlay.hidden {
+      display: none !important;
+    }
+
+    .overlay-title {
+      font-size: 1.9rem;
+      font-weight: 950;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #10b981, #38bdf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* 하단 타이핑 입력 바 (모바일 소프트 키보드 대응) */
+    .typing-input-bar {
+      display: flex;
+      gap: 0.5rem;
+      width: 100%;
+      max-width: 350px;
+      box-sizing: border-box;
+    }
+
+    .typing-input-field {
+      flex: 1;
+      padding: 0.85rem 1rem;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #0f172a;
+      background: #ffffff;
+      border: 2px solid #3b82f6;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+      outline: none;
+      box-sizing: border-box;
+      text-align: center;
+      transition: all 0.15s ease;
+    }
+
+    .typing-input-field:focus {
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25);
+    }
+
+    .btn-submit-word {
+      padding: 0.85rem 1.25rem;
+      font-size: 1rem;
+      font-weight: 850;
+      background: #2563eb;
+      color: #ffffff;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+      white-space: nowrap;
+    }
+
+    .btn-submit-word:active {
+      transform: scale(0.96);
+    }
+
+    /* 게임 컨트롤 바 */
+    .typing-controls-bar {
+      display: flex;
+      gap: 0.75rem;
+      width: 100%;
+      max-width: 350px;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+
+    /* 팁 & 아이템 설명 배너 */
+    .typing-guide-box {
+      width: 100%;
+      max-width: 350px;
+      background: var(--bg-surface, #ffffff);
+      border: 1px solid var(--border-color, #e2e8f0);
+      border-radius: 14px;
+      padding: 0.85rem 1rem;
+      font-size: 0.82rem;
+      color: var(--text-secondary, #475569);
+      box-sizing: border-box;
+    }
+
+    .item-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+      padding: 0.15rem 0.4rem;
+      background: #f1f5f9;
+      border-radius: 6px;
+      font-weight: 700;
+      margin-right: 0.25rem;
+    }
+  </style>
+</head>
+<body>
+  <div id="header-container"></div>
+
+  <main class="container py-4">
+    <!-- 네비게이션 브레드크럼 -->
+    <nav class="breadcrumb-nav mb-3" aria-label="사이트 경로">
+      <a href="../../index.html" class="breadcrumb-item">홈</a>
+      <span class="breadcrumb-separator">/</span>
+      <a href="../../index.html#sec-game" class="breadcrumb-item">미니게임</a>
+      <span class="breadcrumb-separator">/</span>
+      <span class="breadcrumb-current">스피드 타자 산성비</span>
+    </nav>
+
+    <!-- 도구 헤더 섹션 -->
+    <section class="tool-intro text-center mb-4">
+      <span class="badge badge-accent mb-2">⌨️ RETRO RAIN DROP TYPING</span>
+      <h1 class="page-title">스피드 타자 산성비</h1>
+      <p class="tool-desc text-muted" style="max-width: 640px; margin: 0 auto; font-size: 0.95rem;">
+        하늘에서 비처럼 쏟아지는 단어를 신속 정확하게 타이핑하여 격추하세요! 하트를 지키며 분당 타수(CPM)를 측정하고 <strong>TOP 10 명예의 전당</strong>에 도전하세요.
+      </p>
+    </section>
+
+    <!-- 게임 본체 영역 -->
+    <div class="typing-wrapper">
+      
+      <!-- 1. 전광판 헤더 (점수 / 생명력 / 타수 CPM / 레벨) -->
+      <div class="typing-scoreboard">
+        <div class="scoreboard-item">
+          <span class="scoreboard-label">🏆 점수</span>
+          <span class="scoreboard-val val-score" id="dispScore">0</span>
+        </div>
+        <div class="scoreboard-item">
+          <span class="scoreboard-label">❤️ 생명</span>
+          <span class="scoreboard-val val-lives" id="dispLives">❤️❤️❤️❤️❤️</span>
+        </div>
+        <div class="scoreboard-item">
+          <span class="scoreboard-label">⚡ 타수</span>
+          <span class="scoreboard-val val-cpm" id="dispCPM">0</span>
+        </div>
+        <div class="scoreboard-item">
+          <span class="scoreboard-label">📊 레벨</span>
+          <span class="scoreboard-val val-level" id="dispLevel">1</span>
+        </div>
+      </div>
+
+      <!-- 2. 캔버스 프레임 및 오버레이 -->
+      <div class="typing-arena" id="arenaFrame">
+        <canvas id="typingCanvas" width="400" height="520"></canvas>
+
+        <!-- (1) 시작 오버레이 -->
+        <div id="startOverlay" class="typing-overlay">
+          <div class="overlay-title">RAIN DROP TYPING</div>
+          <p style="font-size: 0.9rem; color: #94a3b8; margin-bottom: 1.5rem; line-height: 1.5;">
+            산성 바다에 단어가 닿으면 생명이 깎입니다.<br/>
+            빠르고 정확하게 타이핑하여 격추하세요!
+          </p>
+          <button type="button" class="btn btn-primary" id="btnStartGame" style="padding: 0.85rem 2rem; font-size: 1.1rem; font-weight: 850; border-radius: 12px; box-shadow: 0 8px 20px rgba(16,185,129,0.35); background: #10b981; border-color: #10b981;">
+            ⌨️ 타자 게임 시작
+          </button>
+        </div>
+
+        <!-- (2) 게임오버 오버레이 -->
+        <div id="gameOverOverlay" class="typing-overlay hidden">
+          <div style="font-size: 2.2rem; margin-bottom: 0.2rem;">🌊</div>
+          <div style="font-size: 1.6rem; font-weight: 900; color: #f43f5e; margin-bottom: 0.35rem;">바다에 침식되었습니다!</div>
+          <div style="font-size: 1.9rem; font-weight: 900; color: #38bdf8; margin-bottom: 0.2rem;" id="finalScoreText">0점</div>
+          <div style="font-size: 0.95rem; font-weight: 700; color: #cbd5e1; margin-bottom: 1.5rem;" id="finalStatsText">최종 타수: 0 타/분 | 성공: 0단어</div>
+          
+          <button type="button" class="btn btn-primary" id="btnRetryGame" style="padding: 0.75rem 1.75rem; font-size: 1rem; font-weight: 850; border-radius: 10px;">
+            🔄 다시 도전
+          </button>
+        </div>
+
+        <!-- (3) 일시정지 오버레이 -->
+        <div id="pauseOverlay" class="typing-overlay hidden">
+          <div style="font-size: 2rem; margin-bottom: 0.5rem;">⏸️</div>
+          <div style="font-size: 1.5rem; font-weight: 900; margin-bottom: 1.25rem;">잠시 멈춤</div>
+          <button type="button" class="btn btn-primary" id="btnResumeGame" style="padding: 0.7rem 1.75rem; font-size: 0.95rem; font-weight: 850;">
+            ▶ 계속하기
+          </button>
+        </div>
+      </div>
+
+      <!-- 3. 실시간 단어 입력 바 -->
+      <form id="typingForm" class="typing-input-bar" onsubmit="return false;">
+        <input type="text" id="typingInput" class="typing-input-field" placeholder="단어 입력 후 Enter" autocomplete="off" autocapitalize="off" spellcheck="false" />
+        <button type="submit" class="btn-submit-word" id="btnSubmit">전송</button>
+      </form>
+
+      <!-- 4. 게임 제어 버튼 바 (일시정지 / 사운드) -->
+      <div class="typing-controls-bar">
+        <button type="button" class="btn btn-secondary" id="btnPauseToggle" style="flex: 1; padding: 0.65rem;">
+          <span id="pauseIcon">⏸️</span> <span id="pauseText">일시정지</span>
+        </button>
+        <button type="button" class="btn btn-secondary" id="btnSoundToggle" style="flex: 1; padding: 0.65rem;">
+          <span id="soundIcon">🔊</span> <span id="soundText">사운드 ON</span>
+        </button>
+      </div>
+
+      <!-- 5. 특수 단어 아이템 안내 팁 -->
+      <div class="typing-guide-box">
+        <div style="font-weight: 850; margin-bottom: 0.4rem; color: var(--text-primary);">✨ 특수 아이템 단어 안내</div>
+        <div style="display: flex; flex-direction: column; gap: 0.35rem; line-height: 1.4;">
+          <div><span class="item-pill">💣 폭탄</span> 입력 시 화면 내 모든 단어가 일괄 격추됩니다!</div>
+          <div><span class="item-pill">❄️ 빙결</span> 5초 동안 모든 단어의 낙하 속도가 50% 느려집니다.</div>
+          <div><span class="item-pill">❤️ 회복</span> 잃어버린 생명 하트를 +1 보충합니다. (최대 5개)</div>
+        </div>
+      </div>
+
+      <!-- 🏆 6. 명예의 전당 TOP 10 실시간 랭킹 보드 -->
+      <div id="rankingBoardContainer" style="width: 100%; max-width: 350px;"></div>
+
+    </div>
+
+    <!-- 🏆 TOP 10 랭킹 등록 모달 다이얼로그 -->
+    <div id="rankModal" class="rank-register-modal" style="display: none;">
+      <div class="rank-modal-box">
+        <div style="font-size: 2.3rem; margin-bottom: 0.35rem;">🏆</div>
+        <div style="font-size: 1.3rem; font-weight: 900; color: #0f172a; margin-bottom: 0.25rem;" id="rankModalTitle">
+          명예의 전당 등극!
+        </div>
+        <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 1.15rem;" id="rankModalSub">
+          스피드 타자 TOP 10 랭킹에 진입하셨습니다! 별명을 등록하세요.
+        </p>
+
+        <div style="background: #f1f5f9; padding: 0.85rem; border-radius: 12px; margin-bottom: 1.15rem;">
+          <div style="font-size: 0.75rem; font-weight: 700; color: #64748b; margin-bottom: 0.2rem;">최종 달성 점수</div>
+          <div style="font-size: 1.8rem; font-weight: 900; color: #10b981;" id="rankModalScore">
+            0점
+          </div>
+        </div>
+
+        <form id="rankForm">
+          <label for="rankNickname" style="display: block; font-size: 0.82rem; font-weight: 750; color: #334155; margin-bottom: 0.4rem; text-align: left;">
+            타자 랭커 별명 입력 (2~8자)
+          </label>
+          <input type="text" id="rankNickname" class="form-control" placeholder="예: 타자왕김철수" maxlength="8" required style="width: 100%; padding: 0.75rem; font-size: 0.95rem; border-radius: 10px; margin-bottom: 1rem; box-sizing: border-box;" />
+          <div style="display: flex; gap: 0.5rem;">
+            <button type="button" id="btnRankCancel" class="btn btn-secondary" style="flex: 1; padding: 0.75rem; font-size: 0.9rem;">닫기</button>
+            <button type="submit" class="btn btn-primary" style="flex: 2; padding: 0.75rem; font-size: 0.9rem; font-weight: 850;">🏆 기록 남기기</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- 법적 면책 조항 컨테이너 -->
+    <div id="legal-disclaimer"></div>
+
+    <!-- Google AdSense Responsive In-Feed/Display Unit -->
+    <div class="ad-slot-wrapper" aria-label="스폰서 광고">
+      <span class="ad-slot-badge">SPONSORED (ADVERTISEMENT)</span>
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-9815778998394475"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>
+           (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="../../assets/js/core-ui.js"></script>
+  <script src="../../assets/js/game-ranking.js"></script>
+  <script src="logic.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

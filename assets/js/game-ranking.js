@@ -30,6 +30,13 @@
       { nickname: '빛의회피술', score: 65.30, date: '2026.10.18', display: '01:05.30' },
       { nickname: '광화문생존왕', score: 48.77, date: '2026.10.19', display: '00:48.77' },
       { nickname: '미사일사이로', score: 32.15, date: '2026.10.20', display: '00:32.15' }
+    ],
+    'game-typing': [
+      { nickname: '한메타자전설', score: 18500, date: '2026.10.16', display: '18,500점' },
+      { nickname: '번개손가락', score: 14200, date: '2026.10.17', display: '14,200점' },
+      { nickname: '산성비소방관', score: 11000, date: '2026.10.18', display: '11,000점' },
+      { nickname: '타자속독왕', score: 8200, date: '2026.10.19', display: '8,200점' },
+      { nickname: '키보드워리어', score: 5500, date: '2026.10.20', display: '5,500점' }
     ]
   };
 
