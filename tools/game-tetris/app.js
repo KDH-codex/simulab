@@ -31,6 +31,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const overlayScore = document.getElementById('overlayScore');
   const btnOverlayAction = document.getElementById('btnOverlayAction');
 
+  // 명예의 전당 TOP 10 랭킹 요소
+  const rankingBoardContainer = document.getElementById('rankingBoardContainer');
+  const rankModal = document.getElementById('rankModal');
+  const rankModalScore = document.getElementById('rankModalScore');
+  const rankModalSub = document.getElementById('rankModalSub');
+  const rankForm = document.getElementById('rankForm');
+  const rankNickname = document.getElementById('rankNickname');
+  const btnRankCancel = document.getElementById('btnRankCancel');
+
+  // 랭킹 리더보드 렌더링
+  function updateLeaderboard() {
+    if (window.GameRanking && rankingBoardContainer) {
+      window.GameRanking.renderBoard(rankingBoardContainer, 'game-tetris');
+    }
+  }
+  updateLeaderboard();
+
   // 컨트롤 버튼 요소
   const btnStart = document.getElementById('btnStart');
   const btnPause = document.getElementById('btnPause');
@@ -302,6 +319,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (btnOverlayAction) btnOverlayAction.textContent = '🔄 다시 도전하기 (Enter)';
     if (gameOverlay) gameOverlay.classList.remove('hidden');
+
+    // 🏆 TOP 10 랭킹 진입 검사 및 모달 표시
+    if (window.GameRanking && score > 0) {
+      const rankCheck = window.GameRanking.checkRank('game-tetris', score);
+      if (rankCheck.isTop10) {
+        setTimeout(() => {
+          if (rankModal && rankModalScore) {
+            rankModalScore.textContent = `${score.toLocaleString('ko-KR')}점`;
+            if (rankModalSub) rankModalSub.innerHTML = `축하합니다! 현재 점수로 <strong>TOP ${rankCheck.expectedRank}위</strong>에 등극하셨습니다.`;
+            rankModal.style.display = 'flex';
+            if (rankNickname) {
+              rankNickname.value = localStorage.getItem('simulab_user_nickname') || '';
+              rankNickname.focus();
+            }
+          }
+        }, 600);
+      }
+    }
   }
 
   // 블록 고정 및 라인 제거
@@ -582,6 +617,24 @@ document.addEventListener('DOMContentLoaded', () => {
       btnSoundToggle.classList.toggle('btn-secondary', !soundEnabled);
     });
   }
+
+  // 🏆 랭킹 폼 제출 및 취소 리스너
+  if (rankForm) {
+    rankForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const nick = (rankNickname ? rankNickname.value : '').trim() || '테트리스장인';
+      localStorage.setItem('simulab_user_nickname', nick);
+      window.GameRanking.saveRecord('game-tetris', nick, score, `${score.toLocaleString('ko-KR')}점`);
+      if (rankModal) rankModal.style.display = 'none';
+      updateLeaderboard();
+    });
+  }
+  if (btnRankCancel) {
+    btnRankCancel.addEventListener('click', () => {
+      if (rankModal) rankModal.style.display = 'none';
+    });
+  }
+
 
   // 초기 프레임 그리기 및 애니메이션 루프 가동
   draw();
