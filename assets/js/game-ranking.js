@@ -37,6 +37,13 @@
       { nickname: '산성비소방관', score: 11000, date: '2026.10.18', display: '11,000점' },
       { nickname: '타자속독왕', score: 8200, date: '2026.10.19', display: '8,200점' },
       { nickname: '키보드워리어', score: 5500, date: '2026.10.20', display: '5,500점' }
+    ],
+    'game-brick-breaker': [
+      { nickname: '알카노이드신', score: 28500, date: '2026.10.16', display: '28,500점' },
+      { nickname: '벽돌파괴자', score: 21400, date: '2026.10.17', display: '21,400점' },
+      { nickname: '레이저장인', score: 16800, date: '2026.10.18', display: '16,800점' },
+      { nickname: '멀티볼마스터', score: 12200, date: '2026.10.19', display: '12,200점' },
+      { nickname: '빛의반사각', score: 7600, date: '2026.10.20', display: '7,600점' }
     ]
   };
 

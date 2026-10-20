@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="ko" data-default-theme="light" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="color-scheme" content="light" />
+  <!-- SEO 메타태그: 15자 이내 도구명 규칙 준수 (네온 벽돌 깨기) -->
+  <title>네온 벽돌 깨기 | SimuLab Hub</title>
+  <meta name="description" content="사이버펑크 네온 스타일의 클래식 알카노이드 벽돌 깨기 게임! 공 3개 분열 멀티볼, 레이저 캐논, 패들 확장 아이템으로 스테이지를 클리어하고 TOP 10 명예의 전당에 도전하세요." />
+  <link rel="canonical" href="https://simulab.kr/tools/game-brick-breaker/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="네온 벽돌 깨기 — 알카노이드 아케이드 게임 | SimuLab Hub" />
+  <meta property="og:description" content="화려한 네온 비주얼과 짜릿한 타격감! 멀티볼과 레이저 파워업, 명예의 전당 랭킹 시스템을 무료로 즐겨보세요." />
+
+  <link rel="stylesheet" href="../../assets/css/common.css" />
+  <style>
+    /* 네온 벽돌 깨기 전용 아케이드 스타일 */
+    .brick-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.15rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* 상단 레트로 전광판 패널 */
+    .brick-scoreboard {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.2rem;
+      width: 100%;
+      max-width: 350px;
+      box-sizing: border-box;
+      background: #0f172a;
+      border: 2px solid #334155;
+      border-radius: 14px;
+      padding: 0.65rem 0.35rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    }
+
+    .scoreboard-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-width: 0;
+      overflow: hidden;
+    }
+
+    .scoreboard-label {
+      font-size: 0.6rem;
+      font-weight: 800;
+      letter-spacing: 0.01em;
+      color: #94a3b8;
+      text-transform: uppercase;
+      margin-bottom: 0.15rem;
+      white-space: nowrap;
+    }
+
+    .scoreboard-val {
+      font-family: 'SF Mono', 'Roboto Mono', 'Courier New', monospace;
+      font-size: clamp(0.75rem, 2.8vw, 1.05rem);
+      font-weight: 900;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+    }
+
+    .val-score {
+      color: #38bdf8;
+      text-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+    }
+
+    .val-lives {
+      color: #f43f5e;
+      letter-spacing: -0.08em;
+      font-size: clamp(0.7rem, 2.5vw, 0.95rem);
+    }
+
+    .val-stage {
+      color: #facc15;
+      text-shadow: 0 0 10px rgba(250, 204, 21, 0.4);
+    }
+
+    .val-combo {
+      color: #a855f7;
+    }
+
+    /* 캔버스 뷰포트 프레임 (모바일 반응형 350px) */
+    .brick-arena {
+      position: relative;
+      width: 100%;
+      max-width: 350px;
+      aspect-ratio: 400 / 540;
+      background: #070a14;
+      border: 3px solid #1e293b;
+      border-radius: 18px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(56, 189, 248, 0.15);
+      overflow: hidden;
+      box-sizing: border-box;
+      touch-action: none; /* 터치 드래그 스크롤 방지 */
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    #brickCanvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+      background: #070a14;
+      cursor: crosshair;
+    }
+
+    /* 캔버스 오버레이 */
+    .brick-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(7, 10, 20, 0.88);
+      backdrop-filter: blur(4px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #ffffff;
+      z-index: 10;
+      text-align: center;
+      padding: 1.5rem;
+      box-sizing: border-box;
+    }
+
+    .brick-overlay.hidden {
+      display: none !important;
+    }
+
+    .overlay-title {
+      font-size: 1.9rem;
+      font-weight: 950;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #facc15, #f43f5e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* 모바일 발사 및 제어 버튼 바 */
+    .brick-action-bar {
+      display: flex;
+      gap: 0.5rem;
+      width: 100%;
+      max-width: 350px;
+      box-sizing: border-box;
+    }
+
+    .btn-action-launch {
+      flex: 2;
+      padding: 0.85rem;
+      font-size: 1.05rem;
+      font-weight: 850;
+      background: #2563eb;
+      color: #ffffff;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+      transition: all 0.1s ease;
+    }
+
+    .btn-action-launch:active {
+      transform: scale(0.97);
+    }
+
+    .brick-controls-bar {
+      display: flex;
+      gap: 0.75rem;
+      width: 100%;
+      max-width: 350px;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+
+    /* 아이템 설명 박스 */
+    .brick-guide-box {
+      width: 100%;
+      max-width: 350px;
+      background: var(--bg-surface, #ffffff);
+      border: 1px solid var(--border-color, #e2e8f0);
+      border-radius: 14px;
+      padding: 0.85rem 1rem;
+      font-size: 0.82rem;
+      color: var(--text-secondary, #475569);
+      box-sizing: border-box;
+    }
+
+    .item-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+      padding: 0.15rem 0.4rem;
+      background: #f1f5f9;
+      border-radius: 6px;
+      font-weight: 700;
+      margin-right: 0.25rem;
+    }
+  </style>
+</head>
+<body>
+  <div id="header-container"></div>
+
+  <main class="container py-4">
+    <!-- 네비게이션 브레드크럼 -->
+    <nav class="breadcrumb-nav mb-3" aria-label="사이트 경로">
+      <a href="../../index.html" class="breadcrumb-item">홈</a>
+      <span class="breadcrumb-separator">/</span>
+      <a href="../../index.html#sec-game" class="breadcrumb-item">미니게임</a>
+      <span class="breadcrumb-separator">/</span>
+      <span class="breadcrumb-current">네온 벽돌 깨기</span>
+    </nav>
+
+    <!-- 도구 헤더 섹션 -->
+    <section class="tool-intro text-center mb-4">
+      <span class="badge badge-accent mb-2">🧱 RETRO NEON ARKANOID</span>
+      <h1 class="page-title">네온 벽돌 깨기</h1>
+      <p class="tool-desc text-muted" style="max-width: 640px; margin: 0 auto; font-size: 0.95rem;">
+        공 분열 멀티볼과 레이저 캐논으로 네온 벽돌을 시원하게 부수세요! 패들의 반사각을 조절해 스테이지를 클리어하고 <strong>TOP 10 명예의 전당</strong>에 도전하세요.
+      </p>
+    </section>
+
+    <!-- 게임 본체 영역 -->
+    <div class="brick-wrapper">
+      
+      <!-- 1. 전광판 헤더 (점수 / 생명력 / 스테이지 / 콤보) -->
+      <div class="brick-scoreboard">
+        <div class="scoreboard-item">
+          <span class="scoreboard-label">🏆 점수</span>
+          <span class="scoreboard-val val-score" id="dispScore">0</span>
+        </div>
+        <div class="scoreboard-item">
+          <span class="scoreboard-label">❤️ 생명</span>
+          <span class="scoreboard-val val-lives" id="dispLives">❤️❤️❤️</span>
+        </div>
+        <div class="scoreboard-item">
+          <span class="scoreboard-label">🚩 스테이지</span>
+          <span class="scoreboard-val val-stage" id="dispStage">1</span>
+        </div>
+        <div class="scoreboard-item">
+          <span class="scoreboard-label">⚡ 콤보</span>
+          <span class="scoreboard-val val-combo" id="dispCombo">0</span>
+        </div>
+      </div>
+
+      <!-- 2. 캔버스 프레임 및 오버레이 -->
+      <div class="brick-arena" id="arenaFrame">
+        <canvas id="brickCanvas" width="400" height="540"></canvas>
+
+        <!-- (1) 시작 오버레이 -->
+        <div id="startOverlay" class="brick-overlay">
+          <div class="overlay-title">NEON BREAKOUT</div>
+          <p style="font-size: 0.9rem; color: #94a3b8; margin-bottom: 1.5rem; line-height: 1.5;">
+            패들을 움직여 공을 튕겨내고<br/>모든 네온 벽돌을 파괴하세요!
+          </p>
+          <button type="button" class="btn btn-primary" id="btnStartGame" style="padding: 0.85rem 2rem; font-size: 1.1rem; font-weight: 850; border-radius: 12px; box-shadow: 0 8px 20px rgba(56,189,248,0.35);">
+            🚀 게임 시작 (START)
+          </button>
+        </div>
+
+        <!-- (2) 게임오버 오버레이 -->
+        <div id="gameOverOverlay" class="brick-overlay hidden">
+          <div style="font-size: 2.2rem; margin-bottom: 0.2rem;">💥</div>
+          <div style="font-size: 1.6rem; font-weight: 900; color: #f43f5e; margin-bottom: 0.35rem;">GAME OVER</div>
+          <div style="font-size: 1.9rem; font-weight: 900; color: #38bdf8; margin-bottom: 0.2rem;" id="finalScoreText">0점</div>
+          <div style="font-size: 0.95rem; font-weight: 700; color: #cbd5e1; margin-bottom: 1.5rem;" id="finalStageText">도달 스테이지: 1 | 최대 콤보: 0</div>
+          
+          <button type="button" class="btn btn-primary" id="btnRetryGame" style="padding: 0.75rem 1.75rem; font-size: 1rem; font-weight: 850; border-radius: 10px;">
+            🔄 다시 도전
+          </button>
+        </div>
+
+        <!-- (3) 일시정지 오버레이 -->
+        <div id="pauseOverlay" class="brick-overlay hidden">
+          <div style="font-size: 2rem; margin-bottom: 0.5rem;">⏸️</div>
+          <div style="font-size: 1.5rem; font-weight: 900; margin-bottom: 1.25rem;">잠시 멈춤</div>
+          <button type="button" class="btn btn-primary" id="btnResumeGame" style="padding: 0.7rem 1.75rem; font-size: 0.95rem; font-weight: 850;">
+            ▶ 계속하기
+          </button>
+        </div>
+      </div>
+
+      <!-- 3. 공 발사 및 레이저 버튼 -->
+      <div class="brick-action-bar">
+        <button type="button" class="btn-action-launch" id="btnActionLaunch">
+          🚀 공 발사 / 탭 (Space)
+        </button>
+      </div>
+
+      <!-- 4. 게임 제어 버튼 바 (일시정지 / 사운드) -->
+      <div class="brick-controls-bar">
+        <button type="button" class="btn btn-secondary" id="btnPauseToggle" style="flex: 1; padding: 0.65rem;">
+          <span id="pauseIcon">⏸️</span> <span id="pauseText">일시정지</span>
+        </button>
+        <button type="button" class="btn btn-secondary" id="btnSoundToggle" style="flex: 1; padding: 0.65rem;">
+          <span id="soundIcon">🔊</span> <span id="soundText">사운드 ON</span>
+        </button>
+      </div>
+
+      <!-- 5. 파워업 아이템 안내 팁 -->
+      <div class="brick-guide-box">
+        <div style="font-weight: 850; margin-bottom: 0.4rem; color: var(--text-primary);">✨ 네온 파워업 아이템</div>
+        <div style="display: flex; flex-direction: column; gap: 0.35rem; line-height: 1.4;">
+          <div><span class="item-pill">🔮 멀티볼</span> 현재 공이 즉시 3개로 분열되어 벽돌을 타격합니다.</div>
+          <div><span class="item-pill">📏 와이드</span> 15초간 패들 길이가 1.4배로 넓어집니다.</div>
+          <div><span class="item-pill">🔫 레이저</span> 12초간 패들에서 듀얼 레이저를 연속 발사합니다.</div>
+          <div><span class="item-pill">❤️ 하트</span> 잃어버린 생명을 +1 보충합니다. (최대 5개)</div>
+        </div>
+        <div style="margin-top: 0.5rem; font-size: 0.78rem; color: #64748b;">
+          💡 <strong>조작법:</strong> 모바일은 화면을 터치해 드래그하면 패들이 따라옵니다. PC는 마우스 좌우 이동 또는 키보드 방향키(`← →`, `A D`)로 조작합니다.
+        </div>
+      </div>
+
+      <!-- 🏆 6. 명예의 전당 TOP 10 실시간 랭킹 보드 -->
+      <div id="rankingBoardContainer" style="width: 100%; max-width: 350px;"></div>
+
+    </div>
+
+    <!-- 🏆 TOP 10 랭킹 등록 모달 다이얼로그 -->
+    <div id="rankModal" class="rank-register-modal" style="display: none;">
+      <div class="rank-modal-box">
+        <div style="font-size: 2.3rem; margin-bottom: 0.35rem;">🏆</div>
+        <div style="font-size: 1.3rem; font-weight: 900; color: #0f172a; margin-bottom: 0.25rem;" id="rankModalTitle">
+          명예의 전당 등극!
+        </div>
+        <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 1.15rem;" id="rankModalSub">
+          네온 벽돌 깨기 TOP 10 랭킹에 진입하셨습니다! 별명을 등록하세요.
+        </p>
+
+        <div style="background: #f1f5f9; padding: 0.85rem; border-radius: 12px; margin-bottom: 1.15rem;">
+          <div style="font-size: 0.75rem; font-weight: 700; color: #64748b; margin-bottom: 0.2rem;">최종 달성 점수</div>
+          <div style="font-size: 1.8rem; font-weight: 900; color: #facc15;" id="rankModalScore">
+            0점
+          </div>
+        </div>
+
+        <form id="rankForm">
+          <label for="rankNickname" style="display: block; font-size: 0.82rem; font-weight: 750; color: #334155; margin-bottom: 0.4rem; text-align: left;">
+            벽돌 파괴자 별명 입력 (2~8자)
+          </label>
+          <input type="text" id="rankNickname" class="form-control" placeholder="예: 벽돌파괴신" maxlength="8" required style="width: 100%; padding: 0.75rem; font-size: 0.95rem; border-radius: 10px; margin-bottom: 1rem; box-sizing: border-box;" />
+          <div style="display: flex; gap: 0.5rem;">
+            <button type="button" id="btnRankCancel" class="btn btn-secondary" style="flex: 1; padding: 0.75rem; font-size: 0.9rem;">닫기</button>
+            <button type="submit" class="btn btn-primary" style="flex: 2; padding: 0.75rem; font-size: 0.9rem; font-weight: 850;">🏆 기록 남기기</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- 법적 면책 조항 컨테이너 -->
+    <div id="legal-disclaimer"></div>
+
+    <!-- Google AdSense Responsive In-Feed/Display Unit -->
+    <div class="ad-slot-wrapper" aria-label="스폰서 광고">
+      <span class="ad-slot-badge">SPONSORED (ADVERTISEMENT)</span>
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-9815778998394475"
+           data-ad-slot="auto"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>
+           (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="../../assets/js/core-ui.js"></script>
+  <script src="../../assets/js/game-ranking.js"></script>
+  <script src="logic.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

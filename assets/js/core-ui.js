@@ -301,7 +301,7 @@
       items: [
         { title: '레트로 테트리스', sub: '정통 7블록 · 고스트 착지 · 모바일 터치패드', href: 'tools/game-tetris/index.html', tool: 'game-tetris', hot: true },
         { title: '스피드 타자 산성비', sub: '하늘에서 떨어지는 금융 단어 격추', href: 'tools/game-typing/index.html', tool: 'game-typing', hot: true },
-        { title: '네온 벽돌 깨기', sub: '공 분열 & 레이저 아이템 알카노이드', href: 'tools/game-brick-breaker/index.html', tool: 'game-brick-breaker', soon: true },
+        { title: '네온 벽돌 깨기', sub: '공 분열 & 레이저 아이템 알카노이드', href: 'tools/game-brick-breaker/index.html', tool: 'game-brick-breaker', hot: true },
         { title: '미사일 피하기 닷지', sub: '고전 명작 닷지 1.9 탄막 회피 서바이벌', href: 'tools/game-dodge/index.html', tool: 'game-dodge', hot: true },
       ],
     },
