@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>대한민국 연령별 인구와 초등생수 | 통계청·교육부 50년 공공 빅데이터</title>
+  <meta name="description" content="1970~2024 대한민국 인구 피라미드 변천사와 초등학생 수 급감 통계. 삼각형에서 역삼각형으로 변한 인구 구조와 60명 콩나물 교실에서 20명으로 줄어든 초등학교의 54년 변화를 확인하세요.">
+  <meta name="keywords" content="연령별 인구 피라미드, 초등학생 수 변화, 학급당 학생수, 저출생 고령화, 통계청 인구총조사, 교육부 교육통계, 중위연령, 별별 통계">
+  <link rel="canonical" href="https://simulab.co.kr/tools/korean-population-pyramid/index.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="대한민국 연령별 인구와 초등생수 (1970~2024) | SimuLab">
+  <meta property="og:description" content="50년간의 인구 피라미드 대격변! 60명 콩나물 교실에서 20명으로 줄어든 초등학교의 생생한 역사.">
+  <meta property="og:url" content="https://simulab.co.kr/tools/korean-population-pyramid/index.html">
+
+  <!-- Style Sheets -->
+  <link rel="stylesheet" href="../../assets/css/common.css">
+  <link rel="stylesheet" href="./style.css">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "대한민국 연령별 인구와 초등생수 시뮬레이터",
+    "description": "1970년부터 2024년까지의 통계청 및 교육부 공공 빅데이터를 기반으로 대한민국 인구 피라미드와 초등학생 수 변화를 시각화합니다.",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "All"
+  }
+  </script>
+</head>
+<body class="tool-page">
+  <!-- 상단 공통 헤더 -->
+  <header id="site-header"></header>
+
+  <main class="tool-main-container">
+    <!-- 도구 헤더 카드 -->
+    <header class="tool-hero-card">
+      <div class="tool-badge-row">
+        <span class="tool-badge badge-official">🏛️ 통계청 · 교육부 공식 통계</span>
+        <span class="tool-badge badge-timeseries">📈 54년 시계열 (1970~2024)</span>
+        <span class="tool-badge badge-live">📊 인터랙티브 인구 피라미드</span>
+      </div>
+      <h1 class="tool-title">대한민국 연령별 인구와 초등생수</h1>
+      <p class="tool-desc">
+        1970년 피라미드형에서 2024년 역삼각형 표주박형으로! 전 세계에서 가장 빠른 저출생·초고령화 인구 구조 변화와, 60명 콩나물 교실에서 20명으로 급감한 초등학생 수의 역사를 한눈에 탐색해 보세요.
+      </p>
+    </header>
+
+    <!-- 탭 네비게이션 -->
+    <nav class="tool-tab-nav" aria-label="도구 모드 선택">
+      <button type="button" class="tool-tab-btn is-active" data-tab="pyramid">
+        <span class="tab-icon">🏛️</span> 50년 인구 피라미드
+      </button>
+      <button type="button" class="tool-tab-btn" data-tab="school">
+        <span class="tab-icon">🎒</span> 초등생 수 &amp; 교실 급감사
+      </button>
+      <button type="button" class="tool-tab-btn" data-tab="myage">
+        <span class="tab-icon">🏫</span> 내 초등 시절 vs 지금 교실
+      </button>
+    </nav>
+
+    <!-- ===================================================================
+         탭 1: 🏛️ 50년 인구 피라미드 (타임슬라이더 + 대칭형 차트)
+         =================================================================== -->
+    <section id="tab-panel-pyramid" class="tab-panel is-active">
+      <!-- 타임라인 컨트롤 바 -->
+      <div class="pop-control-panel">
+        <div class="timeline-row">
+          <button type="button" id="btn-pop-play" class="btn-play">
+            <span id="pop-play-icon">▶</span> <span id="pop-play-text">자동 재생</span>
+          </button>
+          <div class="slider-wrapper">
+            <div class="slider-header">
+              <span class="slider-title">기준 연도: <strong id="pop-display-year" class="highlight-year">2024년</strong></span>
+              <span class="slider-milestone" id="pop-display-milestone">초고령사회(20%) 목전 &amp; 유소년 최저</span>
+            </div>
+            <input type="range" id="pop-year-slider" min="0" max="6" step="1" value="6" aria-label="연도 선택 슬라이더">
+            <div class="slider-ticks" id="pop-slider-ticks"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 핵심 지표 요약 바 -->
+      <div class="pop-stat-bar">
+        <div class="stat-box">
+          <span class="s-label">대한민국 총인구</span>
+          <strong class="s-val" id="pop-total-val">5,128만 명</strong>
+        </div>
+        <div class="stat-box">
+          <span class="s-label">중위 연령 (Median Age)</span>
+          <strong class="s-val" id="pop-median-val" style="color: #2563eb;">45.7세</strong>
+        </div>
+        <div class="stat-box">
+          <span class="s-label">65세 이상 고령자 비중</span>
+          <strong class="s-val" id="pop-elderly-val" style="color: #dc2626;">19.2%</strong>
+        </div>
+        <div class="stat-box">
+          <span class="s-label">0~19세 유소년 비중</span>
+          <strong class="s-val" id="pop-youth-val" style="color: #059669;">15.0%</strong>
+        </div>
+      </div>
+
+      <!-- 대칭형 인구 피라미드 차트 카드 -->
+      <div class="pyramid-card">
+        <div class="pyramid-header-row">
+          <div class="pyramid-legend male-leg">
+            <span class="legend-dot dot-male"></span> 남성 인구 (만 명)
+          </div>
+          <div class="pyramid-age-center-title">연령대</div>
+          <div class="pyramid-legend female-leg">
+            여성 인구 (만 명) <span class="legend-dot dot-female"></span>
+          </div>
+        </div>
+
+        <div class="pyramid-rows-container" id="pyramid-rows-container">
+          <!-- JS 렌더링 -->
+        </div>
+
+        <div class="pyramid-insight-footer" id="pyramid-insight-footer">
+          <!-- JS 렌더링 -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         탭 2: 🎒 초등생 수 & 교실 인원 급감사
+         =================================================================== -->
+    <section id="tab-panel-school" class="tab-panel">
+      <!-- 요약 통계 바 -->
+      <div class="school-hero-grid">
+        <div class="school-card">
+          <span class="card-badge">1970년 피크</span>
+          <div class="card-num">575만 명</div>
+          <span class="card-sub">학급당 <strong>62.1명</strong> (2부제 오전오후반)</span>
+        </div>
+        <div class="school-card card-danger">
+          <span class="card-badge">2024년 현재</span>
+          <div class="card-num" style="color: #dc2626;">249만 명</div>
+          <span class="card-sub">학급당 <strong>20.0명</strong> (정점 대비 -56.7% 급감)</span>
+        </div>
+      </div>
+
+      <!-- 54개년 학생수 추이 Canvas 차트 -->
+      <div class="line-chart-card">
+        <div class="line-chart-header">
+          <h3 class="line-chart-title">1970~2024 전국 초등학생 수 변천사</h3>
+          <span class="chart-unit-tag">단위: 만 명 · 교육통계연보</span>
+        </div>
+        <div class="canvas-wrapper">
+          <canvas id="school-canvas" width="800" height="320"></canvas>
+        </div>
+      </div>
+
+      <!-- 17개 시도별 2024년 초등학생 현황 테이블 -->
+      <div class="regional-table-card">
+        <h3 class="table-card-title">2024년 전국 17개 시도별 초등학생 수 및 학급당 인원</h3>
+        <div class="table-responsive">
+          <table class="regional-table">
+            <thead>
+              <tr>
+                <th>순위</th>
+                <th>지역</th>
+                <th>초등학생 수</th>
+                <th>전국 비중</th>
+                <th>학급당 학생 수</th>
+              </tr>
+            </thead>
+            <tbody id="regional-tbody">
+              <!-- JS 렌더링 -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         탭 3: 🏫 내 초등 시절 vs 지금 교실
+         =================================================================== -->
+    <section id="tab-panel-myage" class="tab-panel">
+      <div class="myage-input-card">
+        <h2 class="card-title">내가 초등학교(국민학교) 다닐 때와 지금은 어떻게 다를까?</h2>
+        <p class="card-desc">출생연도를 입력하시면 당시 입학 연도의 학생 수와 한 반 인원수, 교실 풍경을 현재와 비교해 드립니다.</p>
+
+        <div class="myage-input-box">
+          <label for="input-birth-year" class="myage-label">나의 출생연도 (태어난 해)</label>
+          <div class="input-with-unit">
+            <input type="number" id="input-birth-year" class="custom-input" value="1988" min="1950" max="2018" step="1">
+            <span class="unit-text">년생</span>
+          </div>
+          <div class="quick-birth-tags">
+            <button type="button" class="tag-btn" data-yr="1970">1970년생 (베이비붐)</button>
+            <button type="button" class="tag-btn" data-yr="1980">1980년생 (X세대)</button>
+            <button type="button" class="tag-btn is-active" data-yr="1988">1988년생 (올림픽둥이)</button>
+            <button type="button" class="tag-btn" data-yr="1995">1995년생 (초등명칭 전환)</button>
+            <button type="button" class="tag-btn" data-yr="2005">2005년생 (밀레니엄)</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 세대별 대조 리포트 카드 -->
+      <div class="myage-result-card" id="myage-result-card">
+        <!-- JS 렌더링 -->
+      </div>
+    </section>
+
+    <!-- 공공데이터 공식 출처 & 법적 고지 배너 -->
+    <aside class="data-source-card">
+      <div class="source-header">
+        <span class="source-icon">📚</span>
+        <h3 class="source-title">공공 인구·교육 빅데이터 출처 및 기준 안내</h3>
+      </div>
+      <div class="source-body">
+        <ul class="source-list">
+          <li><strong>통계청(KOSTAT) 인구총조사:</strong> 1970~2024년 5년 주기 인구센서스 및 주민등록 연앙인구 통계.</li>
+          <li><strong>행정안전부 주민등록인구:</strong> 시도별, 연령별 주민등록 등록인구 현황.</li>
+          <li><strong>교육부 및 한국교육개발원(KEDI):</strong> 교육기본통계연보 초등학교 통계(학생수, 교원수, 학급당 학생수).</li>
+          <li><strong>면책 조항:</strong> 본 도구는 교육 및 통계 시각화 목적의 정보 서비스이며, 만 나이 통일법 및 학제 개편 등에 따라 개별 학교의 당시 체감 현황과 소폭 차이가 있을 수 있습니다.</li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- 법적 면책 조항 컨테이너 -->
+    <div id="disclaimer-container"></div>
+  </main>
+
+  <!-- 하단 공통 푸터 -->
+  <footer id="site-footer"></footer>
+
+  <!-- Scripts -->
+  <script src="../../assets/js/core-ui.js"></script>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
