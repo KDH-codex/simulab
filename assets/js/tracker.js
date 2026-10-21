@@ -243,8 +243,8 @@
         }
     };
 
-    // 4. 페이지 로드 시 즉시 자동 실행
-    document.addEventListener('DOMContentLoaded', () => {
+    // 4. 페이지 트래킹 초기화 함수 (즉시 실행 및 지연 로드 대응)
+    function initTracker() {
         const toolId = getCurrentToolId();
         const isLanding = !sessionStorage.getItem('simulab_has_visited');
         sessionStorage.setItem('simulab_has_visited', 'true');
@@ -263,5 +263,12 @@
                 landing: isLanding
             });
         }
-    });
+    }
+
+    // 문서 준비 상태에 따라 즉시 또는 DOMContentLoaded 시점 실행 (비동기 지연 스크립트 완벽 대응)
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initTracker);
+    } else {
+        initTracker();
+    }
 })();
