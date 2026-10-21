@@ -22,8 +22,8 @@
   // 필요한 경우 아래 객체에 직접 입력하셔도 작동합니다.
   // ==========================================================================
   const LOCAL_CONFIG = {
-    URL: '',
-    ANON_KEY: ''
+    URL: 'https://lgbkovxhzixclesapehl.supabase.co',
+    ANON_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxnYmtvdnhoeml4Y2xlc2FwZWhsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI1NDIwMTAsImV4cCI6MjEwODExODAxMH0.7sYeCt7HVO4Vyrg7LMpuc_QAtVAzUCYN6WXPAjL7lDA'
   };
 
   /**

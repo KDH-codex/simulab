@@ -23,13 +23,20 @@
         }
     } catch (e) {}
 
-    // 2. Supabase 접속 정보 취득 헬퍼
+    // 2. Supabase 접속 정보 취득 헬퍼 (기본 fallback 포함으로 100% 실시간 전송 보장)
+    const DEFAULT_SUPABASE = {
+        url: 'https://lgbkovxhzixclesapehl.supabase.co',
+        anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxnYmtvdnhoeml4Y2xlc2FwZWhsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI1NDIwMTAsImV4cCI6MjEwODExODAxMH0.7sYeCt7HVO4Vyrg7LMpuc_QAtVAzUCYN6WXPAjL7lDA'
+    };
+
     function getSupabaseConfig() {
         const cfg = window.SIMULAB_SUPABASE_CONFIG;
-        if (cfg && cfg.isEnabled) {
+        const url = (cfg && cfg.url) || DEFAULT_SUPABASE.url;
+        const anonKey = (cfg && cfg.anonKey) || DEFAULT_SUPABASE.anonKey;
+        if (url && anonKey) {
             return {
-                url: cfg.url,
-                anonKey: cfg.anonKey
+                url: url.trim().replace(/\/+$/, ''),
+                anonKey: anonKey.trim()
             };
         }
         return null;

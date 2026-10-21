@@ -19,6 +19,23 @@ export const FALLBACK_MASTER_HASH = '034616846b7d44c0decafa3af0efff8b590d47bf042
 // 로컬 스토리지 키 (더미 캐시를 무효화하고 실제 0부터 시작하기 위해 v2로 갱신)
 export const LOCAL_ANALYTICS_KEY = 'simulab_local_analytics_v2';
 
+// Supabase 기본 활성 접속 정보 (비동기 스크립트 지연 시에도 즉시 연결 보장)
+const DEFAULT_SUPABASE_CONFIG = {
+    URL: 'https://lgbkovxhzixclesapehl.supabase.co',
+    ANON_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxnYmtvdnhoeml4Y2xlc2FwZWhsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI1NDIwMTAsImV4cCI6MjEwODExODAxMH0.7sYeCt7HVO4Vyrg7LMpuc_QAtVAzUCYN6WXPAjL7lDA'
+};
+
+function getActiveSupabaseConfig() {
+    const cfg = window.SIMULAB_SUPABASE_CONFIG;
+    const url = (cfg && cfg.url) || DEFAULT_SUPABASE_CONFIG.URL || '';
+    const anonKey = (cfg && cfg.anonKey) || DEFAULT_SUPABASE_CONFIG.ANON_KEY || '';
+    return {
+        url: url.trim().replace(/\/+$/, ''),
+        anonKey: anonKey.trim(),
+        isEnabled: Boolean(url && anonKey)
+    };
+}
+
 /**
  * 브라우저 표준 Web Crypto API를 활용한 SHA-256 암호화 함수
  * @param {string} message - 입력받은 평문 비밀번호
@@ -139,7 +156,7 @@ export function getLocalAnalyticsData() {
  * @returns {Promise<Object>} 분석 데이터 객체
  */
 export async function getAnalyticsData(daysCount = 30) {
-    const cfg = window.SIMULAB_SUPABASE_CONFIG;
+    const cfg = getActiveSupabaseConfig();
 
     // 1. Supabase가 활성화된 경우 클라우드 RPC 호출 시도
     if (cfg && cfg.isEnabled) {
