@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>세계 30개국 인구 면적 순위 | UN·세계은행 2024 공공 빅데이터</title>
+  <meta name="description" content="세계 30대 주요국 인구, 영토 면적, 인구밀도 순위 비교. 인구 1위 인도, 영토 1위 러시아부터 OECD 인구밀도 1위(515명/㎢) 대한민국의 글로벌 영토 및 인구 위상을 확인하세요.">
+  <meta name="keywords" content="세계 인구 순위, 세계 영토 순위, 국가별 면적 순위, 인구밀도 순위, 한국 인구밀도, UN 인구 통계, 세계은행 면적, 별별 통계">
+  <link rel="canonical" href="https://simulab.co.kr/tools/world-population-area-rank/index.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="세계 30개국 인구 면적 순위 (2024) | SimuLab">
+  <meta property="og:description" content="인구 1위 인도부터 영토 1위 러시아까지! UN·세계은행 공식 데이터로 보는 30개국 인구·면적·밀도 랭킹.">
+  <meta property="og:url" content="https://simulab.co.kr/tools/world-population-area-rank/index.html">
+
+  <!-- Style Sheets -->
+  <link rel="stylesheet" href="../../assets/css/common.css">
+  <link rel="stylesheet" href="./style.css">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "세계 30개국 인구 면적 순위 시뮬레이터",
+    "description": "UN 및 세계은행(World Bank) 공공 빅데이터를 기반으로 세계 30개국의 인구, 영토 면적, 인구밀도를 비교 및 시각화합니다.",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "All"
+  }
+  </script>
+</head>
+<body class="tool-page">
+  <!-- 상단 공통 헤더 -->
+  <header id="site-header"></header>
+
+  <main class="tool-main-container">
+    <!-- 도구 헤더 카드 -->
+    <header class="tool-hero-card">
+      <div class="tool-badge-row">
+        <span class="tool-badge badge-official">🏛️ UN DESA · World Bank 공식 통계</span>
+        <span class="tool-badge badge-timeseries">🌍 2024년 최신 집계</span>
+        <span class="tool-badge badge-live">📊 30개 주요국 인구·영토 분석</span>
+      </div>
+      <h1 class="tool-title">세계 30개국 인구 면적 순위</h1>
+      <p class="tool-desc">
+        인구 1위 인도부터 영토 1위 러시아, 그리고 OECD 인구밀도 1위 대한민국까지! 세계 30대 주요국의 인구, 영토 면적, 인구밀도를 인터랙티브 차트로 한눈에 비교해 보세요.
+      </p>
+    </header>
+
+    <!-- 탭 네비게이션 -->
+    <nav class="tool-tab-nav" aria-label="도구 모드 선택">
+      <button type="button" class="tool-tab-btn is-active" data-tab="rank">
+        <span class="tab-icon">📊</span> 3대 지표 랭킹 바 차트
+      </button>
+      <button type="button" class="tool-tab-btn" data-tab="density">
+        <span class="tab-icon">👥</span> 1㎢당 인구밀도 체감 비교
+      </button>
+      <button type="button" class="tool-tab-btn" data-tab="compare">
+        <span class="tab-icon">⚔️</span> 한국 vs 1:1 영토 대조
+      </button>
+    </nav>
+
+    <!-- ===================================================================
+         탭 1: 📊 3대 지표 랭킹 바 차트 (인구 vs 면적 vs 인구밀도)
+         =================================================================== -->
+    <section id="tab-panel-rank" class="tab-panel is-active">
+      <!-- 지표 선택 토글 바 -->
+      <div class="metric-filter-card">
+        <label class="filter-label">비교 지표 선택:</label>
+        <div class="filter-btn-group">
+          <button type="button" class="rank-metric-btn is-active" data-metric="population">
+            👥 인구수 (만 명)
+          </button>
+          <button type="button" class="rank-metric-btn" data-metric="area">
+            🗺️ 영토 면적 (만 ㎢)
+          </button>
+          <button type="button" class="rank-metric-btn" data-metric="density">
+            🏙️ 인구밀도 (명/㎢)
+          </button>
+        </div>
+      </div>
+
+      <!-- 차트 카드 -->
+      <div class="rank-chart-card">
+        <div class="chart-header-row">
+          <div>
+            <h2 class="chart-main-title" id="rank-chart-title">세계 30개국 인구수 순위 (2024년)</h2>
+            <p class="chart-sub-title" id="rank-chart-subtitle">단위: 만 명 (10,000 Persons) · UN World Population Prospects</p>
+          </div>
+          <div class="korea-rank-badge" id="korea-rank-badge">
+            <span class="badge-label">대한민국</span>
+            <span class="badge-value" id="korea-rank-text">세계 29위 (5,175만 명)</span>
+          </div>
+        </div>
+
+        <div class="rank-bars-container" id="rank-bars-container">
+          <!-- JS 렌더링 -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         탭 2: 👥 1㎢당 인구밀도 체감 비교
+         =================================================================== -->
+    <section id="tab-panel-density" class="tab-panel">
+      <div class="density-explainer-card">
+        <h2 class="card-title">1㎢ 안에 얼마나 많은 사람이 살고 있을까?</h2>
+        <p class="card-desc">
+          대한민국은 국토 면적(약 10만 ㎢)이 세계 107위 수준으로 좁고, 산지가 70%에 달하지만 5,175만 명이 거주하여 <strong>1㎢당 무려 515명</strong>이 모여 사는 세계 최고 수준의 고밀도 국가입니다.
+        </p>
+      </div>
+
+      <!-- 6개 대표국 밀도 체감 그리드 -->
+      <div class="density-grid" id="density-grid">
+        <!-- JS 렌더링 -->
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         탭 3: ⚔️ 한국 vs 1:1 영토 대조기
+         =================================================================== -->
+    <section id="tab-panel-compare" class="tab-panel">
+      <div class="compare-control-card">
+        <label for="country-select" class="selector-label">비교 대상 국가 선택:</label>
+        <select id="country-select" class="custom-select">
+          <option value="USA" selected>🇺🇸 미국 (한국의 95배 영토)</option>
+          <option value="JPN">🇯🇵 일본 (한국의 3.8배 영토)</option>
+          <option value="CHN">🇨🇳 중국 (한국의 96배 영토)</option>
+          <option value="RUS">🇷🇺 러시아 (세계 1위 170배 영토)</option>
+          <option value="CAN">🇨🇦 캐나다 (세계 2위 100배 영토)</option>
+          <option value="AUS">🇦🇺 호주 (한국의 77배 영토)</option>
+          <option value="GBR">🇬🇧 영국 (한국의 2.4배 영토)</option>
+          <option value="FRA">🇫🇷 프랑스 (한국의 5.5배 영토)</option>
+          <option value="DEU">🇩🇪 독일 (한국의 3.5배 영토)</option>
+          <option value="TWN">🇹🇼 대만 (한국의 1/3 크기)</option>
+        </select>
+      </div>
+
+      <!-- 1:1 대조 리포트 카드 -->
+      <div class="compare-hero-card" id="compare-hero-card">
+        <!-- JS 렌더링 -->
+      </div>
+    </section>
+
+    <!-- 공공데이터 공식 출처 & 법적 고지 배너 -->
+    <aside class="data-source-card">
+      <div class="source-header">
+        <span class="source-icon">📚</span>
+        <h3 class="source-title">공공 인구·지리 빅데이터 출처 및 기준 안내</h3>
+      </div>
+      <div class="source-body">
+        <ul class="source-list">
+          <li><strong>UN DESA (유엔 경제사회국):</strong> World Population Prospects 2024 공식 추계 인구.</li>
+          <li><strong>세계은행(World Bank) Open Data:</strong> Land Area (제곱킬로미터) 공식 영토 통계.</li>
+          <li><strong>인구밀도 기준:</strong> 총인구를 공식 육지 면적으로 나눈 1㎢당 인구 수 (Persons per sq. km).</li>
+          <li><strong>면책 조항:</strong> 본 도구는 교육 및 통계 시각화 목적의 정보 서비스이며, 각국 정부의 최신 영토/인구 통관 기준에 따라 수치가 소폭 상이할 수 있습니다.</li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- 법적 면책 조항 컨테이너 -->
+    <div id="disclaimer-container"></div>
+  </main>
+
+  <!-- 하단 공통 푸터 -->
+  <footer id="site-footer"></footer>
+
+  <!-- Scripts -->
+  <script src="../../assets/js/core-ui.js"></script>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

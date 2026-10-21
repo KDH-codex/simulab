@@ -1,0 +1,495 @@
+/* ==========================================================================
+   세계 30개국 인구 면적 순위 시뮬레이터 스타일시트 (style.css)
+   ========================================================================== */
+
+/* ---------- 메인 레이아웃 ---------- */
+.tool-main-container {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3.5rem;
+}
+
+/* ---------- 도구 헤더 카드 ---------- */
+.tool-hero-card {
+  background: linear-gradient(135deg, #111827 0%, #1f2937 50%, #374151 100%);
+  color: #ffffff;
+  border-radius: 1.25rem;
+  padding: 2.2rem 2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 10px 25px -5px rgba(17, 24, 39, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+.tool-hero-card::after {
+  content: "🗺️";
+  position: absolute;
+  right: -10px;
+  bottom: -20px;
+  font-size: 8rem;
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.tool-badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+}
+.tool-badge {
+  font-size: 0.78rem;
+  font-weight: 750;
+  padding: 0.28rem 0.65rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.badge-official {
+  background: rgba(59, 130, 246, 0.25);
+  color: #93c5fd;
+}
+.badge-timeseries {
+  background: rgba(16, 185, 129, 0.25);
+  color: #a7f3d0;
+}
+.badge-live {
+  background: rgba(245, 158, 11, 0.25);
+  color: #fde68a;
+}
+
+.tool-title {
+  font-size: 1.85rem;
+  font-weight: 850;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.65rem;
+  line-height: 1.25;
+}
+.tool-desc {
+  font-size: 0.95rem;
+  color: #d1d5db;
+  line-height: 1.55;
+  margin: 0;
+  max-width: 780px;
+}
+
+/* ---------- 탭 네비게이션 ---------- */
+.tool-tab-nav {
+  display: flex;
+  gap: 0.5rem;
+  background: #f1f5f9;
+  padding: 0.35rem;
+  border-radius: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+.tool-tab-btn {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: none;
+  background: transparent;
+  color: #475569;
+  font-size: 0.94rem;
+  font-weight: 750;
+  border-radius: 0.7rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  transition: all 0.2s ease;
+}
+.tool-tab-btn:hover {
+  color: #0f172a;
+  background: rgba(255, 255, 255, 0.6);
+}
+.tool-tab-btn.is-active {
+  background: #ffffff;
+  color: #1f2937;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+}
+
+.tab-panel {
+  display: none;
+}
+.tab-panel.is-active {
+  display: block;
+}
+
+/* ---------- 탭 1: 지표 필터 & 랭킹 바 ---------- */
+.metric-filter-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.filter-label {
+  font-size: 0.92rem;
+  font-weight: 750;
+  color: #334155;
+}
+.filter-btn-group {
+  display: flex;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+.rank-metric-btn {
+  padding: 0.45rem 0.95rem;
+  font-size: 0.88rem;
+  font-weight: 750;
+  border: 1.5px solid #cbd5e1;
+  background: #f8fafc;
+  color: #334155;
+  border-radius: 0.55rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.rank-metric-btn:hover { background: #e2e8f0; }
+.rank-metric-btn.is-active {
+  background: #1f2937;
+  border-color: #1f2937;
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(31, 41, 55, 0.25);
+}
+
+.rank-chart-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+.chart-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+.chart-main-title {
+  font-size: 1.15rem;
+  font-weight: 850;
+  color: #0f172a;
+  margin: 0 0 0.25rem;
+}
+.chart-sub-title {
+  font-size: 0.82rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.korea-rank-badge {
+  background: #eff6ff;
+  border: 1.5px solid #93c5fd;
+  border-radius: 0.75rem;
+  padding: 0.4rem 0.85rem;
+  text-align: right;
+}
+.korea-rank-badge .badge-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #1e40af;
+}
+.korea-rank-badge .badge-value {
+  font-size: 0.95rem;
+  font-weight: 850;
+  color: #1e3a8a;
+}
+
+.rank-bars-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+.rank-bar-row {
+  display: grid;
+  grid-template-columns: 32px 120px 1fr 120px;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: 0.55rem;
+  transition: all 0.25s;
+}
+.rank-bar-row:hover { background: #f8fafc; }
+.rank-bar-row.is-korea {
+  background: #eff6ff;
+  border: 1.5px solid #bfdbfe;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.12);
+}
+
+.rank-num {
+  font-size: 0.88rem;
+  font-weight: 850;
+  color: #64748b;
+  text-align: center;
+}
+.rank-bar-row.is-korea .rank-num { color: #1d4ed8; font-weight: 900; }
+.rank-top1 { color: #d97706 !important; font-weight: 900; }
+.rank-top2 { color: #64748b !important; font-weight: 900; }
+.rank-top3 { color: #b45309 !important; font-weight: 900; }
+
+.country-info {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.88rem;
+  font-weight: 750;
+  color: #1e293b;
+  white-space: nowrap;
+}
+.c-flag { font-size: 1.15rem; }
+
+.bar-track {
+  width: 100%;
+  height: 20px;
+  background: #f1f5f9;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.bar-fill {
+  height: 100%;
+  border-radius: 5px;
+  background: #94a3b8;
+  transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.bar-fill.fill-korea { background: linear-gradient(90deg, #2563eb, #3b82f6); }
+.bar-fill.fill-top1 { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+.bar-fill.fill-top2 { background: linear-gradient(90deg, #64748b, #94a3b8); }
+.bar-fill.fill-top3 { background: linear-gradient(90deg, #d97706, #f59e0b); }
+
+.val-label {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #334155;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.rank-bar-row.is-korea .val-label { color: #1d4ed8; font-weight: 900; }
+
+/* ---------- 탭 2: 인구밀도 체감 비교 ---------- */
+.density-explainer-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 850;
+  color: #0f172a;
+  margin: 0 0 0.35rem;
+}
+.card-desc {
+  font-size: 0.88rem;
+  color: #64748b;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.density-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+.density-item-card {
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.4rem;
+  display: flex;
+  flex-direction: column;
+}
+.density-item-card.is-korea {
+  border-color: #93c5fd;
+  background: linear-gradient(180deg, #ffffff 0%, #eff6ff 100%);
+}
+.d-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+.d-country-name {
+  font-size: 1.1rem;
+  font-weight: 850;
+  color: #0f172a;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.d-val-badge {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #1e40af;
+}
+
+/* 1㎢ 시각화 미니 맵 박스 */
+.d-visual-box {
+  width: 100%;
+  height: 90px;
+  background: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  border-radius: 0.5rem;
+  margin-bottom: 0.75rem;
+  position: relative;
+  overflow: hidden;
+  padding: 0.35rem;
+}
+.density-dots-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  height: 100%;
+  align-content: flex-start;
+}
+.d-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #2563eb;
+}
+.d-item-desc {
+  font-size: 0.82rem;
+  color: #64748b;
+  line-height: 1.45;
+}
+
+/* ---------- 탭 3: 한국 vs 1:1 영토 대조 ---------- */
+.compare-control-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.selector-label {
+  font-size: 0.92rem;
+  font-weight: 750;
+  color: #334155;
+}
+.custom-select {
+  padding: 0.55rem 0.95rem;
+  font-size: 0.95rem;
+  font-weight: 750;
+  border-radius: 0.55rem;
+  border: 1.5px solid #cbd5e1;
+  background: #ffffff;
+  color: #0f172a;
+}
+.custom-select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.compare-hero-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1.25rem;
+  padding: 1.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+.compare-two-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.c-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.25rem;
+  text-align: center;
+}
+.c-box.is-kor {
+  border-color: #93c5fd;
+  background: #eff6ff;
+}
+.c-flag-lg { font-size: 2.5rem; margin-bottom: 0.3rem; }
+.c-title { font-size: 1.15rem; font-weight: 850; color: #0f172a; margin-bottom: 0.5rem; }
+.c-stat-line {
+  font-size: 0.88rem;
+  color: #475569;
+  margin-bottom: 0.25rem;
+}
+.c-stat-line strong { color: #0f172a; }
+
+.c-vs-badge {
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: #94a3b8;
+  background: #f1f5f9;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.compare-story-box {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 0.85rem;
+  padding: 1.2rem 1.4rem;
+  font-size: 0.95rem;
+  color: #1e3a8a;
+  line-height: 1.65;
+}
+
+/* ---------- 공식 출처 카드 ---------- */
+.data-source-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
+.source-header {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 0.85rem;
+}
+.source-icon { font-size: 1.25rem; }
+.source-title {
+  font-size: 0.96rem;
+  font-weight: 850;
+  color: #1e293b;
+  margin: 0;
+}
+.source-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  color: #475569;
+  font-size: 0.84rem;
+  line-height: 1.7;
+}
+
+/* ---------- 반응형 ---------- */
+@media (max-width: 768px) {
+  .tool-main-container { padding: 1rem 0.75rem 2.5rem; }
+  .tool-hero-card { padding: 1.5rem 1.25rem; }
+  .tool-title { font-size: 1.5rem; }
+  .metric-filter-card { flex-direction: column; align-items: stretch; }
+  .compare-control-card { flex-direction: column; align-items: stretch; }
+  .compare-two-grid { grid-template-columns: 1fr; }
+  .c-vs-badge { margin: 0 auto; }
+  .rank-bar-row {
+    grid-template-columns: 24px 90px 1fr 90px;
+    gap: 0.4rem;
+    font-size: 0.82rem;
+  }
+}
