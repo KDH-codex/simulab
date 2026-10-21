@@ -59,7 +59,9 @@ WITH CHECK (
 -- (기본적으로 정책을 정의하지 않으면 anon 사용자는 UPDATE/DELETE가 전면 거부됩니다.)
 
 -- 7. 편의 뷰(View): 각 게임별 상위 10위 랭킹을 한눈에 조회하는 집계 뷰
-CREATE OR REPLACE VIEW public.game_rankings_top10 AS
+-- (Supabase Security Advisor 권장: security_invoker = true 적용)
+CREATE OR REPLACE VIEW public.game_rankings_top10 
+WITH (security_invoker = true) AS
 WITH ranked AS (
     SELECT 
         id,
