@@ -251,6 +251,26 @@
       border-radius: 999px;
     }
 
+    /* ---------- 하위 카테고리(Sub-group) 소분류 블록 ---------- */
+    .calc-subgroup-block {
+      margin-bottom: 2rem;
+    }
+    .calc-subgroup-block:last-child {
+      margin-bottom: 0.5rem;
+    }
+    .calc-subgroup-title {
+      font-size: 0.98rem;
+      font-weight: 850;
+      color: #334155;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      margin: 0 0 1rem;
+      padding-bottom: 0.55rem;
+      border-bottom: 1.5px dashed #e2e8f0;
+      letter-spacing: -0.01em;
+    }
+
     /* ---------- 차별화 모던 타일 그리드 ---------- */
     .calc-tile-grid {
       display: grid;
@@ -680,151 +700,164 @@
         </div>
         <span class="calc-hub-count">17종</span>
       </div>
-      <div class="calc-tile-grid">
-        <!-- 직장인/퇴직 -->
-        <a href="tools/national-pension-sim/index.html" class="calc-tile" data-keywords="국민연금 조기수령 연기연금 손익분기 은퇴 퇴직 골든크로스">
-          <div class="calc-tile-icon theme-sim">
-            <span class="tile-badge-sim">SIM</span>
-            <span class="tile-badge-hot">HOT</span>
-            🏛️
-          </div>
-          <div class="calc-tile-name">국민연금 조기수령 시뮬</div>
-        </a>
 
-        <a href="tools/severance-pay-calc/index.html" class="calc-tile" data-keywords="퇴직금 직장인 근로기준법 평균임금 통상임금 irp">
-          <div class="calc-tile-icon theme-job">
-            <span class="tile-badge-calc">CALC</span>
-            📋
-          </div>
-          <div class="calc-tile-name">직장인 퇴직금 계산기</div>
-        </a>
+      <!-- 하위 카테고리 1: 직장인·퇴직 -->
+      <div class="calc-subgroup-block">
+        <h3 class="calc-subgroup-title">💼 직장인·퇴직 (연금·임금·실업급여)</h3>
+        <div class="calc-tile-grid">
+          <a href="tools/national-pension-sim/index.html" class="calc-tile" data-keywords="국민연금 조기수령 연기연금 손익분기 은퇴 퇴직 골든크로스">
+            <div class="calc-tile-icon theme-sim">
+              <span class="tile-badge-sim">SIM</span>
+              <span class="tile-badge-hot">HOT</span>
+              🏛️
+            </div>
+            <div class="calc-tile-name">국민연금 조기수령 시뮬</div>
+          </a>
 
-        <a href="tools/salary-net-calc/index.html" class="calc-tile" data-keywords="월급 실수령액 연봉 4대보험 소득세 세후">
-          <div class="calc-tile-icon theme-job">
-            <span class="tile-badge-calc">CALC</span>
-            💰
-          </div>
-          <div class="calc-tile-name">월급 실수령액 계산기</div>
-        </a>
+          <a href="tools/severance-pay-calc/index.html" class="calc-tile" data-keywords="퇴직금 직장인 근로기준법 평균임금 통상임금 irp">
+            <div class="calc-tile-icon theme-job">
+              <span class="tile-badge-calc">CALC</span>
+              📋
+            </div>
+            <div class="calc-tile-name">직장인 퇴직금 계산기</div>
+          </a>
 
-        <a href="tools/unemployment-benefit-calc/index.html" class="calc-tile" data-keywords="실업급여 구직급여 고용보험 퇴직 권고사직 일수">
-          <div class="calc-tile-icon theme-job">
-            <span class="tile-badge-calc">CALC</span>
-            💼
-          </div>
-          <div class="calc-tile-name">실업급여 모의계산기</div>
-        </a>
+          <a href="tools/salary-net-calc/index.html" class="calc-tile" data-keywords="월급 실수령액 연봉 4대보험 소득세 세후">
+            <div class="calc-tile-icon theme-job">
+              <span class="tile-badge-calc">CALC</span>
+              💰
+            </div>
+            <div class="calc-tile-name">월급 실수령액 계산기</div>
+          </a>
 
-        <a href="tools/hourly-labor-value-calc/index.html" class="calc-tile" data-keywords="시급 노동가치 진짜시급 출퇴근 야근 연봉">
-          <div class="calc-tile-icon theme-job">
-            <span class="tile-badge-calc">CALC</span>
-            ⏱️
-          </div>
-          <div class="calc-tile-name">나의 진짜 시급 가치</div>
-        </a>
+          <a href="tools/unemployment-benefit-calc/index.html" class="calc-tile" data-keywords="실업급여 구직급여 고용보험 퇴직 권고사직 일수">
+            <div class="calc-tile-icon theme-job">
+              <span class="tile-badge-calc">CALC</span>
+              💼
+            </div>
+            <div class="calc-tile-name">실업급여 모의계산기</div>
+          </a>
 
-        <!-- 주식/배당 -->
-        <a href="tools/leverage-etf-sim/index.html" class="calc-tile" data-keywords="주식 etf 퀀트 레버리지 tqqq soxl 백테스팅 mdd">
-          <div class="calc-tile-icon theme-stock">
-            <span class="tile-badge-sim">SIM</span>
-            <span class="tile-badge-hot">HOT</span>
-            📊
-          </div>
-          <div class="calc-tile-name">주식·ETF 퀀트 시뮬레이터</div>
-        </a>
+          <a href="tools/hourly-labor-value-calc/index.html" class="calc-tile" data-keywords="시급 노동가치 진짜시급 출퇴근 야근 연봉">
+            <div class="calc-tile-icon theme-job">
+              <span class="tile-badge-calc">CALC</span>
+              ⏱️
+            </div>
+            <div class="calc-tile-name">나의 진짜 시급 가치</div>
+          </a>
+        </div>
+      </div>
 
-        <a href="tools/stock-profit-calc/index.html" class="calc-tile" data-keywords="주식 수익률 매매일지 수수료 증권거래세 단타">
-          <div class="calc-tile-icon theme-stock">
-            <span class="tile-badge-calc">CALC</span>
-            📈
-          </div>
-          <div class="calc-tile-name">주식 실질 수익률 계산기</div>
-        </a>
+      <!-- 하위 카테고리 2: 주식·배당 -->
+      <div class="calc-subgroup-block">
+        <h3 class="calc-subgroup-title">📈 주식·배당 (퀀트·복리·수익률)</h3>
+        <div class="calc-tile-grid">
+          <a href="tools/leverage-etf-sim/index.html" class="calc-tile" data-keywords="주식 etf 퀀트 레버리지 tqqq soxl 백테스팅 mdd">
+            <div class="calc-tile-icon theme-stock">
+              <span class="tile-badge-sim">SIM</span>
+              <span class="tile-badge-hot">HOT</span>
+              📊
+            </div>
+            <div class="calc-tile-name">주식·ETF 퀀트 시뮬레이터</div>
+          </a>
 
-        <a href="tools/stock-water-ride-calc/index.html" class="calc-tile" data-keywords="물타기 평단가 추가매수 분할매수 주식단가">
-          <div class="calc-tile-icon theme-stock">
-            <span class="tile-badge-calc">CALC</span>
-            📉
-          </div>
-          <div class="calc-tile-name">평단가 · 물타기 계산기</div>
-        </a>
+          <a href="tools/stock-profit-calc/index.html" class="calc-tile" data-keywords="주식 수익률 매매일지 수수료 증권거래세 단타">
+            <div class="calc-tile-icon theme-stock">
+              <span class="tile-badge-calc">CALC</span>
+              📈
+            </div>
+            <div class="calc-tile-name">주식 실질 수익률 계산기</div>
+          </a>
 
-        <a href="tools/stock-target-compound-calc/index.html" class="calc-tile" data-keywords="목표가 복리 72법칙 수익률 자산증식">
-          <div class="calc-tile-icon theme-stock">
-            <span class="tile-badge-calc">CALC</span>
-            🎯
-          </div>
-          <div class="calc-tile-name">목표가 · 복리 계산기</div>
-        </a>
+          <a href="tools/stock-water-ride-calc/index.html" class="calc-tile" data-keywords="물타기 평단가 추가매수 분할매수 주식단가">
+            <div class="calc-tile-icon theme-stock">
+              <span class="tile-badge-calc">CALC</span>
+              📉
+            </div>
+            <div class="calc-tile-name">평단가 · 물타기 계산기</div>
+          </a>
 
-        <a href="tools/dividend-tax-sim/index.html" class="calc-tile" data-keywords="배당금 배당소득세 금융소득종합과세 건강보험료 drip schd">
-          <div class="calc-tile-icon theme-sim">
-            <span class="tile-badge-sim">SIM</span>
-            <span class="tile-badge-hot">HOT</span>
-            💵
-          </div>
-          <div class="calc-tile-name">배당 복리 &amp; 세금</div>
-        </a>
+          <a href="tools/stock-target-compound-calc/index.html" class="calc-tile" data-keywords="목표가 복리 72법칙 수익률 자산증식">
+            <div class="calc-tile-icon theme-stock">
+              <span class="tile-badge-calc">CALC</span>
+              🎯
+            </div>
+            <div class="calc-tile-name">목표가 · 복리 계산기</div>
+          </a>
 
-        <a href="tools/dividend-goal-calc/index.html" class="calc-tile" data-keywords="월배당 파이어족 배당목표 배당수익률 필요자금">
-          <div class="calc-tile-icon theme-stock">
-            <span class="tile-badge-calc">CALC</span>
-            🏖️
-          </div>
-          <div class="calc-tile-name">월 배당 목표 달성 계산기</div>
-        </a>
+          <a href="tools/dividend-tax-sim/index.html" class="calc-tile" data-keywords="배당금 배당소득세 금융소득종합과세 건강보험료 drip schd">
+            <div class="calc-tile-icon theme-sim">
+              <span class="tile-badge-sim">SIM</span>
+              <span class="tile-badge-hot">HOT</span>
+              💵
+            </div>
+            <div class="calc-tile-name">배당 복리 &amp; 세금</div>
+          </a>
 
-        <!-- 부동산/대출 -->
-        <a href="tools/past-apt-timemachine/index.html" class="calc-tile" data-keywords="그때 그 아파트 샀다면 마래푸 은마 반포자이 헬리오시티 부동산 타임머신 폭등 수익률">
-          <div class="calc-tile-icon theme-realty">
-            <span class="tile-badge-sim">SIM</span>
-            <span class="tile-badge-hot">HOT</span>
-            🏢
-          </div>
-          <div class="calc-tile-name">그때 그 아파트 샀다면</div>
-        </a>
+          <a href="tools/dividend-goal-calc/index.html" class="calc-tile" data-keywords="월배당 파이어족 배당목표 배당수익률 필요자금">
+            <div class="calc-tile-icon theme-stock">
+              <span class="tile-badge-calc">CALC</span>
+              🏖️
+            </div>
+            <div class="calc-tile-name">월 배당 목표 달성 계산기</div>
+          </a>
+        </div>
+      </div>
 
-        <a href="tools/loan-mortgage-calc/index.html" class="calc-tile" data-keywords="주담대 주택담보대출 dsr ltv 스트레스dsr 원리금균등">
-          <div class="calc-tile-icon theme-realty">
-            <span class="tile-badge-calc">CALC</span>
-            <span class="tile-badge-hot">HOT</span>
-            🏠
-          </div>
-          <div class="calc-tile-name">주담대 한도 · DSR</div>
-        </a>
+      <!-- 하위 카테고리 3: 부동산·비즈니스 -->
+      <div class="calc-subgroup-block">
+        <h3 class="calc-subgroup-title">🏠 부동산·비즈니스 (청약·DSR·임대차)</h3>
+        <div class="calc-tile-grid">
+          <a href="tools/past-apt-timemachine/index.html" class="calc-tile" data-keywords="그때 그 아파트 샀다면 마래푸 은마 반포자이 헬리오시티 부동산 타임머신 폭등 수익률">
+            <div class="calc-tile-icon theme-realty">
+              <span class="tile-badge-sim">SIM</span>
+              <span class="tile-badge-hot">HOT</span>
+              🏢
+            </div>
+            <div class="calc-tile-name">그때 그 아파트 샀다면</div>
+          </a>
 
-        <a href="tools/jeonse-wolse-sim/index.html" class="calc-tile" data-keywords="전세 월세 전월세전환율 기회비용 전세자금대출 반전세">
-          <div class="calc-tile-icon theme-realty">
-            <span class="tile-badge-sim">SIM</span>
-            ⚖️
-          </div>
-          <div class="calc-tile-name">전세 vs 월세</div>
-        </a>
+          <a href="tools/loan-mortgage-calc/index.html" class="calc-tile" data-keywords="주담대 주택담보대출 dsr ltv 스트레스dsr 원리금균등">
+            <div class="calc-tile-icon theme-realty">
+              <span class="tile-badge-calc">CALC</span>
+              <span class="tile-badge-hot">HOT</span>
+              🏠
+            </div>
+            <div class="calc-tile-name">주담대 한도 · DSR</div>
+          </a>
 
-        <a href="tools/capital-gains-tax-sim/index.html" class="calc-tile" data-keywords="양도소득세 1주택비과세 장기보유특별공제 부동산세금 다주택">
-          <div class="calc-tile-icon theme-realty">
-            <span class="tile-badge-sim">SIM</span>
-            📑
-          </div>
-          <div class="calc-tile-name">양도소득세 · 세후 수익</div>
-        </a>
+          <a href="tools/jeonse-wolse-sim/index.html" class="calc-tile" data-keywords="전세 월세 전월세전환율 기회비용 전세자금대출 반전세">
+            <div class="calc-tile-icon theme-realty">
+              <span class="tile-badge-sim">SIM</span>
+              ⚖️
+            </div>
+            <div class="calc-tile-name">전세 vs 월세</div>
+          </a>
 
-        <a href="tools/area-pyeong-calc/index.html" class="calc-tile" data-keywords="평수 ㎡ 제곱미터 환산 평형 84제곱 59제곱">
-          <div class="calc-tile-icon theme-realty">
-            <span class="tile-badge-calc">CALC</span>
-            📐
-          </div>
-          <div class="calc-tile-name">부동산 평수 ㎡ 환산기</div>
-        </a>
+          <a href="tools/capital-gains-tax-sim/index.html" class="calc-tile" data-keywords="양도소득세 1주택비과세 장기보유특별공제 부동산세금 다주택">
+            <div class="calc-tile-icon theme-realty">
+              <span class="tile-badge-sim">SIM</span>
+              📑
+            </div>
+            <div class="calc-tile-name">양도소득세 · 세후 수익</div>
+          </a>
 
-        <!-- 비즈니스 -->
-        <a href="tools/logistics-roi-calc/index.html" class="calc-tile" data-keywords="물류 스마트물류 자동화 roi bep 투자회수 agv">
-          <div class="calc-tile-icon theme-job">
-            <span class="tile-badge-sim">SIM</span>
-            🏭
-          </div>
-          <div class="calc-tile-name">설비 도입 ROI · BEP</div>
-        </a>
+          <a href="tools/area-pyeong-calc/index.html" class="calc-tile" data-keywords="평수 ㎡ 제곱미터 환산 평형 84제곱 59제곱">
+            <div class="calc-tile-icon theme-realty">
+              <span class="tile-badge-calc">CALC</span>
+              📐
+            </div>
+            <div class="calc-tile-name">부동산 평수 ㎡ 환산기</div>
+          </a>
+
+          <a href="tools/logistics-roi-calc/index.html" class="calc-tile" data-keywords="물류 스마트물류 자동화 roi bep 투자회수 agv">
+            <div class="calc-tile-icon theme-job">
+              <span class="tile-badge-sim">SIM</span>
+              🏭
+            </div>
+            <div class="calc-tile-name">설비 도입 ROI · BEP</div>
+          </a>
+        </div>
       </div>
     </section>
 
@@ -838,91 +871,105 @@
         </div>
         <span class="calc-hub-count">10종</span>
       </div>
-      <div class="calc-tile-grid">
-        <!-- 생활/일상 -->
-        <a href="tools/korean-age-calc/index.html" class="calc-tile" data-keywords="만나이 연나이 띠 12간지 생일 디데이 나이계산">
-          <div class="calc-tile-icon theme-life">
-            <span class="tile-badge-calc">CALC</span>
-            <span class="tile-badge-hot">HOT</span>
-            🎂
-          </div>
-          <div class="calc-tile-name">만나이 띠 계산기</div>
-        </a>
 
-        <a href="tools/percent-discount-calc/index.html" class="calc-tile" data-keywords="퍼센트 할인율 쇼핑 세일 마진율 인상률 비중">
-          <div class="calc-tile-icon theme-life">
-            <span class="tile-badge-calc">CALC</span>
-            <span class="tile-badge-hot">HOT</span>
-            🏷️
-          </div>
-          <div class="calc-tile-name">퍼센트 할인율 계산기</div>
-        </a>
+      <!-- 하위 카테고리 1: 일상·생활 -->
+      <div class="calc-subgroup-block">
+        <h3 class="calc-subgroup-title">🌿 일상·생활 (나이·할인율)</h3>
+        <div class="calc-tile-grid">
+          <a href="tools/korean-age-calc/index.html" class="calc-tile" data-keywords="만나이 연나이 띠 12간지 생일 디데이 나이계산">
+            <div class="calc-tile-icon theme-life">
+              <span class="tile-badge-calc">CALC</span>
+              <span class="tile-badge-hot">HOT</span>
+              🎂
+            </div>
+            <div class="calc-tile-name">만나이 띠 계산기</div>
+          </a>
 
-        <!-- 헬스/건강 -->
-        <a href="tools/diet-bmr-tdee-calc/index.html" class="calc-tile" data-keywords="다이어트 bmr tdee 기초대사량 칼로리 식단">
-          <div class="calc-tile-icon theme-life">
-            <span class="tile-badge-calc">CALC</span>
-            🥗
-          </div>
-          <div class="calc-tile-name">다이어트 BMR·TDEE</div>
-        </a>
+          <a href="tools/percent-discount-calc/index.html" class="calc-tile" data-keywords="퍼센트 할인율 쇼핑 세일 마진율 인상률 비중">
+            <div class="calc-tile-icon theme-life">
+              <span class="tile-badge-calc">CALC</span>
+              <span class="tile-badge-hot">HOT</span>
+              🏷️
+            </div>
+            <div class="calc-tile-name">퍼센트 할인율 계산기</div>
+          </a>
+        </div>
+      </div>
 
-        <a href="tools/caffeine-sleep-calc/index.html" class="calc-tile" data-keywords="카페인 커피 반감기 꿀잠 수면 불면증 에너지드링크">
-          <div class="calc-tile-icon theme-life">
-            <span class="tile-badge-sim">SIM</span>
-            ☕
-          </div>
-          <div class="calc-tile-name">카페인 반감기 &amp; 꿀잠</div>
-        </a>
+      <!-- 하위 카테고리 2: 헬스·수면 -->
+      <div class="calc-subgroup-block">
+        <h3 class="calc-subgroup-title">🏃 헬스·수면 (대사량·운동·음주)</h3>
+        <div class="calc-tile-grid">
+          <a href="tools/diet-bmr-tdee-calc/index.html" class="calc-tile" data-keywords="다이어트 bmr tdee 기초대사량 칼로리 식단">
+            <div class="calc-tile-icon theme-life">
+              <span class="tile-badge-calc">CALC</span>
+              🥗
+            </div>
+            <div class="calc-tile-name">다이어트 BMR·TDEE</div>
+          </a>
 
-        <a href="tools/running-zone-calc/index.html" class="calc-tile" data-keywords="러닝 존2 zone2 심박수 유산소 카르보넨 러닝머신">
-          <div class="calc-tile-icon theme-life">
-            <span class="tile-badge-calc">CALC</span>
-            🏃
-          </div>
-          <div class="calc-tile-name">러닝 Zone 2 심박수</div>
-        </a>
+          <a href="tools/caffeine-sleep-calc/index.html" class="calc-tile" data-keywords="카페인 커피 반감기 꿀잠 수면 불면증 에너지드링크">
+            <div class="calc-tile-icon theme-life">
+              <span class="tile-badge-sim">SIM</span>
+              ☕
+            </div>
+            <div class="calc-tile-name">카페인 반감기 &amp; 꿀잠</div>
+          </a>
 
-        <a href="tools/alcohol-widmark-calc/index.html" class="calc-tile" data-keywords="음주 숙취 위드마크 혈중알코올농도 운전 분해시간">
-          <div class="calc-tile-icon theme-life">
-            <span class="tile-badge-sim">SIM</span>
-            🍷
-          </div>
-          <div class="calc-tile-name">음주 알코올 분해시간</div>
-        </a>
+          <a href="tools/running-zone-calc/index.html" class="calc-tile" data-keywords="러닝 존2 zone2 심박수 유산소 카르보넨 러닝머신">
+            <div class="calc-tile-icon theme-life">
+              <span class="tile-badge-calc">CALC</span>
+              🏃
+            </div>
+            <div class="calc-tile-name">러닝 Zone 2 심박수</div>
+          </a>
 
-        <a href="tools/life-hourglass-sim/index.html" class="calc-tile" data-keywords="인생 모래시계 부모님시간 청춘 반려견 수명 타이머">
-          <div class="calc-tile-icon theme-life">
-            <span class="tile-badge-sim">SIM</span>
-            ⏳
-          </div>
-          <div class="calc-tile-name">내 인생의 모래시계</div>
-        </a>
+          <a href="tools/alcohol-widmark-calc/index.html" class="calc-tile" data-keywords="음주 숙취 위드마크 혈중알코올농도 운전 분해시간">
+            <div class="calc-tile-icon theme-life">
+              <span class="tile-badge-sim">SIM</span>
+              🍷
+            </div>
+            <div class="calc-tile-name">음주 알코올 분해시간</div>
+          </a>
 
-        <!-- 사주/심리 -->
-        <a href="tools/saju-wealth-sim/index.html" class="calc-tile" data-keywords="사주 만세력 오행 재물운 음양오행 금목수화토 운세">
-          <div class="calc-tile-icon theme-fun">
-            <span class="tile-badge-sim">SIM</span>
-            🔮
-          </div>
-          <div class="calc-tile-name">사주 오행 &amp; 재물운</div>
-        </a>
+          <a href="tools/life-hourglass-sim/index.html" class="calc-tile" data-keywords="인생 모래시계 부모님시간 청춘 반려견 수명 타이머">
+            <div class="calc-tile-icon theme-life">
+              <span class="tile-badge-sim">SIM</span>
+              ⏳
+            </div>
+            <div class="calc-tile-name">내 인생의 모래시계</div>
+          </a>
+        </div>
+      </div>
 
-        <a href="tools/invest-animal-mbti/index.html" class="calc-tile" data-keywords="투자 mbti 동물 테스트 심리테스트 주식성향 투자스타일">
-          <div class="calc-tile-icon theme-fun">
-            <span class="tile-badge-sim">SIM</span>
-            🦁
-          </div>
-          <div class="calc-tile-name">투자 성향 동물 MBTI</div>
-        </a>
+      <!-- 하위 카테고리 3: 사주·심리 -->
+      <div class="calc-subgroup-block">
+        <h3 class="calc-subgroup-title">🔮 사주·심리 (오행·MBTI·애착유형)</h3>
+        <div class="calc-tile-grid">
+          <a href="tools/saju-wealth-sim/index.html" class="calc-tile" data-keywords="사주 만세력 오행 재물운 음양오행 금목수화토 운세">
+            <div class="calc-tile-icon theme-fun">
+              <span class="tile-badge-sim">SIM</span>
+              🔮
+            </div>
+            <div class="calc-tile-name">사주 오행 &amp; 재물운</div>
+          </a>
 
-        <a href="tools/love-animal-attachment/index.html" class="calc-tile" data-keywords="연애 동물 애착유형 불안형 회피형 안정형 심리테스트 연인궁합">
-          <div class="calc-tile-icon theme-fun">
-            <span class="tile-badge-sim">SIM</span>
-            🐶
-          </div>
-          <div class="calc-tile-name">연애 동물 애착 심리테스트</div>
-        </a>
+          <a href="tools/invest-animal-mbti/index.html" class="calc-tile" data-keywords="투자 mbti 동물 테스트 심리테스트 주식성향 투자스타일">
+            <div class="calc-tile-icon theme-fun">
+              <span class="tile-badge-sim">SIM</span>
+              🦁
+            </div>
+            <div class="calc-tile-name">투자 성향 동물 MBTI</div>
+          </a>
+
+          <a href="tools/love-animal-attachment/index.html" class="calc-tile" data-keywords="연애 동물 애착유형 불안형 회피형 안정형 심리테스트 연인궁합">
+            <div class="calc-tile-icon theme-fun">
+              <span class="tile-badge-sim">SIM</span>
+              🐶
+            </div>
+            <div class="calc-tile-name">연애 동물 애착 심리테스트</div>
+          </a>
+        </div>
       </div>
     </section>
 
@@ -936,44 +983,49 @@
         </div>
         <span class="calc-hub-count">공공 빅데이터 4종</span>
       </div>
-      <div class="calc-tile-grid">
-        <!-- 순자산 백분위 -->
-        <a href="tools/korean-wealth-percentile-calc/index.html" class="calc-tile" data-keywords="별별 통계 재밌는 통계 심심할때 보는 통계 대한민국 순자산 백분위 내 자산 상위 몇프로 통계청 가계금융복지조사 순자산 컷오프">
-          <div class="calc-tile-icon theme-sim">
-            <span class="tile-badge-sim">SIM</span>
-            <span class="tile-badge-hot">HOT</span>
-            👑
-          </div>
-          <div class="calc-tile-name">대한민국 순자산 백분위</div>
-        </a>
 
-        <!-- 대한민국 평균 vs 나 -->
-        <a href="tools/korean-average-vs-me/index.html" class="calc-tile" data-keywords="별별 통계 재밌는 통계 심심할때 보는 통계 대한민국 평균 vs 나 직장인 평균 연봉 평균 점심값 평균 근로시간 레이더 차트 고용노동부">
-          <div class="calc-tile-icon theme-stock">
-            <span class="tile-badge-sim">SIM</span>
-            <span class="tile-badge-hot">NEW</span>
-            🕸️
-          </div>
-          <div class="calc-tile-name">대한민국 평균 vs 나</div>
-        </a>
-        <!-- 신생아 아기이름 트렌드 -->
-        <a href="tools/korean-baby-name-trend/index.html" class="calc-tile" data-keywords="별별 통계 재밌는 통계 심심할때 보는 통계 신생아 이름 순위 아기이름 트렌드 내 이름 순위 대법원 출생신고 2024 인기이름">
-          <div class="calc-tile-icon theme-fun">
-            <span class="tile-badge-sim">SIM</span>
-            <span class="tile-badge-hot">NEW</span>
-            👶
-          </div>
-          <div class="calc-tile-name">대한민국 아기이름 트렌드</div>
-        </a>
-        <!-- 전국 도시별 소득 집값 -->
-        <a href="tools/korean-city-income-housing/index.html" class="calc-tile" data-keywords="별별 통계 재밌는 통계 심심할때 보는 통계 전국 도시별 소득 집값 아파트값 평균 1인가구 비중 pir 계산기 지역별 면적">
-          <div class="calc-tile-icon theme-realty">
-            <span class="tile-badge-sim">SIM</span>
-            <span class="tile-badge-hot">HOT</span>
-            🏙️
-          </div>
-          <div class="calc-tile-name">전국 도시별 소득 &amp; 집값</div>
-        </a>
+      <!-- 하위 카테고리 1: 재미있는 공공 빅데이터 -->
+      <div class="calc-subgroup-block">
+        <h3 class="calc-subgroup-title">📊 재미있는 공공 빅데이터 (소득·집값·이름)</h3>
+        <div class="calc-tile-grid">
+          <!-- 순자산 백분위 -->
+          <a href="tools/korean-wealth-percentile-calc/index.html" class="calc-tile" data-keywords="별별 통계 재밌는 통계 심심할때 보는 통계 대한민국 순자산 백분위 내 자산 상위 몇프로 통계청 가계금융복지조사 순자산 컷오프">
+            <div class="calc-tile-icon theme-sim">
+              <span class="tile-badge-sim">SIM</span>
+              <span class="tile-badge-hot">HOT</span>
+              👑
+            </div>
+            <div class="calc-tile-name">대한민국 순자산 백분위</div>
+          </a>
+
+          <!-- 대한민국 평균 vs 나 -->
+          <a href="tools/korean-average-vs-me/index.html" class="calc-tile" data-keywords="별별 통계 재밌는 통계 심심할때 보는 통계 대한민국 평균 vs 나 직장인 평균 연봉 평균 점심값 평균 근로시간 레이더 차트 고용노동부">
+            <div class="calc-tile-icon theme-stock">
+              <span class="tile-badge-sim">SIM</span>
+              <span class="tile-badge-hot">NEW</span>
+              🕸️
+            </div>
+            <div class="calc-tile-name">대한민국 평균 vs 나</div>
+          </a>
+          <!-- 신생아 아기이름 트렌드 -->
+          <a href="tools/korean-baby-name-trend/index.html" class="calc-tile" data-keywords="별별 통계 재밌는 통계 심심할때 보는 통계 신생아 이름 순위 아기이름 트렌드 내 이름 순위 대법원 출생신고 2024 인기이름">
+            <div class="calc-tile-icon theme-fun">
+              <span class="tile-badge-sim">SIM</span>
+              <span class="tile-badge-hot">NEW</span>
+              👶
+            </div>
+            <div class="calc-tile-name">대한민국 아기이름 트렌드</div>
+          </a>
+          <!-- 전국 도시별 소득 집값 -->
+          <a href="tools/korean-city-income-housing/index.html" class="calc-tile" data-keywords="별별 통계 재밌는 통계 심심할때 보는 통계 전국 도시별 소득 집값 아파트값 평균 1인가구 비중 pir 계산기 지역별 면적">
+            <div class="calc-tile-icon theme-realty">
+              <span class="tile-badge-sim">SIM</span>
+              <span class="tile-badge-hot">HOT</span>
+              🏙️
+            </div>
+            <div class="calc-tile-name">전국 도시별 소득 &amp; 집값</div>
+          </a>
+        </div>
       </div>
     </section>
 
@@ -987,73 +1039,82 @@
         </div>
         <span class="calc-hub-count">8종</span>
       </div>
-      <div class="calc-tile-grid">
-        <!-- 실시간 랭킹 미니게임 4종 -->
-        <a href="tools/game-tetris/index.html" class="calc-tile" data-keywords="테트리스 블록게임 테트로미노 아케이드 고전게임 퍼즐 랭킹">
-          <div class="calc-tile-icon theme-game">
-            <span class="tile-badge-hot">HOT</span>
-            🕹️
-          </div>
-          <div class="calc-tile-name">레트로 테트리스</div>
-        </a>
 
-        <a href="tools/game-typing/index.html" class="calc-tile" data-keywords="타자연습 산성비 타자게임 한글타자 타수측정 한메타자 랭킹">
-          <div class="calc-tile-icon theme-game">
-            <span class="tile-badge-hot">NEW</span>
-            ⌨️
-          </div>
-          <div class="calc-tile-name">스피드 타자 산성비</div>
-        </a>
+      <!-- 하위 카테고리 1: 실시간 랭킹 아케이드 -->
+      <div class="calc-subgroup-block">
+        <h3 class="calc-subgroup-title">🕹️ 실시간 랭킹 아케이드 (고전 명작)</h3>
+        <div class="calc-tile-grid">
+          <a href="tools/game-tetris/index.html" class="calc-tile" data-keywords="테트리스 블록게임 테트로미노 아케이드 고전게임 퍼즐 랭킹">
+            <div class="calc-tile-icon theme-game">
+              <span class="tile-badge-hot">HOT</span>
+              🕹️
+            </div>
+            <div class="calc-tile-name">레트로 테트리스</div>
+          </a>
 
-        <a href="tools/game-brick-breaker/index.html" class="calc-tile" data-keywords="벽돌깨기 알카노이드 블록깨기 벽돌부수기 바운스 네온 랭킹">
-          <div class="calc-tile-icon theme-game">
-            <span class="tile-badge-hot">NEW</span>
-            🧱
-          </div>
-          <div class="calc-tile-name">네온 벽돌 깨기</div>
-        </a>
+          <a href="tools/game-typing/index.html" class="calc-tile" data-keywords="타자연습 산성비 타자게임 한글타자 타수측정 한메타자 랭킹">
+            <div class="calc-tile-icon theme-game">
+              <span class="tile-badge-hot">NEW</span>
+              ⌨️
+            </div>
+            <div class="calc-tile-name">스피드 타자 산성비</div>
+          </a>
 
-        <a href="tools/game-dodge/index.html" class="calc-tile" data-keywords="닷지 dodge 1.9 미사일피하기 탄막 비행기 고전게임 서바이벌 랭킹">
-          <div class="calc-tile-icon theme-game">
-            <span class="tile-badge-hot">NEW</span>
-            🚀
-          </div>
-          <div class="calc-tile-name">미사일 피하기 닷지</div>
-        </a>
+          <a href="tools/game-brick-breaker/index.html" class="calc-tile" data-keywords="벽돌깨기 알카노이드 블록깨기 벽돌부수기 바운스 네온 랭킹">
+            <div class="calc-tile-icon theme-game">
+              <span class="tile-badge-hot">NEW</span>
+              🧱
+            </div>
+            <div class="calc-tile-name">네온 벽돌 깨기</div>
+          </a>
 
-        <!-- 모임 & 복권 시뮬레이터 -->
-        <a href="tools/ladder-draw-game/index.html" class="calc-tile" data-keywords="사다리타기 사다리게임 복불복 모임 술자리 제비뽑기 내기">
-          <div class="calc-tile-icon theme-fun">
-            <span class="tile-badge-sim">SIM</span>
-            🪜
-          </div>
-          <div class="calc-tile-name">인터랙티브 사다리타기</div>
-        </a>
+          <a href="tools/game-dodge/index.html" class="calc-tile" data-keywords="닷지 dodge 1.9 미사일피하기 탄막 비행기 고전게임 서바이벌 랭킹">
+            <div class="calc-tile-icon theme-game">
+              <span class="tile-badge-hot">NEW</span>
+              🚀
+            </div>
+            <div class="calc-tile-name">미사일 피하기 닷지</div>
+          </a>
+        </div>
+      </div>
 
-        <a href="tools/dutch-pay-roulette/index.html" class="calc-tile" data-keywords="더치페이 엔빵 뿜빠이 정산 몰아주기 회식 모임 카톡공유">
-          <div class="calc-tile-icon theme-fun">
-            <span class="tile-badge-calc">CALC</span>
-            🥢
-          </div>
-          <div class="calc-tile-name">더치페이 &amp; 뿜빠이</div>
-        </a>
+      <!-- 하위 카테고리 2: 모임 복불복 & 복권 -->
+      <div class="calc-subgroup-block">
+        <h3 class="calc-subgroup-title">🎲 모임 복불복 &amp; 복권 (술자리·로또)</h3>
+        <div class="calc-tile-grid">
+          <a href="tools/ladder-draw-game/index.html" class="calc-tile" data-keywords="사다리타기 사다리게임 복불복 모임 술자리 제비뽑기 내기">
+            <div class="calc-tile-icon theme-fun">
+              <span class="tile-badge-sim">SIM</span>
+              🪜
+            </div>
+            <div class="calc-tile-name">인터랙티브 사다리타기</div>
+          </a>
 
-        <a href="tools/lotto-draw-sim/index.html" class="calc-tile" data-keywords="로또 로또시뮬레이터 1등당첨 확률체감 1초100회 로또명당 복권">
-          <div class="calc-tile-icon theme-fun">
-            <span class="tile-badge-sim">SIM</span>
-            <span class="tile-badge-hot">HOT</span>
-            🎰
-          </div>
-          <div class="calc-tile-name">로또 1등 당첨 시뮬레이터</div>
-        </a>
+          <a href="tools/dutch-pay-roulette/index.html" class="calc-tile" data-keywords="더치페이 엔빵 뿜빠이 정산 몰아주기 회식 모임 카톡공유">
+            <div class="calc-tile-icon theme-fun">
+              <span class="tile-badge-calc">CALC</span>
+              🥢
+            </div>
+            <div class="calc-tile-name">더치페이 &amp; 뿜빠이</div>
+          </a>
 
-        <a href="tools/lotto-tax-interest-calc/index.html" class="calc-tile" data-keywords="로또세금 로또실수령액 33% 22% 1등당첨금 월이자 예금이자">
-          <div class="calc-tile-icon theme-fun">
-            <span class="tile-badge-calc">CALC</span>
-            💎
-          </div>
-          <div class="calc-tile-name">로또 세후 수령액 &amp; 이자</div>
-        </a>
+          <a href="tools/lotto-draw-sim/index.html" class="calc-tile" data-keywords="로또 로또시뮬레이터 1등당첨 확률체감 1초100회 로또명당 복권">
+            <div class="calc-tile-icon theme-fun">
+              <span class="tile-badge-sim">SIM</span>
+              <span class="tile-badge-hot">HOT</span>
+              🎰
+            </div>
+            <div class="calc-tile-name">로또 1등 당첨 시뮬레이터</div>
+          </a>
+
+          <a href="tools/lotto-tax-interest-calc/index.html" class="calc-tile" data-keywords="로또세금 로또실수령액 33% 22% 1등당첨금 월이자 예금이자">
+            <div class="calc-tile-icon theme-fun">
+              <span class="tile-badge-calc">CALC</span>
+              💎
+            </div>
+            <div class="calc-tile-name">로또 세후 수령액 &amp; 이자</div>
+          </a>
+        </div>
       </div>
     </section>
 
@@ -1067,56 +1128,61 @@
         </div>
         <span class="calc-hub-count">6종</span>
       </div>
-      <div class="calc-tile-grid">
-        <a href="tools/smoking-wealth-sim/index.html" class="calc-tile" data-keywords="담배값 주식 투자 시뮬 금연 재테크 sp500 복리 제네시스 타르 수명">
-          <div class="calc-tile-icon theme-sim">
-            <span class="tile-badge-sim">SIM</span>
-            <span class="tile-badge-hot">HOT</span>
-            🚬
-          </div>
-          <div class="calc-tile-name">담배값 주식 투자 시뮬</div>
-        </a>
 
-        <a href="tools/opportunity-cost-calc/index.html" class="calc-tile" data-keywords="기회비용 소비 신차 명품 S&P500 복리 주식투자">
-          <div class="calc-tile-icon theme-sim">
-            <span class="tile-badge-sim">SIM</span>
-            <span class="tile-badge-hot">HOT</span>
-            🛍️
-          </div>
-          <div class="calc-tile-name">소비 vs 투자 기회비용</div>
-        </a>
+      <!-- 하위 카테고리 1: 일상의 선택이 만드는 자산 격차 -->
+      <div class="calc-subgroup-block">
+        <h3 class="calc-subgroup-title">💡 일상의 작은 선택이 만드는 자산 격차</h3>
+        <div class="calc-tile-grid">
+          <a href="tools/smoking-wealth-sim/index.html" class="calc-tile" data-keywords="담배값 주식 투자 시뮬 금연 재테크 sp500 복리 제네시스 타르 수명">
+            <div class="calc-tile-icon theme-sim">
+              <span class="tile-badge-sim">SIM</span>
+              <span class="tile-badge-hot">HOT</span>
+              🚬
+            </div>
+            <div class="calc-tile-name">담배값 주식 투자 시뮬</div>
+          </a>
 
-        <a href="tools/coffee-opportunity-calc/index.html" class="calc-tile" data-keywords="커피값 기회비용 스벅 복리투자 tqqq 스노우볼">
-          <div class="calc-tile-icon theme-sim">
-            <span class="tile-badge-sim">SIM</span>
-            ☕
-          </div>
-          <div class="calc-tile-name">커피값 투자 기회비용</div>
-        </a>
+          <a href="tools/opportunity-cost-calc/index.html" class="calc-tile" data-keywords="기회비용 소비 신차 명품 S&P500 복리 주식투자">
+            <div class="calc-tile-icon theme-sim">
+              <span class="tile-badge-sim">SIM</span>
+              <span class="tile-badge-hot">HOT</span>
+              🛍️
+            </div>
+            <div class="calc-tile-name">소비 vs 투자 기회비용</div>
+          </a>
 
-        <a href="tools/missed-investment-calc/index.html" class="calc-tile" data-keywords="놓친투자 매도후상승분 테슬라 엔비디아 비트코인 과거시세">
-          <div class="calc-tile-icon theme-sim">
-            <span class="tile-badge-sim">SIM</span>
-            🚀
-          </div>
-          <div class="calc-tile-name">과거 그때 샀더라면</div>
-        </a>
+          <a href="tools/coffee-opportunity-calc/index.html" class="calc-tile" data-keywords="커피값 기회비용 스벅 복리투자 tqqq 스노우볼">
+            <div class="calc-tile-icon theme-sim">
+              <span class="tile-badge-sim">SIM</span>
+              ☕
+            </div>
+            <div class="calc-tile-name">커피값 투자 기회비용</div>
+          </a>
 
-        <a href="tools/retirement-survival-sim/index.html" class="calc-tile" data-keywords="은퇴자금 조기소진 노후자금 파이어 파산확률 4%룰">
-          <div class="calc-tile-icon theme-sim">
-            <span class="tile-badge-sim">SIM</span>
-            ⏳
-          </div>
-          <div class="calc-tile-name">은퇴자금 조기소진 계산기</div>
-        </a>
+          <a href="tools/missed-investment-calc/index.html" class="calc-tile" data-keywords="놓친투자 매도후상승분 테슬라 엔비디아 비트코인 과거시세">
+            <div class="calc-tile-icon theme-sim">
+              <span class="tile-badge-sim">SIM</span>
+              🚀
+            </div>
+            <div class="calc-tile-name">과거 그때 샀더라면</div>
+          </a>
 
-        <a href="tools/inflation-purchasing-power-calc/index.html" class="calc-tile" data-keywords="인플레이션 화폐가치 물가상승 짜장면값 10년전 20년전 구매력">
-          <div class="calc-tile-icon theme-sim">
-            <span class="tile-badge-sim">SIM</span>
-            📉
-          </div>
-          <div class="calc-tile-name">화폐가치 하락 인플레</div>
-        </a>
+          <a href="tools/retirement-survival-sim/index.html" class="calc-tile" data-keywords="은퇴자금 조기소진 노후자금 파이어 파산확률 4%룰">
+            <div class="calc-tile-icon theme-sim">
+              <span class="tile-badge-sim">SIM</span>
+              ⏳
+            </div>
+            <div class="calc-tile-name">은퇴자금 조기소진 계산기</div>
+          </a>
+
+          <a href="tools/inflation-purchasing-power-calc/index.html" class="calc-tile" data-keywords="인플레이션 화폐가치 물가상승 짜장면값 10년전 20년전 구매력">
+            <div class="calc-tile-icon theme-sim">
+              <span class="tile-badge-sim">SIM</span>
+              📉
+            </div>
+            <div class="calc-tile-name">화폐가치 하락 인플레</div>
+          </a>
+        </div>
       </div>
     </section>
 
