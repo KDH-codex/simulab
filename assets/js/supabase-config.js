@@ -3,31 +3,34 @@
  * [시뮬랩 공통 Supabase 클라우드 설정 파일] (assets/js/supabase-config.js)
  * --------------------------------------------------------------------------
  * 사용자 안내:
- * 본인의 Supabase 프로젝트를 생성하신 후 아래 2개 항목에 복사한 값을 넣어주시면,
- * 1) 미니게임 실시간 랭킹 (명예의 전당)
+ * 본 파일에 설정된 Supabase 접속 정보를 통해:
+ * 1) 미니게임 실시간 랭킹 (명예의 전당 TOP 10)
  * 2) 방문자 행동 분석 및 관리자 대시보드 (Admin Dashboard)
- * 가 자동으로 전세계 실시간 온라인 모드로 활성화됩니다!
- * 
- * ※ 아무것도 입력하지 않아도 사이트는 브라우저 로컬 저장소 모드로 안전하게 작동합니다.
+ * 가 전세계 실시간 온라인 모드로 연결됩니다!
  * ==========================================================================
  */
 
 (function (global) {
   'use strict';
 
-  // 1. Supabase 접속 정보 (대시보드 > Project Settings > API 에서 확인)
+  // 1. Supabase 접속 정보 (연결 완료)
   const CONFIG = {
-    // 예: 'https://xyzabcdefghijklmnop.supabase.co'
-    URL: '',
+    // Supabase Project URL (끝자리는 .co 도메인)
+    URL: 'https://lgbkovxhzixclesapehl.supabase.co',
     
-    // Project API keys 중 'anon' (public) 공개 키를 붙여넣으세요.
-    ANON_KEY: ''
+    // Project API keys 중 'anon' (public) 공개 키
+    ANON_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxnYmtvdnhoeml4Y2xlc2FwZWhsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI1NDIwMTAsImV4cCI6MjEwODExODAxMH0.7sYeCt7HVO4Vyrg7LMpuc_QAtVAzUCYN6WXPAjL7lDA'
   };
 
   // 2. 전역 네임스페이스 등록
   global.SIMULAB_SUPABASE_CONFIG = {
     get url() {
-      return (CONFIG.URL || '').trim().replace(/\/+$/, '');
+      let raw = (CONFIG.URL || '').trim().replace(/\/+$/, '');
+      // .com으로 잘못 입력된 경우 .co로 자동 보정
+      if (raw.endsWith('.supabase.com')) {
+        raw = raw.replace(/\.supabase\.com$/, '.supabase.co');
+      }
+      return raw;
     },
     get anonKey() {
       return (CONFIG.ANON_KEY || '').trim();
