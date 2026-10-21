@@ -1,0 +1,758 @@
+/* ==========================================================================
+   세계 20개국 소득 순위변화 시뮬레이터 스타일시트 (style.css)
+   ========================================================================== */
+
+/* ---------- 메인 레이아웃 ---------- */
+.tool-main-container {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3.5rem;
+}
+
+/* ---------- 도구 헤더 카드 ---------- */
+.tool-hero-card {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #1e1b4b 100%);
+  color: #ffffff;
+  border-radius: 1.25rem;
+  padding: 2.2rem 2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+.tool-hero-card::after {
+  content: "🌏";
+  position: absolute;
+  right: -15px;
+  bottom: -25px;
+  font-size: 8.5rem;
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.tool-badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+}
+.tool-badge {
+  font-size: 0.78rem;
+  font-weight: 750;
+  padding: 0.28rem 0.65rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.badge-official {
+  background: rgba(59, 130, 246, 0.25);
+  color: #93c5fd;
+}
+.badge-timeseries {
+  background: rgba(16, 185, 129, 0.25);
+  color: #a7f3d0;
+}
+.badge-live {
+  background: rgba(245, 158, 11, 0.25);
+  color: #fde68a;
+}
+
+.tool-title {
+  font-size: 1.85rem;
+  font-weight: 850;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.65rem;
+  line-height: 1.25;
+}
+.tool-desc {
+  font-size: 0.95rem;
+  color: #cbd5e1;
+  line-height: 1.55;
+  margin: 0;
+  max-width: 780px;
+}
+
+/* ---------- 탭 네비게이션 ---------- */
+.tool-tab-nav {
+  display: flex;
+  gap: 0.5rem;
+  background: #f1f5f9;
+  padding: 0.35rem;
+  border-radius: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+.tool-tab-btn {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: none;
+  background: transparent;
+  color: #475569;
+  font-size: 0.94rem;
+  font-weight: 750;
+  border-radius: 0.7rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  transition: all 0.2s ease;
+}
+.tool-tab-btn:hover {
+  color: #0f172a;
+  background: rgba(255, 255, 255, 0.6);
+}
+.tool-tab-btn.is-active {
+  background: #ffffff;
+  color: #1e40af;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+}
+
+.tab-panel {
+  display: none;
+}
+.tab-panel.is-active {
+  display: block;
+}
+
+/* ---------- 탭 1: 레이스 컨트롤 바 ---------- */
+.race-control-panel {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+.metric-toggle-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px dashed #e2e8f0;
+}
+.toggle-label {
+  font-size: 0.9rem;
+  font-weight: 750;
+  color: #475569;
+}
+.toggle-buttons {
+  display: inline-flex;
+  gap: 0.4rem;
+}
+.metric-btn, .compare-metric-btn {
+  padding: 0.45rem 0.9rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  border-radius: 0.5rem;
+  border: 1px solid #cbd5e1;
+  background: #f8fafc;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.metric-btn:hover, .compare-metric-btn:hover {
+  background: #f1f5f9;
+}
+.metric-btn.is-active, .compare-metric-btn.is-active {
+  background: #1e40af;
+  border-color: #1e40af;
+  color: #ffffff;
+  box-shadow: 0 2px 5px rgba(30, 64, 175, 0.25);
+}
+
+.timeline-slider-row {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+.btn-play {
+  flex-shrink: 0;
+  padding: 0.65rem 1.15rem;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #ffffff;
+  border: none;
+  border-radius: 0.65rem;
+  font-size: 0.92rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  box-shadow: 0 3px 8px rgba(37, 99, 235, 0.3);
+  transition: all 0.2s;
+}
+.btn-play:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+.btn-play.is-playing {
+  background: #dc2626;
+  box-shadow: 0 3px 8px rgba(220, 38, 38, 0.3);
+}
+
+.slider-wrapper {
+  flex: 1;
+}
+.slider-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.45rem;
+}
+.slider-title {
+  font-size: 0.92rem;
+  color: #334155;
+}
+.highlight-year {
+  font-size: 1.15rem;
+  font-weight: 850;
+  color: #1e40af;
+}
+.slider-milestone {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #0284c7;
+  background: #e0f2fe;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+}
+
+#year-slider {
+  width: 100%;
+  accent-color: #1e40af;
+  cursor: pointer;
+}
+.slider-ticks {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  color: #64748b;
+  font-weight: 600;
+  margin-top: 0.2rem;
+}
+
+/* ---------- 랭킹 막대 차트 카드 ---------- */
+.race-chart-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+.chart-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+.chart-main-title {
+  font-size: 1.15rem;
+  font-weight: 850;
+  color: #0f172a;
+  margin: 0 0 0.25rem;
+}
+.chart-sub-title {
+  font-size: 0.82rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.korea-rank-badge {
+  background: linear-gradient(135deg, #eff6ff, #dbeafe);
+  border: 1.5px solid #93c5fd;
+  border-radius: 0.75rem;
+  padding: 0.4rem 0.85rem;
+  text-align: right;
+}
+.korea-rank-badge .badge-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #1e40af;
+}
+.korea-rank-badge .badge-value {
+  font-size: 0.95rem;
+  font-weight: 850;
+  color: #1e3a8a;
+}
+
+/* 20개국 레이스 바 목록 */
+.race-bars-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.race-bar-row {
+  display: grid;
+  grid-template-columns: 32px 110px 1fr 100px;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.race-bar-row:hover {
+  background: #f8fafc;
+}
+.race-bar-row.is-korea {
+  background: #eff6ff;
+  border: 1.5px solid #bfdbfe;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.12);
+}
+
+.race-rank-num {
+  font-size: 0.88rem;
+  font-weight: 850;
+  color: #64748b;
+  text-align: center;
+}
+.race-bar-row.is-korea .race-rank-num {
+  color: #1d4ed8;
+  font-weight: 900;
+}
+.race-rank-top1 { color: #d97706 !important; font-weight: 900; }
+.race-rank-top2 { color: #64748b !important; font-weight: 900; }
+.race-rank-top3 { color: #b45309 !important; font-weight: 900; }
+
+.race-country-info {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.88rem;
+  font-weight: 750;
+  color: #1e293b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.race-flag {
+  font-size: 1.15rem;
+}
+
+.race-bar-track {
+  width: 100%;
+  height: 22px;
+  background: #f1f5f9;
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+}
+.race-bar-fill {
+  height: 100%;
+  border-radius: 6px;
+  background: #94a3b8;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s;
+}
+.race-bar-fill.bar-korea {
+  background: linear-gradient(90deg, #2563eb, #3b82f6);
+}
+.race-bar-fill.bar-top1 {
+  background: linear-gradient(90deg, #f59e0b, #fbbf24);
+}
+.race-bar-fill.bar-top2 {
+  background: linear-gradient(90deg, #64748b, #94a3b8);
+}
+.race-bar-fill.bar-top3 {
+  background: linear-gradient(90deg, #d97706, #f59e0b);
+}
+
+.race-val-label {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #334155;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.race-bar-row.is-korea .race-val-label {
+  color: #1d4ed8;
+  font-weight: 900;
+}
+
+/* ---------- 탭 2: 1:1 맞대결 ---------- */
+.compare-control-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.25rem;
+}
+.compare-selector-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: center;
+}
+.selector-col {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.selector-label {
+  font-size: 0.9rem;
+  font-weight: 750;
+  color: #334155;
+}
+.custom-select {
+  padding: 0.5rem 0.85rem;
+  font-size: 0.92rem;
+  font-weight: 700;
+  border-radius: 0.5rem;
+  border: 1.5px solid #cbd5e1;
+  background: #ffffff;
+  color: #0f172a;
+  cursor: pointer;
+}
+.custom-select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.compare-summary-grid {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+.summary-box {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+.summary-box.kor-box {
+  border-color: #93c5fd;
+  background: linear-gradient(180deg, #ffffff 0%, #eff6ff 100%);
+}
+.summary-flag {
+  font-size: 2.8rem;
+  margin-bottom: 0.25rem;
+}
+.summary-country {
+  font-size: 1.1rem;
+  font-weight: 850;
+  color: #0f172a;
+  margin-bottom: 0.4rem;
+}
+.summary-stat-val {
+  font-size: 1.85rem;
+  font-weight: 900;
+  color: #1e40af;
+  margin-bottom: 0.35rem;
+  letter-spacing: -0.02em;
+}
+.summary-growth {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #059669;
+}
+
+.summary-vs-badge {
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: #94a3b8;
+  background: #f1f5f9;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.insight-box {
+  background: #f8fafc;
+  border-left: 4px solid #2563eb;
+  border-radius: 0.6rem;
+  padding: 1rem 1.25rem;
+  font-size: 0.94rem;
+  color: #334155;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.line-chart-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+.line-chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.line-chart-title {
+  font-size: 1.05rem;
+  font-weight: 850;
+  color: #0f172a;
+  margin: 0;
+}
+.chart-legend {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.84rem;
+  font-weight: 700;
+}
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+.kor-dot { background: #2563eb; }
+.target-dot { background: #f97316; }
+
+.canvas-wrapper {
+  position: relative;
+  width: 100%;
+}
+#compare-line-canvas {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ---------- 탭 3: 내 연봉 세계 위치 ---------- */
+.salary-input-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.75rem;
+  margin-bottom: 1.25rem;
+}
+.salary-card-title {
+  font-size: 1.25rem;
+  font-weight: 850;
+  color: #0f172a;
+  margin: 0 0 0.4rem;
+}
+.salary-card-desc {
+  font-size: 0.88rem;
+  color: #64748b;
+  margin: 0 0 1.25rem;
+}
+
+.salary-input-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.salary-label {
+  font-size: 0.9rem;
+  font-weight: 750;
+  color: #334155;
+}
+.input-with-unit {
+  position: relative;
+  max-width: 280px;
+}
+.custom-input {
+  width: 100%;
+  padding: 0.65rem 3.5rem 0.65rem 0.85rem;
+  font-size: 1.25rem;
+  font-weight: 850;
+  color: #0f172a;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 0.65rem;
+}
+.custom-input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+.unit-text {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.95rem;
+  font-weight: 750;
+  color: #64748b;
+}
+
+.quick-salary-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.45rem;
+}
+.tag-btn {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  color: #475569;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.tag-btn:hover {
+  background: #e2e8f0;
+}
+.tag-btn.is-active {
+  background: #eff6ff;
+  border-color: #93c5fd;
+  color: #1e40af;
+}
+
+.salary-result-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1.25rem;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+.salary-hero-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+.salary-usd-box {
+  display: flex;
+  flex-direction: column;
+}
+.usd-label {
+  font-size: 0.85rem;
+  color: #64748b;
+  font-weight: 700;
+}
+.usd-value {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #1e40af;
+  letter-spacing: -0.02em;
+}
+
+.salary-tier-badge {
+  padding: 0.55rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 850;
+  border-radius: 0.75rem;
+  color: #ffffff;
+}
+
+.closest-country-card {
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.closest-title {
+  font-size: 0.9rem;
+  font-weight: 750;
+  color: #475569;
+  margin-bottom: 0.5rem;
+}
+.closest-body {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+.closest-flag {
+  font-size: 2.5rem;
+}
+.closest-info {
+  display: flex;
+  flex-direction: column;
+}
+.closest-name {
+  font-size: 1.15rem;
+  font-weight: 850;
+  color: #0f172a;
+}
+.closest-stat {
+  font-size: 0.88rem;
+  color: #64748b;
+}
+
+/* ---------- 공식 출처 카드 ---------- */
+.data-source-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
+.source-header {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 0.85rem;
+}
+.source-icon {
+  font-size: 1.25rem;
+}
+.source-title {
+  font-size: 0.96rem;
+  font-weight: 850;
+  color: #1e293b;
+  margin: 0;
+}
+.source-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  color: #475569;
+  font-size: 0.84rem;
+  line-height: 1.7;
+}
+
+/* ---------- 반응형 (Mobile) ---------- */
+@media (max-width: 768px) {
+  .tool-main-container {
+    padding: 1rem 0.75rem 2.5rem;
+  }
+  .tool-hero-card {
+    padding: 1.5rem 1.25rem;
+  }
+  .tool-title {
+    font-size: 1.5rem;
+  }
+  .timeline-slider-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .btn-play {
+    justify-content: center;
+  }
+  .race-bar-row {
+    grid-template-columns: 24px 90px 1fr 75px;
+    gap: 0.4rem;
+    font-size: 0.82rem;
+  }
+  .compare-selector-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .compare-summary-grid {
+    grid-template-columns: 1fr;
+  }
+  .summary-vs-badge {
+    margin: 0 auto;
+  }
+  .salary-hero-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+}
