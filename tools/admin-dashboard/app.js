@@ -3,7 +3,7 @@
  * [시뮬랩 비공개 관리자 대시보드] UI 컨트롤러 & 차트 렌더러 (app.js)
  * --------------------------------------------------------------------------
  * 1. SHA-256 인증 모달 제어 (비밀번호 일치 시 대시보드 노출)
- * 2. Supabase 실시간 클라우드 및 로컬스토리지 하이브리드 연동
+ * 2. Supabase 실시간 클라우드 및 순수 로컬스토리지 하이브리드 연동
  * 3. Canvas 기반 듀얼 트렌드 차트 (일별 UV / PV)
  * 4. 42개 계산기 & 미니게임 실시간 랭킹 & 첫 방문 유입 경로 시각화
  * 5. 실시간 라이브 이벤트 피드 및 CSV 엑셀 내보내기
@@ -159,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 statusBadge.innerHTML = '● 실시간 클라우드 (Supabase)';
                 statusBadge.style.color = '#10b981';
             } else {
-                statusBadge.innerHTML = '💾 로컬 보관 모드';
+                statusBadge.innerHTML = '💾 로컬 보관 모드 (진짜 방문자 실시간 카운트)';
                 statusBadge.style.color = '#64748b';
             }
         }
@@ -215,14 +215,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const allDates = Object.keys(dailyData || {}).sort();
         const sliceDates = allDates.slice(-days);
 
-        if (sliceDates.length === 0) return;
-
-        const uvValues = sliceDates.map(d => dailyData[d].uv || 0);
-        const pvValues = sliceDates.map(d => dailyData[d].pv || 0);
-
-        const maxVal = Math.max(...pvValues, 100);
         const chartW = width - padding.left - padding.right;
         const chartH = height - padding.top - padding.bottom;
+
+        // 데이터가 없거나 0일 때의 기본 축 그리기
+        const uvValues = sliceDates.map(d => (dailyData[d] && dailyData[d].uv) || 0);
+        const pvValues = sliceDates.map(d => (dailyData[d] && dailyData[d].pv) || 0);
+        const maxVal = Math.max(...pvValues, 10); // 최소 눈금 10
 
         // 배경 가이드 라인 (4분할)
         ctx.strokeStyle = '#f1f5f9';
@@ -239,6 +238,14 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.lineTo(width - padding.right, y);
             ctx.stroke();
             ctx.fillText(val.toLocaleString(), padding.left - 8, y + 3);
+        }
+
+        if (sliceDates.length === 0) {
+            ctx.textAlign = 'center';
+            ctx.fillStyle = '#94a3b8';
+            ctx.font = '12px -apple-system, sans-serif';
+            ctx.fillText('아직 집계된 방문자 트렌드 데이터가 없습니다.', width / 2, height / 2);
+            return;
         }
 
         const stepX = chartW / (sliceDates.length - 1 || 1);
@@ -299,7 +306,16 @@ document.addEventListener('DOMContentLoaded', () => {
         toolRankingList.innerHTML = '';
 
         const entries = Object.entries(toolRanking || {}).sort((a, b) => b[1] - a[1]);
-        const maxVal = entries.length > 0 ? entries[0][1] : 1;
+        if (entries.length === 0) {
+            toolRankingList.innerHTML = `
+                <div style="text-align:center; padding:2rem 1rem; color:#94a3b8; font-size:0.85rem; background:#f8fafc; border-radius:10px;">
+                    ✨ 아직 집계된 계산기 사용 기록이 없습니다.<br/>방문자가 도구를 사용하면 실시간으로 1위부터 순위가 표시됩니다!
+                </div>
+            `;
+            return;
+        }
+
+        const maxVal = entries[0][1] || 1;
 
         entries.slice(0, 10).forEach(([toolId, count], idx) => {
             const pct = ((count / maxVal) * 100).toFixed(0);
@@ -329,6 +345,15 @@ document.addEventListener('DOMContentLoaded', () => {
         landingPageList.innerHTML = '';
 
         const entries = Object.entries(landingPages || {}).sort((a, b) => b[1] - a[1]);
+        if (entries.length === 0) {
+            landingPageList.innerHTML = `
+                <div style="text-align:center; padding:1.5rem 1rem; color:#94a3b8; font-size:0.85rem; background:#f8fafc; border-radius:10px;">
+                    아직 유입된 첫 방문자 기록이 없습니다.
+                </div>
+            `;
+            return;
+        }
+
         let totalLanding = 0;
         entries.forEach(e => totalLanding += e[1]);
         if (totalLanding === 0) totalLanding = 1;
@@ -357,7 +382,16 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!liveEventList) return;
         liveEventList.innerHTML = '';
 
-        (events || []).slice(0, 8).forEach(ev => {
+        if (!events || events.length === 0) {
+            liveEventList.innerHTML = `
+                <li style="text-align:center; padding:1.5rem 1rem; color:#94a3b8; font-size:0.85rem; list-style:none; background:#f8fafc; border-radius:10px;">
+                    방문자가 사이트에서 활동하면 여기에 실시간으로 표시됩니다.
+                </li>
+            `;
+            return;
+        }
+
+        events.slice(0, 8).forEach(ev => {
             const title = TOOL_TITLES[ev.tool] || ev.tool;
             const li = document.createElement('li');
             li.className = 'feed-item';

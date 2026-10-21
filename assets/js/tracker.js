@@ -14,7 +14,14 @@
     // 1. 세션 식별자 및 스토리지 키
     const SESSION_KEY = 'simulab_session_id';
     const JOURNEY_KEY = 'simulab_user_journey';
-    const LOCAL_ANALYTICS_KEY = 'simulab_local_analytics_v1';
+    const LOCAL_ANALYTICS_KEY = 'simulab_local_analytics_v2'; // 실제 카운트용 v2 키
+
+    // 과거 가짜 더미 캐시 청소
+    try {
+        if (localStorage.getItem('simulab_local_analytics_v1')) {
+            localStorage.removeItem('simulab_local_analytics_v1');
+        }
+    } catch (e) {}
 
     // 2. Supabase 접속 정보 취득 헬퍼
     function getSupabaseConfig() {
@@ -157,7 +164,6 @@
                 body: JSON.stringify(payload)
             });
         } catch (err) {
-            // 통계 전송 실패는 사용자 경험을 방해하지 않도록 조용히 넘김
             console.debug('[SimuLab Tracker] Supabase PV 전송 스킵:', err.message);
         }
     }
