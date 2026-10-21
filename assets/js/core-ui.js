@@ -258,6 +258,7 @@
         { title: '대한민국 순자산 백분위', sub: '2024~2025 가계금융복지조사 기반 상위 %', href: 'tools/korean-wealth-percentile-calc/index.html', tool: 'korean-wealth-percentile-calc', hot: true },
         { title: '대한민국 평균 vs 나', sub: '연봉·근무시간·점심값 5각형 레이더 차트', href: 'tools/korean-average-vs-me/index.html', tool: 'korean-average-vs-me', hot: true },
         { title: '대한민국 아기이름 트렌드', sub: '2008~2024 대법원 출생신고 공식 순위', href: 'tools/korean-baby-name-trend/index.html', tool: 'korean-baby-name-trend', hot: true },
+        { title: '전국 도시별 소득 & 집값', sub: '17개 시도별 소득·아파트값·PIR·1인가구', href: 'tools/korean-city-income-housing/index.html', tool: 'korean-city-income-housing', hot: true },
       ],
     },
     {
@@ -575,6 +576,7 @@
     'korean-wealth-percentile-calc': '대한민국 순자산 백분위',
     'korean-average-vs-me': '대한민국 평균 vs 나',
     'korean-baby-name-trend': '대한민국 아기이름 트렌드',
+    'korean-city-income-housing': '전국 도시별 소득 & 집값',
     'game-tetris': '레트로 테트리스',
     'game-typing': '스피드 타자 산성비',
     'game-brick-breaker': '네온 벽돌 깨기',
