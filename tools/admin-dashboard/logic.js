@@ -3,9 +3,10 @@
  * [시뮬랩 비공개 관리자 대시보드] 비즈니스 로직 및 보안 엔진 (logic.js)
  * --------------------------------------------------------------------------
  * 1. SHA-256 단방향 암호화 해시 기반 관리자 인증 (규칙 8 보안 강화)
- * 2. 일별 순방문자(UV) / 페이지뷰(PV) 통계 집계 알고리즘
- * 3. 37개 도구별 랭킹 산출 및 사용자 이동 여정(User Flow) 분석
- * 4. 엑셀 호환 CSV 데이터 추출 모듈
+ * 2. Supabase 클라우드 실시간 RPC 통계 조회 및 로컬 자동 폴백 (하이브리드)
+ * 3. 일별 순방문자(UV) / 페이지뷰(PV) 통계 집계 알고리즘
+ * 4. 42개 도구별 랭킹 산출 및 사용자 이동 여정(User Flow) 분석
+ * 5. 엑셀 호환 CSV 데이터 추출 모듈
  * ==========================================================================
  */
 
@@ -88,16 +89,17 @@ export function adminLogout() {
 }
 
 /**
- * 30일간의 샘플 데이터 생성기 (실제 서비스 초기에도 대시보드가 풍성하게 보이도록 지원)
+ * 30일간의 초기 모의 샘플 데이터 생성기 (서비스 초기 텅 빈 대시보드 방지용)
  */
 export function generateSeedAnalytics() {
     const today = new Date();
     const daily = {};
     const toolIds = [
-        'past-apt-timemachine', 'smoking-wealth-sim', 'national-pension-sim', 
-        'severance-pay-calc', 'unemployment-benefit-calc', 'salary-net-calc',
-        'opportunity-cost-calc', 'area-pyeong-calc', 'loan-mortgage-calc',
-        'percent-discount-calc', 'leverage-etf-sim', 'korean-age-calc'
+        'past-apt-timemachine', 'game-tetris', 'game-dodge', 'game-typing', 'game-brick-breaker',
+        'smoking-wealth-sim', 'national-pension-sim', 'severance-pay-calc',
+        'unemployment-benefit-calc', 'salary-net-calc', 'opportunity-cost-calc',
+        'area-pyeong-calc', 'loan-mortgage-calc', 'percent-discount-calc',
+        'leverage-etf-sim', 'korean-age-calc'
     ];
 
     const toolRanking = {};
@@ -128,20 +130,20 @@ export function generateSeedAnalytics() {
     });
 
     const recentEvents = [
-        { time: '방금 전', tool: 'past-apt-timemachine', action: '시세차익 영수증 복사', sid: 'sess_live92' },
-        { time: '1분 전', tool: 'smoking-wealth-sim', action: 'S&P500 10년 복리 계산', sid: 'sess_live88' },
-        { time: '2분 전', tool: 'national-pension-sim', action: '60세 조기수령 손익분기 조회', sid: 'sess_live74' },
-        { time: '4분 전', tool: 'severance-pay-calc', action: '통상임금 비교 퇴직금 산출', sid: 'sess_live61' },
-        { time: '5분 전', tool: 'area-pyeong-calc', action: '국평 84㎡ 평당가 환산', sid: 'sess_live55' }
+        { time: '방금 전', tool: 'game-tetris', action: '테트리스 점수 등록', sid: 'sess_live95' },
+        { time: '1분 전', tool: 'past-apt-timemachine', action: '시세차익 영수증 복사', sid: 'sess_live92' },
+        { time: '2분 전', tool: 'game-dodge', action: '닷지 생존시간 랭킹 기록', sid: 'sess_live89' },
+        { time: '3분 전', tool: 'smoking-wealth-sim', action: 'S&P500 10년 복리 계산', sid: 'sess_live88' },
+        { time: '4분 전', tool: 'national-pension-sim', action: '60세 조기수령 손익분기 조회', sid: 'sess_live74' }
     ];
 
-    return { daily, toolRanking, landingPages, recentEvents };
+    return { daily, toolRanking, landingPages, recentEvents, is_cloud: false };
 }
 
 /**
- * 로컬 스토리지에서 분석 데이터를 불러오거나 초기화
+ * 로컬 스토리지에서 분석 데이터를 불러오거나 초기화 (동기식 폴백)
  */
-export function getAnalyticsData() {
+export function getLocalAnalyticsData() {
     const raw = localStorage.getItem('simulab_local_analytics_v1');
     if (!raw) {
         const seed = generateSeedAnalytics();
@@ -150,17 +152,61 @@ export function getAnalyticsData() {
     }
     try {
         const data = JSON.parse(raw);
-        // 날짜 데이터가 비어있으면 시드 데이터 병합
         if (!data.daily || Object.keys(data.daily).length === 0) {
             const seed = generateSeedAnalytics();
             const merged = { ...seed, ...data };
             localStorage.setItem('simulab_local_analytics_v1', JSON.stringify(merged));
             return merged;
         }
+        data.is_cloud = false;
         return data;
     } catch (e) {
         return generateSeedAnalytics();
     }
+}
+
+/**
+ * [Supabase 클라우드 & 로컬 하이브리드] 종합 분석 데이터 취득
+ * - Supabase 설정 시: 전세계 방문자 실제 집계 RPC 호출
+ * - 미설정/오프라인 시: 로컬 스토리지 데이터 자동 반환
+ * 
+ * @param {number} daysCount - 조회 일수 (기본 30일)
+ * @returns {Promise<Object>} 분석 데이터 객체
+ */
+export async function getAnalyticsData(daysCount = 30) {
+    const cfg = window.SIMULAB_SUPABASE_CONFIG;
+
+    // 1. Supabase가 활성화된 경우 클라우드 RPC 호출 시도
+    if (cfg && cfg.isEnabled) {
+        try {
+            const endpoint = `${cfg.url}/rest/v1/rpc/get_admin_dashboard_summary`;
+            const response = await fetch(endpoint, {
+                method: 'POST',
+                headers: {
+                    'apikey': cfg.anonKey,
+                    'Authorization': `Bearer ${cfg.anonKey}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ days_count: daysCount })
+            });
+
+            if (response.ok) {
+                const cloudData = await response.json();
+                // 데이터가 비어있지 않으면 클라우드 데이터 반환
+                if (cloudData && (Object.keys(cloudData.daily || {}).length > 0 || Object.keys(cloudData.toolRanking || {}).length > 0)) {
+                    cloudData.is_cloud = true;
+                    return cloudData;
+                }
+            } else {
+                console.warn('[AdminDashboard] Supabase RPC 통계 응답 오류 (로컬 폴백):', response.status);
+            }
+        } catch (err) {
+            console.warn('[AdminDashboard] Supabase 통계 통신 실패 (로컬 폴백):', err.message);
+        }
+    }
+
+    // 2. 미설정 또는 통신 실패 시 로컬 스토리지 데이터 반환
+    return getLocalAnalyticsData();
 }
 
 /**
@@ -210,7 +256,8 @@ export function calculateKpis(analyticsData) {
         totalPv: totalPv.toLocaleString(),
         avgPvPerUser: todayData.uv > 0 ? (todayData.pv / todayData.uv).toFixed(1) : '1.0',
         topToolId,
-        topToolViews: maxViews.toLocaleString()
+        topToolViews: maxViews.toLocaleString(),
+        isCloud: Boolean(analyticsData.is_cloud)
     };
 }
 

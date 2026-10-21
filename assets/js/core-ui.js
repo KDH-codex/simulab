@@ -796,7 +796,13 @@
     const prefix = getRootPrefix();
     initTheme(activeToolId);
 
-    // 0) 사용자 행동 및 방문 경로 자동 추적기(tracker.js) 비동기 로드
+    // 0) 공통 Supabase 설정(supabase-config.js) 및 방문 추적기(tracker.js) 비동기 로드
+    if (!document.getElementById('simulab-supabase-config-script')) {
+      const configScript = document.createElement('script');
+      configScript.id = 'simulab-supabase-config-script';
+      configScript.src = prefix + 'assets/js/supabase-config.js';
+      document.head.appendChild(configScript);
+    }
     if (!document.getElementById('simulab-tracker-script')) {
       const trackerScript = document.createElement('script');
       trackerScript.id = 'simulab-tracker-script';

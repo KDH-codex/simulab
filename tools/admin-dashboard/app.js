@@ -2,10 +2,11 @@
  * ==========================================================================
  * [시뮬랩 비공개 관리자 대시보드] UI 컨트롤러 & 차트 렌더러 (app.js)
  * --------------------------------------------------------------------------
- * 1. SHA-256 인증 모달 제어 (비밀번호 맞아야 대시보드 노출)
- * 2. Canvas 기반 듀얼 트렌드 차트 (일별 UV / PV)
- * 3. 37개 계산기 실시간 랭킹 & 첫 방문 유입 경로 시각화
- * 4. 실시간 라이브 이벤트 피드 및 CSV 엑셀 내보내기
+ * 1. SHA-256 인증 모달 제어 (비밀번호 일치 시 대시보드 노출)
+ * 2. Supabase 실시간 클라우드 및 로컬스토리지 하이브리드 연동
+ * 3. Canvas 기반 듀얼 트렌드 차트 (일별 UV / PV)
+ * 4. 42개 계산기 & 미니게임 실시간 랭킹 & 첫 방문 유입 경로 시각화
+ * 5. 실시간 라이브 이벤트 피드 및 CSV 엑셀 내보내기
  * ==========================================================================
  */
 
@@ -50,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnExportCsv = document.getElementById('btnExportCsv');
     const btnRefresh = document.getElementById('btnRefresh');
 
-    // 도구 한글 명칭 매핑
+    // 전체 42개 도구 및 미니게임 한글 명칭 매핑 사전
     const TOOL_TITLES = {
         'past-apt-timemachine': '그때 그 아파트 샀다면 🏢',
         'smoking-wealth-sim': '담배값 주식 투자 시뮬 🚬',
@@ -64,10 +65,40 @@ document.addEventListener('DOMContentLoaded', () => {
         'percent-discount-calc': '퍼센트 할인율 계산기 🛍️',
         'leverage-etf-sim': '주식·ETF 퀀트 시뮬레이터 📈',
         'korean-age-calc': '만나이 띠 계산기 🎂',
+        'game-tetris': '레트로 테트리스 🕹️',
+        'game-dodge': '미사일 피하기 닷지 🚀',
+        'game-typing': '스피드 타자 산성비 🌧️',
+        'game-brick-breaker': '네온 벽돌 깨기 🧱',
+        'ladder-draw-game': '인터랙티브 사다리타기 🪜',
+        'lotto-draw-sim': '로또 1등 당첨 시뮬레이터 🎰',
+        'lotto-tax-interest-calc': '로또 세후 수령액 & 이자 💵',
+        'alcohol-widmark-calc': '음주 알코올 분해시간 🍺',
+        'caffeine-sleep-calc': '카페인 반감기 & 꿀잠 ☕',
+        'coffee-opportunity-calc': '커피값 투자 기회비용 ☕',
+        'diet-bmr-tdee-calc': '다이어트 BMR·TDEE 🥗',
+        'dividend-goal-calc': '월 배당 목표금액 계산기 🎯',
+        'dividend-tax-sim': '배당 복리 & 세금 계산기 📊',
+        'dutch-pay-roulette': '센스있는 더치페이 계산기 💳',
+        'hourly-labor-value-calc': '나의 진짜 시급 가치 ⏱️',
+        'inflation-purchasing-power-calc': '화폐가치 하락 인플레 📉',
+        'invest-animal-mbti': '투자 성향 동물 MBTI 🦁',
+        'jeonse-wolse-sim': '전세 vs 월세 손익 비교 ⚖️',
+        'life-hourglass-sim': '내 인생의 모래시계 ⏳',
+        'logistics-roi-calc': '물류 자동화 ROI 분석 📦',
+        'love-animal-attachment': '연애 동물 애착 심리테스트 🐱',
+        'missed-investment-calc': '과거 그때 샀더라면 📈',
+        'retirement-survival-sim': '은퇴자금 조기소진 계산기 🏖️',
+        'running-zone-calc': '러닝 Zone 2 심박수 🏃',
+        'saju-wealth-sim': '사주 오행 & 재물운 분석 🔮',
+        'stock-profit-calc': '주식 실질 수익률 계산기 💹',
+        'stock-target-compound-calc': '목표가 & 복리 수익 🎯',
+        'stock-water-ride-calc': '주식 평단가 물타기 📉',
+        'capital-gains-tax-sim': '부동산 양도세 계산기 🏠',
         'home-portal': '메인 포털 허브 (홈) 🏠'
     };
 
     let currentRangeDays = 7; // 기본 7일 보기
+    let latestAnalyticsData = null;
 
     // 2. 인증 및 모달 가드
     function checkAuth() {
@@ -113,10 +144,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. 메인 대시보드 렌더링 함수
-    function renderDashboard() {
-        const data = getAnalyticsData();
+    // 3. 메인 대시보드 렌더링 함수 (비동기 실시간 조회 지원)
+    async function renderDashboard() {
+        if (btnRefresh) btnRefresh.textContent = '🔄 동기화 중...';
+
+        const data = await getAnalyticsData(currentRangeDays);
+        latestAnalyticsData = data;
         const kpis = calculateKpis(data);
+
+        // 상단 상태 뱃지 업데이트
+        const statusBadge = document.querySelector('.admin-title-group span[style*="font-size: 0.78rem"]');
+        if (statusBadge) {
+            if (kpis.isCloud) {
+                statusBadge.innerHTML = '● 실시간 클라우드 (Supabase)';
+                statusBadge.style.color = '#10b981';
+            } else {
+                statusBadge.innerHTML = '💾 로컬 보관 모드';
+                statusBadge.style.color = '#64748b';
+            }
+        }
 
         // (1) KPI 카드 갱신
         kpiTodayUv.textContent = kpis.todayUv;
@@ -143,6 +189,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // (5) 실시간 이벤트 피드 렌더링
         renderRecentEvents(data.recentEvents);
+
+        if (btnRefresh) btnRefresh.textContent = '🔄 새로고침';
     }
 
     // 4. 고정밀 Canvas 차트 그리기 (UV & PV)
@@ -343,7 +391,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     btnExportCsv.addEventListener('click', () => {
-        const data = getAnalyticsData();
+        const data = latestAnalyticsData || getAnalyticsData();
         const csv = exportToCsv(data);
         const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
         const url = URL.createObjectURL(blob);

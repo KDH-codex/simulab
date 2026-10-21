@@ -16,18 +16,29 @@
   'use strict';
 
   // ==========================================================================
-  // [1] Supabase 연동 설정 (초보자 안내용)
+  // [1] Supabase 연동 설정
   // --------------------------------------------------------------------------
-  // 아래 SUPABASE_CONFIG의 URL과 ANON_KEY를 본인의 Supabase 프로젝트 설정값으로
-  // 교체하시면 즉시 전세계 실시간 온라인 랭킹 시스템이 활성화됩니다!
-  // (설정하지 않더라도 에러 없이 브라우저 로컬 저장소 모드로 안전하게 작동합니다.)
+  // 공통 설정 파일(assets/js/supabase-config.js)에 입력된 값을 자동으로 읽어오며,
+  // 필요한 경우 아래 객체에 직접 입력하셔도 작동합니다.
   // ==========================================================================
-  const SUPABASE_CONFIG = {
-    // 예: 'https://abcdefghijklm.supabase.co'
-    URL: (global.SIMULAB_SUPABASE_CONFIG && global.SIMULAB_SUPABASE_CONFIG.URL) || '',
-    // Supabase 대시보드 > Project Settings > API > Project API keys > anon (public)
-    ANON_KEY: (global.SIMULAB_SUPABASE_CONFIG && global.SIMULAB_SUPABASE_CONFIG.ANON_KEY) || ''
+  const LOCAL_CONFIG = {
+    URL: '',
+    ANON_KEY: ''
   };
+
+  /**
+   * Supabase 활성 설정값 반환 (공통 설정 우선)
+   */
+  function getActiveConfig() {
+    const globalCfg = global.SIMULAB_SUPABASE_CONFIG;
+    const url = (globalCfg && globalCfg.url) || LOCAL_CONFIG.URL || '';
+    const anonKey = (globalCfg && globalCfg.anonKey) || LOCAL_CONFIG.ANON_KEY || '';
+    return {
+      url: url.trim().replace(/\/+$/, ''),
+      anonKey: anonKey.trim(),
+      isEnabled: Boolean(url && anonKey)
+    };
+  }
 
   const GameRanking = {};
 
@@ -75,8 +86,8 @@
    * @param {{ url: string, anonKey: string }} config 
    */
   GameRanking.configure = function (config) {
-    if (config && config.url) SUPABASE_CONFIG.URL = config.url.replace(/\/+$/, '');
-    if (config && config.anonKey) SUPABASE_CONFIG.ANON_KEY = config.anonKey;
+    if (config && config.url) LOCAL_CONFIG.URL = config.url.replace(/\/+$/, '');
+    if (config && config.anonKey) LOCAL_CONFIG.ANON_KEY = config.anonKey;
   };
 
   /**
@@ -84,7 +95,7 @@
    * @returns {boolean}
    */
   GameRanking.isCloudEnabled = function () {
-    return Boolean(SUPABASE_CONFIG.URL && SUPABASE_CONFIG.ANON_KEY);
+    return getActiveConfig().isEnabled;
   };
 
   /**
@@ -123,19 +134,20 @@
    * @returns {Promise<Array>}
    */
   GameRanking.fetchRankingsOnline = async function (gameId) {
-    if (!GameRanking.isCloudEnabled()) {
+    const config = getActiveConfig();
+    if (!config.isEnabled) {
       return GameRanking.getRankings(gameId);
     }
 
     try {
       // Supabase PostgREST 쿼리: 높은 점수순(score.desc), 동점 시 먼저 달성한 순(created_at.asc) 상위 10개
-      const endpoint = `${SUPABASE_CONFIG.URL}/rest/v1/game_rankings?game_id=eq.${encodeURIComponent(gameId)}&order=score.desc,created_at.asc&limit=10`;
+      const endpoint = `${config.url}/rest/v1/game_rankings?game_id=eq.${encodeURIComponent(gameId)}&order=score.desc,created_at.asc&limit=10`;
       
       const response = await fetch(endpoint, {
         method: 'GET',
         headers: {
-          'apikey': SUPABASE_CONFIG.ANON_KEY,
-          'Authorization': `Bearer ${SUPABASE_CONFIG.ANON_KEY}`,
+          'apikey': config.anonKey,
+          'Authorization': `Bearer ${config.anonKey}`,
           'Accept': 'application/json'
         }
       });
@@ -249,10 +261,11 @@
     saveLocalCache(gameId, cleanList);
 
     // 2. Supabase 클라우드 온라인 DB 실시간 저장 (백그라운드 비동기)
-    if (GameRanking.isCloudEnabled()) {
+    const config = getActiveConfig();
+    if (config.isEnabled) {
       (async () => {
         try {
-          const endpoint = `${SUPABASE_CONFIG.URL}/rest/v1/game_rankings`;
+          const endpoint = `${config.url}/rest/v1/game_rankings`;
           const payload = {
             game_id: gameId,
             nickname: cleanNick,
@@ -263,8 +276,8 @@
           const res = await fetch(endpoint, {
             method: 'POST',
             headers: {
-              'apikey': SUPABASE_CONFIG.ANON_KEY,
-              'Authorization': `Bearer ${SUPABASE_CONFIG.ANON_KEY}`,
+              'apikey': config.anonKey,
+              'Authorization': `Bearer ${config.anonKey}`,
               'Content-Type': 'application/json',
               'Prefer': 'return=representation'
             },
