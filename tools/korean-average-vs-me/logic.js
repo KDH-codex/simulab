@@ -2,9 +2,9 @@
  * ==========================================================================
  * [별별 통계] 대한민국 평균 vs 나 (직장인 스펙 대조기) 로직 엔진 (logic.js)
  * --------------------------------------------------------------------------
- * 고용노동부, 통계청, 신한은행 『2024 보통사람 금융생활 보고서』 등
- * 공공·금융 빅데이터를 기반으로 연령대별 평균 직장인 스펙과 사용자의
- * 현실 수치를 다각도 레이더 및 상대 백분율로 비교 분석합니다.
+ * 고용노동부 『고용형태별 근로실태조사』, 통계청 『가계금융복지조사』,
+ * 신한은행 『보통사람 금융생활 보고서』 등 공공·금융 빅데이터 기반
+ * 연령대별(전체, 20대, 30대, 40대, 50대) 직장인 평균 스펙 대조 엔진
  * ==========================================================================
  */
 
@@ -15,45 +15,61 @@ export const AvgCompareLogic = {};
  * 출처: 고용노동부 고용형태별 근로실태조사, 통계청 경제활동인구조사
  */
 AvgCompareLogic.BENCHMARKS = {
-    age20s: {
+    all: {
+        label: '전체 직장인 평균',
+        salary: 4320,          // 전체 직장인 평균 연봉 (만원)
+        monthlySavings: 110,   // 월 저축/투자액 (만원)
+        weeklyWorkHours: 41.2, // 주간 근로시간 (시간)
+        lunchCost: 10200,      // 일일 점심값 (원)
+        entryAge: 27.6         // 첫 취업 나이 (세)
+    },
+    '20s': {
         label: '20대 직장인',
-        salary: 3450,       // 연봉 (만원)
-        monthlySavings: 78, // 월 저축/투자액 (만원)
-        weeklyWorkHours: 39.2, // 주간 근로시간 (시간)
-        lunchCost: 9500,    // 일일 점심값 (원)
-        entryAge: 27.2      // 첫 취업 나이 (세)
+        salary: 3450,          // 20대 평균 연봉 (만원)
+        monthlySavings: 78,    // 20대 월 저축/투자액 (만원)
+        weeklyWorkHours: 39.2, // 20대 주간 근로시간 (시간)
+        lunchCost: 9500,       // 20대 일일 점심값 (원)
+        entryAge: 25.8         // 20대 첫 취업 나이 (세)
     },
-    age30s: {
+    '30s': {
         label: '30대 직장인',
-        salary: 4950,       // 연봉 (만원)
-        monthlySavings: 125,// 월 저축/투자액 (만원)
-        weeklyWorkHours: 41.5, // 주간 근로시간 (시간)
-        lunchCost: 10500,   // 일일 점심값 (원)
-        entryAge: 28.5      // 첫 취업 나이 (세)
+        salary: 4950,          // 30대 평균 연봉 (만원)
+        monthlySavings: 125,   // 30대 월 저축/투자액 (만원)
+        weeklyWorkHours: 41.5, // 30대 주간 근로시간 (시간)
+        lunchCost: 10500,      // 30대 일일 점심값 (원)
+        entryAge: 28.5         // 30대 첫 취업 나이 (세)
     },
-    age40s: {
+    '40s': {
         label: '40대 직장인',
-        salary: 6300,       // 연봉 (만원)
-        monthlySavings: 155,// 월 저축/투자액 (만원)
-        weeklyWorkHours: 42.8, // 주간 근로시간 (시간)
-        lunchCost: 11000,   // 일일 점심값 (원)
-        entryAge: 27.8
+        salary: 6300,          // 40대 평균 연봉 (만원)
+        monthlySavings: 155,   // 40대 월 저축/투자액 (만원)
+        weeklyWorkHours: 42.8, // 40대 주간 근로시간 (시간)
+        lunchCost: 11000,      // 40대 일일 점심값 (원)
+        entryAge: 27.8         // 40대 첫 취업 나이 (세)
     },
-    age50s: {
+    '50s': {
         label: '50대 직장인',
-        salary: 6800,       // 연봉 (만원)
-        monthlySavings: 170,// 월 저축/투자액 (만원)
-        weeklyWorkHours: 42.0, // 주간 근로시간 (시간)
-        lunchCost: 10800,   // 일일 점심값 (원)
-        entryAge: 26.9
+        salary: 6800,          // 50대 평균 연봉 (만원)
+        monthlySavings: 170,   // 50대 월 저축/투자액 (만원)
+        weeklyWorkHours: 42.0, // 50대 주간 근로시간 (시간)
+        lunchCost: 10800,      // 50대 일일 점심값 (원)
+        entryAge: 26.9         // 50대 첫 취업 나이 (세)
     }
 };
+
+// 호환성 별칭 부여 (age20s -> 20s)
+AvgCompareLogic.BENCHMARKS.age20s = AvgCompareLogic.BENCHMARKS['20s'];
+AvgCompareLogic.BENCHMARKS.age30s = AvgCompareLogic.BENCHMARKS['30s'];
+AvgCompareLogic.BENCHMARKS.age40s = AvgCompareLogic.BENCHMARKS['40s'];
+AvgCompareLogic.BENCHMARKS.age50s = AvgCompareLogic.BENCHMARKS['50s'];
 
 /**
  * 지표별 사용자 입력값과 평균값을 0~100점 점수로 스케일링 (레이더 차트용)
  */
 AvgCompareLogic.calculateScores = function (ageGroup, userInput) {
-    const bench = AvgCompareLogic.BENCHMARKS[ageGroup] || AvgCompareLogic.BENCHMARKS.age30s;
+    // 키 정규화: '20s', '30s', '40s', '50s', 'all' 또는 'age20s' 모두 완벽 매핑
+    const key = (ageGroup || '').replace(/^age/, '');
+    const bench = AvgCompareLogic.BENCHMARKS[key] || AvgCompareLogic.BENCHMARKS[ageGroup] || AvgCompareLogic.BENCHMARKS['all'];
 
     // 1) 연봉 점수: 평균을 50점으로 설정, ±50% 편차에 따라 0~100점
     const salaryScore = Math.max(10, Math.min(100, Math.round(50 + ((userInput.salary - bench.salary) / bench.salary) * 60)));
@@ -61,7 +77,7 @@ AvgCompareLogic.calculateScores = function (ageGroup, userInput) {
     // 2) 저축력 점수: 평균 대비 비율
     const savingsScore = Math.max(10, Math.min(100, Math.round(50 + ((userInput.monthlySavings - bench.monthlySavings) / bench.monthlySavings) * 60)));
 
-    // 3) 워라밸(근로시간) 점수: 근로시간이 적을수록 점수 높음 (40시간 기준)
+    // 3) 워라밸(근로시간) 점수: 근로시간이 적을수록 점수 높음 (평균 대비)
     const workDiff = bench.weeklyWorkHours - userInput.weeklyWorkHours;
     const workScore = Math.max(10, Math.min(100, Math.round(50 + workDiff * 5)));
 

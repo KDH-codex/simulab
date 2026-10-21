@@ -2,7 +2,7 @@
  * ==========================================================================
  * [별별 통계] 대한민국 평균 vs 나 (직장인 스펙 대조기) UI 컨트롤러 (app.js)
  * --------------------------------------------------------------------------
- * Canvas 레이더 차트 시각화, 입력 폼 제어, 페르소나 리포트 출력
+ * Canvas 레이더 차트 시각화, 연령대 셀렉트박스 실시간 연동, 페르소나 리포트 출력
  * ==========================================================================
  */
 
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 2. 비교 실행 함수
     function runCompare(shouldScroll = false) {
-        const ageGroup = ageSelect.value;
+        const ageGroup = ageSelect ? ageSelect.value : '30s';
         const userInput = {
             salary: parseInt(inputSalary.value, 10) || 4000,
             monthlySavings: parseInt(inputSavings.value, 10) || 100,
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // 비교 테이블/목록 출력
-        renderComparisonList(result.radarData);
+        renderComparisonList(result.radarData, result.benchmark.label);
 
         // 레이더 차트 렌더링
         drawRadarChart(result.radarData);
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 3. 비교 리스트 렌더링
-    function renderComparisonList(radarData) {
+    function renderComparisonList(radarData, groupLabel) {
         if (!comparisonList) return;
         comparisonList.innerHTML = '';
 
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div style="font-weight:750; font-size:0.9rem;">${item.label}</div>
                 <div style="font-size:0.85rem; color:var(--text-secondary);">
                     나: <strong style="color:var(--accent-color, #4f46e5);">${item.userRaw}</strong> / 
-                    평균: <span>${item.avgRaw}</span>
+                    <span style="font-size:0.8rem; color:var(--text-muted);">${groupLabel}:</span> <span>${item.avgRaw}</span>
                 </div>
                 <div style="font-size:0.82rem; text-align:right;">${statusBadge}</div>
             `;
@@ -210,11 +210,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 5. 버튼 이벤트
+    // 5. 이벤트 리스너 등록
+    // 5-1. 연령대 셀렉트박스 변경 시 즉시 재계산 및 화면 갱신
+    if (ageSelect) {
+        ageSelect.addEventListener('change', () => runCompare(false));
+    }
+
+    // 5-2. 버튼 클릭 시 재계산 및 스크롤
     if (btnCompare) {
         btnCompare.addEventListener('click', () => runCompare(true));
     }
 
+    // 5-3. URL 공유 버튼
     if (btnCopyUrl) {
         btnCopyUrl.addEventListener('click', () => {
             const url = window.location.href;
