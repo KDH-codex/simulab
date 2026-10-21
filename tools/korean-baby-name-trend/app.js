@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const rankingListEl = document.getElementById('rankingList');
   const rankingSummaryEl = document.getElementById('rankingSummary');
 
-  let currentYear = '2024';
+  let currentYear = '2025';
   let currentGender = 'boy';
 
   function renderRankings() {
@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
 
       <div style="margin-top:1.25rem;">
-        <h4 style="font-size:0.92rem; font-weight:750; margin-bottom:0.5rem;">📈 2008~2024년 순위 변천사 (높을수록 1위)</h4>
+        <h4 style="font-size:0.92rem; font-weight:750; margin-bottom:0.5rem;">📈 2008~2025년 순위 변천사 (높을수록 1위)</h4>
         <div style="position:relative; width:100%; height:240px;">
           <canvas id="historyCanvas" style="width:100%; height:240px;"></canvas>
         </div>
@@ -182,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const height = rect.height;
     const padding = { top: 30, right: 30, bottom: 40, left: 45 };
 
-    const years = ['2008', '2014', '2018', '2022', '2024'];
+    const years = ['2008', '2014', '2018', '2020', '2022', '2024', '2025'];
     const maxRank = 100; // 100위 기준
     const minRank = 1;
 
