@@ -234,6 +234,46 @@
     <priority>0.8</priority>
   </url>
 
+<!-- [별별 통계] 공공 빅데이터 도구 -->
+  <url>
+    <loc>https://simulab.kr/tools/korean-wealth-percentile-calc/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://simulab.kr/tools/korean-average-vs-me/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- [오락·미니게임] 실시간 랭킹 아케이드 게임 -->
+  <url>
+    <loc>https://simulab.kr/tools/game-tetris/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://simulab.kr/tools/game-typing/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://simulab.kr/tools/game-brick-breaker/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://simulab.kr/tools/game-dodge/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
   <!-- 법적 고지 문서 -->
   <url>
     <loc>https://simulab.kr/legal/privacy.html</loc>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- SEO 최적화 메타 태그 (도구 제목: 대한민국 평균 vs 나, 11자) -->
+  <title>대한민국 평균 vs 나 | SimuLab</title>
+  <meta name="description" content="2024~2025 고용노동부 및 통계청 공공 빅데이터 기반! 내 연봉, 근무시간, 저축액, 점심값은 대한민국 또래 직장인 평균과 비교했을 때 어느 수준일까? 5각형 오각형 레이더 차트와 직장인 유형 페르소나 분석을 즉시 확인해보세요." />
+  <meta name="keywords" content="재밌는 통계, 심심할 때 보는 통계, 별별 통계, 대한민국 평균 vs 나, 직장인 평균 연봉, 평균 점심값, 직장인 평균 근로시간, 통계 시뮬레이터" />
+  
+  <!-- 오픈그래프 (소셜 공유) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="대한민국 평균 vs 나 | 내 스펙은 또래 평균보다 높을까?" />
+  <meta property="og:description" content="통계청·고용노동부 공식 데이터 기반 5각형 레이더 차트로 나의 직장인 지수를 즉시 분석해 보세요!" />
+  <meta property="og:url" content="https://simulab.kr/tools/korean-average-vs-me/index.html" />
+  
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
+  <link rel="stylesheet" href="../../assets/css/style.css" />
+  <link rel="stylesheet" href="../../assets/css/common.css" />
+
+  <style>
+    .avg-compare-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1.5rem 1rem 3rem;
+    }
+    .hero-badge-stats {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.12), rgba(168, 85, 247, 0.12));
+      color: #6366f1;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+    }
+    .input-card-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+      margin-bottom: 1.5rem;
+    }
+    .form-grid-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    @media (max-width: 600px) {
+      .form-grid-2col {
+        grid-template-columns: 1fr;
+      }
+    }
+    .compare-row {
+      display: grid;
+      grid-template-columns: 1.2fr 1.5fr 1fr;
+      align-items: center;
+      padding: 0.75rem 0.5rem;
+      border-bottom: 1px dashed var(--border-color);
+    }
+    .compare-row:last-child {
+      border-bottom: none;
+    }
+    @media (max-width: 500px) {
+      .compare-row {
+        grid-template-columns: 1fr 1fr;
+        row-gap: 0.35rem;
+      }
+      .compare-row > div:last-child {
+        grid-column: 1 / -1;
+        text-align: left !important;
+      }
+    }
+    .radar-wrapper {
+      position: relative;
+      width: 100%;
+      height: 320px;
+      margin: 1.5rem 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #radarCanvas {
+      width: 100%;
+      max-width: 380px;
+      height: 320px;
+    }
+    .persona-box {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.06), rgba(16, 185, 129, 0.06));
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      border-radius: 14px;
+      padding: 1.25rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .persona-badge {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      background: linear-gradient(135deg, #4f46e5, #6366f1);
+      color: #ffffff !important;
+      border-radius: 999px;
+      font-weight: 850;
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+      box-shadow: 0 2px 8px rgba(79, 70, 229, 0.25);
+    }
+    .persona-desc {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+    .stats-source-box {
+      margin-top: 2rem;
+      padding: 1.1rem;
+      background: var(--bg-subtle);
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+  <!-- 상단 글로벌 네비게이션 (core-ui.js가 렌더링) -->
+  <header id="site-header"></header>
+
+  <main class="avg-compare-container">
+    <!-- 상단 브레드크럼 및 배지 -->
+    <div style="text-align: center; margin-bottom: 1.75rem;">
+      <span class="hero-badge-stats">
+        📊 별별 통계 · 심심할 때 보는 공공 빅데이터
+      </span>
+      <h1 style="font-size: 1.75rem; font-weight: 850; letter-spacing: -0.02em; margin-bottom: 0.5rem;">
+        대한민국 평균 vs 나
+      </h1>
+      <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5; max-width: 620px; margin: 0 auto;">
+        고용노동부 및 통계청 최신 근로실태 빅데이터 기반!<br />
+        내 연봉·근무시간·저축액·점심값을 또래 직장인 평균과 5각형 레이더 차트로 비교해보세요.
+      </p>
+    </div>
+
+    <!-- 입력 폼 카드 -->
+    <div class="input-card-box">
+      <h2 style="font-size: 1.1rem; font-weight: 750; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.4rem;">
+        <span>📝</span> 내 정보 입력하기
+      </h2>
+
+      <!-- 1. 비교 연령대 선택 -->
+      <div style="margin-bottom: 1.25rem;">
+        <label for="ageSelect" style="display: block; font-weight: 700; font-size: 0.9rem; margin-bottom: 0.4rem;">
+          비교 대상 연령대
+        </label>
+        <select id="ageSelect" style="width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border-color); border-radius: 10px; background: var(--bg-main); font-size: 0.95rem; font-weight: 600;">
+          <option value="all">대한민국 전체 직장인 평균</option>
+          <option value="20s">20대 (만 20~29세 직장인)</option>
+          <option value="30s" selected>30대 (만 30~39세 직장인)</option>
+          <option value="40s">40대 (만 40~49세 직장인)</option>
+          <option value="50s">50대 (만 50~59세 직장인)</option>
+        </select>
+      </div>
+
+      <!-- 2. 상세 입력 항목 그리드 -->
+      <div class="form-grid-2col">
+        <!-- 연봉 -->
+        <div>
+          <label for="inputSalary" style="display: block; font-weight: 700; font-size: 0.88rem; margin-bottom: 0.35rem;">
+            세전 연봉 (만원)
+          </label>
+          <input 
+            type="number" 
+            id="inputSalary" 
+            value="4500" 
+            placeholder="예: 4500" 
+            style="width: 100%; padding: 0.7rem 0.9rem; border: 1px solid var(--border-color); border-radius: 10px; font-size: 0.95rem; background: var(--bg-main);"
+          />
+        </div>
+
+        <!-- 월 저축액 -->
+        <div>
+          <label for="inputSavings" style="display: block; font-weight: 700; font-size: 0.88rem; margin-bottom: 0.35rem;">
+            월 평균 저축/투자액 (만원)
+          </label>
+          <input 
+            type="number" 
+            id="inputSavings" 
+            value="120" 
+            placeholder="예: 120" 
+            style="width: 100%; padding: 0.7rem 0.9rem; border: 1px solid var(--border-color); border-radius: 10px; font-size: 0.95rem; background: var(--bg-main);"
+          />
+        </div>
+
+        <!-- 주당 근로시간 -->
+        <div>
+          <label for="inputHours" style="display: block; font-weight: 700; font-size: 0.88rem; margin-bottom: 0.35rem;">
+            주당 근무시간 (시간)
+          </label>
+          <input 
+            type="number" 
+            id="inputHours" 
+            value="40" 
+            placeholder="예: 40" 
+            style="width: 100%; padding: 0.7rem 0.9rem; border: 1px solid var(--border-color); border-radius: 10px; font-size: 0.95rem; background: var(--bg-main);"
+          />
+          <span style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem; display: block;">
+            * 법정 주 40시간 기준 (적을수록 워라밸 우수)
+          </span>
+        </div>
+
+        <!-- 일 평균 점심값 -->
+        <div>
+          <label for="inputLunch" style="display: block; font-weight: 700; font-size: 0.88rem; margin-bottom: 0.35rem;">
+            하루 평균 점심 식비 (원)
+          </label>
+          <input 
+            type="number" 
+            id="inputLunch" 
+            value="10000" 
+            placeholder="예: 10000" 
+            style="width: 100%; padding: 0.7rem 0.9rem; border: 1px solid var(--border-color); border-radius: 10px; font-size: 0.95rem; background: var(--bg-main);"
+          />
+          <span style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem; display: block;">
+            * 구내식당, 도시락 포함 평균 식대
+          </span>
+        </div>
+
+        <!-- 첫 취업 나이 -->
+        <div style="grid-column: 1 / -1;">
+          <label for="inputEntryAge" style="display: block; font-weight: 700; font-size: 0.88rem; margin-bottom: 0.35rem;">
+            첫 정규직 취업 나이 (만 나이 기준)
+          </label>
+          <input 
+            type="number" 
+            id="inputEntryAge" 
+            value="28" 
+            placeholder="예: 28" 
+            style="width: 100%; padding: 0.7rem 0.9rem; border: 1px solid var(--border-color); border-radius: 10px; font-size: 0.95rem; background: var(--bg-main);"
+          />
+        </div>
+      </div>
+
+      <!-- 실행 버튼 -->
+      <button 
+        id="btnCompare" 
+        style="width: 100%; margin-top: 1.25rem; padding: 0.85rem; background: linear-gradient(135deg, #4f46e5, #6366f1); color: white; border: none; border-radius: 12px; font-size: 1rem; font-weight: 800; cursor: pointer; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25); transition: opacity 0.15s ease;"
+      >
+        🚀 대한민국 평균과 즉시 비교하기
+      </button>
+    </div>
+
+    <!-- 결과 분석 섹션 -->
+    <div id="resultSection" style="display: none;">
+      <!-- 페르소나 분석 결과 카드 -->
+      <div class="persona-box">
+        <span id="personaBadge" class="persona-badge">밸런스형 직장인</span>
+        <p id="personaDesc" class="persona-desc">
+          소득과 여가의 균형을 잘 유지하고 계십니다!
+        </p>
+      </div>
+
+      <!-- 레이더 차트 및 지표 카드 -->
+      <div class="input-card-box">
+        <h3 style="font-size: 1.05rem; font-weight: 750; margin-bottom: 0.5rem; text-align: center;">
+          🕸️ 5개 영역 종합 밸런스 (나 vs 평균)
+        </h3>
+        <p style="font-size: 0.82rem; color: var(--text-muted); text-align: center; margin-bottom: 1rem;">
+          보라색 면적(나)이 회색 점선(평균 50점)을 벗어날수록 평균보다 우수한 지표입니다.
+        </p>
+
+        <!-- 캔버스 레이더 차트 -->
+        <div class="radar-wrapper">
+          <canvas id="radarCanvas"></canvas>
+        </div>
+
+        <!-- 5개 영역 상세 비교 리스트 -->
+        <div style="margin-top: 1.5rem; border-top: 1px solid var(--border-color); padding-top: 1rem;">
+          <h4 style="font-size: 0.95rem; font-weight: 750; margin-bottom: 0.75rem;">
+            📊 항목별 상세 대조표
+          </h4>
+          <div id="comparisonList"></div>
+        </div>
+
+        <!-- 공유 버튼 -->
+        <div style="margin-top: 1.5rem; text-align: center;">
+          <button 
+            id="btnCopyUrl" 
+            style="padding: 0.65rem 1.25rem; background: var(--bg-subtle); border: 1px solid var(--border-color); border-radius: 10px; font-size: 0.88rem; font-weight: 700; color: var(--text-main); cursor: pointer;"
+          >
+            🔗 내 분석 결과 링크 복사하기
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 통계 출처 및 법적 고지 안내 -->
+    <div class="stats-source-box">
+      <strong>📌 데이터 출처 및 법적 면책 안내 (공공누리 제1유형 준수)</strong>
+      <ul style="margin: 0.5rem 0 0 1.2rem; padding: 0;">
+        <li>본 서비스의 기준 데이터는 <strong>고용노동부</strong> 『고용형태별근로실태조사(2023~2024)』, <strong>통계청</strong> 『가계금융복지조사』 및 <strong>한국외식산업연구원</strong>의 공식 통계자료를 가공하여 제작되었습니다.</li>
+        <li>대한민국 공공데이터의 제공 및 이용 활성화에 관한 법률(제3조) 및 저작권법 제24조의2에 의거, 공공저작물 자유이용허락기준(공공누리 제1유형: 출처표시)에 따라 합법적으로 활용되었습니다.</li>
+        <li>본 분석 결과는 표본 집단 평균치를 바탕으로 한 시뮬레이션 지표이며, 개인의 실질적인 재무 및 고용 상태를 법적·금융적으로 보증하지 않습니다. 재미와 참고 목적으로 활용해 주시기 바랍니다.</li>
+      </ul>
+    </div>
+  </main>
+
+  <!-- 하단 글로벌 푸터 (core-ui.js가 렌더링) -->
+  <footer id="site-footer"></footer>
+
+  <!-- 공통 스크립트 모듈 -->
+  <script type="module" src="../../assets/js/core-ui.js"></script>
+  <script type="module" src="../../assets/js/tracker.js"></script>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

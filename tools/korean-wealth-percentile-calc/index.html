@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- SEO 메타 태그 -->
+  <title>대한민국 순자산 백분위 | SimuLab</title>
+  <meta name="description" content="2024~2025 통계청·한국은행 가계금융복지조사 최신 마이크로데이터 기반! 내 순자산은 대한민국 전체 및 내 연령대에서 상위 몇 %인지 즉시 시뮬레이션해 보세요." />
+  <meta name="keywords" content="재밌는 통계, 심심할 때 보는 통계, 별별 통계, 대한민국 순자산 백분위, 내 자산 상위 몇프로, 2030 평균 순자산, 통계청 자산 분위" />
+  
+  <!-- 오픈그래프 (SNS 공유) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="대한민국 순자산 백분위 | 내 자산은 상위 몇 %일까?" />
+  <meta property="og:description" content="통계청 공식 가계금융복지조사 기반! 내 나이와 순자산으로 알아보는 대한민국 자산 백분위 시뮬레이터." />
+  <meta property="og:url" content="https://simulab.kr/tools/korean-wealth-percentile-calc/index.html" />
+  
+  <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
+  <link rel="stylesheet" href="../../assets/css/style.css" />
+  <link rel="stylesheet" href="../../assets/css/common.css" />
+
+  <style>
+    .wealth-calc-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 1.5rem 1rem 3rem;
+    }
+    .hero-badge-stats {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.12), rgba(168, 85, 247, 0.12));
+      color: #6366f1;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+    }
+    .input-card-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+      margin-bottom: 1.5rem;
+    }
+    .quick-chip-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.6rem;
+    }
+    .quick-chip-btn {
+      padding: 0.35rem 0.75rem;
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-subtle);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .quick-chip-btn:hover {
+      background: var(--accent-soft);
+      border-color: var(--accent-color);
+      color: var(--accent-color);
+    }
+    .quick-chip-reset {
+      background: rgba(239, 68, 68, 0.08);
+      border-color: rgba(239, 68, 68, 0.2);
+      color: #ef4444;
+    }
+    .quick-chip-reset:hover {
+      background: rgba(239, 68, 68, 0.15);
+      border-color: #ef4444;
+      color: #dc2626;
+    }
+    .result-kpi-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+    @media (max-width: 600px) {
+      .result-kpi-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .result-kpi-box {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 1.15rem;
+      text-align: center;
+    }
+    .result-kpi-label {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 0.35rem;
+      font-weight: 600;
+    }
+    .result-kpi-value {
+      font-size: 1.75rem;
+      font-weight: 850;
+      color: var(--accent-color);
+      letter-spacing: -0.02em;
+    }
+    .tier-badge {
+      display: inline-block;
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 0.88rem;
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(59, 130, 246, 0.15));
+      color: #4f46e5;
+      margin-bottom: 0.6rem;
+    }
+    .stat-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      margin-top: 1rem;
+    }
+    .stat-table th, .stat-table td {
+      padding: 0.6rem 0.75rem;
+      border-bottom: 1px solid var(--border-color);
+      text-align: center;
+    }
+    .stat-table th {
+      background: var(--bg-subtle);
+      font-weight: 750;
+      color: var(--text-secondary);
+    }
+    .stat-source-box {
+      background: #f8fafc;
+      border-left: 3px solid #6366f1;
+      padding: 0.85rem 1rem;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      color: #64748b;
+      line-height: 1.6;
+      margin-top: 1.5rem;
+    }
+  </style>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9815778998394475" crossorigin="anonymous"></script>
+</head>
+<body>
+  <header id="site-header"></header>
+
+  <main class="wealth-calc-container">
+    <!-- 헤더 타이틀 -->
+    <div style="margin-bottom: 1.5rem;">
+      <div class="hero-badge-stats">
+        <span>📊</span> 별별 통계 LAB · 공공데이터 기반
+      </div>
+      <h1 class="page-title" style="font-size: 1.65rem; font-weight: 850; margin-bottom: 0.4rem;">
+        대한민국 순자산 백분위
+      </h1>
+      <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.55;">
+        통계청·한국은행 공식 마이크로데이터 기반! 내 순자산은 대한민국 전체와 내 또래 집단에서 과연 상위 몇 %에 해당할까요?
+      </p>
+    </div>
+
+    <!-- 입력 폼 카드 -->
+    <div class="input-card-box">
+      <div class="form-group" style="margin-bottom: 1.25rem;">
+        <label for="ageGroupSelect" style="display: block; font-weight: 750; font-size: 0.92rem; margin-bottom: 0.4rem;">
+          1. 비교할 연령대 선택
+        </label>
+        <select id="ageGroupSelect" class="form-control" style="width: 100%; padding: 0.75rem; border-radius: 10px; font-size: 0.95rem;">
+          <option value="all">대한민국 전체 가구 기준</option>
+          <option value="under30">29세 이하 청년 가구</option>
+          <option value="age30s" selected>30대 가구 (30~39세)</option>
+          <option value="age40s">40대 가구 (40~49세)</option>
+          <option value="age50s">50대 가구 (50~59세)</option>
+          <option value="age60plus">60세 이상 은퇴·고령 가구</option>
+        </select>
+      </div>
+
+      <div class="form-group" style="margin-bottom: 0.85rem;">
+        <label for="netWorthInput" style="display: flex; justify-content: space-between; font-weight: 750; font-size: 0.92rem; margin-bottom: 0.4rem;">
+          <span>2. 내 가구 순자산 입력 (만원 단위)</span>
+          <span style="font-size: 0.8rem; font-weight: 500; color: var(--text-muted);">순자산 = 총자산(부동산+금융) - 부채(대출)</span>
+        </label>
+        <div style="position: relative;">
+          <input 
+            type="text" 
+            id="netWorthInput" 
+            class="form-control" 
+            placeholder="예: 25000 (2억 5천만원)" 
+            value="20,000"
+            style="width: 100%; padding: 0.85rem 3.5rem 0.85rem 0.85rem; font-size: 1.15rem; font-weight: 800; border-radius: 10px; box-sizing: border-box;"
+          />
+          <span style="position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); font-weight: 700; color: var(--text-muted);">만원</span>
+        </div>
+        <div id="inputKoreanHint" style="font-size: 0.82rem; color: var(--accent-color); font-weight: 700; margin-top: 0.35rem;">
+          입력 금액: 2억 원
+        </div>
+
+        <!-- 퀵 칩 버튼 -->
+        <div class="quick-chip-group">
+          <button type="button" class="quick-chip-btn" data-add="100000">+1억원</button>
+          <button type="button" class="quick-chip-btn" data-add="50000">+5천만원</button>
+          <button type="button" class="quick-chip-btn" data-add="10000">+1천만원</button>
+          <button type="button" class="quick-chip-btn" data-add="1000">+100만원</button>
+          <button type="button" class="quick-chip-btn quick-chip-reset" data-action="reset">초기화</button>
+        </div>
+      </div>
+
+      <button type="button" id="btnCalculate" class="btn btn-primary" style="width: 100%; padding: 0.95rem; font-size: 1.05rem; font-weight: 850; border-radius: 12px; margin-top: 0.75rem;">
+        🔍 내 자산 백분위 분석하기
+      </button>
+    </div>
+
+    <!-- 결과 리포트 카드 (초기 숨김 또는 기본 렌더) -->
+    <div id="resultCard" class="input-card-box" style="display: none; border-color: rgba(99, 102, 241, 0.35); background: linear-gradient(180deg, var(--bg-card), var(--bg-subtle));">
+      <div style="text-align: center; margin-bottom: 1.5rem;">
+        <span class="tier-badge" id="resTierBadge">🏆 30대 상위 10% 알짜배기 자산가</span>
+        <h2 style="font-size: 1.35rem; font-weight: 850; margin: 0 0 0.5rem;">자산 분석 결과 리포트</h2>
+        <p id="resFeedbackText" style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; max-width: 580px; margin: 0 auto;">
+          분석 결과가 여기에 표시됩니다.
+        </p>
+      </div>
+
+      <!-- 2대 핵심 지표 -->
+      <div class="result-kpi-grid">
+        <div class="result-kpi-box">
+          <div class="result-kpi-label">대한민국 전체 가구 중</div>
+          <div class="result-kpi-value" id="resAllPct">상위 --%</div>
+        </div>
+        <div class="result-kpi-box">
+          <div class="result-kpi-label">해당 연령대 또래 중</div>
+          <div class="result-kpi-value" id="resAgePct" style="color: #6366f1;">상위 --%</div>
+        </div>
+      </div>
+
+      <!-- 평균 / 중위 비교 요약 -->
+      <div style="background: var(--bg-card); border-radius: 12px; padding: 1rem 1.25rem; font-size: 0.86rem; line-height: 1.8; margin-bottom: 1.5rem; border: 1px solid var(--border-color);">
+        <div>📊 <span id="resMeanDiff">비교 데이터 로딩 중</span></div>
+        <div>⚖️ <span id="resMedianDiff">비교 데이터 로딩 중</span></div>
+      </div>
+
+      <!-- 캔버스 자산 분포 곡선 시각화 -->
+      <div style="margin-bottom: 1.5rem;">
+        <div style="font-size: 0.92rem; font-weight: 800; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: space-between;">
+          <span>📈 대한민국 자산 분포 곡선 &amp; 내 위치</span>
+          <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 500;">(오른쪽일수록 고액 자산)</span>
+        </div>
+        <div style="width: 100%; height: 200px; background: #ffffff; border-radius: 12px; border: 1px solid var(--border-color); overflow: hidden; padding: 0.5rem;">
+          <canvas id="wealthCurveCanvas" style="width: 100%; height: 100%;"></canvas>
+        </div>
+      </div>
+
+      <!-- 2024년 공식 통계 기준표 -->
+      <div style="margin-top: 1.5rem;">
+        <div style="font-size: 0.88rem; font-weight: 750; margin-bottom: 0.5rem;">
+          📋 2024년 대한민국 순자산 분위별 기준 컷 (참고자료)
+        </div>
+        <div style="overflow-x: auto;">
+          <table class="stat-table">
+            <thead>
+              <tr>
+                <th>구분</th>
+                <th>전체 가구</th>
+                <th>20대 이하</th>
+                <th>30대</th>
+                <th>40대</th>
+                <th>50대</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>상위 1%</strong></td>
+                <td>32억 8천만원</td>
+                <td>8억 5천만원</td>
+                <td>17억 5천만원</td>
+                <td>34억 5천만원</td>
+                <td>41억 0천만원</td>
+              </tr>
+              <tr>
+                <td><strong>상위 10%</strong></td>
+                <td>10억 8천만원</td>
+                <td>2억 4천만원</td>
+                <td>6억 8천만원</td>
+                <td>12억 5천만원</td>
+                <td>14억 8천만원</td>
+              </tr>
+              <tr>
+                <td><strong>중위값(50%)</strong></td>
+                <td>2억 4,700만원</td>
+                <td>4,800만원</td>
+                <td>2억 0,500만원</td>
+                <td>3억 3,500만원</td>
+                <td>3억 5,000만원</td>
+              </tr>
+              <tr>
+                <td><strong>평균값</strong></td>
+                <td>4억 3,540만원</td>
+                <td>9,200만원</td>
+                <td>3억 1,000만원</td>
+                <td>5억 1,200만원</td>
+                <td>5억 5,800만원</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 액션 버튼 (공유) -->
+      <div style="display: flex; gap: 0.6rem; margin-top: 1.5rem;">
+        <button type="button" id="btnCopyUrl" class="btn btn-secondary" style="flex: 1; padding: 0.75rem; font-weight: 700; font-size: 0.9rem;">
+          🔗 결과 및 도구 공유하기
+        </button>
+      </div>
+    </div>
+
+    <!-- 법적 출처 표기 (공공데이터 이용 활성화법 및 공공저작물 자유이용 준수) -->
+    <div class="stat-source-box">
+      <strong>📌 데이터 출처 및 법적 고지</strong><br/>
+      본 시뮬레이터에 적용된 통계는 <strong>통계청·한국은행·금융감독원이 공동 작성한 「2024년 가계금융복지조사」</strong>의 공공데이터(공공누리 제1유형: 출처표시)를 기반으로 자체 추정 보간 알고리즘을 적용한 결과입니다.<br/>
+      본 시뮬레이션 결과는 국민 경제활동 참고 목적이며, 세무·금융·대출 심사 등의 법적 증빙 효력을 갖지 않습니다.
+    </div>
+
+    <!-- 법적 면책 조항 -->
+    <div id="legal-disclaimer" style="margin-top: 1.5rem;"></div>
+  </main>
+
+  <div id="site-footer"></div>
+
+  <!-- 공통 스크립트 -->
+  <script src="../../assets/js/supabase-config.js"></script>
+  <script src="../../assets/js/core-ui.js"></script>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
