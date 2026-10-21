@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>우리나라 수출입 품목 순위 | 관세청·무역협회 24년 공공 빅데이터</title>
+  <meta name="description" content="2000~2024 대한민국 10대 수출 품목 순위 변천사. 반도체, 자동차, 2차전지, 조선 등 주력 산업의 24년간 성장률과 관세청 공식 무역수지 흑자·적자 역사를 인터랙티브 차트로 확인하세요.">
+  <meta name="keywords" content="우리나라 수출 순위, 10대 수출품목, 반도체 수출액, 한국 무역수지, 관세청 무역통계, 자동차 수출 순위, 2차전지 수출, 별별 통계">
+  <link rel="canonical" href="https://simulab.co.kr/tools/korean-trade-ranking/index.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="우리나라 수출입 품목 순위 (2000~2024) | SimuLab">
+  <meta property="og:description" content="한국을 먹여 살린 10대 수출 품목 순위 변천사! 관세청 공식 데이터로 보는 24년 무역 기적.">
+  <meta property="og:url" content="https://simulab.co.kr/tools/korean-trade-ranking/index.html">
+
+  <!-- Style Sheets -->
+  <link rel="stylesheet" href="../../assets/css/common.css">
+  <link rel="stylesheet" href="./style.css">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "우리나라 수출입 품목 순위 시뮬레이터",
+    "description": "2000년부터 2024년까지의 관세청 및 한국무역협회(KITA) 공공 빅데이터를 기반으로 10대 수출 품목 순위와 무역수지를 시각화합니다.",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "All"
+  }
+  </script>
+</head>
+<body class="tool-page">
+  <!-- 상단 공통 헤더 -->
+  <header id="site-header"></header>
+
+  <main class="tool-main-container">
+    <!-- 도구 헤더 카드 -->
+    <header class="tool-hero-card">
+      <div class="tool-badge-row">
+        <span class="tool-badge badge-official">🏛️ 관세청 · 산업부 공식 통계</span>
+        <span class="tool-badge badge-timeseries">📈 24년 시계열 (2000~2024)</span>
+        <span class="tool-badge badge-live">🚢 대한민국 무역 히스토리</span>
+      </div>
+      <h1 class="tool-title">우리나라 수출입 품목 순위</h1>
+      <p class="tool-desc">
+        반도체, 자동차, 조선부터 2차전지와 바이오까지! 대한민국 경제를 이끌어온 24년간의 10대 수출 품목 순위 변천사와 무역수지 흑자·적자 역사를 인터랙티브 차트로 탐색해 보세요.
+      </p>
+    </header>
+
+    <!-- 탭 네비게이션 -->
+    <nav class="tool-tab-nav" aria-label="도구 모드 선택">
+      <button type="button" class="tool-tab-btn is-active" data-tab="rank">
+        <span class="tab-icon">🚢</span> 연도별 10대 수출 품목
+      </button>
+      <button type="button" class="tool-tab-btn" data-tab="growth">
+        <span class="tab-icon">📈</span> 6대 주력산업 성장사
+      </button>
+      <button type="button" class="tool-tab-btn" data-tab="balance">
+        <span class="tab-icon">⚖️</span> 수입 품목 &amp; 무역수지
+      </button>
+    </nav>
+
+    <!-- ===================================================================
+         탭 1: 🚢 연도별 10대 수출 품목 순위
+         =================================================================== -->
+    <section id="tab-panel-rank" class="tab-panel is-active">
+      <!-- 타임라인 슬라이더 & 컨트롤 -->
+      <div class="trade-control-panel">
+        <div class="timeline-row">
+          <button type="button" id="btn-trade-play" class="btn-play">
+            <span id="trade-play-icon">▶</span> <span id="trade-play-text">자동 재생</span>
+          </button>
+          <div class="slider-wrapper">
+            <div class="slider-header">
+              <span class="slider-title">기준 연도: <strong id="trade-display-year" class="highlight-year">2024년</strong></span>
+              <span class="slider-milestone" id="trade-display-milestone">반도체 HBM 슈퍼사이클 &amp; 역대급 수출</span>
+            </div>
+            <input type="range" id="trade-year-slider" min="0" max="6" step="1" value="6" aria-label="수출 연도 선택 슬라이더">
+            <div class="slider-ticks" id="trade-slider-ticks"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 무역 요약 뱃지 그리드 -->
+      <div class="trade-summary-bar" id="trade-summary-bar">
+        <div class="stat-pill">
+          <span class="pill-label">총 수출액</span>
+          <strong class="pill-val" id="sum-export-val">6,838억 $</strong>
+        </div>
+        <div class="stat-pill">
+          <span class="pill-label">총 수입액</span>
+          <strong class="pill-val" id="sum-import-val">6,330억 $</strong>
+        </div>
+        <div class="stat-pill is-surplus" id="sum-balance-pill">
+          <span class="pill-label">무역수지</span>
+          <strong class="pill-val" id="sum-balance-val">+508억 $ (흑자)</strong>
+        </div>
+      </div>
+
+      <!-- 수출 10대 품목 막대 차트 카드 -->
+      <div class="trade-chart-card">
+        <div class="chart-header-row">
+          <div>
+            <h2 class="chart-main-title" id="trade-chart-title">2024년 대한민국 수출 10대 품목 순위</h2>
+            <p class="chart-sub-title">단위: 억 달러 (100M USD) 및 총 수출 대비 비중(%) · 관세청 통계</p>
+          </div>
+          <div class="top1-share-badge" id="top1-share-badge">
+            <span class="badge-label">1위 반도체 비중</span>
+            <span class="badge-value" id="top1-share-text">20.8% (1,419억$)</span>
+          </div>
+        </div>
+
+        <div class="trade-bars-container" id="trade-bars-container">
+          <!-- JS 렌더링 -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         탭 2: 📈 6대 주력산업 24년 성장사
+         =================================================================== -->
+    <section id="tab-panel-growth" class="tab-panel">
+      <div class="growth-control-card">
+        <label for="product-select" class="selector-label">주력 품목 선택:</label>
+        <select id="product-select" class="custom-select">
+          <option value="반도체" selected>💾 반도체 (수출의 20% · AI 메모리 HBM)</option>
+          <option value="자동차">🚗 자동차 (전기·하이브리드 모빌리티 대도약)</option>
+          <option value="선박(조선)">🚢 선박(조선) (세계 1위 신화 · LNG선 부활)</option>
+          <option value="석유제품">⛽ 석유제품 (원유 정제 고도화 캐시카우)</option>
+          <option value="2차전지(배터리)">🔋 2차전지(배터리) (K-배터리 신성장 엔진)</option>
+          <option value="바이오헬스">💊 바이오헬스 (바이오시밀러·CDMO 신규 진입)</option>
+        </select>
+      </div>
+
+      <!-- 품목 상세 리포트 카드 -->
+      <div class="product-growth-hero" id="product-growth-hero">
+        <!-- JS 렌더링 -->
+      </div>
+
+      <!-- 시계열 꺾은선 차트 (Canvas) -->
+      <div class="line-chart-card">
+        <div class="line-chart-header">
+          <h3 class="line-chart-title" id="product-canvas-title">반도체 24개년 수출액 추이 (2000~2024)</h3>
+          <span class="chart-unit-tag">단위: 억 달러</span>
+        </div>
+        <div class="canvas-wrapper">
+          <canvas id="product-growth-canvas" width="800" height="340"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         탭 3: ⚖️ 수입 품목 TOP5 & 무역수지 히스토리
+         =================================================================== -->
+    <section id="tab-panel-balance" class="tab-panel">
+      <!-- 수입 주요 품목 안내 -->
+      <div class="import-card">
+        <h2 class="card-title">대한민국은 무엇을 가장 많이 수입할까? (2024년 기준)</h2>
+        <p class="card-desc">한국은 제조업 강국인 만큼 원자재(원유, 천연가스, 석탄)와 반도체 제조용 핵심 부품·장비의 수입 비중이 압도적으로 높습니다.</p>
+
+        <div class="import-grid" id="import-grid">
+          <!-- JS 렌더링 -->
+        </div>
+      </div>
+
+      <!-- 24개년 무역수지 흑자/적자 타임라인 테이블 -->
+      <div class="balance-history-card">
+        <h2 class="card-title">2000~2024 대한민국 무역수지 흑자·적자 역사</h2>
+        <p class="card-desc">에너지 위기와 외환위기, 팬데믹을 이겨내며 이어온 무역 흑자 흐름을 확인하세요.</p>
+
+        <div class="table-responsive">
+          <table class="balance-table">
+            <thead>
+              <tr>
+                <th>연도</th>
+                <th>총 수출액</th>
+                <th>총 수입액</th>
+                <th>무역수지</th>
+                <th>역사적 배경</th>
+              </tr>
+            </thead>
+            <tbody id="balance-tbody">
+              <!-- JS 렌더링 -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 공공데이터 공식 출처 & 법적 고지 배너 -->
+    <aside class="data-source-card">
+      <div class="source-header">
+        <span class="source-icon">📚</span>
+        <h3 class="source-title">공공 무역 빅데이터 출처 및 기준 안내</h3>
+      </div>
+      <div class="source-body">
+        <ul class="source-list">
+          <li><strong>관세청(KCS) 수출입 무역통계:</strong> 통관 기준 수출입 실적 및 MTI 기준 주요 품목별 실적 집계.</li>
+          <li><strong>산업통상자원부:</strong> 연간 수출입 동향 공식 브리핑 및 15대 주력 품목 통계치.</li>
+          <li><strong>한국무역협회(KITA):</strong> 무역통계 DB (K-stat) 기준.</li>
+          <li><strong>면책 조항:</strong> 본 도구는 교육 및 통계 시각화 목적의 정보 서비스이며, 통관 일자 및 확정치 수정에 따라 실시간 통계와 소폭 차이가 발생할 수 있습니다.</li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- 법적 면책 조항 컨테이너 -->
+    <div id="disclaimer-container"></div>
+  </main>
+
+  <!-- 하단 공통 푸터 -->
+  <footer id="site-footer"></footer>
+
+  <!-- Scripts -->
+  <script src="../../assets/js/core-ui.js"></script>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

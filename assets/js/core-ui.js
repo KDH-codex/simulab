@@ -292,7 +292,8 @@
             { title: '대한민국 평균 vs 나', sub: '연봉·근무시간·점심값 5각형 레이더 차트', href: 'tools/korean-average-vs-me/index.html', tool: 'korean-average-vs-me', hot: true },
             { title: '대한민국 아기이름 트렌드', sub: '2008~2024 대법원 출생신고 공식 순위', href: 'tools/korean-baby-name-trend/index.html', tool: 'korean-baby-name-trend', hot: true },
             { title: '전국 도시별 소득 & 집값', sub: '17개 시도별 소득·아파트값·PIR·1인가구', href: 'tools/korean-city-income-housing/index.html', tool: 'korean-city-income-housing', hot: true },
-            { title: '세계 20개국 소득 순위변화', sub: '1990~2024 GNI·1인당 소득 순위 레이스', href: 'tools/world-gni-ranking-race/index.html', tool: 'world-gni-ranking-race', hot: true }
+            { title: '세계 20개국 소득 순위변화', sub: '1990~2024 GNI·1인당 소득 순위 레이스', href: 'tools/world-gni-ranking-race/index.html', tool: 'world-gni-ranking-race', hot: true },
+            { title: '우리나라 수출입 품목 순위', sub: '2000~2024 반도체·자동차 24년 순위', href: 'tools/korean-trade-ranking/index.html', tool: 'korean-trade-ranking', hot: true }
           ]
         }
       ]
