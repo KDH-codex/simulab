@@ -2,11 +2,12 @@
  * ==========================================================================
  * [별별 통계] 대한민국 아기이름 트렌드 UI 컨트롤러 (app.js)
  * --------------------------------------------------------------------------
- * 1. 탭 네비게이션 (Top 랭킹 / 내 이름 검색 / 시대별 변천사 / 성씨+풀네임 랭킹)
+ * 1. 탭 네비게이션 (Top 랭킹 / 내 이름 검색 / 시대별 변천사 / 성씨+풀네임 / 아이와 가볼만한 곳)
  * 2. 2026년 최신 공식 출생신고 순위 렌더링
  * 3. 시계열 순위 캔버스(Canvas) 차트 시각화 (2008~2026년)
  * 4. 통계청 10대 성씨 + 2026 인기 아기이름 결합 풀네임 랭킹 엔진
  * 5. LocalStorage 기반 안전한 나만의 이름 후보 보관함(즐겨찾기)
+ * 6. [NEW] 🎪 아이와 가볼만한 곳 10월·11월 축제 달력 및 인터랙티브 툴팁
  * ==========================================================================
  */
 
@@ -32,6 +33,11 @@ document.addEventListener('DOMContentLoaded', () => {
       // 4번째 풀네임 탭으로 이동 시 초기 렌더링 실행
       if (targetId === 'panel-fullname') {
         renderFullnames();
+      }
+
+      // 5번째 아이와 가볼만한 곳 달력 탭으로 이동 시 초기 렌더링 실행
+      if (targetId === 'panel-kids-calendar') {
+        renderKidsCalendar();
       }
     });
   });
@@ -325,11 +331,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --------------------------------------------------------------------------
-  // 5. 탭 4: 성씨+이름 풀네임 결합 랭킹 & 보관함 (NEW)
+  // 5. 탭 4: 성씨+이름 풀네임 결합 랭킹 & 보관함
   // --------------------------------------------------------------------------
   const STORAGE_KEY = 'simulab_saved_baby_names';
 
-  // 로컬 저장소 헬퍼 함수 (보안 및 오류 방지)
   function getSavedList() {
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
@@ -359,12 +364,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const existingIndex = list.findIndex(item => item.fullname === fullname);
 
     if (existingIndex >= 0) {
-      // 이미 있으면 보관함에서 삭제
       list.splice(existingIndex, 1);
       setSavedList(list);
-      return false; // 저장 해제됨
+      return false;
     } else {
-      // 없으면 새로 추가
       list.unshift({
         fullname,
         surname,
@@ -374,7 +377,7 @@ document.addEventListener('DOMContentLoaded', () => {
         savedAt: new Date().toISOString()
       });
       setSavedList(list);
-      return true; // 저장 완료됨
+      return true;
     }
   }
 
@@ -386,7 +389,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // 풀네임 컨트롤 상태 변수
   let currentSurnameFilter = '전체';
   let currentFnGender = 'all';
 
@@ -397,7 +399,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const fullnameRankingList = document.getElementById('fullnameRankingList');
   const fullnameSummaryNotice = document.getElementById('fullnameSummaryNotice');
 
-  // 보관함 모달 관련 요소
   const btnOpenSavedModal = document.getElementById('btnOpenSavedModal');
   const btnCloseSavedModal = document.getElementById('btnCloseSavedModal');
   const savedModal = document.getElementById('savedModal');
@@ -405,14 +406,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnCopyAllSaved = document.getElementById('btnCopyAllSaved');
   const btnClearAllSaved = document.getElementById('btnClearAllSaved');
 
-  // 풀네임 랭킹 카드 렌더링 함수
   function renderFullnames() {
     if (!fullnameRankingList) return;
 
     const list = BabyNameLogic.getFullnameRankings(currentSurnameFilter, currentFnGender, '2026');
     fullnameRankingList.innerHTML = '';
 
-    // 상단 요약 문구 안내
     if (fullnameSummaryNotice) {
       let genderText = '전체 (남아·여아)';
       if (currentFnGender === 'boy') genderText = '남아 👦';
@@ -429,22 +428,18 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // 카드 렌더링
     list.forEach(item => {
       const card = document.createElement('div');
       card.className = 'fn-card';
 
-      // 1~3위 메달 표시
       let rankBadgeHtml = `<span class="fn-rank">${item.rank}</span>`;
       if (item.rank === 1) rankBadgeHtml = `<span class="fn-rank fn-rank-gold">🥇 1</span>`;
       else if (item.rank === 2) rankBadgeHtml = `<span class="fn-rank fn-rank-silver">🥈 2</span>`;
       else if (item.rank === 3) rankBadgeHtml = `<span class="fn-rank fn-rank-bronze">🥉 3</span>`;
 
-      // 성별 뱃지
       const genderBadgeClass = item.gender === 'boy' ? 'fn-gender-boy' : 'fn-gender-girl';
       const genderText = item.gender === 'boy' ? '남아' : '여아';
 
-      // 찜하기 버튼 상태
       const saved = isFullnameSaved(item.fullname);
       const favClass = saved ? 'fn-btn-fav is-saved' : 'fn-btn-fav';
       const favIcon = saved ? '⭐' : '☆';
@@ -465,7 +460,6 @@ document.addEventListener('DOMContentLoaded', () => {
         </button>
       `;
 
-      // 별표(찜하기) 클릭 이벤트 바인딩
       const favBtn = card.querySelector('.fn-btn-fav');
       favBtn.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -494,7 +488,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 성씨 칩 클릭 이벤트
   surnameChips.forEach(chip => {
     chip.addEventListener('click', () => {
       surnameChips.forEach(c => c.classList.remove('active'));
@@ -505,7 +498,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 직접 성씨 입력 적용 버튼
   if (btnApplyCustomSurname && customSurnameInput) {
     function applyCustomSurname() {
       const val = customSurnameInput.value.trim();
@@ -525,7 +517,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 성별 필터 토글 버튼
   fnGenderBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       fnGenderBtns.forEach(b => b.classList.remove('active'));
@@ -535,9 +526,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // --------------------------------------------------------------------------
-  // 6. 보관함 모달창 제어 로직
-  // --------------------------------------------------------------------------
   function openSavedModal() {
     renderSavedList();
     if (savedModal) savedModal.classList.add('open');
@@ -545,7 +533,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function closeSavedModal() {
     if (savedModal) savedModal.classList.remove('open');
-    // 모달을 닫았을 때 랭킹 카드 별표 상태도 최신으로 동기화
     renderFullnames();
   }
 
@@ -590,7 +577,6 @@ document.addEventListener('DOMContentLoaded', () => {
         <button class="btn-saved-delete" data-fullname="${item.fullname}" title="후보에서 삭제">×</button>
       `;
 
-      // 개별 삭제 버튼 이벤트
       row.querySelector('.btn-saved-delete').addEventListener('click', () => {
         const updated = getSavedList().filter(x => x.fullname !== item.fullname);
         setSavedList(updated);
@@ -608,14 +594,12 @@ document.addEventListener('DOMContentLoaded', () => {
     btnCloseSavedModal.addEventListener('click', closeSavedModal);
   }
 
-  // 모달 바깥 배경 클릭 시 닫기
   if (savedModal) {
     savedModal.addEventListener('click', (e) => {
       if (e.target === savedModal) closeSavedModal();
     });
   }
 
-  // 전체 복사 버튼
   if (btnCopyAllSaved) {
     btnCopyAllSaved.addEventListener('click', () => {
       const list = getSavedList();
@@ -645,7 +629,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 전체 비우기 버튼
   if (btnClearAllSaved) {
     btnClearAllSaved.addEventListener('click', () => {
       const list = getSavedList();
@@ -654,6 +637,302 @@ document.addEventListener('DOMContentLoaded', () => {
         setSavedList([]);
         renderSavedList();
       }
+    });
+  }
+
+  // --------------------------------------------------------------------------
+  // 6. [NEW] 탭 5: 🎪 아이와 가볼만한 곳 축제 달력 UI 컨트롤러
+  // --------------------------------------------------------------------------
+  let kidsYear = 2026;
+  let kidsMonth = 10; // 10월 기본
+  let kidsRegion = '전체';
+  let kidsSelectedDate = '2026-10-24'; // 기본 선택일 (주말 대표 축제)
+
+  const kidsRegionChips = document.querySelectorAll('.region-chip');
+  const btnPrevMonth = document.getElementById('btnPrevMonth');
+  const btnNextMonth = document.getElementById('btnNextMonth');
+  const kidsCurrentMonthText = document.getElementById('kidsCurrentMonthText');
+  const kidsMonthSubText = document.getElementById('kidsMonthSubText');
+  const kidsCalendarGrid = document.getElementById('kidsCalendarGrid');
+  const selectedDateTitle = document.getElementById('selectedDateTitle');
+  const selectedDateCount = document.getElementById('selectedDateCount');
+  const kidsEventCardsList = document.getElementById('kidsEventCardsList');
+  const kidsFloatingTooltip = document.getElementById('kidsFloatingTooltip');
+
+  // 달력 렌더링 함수
+  function renderKidsCalendar() {
+    if (!kidsCalendarGrid) return;
+
+    // 1. 월 헤더 업데이트
+    if (kidsCurrentMonthText) {
+      kidsCurrentMonthText.textContent = `${kidsYear}년 ${kidsMonth}월`;
+    }
+    if (kidsMonthSubText) {
+      if (kidsMonth === 10) {
+        kidsMonthSubText.textContent = '🍁 단풍 & 가을 수확 축제 시즌';
+      } else {
+        kidsMonthSubText.textContent = '🏮 빛초롱 & 겨울맞이 온가족 축제 시즌';
+      }
+    }
+
+    // 2. 월별 날짜 및 월~일 시작 요일 계산
+    // JS getDay(): 0(일), 1(월), 2(화), 3(수), 4(목), 5(금), 6(토)
+    // 월~일 기준(월=0, 화=1, ..., 일=6)으로 변환: (day + 6) % 7
+    const firstDayObj = new Date(kidsYear, kidsMonth - 1, 1);
+    const startWeekdayOffset = (firstDayObj.getDay() + 6) % 7;
+    const daysInMonth = new Date(kidsYear, kidsMonth, 0).getDate();
+    const prevMonthDays = new Date(kidsYear, kidsMonth - 1, 0).getDate();
+
+    kidsCalendarGrid.innerHTML = '';
+
+    // 3. 이전 달 잔여 일자 셀 추가
+    for (let i = startWeekdayOffset - 1; i >= 0; i--) {
+      const dayNum = prevMonthDays - i;
+      const cell = document.createElement('div');
+      cell.className = 'kids-day-cell other-month';
+      cell.innerHTML = `
+        <div class="kids-day-header">
+          <span class="day-num">${dayNum}</span>
+        </div>
+      `;
+      kidsCalendarGrid.appendChild(cell);
+    }
+
+    // 4. 현재 달 일자 셀 추가 (1일 ~ daysInMonth일)
+    for (let d = 1; d <= daysInMonth; d++) {
+      const cell = document.createElement('div');
+      cell.className = 'kids-day-cell';
+
+      // 월~일 기준 요일 인덱스 (0:월, 1:화, ..., 5:토, 6:일)
+      const weekdayIdx = (startWeekdayOffset + d - 1) % 7;
+      if (weekdayIdx === 5) cell.classList.add('sat');
+      if (weekdayIdx === 6) cell.classList.add('sun');
+
+      const dateStr = `${kidsYear}-${String(kidsMonth).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+      if (dateStr === kidsSelectedDate) {
+        cell.classList.add('is-selected');
+      }
+
+      // 오늘 날짜 표시 (2026-10-22 가정 또는 실시간 일치 시)
+      if (d === 22 && kidsMonth === 10) {
+        cell.classList.add('is-today');
+      }
+
+      // 해당 날짜에 열리는 축제들 조회
+      const dayEvents = BabyNameLogic.getEventsOnDate(dateStr, kidsRegion);
+
+      let eventsHtml = '';
+      if (dayEvents.length > 0) {
+        eventsHtml = `<div class="cal-events-wrap">`;
+        dayEvents.slice(0, 3).forEach(ev => {
+          eventsHtml += `
+            <span class="cal-event-bar bar-${ev.tagColor}" 
+                  data-ev-id="${ev.id}" 
+                  data-ev-title="${ev.title}"
+                  data-ev-period="${ev.periodText}"
+                  data-ev-loc="${ev.location}"
+                  data-ev-prog="${ev.program}"
+                  data-ev-link="${ev.link}"
+                  data-ev-icon="${ev.icon}">
+              ${ev.icon} ${ev.title}
+            </span>
+          `;
+        });
+        if (dayEvents.length > 3) {
+          eventsHtml += `
+            <span style="font-size:0.65rem; color:#64748b; font-weight:750; text-align:right;">
+              +${dayEvents.length - 3}개 더보기
+            </span>
+          `;
+        }
+        eventsHtml += `</div>`;
+      }
+
+      cell.innerHTML = `
+        <div class="kids-day-header">
+          <span class="day-num">${d}</span>
+          ${dayEvents.length > 0 ? `<span style="font-size:0.65rem; color:#3b82f6; font-weight:800;">${dayEvents.length}개</span>` : ''}
+        </div>
+        ${eventsHtml}
+      `;
+
+      // 날짜 셀 클릭 시 선택 일자 변경 및 하단 카드 갱신
+      cell.addEventListener('click', () => {
+        document.querySelectorAll('.kids-day-cell').forEach(c => c.classList.remove('is-selected'));
+        cell.classList.add('is-selected');
+        kidsSelectedDate = dateStr;
+        renderSelectedDateDetails(dateStr);
+      });
+
+      // 축제 바 호버 시 툴팁 및 클릭 시 외부 링크 이동
+      const bars = cell.querySelectorAll('.cal-event-bar');
+      bars.forEach(bar => {
+        bar.addEventListener('mouseenter', (e) => {
+          showTooltip(e, {
+            title: bar.getAttribute('data-ev-title'),
+            period: bar.getAttribute('data-ev-period'),
+            location: bar.getAttribute('data-ev-loc'),
+            program: bar.getAttribute('data-ev-prog'),
+            icon: bar.getAttribute('data-ev-icon')
+          });
+        });
+
+        bar.addEventListener('mousemove', (e) => {
+          moveTooltip(e);
+        });
+
+        bar.addEventListener('mouseleave', () => {
+          hideTooltip();
+        });
+
+        bar.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const link = bar.getAttribute('data-ev-link');
+          const title = bar.getAttribute('data-ev-title');
+          if (link) {
+            window.open(link, '_blank');
+            if (window.SimuLabTracker && window.SimuLabTracker.trackEvent) {
+              window.SimuLabTracker.trackEvent('click_kids_event_bar', title);
+            }
+          }
+        });
+      });
+
+      kidsCalendarGrid.appendChild(cell);
+    }
+
+    // 5. 다음 달 일자 채우기 (7열 그리드 마감용)
+    const totalCells = startWeekdayOffset + daysInMonth;
+    const remaining = (7 - (totalCells % 7)) % 7;
+    for (let nextD = 1; nextD <= remaining; nextD++) {
+      const cell = document.createElement('div');
+      cell.className = 'kids-day-cell other-month';
+      cell.innerHTML = `
+        <div class="kids-day-header">
+          <span class="day-num">${nextD}</span>
+        </div>
+      `;
+      kidsCalendarGrid.appendChild(cell);
+    }
+
+    // 하단 상세 목록 초기 렌더링
+    renderSelectedDateDetails(kidsSelectedDate);
+  }
+
+  // 하단 선택 날짜 상세 목록 렌더링 함수
+  function renderSelectedDateDetails(dateStr) {
+    if (!kidsEventCardsList) return;
+
+    const [y, m, d] = dateStr.split('-');
+    const weekdayNames = ['일', '월', '화', '수', '목', '금', '토'];
+    const dObj = new Date(parseInt(y), parseInt(m) - 1, parseInt(d));
+    const dayOfWeek = weekdayNames[dObj.getDay()];
+
+    if (selectedDateTitle) {
+      selectedDateTitle.textContent = `📌 ${parseInt(m)}월 ${parseInt(d)}일(${dayOfWeek}) 열리는 가족 축제 & 행사`;
+    }
+
+    const events = BabyNameLogic.getEventsOnDate(dateStr, kidsRegion);
+    if (selectedDateCount) {
+      selectedDateCount.textContent = `총 ${events.length}개`;
+    }
+
+    kidsEventCardsList.innerHTML = '';
+
+    if (events.length === 0) {
+      kidsEventCardsList.innerHTML = `
+        <div class="kec-empty">
+          <div style="font-size:2rem; margin-bottom:0.4rem;">🎪</div>
+          <strong>선택하신 날짜에는 [${kidsRegion}] 지역에 등록된 축제가 없습니다.</strong>
+          <p style="font-size:0.8rem; margin-top:0.3rem;">
+            달력에서 알록달록한 축제 바가 있는 주말 날짜(예: 10월 24일, 25일 등)를 클릭해보세요!
+          </p>
+        </div>
+      `;
+      return;
+    }
+
+    events.forEach(ev => {
+      const card = document.createElement('div');
+      card.className = 'kids-event-card';
+      card.innerHTML = `
+        <div>
+          <div class="kec-top">
+            <span class="kec-region-badge">📍 ${ev.region}</span>
+            <span style="font-size:0.75rem; font-weight:800; color:#16a34a;">${ev.fee}</span>
+          </div>
+          <h5 class="kec-title">${ev.icon} ${ev.title}</h5>
+          <div class="kec-period">🗓️ 기간: ${ev.periodText}</div>
+          <div class="kec-info-row">
+            <strong>📍 장소:</strong> ${ev.location}
+          </div>
+          <div class="kec-info-row">
+            <strong>🎈 주요 프로그램:</strong> ${ev.program}
+          </div>
+        </div>
+        <a href="${ev.link}" target="_blank" rel="noopener noreferrer" class="kec-btn-link">
+          공식 안내 홈페이지 바로가기 ↗
+        </a>
+      `;
+
+      card.querySelector('.kec-btn-link').addEventListener('click', () => {
+        if (window.SimuLabTracker && window.SimuLabTracker.trackEvent) {
+          window.SimuLabTracker.trackEvent('click_kids_event_card', ev.title);
+        }
+      });
+
+      kidsEventCardsList.appendChild(card);
+    });
+  }
+
+  // 툴팁 헬퍼 함수
+  function showTooltip(e, data) {
+    if (!kidsFloatingTooltip) return;
+    kidsFloatingTooltip.innerHTML = `
+      <div class="tt-title">${data.icon || '🎪'} ${data.title}</div>
+      <div class="tt-row"><strong>🗓️ 기간:</strong> ${data.period}</div>
+      <div class="tt-row"><strong>📍 장소:</strong> ${data.location}</div>
+      <div class="tt-row"><strong>🎈 프로그램:</strong> ${data.program}</div>
+      <div class="tt-guide">👉 클릭 시 공식 사이트로 이동합니다!</div>
+    `;
+    kidsFloatingTooltip.classList.add('show');
+    moveTooltip(e);
+  }
+
+  function moveTooltip(e) {
+    if (!kidsFloatingTooltip) return;
+    kidsFloatingTooltip.style.left = `${e.clientX}px`;
+    kidsFloatingTooltip.style.top = `${e.clientY}px`;
+  }
+
+  function hideTooltip() {
+    if (!kidsFloatingTooltip) return;
+    kidsFloatingTooltip.classList.remove('show');
+  }
+
+  // 지역 필터 칩 클릭 이벤트
+  kidsRegionChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      kidsRegionChips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      kidsRegion = chip.getAttribute('data-region');
+      renderKidsCalendar();
+    });
+  });
+
+  // 이전/다음 월 이동 버튼
+  if (btnPrevMonth) {
+    btnPrevMonth.addEventListener('click', () => {
+      kidsMonth = 10;
+      kidsSelectedDate = `${kidsYear}-10-24`;
+      renderKidsCalendar();
+    });
+  }
+  if (btnNextMonth) {
+    btnNextMonth.addEventListener('click', () => {
+      kidsMonth = 11;
+      kidsSelectedDate = `${kidsYear}-11-07`;
+      renderKidsCalendar();
     });
   }
 

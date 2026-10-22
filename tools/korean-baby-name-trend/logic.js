@@ -781,5 +781,223 @@ export const BabyNameLogic = {
       found: false,
       message: `"${name}" 이름은 2008~2024년 공식 출생신고 Top 100 밖의 유니크한 이름이거나, 1990년대 이전 전성기를 누린 이름입니다.`
     };
+  },
+
+  /**
+   * ========================================================================
+   * [신규 탭] 🎪 아이와 가볼만한 곳 10월·11월 축제 데이터베이스
+   * ------------------------------------------------------------------------
+   * - 권역: 서울, 경기, 인천, 강원, 충청, 전라, 경상, 제주
+   * - 일자: YYYY-MM-DD 형식의 시작일과 종료일
+   * - 주요 가족 프로그램 및 공식 링크 탑재
+   * ========================================================================
+   */
+  KIDS_EVENTS_DATA: [
+    {
+      id: 'seoul-autumn-book',
+      title: '서울 가을 북페스티벌',
+      region: '서울',
+      startDate: '2026-10-24',
+      endDate: '2026-10-25',
+      periodText: '10월 24일(토) ~ 25일(일)',
+      location: '서울 야외 광장 및 도서관 일대',
+      program: '어린이 야외 독서존, 그림책 작가와의 만남, 구연동화 체험',
+      link: 'https://lib.seoul.go.kr',
+      tagColor: 'blue',
+      fee: '무료 관람 (일부 체험 사전신청)',
+      icon: '📚'
+    },
+    {
+      id: 'incheon-dreampark',
+      title: '인천 드림파크 가을 축제',
+      region: '인천',
+      startDate: '2026-10-17',
+      endDate: '2026-10-25',
+      periodText: '진행 중 (이번 주말 10.25까지)',
+      location: '인천 서구 드림파크 야생화단지',
+      program: '가을꽃(국화, 코스모스) 길 산책, 친환경 체험 부스, 버스킹 공연',
+      link: 'https://www.slc.or.kr',
+      tagColor: 'pink',
+      fee: '무료 입장',
+      icon: '🌸'
+    },
+    {
+      id: 'yeoju-ogoknaru',
+      title: '여주 오곡나루축제',
+      region: '경기',
+      startDate: '2026-10-23',
+      endDate: '2026-10-25',
+      periodText: '10월 23일(금) ~ 25일(일)',
+      location: '경기 여주 신륵사 관광지 일원',
+      program: '군고구마 굽기 체험, 전통 농경문화 체험, 동물 먹이 주기',
+      link: 'https://www.yeoju.go.kr',
+      tagColor: 'orange',
+      fee: '무료 입장 (체험비 별도)',
+      icon: '🍠'
+    },
+    {
+      id: 'chuncheon-toy',
+      title: '춘천 토이페스티벌',
+      region: '강원',
+      startDate: '2026-10-24',
+      endDate: '2026-10-25',
+      periodText: '10월 24일(토) ~ 25일(일)',
+      location: '강원 춘천 애니메이션박물관 일대',
+      program: '대형 캐릭터 퍼레이드, 장난감 체험 및 제작, 인형극 공연',
+      link: 'https://www.gica.or.kr',
+      tagColor: 'purple',
+      fee: '야외 무료 (박물관 내부 관람 별도)',
+      icon: '🧸'
+    },
+    {
+      id: 'goyang-flower',
+      title: '고양 가을꽃축제',
+      region: '경기',
+      startDate: '2026-10-01',
+      endDate: '2026-10-31',
+      periodText: '10월 1일(목) ~ 31일(토)',
+      location: '경기 고양 일산호수공원 일원',
+      program: '어린이 테마 꽃밭 탐험, 수상 꽃자전거, 키즈 원예 교실',
+      link: 'https://goyangflower.or.kr',
+      tagColor: 'green',
+      fee: '무료 관람',
+      icon: '🌼'
+    },
+    {
+      id: 'ansung-farmland',
+      title: '안성팜랜드 코스목동축제',
+      region: '경기',
+      startDate: '2026-10-10',
+      endDate: '2026-11-08',
+      periodText: '10월 10일 ~ 11월 8일',
+      location: '경기 안성시 공도읍 안성팜랜드',
+      program: '핑크뮬리·코스모스 언덕, 가축 먹이주기, 트랙터 마차 타기',
+      link: 'https://www.nhasland.com',
+      tagColor: 'pink',
+      fee: '소인 12,000원 / 대인 14,000원',
+      icon: '🐑'
+    },
+    {
+      id: 'seoul-lantern',
+      title: '서울 빛초롱 축제',
+      region: '서울',
+      startDate: '2026-11-06',
+      endDate: '2026-11-22',
+      periodText: '11월 6일(금) ~ 22일(일)',
+      location: '서울 청계천 광교~장통교 일대',
+      program: '빛 조형물 포토존, 캐릭터 등불 만들기 체험, 야간 가족 산책',
+      link: 'https://korean.visitseoul.net',
+      tagColor: 'blue',
+      fee: '무료 관람',
+      icon: '🏮'
+    },
+    {
+      id: 'suncheon-reed',
+      title: '순천만 갈대축제',
+      region: '전라',
+      startDate: '2026-10-24',
+      endDate: '2026-10-31',
+      periodText: '10월 24일(토) ~ 31일(토)',
+      location: '전남 순천만습지 일원',
+      program: '갈대밭 생태체험, 흑두루미 탐조 투어, 자연물 공예 체험',
+      link: 'https://scbay.suncheon.go.kr',
+      tagColor: 'orange',
+      fee: '성인 10,000원 / 어린이 6,000원',
+      icon: '🌾'
+    },
+    {
+      id: 'iksan-chrysanthemum',
+      title: '익산 천만송이 국화축제',
+      region: '전라',
+      startDate: '2026-10-23',
+      endDate: '2026-11-01',
+      periodText: '10월 23일(금) ~ 11월 1일(일)',
+      location: '전북 익산 중앙체육공원',
+      program: '국화 대형 캐릭터 포토존, 키즈 매직쇼, 압화 책갈피 체험',
+      link: 'https://www.iksan.go.kr',
+      tagColor: 'green',
+      fee: '무료 입장 (특별전시관 3,000원)',
+      icon: '🌻'
+    },
+    {
+      id: 'daejeon-science',
+      title: '대전 사이언스 페스티벌',
+      region: '충청',
+      startDate: '2026-10-23',
+      endDate: '2026-10-26',
+      periodText: '10월 23일(금) ~ 26일(월)',
+      location: '대전 엑스포시민광장 및 DCC',
+      program: '로봇 축구, 드론 조종 체험, 어린이 VR/AR 과학 놀이터',
+      link: 'https://djsf.kr',
+      tagColor: 'purple',
+      fee: '무료 체험',
+      icon: '🚀'
+    },
+    {
+      id: 'busan-fireworks',
+      title: '부산 불꽃축제 & 키즈 페스타',
+      region: '경상',
+      startDate: '2026-11-07',
+      endDate: '2026-11-08',
+      periodText: '11월 7일(토) ~ 8일(일)',
+      location: '부산 광안리해수욕장 일대',
+      program: '초대형 해상 불꽃쇼, 캐릭터 버스킹, 해변 플리마켓',
+      link: 'https://www.bfo.or.kr',
+      tagColor: 'blue',
+      fee: '백사장 자유관람 무료',
+      icon: '🎆'
+    },
+    {
+      id: 'jeju-tangerine',
+      title: '제주 국제감귤박람회',
+      region: '제주',
+      startDate: '2026-11-13',
+      endDate: '2026-11-17',
+      periodText: '11월 13일(금) ~ 17일(화)',
+      location: '제주 서귀포농업기술센터',
+      program: '황금 감귤 따기 체험, 감귤 디저트 쿠킹 클래스, 어린이 연날리기',
+      link: 'http://www.jicexpo.com',
+      tagColor: 'orange',
+      fee: '일반 2,000원 / 미취학 아동 무료',
+      icon: '🍊'
+    }
+  ],
+
+  /**
+   * 특정 연도와 월, 지역 필터에 해당하는 축제 목록 조회
+   * @param {number} year 연도 (예: 2026)
+   * @param {number} month 월 (10 또는 11)
+   * @param {string} regionFilter '전체' 또는 특정 지역명 ('서울', '경기' 등)
+   * @returns {Array} 필터링된 축제 배열
+   */
+  getKidsEvents(year = 2026, month = 10, regionFilter = '전체') {
+    const monthStart = `${year}-${String(month).padStart(2, '0')}-01`;
+    // 해당 월의 마지막 날 계산
+    const lastDay = new Date(year, month, 0).getDate();
+    const monthEnd = `${year}-${String(month).padStart(2, '0')}-${String(lastDay).padStart(2, '0')}`;
+
+    return this.KIDS_EVENTS_DATA.filter(ev => {
+      // 1. 지역 필터
+      if (regionFilter !== '전체' && ev.region !== regionFilter) {
+        return false;
+      }
+      // 2. 월 기간 중첩 검사 (시작일이 해당 월 말일 이전이고, 종료일이 해당 월 1일 이후)
+      return ev.startDate <= monthEnd && ev.endDate >= monthStart;
+    });
+  },
+
+  /**
+   * 특정 날짜('YYYY-MM-DD')에 열리는 축제 목록 조회
+   * @param {string} dateStr '2026-10-24'
+   * @param {string} regionFilter '전체' 또는 지역명
+   * @returns {Array}
+   */
+  getEventsOnDate(dateStr, regionFilter = '전체') {
+    return this.KIDS_EVENTS_DATA.filter(ev => {
+      if (regionFilter !== '전체' && ev.region !== regionFilter) {
+        return false;
+      }
+      return ev.startDate <= dateStr && dateStr <= ev.endDate;
+    });
   }
 };
