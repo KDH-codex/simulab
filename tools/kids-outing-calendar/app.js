@@ -2,11 +2,13 @@
  * ==========================================================================
  * [라이프·일상생활] 🎪 아이와 가볼만한 곳 축제/행사 달력 UI 컨트롤러 (app.js)
  * --------------------------------------------------------------------------
- * 1. 월~일 기준 7열 월간 캘린더 생성
- * 2. 지역별(서울·경기 메인, 전국 도 단위) 축제 실시간 필터링
- * 3. 마우스 호버 시 장소 & 주요 프로그램 커스텀 툴팁
- * 4. 축제 바/카드 클릭 시 공식 안내 홈페이지 새 창 연결
- * 5. 선택 일자 상세 가족 축제 카드 렌더링
+ * 1. 전국 40여 개 가을 공식 축제 빅데이터 기반 월~일 7열 캘린더 생성
+ * 2. 실시간 키워드 검색 엔진 (축제명, 장소, 체험 키워드, 테마)
+ * 3. 지역별(서울·경기 메인, 전국 도 단위) & 테마별(단풍, 체험, 먹거리, 빛, 무료) 필터링
+ * 4. 마우스 호버 시 장소 & 주요 체험 프로그램 커스텀 툴팁
+ * 5. 축제 바/카드 클릭 시 지자체 공식 안내 홈페이지 새 창 이동
+ * 6. 선택 일자 상세 가족 축제 카드 렌더링
+ * 7. 외부 축제 데이터(JSON/공공데이터) 안전한 확장 및 복원 모달 연동
  * ==========================================================================
  */
 
@@ -18,25 +20,62 @@ document.addEventListener('DOMContentLoaded', () => {
   // --------------------------------------------------------------------------
   let currentYear = 2026;
   let currentMonth = 10; // 기본 10월
-  let currentRegion = '전체'; // 기본 전체 지역
-  let selectedDate = '2026-10-24'; // 기본 선택일 (주말 대표 축제)
+  let currentRegion = '전체'; // 기본 전국
+  let currentTheme = 'all'; // 기본 전체 테마
+  let onlyFree = false; // 무료 전용 토글
+  let currentKeyword = ''; // 검색어
+  let selectedDate = '2026-10-24'; // 기본 선택일 (주말 대표 축제 집중일)
 
   // --------------------------------------------------------------------------
   // 2. DOM 요소 참조
   // --------------------------------------------------------------------------
+  // 검색 및 필터 요소
+  const searchInput = document.getElementById('searchFestivalInput');
+  const btnClearSearch = document.getElementById('btnClearSearch');
+  const btnOpenImportModal = document.getElementById('btnOpenImportModal');
+  const themeChips = document.querySelectorAll('.theme-chip-btn');
+  const btnToggleFree = document.getElementById('btnToggleFree');
   const regionChips = document.querySelectorAll('.region-chip-btn');
+  const filteredCountBadge = document.getElementById('filteredCountBadge');
+
+  // 월 이동 및 달력 요소
   const btnPrevMonth = document.getElementById('btnPrevMonth');
   const btnNextMonth = document.getElementById('btnNextMonth');
   const currentMonthHeading = document.getElementById('currentMonthHeading');
   const monthSubCaption = document.getElementById('monthSubCaption');
   const calendarDaysGrid = document.getElementById('calendarDaysGrid');
+
+  // 상세 카드 및 툴팁 요소
   const selectedDateTitle = document.getElementById('selectedDateTitle');
   const selectedDateCount = document.getElementById('selectedDateCount');
   const festivalCardsGrid = document.getElementById('festivalCardsGrid');
   const kidsFloatingTooltip = document.getElementById('kidsFloatingTooltip');
 
+  // 가져오기 모달 요소
+  const importModalOverlay = document.getElementById('importModalOverlay');
+  const btnCloseImportModal = document.getElementById('btnCloseImportModal');
+  const btnResetDefaultFestivals = document.getElementById('btnResetDefaultFestivals');
+  const btnSubmitImportJson = document.getElementById('btnSubmitImportJson');
+  const importJsonTextarea = document.getElementById('importJsonTextarea');
+
   // --------------------------------------------------------------------------
-  // 3. 월간 달력 렌더링 엔진 (월~일 기준 정렬)
+  // 3. 통계 뱃지 업데이트
+  // --------------------------------------------------------------------------
+  function updateCountBadge() {
+    if (!filteredCountBadge) return;
+    const currentMonthEvents = KidsOutingLogic.searchFestivals({
+      year: currentYear,
+      month: currentMonth,
+      region: currentRegion,
+      theme: currentTheme,
+      onlyFree: onlyFree,
+      keyword: currentKeyword
+    });
+    filteredCountBadge.textContent = `조회된 축제: ${currentMonthEvents.length}개`;
+  }
+
+  // --------------------------------------------------------------------------
+  // 4. 월간 달력 렌더링 엔진 (월~일 기준 정렬)
   // --------------------------------------------------------------------------
   function renderCalendar() {
     if (!calendarDaysGrid) return;
@@ -53,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // 날짜 계산 (월~일 기준)
+    // 날짜 계산 (월~일 기준 정렬)
     // JS getDay(): 0(일), 1(월), 2(화), 3(수), 4(목), 5(금), 6(토)
     // 월=0, 화=1, ..., 일=6 변환 공식: (day + 6) % 7
     const firstDayObj = new Date(currentYear, currentMonth - 1, 1);
@@ -91,142 +130,128 @@ document.addEventListener('DOMContentLoaded', () => {
         cell.classList.add('is-selected');
       }
 
-      // 오늘 날짜 표시 (10월 22일 가상 또는 현재 일치 시)
+      // 10월 22일(오늘) 표시
       if (d === 22 && currentMonth === 10) {
         cell.classList.add('is-today');
       }
 
-      // 해당 일자에 열리는 축제 목록 조회
-      const events = KidsOutingLogic.getEventsOnDate(dateStr, currentRegion);
-
-      let eventsHtml = '';
-      if (events.length > 0) {
-        eventsHtml = `<div class="cell-events-list">`;
-        events.slice(0, 3).forEach(ev => {
-          eventsHtml += `
-            <span class="cal-event-bar bar-${ev.tagColor}"
-                  data-title="${ev.title}"
-                  data-period="${ev.periodText}"
-                  data-location="${ev.location}"
-                  data-program="${ev.program}"
-                  data-link="${ev.link}"
-                  data-icon="${ev.icon}">
-              ${ev.icon} ${ev.title}
-            </span>
-          `;
-        });
-        if (events.length > 3) {
-          eventsHtml += `
-            <span style="font-size:0.65rem; color:#64748b; font-weight:800; text-align:right;">
-              +${events.length - 3}개 더보기
-            </span>
-          `;
-        }
-        eventsHtml += `</div>`;
-      }
-
-      cell.innerHTML = `
-        <div class="cell-header">
-          <span class="cell-date-num">${d}</span>
-          ${events.length > 0 ? `<span style="font-size:0.68rem; color:#3b82f6; font-weight:850;">${events.length}개</span>` : ''}
-        </div>
-        ${eventsHtml}
-      `;
-
-      // 날짜 셀 클릭 시
-      cell.addEventListener('click', () => {
-        document.querySelectorAll('.kids-day-cell').forEach(c => c.classList.remove('is-selected'));
-        cell.classList.add('is-selected');
-        selectedDate = dateStr;
-        renderDetailCards(dateStr);
+      // 해당 일자에 열리는 축제 목록 조회 (검색 및 다중 필터 적용)
+      const events = KidsOutingLogic.getEventsOnDate(dateStr, {
+        region: currentRegion,
+        theme: currentTheme,
+        onlyFree: onlyFree,
+        keyword: currentKeyword
       });
 
-      // 축제 바 호버 & 클릭 리스너 연결
-      const bars = cell.querySelectorAll('.cal-event-bar');
-      bars.forEach(bar => {
-        bar.addEventListener('mouseenter', (e) => {
-          showTooltip(e, {
-            title: bar.getAttribute('data-title'),
-            period: bar.getAttribute('data-period'),
-            location: bar.getAttribute('data-location'),
-            program: bar.getAttribute('data-program'),
-            icon: bar.getAttribute('data-icon')
-          });
-        });
+      // 셀 헤더 구성
+      const headerEl = document.createElement('div');
+      headerEl.className = 'cell-header';
+      headerEl.innerHTML = `
+        <span class="cell-date-num">${d}</span>
+        ${events.length > 0 ? `<span class="cell-count-pill">${events.length}개</span>` : ''}
+      `;
+      cell.appendChild(headerEl);
 
-        bar.addEventListener('mousemove', (e) => {
-          moveTooltip(e);
-        });
+      // 축제 바 목록 생성
+      const eventsListEl = document.createElement('div');
+      eventsListEl.className = 'cell-events-list';
 
-        bar.addEventListener('mouseleave', () => {
-          hideTooltip();
-        });
+      // 셀 공간을 고려하여 최대 3개까지 표시하고 초과는 +N개로 축약
+      const displayEvents = events.slice(0, 3);
+      displayEvents.forEach(ev => {
+        const bar = document.createElement('a');
+        bar.className = `cal-event-bar bar-${ev.tagColor || 'blue'}`;
+        bar.href = ev.link;
+        bar.target = '_blank';
+        bar.rel = 'noopener noreferrer';
+        bar.textContent = `${ev.icon || '🎪'} ${ev.title}`;
 
+        // 마우스 호버 시 툴팁 이벤트 바인딩
+        bar.addEventListener('mouseenter', (e) => showTooltip(e, ev));
+        bar.addEventListener('mousemove', moveTooltip);
+        bar.addEventListener('mouseleave', hideTooltip);
+
+        // 클릭 시 이벤트 전파 방지 (셀 클릭 이벤트와 분리)
         bar.addEventListener('click', (e) => {
           e.stopPropagation();
-          const link = bar.getAttribute('data-link');
-          const title = bar.getAttribute('data-title');
-          if (link) {
-            window.open(link, '_blank');
-            if (window.SimuLabTracker && window.SimuLabTracker.trackEvent) {
-              window.SimuLabTracker.trackEvent('click_festival_bar', title);
-            }
-          }
         });
+
+        eventsListEl.appendChild(bar);
+      });
+
+      if (events.length > 3) {
+        const moreBadge = document.createElement('span');
+        moreBadge.style.fontSize = '0.68rem';
+        moreBadge.style.color = '#3b82f6';
+        moreBadge.style.fontWeight = '800';
+        moreBadge.style.paddingLeft = '3px';
+        moreBadge.textContent = `+${events.length - 3}개 더보기`;
+        eventsListEl.appendChild(moreBadge);
+      }
+
+      cell.appendChild(eventsListEl);
+
+      // 날짜 셀 클릭 시 해당 일자 선택 및 상세 카드 렌더링
+      cell.addEventListener('click', () => {
+        document.querySelectorAll('.kids-day-cell.is-selected').forEach(c => c.classList.remove('is-selected'));
+        cell.classList.add('is-selected');
+        selectedDate = dateStr;
+        renderDetails();
       });
 
       calendarDaysGrid.appendChild(cell);
     }
 
-    // 3) 다음 달 앞선 일자 셀 채우기 (7열 그리드 마감)
-    const totalCells = startWeekdayOffset + daysInMonth;
-    const remaining = (7 - (totalCells % 7)) % 7;
-    for (let nextD = 1; nextD <= remaining; nextD++) {
+    // 3) 다음 달 잔여 일자 셀 채우기 (전체 셀이 7의 배수가 되도록)
+    const totalFilled = startWeekdayOffset + daysInMonth;
+    const remainingCells = (7 - (totalFilled % 7)) % 7;
+    for (let j = 1; j <= remainingCells; j++) {
       const cell = document.createElement('div');
       cell.className = 'kids-day-cell other-month';
       cell.innerHTML = `
         <div class="cell-header">
-          <span class="cell-date-num">${nextD}</span>
+          <span class="cell-date-num">${j}</span>
         </div>
       `;
       calendarDaysGrid.appendChild(cell);
     }
 
-    // 하단 상세 목록 초기 렌더링
-    renderDetailCards(selectedDate);
+    updateCountBadge();
   }
 
   // --------------------------------------------------------------------------
-  // 4. 하단 선택 일자 상세 카드 렌더링
+  // 5. 선택 일자 상세 축제 카드 렌더링
   // --------------------------------------------------------------------------
-  function renderDetailCards(dateStr) {
-    if (!festivalCardsGrid) return;
+  function renderDetails() {
+    if (!festivalCardsGrid || !selectedDateTitle || !selectedDateCount) return;
 
-    const [y, m, d] = dateStr.split('-');
-    const weekdayNames = ['일', '월', '화', '수', '목', '금', '토'];
-    const dObj = new Date(parseInt(y), parseInt(m) - 1, parseInt(d));
-    const dayOfWeek = weekdayNames[dObj.getDay()];
+    // 날짜 텍스트 파싱
+    const [y, m, d] = selectedDate.split('-');
+    const dateObj = new Date(parseInt(y), parseInt(m) - 1, parseInt(d));
+    const dayNames = ['일', '월', '화', '수', '목', '금', '토'];
+    const dayName = dayNames[dateObj.getDay()];
 
-    if (selectedDateTitle) {
-      selectedDateTitle.textContent = `📌 ${parseInt(m)}월 ${parseInt(d)}일(${dayOfWeek}) 열리는 가족 축제 & 행사`;
-    }
+    selectedDateTitle.textContent = `📌 ${parseInt(m)}월 ${parseInt(d)}일(${dayName}) 열리는 가족 축제 & 행사`;
 
-    const events = KidsOutingLogic.getEventsOnDate(dateStr, currentRegion);
-    if (selectedDateCount) {
-      selectedDateCount.textContent = `총 ${events.length}개`;
-    }
+    const events = KidsOutingLogic.getEventsOnDate(selectedDate, {
+      region: currentRegion,
+      theme: currentTheme,
+      onlyFree: onlyFree,
+      keyword: currentKeyword
+    });
 
+    selectedDateCount.textContent = `총 ${events.length}개`;
     festivalCardsGrid.innerHTML = '';
 
     if (events.length === 0) {
       festivalCardsGrid.innerHTML = `
         <div class="fc-empty-state">
-          <div style="font-size:2.2rem; margin-bottom:0.4rem;">🎪</div>
-          <strong style="font-size:0.95rem; color:#1e293b; display:block; margin-bottom:0.25rem;">
-            선택하신 날짜에는 [${currentRegion}] 지역에 예정된 축제가 없습니다.
-          </strong>
-          <p style="font-size:0.82rem; margin:0;">
-            달력에서 알록달록한 축제 바가 있는 주말 날짜(예: 10월 24일, 25일 등)를 클릭해보세요!
+          <div style="font-size: 2.2rem; margin-bottom: 0.6rem;">🎈</div>
+          <h4 style="font-size: 1.05rem; font-weight: 850; color: #334155; margin-bottom: 0.35rem;">
+            해당 일자에는 조건에 맞는 축제 일정이 없습니다.
+          </h4>
+          <p style="font-size: 0.85rem; color: #64748b;">
+            상단의 <strong>지역 필터</strong>를 '전체'로 변경하거나, 달력에서 축제 바가 표시된 날짜(주말 집중)를 클릭해 보세요!
           </p>
         </div>
       `;
@@ -242,49 +267,47 @@ document.addEventListener('DOMContentLoaded', () => {
             <span class="fc-region">📍 ${ev.region}</span>
             <span class="fc-fee">${ev.fee}</span>
           </div>
-          <h4 class="fc-title">${ev.icon} ${ev.title}</h4>
-          <div class="fc-period">🗓️ 기간: ${ev.periodText}</div>
-          <div class="fc-row">
-            <strong>📍 장소:</strong> ${ev.location}
-          </div>
-          <div class="fc-row">
-            <strong>🎈 주요 프로그램:</strong> ${ev.program}
-          </div>
-          <p class="fc-desc">${ev.desc}</p>
+          <h4 class="fc-title">
+            <span>${ev.icon || '🎪'}</span>
+            <span>${ev.title}</span>
+          </h4>
+          <div class="fc-period">🗓️ ${ev.periodText}</div>
+          <div class="fc-row"><strong>장소:</strong> ${ev.location}</div>
+          <div class="fc-row"><strong>주요 프로그램:</strong> ${ev.program}</div>
+          <div class="fc-desc">${ev.desc}</div>
         </div>
         <a href="${ev.link}" target="_blank" rel="noopener noreferrer" class="fc-link-btn">
           공식 안내 홈페이지 바로가기 ↗
         </a>
       `;
-
-      card.querySelector('.fc-link-btn').addEventListener('click', () => {
-        if (window.SimuLabTracker && window.SimuLabTracker.trackEvent) {
-          window.SimuLabTracker.trackEvent('click_festival_card_link', ev.title);
-        }
-      });
-
       festivalCardsGrid.appendChild(card);
     });
   }
 
   // --------------------------------------------------------------------------
-  // 5. 커스텀 툴팁 제어
+  // 6. 커스텀 플로팅 툴팁 제어
   // --------------------------------------------------------------------------
-  function showTooltip(e, data) {
+  function showTooltip(e, ev) {
     if (!kidsFloatingTooltip) return;
+
     kidsFloatingTooltip.innerHTML = `
-      <div class="tt-header">${data.icon || '🎪'} ${data.title}</div>
-      <div class="tt-line"><strong>🗓️ 기간:</strong> ${data.period}</div>
-      <div class="tt-line"><strong>📍 장소:</strong> ${data.location}</div>
-      <div class="tt-line"><strong>🎈 프로그램:</strong> ${data.program}</div>
-      <div class="tt-cta">👉 클릭 시 공식 사이트로 이동합니다!</div>
+      <div class="tt-header">
+        <span>${ev.icon || '🎪'}</span>
+        <span>${ev.title}</span>
+      </div>
+      <div class="tt-line"><strong>📍 장소:</strong> ${ev.location}</div>
+      <div class="tt-line"><strong>🎈 프로그램:</strong> ${ev.program}</div>
+      <div class="tt-line" style="font-size: 0.76rem; color: #a7f3d0;"><strong>💰 요금:</strong> ${ev.fee}</div>
+      <div class="tt-cta">클릭 시 공식 홈페이지로 이동합니다 ↗</div>
     `;
+
+    kidsFloatingTooltip.style.left = `${e.clientX}px`;
+    kidsFloatingTooltip.style.top = `${e.clientY}px`;
     kidsFloatingTooltip.classList.add('show');
-    moveTooltip(e);
   }
 
   function moveTooltip(e) {
-    if (!kidsFloatingTooltip) return;
+    if (!kidsFloatingTooltip || !kidsFloatingTooltip.classList.contains('show')) return;
     kidsFloatingTooltip.style.left = `${e.clientX}px`;
     kidsFloatingTooltip.style.top = `${e.clientY}px`;
   }
@@ -295,39 +318,171 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --------------------------------------------------------------------------
-  // 6. 이벤트 리스너 바인딩 (지역 필터 & 월 이동)
+  // 7. 실시간 키워드 검색 이벤트
+  // --------------------------------------------------------------------------
+  let searchDebounceTimer = null;
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      const val = e.target.value.trim();
+      currentKeyword = val;
+
+      if (btnClearSearch) {
+        if (val.length > 0) {
+          btnClearSearch.classList.add('visible');
+        } else {
+          btnClearSearch.classList.remove('visible');
+        }
+      }
+
+      clearTimeout(searchDebounceTimer);
+      searchDebounceTimer = setTimeout(() => {
+        renderCalendar();
+        renderDetails();
+      }, 150);
+    });
+  }
+
+  if (btnClearSearch && searchInput) {
+    btnClearSearch.addEventListener('click', () => {
+      searchInput.value = '';
+      currentKeyword = '';
+      btnClearSearch.classList.remove('visible');
+      renderCalendar();
+      renderDetails();
+      searchInput.focus();
+    });
+  }
+
+  // --------------------------------------------------------------------------
+  // 8. 테마 필터 칩 이벤트
+  // --------------------------------------------------------------------------
+  themeChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      themeChips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      currentTheme = chip.dataset.theme;
+      renderCalendar();
+      renderDetails();
+    });
+  });
+
+  // 무료 관람 토글 버튼
+  if (btnToggleFree) {
+    btnToggleFree.addEventListener('click', () => {
+      onlyFree = !onlyFree;
+      if (onlyFree) {
+        btnToggleFree.classList.add('active');
+      } else {
+        btnToggleFree.classList.remove('active');
+      }
+      renderCalendar();
+      renderDetails();
+    });
+  }
+
+  // --------------------------------------------------------------------------
+  // 9. 지역 필터 칩 이벤트
   // --------------------------------------------------------------------------
   regionChips.forEach(chip => {
     chip.addEventListener('click', () => {
       regionChips.forEach(c => c.classList.remove('active'));
       chip.classList.add('active');
-      currentRegion = chip.getAttribute('data-region');
+      currentRegion = chip.dataset.region;
       renderCalendar();
-
-      if (window.SimuLabTracker && window.SimuLabTracker.trackEvent) {
-        window.SimuLabTracker.trackEvent('filter_kids_region', currentRegion);
-      }
+      renderDetails();
     });
   });
 
+  // --------------------------------------------------------------------------
+  // 10. 월 이동 네비게이션
+  // --------------------------------------------------------------------------
   if (btnPrevMonth) {
     btnPrevMonth.addEventListener('click', () => {
       currentMonth = 10;
-      selectedDate = `${currentYear}-10-24`;
+      selectedDate = '2026-10-24';
       renderCalendar();
+      renderDetails();
     });
   }
 
   if (btnNextMonth) {
     btnNextMonth.addEventListener('click', () => {
       currentMonth = 11;
-      selectedDate = `${currentYear}-11-07`;
+      selectedDate = '2026-11-07'; // 11월 첫째 주말 (부산 불꽃축제, 빛초롱 등)
       renderCalendar();
+      renderDetails();
     });
   }
 
   // --------------------------------------------------------------------------
-  // 7. 최초 실행
+  // 11. 축제 가져오기 / 공공데이터 연동 모달 제어
+  // --------------------------------------------------------------------------
+  if (btnOpenImportModal && importModalOverlay) {
+    btnOpenImportModal.addEventListener('click', () => {
+      importModalOverlay.classList.add('open');
+    });
+  }
+
+  if (btnCloseImportModal && importModalOverlay) {
+    btnCloseImportModal.addEventListener('click', () => {
+      importModalOverlay.classList.remove('open');
+    });
+  }
+
+  if (importModalOverlay) {
+    importModalOverlay.addEventListener('click', (e) => {
+      if (e.target === importModalOverlay) {
+        importModalOverlay.classList.remove('open');
+      }
+    });
+  }
+
+  // 기본팩 40선 복원
+  if (btnResetDefaultFestivals) {
+    btnResetDefaultFestivals.addEventListener('click', () => {
+      try {
+        localStorage.removeItem('simulab_kids_custom_festivals');
+        KidsOutingLogic.userImportedFestivals = [];
+        alert('전국 대표 축제 40선 기본팩으로 정돈되었습니다!');
+        if (importModalOverlay) importModalOverlay.classList.remove('open');
+        renderCalendar();
+        renderDetails();
+      } catch (err) {
+        console.error(err);
+      }
+    });
+  }
+
+  // 커스텀 JSON 병합 등록
+  if (btnSubmitImportJson && importJsonTextarea) {
+    btnSubmitImportJson.addEventListener('click', () => {
+      const text = importJsonTextarea.value.trim();
+      if (!text) {
+        alert('추가할 축제 JSON 데이터를 입력해주세요.');
+        return;
+      }
+
+      try {
+        const parsed = JSON.parse(text);
+        const result = KidsOutingLogic.importExternalEvents(Array.isArray(parsed) ? parsed : [parsed]);
+        if (result.success && result.count > 0) {
+          alert(`총 ${result.count}개의 축제 데이터가 성공적으로 병합되었습니다!`);
+          importJsonTextarea.value = '';
+          if (importModalOverlay) importModalOverlay.classList.remove('open');
+          renderCalendar();
+          renderDetails();
+        } else {
+          alert('유효한 축제 데이터를 찾지 못했습니다. 필수 항목(title, startDate, endDate)을 확인해주세요.');
+        }
+      } catch (e) {
+        alert('JSON 형식이 올바르지 않습니다. 문법 오류를 확인해주세요.');
+      }
+    });
+  }
+
+  // --------------------------------------------------------------------------
+  // 12. 초기 화면 렌더링 실행
   // --------------------------------------------------------------------------
   renderCalendar();
+  renderDetails();
 });

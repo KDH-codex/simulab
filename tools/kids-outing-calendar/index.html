@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>아이와 가볼만한 곳 달력 - 10·11월 주말 가족 축제 &amp; 체험 | SimuLab</title>
-  <meta name="description" content="10월·11월 아이와 가볼만한 전국 가을 축제와 가족 체험을 월~일 달력으로 확인하세요. 서울·경기 중심 공식 일정과 장소 툴팁 제공." />
-  <meta name="keywords" content="아이와가볼만한곳, 주말가족나들이, 10월축제달력, 11월축제달력, 서울가을축제, 경기아이와가볼만한곳, 어린이체험행사, 가족여행추천" />
+  <title>아이와 가볼만한 곳 달력 - 10·11월 전국 주말 가족 축제 &amp; 체험 빅데이터 | SimuLab</title>
+  <meta name="description" content="10월·11월 아이와 가볼만한 전국 40여 개 가을 축제와 체험을 월~일 달력과 실시간 검색으로 확인하세요. 서울·경기 중심 공식 일정과 장소 툴팁 제공." />
+  <meta name="keywords" content="아이와가볼만한곳, 주말가족나들이, 10월축제달력, 11월축제달력, 가을축제검색, 서울가을축제, 경기아이와가볼만한곳, 어린이체험행사, 가족여행추천" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="아이와 가볼만한 곳 달력 - 10·11월 주말 가족 축제" />
-  <meta property="og:description" content="10월·11월 아이와 가볼만한 전국 가을 축제와 체험을 월~일 달력으로 확인하세요. 서울·경기 중심 공식 일정 안내." />
+  <meta property="og:title" content="아이와 가볼만한 곳 달력 - 10·11월 전국 가을 가족 축제 빅데이터" />
+  <meta property="og:description" content="10월·11월 아이와 가볼만한 전국 40여 개 가을 축제와 체험을 월~일 달력과 실시간 검색으로 확인하세요." />
   <meta property="og:image" content="https://simulab.kr/assets/images/og-kids-calendar.png" />
   <meta property="og:url" content="https://simulab.kr/tools/kids-outing-calendar/" />
 
@@ -38,7 +38,7 @@
     }
 
     .kids-page-container {
-      max-width: 1040px;
+      max-width: 1060px;
       margin: 1.5rem auto 3.5rem;
       padding: 0 1rem;
     }
@@ -48,7 +48,7 @@
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      padding: 0.35rem 0.85rem;
+      padding: 0.35rem 0.9rem;
       background: #fef3c7;
       border: 1px solid #fde68a;
       color: #b45309;
@@ -66,16 +66,170 @@
       box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.03), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
     }
 
+    /* 실시간 통합 검색 & 테마 필터 바 */
+    .kids-search-control-wrap {
+      background: #f8fafc;
+      border: 1.5px solid var(--border-color, #e2e8f0);
+      border-radius: 18px;
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .search-input-row {
+      display: flex;
+      gap: 0.6rem;
+      margin-bottom: 0.85rem;
+      position: relative;
+    }
+
+    .search-input-box {
+      flex: 1;
+      position: relative;
+    }
+
+    .search-input-box input {
+      width: 100%;
+      padding: 0.75rem 2.5rem 0.75rem 2.6rem;
+      border-radius: 12px;
+      border: 1.5px solid var(--border-color, #cbd5e1);
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #1e293b;
+      outline: none;
+      transition: all 0.15s ease;
+      background: #ffffff;
+    }
+    .search-input-box input:focus {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+    }
+    .search-input-box .search-icon {
+      position: absolute;
+      left: 0.85rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1rem;
+      color: #64748b;
+      pointer-events: none;
+    }
+    .search-input-box .btn-clear-search {
+      position: absolute;
+      right: 0.85rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #e2e8f0;
+      border: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      color: #475569;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+    }
+    .search-input-box .btn-clear-search.visible {
+      display: flex;
+    }
+
+    .btn-sync-modal-open {
+      padding: 0.65rem 1rem;
+      background: #eff6ff;
+      border: 1.5px solid #bfdbfe;
+      border-radius: 12px;
+      font-size: 0.84rem;
+      font-weight: 850;
+      color: #1d4ed8;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      white-space: nowrap;
+      transition: all 0.15s ease;
+    }
+    .btn-sync-modal-open:hover {
+      background: #dbeafe;
+      transform: translateY(-1px);
+    }
+
+    /* 테마 필터 칩 */
+    .theme-chips-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.45rem;
+    }
+    .theme-filter-label {
+      font-size: 0.82rem;
+      font-weight: 850;
+      color: #475569;
+      margin-right: 0.2rem;
+    }
+    .theme-chip-btn {
+      padding: 0.35rem 0.75rem;
+      border-radius: 9999px;
+      border: 1px solid var(--border-color, #e2e8f0);
+      background: #ffffff;
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: #475569;
+      cursor: pointer;
+      transition: all 0.12s ease;
+    }
+    .theme-chip-btn:hover {
+      background: #f1f5f9;
+      color: #0f172a;
+    }
+    .theme-chip-btn.active {
+      background: #f59e0b;
+      color: #ffffff;
+      border-color: #f59e0b;
+      box-shadow: 0 2px 8px rgba(245, 158, 11, 0.35);
+    }
+
+    .free-toggle-chip {
+      margin-left: auto;
+      padding: 0.35rem 0.75rem;
+      border-radius: 9999px;
+      border: 1.5px solid #86efac;
+      background: #f0fdf4;
+      font-size: 0.8rem;
+      font-weight: 850;
+      color: #15803d;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: all 0.12s ease;
+    }
+    .free-toggle-chip.active {
+      background: #16a34a;
+      color: #ffffff;
+      border-color: #16a34a;
+    }
+
     /* 지역 선택 칩 영역 */
     .region-filter-wrap {
       margin-bottom: 1.35rem;
     }
     .region-filter-label {
-      display: block;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       font-size: 0.86rem;
-      font-weight: 800;
+      font-weight: 850;
       color: #334155;
       margin-bottom: 0.5rem;
+    }
+    .result-count-badge {
+      font-size: 0.78rem;
+      font-weight: 850;
+      background: #e0f2fe;
+      color: #0369a1;
+      padding: 0.18rem 0.65rem;
+      border-radius: 999px;
     }
     .region-chips-grid {
       display: flex;
@@ -186,7 +340,7 @@
     }
     .kids-day-cell {
       background: #ffffff;
-      min-height: 96px;
+      min-height: 104px;
       padding: 0.4rem 0.45rem;
       cursor: pointer;
       transition: background 0.12s ease;
@@ -198,7 +352,7 @@
     }
     .kids-day-cell.other-month {
       background: #fafafa;
-      opacity: 0.38;
+      opacity: 0.35;
       cursor: default;
     }
     .kids-day-cell.is-selected {
@@ -229,6 +383,11 @@
       color: #ffffff !important;
       padding: 2px 6px;
       border-radius: 999px;
+    }
+    .cell-count-pill {
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: #64748b;
     }
 
     /* 달력 내부 축제 바 */
@@ -286,16 +445,16 @@
       position: fixed;
       display: none;
       z-index: 10000;
-      background: rgba(15, 23, 42, 0.95);
+      background: rgba(15, 23, 42, 0.96);
       color: #ffffff;
-      padding: 0.8rem 1rem;
+      padding: 0.85rem 1.05rem;
       border-radius: 14px;
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       line-height: 1.5;
-      max-width: 300px;
+      max-width: 310px;
       pointer-events: none;
       box-shadow: 0 12px 30px rgba(0,0,0,0.3);
-      backdrop-filter: blur(5px);
+      backdrop-filter: blur(6px);
       border: 1px solid rgba(255,255,255,0.18);
       transform: translate(-50%, -100%);
       margin-top: -12px;
@@ -304,7 +463,7 @@
       display: block;
     }
     .tt-header {
-      font-size: 0.92rem;
+      font-size: 0.94rem;
       font-weight: 850;
       margin-bottom: 0.35rem;
       color: #fde047;
@@ -356,14 +515,14 @@
 
     .festival-cards-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
-      gap: 1rem;
+      grid-template-columns: repeat(auto-fill, minmax(315px, 1fr));
+      gap: 1.15rem;
     }
     .festival-card {
       background: #ffffff;
       border: 1.5px solid var(--border-color, #e2e8f0);
-      border-radius: 16px;
-      padding: 1.25rem;
+      border-radius: 18px;
+      padding: 1.35rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -372,7 +531,7 @@
     }
     .festival-card:hover {
       border-color: #93c5fd;
-      box-shadow: 0 8px 20px rgba(59, 130, 246, 0.08);
+      box-shadow: 0 10px 24px rgba(59, 130, 246, 0.09);
       transform: translateY(-2px);
     }
     .fc-top-row {
@@ -382,35 +541,35 @@
       margin-bottom: 0.45rem;
     }
     .fc-region {
-      font-size: 0.74rem;
-      font-weight: 800;
-      padding: 0.18rem 0.55rem;
-      border-radius: 7px;
+      font-size: 0.75rem;
+      font-weight: 850;
+      padding: 0.2rem 0.6rem;
+      border-radius: 8px;
       background: #f1f5f9;
       color: #334155;
     }
     .fc-fee {
-      font-size: 0.76rem;
-      font-weight: 800;
+      font-size: 0.78rem;
+      font-weight: 850;
       color: #16a34a;
     }
     .fc-title {
       font-size: 1.15rem;
       font-weight: 850;
       color: #1e293b;
-      margin: 0.2rem 0 0.4rem;
+      margin: 0.25rem 0 0.4rem;
       display: flex;
       align-items: center;
       gap: 0.35rem;
     }
     .fc-period {
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       font-weight: 750;
       color: #2563eb;
       margin-bottom: 0.6rem;
     }
     .fc-row {
-      font-size: 0.82rem;
+      font-size: 0.83rem;
       color: #475569;
       line-height: 1.5;
       margin-bottom: 0.4rem;
@@ -419,10 +578,10 @@
       font-size: 0.8rem;
       color: #64748b;
       background: #f8fafc;
-      padding: 0.6rem 0.75rem;
-      border-radius: 10px;
+      padding: 0.65rem 0.8rem;
+      border-radius: 11px;
       margin: 0.6rem 0 0.85rem;
-      line-height: 1.45;
+      line-height: 1.5;
     }
     .fc-link-btn {
       display: inline-flex;
@@ -430,12 +589,12 @@
       justify-content: center;
       gap: 0.4rem;
       width: 100%;
-      padding: 0.65rem;
+      padding: 0.7rem;
       background: #3b82f6;
       color: #ffffff !important;
-      border-radius: 11px;
-      font-size: 0.86rem;
-      font-weight: 800;
+      border-radius: 12px;
+      font-size: 0.88rem;
+      font-weight: 850;
       text-decoration: none;
       transition: background 0.15s ease;
     }
@@ -444,24 +603,80 @@
     }
     .fc-empty-state {
       grid-column: 1 / -1;
-      padding: 3rem 1.5rem;
+      padding: 3.5rem 1.5rem;
       text-align: center;
       background: #f8fafc;
-      border-radius: 16px;
+      border-radius: 18px;
       border: 1.5px dashed var(--border-color, #cbd5e1);
       color: #64748b;
     }
 
-    /* 하단 가이드 및 정보성 섹션 */
+    /* 가져오기 / 동기화 팝업 모달 */
+    .import-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 99999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .import-modal-overlay.open {
+      display: flex;
+    }
+    .import-modal-card {
+      background: #ffffff;
+      border-radius: 20px;
+      max-width: 580px;
+      width: 100%;
+      padding: 1.75rem;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--border-color, #e2e8f0);
+    }
+    .modal-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .modal-head h3 {
+      font-size: 1.25rem;
+      font-weight: 850;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .modal-close-btn {
+      background: #f1f5f9;
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 999px;
+      font-size: 1rem;
+      cursor: pointer;
+      color: #64748b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-close-btn:hover {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+
+    /* 하단 가이드 및 부모님 체크리스트 */
     .kids-guide-info {
       margin-top: 2rem;
-      padding: 1.25rem;
+      padding: 1.35rem;
       background: #ffffff;
-      border-radius: 16px;
+      border-radius: 18px;
       border: 1px solid var(--border-color, #e2e8f0);
-      font-size: 0.85rem;
+      font-size: 0.86rem;
       color: #475569;
-      line-height: 1.6;
+      line-height: 1.65;
     }
   </style>
 </head>
@@ -473,22 +688,57 @@
     <!-- 헤더 영역 -->
     <div style="text-align: center; margin-bottom: 1.75rem;">
       <span class="kids-hero-badge">
-        🎪 별별 라이프 · 10·11월 주말 가족 나들이 &amp; 축제 지도
+        🎪 별별 라이프 · 10·11월 주말 가족 나들이 &amp; 가을 축제 지도
       </span>
-      <h1 style="font-size: 1.85rem; font-weight: 850; letter-spacing: -0.02em; margin-bottom: 0.5rem;">
+      <h1 style="font-size: 1.95rem; font-weight: 850; letter-spacing: -0.02em; margin-bottom: 0.5rem;">
         아이와 가볼만한 곳 달력
       </h1>
-      <p style="color: #64748b; font-size: 0.95rem; line-height: 1.5; max-width: 660px; margin: 0 auto;">
-        이번 주말 아이와 어디 갈까? 서울·경기 메인 및 전국 도 단위 공식 가족 축제와 체험을<br />
-        월요일부터 일요일까지 한눈에 펼쳐지는 캘린더로 스마트하게 탐색해보세요.
+      <p style="color: #64748b; font-size: 0.95rem; line-height: 1.5; max-width: 680px; margin: 0 auto;">
+        이번 주말 아이와 어디 갈까? 서울·경기 메인 및 전국 40여 개 공식 가족 축제와 체험을<br />
+        월요일부터 일요일까지 한눈에 펼쳐지는 캘린더와 실시간 검색으로 스마트하게 탐색해보세요.
       </p>
     </div>
 
     <!-- 메인 캘린더 카드 -->
     <div class="kids-main-card">
+      <!-- 0. 실시간 통합 검색 & 테마 필터 바 -->
+      <div class="kids-search-control-wrap">
+        <div class="search-input-row">
+          <div class="search-input-box">
+            <span class="search-icon">🔍</span>
+            <input
+              type="text"
+              id="searchFestivalInput"
+              placeholder="축제명, 장소, 체험 키워드 검색 (예: 공룡, 사과, 불꽃, 김치, 로봇, 책, 국화)..."
+              autocomplete="off"
+            />
+            <button id="btnClearSearch" class="btn-clear-search" title="검색어 지우기">✕</button>
+          </div>
+          <button id="btnOpenImportModal" class="btn-sync-modal-open" title="외부 데이터 및 공공데이터 동기화">
+            <span>🔄</span> 최신 축제 동기화 / 확장
+          </button>
+        </div>
+
+        <div class="theme-chips-row">
+          <span class="theme-filter-label">🏷️ 테마:</span>
+          <button class="theme-chip-btn active" data-theme="all">전체 테마 🌟</button>
+          <button class="theme-chip-btn" data-theme="nature">🌸 가을꽃·단풍</button>
+          <button class="theme-chip-btn" data-theme="kids">🎈 어린이·체험</button>
+          <button class="theme-chip-btn" data-theme="food">🍎 먹거리·수확</button>
+          <button class="theme-chip-btn" data-theme="light">✨ 빛·불꽃</button>
+          
+          <button id="btnToggleFree" class="free-toggle-chip" title="무료 관람 가능한 축제만 보기">
+            <span>🆓</span> 무료 관람만
+          </button>
+        </div>
+      </div>
+
       <!-- 1. 지역 선택 칩 버튼 (서울, 경기 메인 + 도 단위) -->
       <div class="region-filter-wrap">
-        <label class="region-filter-label">📍 나들이 지역 선택 (서울·경기 중심 전국):</label>
+        <div class="region-filter-label">
+          <span>📍 나들이 지역 선택 (서울·경기 중심 전국):</span>
+          <span id="filteredCountBadge" class="result-count-badge">조회된 축제: 40개</span>
+        </div>
         <div class="region-chips-grid" id="regionChipsGrid">
           <button class="region-chip-btn active" data-region="전체">전체 전국 🗺️</button>
           <button class="region-chip-btn" data-region="서울">서울 🏰</button>
@@ -530,7 +780,7 @@
       </div>
 
       <!-- 마우스 호버 가이드 안내 -->
-      <p style="font-size: 0.8rem; color: #64748b; text-align: right; margin-bottom: 1.25rem;">
+      <p style="font-size: 0.82rem; color: #64748b; text-align: right; margin-bottom: 1.25rem;">
         💡 달력의 축제 바에 마우스를 올리면 <strong>📍 장소와 🎈 주요 프로그램</strong>이 툴팁으로 보이고, 클릭 시 <strong>공식 홈페이지</strong>로 바로 이동합니다.
       </p>
 
@@ -552,15 +802,57 @@
     <!-- 호버 시 마우스를 따라다니는 글로벌 플로팅 툴팁 -->
     <div id="kidsFloatingTooltip" class="kids-floating-tooltip"></div>
 
+    <!-- 데이터 가져오기 / 동기화 팝업 모달 -->
+    <div id="importModalOverlay" class="import-modal-overlay">
+      <div class="import-modal-card">
+        <div class="modal-head">
+          <h3><span>🔄</span> 축제 빅데이터 가져오기 &amp; 공공데이터 연동</h3>
+          <button id="btnCloseImportModal" class="modal-close-btn" title="닫기">✕</button>
+        </div>
+        <p style="font-size: 0.85rem; color: #64748b; line-height: 1.5; margin-bottom: 1.15rem;">
+          한국관광공사(TourAPI) 및 지자체 문화관광 공식 축제 데이터를 브라우저에서 안전하게 확장할 수 있습니다.
+        </p>
+
+        <!-- 원클릭 프리셋 로드 버튼 -->
+        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 1rem; margin-bottom: 1rem;">
+          <h4 style="font-size: 0.9rem; font-weight: 850; color: #1e293b; margin-bottom: 0.35rem;">
+            ⚡ 전국 대표 축제 40선 기본팩 복원
+          </h4>
+          <p style="font-size: 0.8rem; color: #64748b; margin-bottom: 0.75rem;">
+            전국 8대 권역(서울, 경기, 인천, 강원, 충청, 전라, 경상, 제주) 엄선 축제 40선으로 즉시 초기화합니다.
+          </p>
+          <button id="btnResetDefaultFestivals" style="padding: 0.5rem 1rem; background: #3b82f6; color: #ffffff; border-radius: 9px; font-size: 0.82rem; font-weight: 800; border: none; cursor: pointer;">
+            40대 공식 축제 기본팩 불러오기
+          </button>
+        </div>
+
+        <!-- 커스텀 JSON 직접 붙여넣기 확장 -->
+        <div>
+          <label style="display: block; font-size: 0.84rem; font-weight: 850; color: #334155; margin-bottom: 0.4rem;">
+            📝 추가 축제 JSON 데이터 직접 붙여넣기 (선택사항):
+          </label>
+          <textarea
+            id="importJsonTextarea"
+            rows="5"
+            placeholder='[{"title":"새로운 가족 축제","region":"서울","startDate":"2026-10-30","endDate":"2026-11-01","location":"올림픽공원","program":"가족 걷기 대회","link":"https://...","theme":"kids","fee":"무료"}]'
+            style="width: 100%; font-family: monospace; font-size: 0.78rem; padding: 0.75rem; border-radius: 10px; border: 1.5px solid #cbd5e1; outline: none; margin-bottom: 0.75rem;"
+          ></textarea>
+          <button id="btnSubmitImportJson" style="width: 100%; padding: 0.65rem; background: #10b981; color: #ffffff; border-radius: 10px; font-size: 0.86rem; font-weight: 850; border: none; cursor: pointer;">
+            + 추가 축제 데이터 병합 등록
+          </button>
+        </div>
+      </div>
+    </div>
+
     <!-- 하단 이용 가이드 & 부모님 체크리스트 -->
     <div class="kids-guide-info">
-      <strong style="color: #1e293b; font-size: 0.92rem; display: block; margin-bottom: 0.5rem;">
+      <strong style="color: #1e293b; font-size: 0.94rem; display: block; margin-bottom: 0.5rem;">
         👨‍👩‍👧‍👦 아이와 가을 축제 나들이 전 꼭 챙겨야 할 체크리스트
       </strong>
-      <ul style="margin: 0; padding-left: 1.25rem; line-height: 1.7;">
-        <li><strong>일교차 대비 겉옷:</strong> 10월~11월 야외 잔디광장이나 수변공원은 낮과 일몰 후 기온차가 큽니다. 가벼운 패딩이나 방풍 점퍼를 준비하세요.</li>
-        <li><strong>사전 예약 확인:</strong> 어린이 인기 체험(군고구마 굽기, 작가와의 만남, 수확 체험 등)은 현장 선착순 또는 공식 홈페이지 사전 예약으로 마감될 수 있습니다. 카드의 <strong>[공식 안내 홈페이지 바로가기 ↗]</strong>를 통해 잔여석을 확인하세요.</li>
-        <li><strong>유모차 및 돗자리:</strong> 축제장 내에 야외 잔디밭 쉼터가 마련된 곳이 많으므로 돗자리와 간이 방석, 접이식 유모차를 챙기시면 훨씬 쾌적합니다.</li>
+      <ul style="margin: 0; padding-left: 1.25rem; line-height: 1.75;">
+        <li><strong>일교차 대비 겉옷:</strong> 10월~11월 야외 잔디광장이나 수변공원은 낮과 일몰 후 기온차가 10도 이상 벌어집니다. 가벼운 패딩이나 방풍 점퍼, 보온 담요를 챙겨주세요.</li>
+        <li><strong>사전 예약 확인:</strong> 어린이 인기 체험(군고구마 굽기, 작가와의 만남, 사과·감귤 수확 체험, 쌀쿠키 쿠킹 등)은 현장 선착순 또는 공식 홈페이지 사전 예약으로 조기 마감될 수 있습니다. 카드의 <strong>[공식 안내 홈페이지 바로가기 ↗]</strong>를 통해 잔여석을 확인하세요.</li>
+        <li><strong>유모차 및 돗자리:</strong> 축제장 내에 야외 잔디밭 피크닉존이 마련된 곳이 많으므로 돗자리와 간이 방석, 접이식 유모차를 챙기시면 훨씬 쾌적합니다.</li>
       </ul>
     </div>
   </main>
