@@ -1,334 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- 메인 포털 허브 -->
-  <url>
-    <loc>https://simulab.kr/</loc>
-    <lastmod>2026-10-21</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
-
-  <!-- 직장인·퇴직 시뮬레이터 & 계산기 -->
-  <url>
-    <loc>https://simulab.kr/tools/national-pension-sim/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <url>
-    <loc>https://simulab.kr/tools/severance-pay-calc/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://simulab.kr/tools/unemployment-benefit-calc/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://simulab.kr/tools/salary-net-calc/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://simulab.kr/tools/hourly-labor-value-calc/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- 소비·투자 기회비용 & 재테크 -->
-  <url>
-    <loc>https://simulab.kr/tools/smoking-wealth-sim/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <url>
-    <loc>https://simulab.kr/tools/opportunity-cost-calc/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://simulab.kr/tools/stock-profit-calc/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://simulab.kr/tools/stock-water-ride-calc/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simulab.kr/tools/stock-target-compound-calc/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simulab.kr/tools/leverage-etf-sim/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://simulab.kr/tools/dividend-tax-sim/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://simulab.kr/tools/dividend-goal-calc/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- 부동산·대출 계산기 -->
-  <url>
-    <loc>https://simulab.kr/tools/past-apt-timemachine/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.95</priority>
-  </url>
-  <url>
-    <loc>https://simulab.kr/tools/loan-mortgage-calc/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://simulab.kr/tools/area-pyeong-calc/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://simulab.kr/tools/jeonse-wolse-sim/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://simulab.kr/tools/capital-gains-tax-sim/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- 생활·편의 계산기 -->
-  <url>
-    <loc>https://simulab.kr/tools/korean-age-calc/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://simulab.kr/tools/percent-discount-calc/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://simulab.kr/tools/diet-bmr-tdee-calc/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simulab.kr/tools/caffeine-sleep-calc/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simulab.kr/tools/running-zone-calc/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simulab.kr/tools/coffee-opportunity-calc/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simulab.kr/tools/inflation-purchasing-power-calc/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simulab.kr/tools/retirement-survival-sim/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simulab.kr/tools/missed-investment-calc/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- 여가·모임 & 심리 -->
-  <url>
-    <loc>https://simulab.kr/tools/lotto-draw-sim/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://simulab.kr/tools/ladder-draw-game/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simulab.kr/tools/dutch-pay-roulette/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simulab.kr/tools/lotto-tax-interest-calc/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simulab.kr/tools/saju-wealth-sim/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simulab.kr/tools/invest-animal-mbti/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simulab.kr/tools/love-animal-attachment/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simulab.kr/tools/life-hourglass-sim/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://simulab.kr/tools/logistics-roi-calc/</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-<!-- [별별 통계] 공공 빅데이터 도구 -->
-  <url>
-    <loc>https://simulab.kr/tools/korean-wealth-percentile-calc/</loc>
-    <lastmod>2026-10-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://simulab.kr/tools/korean-average-vs-me/</loc>
-    <lastmod>2026-10-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://simulab.kr/tools/korean-baby-name-trend/</loc>
-    <lastmod>2026-10-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <url>
-    <loc>https://simulab.kr/tools/korean-city-income-housing/</loc>
-    <lastmod>2026-10-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://simulab.kr/tools/world-gni-ranking-race/</loc>
-    <lastmod>2026-10-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://simulab.kr/tools/korean-trade-ranking/</loc>
-    <lastmod>2026-10-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://simulab.kr/tools/korean-tourism-travel-stats/</loc>
-    <lastmod>2026-10-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://simulab.kr/tools/korean-population-pyramid/</loc>
-    <lastmod>2026-10-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://simulab.kr/tools/world-population-area-rank/</loc>
-    <lastmod>2026-10-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- [오락·미니게임] 실시간 랭킹 아케이드 게임 -->
-  <url>
-    <loc>https://simulab.kr/tools/game-tetris/</loc>
-    <lastmod>2026-10-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://simulab.kr/tools/game-typing/</loc>
-    <lastmod>2026-10-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://simulab.kr/tools/game-brick-breaker/</loc>
-    <lastmod>2026-10-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://simulab.kr/tools/game-dodge/</loc>
-    <lastmod>2026-10-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- 법적 고지 문서 -->
-  <url>
-    <loc>https://simulab.kr/legal/privacy.html</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://simulab.kr/legal/terms.html</loc>
-    <lastmod>2026-10-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
+<url><loc>https://simulab.kr/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/alcohol-widmark-calc/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/area-pyeong-calc/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/caffeine-sleep-calc/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/capital-gains-tax-sim/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/coffee-opportunity-calc/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/diet-bmr-tdee-calc/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/dividend-goal-calc/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/dividend-tax-sim/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/dutch-pay-roulette/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/game-brick-breaker/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/game-dodge/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/game-tetris/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/game-typing/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/hourly-labor-value-calc/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/inflation-purchasing-power-calc/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/invest-animal-mbti/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/jeonse-wolse-sim/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/kids-outing-calendar/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/korean-age-calc/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/korean-average-vs-me/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/korean-baby-name-trend/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/korean-city-income-housing/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/korean-population-pyramid/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/korean-tourism-travel-stats/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/korean-trade-ranking/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/korean-wealth-percentile-calc/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/ladder-draw-game/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/leverage-etf-sim/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/life-hourglass-sim/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/loan-mortgage-calc/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/logistics-roi-calc/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/lotto-draw-sim/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/lotto-tax-interest-calc/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/love-animal-attachment/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/missed-investment-calc/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/national-pension-sim/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/opportunity-cost-calc/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/past-apt-timemachine/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/percent-discount-calc/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/retirement-survival-sim/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/running-zone-calc/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/saju-wealth-sim/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/salary-net-calc/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/severance-pay-calc/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/smoking-wealth-sim/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/stock-profit-calc/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/stock-target-compound-calc/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/stock-water-ride-calc/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/unemployment-benefit-calc/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/world-gni-ranking-race/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/tools/world-population-area-rank/</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/legal/about.html</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/legal/editorial.html</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/legal/privacy.html</loc><lastmod>2026-10-22</lastmod></url>
+<url><loc>https://simulab.kr/legal/terms.html</loc><lastmod>2026-10-22</lastmod></url>
 </urlset>

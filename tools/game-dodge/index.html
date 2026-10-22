@@ -2,18 +2,16 @@
 <html lang="ko" data-default-theme="light" data-theme="light">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light" />
   <!-- SEO 메타태그: 15자 이내 도구명 규칙 준수 (미사일 피하기 닷지) -->
   <title>미사일 피하기 닷지 | SimuLab Hub</title>
   <meta name="description" content="전설의 고전 명작 닷지 1.9(Dodge 1.9) 스타일의 미사일 피하기 탄막 회피 게임! PC와 스마트폰에서 사방에서 쏟아지는 탄환을 피하고 명예의 전당 TOP 10 랭킹에 도전하세요." />
-  <link rel="canonical" href="https://simulab.kr/tools/game-dodge/" />
-
   <meta property="og:type" content="website" />
   <meta property="og:title" content="미사일 피하기 닷지 — 고전 명작 1.9 탄막 서바이벌 | SimuLab Hub" />
   <meta property="og:description" content="사방에서 쏟아지는 수백 개의 미사일을 피해 살아남으세요! 실시간 탄환 카운터와 TOP 10 명예의 전당 랭킹 시스템 탑재." />
 
-  <link rel="stylesheet" href="../../assets/css/common.css" />
+  <link rel="stylesheet" href="../../assets/css/common.css?v=20261023_overhaul1" />
   <style>
     /* 미사일 피하기 닷지 전용 레트로 아케이드 스타일 */
     .dodge-wrapper {
@@ -253,6 +251,8 @@
       box-sizing: border-box;
     }
   </style>
+<meta name="google-adsense-account" content="ca-pub-9815778998394475">
+<link rel="canonical" href="https://simulab.kr/tools/game-dodge/">
 </head>
 <body>
   <div id="header-container"></div>
@@ -278,7 +278,7 @@
 
     <!-- 게임 본체 영역 -->
     <div class="dodge-wrapper">
-      
+
       <!-- 1. 전광판 헤더 (생존 시간 / 탄환 개수 / 최고 기록) -->
       <div class="dodge-scoreboard">
         <div class="scoreboard-item">
@@ -316,7 +316,7 @@
           <div style="font-size: 1.6rem; font-weight: 900; color: #f43f5e; margin-bottom: 0.35rem;">MISSION FAILED</div>
           <div class="dodge-overlay-time" id="finalTimeText">00:00.00</div>
           <div class="dodge-overlay-bullets" id="finalBulletsText">회피한 탄환: 0개</div>
-          
+
           <div style="display: flex; gap: 0.75rem;">
             <button type="button" class="btn btn-primary" id="btnRetryGame" style="padding: 0.75rem 1.75rem; font-size: 1rem; font-weight: 800; border-radius: 10px;">
               🔄 다시 도전
@@ -420,18 +420,16 @@
            data-ad-slot="auto"
            data-ad-format="auto"
            data-full-width-responsive="true"></ins>
-      <script>
-           (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
+
     </div>
   </main>
 
   <footer id="site-footer"></footer>
 
-  <script src="../../assets/js/supabase-config.js"></script>
-  <script src="../../assets/js/core-ui.js"></script>
-  <script src="../../assets/js/game-ranking.js"></script>
-  <script src="logic.js"></script>
-  <script src="app.js"></script>
+  <script src="../../assets/js/supabase-config.js?v=20261023_overhaul1"></script>
+  <script src="../../assets/js/core-ui.js?v=20261023_overhaul1"></script>
+  <script src="../../assets/js/game-ranking.js?v=20261023_overhaul1"></script>
+  <script src="logic.js?v=20261023_overhaul1"></script>
+  <script src="app.js?v=20261023_overhaul1"></script>
 </body>
 </html>

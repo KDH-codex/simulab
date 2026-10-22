@@ -2,21 +2,18 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- SEO 메타 태그 -->
   <title>대한민국 순자산 백분위 | SimuLab</title>
   <meta name="description" content="2024~2025 통계청·한국은행 가계금융복지조사 최신 마이크로데이터 기반! 내 순자산은 대한민국 전체 및 내 연령대에서 상위 몇 %인지 즉시 시뮬레이션해 보세요." />
-  <meta name="keywords" content="재밌는 통계, 심심할 때 보는 통계, 별별 통계, 대한민국 순자산 백분위, 내 자산 상위 몇프로, 2030 평균 순자산, 통계청 자산 분위" />
-  
   <!-- 오픈그래프 (SNS 공유) -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="대한민국 순자산 백분위 | 내 자산은 상위 몇 %일까?" />
   <meta property="og:description" content="통계청 공식 가계금융복지조사 기반! 내 나이와 순자산으로 알아보는 대한민국 자산 백분위 시뮬레이터." />
   <meta property="og:url" content="https://simulab.kr/tools/korean-wealth-percentile-calc/index.html" />
-  
+
   <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
-  <link rel="stylesheet" href="../../assets/css/style.css" />
-  <link rel="stylesheet" href="../../assets/css/common.css" />
+  <link rel="stylesheet" href="../../assets/css/common.css?v=20261023_overhaul1" />
 
   <style>
     .wealth-calc-container {
@@ -145,7 +142,8 @@
   </style>
 
   <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9815778998394475" crossorigin="anonymous"></script>
+  <meta name="google-adsense-account" content="ca-pub-9815778998394475">
+<link rel="canonical" href="https://simulab.kr/tools/korean-wealth-percentile-calc/">
 </head>
 <body>
   <header id="site-header"></header>
@@ -186,11 +184,11 @@
           <span style="font-size: 0.8rem; font-weight: 500; color: var(--text-muted);">순자산 = 총자산(부동산+금융) - 부채(대출)</span>
         </label>
         <div style="position: relative;">
-          <input 
-            type="text" 
-            id="netWorthInput" 
-            class="form-control" 
-            placeholder="예: 25000 (2억 5천만원)" 
+          <input
+            type="text"
+            id="netWorthInput"
+            class="form-control"
+            placeholder="예: 25000 (2억 5천만원)"
             value="20,000"
             style="width: 100%; padding: 0.85rem 3.5rem 0.85rem 0.85rem; font-size: 1.15rem; font-weight: 800; border-radius: 10px; box-sizing: border-box;"
           />
@@ -331,8 +329,8 @@
   <div id="site-footer"></div>
 
   <!-- 공통 스크립트 -->
-  <script src="../../assets/js/supabase-config.js"></script>
-  <script src="../../assets/js/core-ui.js"></script>
-  <script type="module" src="./app.js"></script>
+  <script src="../../assets/js/supabase-config.js?v=20261023_overhaul1"></script>
+  <script src="../../assets/js/core-ui.js?v=20261023_overhaul1"></script>
+  <script type="module" src="./app.js?v=20261023_overhaul1"></script>
 </body>
 </html>

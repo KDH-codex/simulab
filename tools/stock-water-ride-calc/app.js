@@ -156,7 +156,7 @@
             <td>
               <input type="number" class="form-control order-qty-input" data-index="${idx}" value="${ord.quantity}" step="1" min="1" style="padding: 0.4rem;" />
             </td>
-            <td style="text-align: right; font-weight: 600;">
+            <td data-order-amount="${idx}" style="text-align: right; font-weight: 600;">
               ${new Intl.NumberFormat('ko-KR').format(ord.price * ord.quantity)}원
             </td>
             <td style="width: 50px; text-align: center;">
@@ -206,13 +206,19 @@
     if (currentMode === 'water-ride') {
       const curMarketPrice = Number(document.getElementById('input-cur-market-price')?.value) || 0;
       const res = SL.calculateAveragePrice(orders, curMarketPrice);
+      document.querySelectorAll('[data-order-amount]').forEach(cell => {
+        const order = orders[Number(cell.dataset.orderAmount)];
+        const price = Number.isFinite(Number(order?.price)) ? Math.max(0, Number(order.price)) : 0;
+        const quantity = Number.isFinite(Number(order?.quantity)) ? Math.max(0, Number(order.quantity)) : 0;
+        cell.textContent = `${fmt(price * quantity)}원`;
+      });
 
       // 한 줄 결론 배너
       const verdictEl = document.getElementById('verdict-text');
       if (verdictEl) {
         verdictEl.innerHTML = `
           총 <strong>${fmt(res.totalAmount)}원</strong>을 투입하여 <strong>${fmt(res.totalQuantity)}주</strong>를 매수한 결과, 
-          최종 평단가는 <strong>${fmt(res.averagePrice)}원</strong>(최초 매수가 대비 <span class="text-success">${res.priceDropPct.toFixed(1)}%</span> 인하)으로 낮아졌습니다!<br/>
+          최종 평단가는 <strong>${fmt(res.averagePrice)}원</strong>입니다. (최초 매수가 대비 <strong>${res.priceDropPct > 0 ? '+' : ''}${res.priceDropPct.toFixed(1)}%</strong> 변동)<br/>
           ${curMarketPrice > 0 ? `(현재가 ${fmt(curMarketPrice)}원 기준 계좌 손익률: <strong>${res.currentProfitRate > 0 ? '+' : ''}${res.currentProfitRate.toFixed(2)}%</strong>)` : ''}
         `;
       }

@@ -15,26 +15,27 @@
 
   const AreaLogic = {};
 
-  const PYEONG_FACTOR = 3.305785;
-  const SQM_FACTOR = 0.3025;
+  const PYEONG_FACTOR = 400 / 121;
+  const SQM_FACTOR = 121 / 400;
+  const finitePositive = value => Number.isFinite(Number(value)) ? Math.max(0, Number(value)) : 0;
 
   // 평 -> ㎡ 변환
   AreaLogic.pyeongToSqm = function (pyeong) {
-    const p = Math.max(0, Number(pyeong) || 0);
+    const p = finitePositive(pyeong);
     const sqm = p * PYEONG_FACTOR;
     return Math.round((sqm + Number.EPSILON) * 100) / 100;
   };
 
   // ㎡ -> 평 변환
   AreaLogic.sqmToPyeong = function (sqm) {
-    const s = Math.max(0, Number(sqm) || 0);
+    const s = finitePositive(sqm);
     const pyeong = s * SQM_FACTOR;
     return Math.round((pyeong + Number.EPSILON) * 100) / 100;
   };
 
   // 단가 환산 (평당가 <-> ㎡당가)
   AreaLogic.convertUnitPrice = function (price, fromUnit = 'pyeong') {
-    const pr = Math.max(0, Number(price) || 0);
+    const pr = finitePositive(price);
     if (fromUnit === 'pyeong') {
       // 평당가 -> ㎡당가
       return Math.round(pr / PYEONG_FACTOR);

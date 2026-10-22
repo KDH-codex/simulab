@@ -3,6 +3,8 @@ backup_v1_dark/
 backup_v2_step2/
 scratch/
 node_modules/
+dist/
+.codex-remote-attachments/
 *.backup.*
 *.backup.html
 *.log

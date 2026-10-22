@@ -14,11 +14,12 @@
   'use strict';
 
   const PercentLogic = {};
+  const finiteNumber = value => Number.isFinite(Number(value)) ? Number(value) : 0;
 
   // 1. 전체값의 N% 구하기
   PercentLogic.calcPercentOf = function (total, percent) {
-    const t = Number(total) || 0;
-    const p = Number(percent) || 0;
+    const t = finiteNumber(total);
+    const p = finiteNumber(percent);
     const result = (t * p) / 100;
     return {
       total: t,
@@ -29,9 +30,9 @@
 
   // 2. 쇼핑 세일 할인율
   PercentLogic.calcDiscount = function (originalPrice, discountRate, additionalDiscountRate = 0) {
-    const orig = Math.max(0, Number(originalPrice) || 0);
-    const rate1 = Math.max(0, Math.min(100, Number(discountRate) || 0));
-    const rate2 = Math.max(0, Math.min(100, Number(additionalDiscountRate) || 0));
+    const orig = Math.max(0, finiteNumber(originalPrice));
+    const rate1 = Math.max(0, Math.min(100, finiteNumber(discountRate)));
+    const rate2 = Math.max(0, Math.min(100, finiteNumber(additionalDiscountRate)));
 
     // 1차 할인
     const step1Discount = orig * (rate1 / 100);
@@ -53,8 +54,8 @@
 
   // 3. 가격 변동률 (인상/인하)
   PercentLogic.calcChangeRate = function (fromVal, toVal) {
-    const from = Number(fromVal) || 0;
-    const to = Number(toVal) || 0;
+    const from = finiteNumber(fromVal);
+    const to = finiteNumber(toVal);
     if (from === 0) return { changeRate: 0, diff: to, isIncrease: to > 0 };
 
     const diff = to - from;
@@ -71,8 +72,8 @@
 
   // 4. 비율 계산 (A는 B의 몇 %인가)
   PercentLogic.calcRatio = function (part, total) {
-    const p = Number(part) || 0;
-    const t = Number(total) || 0;
+    const p = finiteNumber(part);
+    const t = finiteNumber(total);
     if (t === 0) return 0;
     const ratio = (p / t) * 100;
     return Math.round(ratio * 100) / 100;

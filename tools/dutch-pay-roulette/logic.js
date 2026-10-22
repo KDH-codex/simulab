@@ -50,9 +50,9 @@
   function calculateDutchPay(userInputs = {}) {
     const inputs = { ...DEFAULT_INPUTS, ...userInputs };
 
-    const total = Math.max(0, Number(inputs.totalAmount) || 0);
-    const count = Math.max(1, Math.min(50, Number(inputs.memberCount) || 1));
-    const unit = Number(inputs.roundUnit) || 1000;
+    const total = Number.isFinite(Number(inputs.totalAmount)) ? Math.max(0, Math.round(Number(inputs.totalAmount))) : 0;
+    const count = Math.max(1, Math.min(50, Math.trunc(Number(inputs.memberCount)) || 1));
+    const unit = [1,100,1000].includes(Number(inputs.roundUnit)) ? Number(inputs.roundUnit) : 1;
     const mode = inputs.roundMode || 'ceil';
 
     // 1) 기본 1/N 균등 정산
@@ -67,7 +67,7 @@
     if (inputs.mode === 'late') {
       // [지각자 가산 모드]
       const lateCount = Math.min(count - 1, Math.max(1, Number(inputs.lateCount) || 1));
-      const penalty = Math.min(total, Number(inputs.latePenalty) || 10000);
+      const penalty = Math.min(lateCount > 0 ? Math.floor(total / lateCount) : 0, Math.max(0, Number(inputs.latePenalty) || 0));
       const totalPenalty = penalty * lateCount;
 
       const remainingTotal = Math.max(0, total - totalPenalty);

@@ -539,7 +539,7 @@
 
   btnRankCancel.addEventListener('click', hideRankModal);
 
-  rankForm.addEventListener('submit', (e) => {
+  rankForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const nickname = (rankNickname.value || '').trim();
     if (!nickname) {
@@ -548,7 +548,7 @@
     }
 
     if (window.GameRanking) {
-      GameRanking.saveRecord('game-dodge', nickname, pendingRecordSeconds, DodgeLogic.formatSeconds(pendingRecordSeconds));
+      await GameRanking.saveRecordAsync('game-dodge', nickname, pendingRecordSeconds, DodgeLogic.formatSeconds(pendingRecordSeconds));
       GameRanking.renderBoard(rankingBoardContainer, 'game-dodge');
     }
 

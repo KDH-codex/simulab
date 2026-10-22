@@ -620,11 +620,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 🏆 랭킹 폼 제출 및 취소 리스너
   if (rankForm) {
-    rankForm.addEventListener('submit', (e) => {
+    rankForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       const nick = (rankNickname ? rankNickname.value : '').trim() || '테트리스장인';
       localStorage.setItem('simulab_user_nickname', nick);
-      window.GameRanking.saveRecord('game-tetris', nick, score, `${score.toLocaleString('ko-KR')}점`);
+      await window.GameRanking.saveRecordAsync('game-tetris', nick, score, `${score.toLocaleString('ko-KR')}점`);
       if (rankModal) rankModal.style.display = 'none';
       updateLeaderboard();
     });

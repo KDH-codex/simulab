@@ -2,17 +2,15 @@
 <html lang="ko" data-default-theme="light" data-theme="light">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light" />
   <title>부동산 평수 ㎡ 환산기 (국민평형 84㎡ 59㎡·평당 분양가 계산) | SimuLab Hub</title>
-  <meta name="description" content="아파트 제곱미터(㎡)와 평수를 양방향으로 1초 만에 환산합니다. 84㎡(34평형), 59㎡(25평형) 원클릭 프리셋과 평당 분양가 ↔ ㎡당 단가 자동 계산을 지원합니다." />
-  <link rel="canonical" href="https://simulab.kr/tools/area-pyeong-calc/" />
-
+  <meta name="description" content="아파트 제곱미터(㎡)와 평수를 양방향으로 1초 만에 환산합니다. 84㎡와 59㎡ 면적 원클릭 프리셋과 평당 분양가 ↔ ㎡당 단가 자동 계산을 지원합니다." />
   <meta property="og:type" content="website" />
   <meta property="og:title" content="부동산 평수 ㎡ 환산기 | SimuLab Hub" />
   <meta property="og:description" content="아파트 평수와 제곱미터(㎡), 평당 분양가를 즉시 환산하세요." />
 
-  <link rel="stylesheet" href="../../assets/css/common.css" />
+  <link rel="stylesheet" href="../../assets/css/common.css?v=20261023_overhaul1" />
   <style>
     .korean-amount-badge {
       font-size: 0.82rem;
@@ -49,7 +47,8 @@
     }
   </style>
   <!-- Google AdSense (Auto Ads & Verification) -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9815778998394475" crossorigin="anonymous"></script>
+  <meta name="google-adsense-account" content="ca-pub-9815778998394475">
+<link rel="canonical" href="https://simulab.kr/tools/area-pyeong-calc/">
 </head>
 <body>
   <header id="site-header"></header>
@@ -61,7 +60,7 @@
       </div>
       <h1 class="page-title">부동산 평수 ㎡ 환산기</h1>
       <p class="page-subtitle">
-        아파트 분양 공고의 전용면적 <strong>84㎡(국평 34평형), 59㎡(25평형)</strong>를 1초 만에 평수로 상호 환산하고,
+        아파트 분양 공고의 전용면적 <strong>84㎡(약 25.41평), 59㎡(약 17.85평)</strong>를 1초 만에 평수로 상호 환산하고,
         <strong>평당 분양가와 ㎡당 단가</strong>까지 실시간으로 비교 계산해 드립니다.
       </p>
     </section>
@@ -78,10 +77,10 @@
         </div>
 
         <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.45rem; margin-bottom: 1.25rem;">
-          <button type="button" class="preset-area-btn btn btn-secondary" data-sqm="59" style="font-size: 0.8rem; padding: 0.6rem 0.2rem;">59㎡ (25평)</button>
-          <button type="button" class="preset-area-btn active btn btn-secondary" data-sqm="84" style="font-size: 0.8rem; padding: 0.6rem 0.2rem;">84㎡ (34평)</button>
-          <button type="button" class="preset-area-btn btn btn-secondary" data-sqm="114" style="font-size: 0.8rem; padding: 0.6rem 0.2rem;">114㎡ (45평)</button>
-          <button type="button" class="preset-area-btn btn btn-secondary" data-sqm="33" style="font-size: 0.8rem; padding: 0.6rem 0.2rem;">33㎡ (10평)</button>
+          <button type="button" class="preset-area-btn btn btn-secondary" data-sqm="59" style="font-size: 0.8rem; padding: 0.6rem 0.2rem;">59㎡ (17.85평)</button>
+          <button type="button" class="preset-area-btn active btn btn-secondary" data-sqm="84" style="font-size: 0.8rem; padding: 0.6rem 0.2rem;">84㎡ (25.41평)</button>
+          <button type="button" class="preset-area-btn btn btn-secondary" data-sqm="114" style="font-size: 0.8rem; padding: 0.6rem 0.2rem;">114㎡ (34.48평)</button>
+          <button type="button" class="preset-area-btn btn btn-secondary" data-sqm="33" style="font-size: 0.8rem; padding: 0.6rem 0.2rem;">33㎡ (9.98평)</button>
         </div>
 
         <!-- ㎡ 입력 -->
@@ -141,9 +140,9 @@
         </div>
 
         <div style="background: var(--bg-subtle); border-radius: 10px; padding: 0.9rem; font-size: 0.8rem; line-height: 1.6; color: var(--text-secondary);">
-          <strong style="color: var(--text-primary);">📌 대한민국 아파트 면적 법정 상식:</strong>
+          <strong style="color: var(--text-primary);">면적 단위와 비교 기준</strong>
           <ul style="margin: 0.4rem 0 0 1rem; padding: 0;">
-            <li><strong>법정 계량단위</strong>: 2007년부터 '평' 단위 사용이 금지되고 <strong>제곱미터(㎡)</strong> 표기가 의무화되었습니다. (1평 = 약 3.3058㎡)</li>
+            <li><strong>환산 기준</strong>: 1평 = 400/121㎡, 1㎡ = 0.3025평으로 계산합니다. 계약과 공고의 면적은 제곱미터 표기를 확인해 주세요.</li>
             <li><strong>전용면적 vs 공급면적</strong>: 분양 공고의 '84㎡'는 순수 현관문 안쪽의 <strong>전용면적(실평수 약 25.4평)</strong>이며, 계단·복도 등 공용면적을 합치면 통상 <strong>34평형</strong>으로 부릅니다.</li>
           </ul>
         </div>
@@ -152,7 +151,7 @@
 
     <!-- 법적 면책 조항 컨테이너 -->
     <div id="legal-disclaimer"></div>
-  
+
       <!-- Google AdSense Responsive In-Feed/Display Unit -->
       <div class="ad-slot-wrapper" aria-label="스폰서 광고">
         <span class="ad-slot-badge">SPONSORED (ADVERTISEMENT)</span>
@@ -162,16 +161,14 @@
              data-ad-slot="auto"
              data-ad-format="auto"
              data-full-width-responsive="true"></ins>
-        <script>
-             (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
+
       </div>
   </main>
 
   <footer id="site-footer"></footer>
 
-  <script src="../../assets/js/core-ui.js"></script>
-  <script src="logic.js"></script>
-  <script src="app.js"></script>
+  <script src="../../assets/js/core-ui.js?v=20261023_overhaul1"></script>
+  <script src="logic.js?v=20261023_overhaul1"></script>
+  <script src="app.js?v=20261023_overhaul1"></script>
 </body>
 </html>

@@ -21,6 +21,7 @@
    * @param {number} currentPrice 현재 시장 주가 (선택 사항, 손익률 계산용)
    * @returns {Object} 최종 평단가 계산 결과
    */
+  const finiteNumber = value => Number.isFinite(Number(value)) ? Number(value) : 0;
   function calculateAveragePrice(orders, currentPrice = 0) {
     if (!Array.isArray(orders) || orders.length === 0) {
       return {
@@ -38,8 +39,8 @@
     const initialPrice = orders[0] && Number(orders[0].price) ? Number(orders[0].price) : 0;
 
     orders.forEach((ord) => {
-      const p = Math.max(0, Number(ord.price) || 0);
-      const q = Math.max(0, Number(ord.quantity) || 0);
+      const p = Math.max(0, finiteNumber(ord.price));
+      const q = Math.max(0, finiteNumber(ord.quantity));
       totalQuantity += q;
       totalAmount += p * q;
     });
@@ -48,7 +49,7 @@
     const priceDropPct = initialPrice > 0 ? ((averagePrice - initialPrice) / initialPrice) * 100 : 0;
 
     // 현재가 기준 손익률
-    const curP = Number(currentPrice) || 0;
+    const curP = finiteNumber(currentPrice);
     const currentProfitRate = averagePrice > 0 && curP > 0 ? ((curP - averagePrice) / averagePrice) * 100 : 0;
 
     return {
@@ -71,10 +72,10 @@
    * @returns {Object} 목표 평단 달성 필요량 결과
    */
   function calculateRequiredWaterRide(inputs) {
-    const P1 = Math.max(0, Number(inputs.currentAvgPrice) || 0);
-    const Q1 = Math.max(0, Number(inputs.currentQty) || 0);
-    const P_target = Math.max(0, Number(inputs.targetAvgPrice) || 0);
-    const P_add = Math.max(0, Number(inputs.addBuyPrice) || 0);
+    const P1 = Math.max(0, finiteNumber(inputs.currentAvgPrice));
+    const Q1 = Math.max(0, finiteNumber(inputs.currentQty));
+    const P_target = Math.max(0, finiteNumber(inputs.targetAvgPrice));
+    const P_add = Math.max(0, finiteNumber(inputs.addBuyPrice));
 
     // 유효성 판별:
     // 물타기로 평단가를 낮추려면 반드시 (현재 매수가 P_add < 목표 평단 P_target < 기존 평단 P1) 이어야 함.

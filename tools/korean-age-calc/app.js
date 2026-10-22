@@ -37,7 +37,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function runCalculation() {
     const result = window.AgeLogic.calculate(birthInput.value, targetInput.value);
-    if (!result) return;
+    if (!result) {
+      for(const element of [statInternationalAge,statZodiacName,statYearAge,statKoreanAge,statLivedDays,statNextBday]) if(element)element.textContent='—';
+      if(legalRightsContainer)legalRightsContainer.textContent='유효한 생년월일과 기준일을 입력해 주세요. 생년월일은 기준일보다 늦을 수 없습니다.';
+      return;
+    }
 
     if (statInternationalAge) {
       statInternationalAge.textContent = `만 ${result.internationalAge}세`;
@@ -54,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 법정 자격 목록 렌더링
     if (legalRightsContainer) {
-      legalRightsContainer.innerHTML = '';
+      legalRightsContainer.textContent = '연령만으로 입학·면허·연금 등의 자격을 확정할 수 없습니다. 개별 제도의 기준과 신청 요건은 담당 기관에서 확인해 주세요. 띠는 출생연도 기준이며 음력·입춘 경계는 반영하지 않습니다.';
       result.legalRights.forEach((r) => {
         const item = document.createElement('div');
         item.style.display = 'flex';

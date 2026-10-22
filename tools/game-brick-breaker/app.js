@@ -597,7 +597,7 @@
 
   btnRankCancel.addEventListener('click', hideRankModal);
 
-  rankForm.addEventListener('submit', (e) => {
+  rankForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const nickname = (rankNickname.value || '').trim();
     if (!nickname) {
@@ -606,7 +606,7 @@
     }
 
     if (window.GameRanking) {
-      GameRanking.saveRecord('game-brick-breaker', nickname, pendingFinalScore, `${pendingFinalScore.toLocaleString()}점`);
+      await GameRanking.saveRecordAsync('game-brick-breaker', nickname, pendingFinalScore, `${pendingFinalScore.toLocaleString()}점`);
       GameRanking.renderBoard(rankingBoardContainer, 'game-brick-breaker');
     }
 

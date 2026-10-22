@@ -12,6 +12,7 @@
 
 (function (global) {
   'use strict';
+  if (global.SIMULAB_PREVIEW) return;
 
   // 1. Supabase 접속 정보 (연결 완료)
   const CONFIG = {

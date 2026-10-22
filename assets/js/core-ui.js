@@ -208,38 +208,38 @@
       label: '금융·재테크',
       icon: '💰',
       hot: true,
-      desc: '2026년 최신 4대보험·세법을 반영한 월급 실수령액, 퇴직금, 국민연금부터 주식 퀀트 백테스팅, 배당 복리, 주담대 DSR 및 부동산 시뮬레이터 모음입니다.',
+      desc: '급여·퇴직·투자·주거 비용을 가정에 따라 계산하고 비교합니다. 각 도구의 적용 기준과 한계를 확인해 주세요.',
       subgroups: [
         {
           title: '💼 직장인·퇴직',
           items: [
-            { title: '국민연금 조기수령 시뮬', sub: '60세 조기 vs 65세 정상 역전 나이(BEP)', href: 'tools/national-pension-sim/index.html', tool: 'national-pension-sim', hot: true },
-            { title: '직장인 퇴직금 계산기', sub: '평균임금·통상임금 비교 · IRP 30% 감면', href: 'tools/severance-pay-calc/index.html', tool: 'severance-pay-calc', hot: true },
-            { title: '월급 실수령액 계산기', sub: '2026년 4대보험 · 소득세 · 비과세 식대', href: 'tools/salary-net-calc/index.html', tool: 'salary-net-calc', hot: true },
-            { title: '실업급여 모의계산기', sub: '2026년 상한액(6.6만) · 소정급여일수', href: 'tools/unemployment-benefit-calc/index.html', tool: 'unemployment-benefit-calc', hot: true },
-            { title: '나의 진짜 시급 가치', sub: '내 한 시간의 진짜 시급 값어치', href: 'tools/hourly-labor-value-calc/index.html', tool: 'hourly-labor-value-calc' }
+            { title: '국민연금 조기수령 시뮬', sub: '60세 조기 vs 65세 정상 역전 나이(BEP)', href: 'tools/national-pension-sim/', tool: 'national-pension-sim', hot: true },
+            { title: '직장인 퇴직금 계산기', sub: '근무 기간 · 평균임금 기준 추정', href: 'tools/severance-pay-calc/', tool: 'severance-pay-calc', hot: true },
+            { title: '월급 실수령액 계산기', sub: '급여 · 공제 항목별 모의 계산', href: 'tools/salary-net-calc/', tool: 'salary-net-calc', hot: true },
+            { title: '실업급여 모의계산기', sub: '가입 기간 · 연령별 지급액 추정', href: 'tools/unemployment-benefit-calc/', tool: 'unemployment-benefit-calc', hot: true },
+            { title: '나의 진짜 시급 가치', sub: '내 한 시간의 진짜 시급 값어치', href: 'tools/hourly-labor-value-calc/', tool: 'hourly-labor-value-calc' }
           ]
         },
         {
           title: '📈 주식·배당',
           items: [
-            { title: '주식·ETF 퀀트 시뮬레이터', sub: '구간별 적립식 결과 · MDD · 기술지표', href: 'tools/leverage-etf-sim/index.html', tool: 'leverage-etf-sim', hot: true },
-            { title: '주식 실질 수익률 계산기', sub: '세금·수수료 반영 실질 수익률', href: 'tools/stock-profit-calc/index.html', tool: 'stock-profit-calc' },
-            { title: '평단가 · 물타기 계산기', sub: '분할 매수 평균 단가', href: 'tools/stock-water-ride-calc/index.html', tool: 'stock-water-ride-calc' },
-            { title: '목표가 · 복리 계산기', sub: '목표 수익률 달성 가격', href: 'tools/stock-target-compound-calc/index.html', tool: 'stock-target-compound-calc' },
-            { title: '배당 복리 & 세금', sub: '재투자(DRIP) · 건보료 · 절세계좌', href: 'tools/dividend-tax-sim/index.html', tool: 'dividend-tax-sim', hot: true },
-            { title: '월 배당 목표 달성 계산기', sub: '목표 월급까지 필요한 투자금', href: 'tools/dividend-goal-calc/index.html', tool: 'dividend-goal-calc' }
+            { title: '주식·ETF 퀀트 시뮬레이터', sub: '구간별 적립식 결과 · MDD · 기술지표', href: 'tools/leverage-etf-sim/', tool: 'leverage-etf-sim', hot: true },
+            { title: '주식 실질 수익률 계산기', sub: '세금·수수료 반영 실질 수익률', href: 'tools/stock-profit-calc/', tool: 'stock-profit-calc' },
+            { title: '평단가 · 물타기 계산기', sub: '분할 매수 평균 단가', href: 'tools/stock-water-ride-calc/', tool: 'stock-water-ride-calc' },
+            { title: '목표가 · 복리 계산기', sub: '목표 수익률 달성 가격', href: 'tools/stock-target-compound-calc/', tool: 'stock-target-compound-calc' },
+            { title: '배당 복리 & 세금', sub: '재투자(DRIP) · 건보료 · 절세계좌', href: 'tools/dividend-tax-sim/', tool: 'dividend-tax-sim', hot: true },
+            { title: '월 배당 목표 달성 계산기', sub: '목표 월급까지 필요한 투자금', href: 'tools/dividend-goal-calc/', tool: 'dividend-goal-calc' }
           ]
         },
         {
           title: '🏠 부동산·비즈니스',
           items: [
-            { title: '그때 그 아파트 샀다면', sub: '마래푸·은마 과거 매수가 vs 현재 실거래가', href: 'tools/past-apt-timemachine/index.html', tool: 'past-apt-timemachine', hot: true },
-            { title: '주담대 한도 · DSR', sub: '상환 방식 비교 · 최대 한도', href: 'tools/loan-mortgage-calc/index.html', tool: 'loan-mortgage-calc', hot: true },
-            { title: '전세 vs 월세', sub: '전환율 · 주거 기회비용', href: 'tools/jeonse-wolse-sim/index.html', tool: 'jeonse-wolse-sim' },
-            { title: '양도소득세 · 세후 수익', sub: '12억 비과세 · 장특공제', href: 'tools/capital-gains-tax-sim/index.html', tool: 'capital-gains-tax-sim' },
-            { title: '부동산 평수 ㎡ 환산기', sub: '84㎡(34평) · 59㎡(25평) · 평당가', href: 'tools/area-pyeong-calc/index.html', tool: 'area-pyeong-calc' },
-            { title: '설비 도입 ROI · BEP', sub: '회수 기간 · NPV · 손익분기', href: 'tools/logistics-roi-calc/index.html', tool: 'logistics-roi-calc' }
+            { title: '그때 그 아파트 샀다면', sub: '마래푸·은마 과거 매수가 vs 현재 실거래가', href: 'tools/past-apt-timemachine/', tool: 'past-apt-timemachine', hot: true },
+            { title: '주담대 한도 · DSR', sub: '상환 방식 비교 · 최대 한도', href: 'tools/loan-mortgage-calc/', tool: 'loan-mortgage-calc', hot: true },
+            { title: '전세 vs 월세', sub: '전환율 · 주거 기회비용', href: 'tools/jeonse-wolse-sim/', tool: 'jeonse-wolse-sim' },
+            { title: '양도소득세 · 세후 수익', sub: '12억 비과세 · 장특공제', href: 'tools/capital-gains-tax-sim/', tool: 'capital-gains-tax-sim' },
+            { title: '부동산 평수 ㎡ 환산기', sub: '㎡ ↔ 평 · 면적 단위 변환', href: 'tools/area-pyeong-calc/', tool: 'area-pyeong-calc' },
+            { title: '설비 도입 ROI · BEP', sub: '회수 기간 · NPV · 손익분기', href: 'tools/logistics-roi-calc/', tool: 'logistics-roi-calc' }
           ]
         }
       ]
@@ -254,27 +254,27 @@
         {
           title: '🌿 일상·생활',
           items: [
-            { title: '아이와 가볼만한 곳 달력', sub: '10·11월 주말 가족 축제 · 체험 프로그램 · 공식링크', href: 'tools/kids-outing-calendar/index.html', tool: 'kids-outing-calendar', hot: true },
-            { title: '만나이 띠 계산기', sub: '개정 행정기본법 기준 · 12간지 · D-Day', href: 'tools/korean-age-calc/index.html', tool: 'korean-age-calc', hot: true },
-            { title: '퍼센트 할인율 계산기', sub: '쇼핑 세일가 · 인상률 · 비중 계산', href: 'tools/percent-discount-calc/index.html', tool: 'percent-discount-calc', hot: true },
-            { title: '내 인생의 모래시계', sub: '기대수명 대비 생애 진행률 · 잔여 일수', href: 'tools/life-hourglass-sim/index.html', tool: 'life-hourglass-sim' }
+            { title: '아이와 가볼만한 곳 달력', sub: '공식 공지로 확인한 일정 · 비용 · 예약 안내', href: 'tools/kids-outing-calendar/', tool: 'kids-outing-calendar', hot: true },
+            { title: '만나이 띠 계산기', sub: '생일 기준 만나이 · 출생연도 띠 · D-Day', href: 'tools/korean-age-calc/', tool: 'korean-age-calc', hot: true },
+            { title: '퍼센트 할인율 계산기', sub: '쇼핑 세일가 · 인상률 · 비중 계산', href: 'tools/percent-discount-calc/', tool: 'percent-discount-calc', hot: true },
+            { title: '내 인생의 모래시계', sub: '기대수명 대비 생애 진행률 · 잔여 일수', href: 'tools/life-hourglass-sim/', tool: 'life-hourglass-sim' }
           ]
         },
         {
           title: '🏃 헬스·수면',
           items: [
-            { title: '다이어트 BMR·TDEE', sub: '기초대사량 · 유지 칼로리 · 식단 처방', href: 'tools/diet-bmr-tdee-calc/index.html', tool: 'diet-bmr-tdee-calc' },
-            { title: '카페인 반감기 & 꿀잠', sub: '체내 잔여 카페인 · 취침 골든타임', href: 'tools/caffeine-sleep-calc/index.html', tool: 'caffeine-sleep-calc' },
-            { title: '러닝 Zone 2 심박수', sub: '심박수 구간 · 칼로리', href: 'tools/running-zone-calc/index.html', tool: 'running-zone-calc' },
-            { title: '음주 알코올 분해시간', sub: '위드마크 공식 기준 분해 소요시간', href: 'tools/alcohol-widmark-calc/index.html', tool: 'alcohol-widmark-calc' }
+            { title: '다이어트 BMR·TDEE', sub: '기초대사량 · 활동량별 참고 칼로리', href: 'tools/diet-bmr-tdee-calc/', tool: 'diet-bmr-tdee-calc' },
+            { title: '카페인 반감기 & 꿀잠', sub: '체내 잔여 카페인 · 취침 골든타임', href: 'tools/caffeine-sleep-calc/', tool: 'caffeine-sleep-calc' },
+            { title: '러닝 Zone 2 심박수', sub: '심박수 구간 · 칼로리', href: 'tools/running-zone-calc/', tool: 'running-zone-calc' },
+            { title: '음주 알코올 분해시간', sub: '위드마크 공식 기준 분해 소요시간', href: 'tools/alcohol-widmark-calc/', tool: 'alcohol-widmark-calc' }
           ]
         },
         {
           title: '🔮 사주·심리',
           items: [
-            { title: '사주 오행 & 재물운', sub: '만세력 오행 분석 · 자산 궁합', href: 'tools/saju-wealth-sim/index.html', tool: 'saju-wealth-sim' },
-            { title: '투자 성향 동물 MBTI', sub: '16유형 페르소나 · 포트폴리오 처방', href: 'tools/invest-animal-mbti/index.html', tool: 'invest-animal-mbti' },
-            { title: '연애 동물 애착 심리테스트', sub: '존 보울비 애착이론 · 연인 궁합', href: 'tools/love-animal-attachment/index.html', tool: 'love-animal-attachment' }
+            { title: '사주 오행 & 재물운', sub: '만세력 오행 분석 · 자산 궁합', href: 'tools/saju-wealth-sim/', tool: 'saju-wealth-sim' },
+            { title: '투자 성향 동물 MBTI', sub: '오락용 성향 탐색 · 유형별 설명', href: 'tools/invest-animal-mbti/', tool: 'invest-animal-mbti' },
+            { title: '연애 동물 애착 심리테스트', sub: '존 보울비 애착이론 · 연인 궁합', href: 'tools/love-animal-attachment/', tool: 'love-animal-attachment' }
           ]
         }
       ]
@@ -284,20 +284,20 @@
       label: '별별 통계',
       icon: '📊',
       hot: true,
-      desc: '통계청, 한국은행, 고용노동부의 공식 공공 빅데이터를 알기 쉽게 가공한 통계 시뮬레이터! 내 순자산 백분위와 대한민국 평균 대비 나의 직장인 스펙 지수를 확인해보세요.',
+      desc: '수록된 통계를 비교하고 이름 후보를 탐색합니다. 자료의 집계 시점과 추정 범위는 페이지별 안내를 확인해 주세요.',
       subgroups: [
         {
           title: '📊 재미있는 공공 빅데이터',
           items: [
-            { title: '대한민국 순자산 백분위', sub: '2024~2025 가계금융복지조사 기반 상위 %', href: 'tools/korean-wealth-percentile-calc/index.html', tool: 'korean-wealth-percentile-calc', hot: true },
-            { title: '대한민국 평균 vs 나', sub: '연봉·근무시간·점심값 5각형 레이더 차트', href: 'tools/korean-average-vs-me/index.html', tool: 'korean-average-vs-me', hot: true },
-            { title: '대한민국 아기이름 트렌드', sub: '2008~2024 대법원 출생신고 공식 순위', href: 'tools/korean-baby-name-trend/index.html', tool: 'korean-baby-name-trend', hot: true },
-            { title: '전국 도시별 소득 & 집값', sub: '17개 시도별 소득·아파트값·PIR·1인가구', href: 'tools/korean-city-income-housing/index.html', tool: 'korean-city-income-housing', hot: true },
-            { title: '세계 20개국 소득 순위변화', sub: '1990~2024 GNI·1인당 소득 순위 레이스', href: 'tools/world-gni-ranking-race/index.html', tool: 'world-gni-ranking-race', hot: true },
-            { title: '우리나라 수출입 품목 순위', sub: '2000~2024 반도체·자동차 24년 순위', href: 'tools/korean-trade-ranking/index.html', tool: 'korean-trade-ranking', hot: true },
-            { title: '연도별 출입국 관광객 통계', sub: '2000~2024 해외여행객 vs 방한객', href: 'tools/korean-tourism-travel-stats/index.html', tool: 'korean-tourism-travel-stats', hot: true },
-            { title: '대한민국 연령별 인구와 초등생수', sub: '1970~2024 인구 피라미드 & 초등생 급감', href: 'tools/korean-population-pyramid/index.html', tool: 'korean-population-pyramid', hot: true },
-            { title: '세계 30개국 인구 면적 순위', sub: '인구·영토·인구밀도 3대 지표 비교', href: 'tools/world-population-area-rank/index.html', tool: 'world-population-area-rank', hot: true }
+            { title: '대한민국 순자산 백분위', sub: '2024~2025 가계금융복지조사 기반 상위 %', href: 'tools/korean-wealth-percentile-calc/', tool: 'korean-wealth-percentile-calc', hot: true },
+            { title: '대한민국 평균 vs 나', sub: '연봉·근무시간·점심값 5각형 레이더 차트', href: 'tools/korean-average-vs-me/', tool: 'korean-average-vs-me', hot: true },
+            { title: '아기이름 후보 찾기', sub: '이름 후보 탐색 · 기기에 찜하기', href: 'tools/korean-baby-name-trend/', tool: 'korean-baby-name-trend', hot: true },
+            { title: '전국 도시별 소득 & 집값', sub: '17개 시도별 소득·아파트값·PIR·1인가구', href: 'tools/korean-city-income-housing/', tool: 'korean-city-income-housing', hot: true },
+            { title: '세계 20개국 소득 순위변화', sub: '1990~2024 GNI·1인당 소득 순위 레이스', href: 'tools/world-gni-ranking-race/', tool: 'world-gni-ranking-race', hot: true },
+            { title: '우리나라 수출입 품목 순위', sub: '2000~2024 반도체·자동차 24년 순위', href: 'tools/korean-trade-ranking/', tool: 'korean-trade-ranking', hot: true },
+            { title: '연도별 출입국 관광객 통계', sub: '2000~2024 해외여행객 vs 방한객', href: 'tools/korean-tourism-travel-stats/', tool: 'korean-tourism-travel-stats', hot: true },
+            { title: '대한민국 연령별 인구와 초등생수', sub: '1970~2024 인구 피라미드 & 초등생 급감', href: 'tools/korean-population-pyramid/', tool: 'korean-population-pyramid', hot: true },
+            { title: '세계 30개국 인구 면적 순위', sub: '인구·영토·인구밀도 3대 지표 비교', href: 'tools/world-population-area-rank/', tool: 'world-population-area-rank', hot: true }
           ]
         }
       ]
@@ -312,19 +312,19 @@
         {
           title: '🕹️ 실시간 랭킹 아케이드',
           items: [
-            { title: '레트로 테트리스', sub: '정통 7블록 · 고스트 착지 · 전국 실시간 랭킹', href: 'tools/game-tetris/index.html', tool: 'game-tetris', hot: true },
-            { title: '스피드 타자 산성비', sub: '금융 단어 격추 · 타자 전국 실시간 랭킹', href: 'tools/game-typing/index.html', tool: 'game-typing', hot: true },
-            { title: '네온 벽돌 깨기', sub: '공 분열 & 레이저 알카노이드 · 전국 랭킹', href: 'tools/game-brick-breaker/index.html', tool: 'game-brick-breaker', hot: true },
-            { title: '미사일 피하기 닷지', sub: '고전 1.9 탄막 회피 서바이벌 · 전국 랭킹', href: 'tools/game-dodge/index.html', tool: 'game-dodge', hot: true }
+            { title: '레트로 테트리스', sub: '정통 7블록 · 고스트 착지 · 전국 실시간 랭킹', href: 'tools/game-tetris/', tool: 'game-tetris', hot: true },
+            { title: '스피드 타자 산성비', sub: '금융 단어 격추 · 타자 전국 실시간 랭킹', href: 'tools/game-typing/', tool: 'game-typing', hot: true },
+            { title: '네온 벽돌 깨기', sub: '공 분열 & 레이저 알카노이드 · 전국 랭킹', href: 'tools/game-brick-breaker/', tool: 'game-brick-breaker', hot: true },
+            { title: '미사일 피하기 닷지', sub: '고전 1.9 탄막 회피 서바이벌 · 전국 랭킹', href: 'tools/game-dodge/', tool: 'game-dodge', hot: true }
           ]
         },
         {
           title: '🎲 모임 복불복 & 복권',
           items: [
-            { title: '인터랙티브 사다리타기', sub: '2~12명 · 캔버스 애니메이션 · 복불복', href: 'tools/ladder-draw-game/index.html', tool: 'ladder-draw-game' },
-            { title: '더치페이 & 뿜빠이 복불복', sub: '1/N 절사 · 지각자 벌금 · 카톡 문구 복사', href: 'tools/dutch-pay-roulette/index.html', tool: 'dutch-pay-roulette' },
-            { title: '로또 1등 당첨 시뮬레이터', sub: '실제 확률 체감 · 1초 100회 무한 추첨', href: 'tools/lotto-draw-sim/index.html', tool: 'lotto-draw-sim', hot: true },
-            { title: '로또 세후 수령액 & 이자', sub: '33% 세법 공제 · 예금·배당 이자', href: 'tools/lotto-tax-interest-calc/index.html', tool: 'lotto-tax-interest-calc' }
+            { title: '인터랙티브 사다리타기', sub: '2~12명 · 캔버스 애니메이션 · 복불복', href: 'tools/ladder-draw-game/', tool: 'ladder-draw-game' },
+            { title: '더치페이·정산 계산기', sub: '1/N 절사 · 지각자 벌금 · 카톡 문구 복사', href: 'tools/dutch-pay-roulette/', tool: 'dutch-pay-roulette' },
+            { title: '로또 1등 당첨 시뮬레이터', sub: '실제 확률 체감 · 1초 100회 무한 추첨', href: 'tools/lotto-draw-sim/', tool: 'lotto-draw-sim', hot: true },
+            { title: '로또 세후 수령액 & 이자', sub: '원천징수 가정 · 예금·배당 이자', href: 'tools/lotto-tax-interest-calc/', tool: 'lotto-tax-interest-calc' }
           ]
         }
       ]
@@ -338,12 +338,12 @@
         {
           title: '💡 미래 나비효과 시뮬레이션',
           items: [
-            { title: '담배값 주식 투자 시뮬', sub: '하루 1갑 금연 후 S&P500 복리 + 건강 영수증', href: 'tools/smoking-wealth-sim/index.html', tool: 'smoking-wealth-sim', hot: true },
-            { title: '소비 vs 투자 기회비용', sub: '신차·명품 대신 S&P500 복리 투자', href: 'tools/opportunity-cost-calc/index.html', tool: 'opportunity-cost-calc', hot: true },
-            { title: '커피값 투자 기회비용', sub: '그 돈을 TQQQ에 넣었다면?', href: 'tools/coffee-opportunity-calc/index.html', tool: 'coffee-opportunity-calc' },
-            { title: '과거 그때 샀더라면', sub: '팔고 나서 얼마나 올랐을까 (매도 후 상승분)', href: 'tools/missed-investment-calc/index.html', tool: 'missed-investment-calc' },
-            { title: '은퇴자금 조기소진 계산기', sub: '현재 자산으로 몇 년을 버틸 수 있을까?', href: 'tools/retirement-survival-sim/index.html', tool: 'retirement-survival-sim' },
-            { title: '화폐가치 하락 인플레', sub: '그때 그 돈의 지금 가치 환산', href: 'tools/inflation-purchasing-power-calc/index.html', tool: 'inflation-purchasing-power-calc' }
+            { title: '담배값 주식 투자 시뮬', sub: '하루 1갑 금연 후 S&P500 복리 + 건강 영수증', href: 'tools/smoking-wealth-sim/', tool: 'smoking-wealth-sim', hot: true },
+            { title: '소비 vs 투자 기회비용', sub: '신차·명품 대신 S&P500 복리 투자', href: 'tools/opportunity-cost-calc/', tool: 'opportunity-cost-calc', hot: true },
+            { title: '커피값 투자 기회비용', sub: '그 돈을 TQQQ에 넣었다면?', href: 'tools/coffee-opportunity-calc/', tool: 'coffee-opportunity-calc' },
+            { title: '과거 그때 샀더라면', sub: '팔고 나서 얼마나 올랐을까 (매도 후 상승분)', href: 'tools/missed-investment-calc/', tool: 'missed-investment-calc' },
+            { title: '은퇴자금 조기소진 계산기', sub: '현재 자산으로 몇 년을 버틸 수 있을까?', href: 'tools/retirement-survival-sim/', tool: 'retirement-survival-sim' },
+            { title: '화폐가치 하락 인플레', sub: '그때 그 돈의 지금 가치 환산', href: 'tools/inflation-purchasing-power-calc/', tool: 'inflation-purchasing-power-calc' }
           ]
         }
       ]
@@ -408,7 +408,7 @@
 
     return `
       <div class="container header-inner">
-        <a href="${prefix}index.html" class="brand-logo" aria-label="SimuLab 홈">
+        <a href="${prefix}" class="brand-logo" aria-label="SimuLab 홈">
           <span class="brand-logo-mark">SL</span>
           <span class="brand-logo-text">SimuLab</span>
         </a>
@@ -659,7 +659,7 @@
     'smoking-wealth-sim': '담배값 주식 투자 시뮬',
     'korean-wealth-percentile-calc': '대한민국 순자산 백분위',
     'korean-average-vs-me': '대한민국 평균 vs 나',
-    'korean-baby-name-trend': '대한민국 아기이름 트렌드',
+    'korean-baby-name-trend': '아기이름 후보 찾기',
     'korean-city-income-housing': '전국 도시별 소득 & 집값',
     'game-tetris': '레트로 테트리스',
     'game-typing': '스피드 타자 산성비',
@@ -679,8 +679,8 @@
         nav.className = 'breadcrumb';
         nav.setAttribute('aria-label', '현재 위치');
         nav.innerHTML =
-          `<a href="${prefix}index.html">홈</a><span aria-hidden="true">/</span>` +
-          `<a href="${prefix}index.html#cat-${cat.id}">${escapeHtml(cat.label)}</a><span aria-hidden="true">/</span>` +
+          `<a href="${prefix}">홈</a><span aria-hidden="true">/</span>` +
+          `<a href="${prefix}#cat-${cat.id}">${escapeHtml(cat.label)}</a><span aria-hidden="true">/</span>` +
           `<strong>${escapeHtml(TOOL_NAMES[activeToolId])}</strong>`;
         ph.insertBefore(nav, ph.firstChild);
       }
@@ -708,101 +708,17 @@
   /**
    * 카테고리별 맞춤형 스마트 법적 면책 고지 및 법 개정 대비 방어 문구 생성기
    */
-  function buildSmartDisclaimerHtml(activeToolId) {
-    // 1) 법령 및 규정 개정 대비 공통 안전 조항 (모든 도구 공통 삽입)
-    const lawRevisionNote = `
-      <div style="margin-top: 0.6rem; padding-top: 0.5rem; border-top: 1px dashed var(--border-color); font-size: 0.78rem; color: var(--text-muted); line-height: 1.55;">
-        <strong>※ 법령 및 제도 개정 관련 중요 안내:</strong> 본 시뮬레이터에 적용된 세율, 공제 기준, 대출 규제(DSR/LTV), 법적 기준 등은 <strong>2026년 현행 법령</strong>을 기준으로 설계되었습니다. 향후 세법 개정, 정부 부동산·금융 규제 정책 변경 또는 관련 법률 제·개정에 따라 실제 적용 기준과 차이가 발생할 수 있습니다. 법적·재정적 중요 의사결정 전 반드시 최신 공시 법령과 소관 부처(기획재정부, 국세청, 금융위원회 등)의 최신 공식 발표를 재확인하시기 바랍니다.
-      </div>
-    `;
-
-    // 2) 음주/교통 도구 (초고위험: 도로교통법 제44조 및 음주운전 방어)
-    if (activeToolId === 'alcohol-widmark-calc') {
-      return `
-        <div style="background: rgba(239, 68, 68, 0.08); border: 1.5px solid #ef4444; border-radius: 8px; padding: 1rem; color: var(--text-primary); margin-bottom: 0.5rem;">
-          <strong style="color: #ef4444; font-size: 0.95rem; display: flex; align-items: center; gap: 0.35rem; margin-bottom: 0.4rem;">
-            ⚠️ 도로교통법 제44조 준수 및 법적 면책 강력 경고 (Disclaimer)
-          </strong>
-          <p style="margin: 0; line-height: 1.6; font-size: 0.85rem;">
-            본 위드마크 시뮬레이터의 계산 결과는 스웨덴 생리학자 위드마크(Widmark)의 표준 이론 공식에 따른 <strong>단순 수학적 추정치</strong>에 불과합니다.<br/>
-            실제 혈중알코올농도 및 알코올 완전 분해 소요시간은 개인의 체질, 간 효소(ADH/ALDH) 분해 능력, 수면 시간, 안주 섭취 여부, 체지방률, 복용 약물 등에 따라 <strong>극심한 개인차</strong>가 발생합니다.<br/>
-            <strong>본 계산 결과는 도로교통법상 경찰 단속, 법정 소송, 행정 처분 등 어떠한 법적 증거 자료나 운전 가능 여부의 면책 근거로도 절대 사용될 수 없습니다.</strong><br/>
-            단 한 방울의 술이라도 마신 후에는 <strong>절대 운전대를 잡지 마시고 대중교통이나 대리운전을 이용</strong>하시기 바랍니다.
-          </p>
-        </div>
-        ${lawRevisionNote}
-      `;
-    }
-
-    // 3) 세금/세무 도구 (고위험: 세무사법 제22조 및 세법 개정 방어)
-    if (['capital-gains-tax-sim', 'dividend-tax-sim', 'lotto-tax-interest-calc'].includes(activeToolId)) {
-      return `
-        <strong>세무 및 법적 면책 고지 (Tax & Legal Disclaimer):</strong><br/>
-        본 시뮬레이터는 <strong>「세무사법」 제22조(무자격자 세무대리 금지)</strong>를 준수하며, 특정 개인에 대한 맞춤형 세무 자문이나 확정 세액 산정 행위에 해당하지 않습니다.<br/>
-        화면에 표시되는 산출 세액(양도소득세, 배당소득세, 지방소득세, 로또 원천징수세액 등)은 2026년 소득세법 및 조세특례제한법의 표준 세율을 기반으로 한 <strong>단순 모의 계산 결과</strong>입니다.<br/>
-        납세의무자 본인의 타 소득(금융소득 종합과세, 근로/사업소득 합산), 인적공제, 세액감면, 과거 이월결손금, 그리고 <strong>국회 세법개정안(금투세, 대주주 요건, 배당 분리과세 등) 시행 여부</strong>에 따라 실제 국세청 부과 세액과 상당한 차이가 발생할 수 있습니다. 정확한 세무 신고 및 납부는 국세청 홈택스(Hometax) 또는 공인 세무사·회계사 등 세무 전문가와 상담하시기 바랍니다.
-        ${lawRevisionNote}
-      `;
-    }
-
-    // 3-1) 직장인·급여·노무·연금 도구 (근로기준법, 퇴직급여보장법, 국민연금법, 고용보험법 방어)
-    if (['severance-pay-calc', 'salary-net-calc', 'hourly-labor-value-calc', 'national-pension-sim', 'unemployment-benefit-calc'].includes(activeToolId)) {
-      return `
-        <strong>노무·연금·고용보험 법적 면책 고지 (Labor & Pension Disclaimer):</strong><br/>
-        본 시뮬레이터는 <strong>「근로기준법」, 「근로자퇴직급여 보장법」, 「국민연금법」, 「고용보험법」 및 2026년 현행 소득세법</strong>의 표준 산정 기준을 적용한 모의 시뮬레이터입니다.<br/>
-        실제 지급되는 퇴직금, 실업급여, 국민연금 수령액은 개별 근로자의 소속 사업장 취업규칙, 실제 고용보험 피보험 단위기간, 퇴직 사유의 정당성 심사, 과거 납부 이력 및 국회 연금개혁 법안 시행 시점에 따라 실제 지급액과 차이가 발생할 수 있습니다. 확정 금액과 자격 심사는 고용노동부 고용복지플러스센터(1350) 또는 국민연금공단(1355)을 통해 확인하시기 바랍니다.
-        ${lawRevisionNote}
-      `;
-    }
-
-    // 4) 주식/퀀트/투자 도구 (고위험: 자본시장법 제6조, 제17조 및 원금손실 방어)
-    if (['leverage-etf-sim', 'stock-profit-calc', 'stock-water-ride-calc', 'stock-target-compound-calc', 'dividend-goal-calc', 'missed-investment-calc', 'retirement-survival-sim', 'coffee-opportunity-calc', 'opportunity-cost-calc', 'smoking-wealth-sim'].includes(activeToolId)) {
-      return `
-        <strong>금융투자 법적 면책 고지 (Financial Investment Disclaimer):</strong><br/>
-        본 서비스는 <strong>「자본시장과 금융투자업에 관한 법률」 제6조 및 제17조</strong>에 따른 '투자자문업' 또는 '유사투자자문업'에 해당하지 않으며, 특정 종목(주식, 레버리지 ETF, 채권 등)의 매수·매도 타이밍 추천이나 수익률을 보장하지 않습니다.<br/>
-        백테스팅 및 과거 데이터 시뮬레이션 결과는 역사적 가격에 기반한 시계열 분석일 뿐, <strong>과거의 수익률이 미래의 투자 성과를 담보하지 않습니다.</strong> 레버리지 및 주식 투자는 시장 급변 시 극심한 원금 손실(음의 복리 효과, 롤오버 비용 등)이 수반될 수 있으며, 투자에 따른 최종 손익과 법적 책임은 전적으로 투자자 본인에게 귀속됩니다.
-        ${lawRevisionNote}
-      `;
-    }
-
-    // 5) 대출/부동산 도구 (중고위험: 금융소비자보호법 및 DSR 규제 방어)
-    if (['loan-mortgage-calc', 'jeonse-wolse-sim', 'past-apt-timemachine'].includes(activeToolId)) {
-      return `
-        <strong>대출 한도 및 부동산 금융 면책 고지 (Loan & Real Estate Disclaimer):</strong><br/>
-        본 계산기는 <strong>「금융소비자보호법」</strong>을 준수하며, 금융회사의 대출 상품 중개 또는 대출 승인을 약정하는 것이 아닙니다.<br/>
-        산출된 주택담보대출 한도, 스트레스 DSR(총부채원리금상환비율), LTV, 예상 월 원리금 등은 금융당국의 일반 가이드라인을 바탕으로 한 추정치입니다. 실제 승인 한도 및 최종 금리는 각 은행·금융기관의 내부 여신 심사 규정, 개인 신용점수, 담보물 시세 감정가, 정부의 가계대출 총량 규제 정책에 따라 수시로 변동될 수 있습니다.
-        ${lawRevisionNote}
-      `;
-    }
-
-    // 6) 건강/의료 도구 (주의: 의료법 제27조 무면허 의료행위 방어)
-    if (['diet-bmr-tdee-calc', 'caffeine-sleep-calc', 'running-zone-calc'].includes(activeToolId)) {
-      return `
-        <strong>건강 및 의학적 면책 고지 (Health & Medical Disclaimer):</strong><br/>
-        본 도구에서 제공하는 기초대사량(BMR), 일일총에너지소비량(TDEE), 카페인 반감기, 러닝 심박수 Zone 등은 표준 스포츠 생리학 공식(해리스-베네딕트, 카르보넨 등)에 기초한 <strong>일반 건강 참고 정보</strong>입니다.<br/>
-        본 결과는 <strong>「의료법」 제27조에 따른 의학적 진단, 질병의 예방 및 치료, 전문 처방을 대신할 수 없습니다.</strong> 기저질환자, 임산부, 청소년, 약물 복용자 또는 신체 이상 증상이 있으신 분은 운동이나 식이요법 변경 전 반드시 전문 의료진 또는 보건 전문가의 진료와 상담을 받으시기 바랍니다.
-        ${lawRevisionNote}
-      `;
-    }
-
-    // 7) 사행성/복권/엔터테인먼트 도구 (주의: 복권기금법 및 도박문제 상담 안내)
-    if (['lotto-draw-sim', 'saju-wealth-sim', 'ladder-draw-game', 'dutch-pay-roulette'].includes(activeToolId)) {
-      return `
-        <strong>엔터테인먼트 및 사행성 방지 면책 고지 (Entertainment Disclaimer):</strong><br/>
-        본 시뮬레이터는 수학적 확률(독립시행 난수 생성) 및 전통 명리학적 통계 알고리즘을 활용한 <strong>순수 엔터테인먼트 및 교양 목적의 콘텐츠</strong>입니다.<br/>
-        로또 번호 추천이나 당첨 시뮬레이션은 어떠한 당첨 확률 향상도 보장하지 않으며, 사주 오행 분석 또한 운명을 결정짓는 과학적 사실이 아닙니다. 복권 과몰입은 가계 경제에 심각한 피해를 줄 수 있습니다.<br/>
-        <span style="color: var(--text-muted); font-size: 0.8rem;">※ 도박문제로 어려움을 겪고 계시다면 <strong>한국도박문제예방치유원(국번없이 1336, 24시간 무료 상담)</strong>의 도움을 받으실 수 있습니다.</span>
-        ${lawRevisionNote}
-      `;
-    }
-
-    // 8) 기본 일반 면책 고지 (비즈니스/일상)
-    return `
-      <strong>법적 면책 고지 (General Legal Disclaimer):</strong><br/>
-      본 시뮬레이션 결과는 사용자가 직접 입력한 조건에 기반한 단순 수학적·통계적 추정치이며, 실제 결과나 경제적 이익을 보증하지 않습니다.<br/>
-      본 사이트는 100% 클라이언트 브라우저 연산 방식으로 운영되어 이용자의 개인정보나 입력값을 외부 서버로 전송·수집하지 않습니다.
-      ${lawRevisionNote}
-    `;
+  function buildSmartDisclaimerHtml(id) {
+    if (id === 'home' || id === 'admin-dashboard' || id === 'legal') return '';
+    const link = '<a href="' + getRootPrefix() + 'legal/editorial.html">출처와 정보 기준</a>';
+    let message = '입력한 조건에 따른 계산 결과입니다. 단위와 가정을 확인하고 이용해 주세요.';
+    if (id === 'kids-outing-calendar') message = '행사별 공식 출처와 확인일을 제공합니다. 일정 변경, 예약 가능 여부와 참가 조건은 출발 전 주최 기관의 최신 안내를 확인해 주세요.';
+    else if (id === 'alcohol-widmark-calc') message = '이론에 따른 추정치이며 실제 혈중알코올농도나 운전 가능 여부를 판단할 수 없습니다. 음주 후에는 운전하지 마세요.';
+    else if (['diet-bmr-tdee-calc','caffeine-sleep-calc','running-zone-calc'].includes(id)) message = '일반적인 건강 참고 정보입니다. 개인의 상태에 따라 달라지며 진단·치료나 개인별 운동·식이 처방을 대신하지 않습니다.';
+    else if (/tax|pension|salary|severance|unemployment|loan|mortgage/.test(id)) message = '입력한 가정과 페이지에 표시된 기준으로 계산한 추정치입니다. 실제 지급액·세액·대출 승인 여부는 개인의 조건과 적용 시점에 따라 달라집니다. 최종 확인은 담당 기관에 문의해 주세요.';
+    else if (/stock|etf|invest|dividend|retirement|wealth|opportunity|jeonse|apt/.test(id)) message = '가정에 따른 비교 결과이며 투자 수익이나 실제 가격을 보장하지 않습니다. 과거 성과와 미래 결과는 다를 수 있습니다.';
+    else if (/saju|mbti|attachment|lotto/.test(id)) message = '오락과 참고를 위한 콘텐츠입니다. 과학적 진단, 확정적인 미래 예측이나 당첨 확률 향상을 제공하지 않습니다.';
+    return '<strong>이용 전 확인</strong><p>' + message + '</p>' + link;
   }
 
   let isCommonUiInitialized = false;
@@ -829,20 +745,12 @@
     const prefix = getRootPrefix();
     initTheme(activeToolId);
 
-    // 0) 공통 Supabase 설정(supabase-config.js) 및 방문 추적기(tracker.js) 비동기 로드
-    if (!document.getElementById('simulab-supabase-config-script')) {
-      const configScript = document.createElement('script');
-      configScript.id = 'simulab-supabase-config-script';
-      configScript.src = prefix + 'assets/js/supabase-config.js';
-      document.head.appendChild(configScript);
-    }
-    if (!document.getElementById('simulab-tracker-script')) {
-      const trackerScript = document.createElement('script');
-      trackerScript.id = 'simulab-tracker-script';
-      trackerScript.src = prefix + 'assets/js/tracker.js';
-      trackerScript.async = true;
-      document.head.appendChild(trackerScript);
-    }
+    // Ordered dependencies prevent settings/tracker races.
+    loadCommonScript(prefix + 'assets/js/site-settings.js?v=20261023_overhaul1', 'simulab-settings-script')
+      .then(() => loadCommonScript(prefix + 'assets/js/supabase-config.js?v=20261023_overhaul1', 'simulab-supabase-config-script'))
+      .then(() => loadCommonScript(prefix + 'assets/js/privacy.js?v=20261023_overhaul1', 'simulab-privacy-script'))
+      .then(() => loadCommonScript(prefix + 'assets/js/tracker.js?v=20261023_overhaul1', 'simulab-tracker-script'))
+      .catch(() => {});
 
     // 1) 상단 헤더 주입 (v2: 카테고리 메가메뉴 + 모바일 햄버거)
     const headerEl = document.getElementById('site-header');
@@ -852,6 +760,9 @@
       bindHeaderMenu(headerEl);
     }
     enhancePageHeader(prefix, activeToolId);
+    if (SITE_MENU.some(group => group.items.some(item => item.tool === activeToolId))) {
+      try { let recent = JSON.parse(localStorage.getItem('simulab_recent_tools') || '[]'); if (!Array.isArray(recent)) recent = []; localStorage.setItem('simulab_recent_tools', JSON.stringify([activeToolId, ...recent.filter(id => id !== activeToolId)].slice(0, 6))); } catch {}
+    }
 
     // 2) 카테고리별 맞춤형 스마트 법적 면책 조항(Disclaimer) 주입
     let disclaimerEl = document.getElementById('legal-disclaimer') || document.getElementById('disclaimer-container');
@@ -887,170 +798,33 @@
       footerEl.innerHTML = `
         <div class="container footer-inner">
           <div>
-            <strong style="color: var(--text-primary);">SimuLab Analytics Hub</strong>
-            <p style="margin-top: 0.2rem;">100% Client-Side Quantitative Financial, Business &amp; Biometric Simulation Platform</p>
+            <strong style="color: var(--text-primary);">SimuLab</strong>
+            <p style="margin-top: 0.2rem;">생활에 필요한 계산·통계·나들이 정보를 한곳에.</p>
           </div>
           <ul class="footer-links">
             <li><a href="${prefix}legal/about.html">서비스 소개</a></li>
             <li><a href="${prefix}legal/privacy.html"><strong>개인정보처리방침</strong></a></li>
             <li><a href="${prefix}legal/terms.html">이용약관 및 면책고지</a></li>
-            <li><a href="${prefix}sitemap.xml">Sitemap</a></li>
+            <li><a href="${prefix}legal/editorial.html">출처·정정 기준</a></li>
+            <li><button type="button" class="footer-privacy" data-privacy-settings>개인정보 설정</button></li>
           </ul>
         </div>
       `;
     }
 
-    initCookieConsentBanner(prefix);
     initAllSlidersProgress();
-    initConsentGate(activeToolId);
   }
 
-  /**
-   * [v2 법적 방어 게이트] 금융·대출·부동산 11개 도구 전용 '매번 물어보는 필수 면책 서약 게이트'
-   * - 사용자 요청: 브라우저 저장(localStorage) 없이 매 접속/새로고침 시마다 무조건 미동의 잠금 상태로 시작
-   * - 체크박스를 직접 체크해야만 아래 시뮬레이터 조작 영역(입력창, 슬라이더, 칩)이 활성화됨
-   */
-  const CONSENT_REQUIRED_TOOLS = [
-    'leverage-etf-sim',
-    'dividend-tax-sim',
-    'capital-gains-tax-sim',
-    'loan-mortgage-calc',
-    'jeonse-wolse-sim',
-    'stock-profit-calc',
-    'stock-water-ride-calc',
-    'stock-target-compound-calc',
-    'dividend-goal-calc',
-    'lotto-tax-interest-calc',
-    'retirement-survival-sim',
-  ];
-
-  function initConsentGate(activeToolId) {
-    if (!CONSENT_REQUIRED_TOOLS.includes(activeToolId)) return;
-
-    const mainEl = document.querySelector('main.container') || document.querySelector('main');
-    if (!mainEl) return;
-
-    // 잠금 대상 컨테이너(시뮬레이터 조작 영역 및 그리드) 탐색
-    const lockTargets = [];
-    const simGrid = mainEl.querySelector('.simulator-grid');
-    if (simGrid) {
-      lockTargets.push(simGrid);
-    } else {
-      const cards = mainEl.querySelectorAll('.card, .kpi-grid, div[style*="grid"]');
-      cards.forEach((c) => {
-        if (!c.classList.contains('page-header') && !c.id.includes('verdict')) {
-          lockTargets.push(c);
-        }
-      });
-    }
-
-    if (lockTargets.length === 0) return;
-
-    // 서약 게이트 카드 생성 및 주입 (이미 생성되어 있지 않은 경우)
-    let gateCard = document.getElementById('consent-gate-card');
-    if (!gateCard) {
-      gateCard = document.createElement('section');
-      gateCard.id = 'consent-gate-card';
-      gateCard.className = 'consent-gate-card';
-      gateCard.setAttribute('aria-label', '필수 법적 면책 고지 및 이용자 서약');
-      gateCard.innerHTML = `
-        <div class="consent-gate-header">
-          <span class="consent-gate-badge" id="consent-status-badge">🔒 미동의 (시뮬레이터 조작 잠금 상태)</span>
-          <span style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">접속 시마다 매번 서약 필수 (세션 비저장 원칙)</span>
-        </div>
-        <div class="consent-gate-body">
-          <strong>⚖️ [필수] 법적 면책 고지 및 이용자 자기책임 서약서</strong><br/>
-          본 시뮬레이터는 「자본시장법」상 투자자문이나 「세무사법」상 세무대리, 「금융소비자보호법」상 대출 승인 약정이 아닌 <strong>단순 통계·수학적 알고리즘 모의 계산기</strong>입니다.<br/>
-          산출 결과는 2026년 현행 법령에 기초한 추정치이며, 세법 개정이나 금융 규제 변경, 수식 오차로 인해 실제와 다를 수 있습니다. 본 결과를 참고하여 행한 <strong>모든 투자·대출·세무 의사결정의 최종 책임은 전적으로 본인에게 귀속됨</strong>을 확인합니다.
-        </div>
-        <label class="consent-gate-checkbox-row" for="checkbox-legal-consent">
-          <input type="checkbox" id="checkbox-legal-consent" class="consent-checkbox" />
-          <span class="consent-checkbox-label">위 법적 면책 사항 및 자기책임 원칙을 충분히 확인하였으며, 이에 동의합니다. (필수)</span>
-        </label>
-      `;
-
-      // 안내 잠금 배너 생성
-      const lockBanner = document.createElement('div');
-      lockBanner.id = 'consent-lock-banner';
-      lockBanner.className = 'consent-lock-banner';
-      lockBanner.innerHTML = `<span>🔒</span><span>상단 서약서의 [동의합니다]를 체크하셔야 입력창과 계산 기능이 활성화됩니다.</span>`;
-
-      // 첫 번째 잠금 대상 바로 앞에 주입
-      const firstTarget = lockTargets[0];
-      firstTarget.parentNode.insertBefore(gateCard, firstTarget);
-      firstTarget.parentNode.insertBefore(lockBanner, firstTarget);
-    }
-
-    const checkbox = document.getElementById('checkbox-legal-consent');
-    const badge = document.getElementById('consent-status-badge');
-    const lockBanner = document.getElementById('consent-lock-banner');
-
-    if (!checkbox) return;
-
-    // [중요] 사용자 명시 요청: 브라우저 저장 없이 항상 미동의(체크 해제) 상태로 시작
-    checkbox.checked = false;
-    lockTargets.forEach((t) => t.classList.add('simulator-locked'));
-    if (lockBanner) lockBanner.style.display = 'flex';
-
-    // 체크박스 클릭 인터랙션 바인딩
-    checkbox.addEventListener('change', () => {
-      const isAgreed = checkbox.checked;
-      if (isAgreed) {
-        gateCard.classList.add('unlocked');
-        if (badge) badge.textContent = '✔ 동의 완료 (시뮬레이터 활성화됨)';
-        lockTargets.forEach((t) => t.classList.remove('simulator-locked'));
-        if (lockBanner) lockBanner.style.display = 'none';
-        showToast('✔ 법적 면책 사항에 동의하셨습니다. 모든 시뮬레이션 기능이 활성화되었습니다.');
-      } else {
-        gateCard.classList.remove('unlocked');
-        if (badge) badge.textContent = '🔒 미동의 (시뮬레이터 조작 잠금 상태)';
-        lockTargets.forEach((t) => t.classList.add('simulator-locked'));
-        if (lockBanner) lockBanner.style.display = 'flex';
-        showToast('🔒 동의가 해제되어 시뮬레이션 조작이 잠금 처리되었습니다.');
-      }
+  // Load optional settings and privacy controls before analytics.
+  function loadCommonScript(src,id) {
+    if(document.getElementById(id)) return Promise.resolve();
+    return new Promise((resolve,reject)=>{
+      const script=document.createElement('script'); script.id=id; script.src=src;
+      script.onload=resolve; script.onerror=reject; document.head.append(script);
     });
   }
 
-  function initCookieConsentBanner(prefix) {
-    const CONSENT_KEY = 'simulab_cookie_consent_v1';
-    try {
-      if (localStorage.getItem(CONSENT_KEY) === 'accepted') {
-        return;
-      }
-    } catch (err) {
-      return;
-    }
-
-    const banner = document.createElement('aside');
-    banner.className = 'cookie-banner';
-    banner.setAttribute('aria-label', '쿠키 및 개인정보처리방침 안내');
-    banner.innerHTML = `
-      <div style="flex: 1; min-width: 260px; font-size: 0.82rem; color: var(--text-secondary);">
-        <strong style="color: var(--text-primary);">쿠키(Cookie) 및 프라이버시 안내:</strong>
-        본 사이트는 사용자의 시뮬레이션 입력값을 외부 서버로 수집·저장하지 않습니다.
-        다만 방문 통계 분석(GA4) 및 광고 제공(Google AdSense)을 위해 브라우저 쿠키를 사용합니다.
-        자세한 내용은 <a href="${prefix}legal/privacy.html" style="text-decoration: underline;">개인정보처리방침</a>을 확인해 주세요.
-      </div>
-      <div>
-        <button type="button" id="cookie-accept-btn" class="btn btn-primary">확인 및 닫기</button>
-      </div>
-    `;
-
-    document.body.appendChild(banner);
-    const acceptBtn = document.getElementById('cookie-accept-btn');
-    if (acceptBtn) {
-      acceptBtn.addEventListener('click', () => {
-        try {
-          localStorage.setItem(CONSENT_KEY, 'accepted');
-        } catch (err) {}
-        banner.remove();
-      });
-    }
-  }
-
-  /* ------------------------------------------------------------------------
-     5. URL 쿼리스트링 공유 및 localStorage 상태 관리
-     ------------------------------------------------------------------------ */
+  /* Privacy choices are managed by privacy.js; calculator inputs stay available. */
 
   function parseUrlParams(defaultInputs) {
     const params = new URLSearchParams(window.location.search);

@@ -486,7 +486,7 @@
 
   btnRankCancel.addEventListener('click', hideRankModal);
 
-  rankForm.addEventListener('submit', (e) => {
+  rankForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const nickname = (rankNickname.value || '').trim();
     if (!nickname) {
@@ -495,7 +495,7 @@
     }
 
     if (window.GameRanking) {
-      GameRanking.saveRecord('game-typing', nickname, pendingFinalScore, `${pendingFinalScore.toLocaleString()}점`);
+      await GameRanking.saveRecordAsync('game-typing', nickname, pendingFinalScore, `${pendingFinalScore.toLocaleString()}점`);
       GameRanking.renderBoard(rankingBoardContainer, 'game-typing');
     }
 

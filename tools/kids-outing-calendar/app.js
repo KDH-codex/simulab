@@ -1,608 +1,167 @@
-/**
- * ==========================================================================
- * [라이프·일상생활] 🎪 아이와 가볼만한 곳 축제/행사 달력 UI 컨트롤러 (app.js)
- * --------------------------------------------------------------------------
- * 1. 전국 40여 개 가을 공식 축제 빅데이터 기반 월~일 7열 캘린더 생성
- * 2. 실시간 키워드 검색 엔진 (축제명, 장소, 체험 키워드, 테마)
- * 3. 지역별(서울·경기 메인, 전국 도 단위) & 테마별(단풍, 체험, 먹거리, 빛, 무료) 필터링
- * 4. 마우스 호버 시 장소 & 주요 체험 프로그램 커스텀 툴팁
- * 5. 축제 바/카드 클릭 시 지자체 공식 안내 홈페이지 새 창 이동
- * 6. 선택 일자 상세 가족 축제 카드 렌더링
- * 7. 외부 축제 데이터(JSON/공공데이터) 안전한 확장 및 복원 모달 연동
- * ==========================================================================
- */
+import { KidsOutingLogic, THEMES, REGIONS, DATA_REVIEWED_AT, koreaToday, weekendRange, monthRange, filterEvents, occursOn, isStale, isDate, escapeHtml as esc, safeUrl, eventStatus } from './logic.js?v=20261023_verified1';
 
-import { KidsOutingLogic } from './logic.js?v=20261023_0130';
-
-document.addEventListener('DOMContentLoaded', () => {
-  // --------------------------------------------------------------------------
-  // 1. 상태 변수 정의
-  // --------------------------------------------------------------------------
-  let currentYear = 2026;
-  let currentMonth = 10; // 기본 10월
-  let currentRegion = '전체'; // 기본 전국
-  let currentTheme = 'all'; // 기본 전체 테마
-  let onlyFree = false; // 무료 전용 토글
-  let currentKeyword = ''; // 검색어
-  let selectedDate = '2026-10-24'; // 기본 선택일 (주말 대표 축제 집중일)
-
-  // --------------------------------------------------------------------------
-  // 2. DOM 요소 참조
-  // --------------------------------------------------------------------------
-  // 검색 및 필터 요소
-  const searchInput = document.getElementById('searchFestivalInput');
-  const btnClearSearch = document.getElementById('btnClearSearch');
-  const btnOpenImportModal = document.getElementById('btnOpenImportModal');
-  const themeChips = document.querySelectorAll('.theme-chip-btn');
-  const btnToggleFree = document.getElementById('btnToggleFree');
-  const regionChips = document.querySelectorAll('.region-chip-btn');
-  const filteredCountBadge = document.getElementById('filteredCountBadge');
-
-  // 월 이동 및 달력 요소
-  const btnPrevMonth = document.getElementById('btnPrevMonth');
-  const btnNextMonth = document.getElementById('btnNextMonth');
-  const currentMonthHeading = document.getElementById('currentMonthHeading');
-  const monthSubCaption = document.getElementById('monthSubCaption');
-  const calendarUnifiedGrid = document.getElementById('calendarUnifiedGrid');
-
-  // 상세 카드 및 툴팁 요소
-  const selectedDateTitle = document.getElementById('selectedDateTitle');
-  const selectedDateCount = document.getElementById('selectedDateCount');
-  const festivalCardsGrid = document.getElementById('festivalCardsGrid');
-  const kidsFloatingTooltip = document.getElementById('kidsFloatingTooltip');
-
-  // 가져오기 모달 요소
-  const importModalOverlay = document.getElementById('importModalOverlay');
-  const btnCloseImportModal = document.getElementById('btnCloseImportModal');
-  const btnResetDefaultFestivals = document.getElementById('btnResetDefaultFestivals');
-  const btnSubmitImportJson = document.getElementById('btnSubmitImportJson');
-  const importJsonTextarea = document.getElementById('importJsonTextarea');
-
-  // 특정 일자 전체 축제 모달 요소 (+N개 더보기 클릭 시)
-  const dayEventsModalOverlay = document.getElementById('dayEventsModalOverlay');
-  const dayModalTitle = document.getElementById('dayModalTitle');
-  const btnCloseDayModal = document.getElementById('btnCloseDayModal');
-  const dayModalCardsList = document.getElementById('dayModalCardsList');
-
-  // --------------------------------------------------------------------------
-  // 3. 통계 뱃지 업데이트
-  // --------------------------------------------------------------------------
-  function updateCountBadge() {
-    if (!filteredCountBadge) return;
-    const currentMonthEvents = KidsOutingLogic.searchFestivals({
-      year: currentYear,
-      month: currentMonth,
-      region: currentRegion,
-      theme: currentTheme,
-      onlyFree: onlyFree,
-      keyword: currentKeyword
-    });
-    filteredCountBadge.textContent = `조회된 축제: ${currentMonthEvents.length}개`;
+function init() {
+  const $ = id => document.getElementById(id);
+  let today = koreaToday();
+  const initialWeekend = weekendRange(today);
+  let [year, month] = initialWeekend.start.split('-').map(Number);
+  let rangeMode = 'weekend';
+  let selectedDate = today;
+  let view = matchMedia('(max-width: 760px)').matches ? 'list' : 'calendar';
+  let region = '전체', theme = 'all', keyword = '', onlyFree = false, includeEnded = false;
+  const params = new URLSearchParams(location.search);
+  if (/^20\d{2}-(0[1-9]|1[0-2])$/.test(params.get('month') || '')) [year, month] = params.get('month').split('-').map(Number);
+  if (['weekend', 'today', 'month', 'day'].includes(params.get('range'))) rangeMode = params.get('range');
+  if (isDate(params.get('date')) && params.get('date') >= '2000-01-01' && params.get('date') <= '2099-12-31') selectedDate = params.get('date'); else if (rangeMode === 'day') rangeMode = 'month';
+  if (REGIONS.includes(params.get('region'))) region = params.get('region');
+  if (Object.hasOwn(THEMES, params.get('theme'))) theme = params.get('theme');
+  if (['list', 'calendar'].includes(params.get('view'))) view = params.get('view');
+  keyword = (params.get('q') || '').slice(0, 100);
+  onlyFree = params.get('free') === '1';
+  includeEnded = params.get('ended') === '1';
+  if (rangeMode === 'today' || rangeMode === 'weekend' || rangeMode === 'day') {
+    const date = rangeMode === 'weekend' ? initialWeekend.start : rangeMode === 'today' ? today : selectedDate;
+    [year, month] = date.split('-').map(Number);
   }
 
-  // --------------------------------------------------------------------------
-  // 4. 월간 달력 렌더링 엔진 (월~일 기준 단일 7열 통합 그리드)
-  // --------------------------------------------------------------------------
+  $('regionSelect').replaceChildren(...REGIONS.map(value => {
+    const option = document.createElement('option'); option.value = value; option.textContent = value === '전체' ? '전국' : value; return option;
+  }));
+  $('themeChips').innerHTML = Object.entries(THEMES).map(([value, label]) => '<button type="button" data-theme="' + value + '">' + label + '</button>').join('');
+
+  function range() {
+    if (rangeMode === 'today') return { start: today, end: today };
+    if (rangeMode === 'weekend') return weekendRange(today);
+    if (rangeMode === 'day') return { start: selectedDate, end: selectedDate };
+    return monthRange(year, month);
+  }
+  function options() { return { region, theme, keyword, onlyFree, includeEnded, today }; }
+  function syncControls() {
+    $('regionSelect').value = region; $('searchFestivalInput').value = keyword;
+    $('onlyFree').checked = onlyFree; $('includeEnded').checked = includeEnded;
+    document.querySelectorAll('[data-theme]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.theme === theme)));
+    document.querySelectorAll('[data-range]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.range === rangeMode)));
+    document.querySelectorAll('[data-view]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.view === view)));
+    $('calendarPanel').hidden = view !== 'calendar';
+  }
   function renderCalendar() {
-    if (!calendarUnifiedGrid) return;
-
-    // 헤더 텍스트 업데이트
-    if (currentMonthHeading) {
-      currentMonthHeading.textContent = `${currentYear}년 ${currentMonth}월`;
+    $('currentMonthHeading').textContent = year + '년 ' + month + '월';
+    $('btnPrevMonth').disabled = year === 2000 && month === 1;
+    $('btnNextMonth').disabled = year === 2099 && month === 12;
+    const grid = $('calendarUnifiedGrid');
+    grid.replaceChildren();
+    const weekdays = ['월', '화', '수', '목', '금', '토', '일'];
+    weekdays.forEach((name, i) => { const cell = document.createElement('div'); cell.className = 'outing-weekday ' + (i === 5 ? 'sat' : i === 6 ? 'sun' : ''); cell.textContent = name; grid.append(cell); });
+    const bounds = monthRange(year, month);
+    const offset = (new Date(bounds.start + 'T00:00:00Z').getUTCDay() + 6) % 7;
+    const days = Number(bounds.end.slice(-2));
+    const total = Math.ceil((offset + days) / 7) * 7;
+    const monthEvents = filterEvents({ ...bounds, ...options() });
+    const selected = range();
+    for (let index = 0; index < total; index++) {
+      const day = index - offset + 1;
+      if (day < 1 || day > days) { const empty = document.createElement('div'); empty.className = 'outing-day outside'; empty.setAttribute('aria-hidden', 'true'); grid.append(empty); continue; }
+      const date = bounds.start.slice(0, 8) + String(day).padStart(2, '0');
+      const events = monthEvents.filter(event => occursOn(event, date));
+      const cell = document.createElement('button');
+      cell.type = 'button'; cell.className = 'outing-day';
+      if (index % 7 === 5) cell.classList.add('sat');
+      if (index % 7 === 6) cell.classList.add('sun');
+      if (date < today) cell.classList.add('past');
+      if (date === today) { cell.classList.add('today'); cell.setAttribute('aria-current', 'date'); }
+      const active = date >= selected.start && date <= selected.end;
+      cell.classList.toggle('selected', active); cell.setAttribute('aria-pressed', String(active));
+      cell.dataset.date = date;
+      cell.setAttribute('aria-label', year + '년 ' + month + '월 ' + day + '일 ' + weekdays[index % 7] + '요일, 확인한 행사 ' + events.length + '개');
+      cell.innerHTML = '<span class="outing-day-number"><span>' + day + '</span>' + (events.length ? '<small>' + events.length + '개</small>' : '') + '</span>' +
+        events.slice(0, 2).map(event => '<span class="outing-day-event ' + event.theme + '">' + esc(event.title.replace('2026 ', '')) + '</span>').join('') +
+        (events.length > 2 ? '<span class="outing-more">+' + (events.length - 2) + '개 더</span>' : '');
+      grid.append(cell);
     }
-    if (monthSubCaption) {
-      if (currentMonth === 10) {
-        monthSubCaption.textContent = '🍁 단풍 & 가을 수확 축제 시즌';
-      } else {
-        monthSubCaption.textContent = '🏮 빛초롱 & 겨울맞이 온가족 축제 시즌';
-      }
-    }
-
-    calendarUnifiedGrid.innerHTML = '';
-
-    // 0) 1행: 요일 헤더 셀 7개 생성 (월~일 순서)
-    const weekdayHeaders = [
-      { name: '월', cls: '' },
-      { name: '화', cls: '' },
-      { name: '수', cls: '' },
-      { name: '목', cls: '' },
-      { name: '금', cls: '' },
-      { name: '토', cls: 'sat' },
-      { name: '일', cls: 'sun' }
-    ];
-    weekdayHeaders.forEach(w => {
-      const th = document.createElement('div');
-      th.className = `kids-th-cell ${w.cls}`;
-      th.textContent = w.name;
-      calendarUnifiedGrid.appendChild(th);
-    });
-
-    // 날짜 계산 (월~일 기준 정렬)
-    // JS getDay(): 0(일), 1(월), 2(화), 3(수), 4(목), 5(금), 6(토)
-    // 월=0, 화=1, ..., 일=6 변환 공식: (day + 6) % 7
-    const firstDayObj = new Date(currentYear, currentMonth - 1, 1);
-    const startWeekdayOffset = (firstDayObj.getDay() + 6) % 7;
-    const daysInMonth = new Date(currentYear, currentMonth, 0).getDate();
-    const prevMonthDays = new Date(currentYear, currentMonth - 1, 0).getDate();
-
-    // 1) 이전 달 잔여 일자 셀 채우기
-    for (let i = startWeekdayOffset - 1; i >= 0; i--) {
-      const dNum = prevMonthDays - i;
-      const cell = document.createElement('div');
-      cell.className = 'kids-day-cell other-month';
-      cell.innerHTML = `
-        <div class="cell-header">
-          <span class="cell-date-num">${dNum}</span>
-        </div>
-      `;
-      calendarUnifiedGrid.appendChild(cell);
-    }
-
-    // 2) 현재 달 일자 셀 채우기 (1 ~ daysInMonth)
-    for (let d = 1; d <= daysInMonth; d++) {
-      const cell = document.createElement('div');
-      cell.className = 'kids-day-cell';
-
-      // 요일 판별 (5: 토요일, 6: 일요일)
-      const weekdayIdx = (startWeekdayOffset + d - 1) % 7;
-      if (weekdayIdx === 5) cell.classList.add('sat');
-      if (weekdayIdx === 6) cell.classList.add('sun');
-
-      const dateStr = `${currentYear}-${String(currentMonth).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
-      if (dateStr === selectedDate) {
-        cell.classList.add('is-selected');
-      }
-
-      // 오늘 날짜 표시 (10월 22일 가상 또는 현재 일치 시)
-      if (d === 22 && currentMonth === 10) {
-        cell.classList.add('is-today');
-      }
-
-      // 해당 일자에 열리는 축제 목록 조회 (검색 및 다중 필터 적용)
-      const events = KidsOutingLogic.getEventsOnDate(dateStr, {
-        region: currentRegion,
-        theme: currentTheme,
-        onlyFree: onlyFree,
-        keyword: currentKeyword
-      });
-
-      // 핫 페스티벌 / 특별 이색 이벤트 우선 정렬 (기간이 짧고 흥미진진한 주말 페스타를 상위에 우선 노출)
-      const hotKeywords = ['바베큐', '드론', '나이트', '피자', '모터쇼', '토이', '레고랜드', '매직', '불꽃', '스푸키', '캠핑', '치즈', '사탕'];
-      events.sort((a, b) => {
-        const aHot = hotKeywords.some(k => (a.title + a.program).includes(k)) ? 1 : 0;
-        const bHot = hotKeywords.some(k => (b.title + b.program).includes(k)) ? 1 : 0;
-        if (aHot !== bHot) return bHot - aHot;
-        const aDuration = new Date(a.endDate) - new Date(a.startDate);
-        const bDuration = new Date(b.endDate) - new Date(b.startDate);
-        return aDuration - bDuration;
-      });
-
-      // 셀 헤더 구성
-      const headerEl = document.createElement('div');
-      headerEl.className = 'cell-header';
-      headerEl.innerHTML = `
-        <span class="cell-date-num">${d}</span>
-        ${events.length > 0 ? `<span class="cell-count-pill">${events.length}개</span>` : ''}
-      `;
-      cell.appendChild(headerEl);
-
-      // 축제 바 목록 생성
-      const eventsListEl = document.createElement('div');
-      eventsListEl.className = 'cell-events-list';
-
-      // 셀 공간을 고려하여 최대 3개까지 표시하고 초과는 +N개로 축약
-      const displayEvents = events.slice(0, 3);
-      displayEvents.forEach(ev => {
-        const bar = document.createElement('a');
-        bar.className = `cal-event-bar bar-${ev.tagColor || 'blue'}`;
-        bar.href = ev.link;
-        bar.target = '_blank';
-        bar.rel = 'noopener noreferrer';
-        bar.textContent = `${ev.icon || '🎪'} ${ev.title}`;
-
-        // 마우스 호버 시 툴팁 이벤트 바인딩
-        bar.addEventListener('mouseenter', (e) => showTooltip(e, ev));
-        bar.addEventListener('mousemove', moveTooltip);
-        bar.addEventListener('mouseleave', hideTooltip);
-
-        // 클릭 시 이벤트 전파 방지 (셀 클릭 이벤트와 분리)
-        bar.addEventListener('click', (e) => {
-          e.stopPropagation();
-        });
-
-        eventsListEl.appendChild(bar);
-      });
-
-      if (events.length > 3) {
-        const moreBtn = document.createElement('button');
-        moreBtn.className = 'cal-more-btn';
-        moreBtn.type = 'button';
-        moreBtn.textContent = `+${events.length - 3}개 더보기 🔍`;
-        moreBtn.title = '이 날 열리는 모든 축제 전체보기';
-
-        moreBtn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          selectedDate = dateStr;
-          document.querySelectorAll('.kids-day-cell.is-selected').forEach(c => c.classList.remove('is-selected'));
-          cell.classList.add('is-selected');
-          renderDetails();
-          openDayEventsModal(dateStr, events);
-        });
-
-        eventsListEl.appendChild(moreBtn);
-      }
-
-      cell.appendChild(eventsListEl);
-
-      // 날짜 셀 클릭 시 해당 일자 선택 및 상세 카드 렌더링
-      cell.addEventListener('click', () => {
-        document.querySelectorAll('.kids-day-cell.is-selected').forEach(c => c.classList.remove('is-selected'));
-        cell.classList.add('is-selected');
-        selectedDate = dateStr;
-        renderDetails();
-      });
-
-      calendarUnifiedGrid.appendChild(cell);
-    }
-
-    // 3) 다음 달 잔여 일자 셀 채우기 (전체 셀이 7의 배수가 되도록)
-    const totalFilled = startWeekdayOffset + daysInMonth;
-    const remainingCells = (7 - (totalFilled % 7)) % 7;
-    for (let j = 1; j <= remainingCells; j++) {
-      const cell = document.createElement('div');
-      cell.className = 'kids-day-cell other-month';
-      cell.innerHTML = `
-        <div class="cell-header">
-          <span class="cell-date-num">${j}</span>
-        </div>
-      `;
-      calendarUnifiedGrid.appendChild(cell);
-    }
-
-    updateCountBadge();
   }
-
-  // --------------------------------------------------------------------------
-  // 5. 선택 일자 상세 축제 카드 렌더링
-  // --------------------------------------------------------------------------
-  function renderDetails() {
-    if (!festivalCardsGrid || !selectedDateTitle || !selectedDateCount) return;
-
-    // 날짜 텍스트 파싱
-    const [y, m, d] = selectedDate.split('-');
-    const dateObj = new Date(parseInt(y), parseInt(m) - 1, parseInt(d));
-    const dayNames = ['일', '월', '화', '수', '목', '금', '토'];
-    const dayName = dayNames[dateObj.getDay()];
-
-    selectedDateTitle.textContent = `📌 ${parseInt(m)}월 ${parseInt(d)}일(${dayName}) 열리는 가족 축제 & 행사`;
-
-    const events = KidsOutingLogic.getEventsOnDate(selectedDate, {
-      region: currentRegion,
-      theme: currentTheme,
-      onlyFree: onlyFree,
-      keyword: currentKeyword
-    });
-
-    // 핫 페스티벌 / 특별 이색 이벤트 우선 정렬
-    const hotKeywords = ['바베큐', '드론', '나이트', '피자', '모터쇼', '토이', '레고랜드', '매직', '불꽃', '스푸키', '캠핑', '치즈', '사탕'];
-    events.sort((a, b) => {
-      const aHot = hotKeywords.some(k => (a.title + a.program).includes(k)) ? 1 : 0;
-      const bHot = hotKeywords.some(k => (b.title + b.program).includes(k)) ? 1 : 0;
-      if (aHot !== bHot) return bHot - aHot;
-      const aDuration = new Date(a.endDate) - new Date(a.startDate);
-      const bDuration = new Date(b.endDate) - new Date(b.startDate);
-      return aDuration - bDuration;
-    });
-
-    selectedDateCount.textContent = `총 ${events.length}개`;
-    festivalCardsGrid.innerHTML = '';
-
-    if (events.length === 0) {
-      festivalCardsGrid.innerHTML = `
-        <div class="fc-empty-state">
-          <div style="font-size: 2.2rem; margin-bottom: 0.6rem;">🎈</div>
-          <h4 style="font-size: 1.05rem; font-weight: 850; color: #334155; margin-bottom: 0.35rem;">
-            해당 일자에는 조건에 맞는 축제 일정이 없습니다.
-          </h4>
-          <p style="font-size: 0.85rem; color: #64748b;">
-            상단의 <strong>지역 필터</strong>를 '전체'로 변경하거나, 달력에서 축제 바가 표시된 날짜(주말 집중)를 클릭해 보세요!
-          </p>
-        </div>
-      `;
-      return;
-    }
-
-    events.forEach(ev => {
-      const card = document.createElement('div');
-      card.className = 'festival-card';
-      card.innerHTML = `
-        <div>
-          <div class="fc-top-row">
-            <span class="fc-region">📍 ${ev.region}</span>
-            <span class="fc-fee">${ev.fee}</span>
-          </div>
-          <h4 class="fc-title">
-            <span>${ev.icon || '🎪'}</span>
-            <span>${ev.title}</span>
-          </h4>
-          <div class="fc-period">🗓️ ${ev.periodText}</div>
-          <div class="fc-row"><strong>장소:</strong> ${ev.location}</div>
-          <div class="fc-row"><strong>주요 프로그램:</strong> ${ev.program}</div>
-          <div class="fc-desc">${ev.desc}</div>
-        </div>
-        <a href="${ev.link}" target="_blank" rel="noopener noreferrer" class="fc-link-btn">
-          공식 안내 홈페이지 바로가기 ↗
-        </a>
-      `;
-      festivalCardsGrid.appendChild(card);
-    });
+  function card(event) {
+    const period = event.startDate === event.endDate ? event.startDate : event.startDate + ' ~ ' + event.endDate;
+    const source = event.sources[0];
+    const rows = [['장소', event.location], ['시간', event.time], ['비용', event.fee], ['예약', event.booking]];
+    return '<article class="outing-event">' +
+      '<div class="outing-event-meta"><span>' + esc(event.region) + '</span><span>' + esc(THEMES[event.theme]) + '</span><span class="status">' + esc(eventStatus(event, today)) + '</span></div>' +
+      '<h4>' + esc(event.title) + '</h4><p class="outing-event-period">' + esc(period) + '</p>' +
+      (event.scheduleNote ? '<p class="outing-event-notes"><strong>운영일 확인</strong><br>' + esc(event.scheduleNote) + '</p>' : '') +
+      '<dl>' + rows.map(([label, value]) => '<dt>' + label + '</dt><dd>' + esc(value) + '</dd>').join('') + '</dl>' +
+      '<p class="outing-event-notes"><strong>' + esc(event.program) + '</strong><br>' + esc(event.familyNote) + '</p>' +
+      '<div class="outing-event-source"><p>출처: ' + event.sources.map(s => '<a href="' + esc(safeUrl(s.url)) + '" target="_blank" rel="noopener noreferrer">' + esc(s.publisher) + '</a>').join(' · ') +
+      '<br>확인일 ' + esc(event.checkedAt) + (isStale(event.checkedAt, today) ? ' · 확인 후 7일 경과, 최신 공지 재확인 필요' : ' · 일정·장소 확인') + '</p>' +
+      '<a class="outing-official-link" href="' + esc(safeUrl(source.url)) + '" target="_blank" rel="noopener noreferrer" aria-label="' + esc(event.title) + ' 공식 안내 새 창에서 보기">공식 안내 · 예약 조건 확인 ↗</a></div></article>';
   }
-
-  // --------------------------------------------------------------------------
-  // 6. 커스텀 플로팅 툴팁 제어
-  // --------------------------------------------------------------------------
-  function showTooltip(e, ev) {
-    if (!kidsFloatingTooltip) return;
-
-    kidsFloatingTooltip.innerHTML = `
-      <div class="tt-header">
-        <span>${ev.icon || '🎪'}</span>
-        <span>${ev.title}</span>
-      </div>
-      <div class="tt-line"><strong>📍 장소:</strong> ${ev.location}</div>
-      <div class="tt-line"><strong>🎈 프로그램:</strong> ${ev.program}</div>
-      <div class="tt-line" style="font-size: 0.76rem; color: #a7f3d0;"><strong>💰 요금:</strong> ${ev.fee}</div>
-      <div class="tt-cta">클릭 시 공식 홈페이지로 이동합니다 ↗</div>
-    `;
-
-    kidsFloatingTooltip.style.left = `${e.clientX}px`;
-    kidsFloatingTooltip.style.top = `${e.clientY}px`;
-    kidsFloatingTooltip.classList.add('show');
+  function renderResults() {
+    const bounds = range();
+    const events = filterEvents({ ...bounds, ...options() });
+    const labels = { weekend: '이번 주말', today: '오늘', month: '선택한 달', day: '선택한 날짜' };
+    $('rangeCaption').textContent = labels[rangeMode] + ' · ' + bounds.start + (bounds.end !== bounds.start ? ' ~ ' + bounds.end : '');
+    $('resultsTitle').textContent = (region === '전체' ? '전국' : region) + ' 행사 ' + events.length + '개';
+    $('resultsStatus').textContent = '일정순 · ' + (includeEnded ? '지난 행사 포함' : '종료된 행사 제외') + ' · 공식 공지를 확인한 일부 행사입니다.';
+    $('festivalCardsGrid').innerHTML = events.length ? events.map(card).join('') :
+      '<div class="outing-empty"><h4>이 조건으로 확인한 행사가 아직 없습니다</h4><p>실제로 행사가 없다는 뜻은 아닙니다.<br>날짜·지역을 바꾸거나 아래 공식 출처 목록을 확인해 보세요.</p><button type="button" data-action="month">선택한 달 보기</button><button type="button" data-action="reset">조건 초기화</button></div>';
   }
-
-  function moveTooltip(e) {
-    if (!kidsFloatingTooltip || !kidsFloatingTooltip.classList.contains('show')) return;
-    kidsFloatingTooltip.style.left = `${e.clientX}px`;
-    kidsFloatingTooltip.style.top = `${e.clientY}px`;
+  function render() {
+    today = koreaToday();
+    syncControls(); renderCalendar(); renderResults();
+    const notice = $('freshnessNotice');
+    notice.classList.toggle('stale', isStale(DATA_REVIEWED_AT, today));
+    notice.textContent = isStale(DATA_REVIEWED_AT, today) ?
+      '마지막 검토일 ' + DATA_REVIEWED_AT + '로부터 7일 이상 지났습니다. 아래 정보는 검토 당시의 기록이며, 방문 전 공식 공지를 다시 확인해 주세요.' :
+      '전국 모든 행사를 담은 목록은 아닙니다. 공지 확인 이후 변경·취소될 수 있으니 출발 전 공식 안내를 확인하세요.';
   }
-
-  function hideTooltip() {
-    if (!kidsFloatingTooltip) return;
-    kidsFloatingTooltip.classList.remove('show');
+  function reset() {
+    today = koreaToday(); region = '전체'; theme = 'all'; keyword = ''; onlyFree = false; includeEnded = false; rangeMode = 'weekend';
+    [year, month] = weekendRange(today).start.split('-').map(Number); render();
   }
-
-  // --------------------------------------------------------------------------
-  // 7. 실시간 키워드 검색 이벤트
-  // --------------------------------------------------------------------------
-  let searchDebounceTimer = null;
-  if (searchInput) {
-    searchInput.addEventListener('input', (e) => {
-      const val = e.target.value.trim();
-      currentKeyword = val;
-
-      if (btnClearSearch) {
-        if (val.length > 0) {
-          btnClearSearch.classList.add('visible');
-        } else {
-          btnClearSearch.classList.remove('visible');
-        }
-      }
-
-      clearTimeout(searchDebounceTimer);
-      searchDebounceTimer = setTimeout(() => {
-        renderCalendar();
-        renderDetails();
-      }, 150);
-    });
-  }
-
-  if (btnClearSearch && searchInput) {
-    btnClearSearch.addEventListener('click', () => {
-      searchInput.value = '';
-      currentKeyword = '';
-      btnClearSearch.classList.remove('visible');
-      renderCalendar();
-      renderDetails();
-      searchInput.focus();
-    });
-  }
-
-  // --------------------------------------------------------------------------
-  // 8. 테마 필터 칩 이벤트
-  // --------------------------------------------------------------------------
-  themeChips.forEach(chip => {
-    chip.addEventListener('click', () => {
-      themeChips.forEach(c => c.classList.remove('active'));
-      chip.classList.add('active');
-      currentTheme = chip.dataset.theme;
-      renderCalendar();
-      renderDetails();
-    });
+  $('filterForm').addEventListener('submit', event => event.preventDefault());
+  $('filterForm').addEventListener('reset', event => { event.preventDefault(); reset(); });
+  $('searchFestivalInput').addEventListener('input', event => { keyword = event.target.value.slice(0, 100); renderCalendar(); renderResults(); });
+  $('regionSelect').addEventListener('change', event => { region = event.target.value; render(); });
+  $('onlyFree').addEventListener('change', event => { onlyFree = event.target.checked; render(); });
+  $('includeEnded').addEventListener('change', event => { includeEnded = event.target.checked; render(); });
+  $('themeChips').addEventListener('click', event => { const button = event.target.closest('[data-theme]'); if (button) { theme = button.dataset.theme; render(); } });
+  document.querySelectorAll('[data-view]').forEach(button => button.addEventListener('click', () => { view = button.dataset.view; render(); }));
+  document.querySelectorAll('[data-range]').forEach(button => button.addEventListener('click', () => {
+    rangeMode = button.dataset.range;
+    if (rangeMode !== 'month') [year, month] = (rangeMode === 'today' ? koreaToday() : weekendRange(koreaToday()).start).split('-').map(Number);
+    render();
+  }));
+  $('calendarUnifiedGrid').addEventListener('click', event => {
+    const button = event.target.closest('[data-date]'); if (!button) return;
+    selectedDate = button.dataset.date; rangeMode = 'day'; render();
+    // Re-rendered controls retain keyboard focus; results are announced in the live region.
+    document.querySelector('[data-date="' + selectedDate + '"]')?.focus({ preventScroll: true });
   });
-
-  // 무료 관람 토글 버튼
-  if (btnToggleFree) {
-    btnToggleFree.addEventListener('click', () => {
-      onlyFree = !onlyFree;
-      if (onlyFree) {
-        btnToggleFree.classList.add('active');
-      } else {
-        btnToggleFree.classList.remove('active');
-      }
-      renderCalendar();
-      renderDetails();
-    });
+  function moveMonth(delta) {
+    const next = new Date(Date.UTC(year, month - 1 + delta, 1));
+    if (next.getUTCFullYear() < 2000 || next.getUTCFullYear() > 2099) return;
+    year = next.getUTCFullYear(); month = next.getUTCMonth() + 1; rangeMode = 'month';
+    if (monthRange(year, month).end < today) includeEnded = true;
+    render();
   }
-
-  // --------------------------------------------------------------------------
-  // 9. 지역 필터 칩 이벤트
-  // --------------------------------------------------------------------------
-  regionChips.forEach(chip => {
-    chip.addEventListener('click', () => {
-      regionChips.forEach(c => c.classList.remove('active'));
-      chip.classList.add('active');
-      currentRegion = chip.dataset.region;
-      renderCalendar();
-      renderDetails();
-    });
+  $('btnPrevMonth').addEventListener('click', () => moveMonth(-1));
+  $('btnNextMonth').addEventListener('click', () => moveMonth(1));
+  $('festivalCardsGrid').addEventListener('click', event => {
+    const action = event.target.closest('[data-action]')?.dataset.action;
+    if (action === 'reset') reset();
+    if (action === 'month') { rangeMode = 'month'; render(); }
   });
-
-  // --------------------------------------------------------------------------
-  // 10. 월 이동 네비게이션
-  // --------------------------------------------------------------------------
-  if (btnPrevMonth) {
-    btnPrevMonth.addEventListener('click', () => {
-      currentMonth = 10;
-      selectedDate = '2026-10-24';
-      renderCalendar();
-      renderDetails();
-    });
-  }
-
-  if (btnNextMonth) {
-    btnNextMonth.addEventListener('click', () => {
-      currentMonth = 11;
-      selectedDate = '2026-11-07'; // 11월 첫째 주말 (부산 불꽃축제, 빛초롱 등)
-      renderCalendar();
-      renderDetails();
-    });
-  }
-
-  // --------------------------------------------------------------------------
-  // 11. 축제 가져오기 / 공공데이터 연동 모달 제어
-  // --------------------------------------------------------------------------
-  if (btnOpenImportModal && importModalOverlay) {
-    btnOpenImportModal.addEventListener('click', () => {
-      importModalOverlay.classList.add('open');
-    });
-  }
-
-  if (btnCloseImportModal && importModalOverlay) {
-    btnCloseImportModal.addEventListener('click', () => {
-      importModalOverlay.classList.remove('open');
-    });
-  }
-
-  if (importModalOverlay) {
-    importModalOverlay.addEventListener('click', (e) => {
-      if (e.target === importModalOverlay) {
-        importModalOverlay.classList.remove('open');
-      }
-    });
-  }
-
-  // 기본팩 40선 복원
-  if (btnResetDefaultFestivals) {
-    btnResetDefaultFestivals.addEventListener('click', () => {
-      try {
-        localStorage.removeItem('simulab_kids_custom_festivals');
-        KidsOutingLogic.userImportedFestivals = [];
-        alert('전국 대표 축제 40선 기본팩으로 정돈되었습니다!');
-        if (importModalOverlay) importModalOverlay.classList.remove('open');
-        renderCalendar();
-        renderDetails();
-      } catch (err) {
-        console.error(err);
-      }
-    });
-  }
-
-  // 커스텀 JSON 병합 등록
-  if (btnSubmitImportJson && importJsonTextarea) {
-    btnSubmitImportJson.addEventListener('click', () => {
-      const text = importJsonTextarea.value.trim();
-      if (!text) {
-        alert('추가할 축제 JSON 데이터를 입력해주세요.');
-        return;
-      }
-
-      try {
-        const parsed = JSON.parse(text);
-        const result = KidsOutingLogic.importExternalEvents(Array.isArray(parsed) ? parsed : [parsed]);
-        if (result.success && result.count > 0) {
-          alert(`총 ${result.count}개의 축제 데이터가 성공적으로 병합되었습니다!`);
-          importJsonTextarea.value = '';
-          if (importModalOverlay) importModalOverlay.classList.remove('open');
-          renderCalendar();
-          renderDetails();
-        } else {
-          alert('유효한 축제 데이터를 찾지 못했습니다. 필수 항목(title, startDate, endDate)을 확인해주세요.');
-        }
-      } catch (e) {
-        alert('JSON 형식이 올바르지 않습니다. 문법 오류를 확인해주세요.');
-      }
-    });
-  }
-
-  // --------------------------------------------------------------------------
-  // 12. 특정 날짜 전체 축제 상세 모달 제어 (+N개 더보기)
-  // --------------------------------------------------------------------------
-  function openDayEventsModal(dateStr, events) {
-    if (!dayEventsModalOverlay || !dayModalTitle || !dayModalCardsList) return;
-
-    const [y, m, d] = dateStr.split('-');
-    const dateObj = new Date(parseInt(y), parseInt(m) - 1, parseInt(d));
-    const dayNames = ['일', '월', '화', '수', '목', '금', '토'];
-    const dayName = dayNames[dateObj.getDay()];
-
-    dayModalTitle.innerHTML = `<span>🗓️</span> ${parseInt(m)}월 ${parseInt(d)}일(${dayName}) 전체 축제 (${events.length}개)`;
-    dayModalCardsList.innerHTML = '';
-
-    events.forEach(ev => {
-      const item = document.createElement('div');
-      item.className = 'day-modal-item';
-      item.innerHTML = `
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
-          <span style="font-size: 0.75rem; font-weight: 850; padding: 0.18rem 0.55rem; border-radius: 7px; background: #e2e8f0; color: #334155;">
-            📍 ${ev.region}
-          </span>
-          <span style="font-size: 0.78rem; font-weight: 850; color: #16a34a;">
-            ${ev.fee}
-          </span>
-        </div>
-        <h4 style="font-size: 1.05rem; font-weight: 850; color: #1e293b; margin: 0.2rem 0 0.35rem; display: flex; align-items: center; gap: 0.3rem;">
-          <span>${ev.icon || '🎪'}</span>
-          <span>${ev.title}</span>
-        </h4>
-        <div style="font-size: 0.78rem; font-weight: 750; color: #2563eb; margin-bottom: 0.4rem;">
-          🗓️ ${ev.periodText}
-        </div>
-        <div style="font-size: 0.8rem; color: #475569; margin-bottom: 0.25rem;">
-          <strong>장소:</strong> ${ev.location}
-        </div>
-        <div style="font-size: 0.8rem; color: #475569; margin-bottom: 0.4rem;">
-          <strong>주요 프로그램:</strong> ${ev.program}
-        </div>
-        <div style="font-size: 0.78rem; color: #64748b; background: #ffffff; padding: 0.5rem 0.7rem; border-radius: 9px; margin-bottom: 0.65rem; line-height: 1.45; border: 1px solid #e2e8f0;">
-          ${ev.desc}
-        </div>
-        <a href="${ev.link}" target="_blank" rel="noopener noreferrer" class="fc-link-btn" style="padding: 0.55rem; font-size: 0.82rem;">
-          공식 안내 홈페이지 바로가기 ↗
-        </a>
-      `;
-      dayModalCardsList.appendChild(item);
-    });
-
-    dayEventsModalOverlay.classList.add('open');
-  }
-
-  if (btnCloseDayModal && dayEventsModalOverlay) {
-    btnCloseDayModal.addEventListener('click', () => {
-      dayEventsModalOverlay.classList.remove('open');
-    });
-  }
-
-  if (dayEventsModalOverlay) {
-    dayEventsModalOverlay.addEventListener('click', (e) => {
-      if (e.target === dayEventsModalOverlay) {
-        dayEventsModalOverlay.classList.remove('open');
-      }
-    });
-  }
-
-  // --------------------------------------------------------------------------
-  // 13. 초기 화면 렌더링 실행
-  // --------------------------------------------------------------------------
-  renderCalendar();
-  renderDetails();
-});
+  $('shareFilters').addEventListener('click', async () => {
+    const url = new URL(location.href); url.search = ''; url.hash = '';
+    const values = { month: year + '-' + String(month).padStart(2, '0'), range: rangeMode, region, theme, view };
+    if (rangeMode === 'day') values.date = selectedDate;
+    if (keyword) values.q = keyword;
+    if (onlyFree) values.free = '1';
+    if (includeEnded) values.ended = '1';
+    Object.entries(values).forEach(([key, value]) => url.searchParams.set(key, value));
+    history.replaceState(null, '', url);
+    try { await navigator.clipboard.writeText(url.href); $('shareStatus').textContent = '검색 조건 링크를 복사했습니다.'; }
+    catch { $('shareStatus').textContent = '주소창의 링크를 복사해 공유하세요: ' + url.href; }
+  });
+  document.addEventListener('visibilitychange', () => { if (!document.hidden && today !== koreaToday()) render(); });
+  render();
+}
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init, { once: true }); else init();

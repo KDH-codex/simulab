@@ -1,391 +1,53 @@
-/**
- * ==========================================================================
- * SimuLab - 미니게임 공통 명예의 전당 TOP 10 실시간 온라인 랭킹 모듈
- * 파일 경로: assets/js/game-ranking.js
- * --------------------------------------------------------------------------
- * [주요 기능]
- * 1. Supabase 기반 전세계 실시간 온라인 랭킹 (PostgREST API 경량 통신)
- * 2. 오프라인 및 미설정 시 자동 로컬스토리지(localStorage) 폴백 (안전성 100%)
- * 3. 10위 이내 순위 진입 실시간 판별 및 닉네임(2~12자) 무결성/XSS 방지 검증
- * 4. 점수순(테트리스, 산성비 타자, 벽돌 깨기) 및 생존시간순(닷지) 정렬 지원
- * 5. 금·은·동 메달 엠블럼 및 반응형 명예의 전당 리더보드 UI 렌더링
- * ==========================================================================
- */
-
-(function (global) {
-  'use strict';
-
-  // ==========================================================================
-  // [1] Supabase 연동 설정
-  // --------------------------------------------------------------------------
-  // 공통 설정 파일(assets/js/supabase-config.js)에 입력된 값을 자동으로 읽어오며,
-  // 필요한 경우 아래 객체에 직접 입력하셔도 작동합니다.
-  // ==========================================================================
-  const LOCAL_CONFIG = {
-    URL: 'https://lgbkovxhzixclesapehl.supabase.co',
-    ANON_KEY: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxnYmtvdnhoeml4Y2xlc2FwZWhsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI1NDIwMTAsImV4cCI6MjEwODExODAxMH0.7sYeCt7HVO4Vyrg7LMpuc_QAtVAzUCYN6WXPAjL7lDA'
-  };
-
-  /**
-   * Supabase 활성 설정값 반환 (공통 설정 우선)
-   */
-  function getActiveConfig() {
-    const globalCfg = global.SIMULAB_SUPABASE_CONFIG;
-    const url = (globalCfg && globalCfg.url) || LOCAL_CONFIG.URL || '';
-    const anonKey = (globalCfg && globalCfg.anonKey) || LOCAL_CONFIG.ANON_KEY || '';
-    return {
-      url: url.trim().replace(/\/+$/, ''),
-      anonKey: anonKey.trim(),
-      isEnabled: Boolean(url && anonKey)
-    };
-  }
-
-  const GameRanking = {};
-
-  /**
-   * 로컬 스토리지 캐시 키 생성 함수
-   * @param {string} gameId - 게임 식별자 (예: 'game-tetris')
-   * @returns {string} 로컬 스토리지 키
-   */
-  function getStorageKey(gameId) {
-    return `simulab_ranking_${gameId}_v2`;
-  }
-
-  /**
-   * XSS(크로스 사이트 스크립팅) 공격 방지를 위한 텍스트 이스케이프 함수
-   * 악의적인 HTML 태그(<script> 등)를 안전한 문자열로 치환합니다.
-   * @param {string} text - 원본 문자열
-   * @returns {string} 안전하게 정제된 문자열
-   */
-  function sanitizeText(text) {
-    if (!text) return '';
-    return String(text)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#039;')
-      .trim();
-  }
-
-  /**
-   * 날짜 포맷팅 함수 (YYYY.MM.DD)
-   * @param {Date|string} dateInput 
-   * @returns {string}
-   */
-  function formatDate(dateInput) {
-    const d = dateInput ? new Date(dateInput) : new Date();
-    const year = d.getFullYear();
-    const month = String(d.getMonth() + 1).padStart(2, '0');
-    const day = String(d.getDate()).padStart(2, '0');
-    return `${year}.${month}.${day}`;
-  }
-
-  /**
-   * 외부에서 Supabase 접속 정보를 동적으로 주입하거나 변경할 수 있는 설정 메서드
-   * @param {{ url: string, anonKey: string }} config 
-   */
-  GameRanking.configure = function (config) {
-    if (config && config.url) LOCAL_CONFIG.URL = config.url.replace(/\/+$/, '');
-    if (config && config.anonKey) LOCAL_CONFIG.ANON_KEY = config.anonKey;
-  };
-
-  /**
-   * Supabase 클라우드 설정이 활성화되어 있는지 확인
-   * @returns {boolean}
-   */
-  GameRanking.isCloudEnabled = function () {
-    return getActiveConfig().isEnabled;
-  };
-
-  /**
-   * 로컬 스토리지에 저장된 캐시 랭킹 목록 가져오기 (동기식)
-   * @param {string} gameId 
-   * @returns {Array<{ nickname: string, score: number, display: string, date: string }>}
-   */
-  GameRanking.getRankings = function (gameId) {
-    const key = getStorageKey(gameId);
-    const raw = localStorage.getItem(key);
-    if (!raw) return [];
-    try {
-      return JSON.parse(raw) || [];
-    } catch (e) {
-      console.warn('[GameRanking] 로컬 랭킹 파싱 오류:', e);
-      return [];
-    }
-  };
-
-  /**
-   * 로컬 스토리지에 랭킹 목록 캐시 저장
-   * @param {string} gameId 
-   * @param {Array} list 
-   */
-  function saveLocalCache(gameId, list) {
-    try {
-      localStorage.setItem(getStorageKey(gameId), JSON.stringify(list.slice(0, 10)));
-    } catch (e) {
-      console.warn('[GameRanking] 로컬 랭킹 저장 오류:', e);
-    }
-  }
-
-  /**
-   * [클라우드 REST API] Supabase에서 최신 TOP 10 랭킹 실시간 비동기 조회
-   * @param {string} gameId 
-   * @returns {Promise<Array>}
-   */
-  GameRanking.fetchRankingsOnline = async function (gameId) {
-    const config = getActiveConfig();
-    if (!config.isEnabled) {
-      return GameRanking.getRankings(gameId);
-    }
-
-    try {
-      // Supabase PostgREST 쿼리: 높은 점수순(score.desc), 동점 시 먼저 달성한 순(created_at.asc) 상위 10개
-      const endpoint = `${config.url}/rest/v1/game_rankings?game_id=eq.${encodeURIComponent(gameId)}&order=score.desc,created_at.asc&limit=10`;
-      
-      const response = await fetch(endpoint, {
-        method: 'GET',
-        headers: {
-          'apikey': config.anonKey,
-          'Authorization': `Bearer ${config.anonKey}`,
-          'Accept': 'application/json'
-        }
-      });
-
-      if (!response.ok) {
-        throw new Error(`서버 응답 오류 (상태 코드: ${response.status})`);
-      }
-
-      const rows = await response.json();
-      
-      // DB 결과를 화면 표시용 구조로 정규화
-      const onlineList = rows.map((row) => ({
-        nickname: sanitizeText(row.nickname),
-        score: Number(row.score),
-        display: row.score_display || String(row.score),
-        date: formatDate(row.created_at)
-      }));
-
-      // 로컬 캐시 동기화
-      saveLocalCache(gameId, onlineList);
-      return onlineList;
-    } catch (error) {
-      console.warn('[GameRanking] 온라인 랭킹 동기화 실패 (로컬 캐시 사용):', error.message);
-      return GameRanking.getRankings(gameId);
-    }
-  };
-
-  /**
-   * 게임 오버 시 획득한 점수가 TOP 10 이내에 드는지 판별 (동기식 즉시 반환)
-   * @param {string} gameId - 게임 식별자 ('game-tetris', 'game-dodge', 'game-typing', 'game-brick-breaker')
-   * @param {number} score - 정렬용 점수 또는 생존 초
-   * @returns {{ isTop10: boolean, expectedRank: number }}
-   */
-  GameRanking.checkRank = function (gameId, score) {
-    const numScore = Number(score);
-    if (isNaN(numScore) || numScore <= 0) {
-      return { isTop10: false, expectedRank: -1 };
-    }
-
-    const list = GameRanking.getRankings(gameId);
-
-    // 아직 등록된 기록이 10개 미만이면 무조건 10위 안에 진입
-    if (list.length < 10) {
-      let rank = 1;
-      for (let i = 0; i < list.length; i++) {
-        if (numScore <= list[i].score) {
-          rank++;
-        } else {
-          break;
-        }
-      }
-      return { isTop10: true, expectedRank: rank };
-    }
-
-    // 10개가 꽉 찼을 때는 10위 기록보다 높은 점수여야 진입 가능
-    let rank = 1;
-    for (let i = 0; i < list.length; i++) {
-      if (numScore <= list[i].score) {
-        rank++;
-      } else {
-        break;
-      }
-    }
-
-    if (rank <= 10) {
-      return { isTop10: true, expectedRank: rank };
-    }
-
-    return { isTop10: false, expectedRank: -1 };
-  };
-
-  /**
-   * 새로운 명예의 전당 기록 등록
-   * - 1단계: 로컬 캐시 즉시 업데이트 (사용자 대기 시간 0초)
-   * - 2단계: Supabase 클라우드 실시간 비동기 INSERT (네트워크 백그라운드 처리)
-   * 
-   * @param {string} gameId - 게임 식별자
-   * @param {string} nickname - 사용자 닉네임 (2~12자)
-   * @param {number} score - 점수 또는 생존 초
-   * @param {string} displayValue - 화면 표시용 문자열 (예: '38,400점', '01:44.82')
-   * @returns {number} 확정된 예상 순위 (1~10)
-   */
-  GameRanking.saveRecord = function (gameId, nickname, score, displayValue) {
-    const cleanNick = (nickname || '무명용사').trim().substring(0, 12);
-    const numScore = Number(score);
-    const displayStr = String(displayValue || numScore);
-    const dateStr = formatDate();
-
-    // 1. 로컬 캐시 즉시 반영
-    const list = GameRanking.getRankings(gameId);
-    list.push({
-      nickname: cleanNick,
-      score: numScore,
-      display: displayStr,
-      date: dateStr,
-      isNew: true // 방금 등록된 신규 기록 하이라이트용
-    });
-
-    // 점수 높은 순 정렬
-    list.sort((a, b) => b.score - a.score);
-    const top10 = list.slice(0, 10);
-    const rankIndex = top10.findIndex((item) => item.isNew);
-
-    // 하이라이트 플래그 제거 후 로컬 저장
-    const cleanList = top10.map((item) => ({
-      nickname: item.nickname,
-      score: item.score,
-      display: item.display,
-      date: item.date
-    }));
-    saveLocalCache(gameId, cleanList);
-
-    // 2. Supabase 클라우드 온라인 DB 실시간 저장 (백그라운드 비동기)
-    const config = getActiveConfig();
-    if (config.isEnabled) {
-      (async () => {
-        try {
-          const endpoint = `${config.url}/rest/v1/game_rankings`;
-          const payload = {
-            game_id: gameId,
-            nickname: cleanNick,
-            score: numScore,
-            score_display: displayStr
-          };
-
-          const res = await fetch(endpoint, {
-            method: 'POST',
-            headers: {
-              'apikey': config.anonKey,
-              'Authorization': `Bearer ${config.anonKey}`,
-              'Content-Type': 'application/json',
-              'Prefer': 'return=representation'
-            },
-            body: JSON.stringify(payload)
-          });
-
-          if (!res.ok) {
-            console.warn('[GameRanking] 온라인 랭킹 저장 응답 오류:', res.status);
-          } else {
-            // 저장 성공 시 최신 온라인 랭킹 다시 동기화
-            await GameRanking.fetchRankingsOnline(gameId);
-          }
-        } catch (err) {
-          console.warn('[GameRanking] 온라인 랭킹 저장 네트워크 오류 (로컬 보존됨):', err.message);
-        }
-      })();
-    }
-
-    return rankIndex !== -1 ? rankIndex + 1 : 10;
-  };
-
-  /**
-   * 화면의 랭킹 리더보드 테이블 렌더링
-   * - 캐시 데이터를 먼저 빠르게 렌더링하여 깜빡임 없음
-   * - 온라인 연동 시 백그라운드로 최신 DB 데이터를 가져와 부드럽게 재렌더링
-   * 
-   * @param {HTMLElement} containerEl - 리더보드가 삽입될 부모 엘리먼트
-   * @param {string} gameId - 게임 식별자
-   */
-  GameRanking.renderBoard = function (containerEl, gameId) {
-    if (!containerEl) return;
-
-    // 내부 렌더링 헬퍼 함수
-    function renderHTML(list, isOnlineSyncing = false) {
-      const medalIcons = ['🥇', '🥈', '🥉'];
-      const isCloud = GameRanking.isCloudEnabled();
-
-      // 온라인 연결 상태 표시 뱃지
-      let statusBadge = '';
-      if (isCloud) {
-        if (isOnlineSyncing) {
-          statusBadge = `<span style="font-size:0.72rem; color:var(--text-muted); display:inline-flex; align-items:center; gap:0.25rem;"><span style="display:inline-block; animation:spin 1s linear infinite;">🔄</span> 동기화 중...</span>`;
-        } else {
-          statusBadge = `<span style="font-size:0.72rem; color:#10b981; font-weight:700; display:inline-flex; align-items:center; gap:0.25rem;">● 실시간 온라인</span>`;
-        }
-      } else {
-        statusBadge = `<span style="font-size:0.72rem; color:var(--text-muted);">💾 로컬 보관</span>`;
-      }
-
-      let html = `
-        <div class="ranking-board-card">
-          <div class="ranking-board-header">
-            <div style="display:flex; align-items:center; gap:0.4rem;">
-              <span style="font-size:1.2rem;">🏆</span>
-              <span style="font-size:0.95rem; font-weight:850; color:var(--text-primary);">명예의 전당 TOP 10</span>
-            </div>
-            <div>${statusBadge}</div>
-          </div>
-          <div class="ranking-list-body">
-      `;
-
-      if (!list || list.length === 0) {
-        html += `
-          <div style="text-align:center; padding:1.75rem 1rem; color:var(--text-muted); font-size:0.85rem; line-height:1.6; background:var(--bg-subtle); border-radius:10px;">
-            <div style="font-size:1.5rem; margin-bottom:0.35rem;">✨</div>
-            아직 등록된 랭킹 기록이 없습니다.<br/>
-            <strong>첫 번째 랭커에 도전해 보세요!</strong>
-          </div>
-        `;
-      } else {
-        list.forEach((item, idx) => {
-          const rank = idx + 1;
-          const medal = rank <= 3 ? medalIcons[rank - 1] : `<span class="rank-num">${rank}</span>`;
-          const topClass = rank === 1 ? 'rank-row-top1' : (rank <= 3 ? 'rank-row-top3' : '');
-
-          html += `
-            <div class="ranking-row ${topClass}">
-              <div class="ranking-col-rank">${medal}</div>
-              <div class="ranking-col-nick" title="${item.nickname}">${item.nickname}</div>
-              <div class="ranking-col-score">${item.display || item.score}</div>
-              <div class="ranking-col-date">${item.date || ''}</div>
-            </div>
-          `;
-        });
-      }
-
-      html += `
-          </div>
-        </div>
-      `;
-
-      containerEl.innerHTML = html;
-    }
-
-    // 1단계: 캐시 데이터 즉시 렌더링
-    const cachedList = GameRanking.getRankings(gameId);
-    renderHTML(cachedList, GameRanking.isCloudEnabled());
-
-    // 2단계: 클라우드가 활성화되어 있다면 백그라운드 최신 동기화 후 부드럽게 재렌더링
-    if (GameRanking.isCloudEnabled()) {
-      GameRanking.fetchRankingsOnline(gameId).then((freshList) => {
-        renderHTML(freshList, false);
-      }).catch(() => {
-        renderHTML(cachedList, false);
-      });
-    }
-  };
-
-  // 전역 객체 등록
-  global.GameRanking = GameRanking;
-})(typeof window !== 'undefined' ? window : globalThis);
+// User-submitted leaderboards. Remote writes use a validating RPC after setup.
+(function(global){
+ 'use strict';
+ const GAMES=new Set(['game-tetris','game-dodge','game-typing','game-brick-breaker']);
+ const connection=new Map(),messages=new Map(),boards=new Map(),pending=new Map();
+ let override=null;
+ const storageKey=id=>'simulab_ranking_'+id+'_v2';
+ const escape=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ function config(){const cfg=override||global.SIMULAB_SUPABASE_CONFIG,s=global.SIMULAB_SITE_SETTINGS;return s?.rankingRemoteEnabled===true&&s.contactEmail&&s.databaseRegion&&cfg?.url&&cfg?.anonKey?cfg:null;}
+ function validScore(id,score){return GAMES.has(id)&&Number.isFinite(Number(score))&&Number(score)>0&&Number(score)<1e9&&(id!=='game-dodge'||Number(score)<=3600);}
+ function normalize(row){return {nickname:String(row.nickname||'').slice(0,12),score:Number(row.score),display:String(row.display??row.score_display??row.score).slice(0,80),date:String(row.date||formatDate(row.created_at))};}
+ function formatDate(value){const date=value?new Date(value):new Date();if(!Number.isFinite(date.getTime()))return '';return new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul'}).format(date);}
+ function read(id){try{const rows=JSON.parse(localStorage.getItem(storageKey(id))||'[]');return Array.isArray(rows)?rows.filter(row=>row&&validScore(id,row.score)).map(normalize).sort((a,b)=>b.score-a.score).slice(0,10):[];}catch{return [];}}
+ function cache(id,rows){try{localStorage.setItem(storageKey(id),JSON.stringify(rows.slice(0,10)));}catch{}}
+ function update(id){boards.get(id)?.forEach(render=>render());}
+ function status(id){return config()?(connection.get(id)||'loading'):'local';}
+ const GameRanking={
+ configure(value){override=value;},isCloudEnabled:()=>Boolean(config()),getRankings:read,
+ checkRank(id,score){if(!validScore(id,score))return {isTop10:false,expectedRank:-1};const rank=1+read(id).filter(row=>row.score>=Number(score)).length;return {isTop10:rank<=10,expectedRank:rank<=10?rank:-1};},
+ async fetchRankingsOnline(id){
+  const cfg=config();if(!cfg||!GAMES.has(id))return read(id);connection.set(id,'loading');update(id);
+  try{const response=await fetch(cfg.url+'/rest/v1/game_rankings?select=nickname,score,score_display,created_at&game_id=eq.'+encodeURIComponent(id)+'&order=score.desc,created_at.asc&limit=10',{headers:{apikey:cfg.anonKey,Authorization:'Bearer '+cfg.anonKey}});
+   if(!response.ok)throw new Error('offline');const rows=await response.json();if(!Array.isArray(rows))throw new Error('invalid response');const list=rows.filter(row=>row&&validScore(id,row.score)).map(normalize);cache(id,list);connection.set(id,'online');update(id);return list;
+  }catch{connection.set(id,'failed');update(id);return read(id);}
+ },
+ saveRecord(id,nickname,score,display){
+  const nick=String(nickname||'').trim();if(!validScore(id,score)||nick.length<2||nick.length>12||/[<>\x00-\x1f]/.test(nick))return -1;
+  const record={nickname:nick,score:Number(score),display:String(display||score).slice(0,80),date:formatDate(),isNew:true};
+  const rows=[...read(id),record].sort((a,b)=>b.score-a.score).slice(0,10);const rank=rows.indexOf(record)+1;
+  cache(id,rows.map(({isNew,...row})=>row));messages.set(id,'이 기기에 저장했습니다.');update(id);return rank||-1;
+ },
+ async saveRecordAsync(id,nickname,score,display){
+  if(pending.has(id))return pending.get(id);
+  const rank=GameRanking.saveRecord(id,nickname,score,display);if(rank<1)return {status:'invalid',rank:-1,message:'닉네임과 점수를 확인해 주세요.'};
+  const cfg=config();if(!cfg)return {status:'local',rank,message:'이 기기에 저장했습니다.'};
+  const task=Promise.resolve().then(async()=>{
+   try{let submitter=localStorage.getItem('simulab_ranking_submitter_v1');if(!/^[0-9a-f-]{36}$/i.test(submitter||'')){submitter=crypto.randomUUID();localStorage.setItem('simulab_ranking_submitter_v1',submitter);}
+    const response=await fetch(cfg.url+'/rest/v1/rpc/submit_game_score',{method:'POST',headers:{apikey:cfg.anonKey,Authorization:'Bearer '+cfg.anonKey,'Content-Type':'application/json'},body:JSON.stringify({p_game_id:id,p_nickname:String(nickname).trim(),p_score:Number(score),p_submitter_id:submitter,p_submission_id:crypto.randomUUID()})});
+    if(!response.ok)throw new Error('write rejected');messages.set(id,'서버에 기록을 등록했습니다.');await GameRanking.fetchRankingsOnline(id);return {status:'saved',rank,message:messages.get(id)};
+   }catch{messages.set(id,'서버 등록에 실패해 이 기기에만 보관했습니다. 잠시 후 연결 상태를 확인해 주세요.');connection.set(id,'failed');update(id);return {status:'failed',rank,message:messages.get(id)};}
+   finally{pending.delete(id);}
+  });pending.set(id,task);return task;
+ },
+ renderBoard(container,id){
+  if(!container||!GAMES.has(id))return;
+  if(!boards.has(id))boards.set(id,new Map());const renders=boards.get(id);
+  const render=()=>{const state=status(id),labels={local:'이 기기에 보관',loading:'서버 조회 중',online:'서버 조회 완료',failed:'연결 실패 · 기기 기록 표시'};const rows=read(id);
+   container.innerHTML='<div class="ranking-board-card"><div class="ranking-board-header"><strong>게임 기록 TOP 10</strong><span style="font-size:12px">'+labels[state]+'</span></div><div class="ranking-list-body">'+(rows.length?rows.map((row,i)=>'<div class="ranking-row"><span class="ranking-col-rank">'+(i+1)+'</span><span class="ranking-col-nick" title="'+escape(row.nickname)+'">'+escape(row.nickname)+'</span><strong class="ranking-col-score">'+escape(row.display)+'</strong><time class="ranking-col-date">'+escape(row.date)+'</time></div>').join(''):'<p style="padding:22px;font-size:14px;text-align:center">아직 저장된 기록이 없습니다.</p>')+'</div><p style="padding:12px 16px;font-size:12px;line-height:1.8;color:var(--text-muted)">사용자가 제출한 기록이며 실제 플레이를 인증한 순위는 아닙니다. 실명·연락처를 닉네임으로 쓰지 마세요.<br><span role="status">'+escape(messages.get(id)||'')+'</span></p></div>';
+  };renders.set(container,render);render();if(config())GameRanking.fetchRankingsOnline(id);
+ }
+ };
+ global.GameRanking=GameRanking;
+})(typeof window!=='undefined'?window:globalThis);

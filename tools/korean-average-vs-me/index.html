@@ -2,21 +2,18 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- SEO 최적화 메타 태그 (도구 제목: 대한민국 평균 vs 나, 11자) -->
   <title>대한민국 평균 vs 나 | SimuLab</title>
   <meta name="description" content="2024~2025 고용노동부 및 통계청 공공 빅데이터 기반! 내 연봉, 근무시간, 저축액, 점심값은 대한민국 또래 직장인 평균과 비교했을 때 어느 수준일까? 5각형 오각형 레이더 차트와 직장인 유형 페르소나 분석을 즉시 확인해보세요." />
-  <meta name="keywords" content="재밌는 통계, 심심할 때 보는 통계, 별별 통계, 대한민국 평균 vs 나, 직장인 평균 연봉, 평균 점심값, 직장인 평균 근로시간, 통계 시뮬레이터" />
-  
   <!-- 오픈그래프 (소셜 공유) -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="대한민국 평균 vs 나 | 내 스펙은 또래 평균보다 높을까?" />
   <meta property="og:description" content="통계청·고용노동부 공식 데이터 기반 5각형 레이더 차트로 나의 직장인 지수를 즉시 분석해 보세요!" />
   <meta property="og:url" content="https://simulab.kr/tools/korean-average-vs-me/index.html" />
-  
+
   <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
-  <link rel="stylesheet" href="../../assets/css/style.css" />
-  <link rel="stylesheet" href="../../assets/css/common.css" />
+  <link rel="stylesheet" href="../../assets/css/common.css?v=20261023_overhaul1" />
 
   <style>
     .avg-compare-container {
@@ -123,6 +120,8 @@
       line-height: 1.6;
     }
   </style>
+<meta name="google-adsense-account" content="ca-pub-9815778998394475">
+<link rel="canonical" href="https://simulab.kr/tools/korean-average-vs-me/">
 </head>
 <body class="bg-gray-50 text-gray-900">
   <!-- 상단 글로벌 네비게이션 (core-ui.js가 렌더링) -->
@@ -170,11 +169,11 @@
           <label for="inputSalary" style="display: block; font-weight: 700; font-size: 0.88rem; margin-bottom: 0.35rem;">
             세전 연봉 (만원)
           </label>
-          <input 
-            type="number" 
-            id="inputSalary" 
-            value="4500" 
-            placeholder="예: 4500" 
+          <input
+            type="number"
+            id="inputSalary"
+            value="4500"
+            placeholder="예: 4500"
             style="width: 100%; padding: 0.7rem 0.9rem; border: 1px solid var(--border-color); border-radius: 10px; font-size: 0.95rem; background: var(--bg-main);"
           />
         </div>
@@ -184,11 +183,11 @@
           <label for="inputSavings" style="display: block; font-weight: 700; font-size: 0.88rem; margin-bottom: 0.35rem;">
             월 평균 저축/투자액 (만원)
           </label>
-          <input 
-            type="number" 
-            id="inputSavings" 
-            value="120" 
-            placeholder="예: 120" 
+          <input
+            type="number"
+            id="inputSavings"
+            value="120"
+            placeholder="예: 120"
             style="width: 100%; padding: 0.7rem 0.9rem; border: 1px solid var(--border-color); border-radius: 10px; font-size: 0.95rem; background: var(--bg-main);"
           />
         </div>
@@ -198,11 +197,11 @@
           <label for="inputHours" style="display: block; font-weight: 700; font-size: 0.88rem; margin-bottom: 0.35rem;">
             주당 근무시간 (시간)
           </label>
-          <input 
-            type="number" 
-            id="inputHours" 
-            value="40" 
-            placeholder="예: 40" 
+          <input
+            type="number"
+            id="inputHours"
+            value="40"
+            placeholder="예: 40"
             style="width: 100%; padding: 0.7rem 0.9rem; border: 1px solid var(--border-color); border-radius: 10px; font-size: 0.95rem; background: var(--bg-main);"
           />
           <span style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem; display: block;">
@@ -215,11 +214,11 @@
           <label for="inputLunch" style="display: block; font-weight: 700; font-size: 0.88rem; margin-bottom: 0.35rem;">
             하루 평균 점심 식비 (원)
           </label>
-          <input 
-            type="number" 
-            id="inputLunch" 
-            value="10000" 
-            placeholder="예: 10000" 
+          <input
+            type="number"
+            id="inputLunch"
+            value="10000"
+            placeholder="예: 10000"
             style="width: 100%; padding: 0.7rem 0.9rem; border: 1px solid var(--border-color); border-radius: 10px; font-size: 0.95rem; background: var(--bg-main);"
           />
           <span style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem; display: block;">
@@ -232,19 +231,19 @@
           <label for="inputEntryAge" style="display: block; font-weight: 700; font-size: 0.88rem; margin-bottom: 0.35rem;">
             첫 정규직 취업 나이 (만 나이 기준)
           </label>
-          <input 
-            type="number" 
-            id="inputEntryAge" 
-            value="28" 
-            placeholder="예: 28" 
+          <input
+            type="number"
+            id="inputEntryAge"
+            value="28"
+            placeholder="예: 28"
             style="width: 100%; padding: 0.7rem 0.9rem; border: 1px solid var(--border-color); border-radius: 10px; font-size: 0.95rem; background: var(--bg-main);"
           />
         </div>
       </div>
 
       <!-- 실행 버튼 -->
-      <button 
-        id="btnCompare" 
+      <button
+        id="btnCompare"
         style="width: 100%; margin-top: 1.25rem; padding: 0.85rem; background: linear-gradient(135deg, #4f46e5, #6366f1); color: white; border: none; border-radius: 12px; font-size: 1rem; font-weight: 800; cursor: pointer; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25); transition: opacity 0.15s ease;"
       >
         🚀 대한민국 평균과 즉시 비교하기
@@ -285,8 +284,8 @@
 
         <!-- 공유 버튼 -->
         <div style="margin-top: 1.5rem; text-align: center;">
-          <button 
-            id="btnCopyUrl" 
+          <button
+            id="btnCopyUrl"
             style="padding: 0.65rem 1.25rem; background: var(--bg-subtle); border: 1px solid var(--border-color); border-radius: 10px; font-size: 0.88rem; font-weight: 700; color: var(--text-main); cursor: pointer;"
           >
             🔗 내 분석 결과 링크 복사하기
@@ -310,8 +309,7 @@
   <footer id="site-footer"></footer>
 
   <!-- 공통 스크립트 모듈 -->
-  <script type="module" src="../../assets/js/core-ui.js"></script>
-  <script type="module" src="../../assets/js/tracker.js"></script>
-  <script type="module" src="./app.js"></script>
+  <script type="module" src="../../assets/js/core-ui.js?v=20261023_overhaul1"></script>
+  <script type="module" src="./app.js?v=20261023_overhaul1"></script>
 </body>
 </html>

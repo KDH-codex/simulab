@@ -1,0 +1,26 @@
+# Cloudflare Workers Static Assets uses .assetsignore (not .wranglerignore).
+docs/
+dist/
+scripts/
+tests/
+supabase/
+scratch/
+backup_v1_dark/
+backup_v2_step2/
+node_modules/
+.git/
+.github/
+.agents/
+.codex/
+.codex-remote-attachments/
+.wrangler/
+.env*
+*.md
+*.txt
+!ads.txt
+!robots.txt
+*.log
+*.backup.*
+wrangler.json
+.wranglerignore
+.gitignore

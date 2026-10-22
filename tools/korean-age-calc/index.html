@@ -2,17 +2,15 @@
 <html lang="ko" data-default-theme="light" data-theme="light">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light" />
   <title>만나이 & 띠 계산기 (2023년 행정기본법 개정 공식 만나이·D-Day) | SimuLab Hub</title>
-  <meta name="description" content="생년월일만 입력하면 2023년 개정 행정기본법 기준의 법적 공식 만나이와 12간지 띠, 총 살아온 일수, 다음 생일 D-Day, 선거권 및 정년 등 법적 자격 연령을 1초 만에 확인합니다." />
-  <link rel="canonical" href="https://simulab.kr/tools/korean-age-calc/" />
-
+  <meta name="description" content="생년월일과 기준일로 만나이, 연나이, 출생연도 기준 띠와 다음 생일까지의 날짜를 계산합니다. 개별 제도의 자격 심사는 별도 확인이 필요합니다.">
   <meta property="og:type" content="website" />
   <meta property="og:title" content="만나이 & 띠 계산기 | SimuLab Hub" />
   <meta property="og:description" content="생년월일 입력으로 공식 법적 만나이, 띠, 생일 D-Day를 즉시 확인하세요." />
 
-  <link rel="stylesheet" href="../../assets/css/common.css" />
+  <link rel="stylesheet" href="../../assets/css/common.css?v=20261023_overhaul1" />
   <style>
     .highlight-result-box {
       background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(30, 64, 175, 0.02));
@@ -48,7 +46,8 @@
     }
   </style>
   <!-- Google AdSense (Auto Ads & Verification) -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9815778998394475" crossorigin="anonymous"></script>
+  <meta name="google-adsense-account" content="ca-pub-9815778998394475">
+<link rel="canonical" href="https://simulab.kr/tools/korean-age-calc/">
 </head>
 <body>
   <header id="site-header"></header>
@@ -61,7 +60,7 @@
       <h1 class="page-title">만나이 띠 계산기</h1>
       <p class="page-subtitle">
         생년월일을 입력하면 <strong>2023년 개정 행정기본법 기준의 법적 공식 만나이</strong>와 12간지 동물 띠,
-        다음 생일까지 남은 D-Day, 그리고 <strong>투표권·정년·연금 수령 자격 연령</strong>을 실시간으로 확인해 드립니다.
+        <strong>살아온 일수와 다음 생일까지의 D-Day</strong>를 확인할 수 있습니다.
       </p>
     </section>
 
@@ -155,7 +154,7 @@
         <!-- 주요 법정 자격 도달 목록 -->
         <div style="border: 1px solid var(--border-color); border-radius: 12px; padding: 1rem; background: var(--bg-card);">
           <div style="font-size: 0.88rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.65rem;">
-            ⚖️ 주요 법적 자격 연령 충족 여부
+            연령과 띠를 해석할 때
           </div>
           <div id="legal-rights-list"></div>
         </div>
@@ -164,7 +163,7 @@
 
     <!-- 법적 면책 조항 컨테이너 -->
     <div id="legal-disclaimer"></div>
-  
+
       <!-- Google AdSense Responsive In-Feed/Display Unit -->
       <div class="ad-slot-wrapper" aria-label="스폰서 광고">
         <span class="ad-slot-badge">SPONSORED (ADVERTISEMENT)</span>
@@ -174,16 +173,14 @@
              data-ad-slot="auto"
              data-ad-format="auto"
              data-full-width-responsive="true"></ins>
-        <script>
-             (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
+
       </div>
   </main>
 
   <footer id="site-footer"></footer>
 
-  <script src="../../assets/js/core-ui.js"></script>
-  <script src="logic.js"></script>
-  <script src="app.js"></script>
+  <script src="../../assets/js/core-ui.js?v=20261023_overhaul1"></script>
+  <script src="logic.js?v=20261023_overhaul1"></script>
+  <script src="app.js?v=20261023_overhaul1"></script>
 </body>
 </html>

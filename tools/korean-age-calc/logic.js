@@ -33,74 +33,22 @@
     { name: '양띠', icon: '🐑', desc: '평화롭고 배려심 깊은 양' }          // 11
   ];
 
-  AgeLogic.calculate = function (birthDateStr, targetDateStr) {
-    if (!birthDateStr) return null;
-
-    const birth = new Date(birthDateStr);
-    const target = targetDateStr ? new Date(targetDateStr) : new Date();
-
-    const birthYear = birth.getFullYear();
-    const birthMonth = birth.getMonth();
-    const birthDay = birth.getDate();
-
-    const targetYear = target.getFullYear();
-    const targetMonth = target.getMonth();
-    const targetDay = target.getDate();
-
-    // 1. 만나이 계산 (생일 지났는지 판별)
-    let internationalAge = targetYear - birthYear;
-    const isBirthdayPassed =
-      targetMonth > birthMonth || (targetMonth === birthMonth && targetDay >= birthDay);
-
-    if (!isBirthdayPassed) {
-      internationalAge -= 1;
-    }
-
-    // 2. 연나이 (청소년보호법/병역법)
-    const yearAge = targetYear - birthYear;
-
-    // 3. 세는 나이 (전통 한국식)
-    const koreanAge = targetYear - birthYear + 1;
-
-    // 4. 12간지 띠 계산
-    const zodiacIndex = birthYear % 12;
-    const zodiac = AgeLogic.ZODIAC_ANIMALS[zodiacIndex];
-
-    // 5. 총 살아온 일수
-    const diffTime = target.getTime() - birth.getTime();
-    const livedDays = Math.max(0, Math.floor(diffTime / (1000 * 60 * 60 * 24)));
-
-    // 6. 다음 생일까지 남은 D-Day
-    let nextBday = new Date(targetYear, birthMonth, birthDay);
-    if (nextBday < target) {
-      nextBday = new Date(targetYear + 1, birthMonth, birthDay);
-    }
-    const daysUntilNextBday = Math.ceil((nextBday.getTime() - target.getTime()) / (1000 * 60 * 60 * 24));
-
-    // 7. 법정 주요 자격 도달 여부
-    const legalRights = [
-      { title: '초등학교 입학', requiredAge: 7, eligible: internationalAge >= 7 },
-      { title: '운전면허 취득 (제2종)', requiredAge: 18, eligible: internationalAge >= 18 },
-      { title: '선거권 (투표)', requiredAge: 18, eligible: internationalAge >= 18 },
-      { title: '청소년보호법 해제 (음주/흡연)', requiredAge: 19, eligible: yearAge >= 19 },
-      { title: '워킹홀리데이 신청 (만 30세)', requiredAge: 30, eligible: internationalAge <= 30 },
-      { title: '법정 정년 (만 60세)', requiredAge: 60, eligible: internationalAge >= 60 },
-      { title: '기초연금 / 경로우대 (만 65세)', requiredAge: 65, eligible: internationalAge >= 65 }
-    ];
-
-    return {
-      birthYear,
-      birthMonth: birthMonth + 1,
-      birthDay,
-      internationalAge: Math.max(0, internationalAge),
-      yearAge: Math.max(0, yearAge),
-      koreanAge: Math.max(1, koreanAge),
-      isBirthdayPassed,
-      zodiac,
-      livedDays,
-      daysUntilNextBday,
-      legalRights
-    };
+  function parseDay(value) {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(value || '')) return null;
+    const date = new Date(value + 'T00:00:00Z');
+    return Number.isFinite(date.getTime()) && date.toISOString().slice(0,10) === value ? date : null;
+  }
+  AgeLogic.calculate = function (birthDateStr,targetDateStr) {
+    const targetText=targetDateStr || new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul'}).format(new Date());
+    const birth=parseDay(birthDateStr),target=parseDay(targetText);
+    if(!birth || !target || birth>target) return null;
+    const birthYear=birth.getUTCFullYear(),birthMonth=birth.getUTCMonth(),birthDay=birth.getUTCDate();
+    const targetYear=target.getUTCFullYear(),targetMonth=target.getUTCMonth(),targetDay=target.getUTCDate();
+    const passed=targetMonth>birthMonth || (targetMonth===birthMonth && targetDay>=birthDay);
+    const yearAge=targetYear-birthYear;
+    let nextBday=new Date(Date.UTC(targetYear,birthMonth,birthDay));
+    if(nextBday<target)nextBday=new Date(Date.UTC(targetYear+1,birthMonth,birthDay));
+    return {birthYear,birthMonth:birthMonth+1,birthDay,internationalAge:yearAge-(passed?0:1),yearAge,koreanAge:yearAge+1,isBirthdayPassed:passed,zodiac:AgeLogic.ZODIAC_ANIMALS[birthYear%12],livedDays:Math.floor((target-birth)/86400000),daysUntilNextBday:Math.round((nextBday-target)/86400000),legalRights:[]};
   };
 
   global.AgeLogic = AgeLogic;
