@@ -679,6 +679,64 @@
       color: #0f172a;
     }
 
+    /* 달력 +N개 더보기 버튼 */
+    .cal-more-btn {
+      font-size: 0.68rem;
+      color: #2563eb;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 6px;
+      font-weight: 850;
+      padding: 2.5px 6px;
+      cursor: pointer;
+      text-align: center;
+      margin-top: 2px;
+      display: inline-block;
+      width: 100%;
+      box-sizing: border-box;
+      transition: all 0.12s ease;
+      letter-spacing: -0.01em;
+    }
+    .cal-more-btn:hover {
+      background: #dbeafe;
+      color: #1d4ed8;
+      border-color: #93c5fd;
+      transform: scale(1.02);
+    }
+
+    /* 특정 날짜 전체 축제 상세 팝업 모달 */
+    .day-events-modal-card {
+      background: #ffffff;
+      border-radius: 22px;
+      max-width: 640px;
+      width: 100%;
+      max-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      padding: 1.5rem;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--border-color, #e2e8f0);
+    }
+    .day-modal-cards-list {
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      padding-right: 0.35rem;
+      margin-top: 0.5rem;
+    }
+    .day-modal-item {
+      border: 1.5px solid var(--border-color, #e2e8f0);
+      border-radius: 14px;
+      padding: 1rem;
+      background: #f8fafc;
+      transition: all 0.15s ease;
+    }
+    .day-modal-item:hover {
+      border-color: #93c5fd;
+      background: #ffffff;
+    }
+
     /* 하단 가이드 및 부모님 체크리스트 */
     .kids-guide-info {
       margin-top: 2rem;
@@ -842,6 +900,22 @@
           <button id="btnSubmitImportJson" style="width: 100%; padding: 0.65rem; background: #10b981; color: #ffffff; border-radius: 10px; font-size: 0.86rem; font-weight: 850; border: none; cursor: pointer;">
             + 추가 축제 데이터 병합 등록
           </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 특정 날짜 전체 축제 상세 팝업 모달 (+N개 더보기 클릭 시 열림) -->
+    <div id="dayEventsModalOverlay" class="import-modal-overlay">
+      <div class="day-events-modal-card">
+        <div class="modal-head">
+          <h3 id="dayModalTitle"><span>🗓️</span> 10월 24일(토) 전체 축제 (0개)</h3>
+          <button id="btnCloseDayModal" class="modal-close-btn" title="닫기">✕</button>
+        </div>
+        <p style="font-size: 0.83rem; color: #64748b; margin-bottom: 0.75rem;">
+          이 날짜에 열리는 모든 흥미진진한 가족 축제 &amp; 페스티벌 상세 목록입니다.
+        </p>
+        <div id="dayModalCardsList" class="day-modal-cards-list">
+          <!-- 동적 카드 목록 렌더링 -->
         </div>
       </div>
     </div>

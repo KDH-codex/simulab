@@ -58,6 +58,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnSubmitImportJson = document.getElementById('btnSubmitImportJson');
   const importJsonTextarea = document.getElementById('importJsonTextarea');
 
+  // 특정 일자 전체 축제 모달 요소 (+N개 더보기 클릭 시)
+  const dayEventsModalOverlay = document.getElementById('dayEventsModalOverlay');
+  const dayModalTitle = document.getElementById('dayModalTitle');
+  const btnCloseDayModal = document.getElementById('btnCloseDayModal');
+  const dayModalCardsList = document.getElementById('dayModalCardsList');
+
   // --------------------------------------------------------------------------
   // 3. 통계 뱃지 업데이트
   // --------------------------------------------------------------------------
@@ -197,13 +203,22 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       if (events.length > 3) {
-        const moreBadge = document.createElement('span');
-        moreBadge.style.fontSize = '0.68rem';
-        moreBadge.style.color = '#3b82f6';
-        moreBadge.style.fontWeight = '800';
-        moreBadge.style.paddingLeft = '3px';
-        moreBadge.textContent = `+${events.length - 3}개 더보기`;
-        eventsListEl.appendChild(moreBadge);
+        const moreBtn = document.createElement('button');
+        moreBtn.className = 'cal-more-btn';
+        moreBtn.type = 'button';
+        moreBtn.textContent = `+${events.length - 3}개 더보기 🔍`;
+        moreBtn.title = '이 날 열리는 모든 축제 전체보기';
+
+        moreBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          selectedDate = dateStr;
+          document.querySelectorAll('.kids-day-cell.is-selected').forEach(c => c.classList.remove('is-selected'));
+          cell.classList.add('is-selected');
+          renderDetails();
+          openDayEventsModal(dateStr, events);
+        });
+
+        eventsListEl.appendChild(moreBtn);
       }
 
       cell.appendChild(eventsListEl);
@@ -498,7 +513,73 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --------------------------------------------------------------------------
-  // 12. 초기 화면 렌더링 실행
+  // 12. 특정 날짜 전체 축제 상세 모달 제어 (+N개 더보기)
+  // --------------------------------------------------------------------------
+  function openDayEventsModal(dateStr, events) {
+    if (!dayEventsModalOverlay || !dayModalTitle || !dayModalCardsList) return;
+
+    const [y, m, d] = dateStr.split('-');
+    const dateObj = new Date(parseInt(y), parseInt(m) - 1, parseInt(d));
+    const dayNames = ['일', '월', '화', '수', '목', '금', '토'];
+    const dayName = dayNames[dateObj.getDay()];
+
+    dayModalTitle.innerHTML = `<span>🗓️</span> ${parseInt(m)}월 ${parseInt(d)}일(${dayName}) 전체 축제 (${events.length}개)`;
+    dayModalCardsList.innerHTML = '';
+
+    events.forEach(ev => {
+      const item = document.createElement('div');
+      item.className = 'day-modal-item';
+      item.innerHTML = `
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.35rem;">
+          <span style="font-size: 0.75rem; font-weight: 850; padding: 0.18rem 0.55rem; border-radius: 7px; background: #e2e8f0; color: #334155;">
+            📍 ${ev.region}
+          </span>
+          <span style="font-size: 0.78rem; font-weight: 850; color: #16a34a;">
+            ${ev.fee}
+          </span>
+        </div>
+        <h4 style="font-size: 1.05rem; font-weight: 850; color: #1e293b; margin: 0.2rem 0 0.35rem; display: flex; align-items: center; gap: 0.3rem;">
+          <span>${ev.icon || '🎪'}</span>
+          <span>${ev.title}</span>
+        </h4>
+        <div style="font-size: 0.78rem; font-weight: 750; color: #2563eb; margin-bottom: 0.4rem;">
+          🗓️ ${ev.periodText}
+        </div>
+        <div style="font-size: 0.8rem; color: #475569; margin-bottom: 0.25rem;">
+          <strong>장소:</strong> ${ev.location}
+        </div>
+        <div style="font-size: 0.8rem; color: #475569; margin-bottom: 0.4rem;">
+          <strong>주요 프로그램:</strong> ${ev.program}
+        </div>
+        <div style="font-size: 0.78rem; color: #64748b; background: #ffffff; padding: 0.5rem 0.7rem; border-radius: 9px; margin-bottom: 0.65rem; line-height: 1.45; border: 1px solid #e2e8f0;">
+          ${ev.desc}
+        </div>
+        <a href="${ev.link}" target="_blank" rel="noopener noreferrer" class="fc-link-btn" style="padding: 0.55rem; font-size: 0.82rem;">
+          공식 안내 홈페이지 바로가기 ↗
+        </a>
+      `;
+      dayModalCardsList.appendChild(item);
+    });
+
+    dayEventsModalOverlay.classList.add('open');
+  }
+
+  if (btnCloseDayModal && dayEventsModalOverlay) {
+    btnCloseDayModal.addEventListener('click', () => {
+      dayEventsModalOverlay.classList.remove('open');
+    });
+  }
+
+  if (dayEventsModalOverlay) {
+    dayEventsModalOverlay.addEventListener('click', (e) => {
+      if (e.target === dayEventsModalOverlay) {
+        dayEventsModalOverlay.classList.remove('open');
+      }
+    });
+  }
+
+  // --------------------------------------------------------------------------
+  // 13. 초기 화면 렌더링 실행
   // --------------------------------------------------------------------------
   renderCalendar();
   renderDetails();
