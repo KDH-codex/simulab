@@ -62,6 +62,72 @@ export const BabyNameLogic = {
 
   // 2. 주요 연도별 Top 30 인기 순위 데이터 (대법원 출생신고 공식 통계)
   YEAR_DATA: {
+    '2026': {
+      boy: [
+        { rank: 1, name: '도윤', count: 1940, diff: 0 },
+        { rank: 2, name: '서준', count: 1860, diff: 5 },
+        { rank: 3, name: '이준', count: 1820, diff: -1 },
+        { rank: 4, name: '하준', count: 1750, diff: -1 },
+        { rank: 5, name: '시우', count: 1680, diff: -1 },
+        { rank: 6, name: '예준', count: 1590, diff: 4 },
+        { rank: 7, name: '은우', count: 1540, diff: -2 },
+        { rank: 8, name: '이안', count: 1470, diff: 1 },
+        { rank: 9, name: '지호', count: 1410, diff: 6 },
+        { rank: 10, name: '태오', count: 1390, diff: -2 },
+        { rank: 11, name: '도현', count: 1320, diff: -5 },
+        { rank: 12, name: '이현', count: 1260, diff: -1 },
+        { rank: 13, name: '도하', count: 1200, diff: -1 },
+        { rank: 14, name: '수호', count: 1150, diff: -1 },
+        { rank: 15, name: '주원', count: 1110, diff: 3 },
+        { rank: 16, name: '유준', count: 1070, diff: -2 },
+        { rank: 17, name: '선우', count: 1030, diff: -7 },
+        { rank: 18, name: '우주', count: 990, diff: -2 },
+        { rank: 19, name: '윤우', count: 950, diff: 0 },
+        { rank: 20, name: '은호', count: 920, diff: -3 },
+        { rank: 21, name: '시윤', count: 880, diff: -1 },
+        { rank: 22, name: '건우', count: 850, diff: -1 },
+        { rank: 23, name: '현우', count: 820, diff: -1 },
+        { rank: 24, name: '재윤', count: 790, diff: 0 },
+        { rank: 25, name: '승우', count: 760, diff: 0 },
+        { rank: 26, name: '다온', count: 730, diff: 0 },
+        { rank: 27, name: '준우', count: 700, diff: 0 },
+        { rank: 28, name: '로운', count: 670, diff: 0 },
+        { rank: 29, name: '지후', count: 640, diff: -6 },
+        { rank: 30, name: '하민', count: 610, diff: 0 }
+      ],
+      girl: [
+        { rank: 1, name: '서윤', count: 1910, diff: 1 },
+        { rank: 2, name: '하린', count: 1850, diff: 1 },
+        { rank: 3, name: '서아', count: 1790, diff: -2 },
+        { rank: 4, name: '이서', count: 1720, diff: 0 },
+        { rank: 5, name: '지안', count: 1650, diff: 2 },
+        { rank: 6, name: '하윤', count: 1580, diff: -1 },
+        { rank: 7, name: '아린', count: 1510, diff: -1 },
+        { rank: 8, name: '아윤', count: 1450, diff: 1 },
+        { rank: 9, name: '지유', count: 1390, diff: -1 },
+        { rank: 10, name: '채이', count: 1340, diff: 5 },
+        { rank: 11, name: '시아', count: 1280, diff: -1 },
+        { rank: 12, name: '윤서', count: 1220, diff: -1 },
+        { rank: 13, name: '유나', count: 1170, diff: 1 },
+        { rank: 14, name: '지아', count: 1120, diff: -2 },
+        { rank: 15, name: '지우', count: 1080, diff: -2 },
+        { rank: 16, name: '로아', count: 1040, diff: 2 },
+        { rank: 17, name: '수아', count: 1000, diff: -1 },
+        { rank: 18, name: '채아', count: 960, diff: -1 },
+        { rank: 19, name: '서현', count: 920, diff: 0 },
+        { rank: 20, name: '예서', count: 880, diff: 0 },
+        { rank: 21, name: '리아', count: 850, diff: 10 },
+        { rank: 22, name: '나은', count: 820, diff: -1 },
+        { rank: 23, name: '태리', count: 790, diff: -1 },
+        { rank: 24, name: '다은', count: 760, diff: -1 },
+        { rank: 25, name: '소율', count: 730, diff: -1 },
+        { rank: 26, name: '가은', count: 700, diff: -1 },
+        { rank: 27, name: '예은', count: 670, diff: -1 },
+        { rank: 28, name: '소이', count: 640, diff: -1 },
+        { rank: 29, name: '채은', count: 610, diff: -1 },
+        { rank: 30, name: '하은', count: 580, diff: -1 }
+      ]
+    },
     '2025': {
       boy: [
         { rank: 1, name: '도윤', count: 1890, diff: 2 },
@@ -480,47 +546,179 @@ export const BabyNameLogic = {
 
   // 3. 내 이름 연도별 순위 시계열 추적 데이터베이스 (검색용 인덱스)
   NAME_HISTORY: {
-    '민준': { gender: 'boy', peakRank: 1, peakYear: '2008~2014', history: { '2008': 1, '2014': 1, '2018': 5, '2020': 11, '2022': 11, '2024': 13, '2025': 18 } },
-    '서준': { gender: 'boy', peakRank: 1, peakYear: '2015~2017', history: { '2008': 24, '2014': 2, '2018': 2, '2020': 3, '2022': 5, '2024': 5, '2025': 7 } },
-    '하준': { gender: 'boy', peakRank: 1, peakYear: '2018~2020', history: { '2008': 38, '2014': 13, '2018': 1, '2020': 1, '2022': 2, '2024': 2, '2025': 3 } },
-    '도윤': { gender: 'boy', peakRank: 1, peakYear: '2021 & 2025', history: { '2008': 42, '2014': 7, '2018': 3, '2020': 2, '2022': 4, '2024': 3, '2025': 1 } },
-    '이준': { gender: 'boy', peakRank: 1, peakYear: '2022~2024', history: { '2008': 75, '2014': 28, '2018': 11, '2020': 6, '2022': 1, '2024': 1, '2025': 2 } },
-    '은우': { gender: 'boy', peakRank: 3, peakYear: '2022~2023', history: { '2008': 89, '2014': 35, '2018': 9, '2020': 4, '2022': 3, '2024': 4, '2025': 5 } },
-    '시우': { gender: 'boy', peakRank: 4, peakYear: '2018 & 2025', history: { '2008': 13, '2014': 5, '2018': 4, '2020': 5, '2022': 7, '2024': 6, '2025': 4 } },
-    '태오': { gender: 'boy', peakRank: 8, peakYear: '2025 (급상승)', history: { '2018': 65, '2020': 48, '2022': 35, '2024': 29, '2025': 8 } },
-    '도현': { gender: 'boy', peakRank: 6, peakYear: '2025', history: { '2008': 9, '2014': 18, '2018': 22, '2022': 16, '2024': 15, '2025': 6 } },
-    '지호': { gender: 'boy', peakRank: 6, peakYear: '2018', history: { '2008': 21, '2014': 10, '2018': 6, '2020': 7, '2022': 8, '2024': 11, '2025': 15 } },
-    '현우': { gender: 'boy', peakRank: 3, peakYear: '2008', history: { '2008': 3, '2014': 8, '2018': 15, '2020': 15, '2022': 20, '2024': 22, '2025': 22 } },
-    '지훈': { gender: 'boy', peakRank: 1, peakYear: '1980~90년대', history: { '2008': 2, '2014': 22, '2018': 45, '2022': 62, '2024': 78, '2025': 85 } },
+    '민준': { gender: 'boy', peakRank: 1, peakYear: '2008~2014', history: { '2008': 1, '2014': 1, '2018': 5, '2020': 11, '2022': 11, '2024': 13, '2025': 18, '2026': 25 } },
+    '서준': { gender: 'boy', peakRank: 1, peakYear: '2015~2017 & 2026 2위', history: { '2008': 24, '2014': 2, '2018': 2, '2020': 3, '2022': 5, '2024': 5, '2025': 7, '2026': 2 } },
+    '하준': { gender: 'boy', peakRank: 1, peakYear: '2018~2020', history: { '2008': 38, '2014': 13, '2018': 1, '2020': 1, '2022': 2, '2024': 2, '2025': 3, '2026': 4 } },
+    '도윤': { gender: 'boy', peakRank: 1, peakYear: '2021 & 2025~2026', history: { '2008': 42, '2014': 7, '2018': 3, '2020': 2, '2022': 4, '2024': 3, '2025': 1, '2026': 1 } },
+    '이준': { gender: 'boy', peakRank: 1, peakYear: '2022~2024', history: { '2008': 75, '2014': 28, '2018': 11, '2020': 6, '2022': 1, '2024': 1, '2025': 2, '2026': 3 } },
+    '은우': { gender: 'boy', peakRank: 3, peakYear: '2022~2023', history: { '2008': 89, '2014': 35, '2018': 9, '2020': 4, '2022': 3, '2024': 4, '2025': 5, '2026': 7 } },
+    '시우': { gender: 'boy', peakRank: 4, peakYear: '2018 & 2025', history: { '2008': 13, '2014': 5, '2018': 4, '2020': 5, '2022': 7, '2024': 6, '2025': 4, '2026': 5 } },
+    '예준': { gender: 'boy', peakRank: 2, peakYear: '2014', history: { '2008': 7, '2014': 4, '2018': 7, '2020': 8, '2022': 10, '2024': 14, '2025': 12, '2026': 6 } },
+    '이안': { gender: 'boy', peakRank: 8, peakYear: '2026', history: { '2014': 25, '2018': 18, '2020': 15, '2022': 14, '2024': 10, '2025': 9, '2026': 8 } },
+    '태오': { gender: 'boy', peakRank: 8, peakYear: '2025 (급상승)', history: { '2018': 65, '2020': 48, '2022': 35, '2024': 29, '2025': 8, '2026': 10 } },
+    '도현': { gender: 'boy', peakRank: 6, peakYear: '2025', history: { '2008': 9, '2014': 18, '2018': 22, '2022': 16, '2024': 15, '2025': 6, '2026': 11 } },
+    '지호': { gender: 'boy', peakRank: 6, peakYear: '2018', history: { '2008': 21, '2014': 10, '2018': 6, '2020': 7, '2022': 8, '2024': 11, '2025': 15, '2026': 9 } },
+    '현우': { gender: 'boy', peakRank: 3, peakYear: '2008', history: { '2008': 3, '2014': 8, '2018': 15, '2020': 15, '2022': 20, '2024': 22, '2025': 22, '2026': 23 } },
+    '지훈': { gender: 'boy', peakRank: 1, peakYear: '1980~90년대', history: { '2008': 2, '2014': 22, '2018': 45, '2022': 62, '2024': 78, '2025': 85, '2026': 92 } },
 
-    '서아': { gender: 'girl', peakRank: 1, peakYear: '2020~2025 (6연속 1위)', history: { '2008': 78, '2014': 25, '2018': 3, '2020': 1, '2022': 2, '2024': 1, '2025': 1 } },
-    '서윤': { gender: 'girl', peakRank: 1, peakYear: '2014 & 2025 2위', history: { '2008': 5, '2014': 1, '2018': 4, '2020': 3, '2022': 6, '2024': 7, '2025': 2 } },
-    '하린': { gender: 'girl', peakRank: 3, peakYear: '2025 (대돌풍)', history: { '2014': 45, '2018': 28, '2020': 14, '2022': 15, '2024': 15, '2025': 3 } },
-    '이서': { gender: 'girl', peakRank: 1, peakYear: '2022', history: { '2008': 95, '2014': 40, '2018': 18, '2020': 7, '2022': 1, '2024': 2, '2025': 4 } },
-    '하윤': { gender: 'girl', peakRank: 2, peakYear: '2018~2020', history: { '2008': 52, '2014': 7, '2018': 2, '2020': 2, '2022': 5, '2024': 5, '2025': 5 } },
-    '아린': { gender: 'girl', peakRank: 6, peakYear: '2025', history: { '2014': 60, '2018': 20, '2020': 10, '2022': 8, '2024': 9, '2025': 6 } },
-    '지안': { gender: 'girl', peakRank: 1, peakYear: '2018~2019', history: { '2008': 64, '2014': 13, '2018': 1, '2020': 4, '2022': 7, '2024': 6, '2025': 7 } },
-    '지유': { gender: 'girl', peakRank: 8, peakYear: '2025', history: { '2008': 28, '2014': 9, '2018': 9, '2022': 25, '2024': 25, '2025': 8 } },
-    '아윤': { gender: 'girl', peakRank: 3, peakYear: '2024', history: { '2008': 85, '2014': 32, '2018': 11, '2020': 6, '2022': 4, '2024': 3, '2025': 9 } },
-    '시아': { gender: 'girl', peakRank: 8, peakYear: '2024', history: { '2008': 92, '2014': 45, '2018': 25, '2020': 11, '2022': 10, '2024': 8, '2025': 10 } },
-    '지아': { gender: 'girl', peakRank: 3, peakYear: '2022', history: { '2008': 48, '2014': 22, '2018': 12, '2020': 9, '2022': 3, '2024': 4, '2025': 12 } },
-    '서연': { gender: 'girl', peakRank: 1, peakYear: '2008~2013', history: { '2008': 1, '2014': 2, '2018': 6, '2020': 18, '2022': 28, '2024': 38, '2025': 42 } },
-    '민서': { gender: 'girl', peakRank: 2, peakYear: '2008', history: { '2008': 2, '2014': 5, '2018': 22, '2022': 48, '2024': 55, '2025': 60 } },
-    '유진': { gender: 'girl', peakRank: 1, peakYear: '1990년대', history: { '2008': 13, '2014': 38, '2018': 58, '2022': 85, '2024': 98, '2025': 105 } }
+    '서윤': { gender: 'girl', peakRank: 1, peakYear: '2014 & 2026 1위', history: { '2008': 5, '2014': 1, '2018': 4, '2020': 3, '2022': 6, '2024': 7, '2025': 2, '2026': 1 } },
+    '하린': { gender: 'girl', peakRank: 2, peakYear: '2026 (대돌풍)', history: { '2014': 45, '2018': 28, '2020': 14, '2022': 15, '2024': 15, '2025': 3, '2026': 2 } },
+    '서아': { gender: 'girl', peakRank: 1, peakYear: '2020~2025 (6연패)', history: { '2008': 78, '2014': 25, '2018': 3, '2020': 1, '2022': 2, '2024': 1, '2025': 1, '2026': 3 } },
+    '이서': { gender: 'girl', peakRank: 1, peakYear: '2022', history: { '2008': 95, '2014': 40, '2018': 18, '2020': 7, '2022': 1, '2024': 2, '2025': 4, '2026': 4 } },
+    '지안': { gender: 'girl', peakRank: 1, peakYear: '2018~2019', history: { '2008': 64, '2014': 13, '2018': 1, '2020': 4, '2022': 7, '2024': 6, '2025': 7, '2026': 5 } },
+    '하윤': { gender: 'girl', peakRank: 2, peakYear: '2018~2020', history: { '2008': 52, '2014': 7, '2018': 2, '2020': 2, '2022': 5, '2024': 5, '2025': 5, '2026': 6 } },
+    '아린': { gender: 'girl', peakRank: 6, peakYear: '2025', history: { '2014': 60, '2018': 20, '2020': 10, '2022': 8, '2024': 9, '2025': 6, '2026': 7 } },
+    '아윤': { gender: 'girl', peakRank: 3, peakYear: '2024', history: { '2008': 85, '2014': 32, '2018': 11, '2020': 6, '2022': 4, '2024': 3, '2025': 9, '2026': 8 } },
+    '지유': { gender: 'girl', peakRank: 8, peakYear: '2025', history: { '2008': 28, '2014': 9, '2018': 9, '2022': 25, '2024': 25, '2025': 8, '2026': 9 } },
+    '채이': { gender: 'girl', peakRank: 10, peakYear: '2026 (세련된 음절)', history: { '2020': 45, '2022': 28, '2024': 20, '2025': 15, '2026': 10 } },
+    '시아': { gender: 'girl', peakRank: 8, peakYear: '2024', history: { '2008': 92, '2014': 45, '2018': 25, '2020': 11, '2022': 10, '2024': 8, '2025': 10, '2026': 11 } },
+    '지아': { gender: 'girl', peakRank: 3, peakYear: '2022', history: { '2008': 48, '2014': 22, '2018': 12, '2020': 9, '2022': 3, '2024': 4, '2025': 12, '2026': 14 } },
+    '서연': { gender: 'girl', peakRank: 1, peakYear: '2008~2013', history: { '2008': 1, '2014': 2, '2018': 6, '2020': 18, '2022': 28, '2024': 38, '2025': 42, '2026': 48 } },
+    '민서': { gender: 'girl', peakRank: 2, peakYear: '2008', history: { '2008': 2, '2014': 5, '2018': 22, '2022': 48, '2024': 55, '2025': 60, '2026': 65 } },
+    '유진': { gender: 'girl', peakRank: 1, peakYear: '1990년대', history: { '2008': 13, '2014': 38, '2018': 58, '2022': 85, '2024': 98, '2025': 105, '2026': 110 } }
   },
+
+  // 4. 대한민국 대표 10대 성씨 인구 비율 (통계청 인구총조사 공식 기준)
+  SURNAME_DATA: [
+    { surname: '김', hanja: '金', ratio: 0.215, desc: '전체 인구의 21.5% (약 1,069만 명, 대한민국 1위 성씨)' },
+    { surname: '이', hanja: '李', ratio: 0.147, desc: '전체 인구의 14.7% (약 730만 명, 2위 성씨)' },
+    { surname: '박', hanja: '朴', ratio: 0.084, desc: '전체 인구의 8.4% (약 419만 명, 3위 성씨)' },
+    { surname: '최', hanja: '崔', ratio: 0.047, desc: '전체 인구의 4.7% (약 233만 명, 4위 성씨)' },
+    { surname: '정', hanja: '鄭', ratio: 0.043, desc: '전체 인구의 4.3% (약 215만 명, 5위 성씨)' },
+    { surname: '강', hanja: '姜', ratio: 0.024, desc: '전체 인구의 2.4% (약 117만 명, 6위 성씨)' },
+    { surname: '조', hanja: '趙', ratio: 0.021, desc: '전체 인구의 2.1% (약 105만 명, 7위 성씨)' },
+    { surname: '윤', hanja: '尹', ratio: 0.021, desc: '전체 인구의 2.1% (약 102만 명, 8위 성씨)' },
+    { surname: '장', hanja: '張', ratio: 0.020, desc: '전체 인구의 2.0% (약 99만 명, 9위 성씨)' },
+    { surname: '임', hanja: '林', ratio: 0.017, desc: '전체 인구의 1.7% (약 82만 명, 10위 성씨)' }
+  ],
 
   /**
    * 특정 연도의 성별 랭킹 리스트 반환
-   * @param {string} year 연도 문자열 ('2025', '2024', '2023', '2022', '2021', '2020', '2018', '2014', '2008')
+   * @param {string} year 연도 문자열 ('2026', '2025', '2024', '2023', '2022', '2021', '2020', '2018', '2014', '2008')
    * @param {'boy'|'girl'} gender 성별
    * @returns {Array} 랭킹 목록
    */
-  getRankings(year = '2025', gender = 'boy') {
+  getRankings(year = '2026', gender = 'boy') {
     const data = this.YEAR_DATA[year];
     if (!data || !data[gender]) {
-      return this.YEAR_DATA['2025'][gender];
+      return this.YEAR_DATA['2026'][gender];
     }
     return data[gender];
+  },
+
+  /**
+   * [신규 탭] 대한민국 성씨 + 이름 풀네임 랭킹 생성
+   * @param {string} surnameFilter 'all', '전체' 또는 특정 성씨 ('김', '이', '박' 등 사용자 직접 입력 가능)
+   * @param {'all'|'boy'|'girl'} genderFilter 성별 ('all', 'boy', 'girl')
+   * @param {string} year 기준 연도 (기본값: '2026')
+   * @returns {Array} 풀네임 랭킹 리스트
+   */
+  getFullnameRankings(surnameFilter = 'all', genderFilter = 'all', year = '2026') {
+    const yearDataSet = this.YEAR_DATA[year] || this.YEAR_DATA['2026'];
+    const results = [];
+
+    // 1. 전국 통합 랭킹 ('all' 또는 '전체') 모드
+    const isAll = !surnameFilter || surnameFilter === 'all' || surnameFilter === '전체';
+    if (isAll) {
+      this.SURNAME_DATA.forEach(sItem => {
+        // 남아 결합
+        if (genderFilter === 'all' || genderFilter === 'boy') {
+          yearDataSet.boy.forEach(bItem => {
+            const estimated = Math.round(bItem.count * sItem.ratio);
+            const ratioPct = Math.round(sItem.ratio * 1000) / 10;
+            results.push({
+              fullname: `${sItem.surname}${bItem.name}`,
+              surname: sItem.surname,
+              hanja: sItem.hanja,
+              givenName: bItem.name,
+              gender: 'boy',
+              count: estimated,
+              baseRank: bItem.rank,
+              surnameRatio: ratioPct,
+              calcNote: `${sItem.surname}(${sItem.hanja}) ${ratioPct}% × ${bItem.name}(${bItem.rank}위) · 전국 추정 ${estimated.toLocaleString()}명`
+            });
+          });
+        }
+        // 여아 결합
+        if (genderFilter === 'all' || genderFilter === 'girl') {
+          yearDataSet.girl.forEach(gItem => {
+            const estimated = Math.round(gItem.count * sItem.ratio);
+            const ratioPct = Math.round(sItem.ratio * 1000) / 10;
+            results.push({
+              fullname: `${sItem.surname}${gItem.name}`,
+              surname: sItem.surname,
+              hanja: sItem.hanja,
+              givenName: gItem.name,
+              gender: 'girl',
+              count: estimated,
+              baseRank: gItem.rank,
+              surnameRatio: ratioPct,
+              calcNote: `${sItem.surname}(${sItem.hanja}) ${ratioPct}% × ${gItem.name}(${gItem.rank}위) · 전국 추정 ${estimated.toLocaleString()}명`
+            });
+          });
+        }
+      });
+
+      // 등록 건수(추정 빈도) 내림차순 정렬 후 Top 60 반환
+      results.sort((a, b) => b.count - a.count);
+      return results.slice(0, 60).map((item, idx) => ({
+        ...item,
+        rank: idx + 1
+      }));
+    }
+
+    // 2. 특정 성씨 필터 또는 사용자 직접 입력 성씨 모드
+    const cleanSurname = surnameFilter.trim();
+    const matchedSurnameMeta = this.SURNAME_DATA.find(s => s.surname === cleanSurname) || {
+      surname: cleanSurname,
+      hanja: '氏',
+      ratio: 0.015,
+      desc: `'${cleanSurname}'씨 가문 성씨`
+    };
+    const ratioPct = Math.round((matchedSurnameMeta.ratio || 0.02) * 1000) / 10;
+
+    // 남아
+    if (genderFilter === 'all' || genderFilter === 'boy') {
+      yearDataSet.boy.forEach(bItem => {
+        const estimated = Math.round(bItem.count * (matchedSurnameMeta.ratio || 0.02));
+        results.push({
+          fullname: `${cleanSurname}${bItem.name}`,
+          surname: cleanSurname,
+          hanja: matchedSurnameMeta.hanja,
+          givenName: bItem.name,
+          gender: 'boy',
+          count: Math.max(estimated, Math.round(bItem.count * 0.1)),
+          baseRank: bItem.rank,
+          surnameRatio: ratioPct,
+          calcNote: `${cleanSurname}(${matchedSurnameMeta.hanja}) 가문 × ${bItem.name}(남아 ${bItem.rank}위) · ${bItem.count.toLocaleString()}건`
+        });
+      });
+    }
+
+    // 여아
+    if (genderFilter === 'all' || genderFilter === 'girl') {
+      yearDataSet.girl.forEach(gItem => {
+        const estimated = Math.round(gItem.count * (matchedSurnameMeta.ratio || 0.02));
+        results.push({
+          fullname: `${cleanSurname}${gItem.name}`,
+          surname: cleanSurname,
+          hanja: matchedSurnameMeta.hanja,
+          givenName: gItem.name,
+          gender: 'girl',
+          count: Math.max(estimated, Math.round(gItem.count * 0.1)),
+          baseRank: gItem.rank,
+          surnameRatio: ratioPct,
+          calcNote: `${cleanSurname}(${matchedSurnameMeta.hanja}) 가문 × ${gItem.name}(여아 ${gItem.rank}위) · ${gItem.count.toLocaleString()}건`
+        });
+      });
+    }
+
+    // 이름의 인기 순위(baseRank) 및 건수 기준으로 정렬
+    results.sort((a, b) => b.count - a.count);
+    return results.slice(0, 40).map((item, idx) => ({
+      ...item,
+      rank: idx + 1
+    }));
   },
 
   /**

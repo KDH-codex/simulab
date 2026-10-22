@@ -261,6 +261,308 @@
       gap: 0.75rem;
     }
 
+    /* 4번째 탭: 성씨+이름 풀네임 전용 모던 스타일 */
+    .btn-saved-open {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.55rem 1rem;
+      background: #fefce8;
+      border: 1.5px solid #fde047;
+      color: #854d0e;
+      border-radius: 12px;
+      font-size: 0.86rem;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(234, 88, 12, 0.08);
+      transition: all 0.15s ease;
+    }
+    .btn-saved-open:hover {
+      background: #fef08a;
+      transform: translateY(-1px);
+    }
+    #savedCountBadge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 20px;
+      height: 20px;
+      padding: 0 5px;
+      border-radius: 999px;
+      background: #ea580c;
+      color: white;
+      font-size: 0.74rem;
+      font-weight: 850;
+    }
+
+    .surname-chips-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+    .surname-chip {
+      padding: 0.35rem 0.7rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-subtle);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .surname-chip:hover {
+      background: #e2e8f0;
+      color: var(--text-primary);
+    }
+    .surname-chip.active {
+      background: var(--accent-primary, #2563eb);
+      color: #ffffff;
+      border-color: var(--accent-primary, #2563eb);
+      box-shadow: 0 2px 5px rgba(37, 99, 235, 0.25);
+    }
+
+    .surname-custom-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+    .surname-custom-wrap input {
+      padding: 0.45rem 0.75rem;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      width: 170px;
+      background: var(--bg-main, #ffffff);
+    }
+    .surname-custom-wrap button {
+      padding: 0.45rem 0.85rem;
+      background: #1e293b;
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 750;
+      cursor: pointer;
+    }
+
+    .fullname-gender-toggle {
+      display: flex;
+      background: var(--bg-subtle);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 3px;
+      gap: 3px;
+    }
+    .fn-gender-btn {
+      padding: 0.35rem 0.75rem;
+      border-radius: 7px;
+      border: none;
+      background: transparent;
+      font-size: 0.8rem;
+      font-weight: 750;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .fn-gender-btn.active {
+      background: #ffffff;
+      color: var(--text-primary);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    /* 풀네임 카드 그리드 및 개별 카드 */
+    .fullname-ranking-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 0.85rem;
+    }
+    .fn-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem 1rem;
+      background: var(--bg-card, #ffffff);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+      transition: all 0.15s ease;
+    }
+    .fn-card:hover {
+      border-color: #cbd5e1;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.04);
+    }
+    .fn-rank {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 9px;
+      font-weight: 850;
+      font-size: 0.84rem;
+      background: var(--bg-subtle, #f1f5f9);
+      color: var(--text-secondary);
+      flex-shrink: 0;
+    }
+    .fn-rank-gold {
+      background: #fef3c7;
+      color: #b45309;
+      box-shadow: inset 0 0 0 1px #fde68a;
+    }
+    .fn-rank-silver {
+      background: #f1f5f9;
+      color: #475569;
+      box-shadow: inset 0 0 0 1px #e2e8f0;
+    }
+    .fn-rank-bronze {
+      background: #ffedd5;
+      color: #9a3412;
+      box-shadow: inset 0 0 0 1px #fed7aa;
+    }
+    .fn-name-title {
+      font-size: 1.15rem;
+      font-weight: 850;
+      color: var(--text-primary);
+      letter-spacing: -0.01em;
+    }
+    .fn-gender-badge {
+      font-size: 0.7rem;
+      font-weight: 750;
+      padding: 0.15rem 0.45rem;
+      border-radius: 6px;
+    }
+    .fn-gender-boy {
+      background: #eff6ff;
+      color: #2563eb;
+    }
+    .fn-gender-girl {
+      background: #fdf2f8;
+      color: #db2777;
+    }
+    .fn-detail-text {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      display: block;
+      margin-top: 0.15rem;
+      line-height: 1.35;
+    }
+    .fn-btn-fav {
+      background: transparent;
+      border: none;
+      font-size: 1.35rem;
+      cursor: pointer;
+      color: #cbd5e1;
+      padding: 0.35rem;
+      border-radius: 8px;
+      transition: all 0.15s ease;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .fn-btn-fav:hover {
+      background: rgba(0,0,0,0.03);
+      color: #f59e0b;
+    }
+    .fn-btn-fav.is-saved {
+      color: #f59e0b;
+      text-shadow: 0 1px 3px rgba(245, 158, 11, 0.35);
+    }
+
+    /* 저장 보관함 모달 팝업 */
+    .saved-modal-backdrop {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 1rem;
+    }
+    .saved-modal-backdrop.open {
+      display: flex;
+    }
+    .saved-modal-card {
+      background: var(--bg-card, #ffffff);
+      border-radius: 18px;
+      max-width: 520px;
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      padding: 1.5rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      border: 1px solid var(--border-color);
+      animation: modalFadeIn 0.2s ease-out;
+    }
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .saved-modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+    .btn-modal-close {
+      background: transparent;
+      border: none;
+      font-size: 1.25rem;
+      cursor: pointer;
+      color: var(--text-muted);
+    }
+    .saved-list-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin: 1rem 0;
+      max-height: 360px;
+      overflow-y: auto;
+    }
+    .saved-item-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.65rem 0.85rem;
+      background: var(--bg-subtle, #f8fafc);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+    }
+    .saved-modal-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.6rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border-color);
+    }
+    .btn-action-primary {
+      flex: 1;
+      padding: 0.6rem 1rem;
+      background: var(--accent-primary, #2563eb);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-weight: 750;
+      font-size: 0.88rem;
+      cursor: pointer;
+    }
+    .btn-action-secondary {
+      padding: 0.6rem 0.85rem;
+      background: var(--bg-subtle);
+      color: var(--text-secondary);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 0.84rem;
+      cursor: pointer;
+    }
+
     .stats-source-box {
       margin-top: 2rem;
       padding: 1.1rem;
@@ -287,16 +589,17 @@
         대한민국 아기이름 트렌드
       </h1>
       <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5; max-width: 620px; margin: 0 auto;">
-        2008년부터 2025년까지의 공식 출생신고 빅데이터를 한눈에!<br />
-        연도별 인기 1위 이름부터 내 이름의 역사 속 순위 변천사를 지금 탐색해보세요.
+        2008년부터 2026년 최신까지 공식 출생신고 빅데이터를 한눈에!<br />
+        연도별 인기 1위 이름부터 성씨 결합 풀네임 순위, 나만의 이름 후보 보관함까지 지금 탐색해보세요.
       </p>
     </div>
 
-    <!-- 3개 서브탭 네비게이션 -->
+    <!-- 4개 서브탭 네비게이션 -->
     <div class="sub-tabs-wrapper">
       <button class="sub-tab-btn active" data-target="panel-ranking">🏆 연도별 Top 랭킹</button>
       <button class="sub-tab-btn" data-target="panel-search">🔍 내 이름 순위 검색</button>
       <button class="sub-tab-btn" data-target="panel-era">📜 시대별 1위 변천사</button>
+      <button class="sub-tab-btn" data-target="panel-fullname">👑 성씨+이름 풀네임 (NEW)</button>
     </div>
 
     <!-- ----------------------------------------------------------------------
@@ -309,7 +612,8 @@
           <div style="display: flex; align-items: center; gap: 0.5rem;">
             <label for="yearSelect" style="font-size: 0.88rem; font-weight: 750;">조회 연도:</label>
             <select id="yearSelect" style="padding: 0.45rem 0.85rem; border: 1px solid var(--border-color); border-radius: 8px; font-weight: 750; background: var(--bg-main);">
-              <option value="2025" selected>2025년 (최신 집계) 🔥</option>
+              <option value="2026" selected>2026년 (최신 실시간) 🔥</option>
+              <option value="2025">2025년</option>
               <option value="2024">2024년</option>
               <option value="2023">2023년</option>
               <option value="2022">2022년</option>
@@ -347,7 +651,7 @@
           🔍 내 이름 순위 &amp; 전성기 분석
         </h3>
         <p style="font-size: 0.86rem; color: var(--text-secondary); margin-bottom: 1rem;">
-          본인, 자녀, 친구의 이름을 입력해보세요. 2008년부터 2025년까지의 공식 순위 추이를 시계열 차트로 분석해 드립니다.
+          본인, 자녀, 친구의 이름을 입력해보세요. 2008년부터 2026년 최신까지 공식 순위 추이를 시계열 차트로 분석해 드립니다.
         </p>
 
         <div class="search-input-wrap">
@@ -390,13 +694,108 @@
       </div>
     </div>
 
+    <!-- ----------------------------------------------------------------------
+         탭 4: 성씨+이름 풀네임 결합 랭킹 & 보관함 패널 (NEW)
+         ---------------------------------------------------------------------- -->
+    <div id="panel-fullname" class="tab-panel">
+      <div class="content-card-box">
+        <!-- 상단 헤더 & 설명 -->
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.25rem;">
+          <div>
+            <h3 style="font-size: 1.15rem; font-weight: 850; margin-bottom: 0.35rem; display: flex; align-items: center; gap: 0.45rem;">
+              👑 대한민국 성씨 + 2026 아기이름 풀네임 랭킹
+              <span style="font-size: 0.72rem; padding: 0.15rem 0.5rem; background: #fee2e2; color: #b91c1c; border-radius: 9999px; font-weight: 800;">NEW</span>
+            </h3>
+            <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0; line-height: 1.5;">
+              통계청 인구총조사 성씨 비율(김 21.5%, 이 14.7%, 박 8.4% 등)과 2026년 공식 출생신고 데이터를 결합하여<br />
+              전국 예상 풀네임 순위를 최초로 제공합니다. 마음에 드는 풀네임에 별표(⭐)를 눌러 보관함에 담아보세요!
+            </p>
+          </div>
+
+          <!-- 내 보관함 열기 버튼 -->
+          <button id="btnOpenSavedModal" class="btn-saved-open">
+            ⭐ 내가 찜한 후보 보관함 (<span id="savedCountBadge">0</span>)
+          </button>
+        </div>
+
+        <!-- 성씨 선택 칩 영역 -->
+        <div style="margin-bottom: 1.1rem;">
+          <label style="font-size: 0.82rem; font-weight: 750; color: var(--text-primary); display: block; margin-bottom: 0.5rem;">
+            🏷️ 성씨 선택 (통계청 상위 10대 성씨):
+          </label>
+          <div class="surname-chips-group" id="surnameChipsGroup">
+            <button class="surname-chip active" data-surname="전체">전국 통합 (전체 성씨)</button>
+            <button class="surname-chip" data-surname="김">김(金) 21.5%</button>
+            <button class="surname-chip" data-surname="이">이(李) 14.7%</button>
+            <button class="surname-chip" data-surname="박">박(朴) 8.4%</button>
+            <button class="surname-chip" data-surname="최">최(崔) 4.7%</button>
+            <button class="surname-chip" data-surname="정">정(鄭) 4.3%</button>
+            <button class="surname-chip" data-surname="강">강(姜) 2.4%</button>
+            <button class="surname-chip" data-surname="조">조(趙) 2.1%</button>
+            <button class="surname-chip" data-surname="윤">윤(尹) 2.1%</button>
+            <button class="surname-chip" data-surname="장">장(張) 2.0%</button>
+            <button class="surname-chip" data-surname="임">임(林) 1.7%</button>
+          </div>
+        </div>
+
+        <!-- 직접 성씨 입력 & 성별 필터 바 -->
+        <div class="ctrl-bar" style="margin-bottom: 1.1rem;">
+          <div class="surname-custom-wrap">
+            <span style="font-size: 0.82rem; font-weight: 750;">직접 성씨 입력:</span>
+            <input type="text" id="customSurnameInput" placeholder="예: 한, 서, 권, 배, 송, 신, 황..." maxlength="2" />
+            <button id="btnApplyCustomSurname">적용</button>
+          </div>
+
+          <div class="fullname-gender-toggle">
+            <button class="fn-gender-btn active" data-gender="all">전체 👥</button>
+            <button class="fn-gender-btn" data-gender="boy">남아 👦</button>
+            <button class="fn-gender-btn" data-gender="girl">여아 👧</button>
+          </div>
+        </div>
+
+        <!-- 안내 문구 & 풀네임 랭킹 결과 요약 -->
+        <div id="fullnameSummaryNotice" style="font-size: 0.88rem; font-weight: 700; margin-bottom: 0.85rem; color: var(--text-primary);"></div>
+
+        <!-- 풀네임 리스트 그리드 -->
+        <div id="fullnameRankingList" class="fullname-ranking-grid"></div>
+      </div>
+    </div>
+
+    <!-- ----------------------------------------------------------------------
+         즐겨찾기(보관함) 팝업 모달
+         ---------------------------------------------------------------------- -->
+    <div id="savedModal" class="saved-modal-backdrop">
+      <div class="saved-modal-card">
+        <div class="saved-modal-header">
+          <h4 style="font-size: 1.1rem; font-weight: 850; margin: 0; display: flex; align-items: center; gap: 0.4rem;">
+            ⭐ 내가 찜한 아기 이름 후보 보관함
+          </h4>
+          <button id="btnCloseSavedModal" class="btn-modal-close" aria-label="닫기">×</button>
+        </div>
+
+        <div class="saved-modal-body">
+          <p style="font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 0.85rem; line-height: 1.45;">
+            브라우저(LocalStorage)에 안전하게 저장된 아기이름 후보 목록입니다. 가족들과 카카오톡 등으로 편하게 공유해보세요!
+          </p>
+          <div id="savedNameListContainer" class="saved-names-list">
+            <!-- 동적 렌더링 -->
+          </div>
+        </div>
+
+        <div class="saved-modal-footer">
+          <button id="btnCopyAllSaved" class="btn-action-primary">📋 전체 목록 복사하기</button>
+          <button id="btnClearAllSaved" class="btn-action-secondary">🗑️ 전체 비우기</button>
+        </div>
+      </div>
+    </div>
+
     <!-- 통계 출처 및 법적 고지 안내 -->
     <div class="stats-source-box">
       <strong>📌 데이터 출처 및 법적 면책 안내 (공공누리 제1유형 준수)</strong>
       <ul style="margin: 0.5rem 0 0 1.2rem; padding: 0;">
-        <li>본 서비스의 기준 데이터는 <strong>대한민국 법원 전자가족관계등록시스템</strong>의 출생신고 공식 통계(2008~2024년) 및 <strong>통계청·행정안전부</strong>의 공공빅데이터를 기반으로 가공·시각화되었습니다.</li>
+        <li>본 서비스의 기준 데이터는 <strong>대한민국 법원 전자가족관계등록시스템</strong>의 출생신고 공식 통계(2008~2026년 최신) 및 <strong>통계청·행정안전부</strong>의 공공빅데이터를 기반으로 가공·시각화되었습니다.</li>
         <li>대한민국 공공데이터의 제공 및 이용 활성화에 관한 법률(제3조) 및 저작권법 제24조의2에 의거, 공공저작물 자유이용허락기준(공공누리 제1유형: 출처표시)에 따라 합법적으로 서비스됩니다.</li>
-        <li>본 서비스는 100% 클라이언트 연산 방식으로 동작하며, 사용자가 검색창에 입력한 이름을 일절 수집하거나 외부 서버에 저장하지 않습니다.</li>
+        <li>본 서비스는 100% 클라이언트 연산 방식으로 동작하며, 사용자가 검색창에 입력한 이름이나 보관함 목록을 일절 수집하거나 외부 서버에 저장하지 않습니다.</li>
       </ul>
     </div>
   </main>

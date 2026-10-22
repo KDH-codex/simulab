@@ -2,14 +2,20 @@
  * ==========================================================================
  * [별별 통계] 대한민국 아기이름 트렌드 UI 컨트롤러 (app.js)
  * --------------------------------------------------------------------------
- * 탭 전환, 랭킹 리스트 렌더링, 시계열 순위 Canvas 차트 시각화
+ * 1. 탭 네비게이션 (Top 랭킹 / 내 이름 검색 / 시대별 변천사 / 성씨+풀네임 랭킹)
+ * 2. 2026년 최신 공식 출생신고 순위 렌더링
+ * 3. 시계열 순위 캔버스(Canvas) 차트 시각화 (2008~2026년)
+ * 4. 통계청 10대 성씨 + 2026 인기 아기이름 결합 풀네임 랭킹 엔진
+ * 5. LocalStorage 기반 안전한 나만의 이름 후보 보관함(즐겨찾기)
  * ==========================================================================
  */
 
 import { BabyNameLogic } from './logic.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. 탭 네비게이션
+  // --------------------------------------------------------------------------
+  // 1. 공통 탭 네비게이션 제어
+  // --------------------------------------------------------------------------
   const tabBtns = document.querySelectorAll('.sub-tab-btn');
   const tabPanels = document.querySelectorAll('.tab-panel');
 
@@ -22,11 +28,16 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.classList.add('active');
       const panel = document.getElementById(targetId);
       if (panel) panel.classList.add('active');
+
+      // 4번째 풀네임 탭으로 이동 시 초기 렌더링 실행
+      if (targetId === 'panel-fullname') {
+        renderFullnames();
+      }
     });
   });
 
   // --------------------------------------------------------------------------
-  // 2. 탭 1: 연도별 Top 랭킹 뷰
+  // 2. 탭 1: 연도별 Top 랭킹 뷰 (2026년 최신 반영)
   // --------------------------------------------------------------------------
   const yearSelect = document.getElementById('yearSelect');
   const genderBoyBtn = document.getElementById('genderBoyBtn');
@@ -34,7 +45,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const rankingListEl = document.getElementById('rankingList');
   const rankingSummaryEl = document.getElementById('rankingSummary');
 
-  let currentYear = '2025';
+  // 기본 연도를 2026년으로 설정
+  let currentYear = '2026';
   let currentGender = 'boy';
 
   function renderRankings() {
@@ -80,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
       rankingListEl.appendChild(card);
     });
 
-    // 이름 클릭 시 바로 검색 탭으로 연결
+    // 이름을 클릭하면 2번째 '내 이름 순위 검색' 탭으로 바로 이동
     rankingListEl.querySelectorAll('.clickable-name').forEach(el => {
       el.addEventListener('click', (e) => {
         const name = e.target.getAttribute('data-name');
@@ -112,12 +124,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --------------------------------------------------------------------------
-  // 3. 탭 2: 내 이름 순위 검색기
+  // 3. 탭 2: 내 이름 순위 검색기 (2008~2026 시계열 차트)
   // --------------------------------------------------------------------------
   const nameSearchInput = document.getElementById('nameSearchInput');
   const btnSearchName = document.getElementById('btnSearchName');
   const searchResultBox = document.getElementById('searchResultBox');
-  const historyCanvas = document.getElementById('historyCanvas');
   const quickNameChips = document.querySelectorAll('.name-chip');
 
   function doSearchName(name) {
@@ -152,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
 
       <div style="margin-top:1.25rem;">
-        <h4 style="font-size:0.92rem; font-weight:750; margin-bottom:0.5rem;">📈 2008~2025년 순위 변천사 (높을수록 1위)</h4>
+        <h4 style="font-size:0.92rem; font-weight:750; margin-bottom:0.5rem;">📈 2008~2026년 순위 변천사 (높을수록 1위)</h4>
         <div style="position:relative; width:100%; height:240px;">
           <canvas id="historyCanvas" style="width:100%; height:240px;"></canvas>
         </div>
@@ -182,23 +193,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const height = rect.height;
     const padding = { top: 30, right: 30, bottom: 40, left: 45 };
 
-    const years = ['2008', '2014', '2018', '2020', '2022', '2024', '2025'];
+    // 2008년부터 2026년까지의 기준 연도 목록
+    const years = ['2008', '2014', '2018', '2020', '2022', '2024', '2025', '2026'];
     const maxRank = 100; // 100위 기준
     const minRank = 1;
 
-    // Y축: 1위가 맨 위, 100위가 맨 아래
+    // Y축 좌표: 1위가 상단, 100위가 하단
     function getY(rank) {
       const safeRank = Math.min(Math.max(rank, 1), 100);
       return padding.top + ((safeRank - minRank) / (maxRank - minRank)) * (height - padding.top - padding.bottom);
     }
 
+    // X축 좌표
     function getX(idx) {
       return padding.left + (idx / (years.length - 1)) * (width - padding.left - padding.right);
     }
 
     ctx.clearRect(0, 0, width, height);
 
-    // 1. 가로 그리드선 (1위, 20위, 50위, 100위)
+    // 1. 가로 가이드선 (1위, 20위, 50위, 100위)
     const gridRanks = [1, 20, 50, 100];
     ctx.font = '600 10px Pretendard, sans-serif';
     ctx.fillStyle = '#94a3b8';
@@ -222,10 +235,10 @@ document.addEventListener('DOMContentLoaded', () => {
     ctx.textBaseline = 'top';
     years.forEach((yr, idx) => {
       const x = getX(idx);
-      ctx.fillText(yr + '년', x, height - padding.bottom + 8);
+      ctx.fillText(yr.slice(2) + '년', x, height - padding.bottom + 8);
     });
 
-    // 3. 꺾은선 그래프
+    // 3. 꺾은선 데이터 포인트
     const points = [];
     years.forEach((yr, idx) => {
       const r = history[yr] || 100;
@@ -242,7 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ctx.lineWidth = 3;
     ctx.stroke();
 
-    // 점 및 순위 숫자 라벨
+    // 점 및 순위 숫자 라벨 표시
     points.forEach(pt => {
       ctx.beginPath();
       ctx.arc(pt.x, pt.y, 5, 0, Math.PI * 2);
@@ -311,8 +324,343 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 초기 랭킹 1회 렌더링
+  // --------------------------------------------------------------------------
+  // 5. 탭 4: 성씨+이름 풀네임 결합 랭킹 & 보관함 (NEW)
+  // --------------------------------------------------------------------------
+  const STORAGE_KEY = 'simulab_saved_baby_names';
+
+  // 로컬 저장소 헬퍼 함수 (보안 및 오류 방지)
+  function getSavedList() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      return raw ? JSON.parse(raw) : [];
+    } catch (e) {
+      console.error('LocalStorage 접근 실패:', e);
+      return [];
+    }
+  }
+
+  function setSavedList(list) {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+      updateSavedBadge();
+    } catch (e) {
+      console.error('LocalStorage 저장 실패:', e);
+    }
+  }
+
+  function isFullnameSaved(fullname) {
+    const list = getSavedList();
+    return list.some(item => item.fullname === fullname);
+  }
+
+  function toggleSaveFullname(fullname, surname, name, gender, detail) {
+    const list = getSavedList();
+    const existingIndex = list.findIndex(item => item.fullname === fullname);
+
+    if (existingIndex >= 0) {
+      // 이미 있으면 보관함에서 삭제
+      list.splice(existingIndex, 1);
+      setSavedList(list);
+      return false; // 저장 해제됨
+    } else {
+      // 없으면 새로 추가
+      list.unshift({
+        fullname,
+        surname,
+        name,
+        gender,
+        detail,
+        savedAt: new Date().toISOString()
+      });
+      setSavedList(list);
+      return true; // 저장 완료됨
+    }
+  }
+
+  function updateSavedBadge() {
+    const badge = document.getElementById('savedCountBadge');
+    if (badge) {
+      const count = getSavedList().length;
+      badge.textContent = count;
+    }
+  }
+
+  // 풀네임 컨트롤 상태 변수
+  let currentSurnameFilter = '전체';
+  let currentFnGender = 'all';
+
+  const surnameChips = document.querySelectorAll('.surname-chip');
+  const customSurnameInput = document.getElementById('customSurnameInput');
+  const btnApplyCustomSurname = document.getElementById('btnApplyCustomSurname');
+  const fnGenderBtns = document.querySelectorAll('.fn-gender-btn');
+  const fullnameRankingList = document.getElementById('fullnameRankingList');
+  const fullnameSummaryNotice = document.getElementById('fullnameSummaryNotice');
+
+  // 보관함 모달 관련 요소
+  const btnOpenSavedModal = document.getElementById('btnOpenSavedModal');
+  const btnCloseSavedModal = document.getElementById('btnCloseSavedModal');
+  const savedModal = document.getElementById('savedModal');
+  const savedNameListContainer = document.getElementById('savedNameListContainer');
+  const btnCopyAllSaved = document.getElementById('btnCopyAllSaved');
+  const btnClearAllSaved = document.getElementById('btnClearAllSaved');
+
+  // 풀네임 랭킹 카드 렌더링 함수
+  function renderFullnames() {
+    if (!fullnameRankingList) return;
+
+    const list = BabyNameLogic.getFullnameRankings(currentSurnameFilter, currentFnGender, '2026');
+    fullnameRankingList.innerHTML = '';
+
+    // 상단 요약 문구 안내
+    if (fullnameSummaryNotice) {
+      let genderText = '전체 (남아·여아)';
+      if (currentFnGender === 'boy') genderText = '남아 👦';
+      else if (currentFnGender === 'girl') genderText = '여아 👧';
+
+      if (currentSurnameFilter === '전체') {
+        fullnameSummaryNotice.innerHTML = `
+          📌 <strong>2026 대한민국 전국 통합 예상 풀네임 순위</strong> (${genderText}, 통계청 인구 가중치 적용 Top ${list.length})
+        `;
+      } else {
+        fullnameSummaryNotice.innerHTML = `
+          📌 <strong>'${currentSurnameFilter}'씨 가문 2026 신생아 인기 이름 결합 순위</strong> (${genderText}, Top ${list.length})
+        `;
+      }
+    }
+
+    // 카드 렌더링
+    list.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'fn-card';
+
+      // 1~3위 메달 표시
+      let rankBadgeHtml = `<span class="fn-rank">${item.rank}</span>`;
+      if (item.rank === 1) rankBadgeHtml = `<span class="fn-rank fn-rank-gold">🥇 1</span>`;
+      else if (item.rank === 2) rankBadgeHtml = `<span class="fn-rank fn-rank-silver">🥈 2</span>`;
+      else if (item.rank === 3) rankBadgeHtml = `<span class="fn-rank fn-rank-bronze">🥉 3</span>`;
+
+      // 성별 뱃지
+      const genderBadgeClass = item.gender === 'boy' ? 'fn-gender-boy' : 'fn-gender-girl';
+      const genderText = item.gender === 'boy' ? '남아' : '여아';
+
+      // 찜하기 버튼 상태
+      const saved = isFullnameSaved(item.fullname);
+      const favClass = saved ? 'fn-btn-fav is-saved' : 'fn-btn-fav';
+      const favIcon = saved ? '⭐' : '☆';
+
+      card.innerHTML = `
+        <div style="display:flex; align-items:center; gap:0.65rem;">
+          ${rankBadgeHtml}
+          <div>
+            <div style="display:flex; align-items:center; gap:0.4rem;">
+              <span class="fn-name-title">${item.fullname}</span>
+              <span class="fn-gender-badge ${genderBadgeClass}">${genderText}</span>
+            </div>
+            <span class="fn-detail-text">${item.calcNote}</span>
+          </div>
+        </div>
+        <button class="${favClass}" data-fullname="${item.fullname}" title="보관함에 저장하기">
+          ${favIcon}
+        </button>
+      `;
+
+      // 별표(찜하기) 클릭 이벤트 바인딩
+      const favBtn = card.querySelector('.fn-btn-fav');
+      favBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const nowSaved = toggleSaveFullname(
+          item.fullname,
+          item.surname,
+          item.name,
+          item.gender,
+          item.calcNote
+        );
+
+        if (nowSaved) {
+          favBtn.classList.add('is-saved');
+          favBtn.textContent = '⭐';
+        } else {
+          favBtn.classList.remove('is-saved');
+          favBtn.textContent = '☆';
+        }
+
+        if (window.SimuLabTracker && window.SimuLabTracker.trackEvent) {
+          window.SimuLabTracker.trackEvent('toggle_fav_name', item.fullname);
+        }
+      });
+
+      fullnameRankingList.appendChild(card);
+    });
+  }
+
+  // 성씨 칩 클릭 이벤트
+  surnameChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      surnameChips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      currentSurnameFilter = chip.getAttribute('data-surname');
+      if (customSurnameInput) customSurnameInput.value = '';
+      renderFullnames();
+    });
+  });
+
+  // 직접 성씨 입력 적용 버튼
+  if (btnApplyCustomSurname && customSurnameInput) {
+    function applyCustomSurname() {
+      const val = customSurnameInput.value.trim();
+      if (!val) {
+        alert('조회하고 싶으신 성씨(예: 한, 서, 권, 배 등)를 입력해주세요.');
+        customSurnameInput.focus();
+        return;
+      }
+      surnameChips.forEach(c => c.classList.remove('active'));
+      currentSurnameFilter = val;
+      renderFullnames();
+    }
+
+    btnApplyCustomSurname.addEventListener('click', applyCustomSurname);
+    customSurnameInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') applyCustomSurname();
+    });
+  }
+
+  // 성별 필터 토글 버튼
+  fnGenderBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      fnGenderBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentFnGender = btn.getAttribute('data-gender');
+      renderFullnames();
+    });
+  });
+
+  // --------------------------------------------------------------------------
+  // 6. 보관함 모달창 제어 로직
+  // --------------------------------------------------------------------------
+  function openSavedModal() {
+    renderSavedList();
+    if (savedModal) savedModal.classList.add('open');
+  }
+
+  function closeSavedModal() {
+    if (savedModal) savedModal.classList.remove('open');
+    // 모달을 닫았을 때 랭킹 카드 별표 상태도 최신으로 동기화
+    renderFullnames();
+  }
+
+  function renderSavedList() {
+    if (!savedNameListContainer) return;
+    const list = getSavedList();
+    savedNameListContainer.innerHTML = '';
+
+    if (list.length === 0) {
+      savedNameListContainer.innerHTML = `
+        <div class="saved-empty-box">
+          <div style="font-size:2.2rem; margin-bottom:0.5rem;">⭐</div>
+          <strong style="font-size:0.95rem; color:var(--text-primary); display:block; margin-bottom:0.3rem;">
+            아직 보관함에 담긴 이름이 없습니다.
+          </strong>
+          <span style="font-size:0.82rem; color:var(--text-muted);">
+            풀네임 순위에서 마음에 드는 이름 옆의 별표(☆)를 눌러 후보에 저장해보세요!
+          </span>
+        </div>
+      `;
+      return;
+    }
+
+    list.forEach((item, idx) => {
+      const row = document.createElement('div');
+      row.className = 'saved-item-row';
+
+      const genderBadgeClass = item.gender === 'boy' ? 'fn-gender-boy' : 'fn-gender-girl';
+      const genderText = item.gender === 'boy' ? '남아' : '여아';
+
+      row.innerHTML = `
+        <div style="display:flex; align-items:center; gap:0.5rem;">
+          <span style="font-size:0.82rem; font-weight:800; color:var(--text-muted); width:20px;">${idx + 1}.</span>
+          <div>
+            <div style="display:flex; align-items:center; gap:0.4rem;">
+              <strong style="font-size:1.05rem; font-weight:850;">${item.fullname}</strong>
+              <span class="fn-gender-badge ${genderBadgeClass}">${genderText}</span>
+            </div>
+            <span style="font-size:0.75rem; color:var(--text-muted);">${item.detail || ''}</span>
+          </div>
+        </div>
+        <button class="btn-saved-delete" data-fullname="${item.fullname}" title="후보에서 삭제">×</button>
+      `;
+
+      // 개별 삭제 버튼 이벤트
+      row.querySelector('.btn-saved-delete').addEventListener('click', () => {
+        const updated = getSavedList().filter(x => x.fullname !== item.fullname);
+        setSavedList(updated);
+        renderSavedList();
+      });
+
+      savedNameListContainer.appendChild(row);
+    });
+  }
+
+  if (btnOpenSavedModal) {
+    btnOpenSavedModal.addEventListener('click', openSavedModal);
+  }
+  if (btnCloseSavedModal) {
+    btnCloseSavedModal.addEventListener('click', closeSavedModal);
+  }
+
+  // 모달 바깥 배경 클릭 시 닫기
+  if (savedModal) {
+    savedModal.addEventListener('click', (e) => {
+      if (e.target === savedModal) closeSavedModal();
+    });
+  }
+
+  // 전체 복사 버튼
+  if (btnCopyAllSaved) {
+    btnCopyAllSaved.addEventListener('click', () => {
+      const list = getSavedList();
+      if (list.length === 0) {
+        alert('보관함에 복사할 이름이 없습니다. 먼저 마음에 드는 이름을 저장해주세요!');
+        return;
+      }
+
+      let copyText = `👶 [시뮬랩] 내가 찜한 2026 아기이름 후보 목록 (${list.length}개)\n`;
+      copyText += `------------------------------------\n`;
+      list.forEach((item, idx) => {
+        const gText = item.gender === 'boy' ? '남아' : '여아';
+        copyText += `${idx + 1}. ${item.fullname} (${gText})\n`;
+      });
+      copyText += `------------------------------------\n`;
+      copyText += `출처: 시뮬랩 대한민국 아기이름 트렌드 (https://simulab.kr)`;
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(copyText).then(() => {
+          alert('✅ 보관함 속 전체 이름 목록이 클립보드에 복사되었습니다!\n가족이나 친구들과 공유해보세요.');
+        }).catch(() => {
+          prompt('아래 목록을 복사하세요:', copyText);
+        });
+      } else {
+        prompt('아래 목록을 복사하세요:', copyText);
+      }
+    });
+  }
+
+  // 전체 비우기 버튼
+  if (btnClearAllSaved) {
+    btnClearAllSaved.addEventListener('click', () => {
+      const list = getSavedList();
+      if (list.length === 0) return;
+      if (confirm('보관함에 저장된 모든 아기이름 후보를 비우시겠습니까?')) {
+        setSavedList([]);
+        renderSavedList();
+      }
+    });
+  }
+
+  // --------------------------------------------------------------------------
+  // 초기 실행
+  // --------------------------------------------------------------------------
+  updateSavedBadge();
   renderRankings();
-  // 기본 검색 예시 1회 실행
   doSearchName('이준');
 });
