@@ -12,7 +12,7 @@
  * ==========================================================================
  */
 
-import { KidsOutingLogic } from './logic.js';
+import { KidsOutingLogic } from './logic.js?v=20261023_0130';
 
 document.addEventListener('DOMContentLoaded', () => {
   // --------------------------------------------------------------------------
@@ -166,6 +166,17 @@ document.addEventListener('DOMContentLoaded', () => {
         keyword: currentKeyword
       });
 
+      // 핫 페스티벌 / 특별 이색 이벤트 우선 정렬 (기간이 짧고 흥미진진한 주말 페스타를 상위에 우선 노출)
+      const hotKeywords = ['바베큐', '드론', '나이트', '피자', '모터쇼', '토이', '레고랜드', '매직', '불꽃', '스푸키', '캠핑', '치즈', '사탕'];
+      events.sort((a, b) => {
+        const aHot = hotKeywords.some(k => (a.title + a.program).includes(k)) ? 1 : 0;
+        const bHot = hotKeywords.some(k => (b.title + b.program).includes(k)) ? 1 : 0;
+        if (aHot !== bHot) return bHot - aHot;
+        const aDuration = new Date(a.endDate) - new Date(a.startDate);
+        const bDuration = new Date(b.endDate) - new Date(b.startDate);
+        return aDuration - bDuration;
+      });
+
       // 셀 헤더 구성
       const headerEl = document.createElement('div');
       headerEl.className = 'cell-header';
@@ -270,6 +281,17 @@ document.addEventListener('DOMContentLoaded', () => {
       theme: currentTheme,
       onlyFree: onlyFree,
       keyword: currentKeyword
+    });
+
+    // 핫 페스티벌 / 특별 이색 이벤트 우선 정렬
+    const hotKeywords = ['바베큐', '드론', '나이트', '피자', '모터쇼', '토이', '레고랜드', '매직', '불꽃', '스푸키', '캠핑', '치즈', '사탕'];
+    events.sort((a, b) => {
+      const aHot = hotKeywords.some(k => (a.title + a.program).includes(k)) ? 1 : 0;
+      const bHot = hotKeywords.some(k => (b.title + b.program).includes(k)) ? 1 : 0;
+      if (aHot !== bHot) return bHot - aHot;
+      const aDuration = new Date(a.endDate) - new Date(a.startDate);
+      const bDuration = new Date(b.endDate) - new Date(b.startDate);
+      return aDuration - bDuration;
     });
 
     selectedDateCount.textContent = `총 ${events.length}개`;
