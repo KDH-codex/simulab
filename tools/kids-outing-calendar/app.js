@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnNextMonth = document.getElementById('btnNextMonth');
   const currentMonthHeading = document.getElementById('currentMonthHeading');
   const monthSubCaption = document.getElementById('monthSubCaption');
-  const calendarDaysGrid = document.getElementById('calendarDaysGrid');
+  const calendarUnifiedGrid = document.getElementById('calendarUnifiedGrid');
 
   // 상세 카드 및 툴팁 요소
   const selectedDateTitle = document.getElementById('selectedDateTitle');
@@ -75,10 +75,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --------------------------------------------------------------------------
-  // 4. 월간 달력 렌더링 엔진 (월~일 기준 정렬)
+  // 4. 월간 달력 렌더링 엔진 (월~일 기준 단일 7열 통합 그리드)
   // --------------------------------------------------------------------------
   function renderCalendar() {
-    if (!calendarDaysGrid) return;
+    if (!calendarUnifiedGrid) return;
 
     // 헤더 텍스트 업데이트
     if (currentMonthHeading) {
@@ -92,6 +92,25 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
+    calendarUnifiedGrid.innerHTML = '';
+
+    // 0) 1행: 요일 헤더 셀 7개 생성 (월~일 순서)
+    const weekdayHeaders = [
+      { name: '월', cls: '' },
+      { name: '화', cls: '' },
+      { name: '수', cls: '' },
+      { name: '목', cls: '' },
+      { name: '금', cls: '' },
+      { name: '토', cls: 'sat' },
+      { name: '일', cls: 'sun' }
+    ];
+    weekdayHeaders.forEach(w => {
+      const th = document.createElement('div');
+      th.className = `kids-th-cell ${w.cls}`;
+      th.textContent = w.name;
+      calendarUnifiedGrid.appendChild(th);
+    });
+
     // 날짜 계산 (월~일 기준 정렬)
     // JS getDay(): 0(일), 1(월), 2(화), 3(수), 4(목), 5(금), 6(토)
     // 월=0, 화=1, ..., 일=6 변환 공식: (day + 6) % 7
@@ -99,8 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const startWeekdayOffset = (firstDayObj.getDay() + 6) % 7;
     const daysInMonth = new Date(currentYear, currentMonth, 0).getDate();
     const prevMonthDays = new Date(currentYear, currentMonth - 1, 0).getDate();
-
-    calendarDaysGrid.innerHTML = '';
 
     // 1) 이전 달 잔여 일자 셀 채우기
     for (let i = startWeekdayOffset - 1; i >= 0; i--) {
@@ -112,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <span class="cell-date-num">${dNum}</span>
         </div>
       `;
-      calendarDaysGrid.appendChild(cell);
+      calendarUnifiedGrid.appendChild(cell);
     }
 
     // 2) 현재 달 일자 셀 채우기 (1 ~ daysInMonth)
@@ -130,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
         cell.classList.add('is-selected');
       }
 
-      // 10월 22일(오늘) 표시
+      // 오늘 날짜 표시 (10월 22일 가상 또는 현재 일치 시)
       if (d === 22 && currentMonth === 10) {
         cell.classList.add('is-today');
       }
@@ -199,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
         renderDetails();
       });
 
-      calendarDaysGrid.appendChild(cell);
+      calendarUnifiedGrid.appendChild(cell);
     }
 
     // 3) 다음 달 잔여 일자 셀 채우기 (전체 셀이 7의 배수가 되도록)
@@ -213,7 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <span class="cell-date-num">${j}</span>
         </div>
       `;
-      calendarDaysGrid.appendChild(cell);
+      calendarUnifiedGrid.appendChild(cell);
     }
 
     updateCountBadge();

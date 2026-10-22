@@ -304,58 +304,53 @@
       margin-top: 0.15rem;
     }
 
-    /* 월~일 캘린더 그리드 */
+    /* 월~일 캘린더 단일 통합 그리드 (헤더와 날짜가 동일한 열 트랙 공유) */
     .kids-calendar-wrapper {
       border: 1.5px solid var(--border-color, #e2e8f0);
       border-radius: 18px;
       overflow: hidden;
-      overflow-x: auto;
-      background: #ffffff;
+      background: var(--border-color, #e2e8f0);
       box-shadow: 0 4px 12px rgba(0,0,0,0.02);
       margin-bottom: 0.85rem;
-      -webkit-overflow-scrolling: touch;
     }
-    .kids-weekday-header {
+    .kids-unified-grid {
       display: grid;
       grid-template-columns: repeat(7, minmax(0, 1fr));
-      background: #f8fafc;
-      border-bottom: 1px solid var(--border-color, #e2e8f0);
-      text-align: center;
-      min-width: 680px;
+      gap: 1px;
+      width: 100%;
+      background: var(--border-color, #e2e8f0);
     }
-    .weekday-col {
-      padding: 0.7rem 0.35rem;
+    /* 요일 헤더 셀 (첫 번째 행 7개) */
+    .kids-th-cell {
+      background: #f8fafc;
+      padding: 0.75rem 0.2rem;
       font-size: 0.86rem;
       font-weight: 850;
       color: #64748b;
+      text-align: center;
+      user-select: none;
+      min-width: 0;
+      border-bottom: 1px solid var(--border-color, #e2e8f0);
     }
-    .weekday-col.sat {
+    .kids-th-cell.sat {
       color: #2563eb;
     }
-    .weekday-col.sun {
+    .kids-th-cell.sun {
       color: #dc2626;
-      padding-right: 0.5rem;
     }
 
-    .kids-days-grid {
-      display: grid;
-      grid-template-columns: repeat(7, minmax(0, 1fr));
-      background: var(--border-color, #e2e8f0);
-      gap: 1px;
-      min-width: 680px;
-    }
+    /* 날짜 셀 (두 번째 행부터) */
     .kids-day-cell {
       background: #ffffff;
       min-height: 104px;
-      padding: 0.45rem 0.55rem;
+      padding: 0.45rem 0.5rem;
       cursor: pointer;
       transition: background 0.12s ease;
       display: flex;
       flex-direction: column;
       box-sizing: border-box;
-    }
-    .kids-day-cell.sun {
-      padding-right: 0.65rem;
+      min-width: 0;
+      overflow: hidden;
     }
     .kids-day-cell:hover {
       background: #f8fafc;
@@ -375,6 +370,7 @@
       justify-content: space-between;
       align-items: center;
       margin-bottom: 0.35rem;
+      min-width: 0;
     }
     .cell-date-num {
       font-size: 0.86rem;
@@ -406,11 +402,13 @@
       flex-direction: column;
       gap: 3.5px;
       flex: 1;
+      min-width: 0;
+      overflow: hidden;
     }
     .cal-event-bar {
       font-size: 0.72rem;
       font-weight: 800;
-      padding: 2.5px 6.5px;
+      padding: 2.5px 5.5px;
       border-radius: 6px;
       white-space: nowrap;
       overflow: hidden;
@@ -418,8 +416,11 @@
       cursor: pointer;
       line-height: 1.35;
       display: block;
+      min-width: 0;
+      max-width: 100%;
+      box-sizing: border-box;
       transition: transform 0.1s ease, filter 0.1s ease;
-      letter-spacing: -0.01em;
+      letter-spacing: -0.02em;
     }
     .cal-event-bar:hover {
       transform: scale(1.02);
@@ -773,21 +774,11 @@
         <button id="btnNextMonth" class="btn-month-nav" title="다음 달">11월 ▶</button>
       </div>
 
-      <!-- 3. 월~일 7열 캘린더 그리드 -->
+      <!-- 3. 월~일 7열 캘린더 단일 통합 그리드 -->
       <div class="kids-calendar-wrapper">
-        <!-- 요일 헤더 (월~일 순서) -->
-        <div class="kids-weekday-header">
-          <div class="weekday-col">월</div>
-          <div class="weekday-col">화</div>
-          <div class="weekday-col">수</div>
-          <div class="weekday-col">목</div>
-          <div class="weekday-col">금</div>
-          <div class="weekday-col sat">토</div>
-          <div class="weekday-col sun">일</div>
+        <div id="calendarUnifiedGrid" class="kids-unified-grid">
+          <!-- 1행 요일 헤더 7개 + 2행~ 날짜 셀들이 JS에서 동일한 그리드 트랙으로 렌더링됩니다 -->
         </div>
-
-        <!-- 일자 그리드 동적 생성 컨테이너 -->
-        <div id="calendarDaysGrid" class="kids-days-grid"></div>
       </div>
 
       <!-- 마우스 호버 가이드 안내 -->
