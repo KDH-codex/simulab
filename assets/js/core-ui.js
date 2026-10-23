@@ -215,7 +215,7 @@
           items: [
             { title: '국민연금 조기수령 시뮬', sub: '60세 조기 vs 65세 정상 역전 나이(BEP)', href: 'tools/national-pension-sim/', tool: 'national-pension-sim', hot: true },
             { title: '직장인 퇴직금 계산기', sub: '근무 기간 · 평균임금 기준 추정', href: 'tools/severance-pay-calc/', tool: 'severance-pay-calc', hot: true },
-            { title: '월급 실수령액 계산기', sub: '급여 · 공제 항목별 모의 계산', href: 'tools/salary-net-calc/', tool: 'salary-net-calc', hot: true },
+            { title: '월급 공제·실수령액 계산기', sub: '2026년 보험료 · 소득세 직접 입력', href: 'tools/salary-net-calc/', tool: 'salary-net-calc', hot: true },
             { title: '실업급여 모의계산기', sub: '가입 기간 · 연령별 지급액 추정', href: 'tools/unemployment-benefit-calc/', tool: 'unemployment-benefit-calc', hot: true },
             { title: '나의 진짜 시급 가치', sub: '내 한 시간의 진짜 시급 값어치', href: 'tools/hourly-labor-value-calc/', tool: 'hourly-labor-value-calc' }
           ]
@@ -223,7 +223,7 @@
         {
           title: '📈 주식·배당',
           items: [
-            { title: '주식·ETF 퀀트 시뮬레이터', sub: '구간별 적립식 결과 · MDD · 기술지표', href: 'tools/leverage-etf-sim/', tool: 'leverage-etf-sim', hot: true },
+            { title: '레버리지 복리·변동성 계산기', sub: '직접 입력한 일별 가정 경로 비교', href: 'tools/leverage-etf-sim/', tool: 'leverage-etf-sim', hot: true },
             { title: '주식 실질 수익률 계산기', sub: '세금·수수료 반영 실질 수익률', href: 'tools/stock-profit-calc/', tool: 'stock-profit-calc' },
             { title: '평단가 · 물타기 계산기', sub: '분할 매수 평균 단가', href: 'tools/stock-water-ride-calc/', tool: 'stock-water-ride-calc' },
             { title: '목표가 · 복리 계산기', sub: '목표 수익률 달성 가격', href: 'tools/stock-target-compound-calc/', tool: 'stock-target-compound-calc' },
@@ -235,7 +235,7 @@
           title: '🏠 부동산·비즈니스',
           items: [
             { title: '그때 그 아파트 샀다면', sub: '마래푸·은마 과거 매수가 vs 현재 실거래가', href: 'tools/past-apt-timemachine/', tool: 'past-apt-timemachine', hot: true },
-            { title: '주담대 한도 · DSR', sub: '상환 방식 비교 · 최대 한도', href: 'tools/loan-mortgage-calc/', tool: 'loan-mortgage-calc', hot: true },
+            { title: '주택대출 상환·비율 가정 계산기', sub: '고정 금리 상환 · 첫해 납부 비율', href: 'tools/loan-mortgage-calc/', tool: 'loan-mortgage-calc', hot: true },
             { title: '전세 vs 월세', sub: '전환율 · 주거 기회비용', href: 'tools/jeonse-wolse-sim/', tool: 'jeonse-wolse-sim' },
             { title: '양도소득세 · 세후 수익', sub: '12억 비과세 · 장특공제', href: 'tools/capital-gains-tax-sim/', tool: 'capital-gains-tax-sim' },
             { title: '부동산 평수 ㎡ 환산기', sub: '㎡ ↔ 평 · 면적 단위 변환', href: 'tools/area-pyeong-calc/', tool: 'area-pyeong-calc' },
@@ -249,7 +249,7 @@
       label: '라이프·건강',
       icon: '🌿',
       hot: true,
-      desc: '만나이와 띠, 일상 할인율, 생애 모래시계부터 다이어트 BMR·TDEE, 카페인 수면 골든타임, 러닝 Zone 2 심박수 및 만세력 오행·성향 분석까지 삶의 질을 높이는 라이프 도구 모음입니다.',
+      desc: '나이·할인율 같은 생활 계산과 일반적인 건강 참고 계산, 오락용 테마 도구를 제공합니다. 결과의 가정과 적용 범위를 함께 확인해 주세요.',
       subgroups: [
         {
           title: '🌿 일상·생활',
@@ -263,8 +263,8 @@
         {
           title: '🏃 헬스·수면',
           items: [
-            { title: '다이어트 BMR·TDEE', sub: '기초대사량 · 활동량별 참고 칼로리', href: 'tools/diet-bmr-tdee-calc/', tool: 'diet-bmr-tdee-calc' },
-            { title: '카페인 반감기 & 꿀잠', sub: '체내 잔여 카페인 · 취침 골든타임', href: 'tools/caffeine-sleep-calc/', tool: 'caffeine-sleep-calc' },
+            { title: 'BMR·TDEE 참고 계산기', sub: '성인 휴식대사량 · 활동계수 가정', href: 'tools/diet-bmr-tdee-calc/', tool: 'diet-bmr-tdee-calc' },
+            { title: '카페인 잔여량 가정 계산기', sub: '섭취량 · 반감기 가정별 잔여량', href: 'tools/caffeine-sleep-calc/', tool: 'caffeine-sleep-calc' },
             { title: '러닝 Zone 2 심박수', sub: '심박수 구간 · 칼로리', href: 'tools/running-zone-calc/', tool: 'running-zone-calc' },
             { title: '음주 알코올 분해시간', sub: '위드마크 공식 기준 분해 소요시간', href: 'tools/alcohol-widmark-calc/', tool: 'alcohol-widmark-calc' }
           ]
@@ -272,8 +272,8 @@
         {
           title: '🔮 사주·심리',
           items: [
-            { title: '사주 오행 & 재물운', sub: '만세력 오행 분석 · 자산 궁합', href: 'tools/saju-wealth-sim/', tool: 'saju-wealth-sim' },
-            { title: '투자 성향 동물 MBTI', sub: '오락용 성향 탐색 · 유형별 설명', href: 'tools/invest-animal-mbti/', tool: 'invest-animal-mbti' },
+            { title: '사주 오행 테마 놀이', sub: '간이 규칙으로 살펴보는 오락용 테마', href: 'tools/saju-wealth-sim/', tool: 'saju-wealth-sim' },
+            { title: '금융 정보 습관 동물 테스트', sub: '8문항 자체 제작 오락 콘텐츠', href: 'tools/invest-animal-mbti/', tool: 'invest-animal-mbti' },
             { title: '연애 동물 애착 심리테스트', sub: '존 보울비 애착이론 · 연인 궁합', href: 'tools/love-animal-attachment/', tool: 'love-animal-attachment' }
           ]
         }
@@ -289,7 +289,7 @@
         {
           title: '📊 재미있는 공공 빅데이터',
           items: [
-            { title: '대한민국 순자산 백분위', sub: '2024~2025 가계금융복지조사 기반 상위 %', href: 'tools/korean-wealth-percentile-calc/', tool: 'korean-wealth-percentile-calc', hot: true },
+            { title: '가구 순자산 정리·평균 비교', sub: '2024년 가구 평균과 입력 금액 비교', href: 'tools/korean-wealth-percentile-calc/', tool: 'korean-wealth-percentile-calc', hot: true },
             { title: '대한민국 평균 vs 나', sub: '연봉·근무시간·점심값 5각형 레이더 차트', href: 'tools/korean-average-vs-me/', tool: 'korean-average-vs-me', hot: true },
             { title: '아기이름 후보 찾기', sub: '이름 후보 탐색 · 기기에 찜하기', href: 'tools/korean-baby-name-trend/', tool: 'korean-baby-name-trend', hot: true },
             { title: '전국 도시별 소득 & 집값', sub: '17개 시도별 소득·아파트값·PIR·1인가구', href: 'tools/korean-city-income-housing/', tool: 'korean-city-income-housing', hot: true },
@@ -312,7 +312,7 @@
         {
           title: '🕹️ 실시간 랭킹 아케이드',
           items: [
-            { title: '레트로 테트리스', sub: '정통 7블록 · 고스트 착지 · 전국 실시간 랭킹', href: 'tools/game-tetris/', tool: 'game-tetris', hot: true },
+            { title: '블록 퍼즐 공개 점검 안내', sub: '공개 실행 보류 · 권리 확인 중', href: 'tools/game-tetris/', tool: 'game-tetris', hot: true },
             { title: '스피드 타자 산성비', sub: '금융 단어 격추 · 타자 전국 실시간 랭킹', href: 'tools/game-typing/', tool: 'game-typing', hot: true },
             { title: '네온 벽돌 깨기', sub: '공 분열 & 레이저 알카노이드 · 전국 랭킹', href: 'tools/game-brick-breaker/', tool: 'game-brick-breaker', hot: true },
             { title: '미사일 피하기 닷지', sub: '고전 1.9 탄막 회피 서바이벌 · 전국 랭킹', href: 'tools/game-dodge/', tool: 'game-dodge', hot: true }
@@ -343,7 +343,7 @@
             { title: '커피값 투자 기회비용', sub: '그 돈을 TQQQ에 넣었다면?', href: 'tools/coffee-opportunity-calc/', tool: 'coffee-opportunity-calc' },
             { title: '과거 그때 샀더라면', sub: '팔고 나서 얼마나 올랐을까 (매도 후 상승분)', href: 'tools/missed-investment-calc/', tool: 'missed-investment-calc' },
             { title: '은퇴자금 조기소진 계산기', sub: '현재 자산으로 몇 년을 버틸 수 있을까?', href: 'tools/retirement-survival-sim/', tool: 'retirement-survival-sim' },
-            { title: '화폐가치 하락 인플레', sub: '그때 그 돈의 지금 가치 환산', href: 'tools/inflation-purchasing-power-calc/', tool: 'inflation-purchasing-power-calc' }
+            { title: '물가지수·구매력 계산기', sub: '직접 입력한 지수로 금액 환산', href: 'tools/inflation-purchasing-power-calc/', tool: 'inflation-purchasing-power-calc' }
           ]
         }
       ]
@@ -620,15 +620,15 @@
        240자가 넘는 .page-subtitle 은 2줄로 접어 "자세히 보기"로 펼칩니다. (내용은 삭제하지 않음)
      ------------------------------------------------------------------------ */
   const TOOL_NAMES = {
-    'leverage-etf-sim': '주식·ETF 퀀트 시뮬레이터',
+    'leverage-etf-sim': '레버리지 복리·변동성 계산기',
     'dividend-tax-sim': '배당 복리 & 세금 계산기',
-    'loan-mortgage-calc': '주담대 한도 & DSR',
+    'loan-mortgage-calc': '주택대출 상환·비율 가정 계산기',
     'jeonse-wolse-sim': '전세 vs 월세 손익 비교',
     'capital-gains-tax-sim': '부동산 양도세 계산기',
     'logistics-roi-calc': '물류 자동화 ROI 분석',
     'running-zone-calc': '러닝 Zone 2 심박수',
-    'diet-bmr-tdee-calc': '다이어트 BMR·TDEE',
-    'caffeine-sleep-calc': '카페인 반감기 & 꿀잠',
+    'diet-bmr-tdee-calc': 'BMR·TDEE 참고 계산기',
+    'caffeine-sleep-calc': '카페인 잔여량 가정 계산기',
     'stock-profit-calc': '주식 실질 수익률 계산기',
     'stock-water-ride-calc': '주식 평단가 물타기',
     'stock-target-compound-calc': '목표가 & 복리 수익',
@@ -637,9 +637,9 @@
     'missed-investment-calc': '과거 그때 샀더라면',
     'retirement-survival-sim': '은퇴자금 조기소진 계산기',
     'hourly-labor-value-calc': '나의 진짜 시급 가치',
-    'inflation-purchasing-power-calc': '화폐가치 하락 인플레',
-    'saju-wealth-sim': '사주 오행 & 재물운 분석',
-    'invest-animal-mbti': '투자 성향 동물 MBTI',
+    'inflation-purchasing-power-calc': '물가지수·구매력 계산기',
+    'saju-wealth-sim': '사주 오행 테마 놀이',
+    'invest-animal-mbti': '금융 정보 습관 동물 테스트',
     'lotto-draw-sim': '로또 1등 당첨 시뮬레이터',
     'lotto-tax-interest-calc': '로또 세후 수령액 & 이자',
     'life-hourglass-sim': '내 인생의 모래시계',
@@ -648,7 +648,7 @@
     'ladder-draw-game': '인터랙티브 사다리타기',
     'dutch-pay-roulette': '센스있는 더치페이 계산기',
     'severance-pay-calc': '직장인 퇴직금 계산기',
-    'salary-net-calc': '월급 실수령액 계산기',
+    'salary-net-calc': '월급 공제·실수령액 계산기',
     'opportunity-cost-calc': '소비 vs 투자 기회비용',
     'korean-age-calc': '만나이 띠 계산기',
     'percent-discount-calc': '퍼센트 할인율 계산기',
@@ -657,11 +657,11 @@
     'unemployment-benefit-calc': '실업급여 모의계산기',
     'past-apt-timemachine': '그때 그 아파트 샀다면',
     'smoking-wealth-sim': '담배값 주식 투자 시뮬',
-    'korean-wealth-percentile-calc': '대한민국 순자산 백분위',
+    'korean-wealth-percentile-calc': '가구 순자산 정리·평균 비교',
     'korean-average-vs-me': '대한민국 평균 vs 나',
     'korean-baby-name-trend': '아기이름 후보 찾기',
     'korean-city-income-housing': '전국 도시별 소득 & 집값',
-    'game-tetris': '레트로 테트리스',
+    'game-tetris': '블록 퍼즐 공개 점검 안내',
     'game-typing': '스피드 타자 산성비',
     'game-brick-breaker': '네온 벽돌 깨기',
     'game-dodge': '미사일 피하기 닷지',
@@ -881,22 +881,22 @@
     return result;
   }
 
-  async function shareSimulationUrl(currentInputs) {
-    const params = new URLSearchParams();
-    for (const [key, value] of Object.entries(currentInputs)) {
-      params.set(key, String(value));
-    }
-    const newRelativeUrl = `${window.location.pathname}?${params.toString()}`;
-    try {
-      window.history.replaceState(null, '', newRelativeUrl);
-    } catch (e) {}
+  function buildToolShareUrl(href) {
+    const url = new URL(href);
+    url.search = '';
+    url.hash = '';
+    return url.href;
+  }
 
-    const fullShareUrl = window.location.href;
+  async function shareSimulationUrl() {
+    const fullShareUrl = buildToolShareUrl(window.location.href);
+    // Never serialize raw personal or financial inputs into shared addresses.
+    try { window.history.replaceState(null, '', fullShareUrl); } catch (err) {}
     try {
       await navigator.clipboard.writeText(fullShareUrl);
-      showToast('현재 시뮬레이션 조건이 담긴 공유 URL이 클립보드에 복사되었습니다.');
+      showToast('입력값을 제외한 도구 링크를 복사했습니다.');
     } catch (err) {
-      showToast('주소창에 시뮬레이션 공유 URL이 생성되었습니다.');
+      showToast('복사하지 못했습니다. 입력값이 제거된 주소창의 도구 링크를 복사해 주세요.');
     }
   }
 
@@ -1016,6 +1016,7 @@
     SITE_MENU,
     parseUrlParams,
     shareSimulationUrl,
+    buildToolShareUrl,
     saveToolState,
     loadToolState,
     showToast,

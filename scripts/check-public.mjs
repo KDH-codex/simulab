@@ -12,7 +12,7 @@ for(const file of files.filter(p=>p.endsWith('.html'))){
   if(/user-scalable\s*=\s*no|maximum-scale\s*=\s*1(?:\.0)?[",\s]/i.test(html))errors.push(relative+': zoom disabled');
   if((html.match(/id="tool-use-notice"/g)||[]).length!==1)errors.push(relative+': missing or repeated use notice');
   if((html.match(/id="legal-disclaimer"/g)||[]).length!==1||!html.includes('data-notice-version="1"'))errors.push(relative+': missing static disclaimer');
-  const expectedAds=relative.startsWith('tools/alcohol-widmark-calc/')?0:1;
+  const expectedAds=/^tools\/(?:alcohol-widmark-calc|game-tetris)\//.test(relative)?0:1;
   if((html.match(/data-ad-state="pending"/g)||[]).length!==expectedAds)errors.push(relative+': unexpected pending ad placements');
  }
  if(/data-ad-slot=["']auto["']/.test(html))errors.push(relative+': dummy ad unit ID');
@@ -26,6 +26,9 @@ for(const file of files.filter(p=>p.endsWith('.html'))){
   try{const s=await stat(target);if(!s.isFile())throw new Error();}catch{errors.push(relative+': missing '+raw);}
  }
 }
+const withdrawn=await readFile(path.join(root,'tools/game-tetris/index.html'),'utf8');
+if(!/name="robots" content="noindex,follow"/.test(withdrawn)||/<canvas\b|src=["']\.\/app\.js/i.test(withdrawn))errors.push('Withdrawn block game still executable or indexable');
+if(files.some(p=>/tools[\\/]game-tetris[\\/](?:app|logic)\.js$/.test(p)))errors.push('Withdrawn game scripts in public output');
 if(files.some(p=>/\.(?:md|sql|mjs)$/.test(p)))errors.push('Internal development file in public output');
 if(errors.length){console.error([...new Set(errors)].join('\n'));process.exit(1);}
 console.log('Public output checked: '+pages+' HTML files, local asset links, canonical, zoom and internal-file exclusion.');

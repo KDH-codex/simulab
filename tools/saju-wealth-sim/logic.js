@@ -1,24 +1,4 @@
-/**
- * ==========================================================================
- * SimuLab Analytics Hub - 사주 오행 & 재물운·투자 성향 분석기 순수 연산 엔진
- * 파일 경로: tools/saju-wealth-sim/logic.js
- * --------------------------------------------------------------------------
- * [초보자를 위한 명리학 및 알고리즘 설명]
- * 1) 사주팔자(四柱八字)란?
- *    - 사람이 태어난 연(年), 월(月), 일(日), 시(時)의 네 기둥(四柱)을
- *      10간(천간)과 12지(지지)로 조합하여 만든 여덟 글자(八字)입니다.
- * 2) 오행(五行: 목·화·토·금·수)의 기운:
- *    - 목(木): 성장, 확장, 추진력 -> 성장주, 바이오, 신산업 투자
- *    - 화(火): 열정, 발산, 스피드 -> AI, 테크놀로지, 레버리지 ETF
- *    - 토(土): 안정, 신뢰, 축적   -> 부동산, 리츠(REITs), 배당성장주
- *    - 금(金): 결단, 원칙, 결실   -> 금(Gold), 가치주, 금융주
- *    - 수(水): 유연, 지혜, 유동성 -> 고배당 현금흐름, 단기채권
- * 3) 100% 클라이언트 연산:
- *    - 외부 API나 서버 통신 없이 순수 JavaScript 천문 간지 알고리즘으로
- *      생년월일시를 사주 8글자로 정확하게 변환하고 오행 점수를 산출합니다.
- * ==========================================================================
- */
-
+// 절기·음력·출생지 등을 반영하지 않는 오락용 간이 규칙입니다.
 (function (global) {
   'use strict';
 
@@ -52,57 +32,57 @@
     { name: '해', hanja: '亥', element: 'water', animal: '돼지', label: '해수(亥水) - 돼지' },
   ];
 
-  // 오행 메타데이터 (색상, 키워드, 투자 자산 궁합)
+  // 오행 메타데이터 (색상, 키워드, 오락용 테마)
   const ELEMENT_INFO = {
     wood: {
       name: '목(木)',
       colorName: '초록색·청색',
       colorHex: '#10b981',
       traits: '추진력, 성장성, 도전 정신, 창의력',
-      wealthTrait: '새로운 기회를 빠르게 포착하여 성장시키는 자본 증식력',
-      investStyle: '성장주 & 신산업 투자형',
-      recommendedAssets: ['미국 혁신 성장주 (QQQ)', '바이오·헬스케어', '신재생 에너지', '벤처/초기 스타트업'],
-      luckyNumbers: [3, 8],
+      themeNarrative: "새로운 활동을 상상하는 초록 테마입니다.",
+      themeLabel: "성장과 탐색",
+      activities: ["산책","취미 기록","작은 만들기"],
+      themeNumbers: [3, 8],
     },
     fire: {
       name: '화(火)',
       colorName: '붉은색·주황색',
       colorHex: '#ef4444',
       traits: '열정, 순발력, 결단력, 파급력',
-      wealthTrait: '단기 트렌드와 강한 모멘텀을 타는 폭발적 수익 창출력',
-      investStyle: '모멘텀 & 테크 레버리지형',
-      recommendedAssets: ['생성형 AI 테크주 (NVDA)', '나스닥 3배 레버리지 (TQQQ)', '반도체 ETF (SOXL)', '암호화폐/블록체인'],
-      luckyNumbers: [2, 7],
+      themeNarrative: "활기 있는 장면을 떠올리는 붉은 테마입니다.",
+      themeLabel: "열정과 표현",
+      activities: ["음악 감상","그림 그리기","기분 메모"],
+      themeNumbers: [2, 7],
     },
     earth: {
       name: '토(土)',
       colorName: '노란색·황토색',
       colorHex: '#f59e0b',
       traits: '신뢰, 끈기, 포용력, 안정감',
-      wealthTrait: '한 번 들어온 돈을 굳건하게 지키고 불리는 자산 보존력',
-      investStyle: '부동산 & 안정 자산형',
-      recommendedAssets: ['핵심지 주거용 부동산', '월배당 부동산 리츠 (Realty Income O)', '미국 우량 배당성장주 (SCHD)', '인프라 펀드'],
-      luckyNumbers: [5, 10],
+      themeNarrative: "차분하게 쌓아 가는 노란 테마입니다.",
+      themeLabel: "안정과 정리",
+      activities: ["책상 정리","사진 모으기","가벼운 스트레칭"],
+      themeNumbers: [5, 10],
     },
     metal: {
       name: '금(金)',
       colorName: '흰색·은색·골드',
       colorHex: '#64748b',
       traits: '원칙, 냉철함, 절제력, 결실',
-      wealthTrait: '숫자와 손익계산에 철저하여 손실을 최소화하는 방어력',
-      investStyle: '가치주 & 퀀트 데이터형',
-      recommendedAssets: ['실물 안전자산 금(Gold)', '미국 S&P 500 (SPY)', '워런 버핏의 버크셔 해서웨이 (BRK.B)', '우량 금융/은행주'],
-      luckyNumbers: [4, 9],
+      themeNarrative: "선명한 기준을 떠올리는 은빛 테마입니다.",
+      themeLabel: "관찰과 정돈",
+      activities: ["목록 작성","퍼즐","풍경 관찰"],
+      themeNumbers: [4, 9],
     },
     water: {
       name: '수(水)',
       colorName: '검은색·남색',
       colorHex: '#2563eb',
       traits: '유연함, 지혜, 침착성, 융통성',
-      wealthTrait: '자금이 마르지 않고 사방으로 흐르게 하는 현금 유동성 관리력',
-      investStyle: '현금흐름 & 배당 인컴형',
-      recommendedAssets: ['JP모건 커버드콜 인컴 (JEPI/JEPQ)', '단기 국채 ETF', '해운/물류 대표주', '파이프라인 현금흐름 자산'],
-      luckyNumbers: [1, 6],
+      themeNarrative: "흐름과 여유를 떠올리는 푸른 테마입니다.",
+      themeLabel: "유연함과 생각",
+      activities: ["독서","조용한 산책","자유로운 낙서"],
+      themeNumbers: [1, 6],
     },
   };
 
@@ -111,7 +91,6 @@
     birthMonth: 7,
     birthDay: 15,
     birthHour: 14, // 14시 (오후 2시)
-    gender: 'male',
   };
 
   /**
@@ -125,14 +104,14 @@
     const yearBranch = EARTHLY_BRANCHES[yearIndex % 12];
 
     // 2) 월주(月柱) 계산
-    // 입춘을 고려한 절기 월지: 인(寅)월(양력 약 2월)부터 시작
+    // 월 숫자로 배치하는 간이 규칙입니다. 절기 시각을 계산하지 않습니다.
     const monthBranchIndex = (month + 1) % 12;
     const monthBranch = EARTHLY_BRANCHES[monthBranchIndex];
     // 연간에 따른 월간 공식: (yearStemIndex % 5) * 2 + 2 + (month - 2)
     const monthStemOffset = ((yearIndex % 10) % 5) * 2 + 2 + (month - 1);
     const monthStem = HEAVENLY_STEMS[(monthStemOffset + 100) % 10];
 
-    // 3) 일주(日柱) 계산 (Julian Day Number 기반 천문 일진)
+    // 3) 일주(日柱) 계산 (기준 날짜와의 일수 차이 기반 간이 배치)
     // 2000년 1월 1일 = 무오일 (무=4, 오=6)
     const baseDate = new Date(Date.UTC(2000, 0, 1));
     const targetDate = new Date(Date.UTC(year, month - 1, day));
@@ -164,15 +143,17 @@
   }
 
   /**
-   * 메인 사주 오행 및 재물운 시뮬레이션
+   * 간이 오행 테마 계산
    */
-  function calculateSajuWealth(userInputs = {}) {
+  function calculateSajuTheme(userInputs = {}) {
     const inputs = { ...DEFAULT_SAJU_INPUTS, ...userInputs };
 
-    const year = Number(inputs.birthYear) || 1992;
-    const month = Number(inputs.birthMonth) || 7;
-    const day = Number(inputs.birthDay) || 15;
-    const hour = Number(inputs.birthHour) || 12;
+    const year = Number(inputs.birthYear);
+    const month = Number(inputs.birthMonth);
+    const day = Number(inputs.birthDay);
+    const hour = Number(inputs.birthHour);
+    const date = new Date(Date.UTC(year, month-1, day));
+    if (![year, month, day, hour].every(Number.isInteger) || year<1900 || year>2026 || hour<0 || hour>23 || date.getUTCFullYear()!==year || date.getUTCMonth()!==month-1 || date.getUTCDate()!==day) throw new RangeError("날짜와 시각을 확인해 주세요.");
 
     const pillars = deriveFourPillars(year, month, day, hour);
 
@@ -227,9 +208,9 @@
         dominantElement: dominant.name,
         dominantScore: maxScore,
         lackingElement: lacking.name,
-        investStyle: dominant.investStyle,
-        luckyColor: lacking.colorName,
-        luckyNumber: lacking.luckyNumbers.join(', '),
+        themeLabel: dominant.themeLabel,
+        themeColor: lacking.colorName,
+        themeNumber: lacking.themeNumbers.join(', '),
       },
     };
   }
@@ -240,12 +221,12 @@
     EARTHLY_BRANCHES,
     ELEMENT_INFO,
     deriveFourPillars,
-    calculateSajuWealth,
+    calculateSajuTheme,
   };
 
   if (typeof module !== 'undefined' && module.exports) {
     module.exports = exportsObj;
   }
   global.SimuLab = global.SimuLab || {};
-  global.SimuLab.SajuWealth = exportsObj;
+  global.SimuLab.SajuTheme = exportsObj;
 })(typeof window !== 'undefined' ? window : globalThis);

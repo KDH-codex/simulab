@@ -13,10 +13,10 @@ if(path.relative(root,destination)!=='dist')throw new Error('Unsafe output path'
 try{if((await lstat(destination)).isSymbolicLink())throw new Error('Refusing symlink output');await rm(destination,{recursive:true});}catch(error){if(error.code!=='ENOENT')throw error;}
 await mkdir(destination,{recursive:true});
 const publicRoots=['assets','tools','legal','admin'];
-for(const folder of publicRoots)await cp(path.join(root,folder),path.join(destination,folder),{recursive:true,filter:source=>!/(?:^|[\\/])(?:node_modules|\.git|scratch)(?:[\\/]|$)|\.backup\.|\.map$/i.test(source)});
+for(const folder of publicRoots)await cp(path.join(root,folder),path.join(destination,folder),{recursive:true,filter:source=>!/(?:^|[\\/])(?:node_modules|\.git|scratch)(?:[\\/]|$)|\.backup\.|\.map$/i.test(source)&&!/[\\/]tools[\\/]game-tetris[\\/](?:app|logic)\.js$/i.test(source)});
 for(const file of await readdir(root))if(/^(index\.html|favicon\.svg|manifest\.json|ads\.txt|robots\.txt|naver[a-f0-9]+\.html|_headers|_redirects)$/.test(file))await cp(path.join(root,file),path.join(destination,file));
 const pages=['index.html'];
-for(const entry of await readdir(path.join(root,'tools'),{withFileTypes:true}))if(entry.isDirectory()&&entry.name!=='admin-dashboard'){
+for(const entry of await readdir(path.join(root,'tools'),{withFileTypes:true}))if(entry.isDirectory()&&!['admin-dashboard','game-tetris'].includes(entry.name)){
  try{await stat(path.join(root,'tools',entry.name,'index.html'));pages.push('tools/'+entry.name+'/index.html');}catch{}
 }
 for(const file of await readdir(path.join(root,'legal')))if(file.endsWith('.html'))pages.push('legal/'+file);

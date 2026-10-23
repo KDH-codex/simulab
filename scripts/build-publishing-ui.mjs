@@ -24,7 +24,7 @@ await update('index.html', html => {
   return html.replace('<section class="weekend-section"', advertisement + '\n<section class="weekend-section"');
 });
 
-let count = 0;
+let count = 0, adCount = 1;
 for (const entry of await readdir(new URL('tools/', root), {withFileTypes:true})) {
   if (!entry.isDirectory() || entry.name === 'admin-dashboard') continue;
   const name = entry.name;
@@ -44,12 +44,13 @@ for (const entry of await readdir(new URL('tools/', root), {withFileTypes:true})
     }
     const disclaimer = block('DISCLAIMER', '<aside id="legal-disclaimer" class="legal-disclaimer-box" data-notice-version="1" aria-label="이용 범위와 면책고지">' + buildSmartDisclaimerHtml(name, '../../') + '</aside>');
     html = html.replace('</main>', '\n\n  ' + disclaimer + '\n  </main>');
-    if (name === 'alcohol-widmark-calc') return html;
+    if (['alcohol-widmark-calc','game-tetris'].includes(name)) return html;
+    adCount++;
     if (name === 'kids-outing-calendar') html = html.replace(/<section\b[^>]*id="source-policy"[^>]*>/, match => advertisement + '\n    ' + match);
-    else if (/<article\b/.test(html)) html = html.replace(/<article\b/, advertisement + '\n    <article');
+    else if (/<article\b/.test(html)) html = html.replace(/([ \t]*)<article\b/, (_, indent) => indent + advertisement + '\n' + indent + '<article');
     else html = html.replace('<!-- GENERATED:DISCLAIMER:START -->', advertisement + '\n    <!-- GENERATED:DISCLAIMER:START -->');
     return html;
   });
   count++;
 }
-console.log(`Publishing UI ${check ? 'checked' : 'built'}: ${count} tool notices, ${count} pending ad placements (home included; closed alcohol tool excluded). No ad requests enabled.`);
+console.log(`Publishing UI ${check ? 'checked' : 'built'}: ${count} tool notices, ${adCount} pending ad placements (home included; closed tools excluded). No ad requests enabled.`);
