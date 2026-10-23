@@ -38,6 +38,9 @@ for (const entry of await readdir(new URL('tools/', root), {withFileTypes:true})
     if (name === 'kids-outing-calendar') {
       if (!html.includes('<section id="event-finder"')) throw new Error('Missing calendar notice anchor');
       html = html.replace('<section id="event-finder"', notice + '\n    <section id="event-finder"');
+    } else if (name === 'parenting-deals') {
+      if (!html.includes('<div id="sale-notice-anchor"></div>')) throw new Error('Missing sale notice anchor');
+      html = html.replace('<div id="sale-notice-anchor"></div>', '<div id="sale-notice-anchor"></div>\n' + notice);
     } else {
       if (!title.test(html)) throw new Error('Missing page title: ' + name);
       html = html.replace(title, match => match + '\n    ' + notice + '\n\n');

@@ -1,47 +1,101 @@
-export const CATEGORIES = {all:'전체', supplies:'출산·생활용품', clothing:'아이 옷', toys:'완구·놀이'};
-export const TYPES = {sale:'표시가격', coupon:'회원 쿠폰', guide:'공식 안내'};
-const hour = 3600000;
-const isKstTimestamp = value => /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\+09:00$/.test(value || '') && Number.isFinite(Date.parse(value)) && new Date(Date.parse(value)+9*hour).toISOString().slice(0,19) === value.slice(0,19);
-export const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-export function safeOfficialUrl(value, hosts) {
-  try { const url = new URL(value); return url.protocol === 'https:' && !url.username && !url.password && hosts.includes(url.hostname) && !url.hash; } catch { return false; }
+export const CATEGORIES={all:'전체',fashion:'패션',appliances:'가전·디지털',kitchen:'주방용품',furniture:'가구·리빙'};
+export const BENEFITS={sale:'가격 할인',coupon:'쿠폰',points:'적립·페이백',installment:'무이자 할부',shipping:'배송 혜택',live:'쇼핑 라이브',mixed:'복합 혜택'};
+export const CHANNELS={online:'온라인',store:'매장',phone:'전화 주문',unknown:'적용 채널 확인'};
+const DAY=86400000,HOUR=3600000;
+export const escapeHtml=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+export function validDate(value){return /^\d{4}-\d{2}-\d{2}$/.test(value||'')&&Number.isFinite(Date.parse(value+'T00:00:00Z'))&&new Date(value+'T00:00:00Z').toISOString().slice(0,10)===value;}
+export function validMonth(value){return /^\d{4}-(0[1-9]|1[0-2])$/.test(value||'')&&Number(value.slice(0,4))>=1970&&Number(value.slice(0,4))<=2099;}
+export function addDays(date,count){return new Date(Date.parse(date+'T00:00:00Z')+count*DAY).toISOString().slice(0,10);}
+export function koreaToday(now=new Date()){return new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date(now));}
+export function monthRange(month){if(!validMonth(month))throw new Error('Invalid month');const start=month+'-01';return {start,end:new Date(Date.UTC(+month.slice(0,4),+month.slice(5),0)).toISOString().slice(0,10)};}
+export function shiftMonth(month,offset){if(!validMonth(month)||!Number.isInteger(offset)||Math.abs(offset)>12)throw new Error('Invalid month shift');const date=new Date(Date.UTC(+month.slice(0,4),+month.slice(5)-1+offset,1)).toISOString().slice(0,7);return validMonth(date)?date:month;}
+export const shortDate=value=>value.slice(5).replace('-','.');
+export const formatCheckedAt=value=>value.slice(0,16).replace('T',' ')+' KST';
+export function safeOfficialUrl(value,hosts){try{const url=new URL(value);return url.protocol==='https:'&&!url.username&&!url.password&&hosts.includes(url.hostname);}catch{return false;}}
+function validTimestamp(value){return /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\+09:00$/.test(value||'')&&Number.isFinite(Date.parse(value))&&new Date(Date.parse(value)+9*HOUR).toISOString().slice(0,19)===value.slice(0,19);}
+export function validateSource(source,now=new Date()){
+ const errors=[];for(const key of ['id','name','operator','officialUrl','checkedAt','rightsNote'])if(!source[key])errors.push('Missing source '+key);
+ if(!/^[a-z0-9-]+$/.test(source.id||''))errors.push('Invalid source id');
+ if(!Array.isArray(source.allowedHosts)||!safeOfficialUrl(source.officialUrl,source.allowedHosts))errors.push('Unsafe official URL');
+ if(!Array.isArray(source.categories)||!source.categories.length||source.categories.some(c=>!Object.hasOwn(CATEGORIES,c)||c==='all'))errors.push('Invalid source categories');
+ if(!validTimestamp(source.checkedAt)||Date.parse(source.checkedAt)>+new Date(now))errors.push('Invalid source review date');
+ return errors;
 }
-export function reviewState(item, now = new Date()) {
-  if (item.mode === 'link') return {code:'link', label:'공식몰에서 확인', current:false};
-  const checked = Date.parse(item.checkedAt), time = +new Date(now);
-  if (!Number.isFinite(checked) || !Number.isFinite(time) || checked > time) return {code:'pending', label:'검토 필요', current:false};
-  if (item.endsAt && time >= Date.parse(item.endsAt)) return {code:'ended', label:'종료된 안내', current:false};
-  if (item.startsAt && time < Date.parse(item.startsAt)) return {code:'upcoming', label:'시작 전 안내', current:false};
-  if (time - checked > item.reviewWithinHours * hour) return {code:'stale', label:'재확인 필요', current:false};
-  return {code:'reviewed', label:item.endsAt ? '기간 안내 확인' : '표시정보 확인 · 종료일 미공개', current:true};
+export function validateEvent(event,sources,now=new Date()){
+ const errors=[];const source=sources.find(s=>s.id===event.brandId);
+ for(const field of ['id','brandId','title','startDate','endDate','summary','sourceUrl','checkedAt','periodNote'])if(!event[field])errors.push('Missing '+field);
+ if(!source)errors.push('Unknown official source');
+ if(!/^[a-z0-9-]+$/.test(event.id||''))errors.push('Invalid id');
+ if(!validDate(event.startDate)||!validDate(event.endDate)||event.startDate>event.endDate)errors.push('Invalid period');
+ if(!validTimestamp(event.checkedAt)||Date.parse(event.checkedAt)>+new Date(now))errors.push('Invalid event review date');
+ if(!Array.isArray(event.categories)||!event.categories.length||event.categories.some(c=>!Object.hasOwn(CATEGORIES,c)||c==='all'))errors.push('Invalid categories');
+ if(!Array.isArray(event.channels)||!event.channels.length||event.channels.some(c=>!Object.hasOwn(CHANNELS,c)))errors.push('Invalid channels');
+ if(!Object.hasOwn(BENEFITS,event.benefitType))errors.push('Invalid benefit type');
+ if(!Array.isArray(event.conditions)||!event.conditions.length)errors.push('Missing conditions');
+ if(!['reviewed','held','cancelled'].includes(event.publicationStatus))errors.push('Missing publication review');
+ if(!['calendar','longterm'].includes(event.placement))errors.push('Invalid placement');
+ if(!['facts-summary','schedule-only'].includes(event.publicationScope))errors.push('Missing editorial scope');
+ if(!Number.isInteger(event.reviewWithinDays)||event.reviewWithinDays<1||event.reviewWithinDays>14)errors.push('Invalid review interval');
+ for(const key of ['startTime','endTime'])if(event[key]&&!/^([01]\d|2[0-3]):[0-5]\d$/.test(event[key]))errors.push('Invalid '+key);
+ for(const key of ['sourceUrl','periodSourceUrl'])if(!source||!safeOfficialUrl(event[key],source.allowedHosts))errors.push('Unsafe '+key);
+ if(event.priceWon!=null||event.discountedPrice!=null)errors.push('Individual product pricing is not a calendar event');
+ return errors;
 }
-export function matchesFilters(item, {category='all', type='all', query=''}={}) {
-  const words = query.trim().toLocaleLowerCase('ko-KR').split(/\s+/).filter(Boolean);
-  const haystack = [item.name,item.title,CATEGORIES[item.category],item.category==='toys'?'장난감':'',item.operator,item.summary,item.linkNote].join(' ').toLocaleLowerCase('ko-KR');
-  return (category === 'all' || item.category === category) && (type === 'all' || item.type === type) && words.every(word => haystack.includes(word));
+export function eventState(event,now=new Date()){
+ const today=koreaToday(now);
+ if(event.publicationStatus!=='reviewed')return {code:event.publicationStatus,label:event.publicationStatus==='cancelled'?'취소 안내':'검토 전',active:false};
+ if(!validDate(event.startDate)||!validDate(event.endDate)||!validTimestamp(event.checkedAt)||Date.parse(event.checkedAt)>+new Date(now))return {code:'pending',label:'검토 필요',active:false};
+ const exactEnd=event.endTime?Date.parse(event.endDate+'T'+event.endTime+':00+09:00')+60000:null;
+ if(today>event.endDate||(exactEnd!==null&&+new Date(now)>=exactEnd))return {code:'ended',label:'종료된 일정',active:false};
+ const stale=+new Date(now)-Date.parse(event.checkedAt)>event.reviewWithinDays*DAY;
+ if(stale)return {code:'stale',label:'재확인 필요',active:false};
+ if(today<event.startDate||(today===event.startDate&&event.startTime&&+new Date(now)<Date.parse(today+'T'+event.startTime+':00+09:00')))return {code:'upcoming',label:'시작 예정',active:false};
+ if(event.scheduleKind==='broadcast')return {code:'broadcast',label:'방송일 · 진행 확인',active:false};
+ return {code:'active',label:today===event.endDate?'오늘 종료 예정':'공지 기간 중',active:true};
 }
-export function validateShop(item, now = new Date()) {
-  const errors = [];
-  for (const field of ['id','name','operator','category','title','checkedAt','sourceUrl','termsUrl','rightsNote','shipping']) if (!item[field]) errors.push('Missing '+field);
-  if (!/^[a-z0-9-]+$/.test(item.id || '')) errors.push('Invalid id');
-  if (!Object.hasOwn(CATEGORIES,item.category) || item.category === 'all') errors.push('Invalid category');
-  if (!Object.hasOwn(TYPES,item.type)) errors.push('Invalid type');
-  if (!['summary','link'].includes(item.mode)) errors.push('Invalid publication mode');
-  for (const field of ['sourceUrl','termsUrl','identityUrl']) if (!safeOfficialUrl(item[field],item.allowedHosts || [])) errors.push('Unsafe '+field);
-  if (!isKstTimestamp(item.checkedAt) || Date.parse(item.checkedAt) > +new Date(now)) errors.push('Invalid or future review timestamp');
-  for (const field of ['startsAt','endsAt']) if (item[field] && !isKstTimestamp(item[field])) errors.push('Invalid '+field);
-  if (item.startsAt && item.endsAt && item.startsAt >= item.endsAt) errors.push('Inverted period');
-  if (item.mode === 'summary') {
-    if (item.rightsStatus !== 'facts-only' || !item.summary || !item.conditions?.length) errors.push('Unreviewed summary');
-    if (!Number.isInteger(item.reviewWithinHours) || item.reviewWithinHours < 1 || item.reviewWithinHours > 168) errors.push('Invalid recheck interval');
-    if (item.type === 'sale' && (!Number.isSafeInteger(item.priceWon) || item.priceWon <= 0 || item.reviewWithinHours > 24)) errors.push('Invalid price or price review interval');
-    if (item.type === 'coupon' && !item.eligibility) errors.push('Missing coupon eligibility');
-  } else if (item.priceWon != null || item.summary || item.conditions?.length || item.startsAt || item.endsAt || item.type !== 'guide') errors.push('Restricted shop leaked promotion details');
-  return errors;
+export function filterEvents(events,{month,category='all',brand='all',channel='all',status='month',query='',rangeStart='',rangeEnd='',placement='calendar'}={},now=new Date()){
+ const today=koreaToday(now),range=month?monthRange(month):null;
+ const words=query.slice(0,100).trim().toLocaleLowerCase('ko-KR').split(/\s+/).filter(Boolean);
+ return events.filter(event=>{
+  if(event.publicationStatus!=='reviewed'||event.placement!==placement)return false;
+  if(range&&(event.endDate<range.start||event.startDate>range.end))return false;
+  if(rangeStart&&rangeEnd&&(event.endDate<rangeStart||event.startDate>rangeEnd))return false;
+  if(category!=='all'&&!event.categories.includes(category)||brand!=='all'&&event.brandId!==brand||channel!=='all'&&!event.channels.includes(channel))return false;
+  if(!words.every(w=>[event.title,event.brandName,event.summary,...event.categories.map(c=>CATEGORIES[c])].join(' ').toLocaleLowerCase('ko-KR').includes(w)))return false;
+  const state=eventState(event,now),days=(Date.parse(event.endDate+'T00:00:00Z')-Date.parse(today+'T00:00:00Z'))/DAY;
+  if(status==='active'&&!state.active||status==='soon'&&(!state.active||days<0||days>6)||status==='upcoming'&&state.code!=='upcoming'||status==='ended'&&state.code!=='ended'||status==='stale'&&state.code!=='stale')return false;
+  return true;
+ }).sort((a,b)=>a.endDate.localeCompare(b.endDate)||a.startDate.localeCompare(b.startDate)||a.id.localeCompare(b.id));
 }
-export const formatCheckedAt = value => value.slice(0,16).replace('T',' ')+' KST';
-export function renderShop(item, now = new Date()) {
-  const esc = escapeHtml, state = reviewState(item,now), isSummary = item.mode === 'summary';
-  const facts = isSummary ? `<div class="deal-facts"${state.current?'':' hidden'}><p class="deal-summary">${esc(item.summary)}</p><ul>${item.conditions.map(condition=>'<li>'+esc(condition)+'</li>').join('')}</ul><p class="shipping"><b>배송</b> ${esc(item.shipping)}</p></div>` : `<p class="deal-summary">${esc(item.linkNote)}</p>`;
-  return `<article class="deal-card ${isSummary?'':'link-card'}" id="shop-${esc(item.id)}" data-shop="${esc(item.id)}"><div class="deal-meta"><span class="shop-category">${esc(CATEGORIES[item.category])}</span><span class="review-state" data-state="${state.code}">${esc(state.label)}</span></div><div class="shop-heading"><span class="shop-monogram" aria-hidden="true">${esc(item.mark)}</span><div><p class="shop-name">${esc(item.name)}</p><p class="shop-operator">${esc(item.operator)}</p></div></div><h3>${esc(item.title)}</h3><div class="deal-highlight"${isSummary&&state.current?'':' hidden'}>${esc(item.highlight || '')}<span>${esc(TYPES[item.type])} · 확인 당시</span></div>${facts}<p class="recheck-note"${isSummary&&!state.current?'':' hidden'}>확인 주기를 지났거나 기간이 달라졌습니다. 이전 가격·조건을 현재 혜택으로 표시하지 않습니다. 공식 안내를 확인해 주세요.</p><div class="deal-period"><span>${isSummary?'종료일':'안내 범위'}</span><b>${isSummary?(item.endsAt?esc(formatCheckedAt(item.endsAt)):'공개 안내에서 확인하지 못함'):'세부 혜택은 원문에서 확인'}</b></div><div class="deal-bottom"><p>공식 페이지 검토 <time datetime="${esc(item.checkedAt)}">${esc(formatCheckedAt(item.checkedAt))}</time></p><a class="official-link" href="${esc(item.sourceUrl)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(item.name)} 공식 안내 새 창에서 보기">공식 안내 보기 <span aria-hidden="true">↗</span></a></div><details class="source-details"><summary>출처와 수록 기준</summary><p>${esc(item.rightsNote)}</p><a href="${esc(item.identityUrl)}" target="_blank" rel="noopener noreferrer">운영사·공식몰 확인</a><a href="${esc(item.termsUrl)}" target="_blank" rel="noopener noreferrer">이용약관</a></details></article>`;
+export function monthWeeks(month,events,{maxLanes=3}={}){
+ if(!Number.isInteger(maxLanes)||maxLanes<1||maxLanes>8)throw new Error('Invalid lane count');
+ const range=monthRange(month),offset=new Date(range.start+'T00:00:00Z').getUTCDay(),first=addDays(range.start,-offset),weeks=[];
+ for(let weekStart=first;weekStart<=range.end;weekStart=addDays(weekStart,7)){
+  const end=addDays(weekStart,6),segments=[],laneEnds=[],hiddenIds=[];
+  const candidates=events.filter(e=>e.publicationStatus==='reviewed'&&e.placement==='calendar'&&e.endDate>=weekStart&&e.startDate<=end&&e.endDate>=range.start&&e.startDate<=range.end).sort((a,b)=>a.endDate.localeCompare(b.endDate)||a.id.localeCompare(b.id));
+  for(const event of candidates){
+   const start=[event.startDate,weekStart,range.start].sort().at(-1),stop=[event.endDate,end,range.end].sort()[0];
+   const col=Math.round((Date.parse(start+'T00:00:00Z')-Date.parse(weekStart+'T00:00:00Z'))/DAY);
+   const span=Math.round((Date.parse(stop+'T00:00:00Z')-Date.parse(start+'T00:00:00Z'))/DAY)+1;
+   let lane=laneEnds.findIndex(last=>last<col);if(lane<0)lane=laneEnds.length;laneEnds[lane]=col+span-1;
+   if(lane>=maxLanes)hiddenIds.push(event.id);else segments.push({event,start,stop,col:col+1,span,lane:lane+1,continuesBefore:event.startDate<start,continuesAfter:event.endDate>stop});
+  }
+  weeks.push({start:weekStart,end,days:Array.from({length:7},(_,i)=>addDays(weekStart,i)),segments,hiddenIds});
+ }
+ return weeks;
+}
+export function renderCalendar(month,events,{today=koreaToday(),selectedDate=today,now=new Date()}={}){
+ const esc=escapeHtml;
+ return '<div class="weekdays" aria-hidden="true">'+['일','월','화','수','목','금','토'].map(x=>'<span>'+x+'</span>').join('')+'</div>'+
+ monthWeeks(month,events).map(week=>'<div class="sale-week"><div class="week-dates">'+week.days.map((date,index)=>{
+  const outside=date.slice(0,7)!==month,cls='date-cell'+(outside?' outside':'')+(date===today?' today':'')+(date===selectedDate?' selected':'');
+  return '<div class="'+cls+'">'+(outside?'<span>'+Number(date.slice(8))+'</span>':'<button type="button" data-date="'+date+'" aria-label="'+date+' 행사 보기" aria-pressed="'+(date===selectedDate)+'">'+Number(date.slice(8))+'</button>')+'</div>';
+ }).join('')+'</div><div class="week-bars">'+week.segments.map(s=>{
+  const state=eventState(s.event,now);return '<a class="sale-bar category-'+esc(s.event.categories[0])+' state-'+state.code+(s.continuesBefore?' continues-before':'')+(s.continuesAfter?' continues-after':'')+'" href="#sale-'+esc(s.event.id)+'" data-event="'+esc(s.event.id)+'" style="grid-column:'+s.col+' / span '+s.span+';grid-row:'+s.lane+'" aria-label="'+esc(s.event.brandName+' · '+s.event.title+' · '+s.event.startDate+'부터 '+s.event.endDate+'까지 · '+state.label)+'"><span>'+esc(s.event.brandName)+'</span> '+esc(s.event.shortTitle||s.event.title)+'</a>';
+ }).join('')+'</div>'+(week.hiddenIds.length?'<button class="week-more" type="button" data-week-start="'+week.start+'" data-week-end="'+week.end+'">이 주의 일정 '+week.hiddenIds.length+'개 더 보기 <span aria-hidden="true">↗</span></button>':'<div class="week-more-space"></div>')+'</div>').join('');
+}
+export function periodText(event){const date=value=>event.startDate.slice(0,4)!==event.endDate.slice(0,4)?value.replaceAll('-','.'):shortDate(value);return date(event.startDate)+(event.startDate===event.endDate?'':' – '+date(event.endDate))+(event.startTime?' · '+event.startTime:'')+(event.endTime?' 종료 '+event.endTime:'');}
+export function renderEvent(event,{now=new Date(),detail=false}={}){
+ const esc=escapeHtml,state=eventState(event,now);
+ return '<article class="sale-card'+(detail?' detail-card':'')+'" id="'+(detail?'detail-':'sale-')+esc(event.id)+'" data-sale-card="'+esc(event.id)+'"><div class="sale-card-meta"><span class="category-label category-'+esc(event.categories[0])+'">'+esc(CATEGORIES[event.categories[0]])+'</span><span class="state-label state-'+state.code+'">'+esc(state.label)+'</span></div><p class="sale-brand">'+esc(event.brandName)+'</p><h3>'+esc(event.title)+'</h3><p class="sale-period"><span aria-hidden="true">▦</span> <time datetime="'+event.startDate+'">'+esc(periodText(event))+'</time><small>'+esc(event.periodNote)+'</small></p><p class="sale-summary">'+esc(event.summary)+'</p><div class="benefit-line"><span>'+esc(BENEFITS[event.benefitType])+'</span><span>'+event.channels.map(c=>esc(CHANNELS[c])).join(' · ')+'</span></div><details class="sale-conditions"'+(detail?' open':'')+'><summary>적용 조건과 확인할 내용</summary><ul>'+event.conditions.map(c=>'<li>'+esc(c)+'</li>').join('')+'</ul></details>'+(state.code==='stale'?'<p class="stale-note">마지막 확인 후 '+event.reviewWithinDays+'일이 지났습니다. 새 공지를 확인하기 전 현재 진행 중인 혜택으로 집계하지 않습니다.</p>':'')+'<div class="sale-card-bottom"><p>공지 확인 <time datetime="'+esc(event.checkedAt)+'">'+esc(formatCheckedAt(event.checkedAt))+'</time></p><a class="sale-official" href="'+esc(event.sourceUrl)+'" target="_blank" rel="noopener noreferrer" aria-label="'+esc(event.brandName+' '+event.title)+' 공식 안내 새 창에서 보기">공식 안내 <span aria-hidden="true">↗</span></a></div></article>';
 }

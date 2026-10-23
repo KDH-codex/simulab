@@ -255,7 +255,7 @@
           title: '🌿 일상·생활',
           items: [
             { title: '아이와 가볼만한 곳 달력', sub: '공식 공지로 확인한 일정 · 비용 · 예약 안내', href: 'tools/kids-outing-calendar/', tool: 'kids-outing-calendar', hot: true },
-            { title: '육아 할인정보', sub: '공식몰 10곳 · 세일·쿠폰 조건과 확인일', href: 'tools/parenting-deals/', tool: 'parenting-deals', hot: true },
+            { title: '브랜드 세일 달력', sub: '패션·가전·주방·가구 · 공식 행사 일정', href: 'tools/parenting-deals/', tool: 'parenting-deals', hot: true },
             { title: '만나이 띠 계산기', sub: '생일 기준 만나이 · 출생연도 띠 · D-Day', href: 'tools/korean-age-calc/', tool: 'korean-age-calc', hot: true },
             { title: '퍼센트 할인율 계산기', sub: '쇼핑 세일가 · 인상률 · 비중 계산', href: 'tools/percent-discount-calc/', tool: 'percent-discount-calc', hot: true },
             { title: '내 인생의 모래시계', sub: '기대수명 대비 생애 진행률 · 잔여 일수', href: 'tools/life-hourglass-sim/', tool: 'life-hourglass-sim' }
@@ -621,7 +621,7 @@
        240자가 넘는 .page-subtitle 은 2줄로 접어 "자세히 보기"로 펼칩니다. (내용은 삭제하지 않음)
      ------------------------------------------------------------------------ */
   const TOOL_NAMES = {
-    'parenting-deals': '육아 할인정보',
+    'parenting-deals': '브랜드 세일 달력',
     'leverage-etf-sim': '레버리지 복리·변동성 계산기',
     'dividend-tax-sim': '배당 복리 & 세금 계산기',
     'loan-mortgage-calc': '주택대출 상환·비율 가정 계산기',
@@ -719,8 +719,8 @@
       kind = 'events'; title = '방문 전 공식 안내를 확인하세요';
       message = '공식 출처와 확인일을 제공하지만 일정·요금·운영 회차는 변경될 수 있습니다. 예약 잔여석은 실시간 조회하지 않으며, 어린이 참여 조건은 주최 기관의 최신 안내를 확인해 주세요.';
     } else if (id === 'parenting-deals') {
-      kind = 'shopping'; title = '구매 전 공식몰의 최종 조건을 확인하세요';
-      message = '확인 당시의 공개 안내로 실시간 가격·재고·최저가를 보장하지 않습니다. 회원·쿠폰·배송비·대상 품목·종료 조건을 확인해 주세요. 적립금과 사은품을 현금 할인으로 계산하지 않으며, 주문과 결제는 연결된 공식몰에서 진행합니다.';
+      kind = 'shopping'; title = '행사 기간과 적용 조건을 함께 확인하세요';
+      message = '공식 공지를 확인한 시점의 일정입니다. 일부 품목·회원·매장·결제수단 조건과 조기 종료 여부를 확인하세요. 실시간 재고·최종 가격을 보장하지 않으며, 적립금과 사은품은 즉시 할인과 구분합니다.';
     } else if (id === 'alcohol-widmark-calc') {
       kind = 'safety'; title = '운전 가능 여부를 판단하는 도구가 아닙니다';
       message = '이론에 따른 추정치로 실제 혈중알코올농도나 안전한 운전 시각을 알 수 없습니다. 계산 결과와 관계없이 음주 후에는 운전하지 마세요.';
