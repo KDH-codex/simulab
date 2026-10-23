@@ -14,9 +14,23 @@ button { touch-action:manipulation; }
 .gnb-panel { border-radius:14px !important; box-shadow:0 12px 35px #18352f15 !important; }
 .site-footer { font-size:13px; line-height:1.8; }
 .footer-privacy { background:none; border:0; color:inherit; font:inherit; cursor:pointer; padding:0; text-decoration:underline; }
-.legal-disclaimer-box { font-size:13px; line-height:1.8; padding:20px !important; }
+.legal-disclaimer-box { font-size:14px; line-height:1.8; padding:20px !important; }
 .legal-disclaimer-box p { margin:7px 0; }
-.ad-slot-wrapper,.ad-slot,.ad-slot-placeholder { display:none !important; }
+.tool-use-notice { margin:20px 0 24px; padding:18px 20px; border:1px solid #d7dfd6; border-left:4px solid #9b6b21; border-radius:12px; background:#fffbf1; color:#334638; font-size:14px; line-height:1.8; text-align:left; }
+.tool-use-notice strong { display:block; font-size:15px; color:#604714; }
+.tool-use-notice p { margin:7px 0; }
+.tool-use-notice a,.disclaimer-links a { color:#176d53; text-decoration:underline; text-underline-offset:3px; }
+.tool-use-notice[data-notice-kind="safety"] { border-left-color:#ad352c; background:#fff6f2; }
+.tool-use-notice[data-notice-kind="safety"] strong { color:#9a3028; }
+.legal-disclaimer-box[data-notice-version] { font-size:14px; line-height:1.85; color:#415547; border-left:4px solid #9b6b21; background:#fffbf1; margin:26px 0 18px; }
+.legal-disclaimer-box[data-notice-version] > strong { font-size:16px; color:#604714; }
+.disclaimer-responsibility { font-size:13px; }
+.disclaimer-links { display:flex; flex-wrap:wrap; gap:8px 20px; margin-top:12px; }
+.ad-placement { box-sizing:border-box; display:flex; flex-direction:column; justify-content:center; align-items:center; gap:8px; width:100%; min-width:0; min-height:120px; margin:28px 0; padding:18px; border:1px dashed #bdcabe; border-radius:12px; background:#f3f6f2; color:#536457; text-align:center; }
+.ad-placement-label { font-size:11px; letter-spacing:.12em; }
+.ad-placement p { margin:0; font-size:13px; font-weight:500; }
+.home-main > .ad-placement { width:calc(100% - 48px); max-width:1180px; margin:0 auto 36px; }
+@media(max-width:640px) { .tool-use-notice { padding:15px 16px; }.ad-placement { min-height:100px; margin:22px 0; }.home-main > .ad-placement { width:calc(100% - 36px); } }
 .privacy-dialog { width:min(560px,calc(100% - 32px)); max-height:85dvh; border:1px solid #dce5de; border-radius:18px; padding:26px; color:#18352f; background:#fff; }
 .privacy-dialog::backdrop { background:#102d2680; }
 .privacy-dialog h2 { font-size:22px; }.privacy-dialog p { font-size:14px; line-height:1.85; }

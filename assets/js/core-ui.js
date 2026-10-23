@@ -708,17 +708,50 @@
   /**
    * 카테고리별 맞춤형 스마트 법적 면책 고지 및 법 개정 대비 방어 문구 생성기
    */
-  function buildSmartDisclaimerHtml(id) {
-    if (id === 'home' || id === 'admin-dashboard' || id === 'legal') return '';
-    const link = '<a href="' + getRootPrefix() + 'legal/editorial.html">출처와 정보 기준</a>';
-    let message = '입력한 조건에 따른 계산 결과입니다. 단위와 가정을 확인하고 이용해 주세요.';
-    if (id === 'kids-outing-calendar') message = '행사별 공식 출처와 확인일을 제공합니다. 일정 변경, 예약 가능 여부와 참가 조건은 출발 전 주최 기관의 최신 안내를 확인해 주세요.';
-    else if (id === 'alcohol-widmark-calc') message = '이론에 따른 추정치이며 실제 혈중알코올농도나 운전 가능 여부를 판단할 수 없습니다. 음주 후에는 운전하지 마세요.';
-    else if (['diet-bmr-tdee-calc','caffeine-sleep-calc','running-zone-calc'].includes(id)) message = '일반적인 건강 참고 정보입니다. 개인의 상태에 따라 달라지며 진단·치료나 개인별 운동·식이 처방을 대신하지 않습니다.';
-    else if (/tax|pension|salary|severance|unemployment|loan|mortgage/.test(id)) message = '입력한 가정과 페이지에 표시된 기준으로 계산한 추정치입니다. 실제 지급액·세액·대출 승인 여부는 개인의 조건과 적용 시점에 따라 달라집니다. 최종 확인은 담당 기관에 문의해 주세요.';
-    else if (/stock|etf|invest|dividend|retirement|wealth|opportunity|jeonse|apt/.test(id)) message = '가정에 따른 비교 결과이며 투자 수익이나 실제 가격을 보장하지 않습니다. 과거 성과와 미래 결과는 다를 수 있습니다.';
-    else if (/saju|mbti|attachment|lotto/.test(id)) message = '오락과 참고를 위한 콘텐츠입니다. 과학적 진단, 확정적인 미래 예측이나 당첨 확률 향상을 제공하지 않습니다.';
-    return '<strong>이용 전 확인</strong><p>' + message + '</p>' + link;
+  // Shared by the static build and the runtime fallback.
+  function getToolNotice(id) {
+    if (['home','admin-dashboard','legal'].includes(id)) return null;
+    let kind = 'general', title = '계산·정보 이용 안내';
+    let message = '입력 조건과 표시된 가정에 따른 참고 결과입니다. 단위·반올림·적용 기준을 확인하고, 계약이나 신청 전에는 공식 자료와 대조해 주세요.';
+    if (id === 'kids-outing-calendar') {
+      kind = 'events'; title = '방문 전 공식 안내를 확인하세요';
+      message = '공식 출처와 확인일을 제공하지만 일정·요금·운영 회차는 변경될 수 있습니다. 예약 잔여석은 실시간 조회하지 않으며, 어린이 참여 조건은 주최 기관의 최신 안내를 확인해 주세요.';
+    } else if (id === 'alcohol-widmark-calc') {
+      kind = 'safety'; title = '운전 가능 여부를 판단하는 도구가 아닙니다';
+      message = '이론에 따른 추정치로 실제 혈중알코올농도나 안전한 운전 시각을 알 수 없습니다. 계산 결과와 관계없이 음주 후에는 운전하지 마세요.';
+    } else if (['diet-bmr-tdee-calc','caffeine-sleep-calc','running-zone-calc','life-hourglass-sim'].includes(id)) {
+      kind = 'health'; title = '건강 정보 이용 전 확인';
+      message = '일반적인 통계·공식에 따른 참고치이며 개인의 상태와 다를 수 있습니다. 진단·치료·수명 예측이나 개인별 운동·식이 처방을 대신하지 않습니다.';
+    } else if (['saju-wealth-sim','invest-animal-mbti','love-animal-attachment','lotto-draw-sim'].includes(id)) {
+      kind = 'entertainment'; title = '오락용 콘텐츠 안내';
+      message = '재미와 참고를 위한 콘텐츠입니다. 과학적 진단, 확정적인 미래·재물운 예측, 투자 조언이나 당첨 확률 향상을 제공하지 않습니다.';
+    } else if (id === 'korean-baby-name-trend') {
+      kind = 'names'; title = '이름 후보 탐색 안내';
+      message = '이름 후보를 찾아 기기에 보관하는 도구입니다. 실제 출생신고 이름 순위·인원수나 이름에 따른 성격·운명을 제공하지 않습니다.';
+    } else if (['korean-average-vs-me','korean-city-income-housing','korean-population-pyramid','korean-tourism-travel-stats','korean-trade-ranking','korean-wealth-percentile-calc','world-gni-ranking-race','world-population-area-rank'].includes(id)) {
+      kind = 'statistics'; title = '통계 해석 전 확인';
+      message = '통계의 집계 연도·표본·단위·원자료와 추정 범위를 확인해 주세요. 수록 시점의 자료로 현재의 실시간 값이나 개인의 정확한 순위를 보장하지 않습니다.';
+    } else if (/tax|pension|salary|severance|unemployment|loan|mortgage/.test(id)) {
+      kind = 'financial'; title = '금액·적용 기준 확인';
+      message = '입력 가정과 페이지에 표시된 기준으로 계산한 추정치입니다. 실제 세액·지급액·대출 한도·승인은 개인 조건과 적용 시점에 따라 다릅니다. 신고·신청·계약 전 담당 기관에서 확인해 주세요.';
+    } else if (/stock|etf|invest|dividend|retirement|wealth|opportunity|jeonse|apt|roi/.test(id)) {
+      kind = 'investment'; title = '투자·계약 판단 전 확인';
+      message = '가정에 따른 비교 결과이며 투자 권유나 개별 금융·부동산 자문이 아닙니다. 수익·가격을 보장하지 않으며 원금 손실이 발생할 수 있습니다. 과거 성과는 미래 결과를 보장하지 않습니다.';
+    } else if (/^game-|draw-game|roulette/.test(id)) {
+      kind = 'games'; title = '게임·추첨 이용 안내';
+      message = '오락과 참고를 위한 도구입니다. 게임 기록은 공인 인증 기록이 아니며, 추첨 결과에 상품·상금·공정성 인증을 약속하지 않습니다. 중요한 배분은 참여자와 기준을 먼저 합의해 주세요.';
+    }
+    return {kind,title,message};
+  }
+
+  function buildToolNoticeHtml(id) {
+    const notice = getToolNotice(id); if (!notice) return '';
+    return '<aside id="tool-use-notice" class="tool-use-notice" data-notice-kind="' + notice.kind + '" aria-labelledby="tool-use-notice-title"><strong id="tool-use-notice-title">' + escapeHtml(notice.title) + '</strong><p>' + escapeHtml(notice.message) + '</p><a href="#legal-disclaimer">이용 범위와 면책고지 보기 ↓</a></aside>';
+  }
+
+  function buildSmartDisclaimerHtml(id, prefix = getRootPrefix()) {
+    const notice = getToolNotice(id); if (!notice) return '';
+    return '<strong>이용 범위와 면책고지</strong><p>' + escapeHtml(notice.message) + '</p><p class="disclaimer-responsibility">운영자의 고의·중과실 등 관계 법령상 제한할 수 없는 책임은 이 안내로 배제하지 않습니다.</p><div class="disclaimer-links"><a href="' + prefix + 'legal/terms.html">이용약관·면책고지</a><a href="' + prefix + 'legal/editorial.html">출처·정정 기준</a></div>';
   }
 
   let isCommonUiInitialized = false;
@@ -777,7 +810,7 @@
     }
     if (disclaimerEl) {
       disclaimerEl.className = 'legal-disclaimer-box';
-      disclaimerEl.innerHTML = buildSmartDisclaimerHtml(activeToolId);
+      if (!disclaimerEl.getAttribute('data-notice-version')) disclaimerEl.innerHTML = buildSmartDisclaimerHtml(activeToolId);
     }
 
     // 3) 표시광고법 준수 제휴 마케팅 고지 주입
@@ -976,6 +1009,9 @@
     applyThemeToDocument,
     toggleTheme,
     getRootPrefix,
+    getToolNotice,
+    buildToolNoticeHtml,
+    buildSmartDisclaimerHtml,
     initCommonUI,
     SITE_MENU,
     parseUrlParams,

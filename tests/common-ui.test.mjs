@@ -10,3 +10,12 @@ test('common initialization completes after removing the old blocking consent ga
  assert.doesNotThrow(()=>window.SimuLab.initCommonUI('home'));assert.equal(attrs.get('data-theme'),'light');
  assert.equal(window.SimuLab.SITE_MENU.flatMap(g=>g.items).length,51);
 });
+
+test('sensitive disclosures distinguish entertainment, health, financial estimates and statistics',async()=>{
+ const scope={};vm.runInNewContext(await readFile(new URL('../assets/js/core-ui.js',import.meta.url),'utf8'),scope);
+ const cases={'saju-wealth-sim':'entertainment','invest-animal-mbti':'entertainment','lotto-draw-sim':'entertainment','lotto-tax-interest-calc':'financial','life-hourglass-sim':'health','stock-water-ride-calc':'investment','korean-wealth-percentile-calc':'statistics','alcohol-widmark-calc':'safety'};
+ for(const [id,kind] of Object.entries(cases))assert.equal(scope.SimuLab.getToolNotice(id).kind,kind,id);
+ assert.equal(scope.SimuLab.getToolNotice('home'),null);
+ assert.match(scope.SimuLab.buildSmartDisclaimerHtml('stock-water-ride-calc','../../'),/\.\.\/\.\.\/legal\/terms\.html/);
+ assert.match(scope.SimuLab.buildSmartDisclaimerHtml('stock-water-ride-calc','../../'),/책임은 이 안내로 배제하지 않습니다/);
+});
