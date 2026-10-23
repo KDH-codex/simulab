@@ -47,6 +47,7 @@ for (const entry of await readdir(new URL('tools/', root), {withFileTypes:true})
     if (['alcohol-widmark-calc','game-tetris'].includes(name)) return html;
     adCount++;
     if (name === 'kids-outing-calendar') html = html.replace(/<section\b[^>]*id="source-policy"[^>]*>/, match => advertisement + '\n    ' + match);
+    else if (name === 'parenting-deals') html = html.replace(/([ \t]*)<section id="publishing-policy"/, (_, indent) => indent + advertisement + '\n' + indent + '<section id="publishing-policy"');
     else if (/<article\b/.test(html)) html = html.replace(/([ \t]*)<article\b/, (_, indent) => indent + advertisement + '\n' + indent + '<article');
     else html = html.replace('<!-- GENERATED:DISCLAIMER:START -->', advertisement + '\n    <!-- GENERATED:DISCLAIMER:START -->');
     return html;

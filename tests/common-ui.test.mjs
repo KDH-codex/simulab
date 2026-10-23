@@ -8,7 +8,7 @@ test('common initialization completes after removing the old blocking consent ga
  const window={location:{pathname:'/'},addEventListener(){},dispatchEvent(){}};
  vm.runInNewContext(await readFile(new URL('../assets/js/core-ui.js',import.meta.url),'utf8'),{document,window,CustomEvent:class{},localStorage:{getItem:()=>null,setItem(){}}});
  assert.doesNotThrow(()=>window.SimuLab.initCommonUI('home'));assert.equal(attrs.get('data-theme'),'light');
- assert.equal(window.SimuLab.SITE_MENU.flatMap(g=>g.items).length,51);
+ assert.equal(window.SimuLab.SITE_MENU.flatMap(g=>g.items).length,52);
 });
 
 test('sensitive disclosures distinguish entertainment, health, financial estimates and statistics',async()=>{

@@ -6,7 +6,8 @@
     "test": "node --test tests/*.test.mjs",
     "events:audit": "node scripts/audit-events.mjs",
     "events:collect": "node scripts/collect-event-candidates.mjs",
-    "preview": "node scripts/preview.mjs --port=4180"
+    "preview": "node scripts/preview.mjs --port=4180",
+    "deals:audit": "node scripts/audit-deals.mjs"
   },
   "engines": {
     "node": ">=22"

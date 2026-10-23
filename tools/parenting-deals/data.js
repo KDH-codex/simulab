@@ -1,0 +1,250 @@
+// Generated from editorially reviewed records. Build dates do not change checkedAt.
+export const SHOPS = [
+  {
+    "id": "motherk",
+    "name": "마더케이몰",
+    "operator": "주식회사 마더케이",
+    "category": "supplies",
+    "mark": "M",
+    "title": "젖병 세척용품 세트 표시가격",
+    "mode": "summary",
+    "type": "sale",
+    "priceWon": 57000,
+    "highlight": "57,000원",
+    "summary": "공식몰 메인에서 젖병 세척용품 풀 세트의 표시가격을 확인했습니다.",
+    "conditions": [
+      "구성: 스탠드 건조대·집게·스펀지 세척솔 2종·젖병 세정제. 구성 변경 여부를 확인하세요.",
+      "회원 쿠폰·추가 증정품을 금액으로 환산하거나 표시가격에서 차감하지 않았습니다.",
+      "종료일과 선택 옵션별 재고는 확인하지 못했습니다. 결제 전 상품 상세를 확인하세요."
+    ],
+    "shipping": "배송료·제주·도서산간 추가요금은 상품·배송지에 따라 공식몰에서 확인",
+    "reviewWithinHours": 24,
+    "sourceUrl": "https://motherkmall.co.kr/",
+    "identityUrl": "https://www.motherk.co.kr/company/shop_online.html",
+    "termsUrl": "https://motherkmall.co.kr/member/mall_agreement.html",
+    "allowedHosts": [
+      "motherkmall.co.kr",
+      "www.motherk.co.kr"
+    ],
+    "rightsStatus": "facts-only",
+    "rightsNote": "공식몰과 제조사 안내로 운영 주체를 대조했습니다. 약관 제22조의 지적재산권 귀속 정보 이용 제한을 검토해, 공개된 상품명·구성·표시가격만 자체 문장으로 정리했습니다. 사진·설명문·배너를 전재하지 않았으며, 포괄적 이용허락을 받은 것은 아닙니다.",
+    "checkedAt": "2026-10-24T01:14:47+09:00"
+  },
+  {
+    "id": "bebesup",
+    "name": "베베숲 공식몰",
+    "operator": "주식회사 아르케인터내셔날",
+    "category": "supplies",
+    "mark": "B",
+    "title": "신규 가입 회원 쿠폰 안내",
+    "mode": "summary",
+    "type": "coupon",
+    "highlight": "가입 시 2,000원 쿠폰",
+    "summary": "공식 멤버십 안내에 신규 가입 회원용 정액 할인 쿠폰이 표시되어 있습니다.",
+    "eligibility": "공식몰 신규 가입 회원",
+    "conditions": [
+      "모든 혜택 쿠폰은 10,000원 이상 구매할 때 사용하도록 안내되어 있습니다.",
+      "쿠폰을 내려받아야 하며, 다른 쿠폰과 중복 사용할 수 없습니다.",
+      "쿠폰별 대상 상품·발급 여부·유효기간은 회원 화면에서 확인하세요. 적립 포인트는 현금 할인과 별개입니다."
+    ],
+    "shipping": "상품·배송지별 최종 배송료를 공식몰에서 확인",
+    "reviewWithinHours": 168,
+    "sourceUrl": "https://www.bebesup.co.kr/mypage/membership",
+    "identityUrl": "https://www.bebesup.co.kr/",
+    "termsUrl": "https://www.bebesup.co.kr/service/agreement",
+    "allowedHosts": [
+      "www.bebesup.co.kr"
+    ],
+    "rightsStatus": "facts-only",
+    "rightsNote": "공식몰 하단의 운영사와 멤버십 안내를 대조했습니다. 약관 제22조는 지적재산권 귀속 정보의 영리 이용을 제한합니다. 혜택의 금액·최소 구매 조건만 자체 요약하고 디자인·사진·홍보 문구는 전재하지 않았습니다. 별도 이용허락을 받은 자료는 아닙니다.",
+    "checkedAt": "2026-10-24T01:14:47+09:00"
+  },
+  {
+    "id": "toytron",
+    "name": "토이트론몰",
+    "operator": "주식회사 토이트론",
+    "category": "toys",
+    "mark": "T",
+    "title": "달님이 요술봉 화장대 표시가격",
+    "mode": "summary",
+    "type": "sale",
+    "priceWon": 40000,
+    "highlight": "40,000원",
+    "summary": "공식몰에서 ‘달님이 멜로디 요술봉 화장대’의 표시가격을 확인했습니다.",
+    "conditions": [
+      "단일 상품의 확인 당시 가격이며 전체 완구에 적용되는 할인은 아닙니다.",
+      "별도 쿠폰이나 회원 적립금을 차감하지 않은 표시가격입니다.",
+      "할인 종료일·현재 재고·추가 옵션 가격은 확인하지 못했습니다. 사용 연령·구성은 공식 상품 안내를 확인하세요."
+    ],
+    "shipping": "배송료와 무료배송 적용 여부는 상품·배송지에 따라 공식몰에서 확인",
+    "reviewWithinHours": 24,
+    "sourceUrl": "https://toytronmall.co.kr/goods/goods_view.php?goodsNo=1000004101",
+    "identityUrl": "https://toytronmall.co.kr/",
+    "termsUrl": "https://toytronmall.co.kr/service/agreement.php",
+    "allowedHosts": [
+      "toytronmall.co.kr"
+    ],
+    "rightsStatus": "facts-only",
+    "rightsNote": "공식몰 사업자 표시와 공개 상품 목록을 대조했습니다. 약관 제22조의 지적재산권 귀속 정보 제한을 검토해 상품명·표시가격 사실만 자체 정리했습니다. 상세 설명·캐릭터 이미지·사진은 사용하지 않았습니다. 판매 가능 재고를 보장하지 않습니다.",
+    "checkedAt": "2026-10-24T01:14:47+09:00"
+  },
+  {
+    "id": "atopalm",
+    "name": "아토팜샵",
+    "operator": "주식회사 네오팜",
+    "category": "supplies",
+    "mark": "A",
+    "title": "섬유유연제 1,000ml 표시가격",
+    "mode": "summary",
+    "type": "sale",
+    "priceWon": 18000,
+    "highlight": "18,000원",
+    "summary": "튤립 블라썸 섬유유연제 1,000ml의 공식 상품 페이지 표시가격입니다.",
+    "conditions": [
+      "단일 상품·용량의 표시가격이며 다른 향·세트·정기배송에 같은 가격을 약속하지 않습니다.",
+      "상품 페이지는 비회원·네이버페이 구매 시 사은품 제외를 안내합니다. 사은품·적립금은 표시가격에서 빼지 않았습니다.",
+      "종료일과 실제 주문 가능한 재고는 확인하지 못했습니다. 효능·저자극·안전성을 시뮬랩이 검증한 상품 추천이 아닙니다."
+    ],
+    "shipping": "상품 페이지 안내: 3,000원, 30,000원 이상 무료. 도서산간 등 추가요금은 결제 전 확인",
+    "reviewWithinHours": 24,
+    "sourceUrl": "https://www.neopharmshop.co.kr/product/detail.html?product_no=2230",
+    "identityUrl": "https://www.neopharmshop.co.kr/",
+    "termsUrl": "https://www.neopharmshop.co.kr/member/mall_agreement.html",
+    "allowedHosts": [
+      "www.neopharmshop.co.kr"
+    ],
+    "rightsStatus": "facts-only",
+    "rightsNote": "공식몰 운영사와 상품 페이지를 대조했습니다. 약관 제23조의 지적재산권 귀속 정보 이용 제한을 검토해 품목·용량·표시가격·배송 조건만 자체 요약했습니다. 사진·후기·제품 효능 설명을 전재하지 않았으며 별도 이용허락을 받았다는 의미는 아닙니다.",
+    "checkedAt": "2026-10-24T01:14:47+09:00"
+  },
+  {
+    "id": "topten",
+    "name": "탑텐·탑텐키즈",
+    "operator": "신성통상 주식회사 · 굿웨어몰",
+    "category": "clothing",
+    "mark": "10",
+    "title": "공식 행사 안내",
+    "mode": "link",
+    "type": "guide",
+    "sourceUrl": "https://display.goodwearmall.com/special/300315/view",
+    "identityUrl": "https://display.goodwearmall.com/main",
+    "termsUrl": "https://www.goodwearmall.com/public/common/terms?termCd=SITE_USEF_STPLAT_FO",
+    "allowedHosts": [
+      "display.goodwearmall.com",
+      "www.goodwearmall.com"
+    ],
+    "rightsStatus": "link-only",
+    "rightsNote": "약관 제27조에 정보의 영리 목적 재이용 제한이 있어 세부 기간·가격·적립 조건을 옮기지 않습니다. 공식몰에서 직접 확인하도록 연결합니다.",
+    "linkNote": "키즈 대상 품목과 행사별 적용 조건은 연결된 공식 기획전에서 확인하세요.",
+    "shipping": "공식몰 확인",
+    "checkedAt": "2026-10-24T01:14:47+09:00"
+  },
+  {
+    "id": "lego",
+    "name": "레고 공식 온라인샵",
+    "operator": "레고코리아 주식회사 · LEGO System A/S",
+    "category": "toys",
+    "mark": "L",
+    "title": "공식 프로모션 안내",
+    "mode": "link",
+    "type": "guide",
+    "sourceUrl": "https://www.lego.com/ko-kr/page/lego-offers-promotions",
+    "identityUrl": "https://www.lego.com/ko-kr/",
+    "termsUrl": "https://www.lego.com/ko-kr/legal/terms-of-use/",
+    "allowedHosts": [
+      "www.lego.com"
+    ],
+    "rightsStatus": "link-only",
+    "rightsNote": "공식 이용약관은 상업적 콘텐츠 재게시와 데이터 마이닝 등의 이용을 제한합니다. 프로모션 세부 내용·가격·사진을 전재하지 않고 공식 안내로 연결합니다.",
+    "linkNote": "할인·사은품의 대상, 최소 구매액, 종료일과 재고 조건은 공식 안내에서 직접 확인하세요.",
+    "shipping": "공식몰 확인",
+    "checkedAt": "2026-10-24T01:14:47+09:00"
+  },
+  {
+    "id": "agabang",
+    "name": "아가방몰",
+    "operator": "주식회사 아가방앤컴퍼니",
+    "category": "clothing",
+    "mark": "a",
+    "title": "공식 멤버십 안내",
+    "mode": "link",
+    "type": "guide",
+    "sourceUrl": "https://agabangmall.com/membership.html",
+    "identityUrl": "https://agabangmall.com/",
+    "termsUrl": "https://agabangmall.com/member/mall_agreement.html",
+    "allowedHosts": [
+      "agabangmall.com"
+    ],
+    "rightsStatus": "link-only",
+    "rightsNote": "약관 제18조에 회원이 얻은 정보의 영리 목적 재이용 제한이 있습니다. 적용 범위를 추가 확인하기 전 회원 등급별 할인율·적립률을 옮기지 않고 공식 안내로 연결합니다.",
+    "linkNote": "등급별 혜택과 쿠폰 중복 적용 여부를 공식 멤버십 페이지에서 확인하세요.",
+    "shipping": "공식몰 확인",
+    "checkedAt": "2026-10-24T01:14:47+09:00"
+  },
+  {
+    "id": "petitelin",
+    "name": "쁘띠엘린 스토어",
+    "operator": "주식회사 쁘띠엘린",
+    "category": "toys",
+    "mark": "p",
+    "title": "공식몰 특가·기획전 안내",
+    "mode": "link",
+    "type": "guide",
+    "sourceUrl": "https://www.petitelinstore.com/",
+    "identityUrl": "https://www.petitelinstore.com/",
+    "termsUrl": "https://petitelinstore.com/views/etc/agreement",
+    "allowedHosts": [
+      "www.petitelinstore.com",
+      "petitelinstore.com"
+    ],
+    "rightsStatus": "pending",
+    "rightsNote": "운영사·공식 상품 목록은 확인했습니다. 약관 전문 열람과 일부 기획전의 현재 조건 대조가 완료되지 않아 상세 가격·기간을 게시하지 않습니다. 공식몰 링크만 안내합니다.",
+    "linkNote": "완구·육아용품의 특가 상품과 기획전 조건을 공식몰에서 직접 확인하세요.",
+    "shipping": "공식몰 확인",
+    "checkedAt": "2026-10-24T01:14:47+09:00"
+  },
+  {
+    "id": "uniqlo",
+    "name": "유니클로 공식 온라인스토어",
+    "operator": "에프알엘코리아 주식회사",
+    "category": "clothing",
+    "mark": "U",
+    "title": "키즈 가격인하 코너",
+    "mode": "link",
+    "type": "guide",
+    "sourceUrl": "https://store-kr.uniqlo.com/kr/ko/feature/sale/kids",
+    "identityUrl": "https://www.uniqlo.com/kr/ko/kids",
+    "termsUrl": "https://faq-kr.uniqlo.com/pkb_Home_UQ_KR?id=kA0Ie000000TO0f",
+    "allowedHosts": [
+      "store-kr.uniqlo.com",
+      "www.uniqlo.com",
+      "faq-kr.uniqlo.com"
+    ],
+    "rightsStatus": "link-only",
+    "rightsNote": "약관 제22조는 사진 등 저작물 이용과 취득 정보의 영리 목적 재이용을 제한합니다. 상품별 가격·할인율을 옮기지 않고 공식 가격인하 코너로 연결합니다.",
+    "linkNote": "아동복 가격인하 품목을 확인하는 공식 페이지입니다. 판매 사이즈·색상·매장별 재고를 확인하세요.",
+    "shipping": "공식몰 확인",
+    "checkedAt": "2026-10-24T01:14:47+09:00"
+  },
+  {
+    "id": "hm",
+    "name": "H&M 공식 온라인스토어",
+    "operator": "에이치앤엠헤네스 앤 모리츠 주식회사",
+    "category": "clothing",
+    "mark": "H",
+    "title": "키즈 세일 코너",
+    "mode": "link",
+    "type": "guide",
+    "sourceUrl": "https://www2.hm.com/ko_kr/kids/sale/2-8-years.html",
+    "identityUrl": "https://www2.hm.com/ko_kr/customer-service/contact.html",
+    "termsUrl": "https://www2.hm.com/ko_kr/customer-service/legal-and-privacy/terms-and-conditions.html",
+    "allowedHosts": [
+      "www2.hm.com"
+    ],
+    "rightsStatus": "link-only",
+    "rightsNote": "약관은 개인적·비영리적 용도 외 콘텐츠 사용에 허가를 요구합니다. 개별 상품 가격·할인율·이미지는 게시하지 않고 공식 세일 코너를 안내합니다.",
+    "linkNote": "키즈 세일 상품을 공식몰에서 살펴보세요. 품목별 할인·사이즈·재고는 원문에서 확인하세요.",
+    "shipping": "공식몰 확인",
+    "checkedAt": "2026-10-24T01:14:47+09:00"
+  }
+];

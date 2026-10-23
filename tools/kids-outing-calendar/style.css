@@ -127,3 +127,5 @@ body:has(.outing) { background:#f6f8f4; }
   .outing-region-panel summary span { display:block; margin:5px 0 0 16px; }
 }
 @media(max-width:480px) { .outing-region-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+/* Shortcuts shared by the two family information pages. */
+.family-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}.family-tabs a{font-size:12px;border:1px solid #cfddcf;border-radius:24px;padding:9px 15px;text-decoration:none;color:#416e54}.family-tabs a[aria-current]{background:#1c674d;color:#fff;border-color:#1c674d}

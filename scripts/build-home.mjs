@@ -13,8 +13,8 @@ const href=t=>'/tools/'+t.tool+'/';
 const card=(t,featured=false)=>`<a class="tool-card${featured?' featured':''}" href="${href(t)}" data-tool="${esc(t.tool)}" data-category="${esc(t.category)}" data-search="${esc([t.title,t.sub,t.categoryLabel].join(' '))}"><span class="tool-card-top"><span class="tool-symbol" aria-hidden="true">${icons[t.tool]||'↗'}</span><span class="tool-category">${esc(t.categoryLabel)}</span></span><h3>${esc(t.title)}</h3><p>${esc(t.sub)}</p><span class="tool-open">도구 열기 <span aria-hidden="true">↗</span></span></a>`;
 const today=koreaToday(),weekend=weekendRange(today);
 const events=selectAcrossRegions(filterEvents({...weekend,today,includeEnded:false},FESTIVALS),3);
-const title='시뮬랩 — 생활 계산기, 통계와 주말 나들이';
-const description='평수·할인율·만나이부터 돈 계산과 주말 나들이까지. 필요한 도구를 찾고, 가정과 출처를 확인하며 비교해 보세요.';
+const title='시뮬랩 — 아이와 가볼 만한 곳, 육아 할인정보와 생활 도구';
+const description='아이와 가볼 만한 곳 달력과 육아용품 공식몰 할인·혜택을 먼저 살펴보세요. 생활 계산기와 통계까지 출처와 조건을 확인하며 비교할 수 있습니다.';
 const html=`<!doctype html>
 <html lang="ko" data-default-theme="light" data-theme="light">
 <head>
@@ -32,9 +32,10 @@ const html=`<!doctype html>
 <body class="home-page">
 <a class="home-skip" href="#main">본문으로 건너뛰기</a><header id="site-header"></header>
 <main id="main" class="home-main">
+<section class="family-first" aria-labelledby="family-title"><div class="family-first-heading"><div><p class="home-eyebrow">우리 가족의 주말과 일상</p><h1 id="family-title">함께 나가고,<br class="family-mobile-break"> 알뜰하게 준비해요.</h1></div><p>아이와 보내는 하루에<br>필요한 정보부터 모았습니다.</p></div><div class="family-feature-grid"><a class="family-feature outing-feature" href="/tools/kids-outing-calendar/"><span class="family-feature-label">아이와 가볼 만한 곳</span><h2>이번 주말,<br>어디로 가볼까요?</h2><p>지역·날짜별 축제와 행사<br>공식 일정 · 비용 · 예약 안내</p><span class="family-feature-cta">나들이 달력 보기 <b aria-hidden="true">↗</b></span><span class="family-art calendar-art" aria-hidden="true"><i></i><small>WEEKEND</small><strong>토 <em>일</em></strong><span>＋ · ·</span></span></a><a class="family-feature shopping-feature" href="/tools/parenting-deals/"><span class="family-feature-label">새로 만나는 육아 할인정보</span><h2>육아 쇼핑,<br>조건까지 알뜰하게.</h2><p>육아용품 · 아이 옷 · 장난감<br>공식몰 10곳의 세일·혜택 안내</p><span class="family-feature-cta">공식몰 혜택 살펴보기 <b aria-hidden="true">↗</b></span><span class="family-art coupon-art" aria-hidden="true"><small>CHECK FIRST</small><strong>%</strong><span>조건까지 확인</span></span></a></div><p class="family-first-note">나들이는 방문 전 운영 공지를, 쇼핑은 구매 전 공식몰의 최종 조건을 확인해 주세요.</p></section>
 <section class="home-hero" aria-labelledby="home-title"><div>
 <p class="home-eyebrow"><span></span> 일상에 필요한 작은 실험실</p>
-<h1 id="home-title">계산하고, 비교하고.<br><em>선택을 조금 더 쉽게.</em></h1>
+<h2 id="home-title">계산하고, 비교하고.<br><em>선택을 조금 더 쉽게.</em></h2>
 <p class="hero-copy">돈과 생활 속 궁금한 숫자부터 이번 주말 나들이까지.<br class="desktop-break"> 필요한 도구를 찾아 가볍게 확인해 보세요.</p>
 <form class="home-search" role="search"><label for="tool-search" class="sr-only">도구 검색</label><span aria-hidden="true">⌕</span><input id="tool-search" type="search" maxlength="100" placeholder="무엇을 알아볼까요? 평수, 할인율, 나들이…" autocomplete="off"><button type="submit">찾기</button></form>
 <p class="search-suggestions">이런 도구를 찾으세요? <a href="/tools/area-pyeong-calc/">평수 변환</a><a href="/tools/percent-discount-calc/">할인율</a><a href="/tools/kids-outing-calendar/">주말 나들이</a></p>
