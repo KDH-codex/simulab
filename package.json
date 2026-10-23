@@ -4,6 +4,8 @@
   "scripts": {
     "build": "node scripts/build-site.mjs",
     "test": "node --test tests/*.test.mjs",
+    "events:audit": "node scripts/audit-events.mjs",
+    "events:collect": "node scripts/collect-event-candidates.mjs",
     "preview": "node scripts/preview.mjs --port=4180"
   },
   "engines": {

@@ -1,6 +1,186 @@
-// Manually reviewed facts; see docs/event-editorial-policy.md.
-// Never advance checkedAt without reviewing this edition's official notice.
-export const DATA_REVIEWED_AT = '2026-10-23';
+// Generated from data/events/reviewed.json. Edit reviewed records, not this file.
+// checkedAt is an editorial review date, never a build or collection timestamp.
+export const DATA_REVIEWED_AT = "2026-10-23";
+export const REGION_SOURCES = [
+  {
+    "region": "서울",
+    "searchQuery": "서울 축제 행사 가족 어린이 공식",
+    "sources": [
+      {
+        "publisher": "문화체육관광부·한국관광공사",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalList.jsp?pSido=01"
+      }
+    ]
+  },
+  {
+    "region": "경기",
+    "searchQuery": "경기 축제 행사 가족 어린이 공식",
+    "sources": [
+      {
+        "publisher": "문화체육관광부·한국관광공사",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalList.jsp?pSido=10"
+      }
+    ]
+  },
+  {
+    "region": "인천",
+    "searchQuery": "인천 축제 행사 가족 어린이 공식",
+    "sources": [
+      {
+        "publisher": "문화체육관광부·한국관광공사",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalList.jsp?pSido=04"
+      }
+    ]
+  },
+  {
+    "region": "강원",
+    "searchQuery": "강원 축제 행사 가족 어린이 공식",
+    "sources": [
+      {
+        "publisher": "문화체육관광부·한국관광공사",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalList.jsp?pSido=11"
+      }
+    ]
+  },
+  {
+    "region": "대전",
+    "searchQuery": "대전 축제 행사 가족 어린이 공식",
+    "sources": [
+      {
+        "publisher": "문화체육관광부·한국관광공사",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalList.jsp?pSido=06"
+      }
+    ]
+  },
+  {
+    "region": "세종",
+    "searchQuery": "세종 축제 행사 가족 어린이 공식",
+    "sources": [
+      {
+        "publisher": "문화체육관광부·한국관광공사",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalList.jsp?pSido=08"
+      },
+      {
+        "publisher": "세종시문화관광재단",
+        "url": "https://www.sjcf.or.kr/index.do"
+      }
+    ]
+  },
+  {
+    "region": "충북",
+    "searchQuery": "충북 축제 행사 가족 어린이 공식",
+    "sources": [
+      {
+        "publisher": "문화체육관광부·한국관광공사",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalList.jsp?pSido=12"
+      }
+    ]
+  },
+  {
+    "region": "충남",
+    "searchQuery": "충남 축제 행사 가족 어린이 공식",
+    "sources": [
+      {
+        "publisher": "문화체육관광부·한국관광공사",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalList.jsp?pSido=13"
+      }
+    ]
+  },
+  {
+    "region": "광주",
+    "searchQuery": "광주 축제 행사 가족 어린이 공식",
+    "sources": [
+      {
+        "publisher": "문화체육관광부·한국관광공사",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalList.jsp?pSido=15"
+      },
+      {
+        "publisher": "김대중컨벤션센터",
+        "url": "https://kdjcenter.gjto.or.kr/events/gallery"
+      }
+    ]
+  },
+  {
+    "region": "전북",
+    "searchQuery": "전북 축제 행사 가족 어린이 공식",
+    "sources": [
+      {
+        "publisher": "문화체육관광부·한국관광공사",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalList.jsp?pSido=14"
+      }
+    ]
+  },
+  {
+    "region": "전남",
+    "searchQuery": "전남 축제 행사 가족 어린이 공식",
+    "sources": [
+      {
+        "publisher": "문화체육관광부·한국관광공사",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalList.jsp?pSido=15"
+      }
+    ]
+  },
+  {
+    "region": "대구",
+    "searchQuery": "대구 축제 행사 가족 어린이 공식",
+    "sources": [
+      {
+        "publisher": "문화체육관광부·한국관광공사",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalList.jsp?pSido=03"
+      }
+    ]
+  },
+  {
+    "region": "부산",
+    "searchQuery": "부산 축제 행사 가족 어린이 공식",
+    "sources": [
+      {
+        "publisher": "문화체육관광부·한국관광공사",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalList.jsp?pSido=02"
+      }
+    ]
+  },
+  {
+    "region": "울산",
+    "searchQuery": "울산 축제 행사 가족 어린이 공식",
+    "sources": [
+      {
+        "publisher": "문화체육관광부·한국관광공사",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalList.jsp?pSido=07"
+      }
+    ]
+  },
+  {
+    "region": "경북",
+    "searchQuery": "경북 축제 행사 가족 어린이 공식",
+    "sources": [
+      {
+        "publisher": "문화체육관광부·한국관광공사",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalList.jsp?pSido=16"
+      }
+    ]
+  },
+  {
+    "region": "경남",
+    "searchQuery": "경남 축제 행사 가족 어린이 공식",
+    "sources": [
+      {
+        "publisher": "문화체육관광부·한국관광공사",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalList.jsp?pSido=17"
+      }
+    ]
+  },
+  {
+    "region": "제주",
+    "searchQuery": "제주 축제 행사 가족 어린이 공식",
+    "sources": [
+      {
+        "publisher": "문화체육관광부·한국관광공사",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalList.jsp?pSido=18"
+      }
+    ]
+  }
+];
 export const FESTIVALS = [
   {
     "id": "seoul-drone-2026",
@@ -360,6 +540,836 @@ export const FESTIVALS = [
         "title": "2026 제주올레걷기축제",
         "url": "https://www.visitjeju.net/kr/festival/view?contentsid=CNTS_300000000014508&menuId=DOM_000001718007000000",
         "facts": "11월 5~7일 19·20코스, 시간·참가비·사전신청 종료일 확인.",
+        "checkedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "id": "mcst-13344-2026",
+    "title": "2026 부산종합민속예술제",
+    "region": "부산",
+    "theme": "kids",
+    "startDate": "2026-10-24",
+    "endDate": "2026-10-25",
+    "time": "11:00~17:00",
+    "location": "부산시민공원 다솜광장",
+    "program": "무형유산 공연·전통놀이·만들기 체험",
+    "feeStatus": "free",
+    "fee": "입장·기본 관람 무료(공식 공지 기준) · 선택 체험 비용 별도 확인",
+    "booking": "사전예약·현장 접수 여부는 프로그램별 공식 안내 확인 · 잔여석 미조회",
+    "familyNote": "일반 축제도 포함합니다. 어린이 참여 연령, 혼잡도와 개별 체험 조건은 방문 전에 확인하세요.",
+    "scheduleType": "period",
+    "scheduleNote": "공식 안내의 개최기간입니다. 휴무일과 개별 프로그램의 운영일·시간은 별도로 확인하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-10-23",
+    "sources": [
+      {
+        "publisher": "문화체육관광부(한국관광공사 연계)",
+        "title": "부산종합민속예술제 상세 공지",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13344",
+        "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
+        "checkedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "id": "mcst-12777-2026",
+    "title": "2026 부산글로벌웹툰페스티벌",
+    "region": "부산",
+    "theme": "kids",
+    "startDate": "2026-10-30",
+    "endDate": "2026-11-01",
+    "time": "10:00 ~ 19:00",
+    "location": "부산문화콘텐츠콤플렉스",
+    "program": "웹툰 전시·작가 프로그램·가족 만화그리기",
+    "feeStatus": "free",
+    "fee": "입장·기본 관람 무료(공식 공지 기준) · 선택 체험 비용 별도 확인",
+    "booking": "사전예약·현장 접수 여부는 프로그램별 공식 안내 확인 · 잔여석 미조회",
+    "familyNote": "일반 축제도 포함합니다. 어린이 참여 연령, 혼잡도와 개별 체험 조건은 방문 전에 확인하세요.",
+    "scheduleType": "period",
+    "scheduleNote": "공식 안내의 개최기간입니다. 휴무일과 개별 프로그램의 운영일·시간은 별도로 확인하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-10-23",
+    "sources": [
+      {
+        "publisher": "문화체육관광부(한국관광공사 연계)",
+        "title": "부산글로벌웹툰페스티벌 상세 공지",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=12777",
+        "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
+        "checkedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "id": "mcst-13337-2026",
+    "title": "2026 떡볶이 페스티벌",
+    "region": "대구",
+    "theme": "food",
+    "startDate": "2026-10-23",
+    "endDate": "2026-10-25",
+    "time": "11:00~21:30",
+    "location": "대구iM뱅크PARK",
+    "program": "떡볶이 판매와 공연·참여 이벤트",
+    "feeStatus": "mixed",
+    "fee": "공지상 입장 무료 · 음식 구매와 유료 체험 여부 별도 확인",
+    "booking": "사전예약·현장 접수 여부는 프로그램별 공식 안내 확인 · 잔여석 미조회",
+    "familyNote": "일반 축제도 포함합니다. 어린이 참여 연령, 혼잡도와 개별 체험 조건은 방문 전에 확인하세요.",
+    "scheduleType": "period",
+    "scheduleNote": "공식 안내의 개최기간입니다. 휴무일과 개별 프로그램의 운영일·시간은 별도로 확인하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-10-23",
+    "sources": [
+      {
+        "publisher": "문화체육관광부(한국관광공사 연계)",
+        "title": "떡볶이 페스티벌 상세 공지",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13337",
+        "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
+        "checkedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "id": "mcst-12851-2026",
+    "title": "2026 드림파크 국화축제",
+    "region": "인천",
+    "theme": "nature",
+    "startDate": "2026-10-16",
+    "endDate": "2026-10-25",
+    "time": "10:00~18:00(17:00입장마감)",
+    "location": "드림파크 야생화단지",
+    "program": "국화·가을꽃 관람과 전시·체험",
+    "feeStatus": "free",
+    "fee": "입장·기본 관람 무료(공식 공지 기준) · 선택 체험 비용 별도 확인",
+    "booking": "사전예약·현장 접수 여부는 프로그램별 공식 안내 확인 · 잔여석 미조회",
+    "familyNote": "운영 재개 안내 이후에도 체험·공연은 복구 상황에 따라 달라질 수 있습니다. 출발 전 주최기관 공지를 확인하세요.",
+    "scheduleType": "period",
+    "scheduleNote": "공식 안내의 개최기간입니다. 휴무일과 개별 프로그램의 운영일·시간은 별도로 확인하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-10-23",
+    "sources": [
+      {
+        "publisher": "문화체육관광부(한국관광공사 연계)",
+        "title": "드림파크 국화축제 상세 공지",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=12851",
+        "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
+        "checkedAt": "2026-10-23"
+      },
+      {
+        "publisher": "수도권매립지관리공사",
+        "title": "2026 드림파크 국화축제 운영 재개 공지",
+        "url": "https://slc.or.kr/",
+        "facts": "홈 공지에서 10/19 운영 재개와 일부 체험·공연 복구 안내를 확인. 개최기간과 요금은 문체부 상세 공지에 근거함.",
+        "checkedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "id": "mcst-13561-2026",
+    "title": "2026 대전 서구 책축제",
+    "region": "대전",
+    "theme": "kids",
+    "startDate": "2026-10-24",
+    "endDate": "2026-10-24",
+    "time": "13:00~17:00",
+    "location": "월평도서관, 갈마문화공원",
+    "program": "그림책 전시·작가 프로그램·독서 체험",
+    "feeStatus": "free",
+    "fee": "입장·기본 관람 무료(공식 공지 기준) · 선택 체험 비용 별도 확인",
+    "booking": "사전예약·현장 접수 여부는 프로그램별 공식 안내 확인 · 잔여석 미조회",
+    "familyNote": "일반 축제도 포함합니다. 어린이 참여 연령, 혼잡도와 개별 체험 조건은 방문 전에 확인하세요.",
+    "scheduleType": "continuous",
+    "scheduleNote": "공식 안내의 개최기간입니다. 휴무일과 개별 프로그램의 운영일·시간은 별도로 확인하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-10-23",
+    "sources": [
+      {
+        "publisher": "문화체육관광부(한국관광공사 연계)",
+        "title": "대전 서구 책축제 상세 공지",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13561",
+        "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
+        "checkedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "id": "mcst-13551-2026",
+    "title": "2026 대덕대청호물결축제",
+    "region": "대전",
+    "theme": "kids",
+    "startDate": "2026-10-23",
+    "endDate": "2026-10-25",
+    "time": "11:00~21:00(일 11:00~16:00)",
+    "location": "금강로하스대청공원 일원",
+    "program": "대청호 야외공연과 어린이 프로그램",
+    "feeStatus": "free",
+    "fee": "입장·기본 관람 무료(공식 공지 기준) · 선택 체험 비용 별도 확인",
+    "booking": "사전예약·현장 접수 여부는 프로그램별 공식 안내 확인 · 잔여석 미조회",
+    "familyNote": "일반 축제도 포함합니다. 어린이 참여 연령, 혼잡도와 개별 체험 조건은 방문 전에 확인하세요.",
+    "scheduleType": "period",
+    "scheduleNote": "공식 안내의 개최기간입니다. 휴무일과 개별 프로그램의 운영일·시간은 별도로 확인하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-10-23",
+    "sources": [
+      {
+        "publisher": "문화체육관광부(한국관광공사 연계)",
+        "title": "대덕대청호물결축제 상세 공지",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13551",
+        "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
+        "checkedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "id": "mcst-13542-2026",
+    "title": "2026 울산 중구 국가유산야행",
+    "region": "울산",
+    "theme": "light",
+    "startDate": "2026-10-23",
+    "endDate": "2026-10-25",
+    "time": "17:00~22:00",
+    "location": "울산동헌및 내아, 경상좌도 병영성",
+    "program": "문화유산 야간 관람과 역사 체험",
+    "feeStatus": "mixed",
+    "fee": "관람 무료 · 일부 체험 5천~1만원",
+    "booking": "사전예약·현장 접수 여부는 프로그램별 공식 안내 확인 · 잔여석 미조회",
+    "familyNote": "일반 축제도 포함합니다. 어린이 참여 연령, 혼잡도와 개별 체험 조건은 방문 전에 확인하세요.",
+    "scheduleType": "period",
+    "scheduleNote": "공식 안내의 개최기간입니다. 휴무일과 개별 프로그램의 운영일·시간은 별도로 확인하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-10-23",
+    "sources": [
+      {
+        "publisher": "문화체육관광부(한국관광공사 연계)",
+        "title": "울산 중구 국가유산야행 상세 공지",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13542",
+        "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
+        "checkedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "id": "mcst-13566-2026",
+    "title": "2026 한미친선 문화 한마당",
+    "region": "경기",
+    "theme": "kids",
+    "startDate": "2026-10-24",
+    "endDate": "2026-10-25",
+    "time": "13:00 - 20:00",
+    "location": "K-55 정문앞 신장쇼핑몰 일대",
+    "program": "한·미 문화·영어 체험 부스와 공연",
+    "feeStatus": "mixed",
+    "fee": "입장 무료 · 음식과 일부 체험 유료",
+    "booking": "사전예약·현장 접수 여부는 프로그램별 공식 안내 확인 · 잔여석 미조회",
+    "familyNote": "일반 축제도 포함합니다. 어린이 참여 연령, 혼잡도와 개별 체험 조건은 방문 전에 확인하세요.",
+    "scheduleType": "period",
+    "scheduleNote": "공식 안내의 개최기간입니다. 휴무일과 개별 프로그램의 운영일·시간은 별도로 확인하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-10-23",
+    "sources": [
+      {
+        "publisher": "문화체육관광부(한국관광공사 연계)",
+        "title": "한미친선 문화 한마당 상세 공지",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13566",
+        "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
+        "checkedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "id": "mcst-13334-2026",
+    "title": "2026 연천 국화축제",
+    "region": "경기",
+    "theme": "nature",
+    "startDate": "2026-10-16",
+    "endDate": "2026-10-25",
+    "time": "09:00~18:00",
+    "location": "연천 전곡리 유적",
+    "program": "국화 경관·포토존과 역사 연계 전시",
+    "feeStatus": "paid",
+    "fee": "유료 안내 · 정확한 금액과 감면 조건 확인 필요",
+    "booking": "사전예약·현장 접수 여부는 프로그램별 공식 안내 확인 · 잔여석 미조회",
+    "familyNote": "일반 축제도 포함합니다. 어린이 참여 연령, 혼잡도와 개별 체험 조건은 방문 전에 확인하세요.",
+    "scheduleType": "period",
+    "scheduleNote": "공식 안내의 개최기간입니다. 휴무일과 개별 프로그램의 운영일·시간은 별도로 확인하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-10-23",
+    "sources": [
+      {
+        "publisher": "문화체육관광부(한국관광공사 연계)",
+        "title": "연천 국화축제 상세 공지",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13334",
+        "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
+        "checkedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "id": "mcst-12899-2026",
+    "title": "2026 원주만두축제",
+    "region": "강원",
+    "theme": "food",
+    "startDate": "2026-10-23",
+    "endDate": "2026-10-25",
+    "time": "11:00~21:00",
+    "location": "중앙동 전통시장 및 원주천, 문화의거리 일원",
+    "program": "만두 판매·시장 문화행사와 참여 프로그램",
+    "feeStatus": "mixed",
+    "fee": "공지상 입장 무료 · 음식 구매 비용 별도",
+    "booking": "사전예약·현장 접수 여부는 프로그램별 공식 안내 확인 · 잔여석 미조회",
+    "familyNote": "일반 축제도 포함합니다. 어린이 참여 연령, 혼잡도와 개별 체험 조건은 방문 전에 확인하세요.",
+    "scheduleType": "period",
+    "scheduleNote": "공식 안내의 개최기간입니다. 휴무일과 개별 프로그램의 운영일·시간은 별도로 확인하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-10-23",
+    "sources": [
+      {
+        "publisher": "문화체육관광부(한국관광공사 연계)",
+        "title": "원주만두축제 상세 공지",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=12899",
+        "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
+        "checkedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "id": "mcst-11752-2026",
+    "title": "2026 강릉커피축제",
+    "region": "강원",
+    "theme": "food",
+    "startDate": "2026-10-21",
+    "endDate": "2026-10-25",
+    "time": "10:00~20:00",
+    "location": "강릉커피거리 및 강릉시일원",
+    "program": "커피 문화·지역 콘텐츠 행사",
+    "feeStatus": "mixed",
+    "fee": "일부 유료 · 프로그램별 요금 확인 필요",
+    "booking": "사전예약·현장 접수 여부는 프로그램별 공식 안내 확인 · 잔여석 미조회",
+    "familyNote": "일반 축제도 포함합니다. 어린이 참여 연령, 혼잡도와 개별 체험 조건은 방문 전에 확인하세요.",
+    "scheduleType": "period",
+    "scheduleNote": "공식 안내의 개최기간입니다. 휴무일과 개별 프로그램의 운영일·시간은 별도로 확인하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-10-23",
+    "sources": [
+      {
+        "publisher": "문화체육관광부(한국관광공사 연계)",
+        "title": "강릉커피축제 상세 공지",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=11752",
+        "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
+        "checkedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "id": "mcst-13388-2026",
+    "title": "2026 청춘양구 펀치볼 시래기사과축제",
+    "region": "강원",
+    "theme": "food",
+    "startDate": "2026-11-06",
+    "endDate": "2026-11-08",
+    "time": "10:00~17:00",
+    "location": "양구 펀치볼 힐링하우스 앞 성황지 일원",
+    "program": "지역 농산물 소개·판매와 체험",
+    "feeStatus": "mixed",
+    "fee": "입장 무료 · 먹거리와 선택 체험 비용 별도 확인",
+    "booking": "사전예약·현장 접수 여부는 프로그램별 공식 안내 확인 · 잔여석 미조회",
+    "familyNote": "일반 축제도 포함합니다. 어린이 참여 연령, 혼잡도와 개별 체험 조건은 방문 전에 확인하세요.",
+    "scheduleType": "period",
+    "scheduleNote": "공식 안내의 개최기간입니다. 휴무일과 개별 프로그램의 운영일·시간은 별도로 확인하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-10-23",
+    "sources": [
+      {
+        "publisher": "문화체육관광부(한국관광공사 연계)",
+        "title": "청춘양구 펀치볼 시래기사과축제 상세 공지",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13388",
+        "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
+        "checkedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "id": "mcst-13539-2026",
+    "title": "2026 국가유산 미디어아트 청주",
+    "region": "충북",
+    "theme": "light",
+    "startDate": "2026-10-03",
+    "endDate": "2026-10-24",
+    "time": "19:00 ~ 22:00",
+    "location": "청주 용두사지 철당간 일원",
+    "program": "청주 문화유산을 활용한 야간 미디어아트",
+    "feeStatus": "free",
+    "fee": "입장·기본 관람 무료(공식 공지 기준) · 선택 체험 비용 별도 확인",
+    "booking": "사전예약·현장 접수 여부는 프로그램별 공식 안내 확인 · 잔여석 미조회",
+    "familyNote": "일반 축제도 포함합니다. 어린이 참여 연령, 혼잡도와 개별 체험 조건은 방문 전에 확인하세요.",
+    "scheduleType": "period",
+    "scheduleNote": "공식 안내의 개최기간입니다. 휴무일과 개별 프로그램의 운영일·시간은 별도로 확인하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-10-23",
+    "sources": [
+      {
+        "publisher": "문화체육관광부(한국관광공사 연계)",
+        "title": "국가유산 미디어아트 청주 상세 공지",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13539",
+        "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
+        "checkedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "id": "mcst-11777-2026",
+    "title": "2026 보은대추 축제",
+    "region": "충북",
+    "theme": "food",
+    "startDate": "2026-10-16",
+    "endDate": "2026-10-25",
+    "time": "10:00~20:00",
+    "location": "보은읍 뱃들공원 및 속리산 일원",
+    "program": "대추 등 농산물 판매와 문화공연",
+    "feeStatus": "mixed",
+    "fee": "공지상 입장 무료 · 농산물·먹거리 구매 비용 별도",
+    "booking": "사전예약·현장 접수 여부는 프로그램별 공식 안내 확인 · 잔여석 미조회",
+    "familyNote": "일반 축제도 포함합니다. 어린이 참여 연령, 혼잡도와 개별 체험 조건은 방문 전에 확인하세요.",
+    "scheduleType": "period",
+    "scheduleNote": "공식 안내의 개최기간입니다. 휴무일과 개별 프로그램의 운영일·시간은 별도로 확인하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-10-23",
+    "sources": [
+      {
+        "publisher": "문화체육관광부(한국관광공사 연계)",
+        "title": "보은대추 축제 상세 공지",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=11777",
+        "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
+        "checkedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "id": "mcst-11775-2026",
+    "title": "2026 예산장터 삼국축제",
+    "region": "충남",
+    "theme": "food",
+    "startDate": "2026-10-22",
+    "endDate": "2026-10-25",
+    "time": "10:00~20:00",
+    "location": "예산상설시장 일원",
+    "program": "국화 전시·전통시장 먹거리와 문화행사",
+    "feeStatus": "mixed",
+    "fee": "공지상 입장 무료 · 음식·체험 비용 별도 확인",
+    "booking": "사전예약·현장 접수 여부는 프로그램별 공식 안내 확인 · 잔여석 미조회",
+    "familyNote": "일반 축제도 포함합니다. 어린이 참여 연령, 혼잡도와 개별 체험 조건은 방문 전에 확인하세요.",
+    "scheduleType": "period",
+    "scheduleNote": "공식 안내의 개최기간입니다. 휴무일과 개별 프로그램의 운영일·시간은 별도로 확인하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-10-23",
+    "sources": [
+      {
+        "publisher": "문화체육관광부(한국관광공사 연계)",
+        "title": "예산장터 삼국축제 상세 공지",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=11775",
+        "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
+        "checkedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "id": "mcst-13555-2026",
+    "title": "2026 부여국화축제",
+    "region": "충남",
+    "theme": "nature",
+    "startDate": "2026-10-30",
+    "endDate": "2026-11-08",
+    "time": "09:00~21:00",
+    "location": "부여 궁남지 일원",
+    "program": "궁남지 국화 전시·조형물과 체험",
+    "feeStatus": "free",
+    "fee": "입장·기본 관람 무료(공식 공지 기준) · 선택 체험 비용 별도 확인",
+    "booking": "사전예약·현장 접수 여부는 프로그램별 공식 안내 확인 · 잔여석 미조회",
+    "familyNote": "일반 축제도 포함합니다. 어린이 참여 연령, 혼잡도와 개별 체험 조건은 방문 전에 확인하세요.",
+    "scheduleType": "period",
+    "scheduleNote": "공식 안내의 개최기간입니다. 휴무일과 개별 프로그램의 운영일·시간은 별도로 확인하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-10-23",
+    "sources": [
+      {
+        "publisher": "문화체육관광부(한국관광공사 연계)",
+        "title": "부여국화축제 상세 공지",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13555",
+        "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
+        "checkedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "id": "mcst-12626-2026",
+    "title": "2026 김제 자원순환 새로보미 축제",
+    "region": "전북",
+    "theme": "kids",
+    "startDate": "2026-10-30",
+    "endDate": "2026-10-31",
+    "time": "10:00~17:00",
+    "location": "김제시민문화체육공원잔디광장",
+    "program": "재활용·분리배출과 자원순환 주제 행사",
+    "feeStatus": "free",
+    "fee": "입장·기본 관람 무료(공식 공지 기준) · 선택 체험 비용 별도 확인",
+    "booking": "사전예약·현장 접수 여부는 프로그램별 공식 안내 확인 · 잔여석 미조회",
+    "familyNote": "일반 축제도 포함합니다. 어린이 참여 연령, 혼잡도와 개별 체험 조건은 방문 전에 확인하세요.",
+    "scheduleType": "period",
+    "scheduleNote": "공식 안내의 개최기간입니다. 휴무일과 개별 프로그램의 운영일·시간은 별도로 확인하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-10-23",
+    "sources": [
+      {
+        "publisher": "문화체육관광부(한국관광공사 연계)",
+        "title": "김제 자원순환 새로보미 축제 상세 공지",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=12626",
+        "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
+        "checkedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "id": "mcst-13512-2026",
+    "title": "2026 세계문화유산 화순 고인돌 가을꽃 축제",
+    "region": "전남",
+    "theme": "nature",
+    "startDate": "2026-10-16",
+    "endDate": "2026-10-25",
+    "time": "09:00~18:00",
+    "location": "화순 고인돌 유적지",
+    "program": "고인돌 유적지 가을꽃·역사문화 체험",
+    "feeStatus": "paid",
+    "fee": "일반 5,000원(지역상품권 환급 안내) · 미취학아동 등 면제 조건 공식 확인",
+    "booking": "사전예약·현장 접수 여부는 프로그램별 공식 안내 확인 · 잔여석 미조회",
+    "familyNote": "일반 축제도 포함합니다. 어린이 참여 연령, 혼잡도와 개별 체험 조건은 방문 전에 확인하세요.",
+    "scheduleType": "period",
+    "scheduleNote": "공식 안내의 개최기간입니다. 휴무일과 개별 프로그램의 운영일·시간은 별도로 확인하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-10-23",
+    "sources": [
+      {
+        "publisher": "문화체육관광부(한국관광공사 연계)",
+        "title": "세계문화유산 화순 고인돌 가을꽃 축제 상세 공지",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13512",
+        "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
+        "checkedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "id": "mcst-11963-2026",
+    "title": "2026 순천 낙안읍성 민속문화축제",
+    "region": "전남",
+    "theme": "kids",
+    "startDate": "2026-10-24",
+    "endDate": "2026-10-25",
+    "time": "11:00~17:00",
+    "location": "순천 낙안읍성",
+    "program": "읍성 전통의식·민속놀이와 공연",
+    "feeStatus": "paid",
+    "fee": "성인 4,000원 · 청소년·군인 2,500원 · 어린이 1,500원(감면 별도 확인)",
+    "booking": "사전예약·현장 접수 여부는 프로그램별 공식 안내 확인 · 잔여석 미조회",
+    "familyNote": "일반 축제도 포함합니다. 어린이 참여 연령, 혼잡도와 개별 체험 조건은 방문 전에 확인하세요.",
+    "scheduleType": "period",
+    "scheduleNote": "공식 안내의 개최기간입니다. 휴무일과 개별 프로그램의 운영일·시간은 별도로 확인하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-10-23",
+    "sources": [
+      {
+        "publisher": "문화체육관광부(한국관광공사 연계)",
+        "title": "순천 낙안읍성 민속문화축제 상세 공지",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=11963",
+        "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
+        "checkedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "id": "mcst-11911-2026",
+    "title": "2026 광주김치축제",
+    "region": "광주",
+    "theme": "food",
+    "startDate": "2026-10-23",
+    "endDate": "2026-10-25",
+    "time": "10:00~20:00",
+    "location": "전남광주통합특별시 광주청사 광장 일원",
+    "program": "김장문화 소개·김치 만들기·문화공연",
+    "feeStatus": "mixed",
+    "fee": "관람 무료 · 김치체험학교 유료",
+    "booking": "사전예약·현장 접수 여부는 프로그램별 공식 안내 확인 · 잔여석 미조회",
+    "familyNote": "일반 축제도 포함합니다. 어린이 참여 연령, 혼잡도와 개별 체험 조건은 방문 전에 확인하세요.",
+    "scheduleType": "period",
+    "scheduleNote": "공식 안내의 개최기간입니다. 휴무일과 개별 프로그램의 운영일·시간은 별도로 확인하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-10-23",
+    "sources": [
+      {
+        "publisher": "문화체육관광부(한국관광공사 연계)",
+        "title": "광주김치축제 상세 공지",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=11911",
+        "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
+        "checkedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "id": "mcst-13374-2026",
+    "title": "2026 여수밤바다 불꽃축제",
+    "region": "전남",
+    "theme": "light",
+    "startDate": "2026-10-31",
+    "endDate": "2026-10-31",
+    "time": "19:00~21:10",
+    "location": "여수세계박람회장 일원",
+    "program": "해상 불꽃과 문화공연",
+    "feeStatus": "free",
+    "fee": "입장·기본 관람 무료(공식 공지 기준) · 선택 체험 비용 별도 확인",
+    "booking": "사전예약·현장 접수 여부는 프로그램별 공식 안내 확인 · 잔여석 미조회",
+    "familyNote": "일반 축제도 포함합니다. 어린이 참여 연령, 혼잡도와 개별 체험 조건은 방문 전에 확인하세요.",
+    "scheduleType": "continuous",
+    "scheduleNote": "공식 안내의 개최기간입니다. 휴무일과 개별 프로그램의 운영일·시간은 별도로 확인하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-10-23",
+    "sources": [
+      {
+        "publisher": "문화체육관광부(한국관광공사 연계)",
+        "title": "여수밤바다 불꽃축제 상세 공지",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13374",
+        "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
+        "checkedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "id": "mcst-12854-2026",
+    "title": "2026 김천김밥축제",
+    "region": "경북",
+    "theme": "food",
+    "startDate": "2026-10-23",
+    "endDate": "2026-10-25",
+    "time": "09:00~18:00 (23일 10:00~18:00)",
+    "location": "김천직지문화공원, 사명대사공원, 친환경생태공원",
+    "program": "김밥 판매·경연과 지역 문화행사",
+    "feeStatus": "mixed",
+    "fee": "공지상 입장 무료 · 김밥 등 음식 구매 비용 별도",
+    "booking": "사전예약·현장 접수 여부는 프로그램별 공식 안내 확인 · 잔여석 미조회",
+    "familyNote": "일반 축제도 포함합니다. 어린이 참여 연령, 혼잡도와 개별 체험 조건은 방문 전에 확인하세요.",
+    "scheduleType": "period",
+    "scheduleNote": "공식 안내의 개최기간입니다. 휴무일과 개별 프로그램의 운영일·시간은 별도로 확인하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-10-23",
+    "sources": [
+      {
+        "publisher": "문화체육관광부(한국관광공사 연계)",
+        "title": "김천김밥축제 상세 공지",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=12854",
+        "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
+        "checkedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "id": "mcst-12275-2026",
+    "title": "2026 예천활축제",
+    "region": "경북",
+    "theme": "kids",
+    "startDate": "2026-10-30",
+    "endDate": "2026-11-01",
+    "time": "10:00~21:00",
+    "location": "예천 한천체육공원",
+    "program": "활 문화·활쏘기와 어린이 체험",
+    "feeStatus": "free",
+    "fee": "입장·기본 관람 무료(공식 공지 기준) · 선택 체험 비용 별도 확인",
+    "booking": "사전예약·현장 접수 여부는 프로그램별 공식 안내 확인 · 잔여석 미조회",
+    "familyNote": "일반 축제도 포함합니다. 어린이 참여 연령, 혼잡도와 개별 체험 조건은 방문 전에 확인하세요.",
+    "scheduleType": "period",
+    "scheduleNote": "공식 안내의 개최기간입니다. 휴무일과 개별 프로그램의 운영일·시간은 별도로 확인하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-10-23",
+    "sources": [
+      {
+        "publisher": "문화체육관광부(한국관광공사 연계)",
+        "title": "예천활축제 상세 공지",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=12275",
+        "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
+        "checkedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "id": "mcst-12036-2026",
+    "title": "2026 구미라면 축제",
+    "region": "경북",
+    "theme": "food",
+    "startDate": "2026-11-06",
+    "endDate": "2026-11-08",
+    "time": "10:00~21:00",
+    "location": "경상북도 구미시 역전로",
+    "program": "라면 주제 지역축제 · 올해 세부 프로그램 확인 필요",
+    "feeStatus": "mixed",
+    "fee": "공지상 입장 무료 · 음식·체험 비용 별도 확인",
+    "booking": "사전예약·현장 접수 여부는 프로그램별 공식 안내 확인 · 잔여석 미조회",
+    "familyNote": "공식 공지는 먹거리 설명에 전년도 내용이 포함됐다고 알리고 있어, 2026년 메뉴·체험 내용으로 재게시하지 않았습니다.",
+    "scheduleType": "period",
+    "scheduleNote": "공식 안내의 개최기간입니다. 휴무일과 개별 프로그램의 운영일·시간은 별도로 확인하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-10-23",
+    "sources": [
+      {
+        "publisher": "문화체육관광부(한국관광공사 연계)",
+        "title": "구미라면 축제 상세 공지",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=12036",
+        "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
+        "checkedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "id": "mcst-11940-2026",
+    "title": "2026 문화다양성축제 MAMF(맘프)",
+    "region": "경남",
+    "theme": "kids",
+    "startDate": "2026-10-23",
+    "endDate": "2026-10-25",
+    "time": "10:00~20:30",
+    "location": "용지문화공원, 성산아트홀, 창원중앙대로 일원",
+    "program": "세계 문화 체험·공연과 문화다양성 프로그램",
+    "feeStatus": "free",
+    "fee": "입장·기본 관람 무료(공식 공지 기준) · 선택 체험 비용 별도 확인",
+    "booking": "사전예약·현장 접수 여부는 프로그램별 공식 안내 확인 · 잔여석 미조회",
+    "familyNote": "일반 축제도 포함합니다. 어린이 참여 연령, 혼잡도와 개별 체험 조건은 방문 전에 확인하세요.",
+    "scheduleType": "period",
+    "scheduleNote": "공식 안내의 개최기간입니다. 휴무일과 개별 프로그램의 운영일·시간은 별도로 확인하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-10-23",
+    "sources": [
+      {
+        "publisher": "문화체육관광부(한국관광공사 연계)",
+        "title": "문화다양성축제 MAMF(맘프) 상세 공지",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=11940",
+        "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
+        "checkedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "id": "mcst-11909-2026",
+    "title": "2026 사천에어쇼",
+    "region": "경남",
+    "theme": "kids",
+    "startDate": "2026-10-22",
+    "endDate": "2026-10-25",
+    "time": "09:00~17:00",
+    "location": "사천비행장 일원",
+    "program": "항공기 비행·전시와 항공우주 체험",
+    "feeStatus": "free",
+    "fee": "입장·기본 관람 무료(공식 공지 기준) · 선택 체험 비용 별도 확인",
+    "booking": "사전예약·현장 접수 여부는 프로그램별 공식 안내 확인 · 잔여석 미조회",
+    "familyNote": "기상·군 작전으로 비행이 바뀔 수 있습니다. 입장 신분 확인·교통 통제와 어린이 소음 대비를 공식 안내에서 확인하세요.",
+    "scheduleType": "period",
+    "scheduleNote": "공식 안내의 개최기간입니다. 휴무일과 개별 프로그램의 운영일·시간은 별도로 확인하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-10-23",
+    "sources": [
+      {
+        "publisher": "문화체육관광부(한국관광공사 연계)",
+        "title": "사천에어쇼 상세 공지",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=11909",
+        "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
+        "checkedAt": "2026-10-23"
+      },
+      {
+        "publisher": "사천에어쇼 추진위원회",
+        "title": "2026 에어쇼 비행 일정",
+        "url": "https://airshow.sacheon.go.kr/program/airshow.php?code=airshow&page=1",
+        "facts": "10/22~25 비행 일정과 기상·운영 변경 가능 안내 확인.",
+        "checkedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "id": "mcst-13559-2026",
+    "title": "2026 제주마축제",
+    "region": "제주",
+    "theme": "kids",
+    "startDate": "2026-10-24",
+    "endDate": "2026-10-25",
+    "time": "09:30~18:00",
+    "location": "렛츠런파크 제주",
+    "program": "제주마 전시·말 문화와 가족 체험",
+    "feeStatus": "free",
+    "fee": "입장·기본 관람 무료(공식 공지 기준) · 선택 체험 비용 별도 확인",
+    "booking": "사전예약·현장 접수 여부는 프로그램별 공식 안내 확인 · 잔여석 미조회",
+    "familyNote": "일반 축제도 포함합니다. 어린이 참여 연령, 혼잡도와 개별 체험 조건은 방문 전에 확인하세요.",
+    "scheduleType": "period",
+    "scheduleNote": "공식 안내의 개최기간입니다. 휴무일과 개별 프로그램의 운영일·시간은 별도로 확인하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-10-23",
+    "sources": [
+      {
+        "publisher": "문화체육관광부(한국관광공사 연계)",
+        "title": "제주마축제 상세 공지",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13559",
+        "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
+        "checkedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "id": "mcst-12784-2026",
+    "title": "2026 제주독서대전",
+    "region": "제주",
+    "theme": "kids",
+    "startDate": "2026-10-24",
+    "endDate": "2026-10-25",
+    "time": "11:00~20:00(일 11:00~17:00)",
+    "location": "제주시 우당도서관",
+    "program": "책 전시·독서문화 교류와 참여 프로그램",
+    "feeStatus": "free",
+    "fee": "입장·기본 관람 무료(공식 공지 기준) · 선택 체험 비용 별도 확인",
+    "booking": "사전예약·현장 접수 여부는 프로그램별 공식 안내 확인 · 잔여석 미조회",
+    "familyNote": "일반 축제도 포함합니다. 어린이 참여 연령, 혼잡도와 개별 체험 조건은 방문 전에 확인하세요.",
+    "scheduleType": "period",
+    "scheduleNote": "공식 안내의 개최기간입니다. 휴무일과 개별 프로그램의 운영일·시간은 별도로 확인하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-10-23",
+    "sources": [
+      {
+        "publisher": "문화체육관광부(한국관광공사 연계)",
+        "title": "제주독서대전 상세 공지",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=12784",
+        "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
+        "checkedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "id": "sejong-hangeul-family-2026",
+    "title": "세종과 남준: 미술관에 놀러온 한글(가족·어린이 회차)",
+    "region": "세종",
+    "theme": "kids",
+    "startDate": "2026-10-25",
+    "endDate": "2026-11-07",
+    "dates": [
+      "2026-10-25",
+      "2026-11-07"
+    ],
+    "scheduleType": "dates",
+    "scheduleNote": "가족·어린이 회차만 10/25·11/7에 표시 · 11/5 성인 회차 제외",
+    "location": "비엔날레 전시관 · 세종 중앙공원로 60",
+    "time": "10/25 10:00~11:00·11:30~12:30 / 11/7 10:00~11:00·11:30~12:30",
+    "program": "10/25 영유아 음악요가·가족 왈츠 / 11/7 어린이 보석함·TV 만들기",
+    "feeStatus": "unknown",
+    "fee": "공지 본문·회차 안내 이미지에서 요금 미확인",
+    "booking": "회차별 사전신청 링크는 공식 공지 참조 · 접수 가능 여부·잔여석 미조회",
+    "familyNote": "10/25는 영유아+보호자 또는 가족 대상, 11/7은 6~10세 어린이 대상입니다. 프로그램별 인원·보호자 조건을 확인하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-10-23",
+    "sources": [
+      {
+        "publisher": "세종시문화관광재단",
+        "title": "미술관에 놀러온 한글 참여 안내",
+        "url": "https://www.sjcf.or.kr/bbsctt/view.do?bbscttSn=2610210001&historyBackSw=Y&key=2111060065",
+        "facts": "본문과 공식 첨부 안내 이미지에서 가족 회차 10/25·11/7, 시간·대상·비엔날레 전시관 확인. 요금 미확인.",
         "checkedAt": "2026-10-23"
       }
     ]

@@ -1,7 +1,7 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import vm from 'node:vm';
 import { FESTIVALS, DATA_REVIEWED_AT } from '../tools/kids-outing-calendar/data.js';
-import { filterEvents, koreaToday, weekendRange, nextDate, escapeHtml as esc } from '../tools/kids-outing-calendar/logic.js';
+import { filterEvents, selectAcrossRegions, koreaToday, weekendRange, nextDate, escapeHtml as esc } from '../tools/kids-outing-calendar/logic.js';
 const root=new URL('../',import.meta.url), scope={};
 vm.runInNewContext(await readFile(new URL('assets/js/core-ui.js',root),'utf8'),scope);
 const groups=scope.SimuLab.SITE_MENU;
@@ -12,7 +12,7 @@ const icons={'area-pyeong-calc':'㎡','percent-discount-calc':'%','korean-age-ca
 const href=t=>'/tools/'+t.tool+'/';
 const card=(t,featured=false)=>`<a class="tool-card${featured?' featured':''}" href="${href(t)}" data-tool="${esc(t.tool)}" data-category="${esc(t.category)}" data-search="${esc([t.title,t.sub,t.categoryLabel].join(' '))}"><span class="tool-card-top"><span class="tool-symbol" aria-hidden="true">${icons[t.tool]||'↗'}</span><span class="tool-category">${esc(t.categoryLabel)}</span></span><h3>${esc(t.title)}</h3><p>${esc(t.sub)}</p><span class="tool-open">도구 열기 <span aria-hidden="true">↗</span></span></a>`;
 const today=koreaToday(),weekend=weekendRange(today);
-const events=filterEvents({...weekend,today,includeEnded:false},FESTIVALS).slice(0,3);
+const events=selectAcrossRegions(filterEvents({...weekend,today,includeEnded:false},FESTIVALS),3);
 const title='시뮬랩 — 생활 계산기, 통계와 주말 나들이';
 const description='평수·할인율·만나이부터 돈 계산과 주말 나들이까지. 필요한 도구를 찾고, 가정과 출처를 확인하며 비교해 보세요.';
 const html=`<!doctype html>

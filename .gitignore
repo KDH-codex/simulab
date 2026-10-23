@@ -5,6 +5,9 @@ scratch/
 node_modules/
 dist/
 .codex-remote-attachments/
+.env
+.env.*
+!.env.example
 *.backup.*
 *.backup.html
 *.log

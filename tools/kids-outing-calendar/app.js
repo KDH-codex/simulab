@@ -1,4 +1,4 @@
-import { KidsOutingLogic, THEMES, REGIONS, DATA_REVIEWED_AT, koreaToday, weekendRange, monthRange, filterEvents, occursOn, isStale, isDate, escapeHtml as esc, safeUrl, eventStatus } from './logic.js?v=20261023_verified1';
+import { KidsOutingLogic, THEMES, REGIONS, REGION_SOURCES, DATA_REVIEWED_AT, koreaToday, shiftDate, weekendRange, monthRange, filterEvents, occursOn, coverageForRange, isStale, isDate, escapeHtml as esc, safeUrl, eventStatus } from './logic.js?v=20261023_verified1';
 
 function init() {
   const $ = id => document.getElementById(id);
@@ -11,7 +11,7 @@ function init() {
   let region = '전체', theme = 'all', keyword = '', onlyFree = false, includeEnded = false;
   const params = new URLSearchParams(location.search);
   if (/^20\d{2}-(0[1-9]|1[0-2])$/.test(params.get('month') || '')) [year, month] = params.get('month').split('-').map(Number);
-  if (['weekend', 'today', 'month', 'day'].includes(params.get('range'))) rangeMode = params.get('range');
+  if (['weekend', 'today', 'month', 'day', 'upcoming'].includes(params.get('range'))) rangeMode = params.get('range');
   if (isDate(params.get('date')) && params.get('date') >= '2000-01-01' && params.get('date') <= '2099-12-31') selectedDate = params.get('date'); else if (rangeMode === 'day') rangeMode = 'month';
   if (REGIONS.includes(params.get('region'))) region = params.get('region');
   if (Object.hasOwn(THEMES, params.get('theme'))) theme = params.get('theme');
@@ -30,12 +30,27 @@ function init() {
   $('themeChips').innerHTML = Object.entries(THEMES).map(([value, label]) => '<button type="button" data-theme="' + value + '">' + label + '</button>').join('');
 
   function range() {
+    if (rangeMode === 'upcoming') return { start: today, end: shiftDate(today, 60) };
     if (rangeMode === 'today') return { start: today, end: today };
     if (rangeMode === 'weekend') return weekendRange(today);
     if (rangeMode === 'day') return { start: selectedDate, end: selectedDate };
     return monthRange(year, month);
   }
   function options() { return { region, theme, keyword, onlyFree, includeEnded, today }; }
+  function renderCoverage() {
+    const bounds=range(),records=KidsOutingLogic.getAllFestivals();
+    const coverage=coverageForRange(records,bounds.start,bounds.end,today,{includeEnded});
+    $('coverageSummary').textContent=coverage.filter(r=>r.count).length+'개 지역 · '+coverage.reduce((sum,r)=>sum+r.count,0)+'개 일정';
+    $('regionCoverage').innerHTML=coverage.map(r=>'<button type="button" data-region="'+esc(r.region)+'" aria-pressed="'+String(region===r.region)+'"><span>'+esc(r.region)+'</span><strong>'+r.count+'</strong></button>').join('');
+    for(const option of $('regionSelect').options){
+      const count=coverage.find(r=>r.region===option.value)?.count;
+      option.textContent=option.value==='전체'?'전국':option.value+' · '+count+'개';
+    }
+    const row=coverage.find(r=>r.region===region),registry=REGION_SOURCES.find(r=>r.region===region);
+    const links=(registry?.sources||[]).map(s=>'<a href="'+esc(safeUrl(s.url))+'" target="_blank" rel="noopener noreferrer">'+esc(s.publisher)+' ↗</a>').join(' · ');
+    $('regionContext').innerHTML=region==='전체'?'지역별 숫자는 선택한 날짜 범위에 수록된 전체 일정입니다. 검색어·주제·무료 조건은 아래 행사 목록에 적용됩니다.':
+      '<strong>'+esc(region)+'</strong> · 선택 기간 '+row.count+'개 / 앞으로 60일 '+row.upcomingCount+'개'+(row.nextDate?' · 다음 수록일 '+esc(row.nextDate):'')+'<br>'+links;
+  }
   function syncControls() {
     $('regionSelect').value = region; $('searchFestivalInput').value = keyword;
     $('onlyFree').checked = onlyFree; $('includeEnded').checked = includeEnded;
@@ -74,7 +89,7 @@ function init() {
       cell.dataset.date = date;
       cell.setAttribute('aria-label', year + '년 ' + month + '월 ' + day + '일 ' + weekdays[index % 7] + '요일, 확인한 행사 ' + events.length + '개');
       cell.innerHTML = '<span class="outing-day-number"><span>' + day + '</span>' + (events.length ? '<small>' + events.length + '개</small>' : '') + '</span>' +
-        events.slice(0, 2).map(event => '<span class="outing-day-event ' + event.theme + '">' + esc(event.title.replace('2026 ', '')) + '</span>').join('') +
+        events.slice(0, 2).map(event => '<span class="outing-day-event ' + event.theme + '">' + esc(event.title.replace(/^20\d{2}\s+/, '')) + '</span>').join('') +
         (events.length > 2 ? '<span class="outing-more">+' + (events.length - 2) + '개 더</span>' : '');
       grid.append(cell);
     }
@@ -86,7 +101,7 @@ function init() {
     return '<article class="outing-event">' +
       '<div class="outing-event-meta"><span>' + esc(event.region) + '</span><span>' + esc(THEMES[event.theme]) + '</span><span class="status">' + esc(eventStatus(event, today)) + '</span></div>' +
       '<h4>' + esc(event.title) + '</h4><p class="outing-event-period">' + esc(period) + '</p>' +
-      (event.scheduleNote ? '<p class="outing-event-notes"><strong>운영일 확인</strong><br>' + esc(event.scheduleNote) + '</p>' : '') +
+      (event.scheduleNote ? '<p class="outing-event-notes"><strong>'+(event.scheduleType==='period'?'개최기간 안내':'운영일 안내')+'</strong><br>' + esc(event.scheduleNote) + '</p>' : '') +
       '<dl>' + rows.map(([label, value]) => '<dt>' + label + '</dt><dd>' + esc(value) + '</dd>').join('') + '</dl>' +
       '<p class="outing-event-notes"><strong>' + esc(event.program) + '</strong><br>' + esc(event.familyNote) + '</p>' +
       '<div class="outing-event-source"><p>출처: ' + event.sources.map(s => '<a href="' + esc(safeUrl(s.url)) + '" target="_blank" rel="noopener noreferrer">' + esc(s.publisher) + '</a>').join(' · ') +
@@ -96,16 +111,16 @@ function init() {
   function renderResults() {
     const bounds = range();
     const events = filterEvents({ ...bounds, ...options() });
-    const labels = { weekend: '이번 주말', today: '오늘', month: '선택한 달', day: '선택한 날짜' };
+    const labels = { weekend: '이번 주말', today: '오늘', month: '선택한 달', day: '선택한 날짜', upcoming:'앞으로 60일' };
     $('rangeCaption').textContent = labels[rangeMode] + ' · ' + bounds.start + (bounds.end !== bounds.start ? ' ~ ' + bounds.end : '');
     $('resultsTitle').textContent = (region === '전체' ? '전국' : region) + ' 행사 ' + events.length + '개';
-    $('resultsStatus').textContent = '일정순 · ' + (includeEnded ? '지난 행사 포함' : '종료된 행사 제외') + ' · 공식 공지를 확인한 일부 행사입니다.';
+    $('resultsStatus').textContent = '일정순 · ' + (includeEnded ? '지난 행사 포함' : '종료된 행사 제외') + ' · 개최기간 표시가 매일 운영을 뜻하지는 않습니다.';
     $('festivalCardsGrid').innerHTML = events.length ? events.map(card).join('') :
-      '<div class="outing-empty"><h4>이 조건으로 확인한 행사가 아직 없습니다</h4><p>실제로 행사가 없다는 뜻은 아닙니다.<br>날짜·지역을 바꾸거나 아래 공식 출처 목록을 확인해 보세요.</p><button type="button" data-action="month">선택한 달 보기</button><button type="button" data-action="reset">조건 초기화</button></div>';
+      '<div class="outing-empty"><h4>이 조건에 수록한 일정이 아직 없습니다</h4><p>실제로 행사가 없다는 뜻은 아닙니다.<br>앞으로의 일정을 보거나 위 지역별 공식 안내를 확인해 보세요.</p><button type="button" data-action="upcoming">앞으로 60일 보기</button><button type="button" data-action="reset">조건 초기화</button></div>';
   }
   function render() {
     today = koreaToday();
-    syncControls(); renderCalendar(); renderResults();
+    syncControls(); renderCoverage(); renderCalendar(); renderResults();
     const notice = $('freshnessNotice');
     notice.classList.toggle('stale', isStale(DATA_REVIEWED_AT, today));
     notice.textContent = isStale(DATA_REVIEWED_AT, today) ?
@@ -120,13 +135,19 @@ function init() {
   $('filterForm').addEventListener('reset', event => { event.preventDefault(); reset(); });
   $('searchFestivalInput').addEventListener('input', event => { keyword = event.target.value.slice(0, 100); renderCalendar(); renderResults(); });
   $('regionSelect').addEventListener('change', event => { region = event.target.value; render(); });
+  $('regionCoverage').addEventListener('click',event=>{
+    const button=event.target.closest('[data-region]');
+    if(!button||!REGIONS.includes(button.dataset.region))return;
+    region=button.dataset.region;render();
+    document.querySelector('[data-region="'+region+'"]')?.focus({preventScroll:true});
+  });
   $('onlyFree').addEventListener('change', event => { onlyFree = event.target.checked; render(); });
   $('includeEnded').addEventListener('change', event => { includeEnded = event.target.checked; render(); });
   $('themeChips').addEventListener('click', event => { const button = event.target.closest('[data-theme]'); if (button) { theme = button.dataset.theme; render(); } });
   document.querySelectorAll('[data-view]').forEach(button => button.addEventListener('click', () => { view = button.dataset.view; render(); }));
   document.querySelectorAll('[data-range]').forEach(button => button.addEventListener('click', () => {
     rangeMode = button.dataset.range;
-    if (rangeMode !== 'month') [year, month] = (rangeMode === 'today' ? koreaToday() : weekendRange(koreaToday()).start).split('-').map(Number);
+    if (rangeMode !== 'month') [year, month] = (rangeMode === 'weekend' ? weekendRange(koreaToday()).start : koreaToday()).split('-').map(Number);
     render();
   }));
   $('calendarUnifiedGrid').addEventListener('click', event => {
@@ -147,7 +168,7 @@ function init() {
   $('festivalCardsGrid').addEventListener('click', event => {
     const action = event.target.closest('[data-action]')?.dataset.action;
     if (action === 'reset') reset();
-    if (action === 'month') { rangeMode = 'month'; render(); }
+    if (action === 'upcoming') { rangeMode = 'upcoming'; [year,month]=today.split('-').map(Number); render(); }
   });
   $('shareFilters').addEventListener('click', async () => {
     const url = new URL(location.href); url.search = ''; url.hash = '';

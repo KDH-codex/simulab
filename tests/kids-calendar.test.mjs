@@ -23,7 +23,9 @@ test('corrected BBQ and drone dates do not leak into the wrong day', () => {
 });
 test('free filter excludes unknown fees, paid food and refundable deposits', () => {
   const events = filterEvents({ start: '2026-10-01', end: '2026-11-30', onlyFree: true });
-  assert.deepEqual(events.map(e => e.id), ['hangang-forest-2026']);
+  assert.ok(events.some(e=>e.id==='hangang-forest-2026'));
+  assert.ok(events.every(e=>e.feeStatus==='free'));
+  for(const id of ['namsan-night-2026','seoul-bbq-2026','seoul-drone-2026','mcst-13512-2026','mcst-11963-2026'])assert.ok(!events.some(e=>e.id===id));
 });
 test('combined search and region/theme filters respect actual occurrence dates', () => {
   assert.equal(filterEvents({ ...monthRange(2026, 10), region: '서울', theme: 'kids', keyword: '드론' }).length, 1);
