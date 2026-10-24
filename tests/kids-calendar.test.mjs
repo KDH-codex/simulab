@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { FESTIVALS } from '../tools/kids-outing-calendar/data.js';
-import { validateEvent, occursOn, filterEvents, monthRange, koreaToday, weekendRange, isDate, isStale, safeUrl, escapeHtml } from '../tools/kids-outing-calendar/logic.js';
+import { validateEvent, occursOn, filterEvents, monthRange, koreaToday, weekendRange, isDate, isStale, safeUrl, escapeHtml, REGIONS, REGION_GROUPS, SEARCH_REGIONS, normalizeSearchRegion, coverageForRange, groupedCoverageForRange, sourcesForRegionGroup, REGION_SOURCES } from '../tools/kids-outing-calendar/logic.js';
 
 test('every published record has dated evidence, valid dates, a unique id and HTTPS sources', () => {
   assert.equal(new Set(FESTIVALS.map(e => e.id)).size, FESTIVALS.length);
@@ -51,4 +51,67 @@ test('bad dates, missing verification and dangerous URLs fail closed', () => {
   const invalid = { ...FESTIVALS[0], sources: [], verificationStatus: 'pending' };
   assert.deepEqual(filterEvents({ ...monthRange(2026, 10) }, [invalid]), []);
   assert.equal(escapeHtml('<img src=x onerror="bad()">'), '&lt;img src=x onerror=&quot;bad()&quot;&gt;');
+});
+
+test('seven public region groups cover every original region once and accept old shared links', () => {
+  assert.deepEqual(SEARCH_REGIONS, ['전체','서울','경기지역','강원지역','충청지역','전라지역','경상지역','제주지역']);
+  const members = REGION_GROUPS.flatMap(group => group.regions);
+  assert.equal(members.length, 17); assert.equal(new Set(members).size, 17);
+  assert.deepEqual([...members].sort(), REGIONS.slice(1).sort());
+  for (const group of REGION_GROUPS) {
+    assert.equal(normalizeSearchRegion(group.label), group.label);
+    for (const member of group.regions) assert.equal(normalizeSearchRegion(member), group.label);
+  }
+  assert.equal(normalizeSearchRegion('인천'), '경기지역');
+  assert.equal(normalizeSearchRegion('세종'), '충청지역');
+  assert.equal(normalizeSearchRegion('광주'), '전라지역');
+  assert.equal(normalizeSearchRegion('부산'), '경상지역');
+  assert.equal(normalizeSearchRegion('전국'), '전체');
+  assert.equal(normalizeSearchRegion('잘못된 지역'), '');
+});
+
+test('regional searches include every grouped city without relabeling source records', () => {
+  const fixture = REGIONS.slice(1).map((region,index) => ({ ...FESTIVALS[0],
+    id:'group-fixture-'+index, region, title:region+' 가족 행사', location:region+' 공원',
+    startDate:'2026-10-24', endDate:'2026-10-25', dates:undefined, scheduleType:'continuous',
+    publicationStatus:'published', feeStatus:index%2?'paid':'free' }));
+  const range = { start:'2026-10-24', end:'2026-10-25', today:'2026-10-24' };
+  for (const group of REGION_GROUPS) {
+    const selected = filterEvents({...range, region:group.label}, fixture);
+    assert.deepEqual(selected.map(event=>event.region).sort(), [...group.regions].sort());
+    assert.ok(selected.every(event=>fixture.includes(event)));
+  }
+  assert.equal(filterEvents({...range,region:'인천'},fixture).length,2);
+  assert.equal(filterEvents({...range,region:'대전'},fixture).length,4);
+  const free = filterEvents({...range,region:'경상지역',onlyFree:true},fixture);
+  assert.ok(free.length>0); assert.ok(free.every(event=>event.feeStatus==='free' && ['대구','부산','울산','경북','경남'].includes(event.region)));
+  assert.equal(filterEvents({...range,region:'잘못된 지역'},fixture).length,0);
+});
+
+test('grouped coverage preserves counts, freshness, future dates and empty states', () => {
+  for (const [today,includeEnded] of [['2026-10-24',false],['2027-01-01',true]]) {
+    const args=[FESTIVALS,'2026-10-24','2026-10-25',today,{includeEnded}];
+    const original=coverageForRange(...args), grouped=groupedCoverageForRange(...args);
+    assert.equal(grouped.length,7);
+    for (const key of ['count','freshCount','upcomingCount']) {
+      assert.equal(grouped.reduce((sum,row)=>sum+row[key],0),original.reduce((sum,row)=>sum+row[key],0));
+    }
+    for (const group of REGION_GROUPS) {
+      const members=original.filter(row=>group.regions.includes(row.region));
+      const row=grouped.find(row=>row.region===group.label);
+      assert.equal(row.count,members.reduce((sum,row)=>sum+row.count,0));
+      assert.equal(row.nextDate,members.map(row=>row.nextDate).filter(Boolean).sort()[0]||null);
+    }
+  }
+  assert.ok(groupedCoverageForRange([],'2026-10-24','2026-10-25','2026-10-24').every(row=>!row.count&&!row.upcomingCount&&row.nextDate===null));
+});
+
+test('each grouped official guide keeps its constituent cities and removes duplicate links', () => {
+  const guides=sourcesForRegionGroup('충청지역',REGION_SOURCES);
+  assert.deepEqual([...new Set(guides.map(source=>source.region))].sort(),['대전','세종','충남','충북'].sort());
+  assert.ok(guides.every(source=>safeUrl(source.url)));
+  const withDuplicate=[...REGION_SOURCES,{...REGION_SOURCES.find(row=>row.region==='세종')}];
+  assert.deepEqual(sourcesForRegionGroup('세종',withDuplicate),guides);
+  assert.deepEqual(sourcesForRegionGroup('전체',REGION_SOURCES),[]);
+  assert.deepEqual(sourcesForRegionGroup('잘못된 지역',REGION_SOURCES),[]);
 });

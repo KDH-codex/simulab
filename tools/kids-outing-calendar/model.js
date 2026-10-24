@@ -1,5 +1,31 @@
 export const THEMES = { all: '전체', kids: '체험·문화', nature: '꽃·자연', food: '먹거리·수확', light: '빛·야간' };
 export const REGIONS = ['전체', '서울', '경기', '인천', '강원', '대전', '세종', '충북', '충남', '광주', '전북', '전남', '대구', '부산', '울산', '경북', '경남', '제주'];
+// Keep source records and API mappings in their original 17 regions.
+export const REGION_GROUPS = [
+  { label: '서울', regions: ['서울'] },
+  { label: '경기지역', regions: ['경기', '인천'] },
+  { label: '강원지역', regions: ['강원'] },
+  { label: '충청지역', regions: ['대전', '세종', '충북', '충남'] },
+  { label: '전라지역', regions: ['광주', '전북', '전남'] },
+  { label: '경상지역', regions: ['대구', '부산', '울산', '경북', '경남'] },
+  { label: '제주지역', regions: ['제주'] }
+];
+export const SEARCH_REGIONS = ['전체', ...REGION_GROUPS.map(group => group.label)];
+export function normalizeSearchRegion(value) {
+  if (value === '전체' || value === '전국') return '전체';
+  return REGION_GROUPS.find(group => group.label === value || group.regions.includes(value))?.label || '';
+}
+export function sourcesForRegionGroup(value, registry) {
+  const group = REGION_GROUPS.find(group => group.label === normalizeSearchRegion(value));
+  if (!group) return [];
+  const seen = new Set();
+  return registry.filter(row => group.regions.includes(row.region)).flatMap(row =>
+    row.sources.filter(source => {
+      const key = row.region + ':' + source.url;
+      if (seen.has(key)) return false;
+      seen.add(key); return true;
+    }).map(source => ({ ...source, region: row.region })));
+}
 
 export function isDate(value) {
   if (typeof value !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return false;
@@ -87,6 +113,16 @@ export function coverageForRange(events, start, end, today = koreaToday(), {incl
   });
 }
 
+export function groupedCoverageForRange(events, start, end, today = koreaToday(), options = {}) {
+  const coverage = coverageForRange(events, start, end, today, options);
+  return REGION_GROUPS.map(group => {
+    const rows = coverage.filter(row => group.regions.includes(row.region));
+    const sum = key => rows.reduce((total, row) => total + row[key], 0);
+    return { region: group.label, count: sum('count'), upcomingCount: sum('upcomingCount'),
+      freshCount: sum('freshCount'), nextDate: rows.map(row => row.nextDate).filter(Boolean).sort()[0] || null };
+  });
+}
+
 export function normalizedTitle(value) {
   return String(value || '').normalize('NFKC').toLowerCase().replace(/(?:19|20)\d{2}년?/g,'').replace(/제\s*\d+\s*회/g,'').replace(/[^\p{L}\p{N}]/gu,'');
 }
@@ -107,8 +143,9 @@ export function selectAcrossRegions(events, limit = 3) {
 // Editors must read each source. Legacy browser imports are intentionally not used.
 export function filterEvents({ start, end, region = '전체', theme = 'all', onlyFree = false, keyword = '', includeEnded = true, today = koreaToday() }, events = []) {
   const words = keyword.trim().toLocaleLowerCase('ko-KR').split(/\s+/).filter(Boolean);
+  const selectedRegion = normalizeSearchRegion(region);
   return events.filter(event => !validateEvent(event, {today}).length && event.publicationStatus !== 'cancelled' && overlaps(event, start, end) &&
-    (region === '전체' || event.region === region) && (theme === 'all' || event.theme === theme) &&
+    (selectedRegion === '전체' || (selectedRegion && normalizeSearchRegion(event.region) === selectedRegion)) && (theme === 'all' || event.theme === theme) &&
     (!onlyFree || event.feeStatus === 'free') && (includeEnded || event.endDate >= today) &&
     words.every(word => [event.title, event.location, event.program, event.region].join(' ').toLocaleLowerCase('ko-KR').includes(word)))
     .sort((a, b) => nextDate(a, start).localeCompare(nextDate(b, start)) || a.title.localeCompare(b.title, 'ko'));
