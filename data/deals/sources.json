@@ -1,120 +1,87 @@
 {
   "sources": [
     {
-      "id": "topten",
-      "name": "탑텐",
-      "operator": "신성통상 · 굿웨어몰",
-      "officialUrl": "https://display.goodwearmall.com/special/300315/view",
+      "id": "kurly",
+      "name": "컬리",
+      "operator": "주식회사 컬리",
+      "officialUrl": "https://www.kurly.com/",
       "allowedHosts": [
-        "display.goodwearmall.com",
-        "www.goodwearmall.com"
+        "www.kurly.com",
+        "event.kurly.com"
       ],
       "categories": [
-        "fashion"
-      ],
-      "rightsNote": "공식 배너·유의사항에서 행사명과 날짜만 최소 요약합니다. 이용약관의 영리 재이용 제한이 있어 사진·문구·상품 가격표·포인트 표를 전재하지 않으며 포괄적 이용허락을 받았다는 뜻은 아닙니다.",
-      "checkedAt": "2026-10-24T02:01:14+09:00"
-    },
-    {
-      "id": "hm",
-      "name": "H&M",
-      "operator": "에이치앤엠헤네스 앤 모리츠",
-      "officialUrl": "https://www2.hm.com/ko_kr/index.html",
-      "allowedHosts": [
-        "www2.hm.com"
-      ],
-      "categories": [
-        "fashion"
-      ],
-      "rightsNote": "공식 홈페이지의 렌더링된 행사 기간을 대조했습니다. 자료 재이용 제한을 고려해 행사명·기간·이용 채널의 최소 사실만 자체 정리합니다. 배너·할인 상품 목록을 복제하지 않습니다.",
-      "checkedAt": "2026-10-24T02:01:14+09:00"
-    },
-    {
-      "id": "samsung",
-      "name": "삼성닷컴",
-      "operator": "삼성전자",
-      "officialUrl": "https://www.samsung.com/sec/shop/",
-      "allowedHosts": [
-        "www.samsung.com"
-      ],
-      "categories": [
-        "appliances"
-      ],
-      "rightsNote": "공식 기획전의 기간·대상 조건을 최소한으로 요약합니다. 제품별 가격·광고 이미지·결제 혜택표를 전재하지 않으며 별도 이용허락을 확보한 자료라는 의미는 아닙니다.",
-      "checkedAt": "2026-10-24T02:01:14+09:00"
-    },
-    {
-      "id": "jbl",
-      "name": "JBL",
-      "operator": "삼성닷컴의 JBL 제휴 행사",
-      "officialUrl": "https://www.samsung.com/sec/event/jbl80th/",
-      "allowedHosts": [
-        "www.samsung.com"
-      ],
-      "categories": [
-        "appliances"
-      ],
-      "rightsNote": "삼성닷컴의 공식 제휴 행사 원문을 기준으로 기간·회원·쿠폰 조건만 정리했습니다. 제품별 가격과 홍보물을 복제하지 않습니다.",
-      "checkedAt": "2026-10-24T02:01:14+09:00"
-    },
-    {
-      "id": "lg-homestyle",
-      "name": "LG 홈스타일",
-      "operator": "LG전자 홈스타일",
-      "officialUrl": "https://homestyle.lge.co.kr/exhibition/detail?exhibitionId=2609001733",
-      "allowedHosts": [
-        "homestyle.lge.co.kr"
-      ],
-      "categories": [
-        "furniture",
-        "kitchen"
-      ],
-      "rightsNote": "이 기획전은 가구·조명·주방·리빙 품목 안내입니다. LG 브랜드라는 이유로 가전 전체 할인으로 분류하지 않습니다. 공식 기간과 품목 범위만 최소 요약하며 상품 DB·홍보물을 전재하지 않습니다.",
-      "checkedAt": "2026-10-24T02:01:14+09:00"
-    },
-    {
-      "id": "ikea",
-      "name": "이케아",
-      "operator": "이케아 코리아",
-      "officialUrl": "https://www.ikea.com/kr/ko/offers/",
-      "allowedHosts": [
-        "www.ikea.com"
-      ],
-      "categories": [
-        "furniture",
-        "kitchen"
-      ],
-      "rightsNote": "공식 캠페인의 행사 기간·회원·대상·배송 조건만 직접 요약합니다. 사진·로고·상품 설명·전체 상품 목록은 복제하지 않습니다. 권리·약관 검토는 계속 필요합니다.",
-      "checkedAt": "2026-10-24T02:01:14+09:00"
-    },
-    {
-      "id": "iloom",
-      "name": "일룸",
-      "operator": "주식회사 일룸",
-      "officialUrl": "https://www.iloom.com/eventNews/event_main.do",
-      "allowedHosts": [
-        "www.iloom.com"
-      ],
-      "categories": [
+        "life",
+        "kitchen",
         "furniture"
       ],
-      "rightsNote": "공식 진행 중 이벤트 목록의 행사명·기간을 대조했습니다. 할인율·카드별 회차 등 목록에서 확인하지 못한 세부 내용은 추정하지 않습니다. 이미지·행사 문안을 전재하지 않습니다.",
-      "checkedAt": "2026-10-24T02:01:14+09:00"
+      "aliases": [
+        "마켓컬리",
+        "KURLY"
+      ],
+      "note": "10월 리빙위크 행사 쿠폰 기간 확인 · 개별 특가 일정 별도",
+      "checkedAt": "2026-10-24T10:52:23+09:00",
+      "trackingTier": "priority",
+      "rightsNote": "공식 출처와 운영 브랜드를 확인한 추적 대상입니다. 공개 열람은 재이용 허락을 뜻하지 않습니다. 기간 한정 대표 세일의 최소 사실만 검토 후 자체 정리하며, 이미지·홍보문·상품 DB를 복제하거나 세일 기간을 추정하지 않습니다."
     },
     {
-      "id": "cuckoo",
-      "name": "쿠쿠",
-      "operator": "쿠쿠 공식몰",
-      "officialUrl": "https://www.cuckoo.co.kr/planning",
+      "id": "emart",
+      "name": "이마트",
+      "operator": "주식회사 이마트",
+      "officialUrl": "https://store.emart.com/news/leaflet.do?division=2",
       "allowedHosts": [
-        "www.cuckoo.co.kr"
+        "store.emart.com"
       ],
       "categories": [
-        "kitchen",
-        "appliances"
+        "life"
       ],
-      "rightsNote": "공식 목록과 상세 페이지의 방송일·게시기간을 구분했습니다. 라이브가 게시기간 매일 진행되는 것처럼 표시하지 않으며 가격표·영상·이미지를 복제하지 않습니다.",
-      "checkedAt": "2026-10-24T02:01:14+09:00"
+      "aliases": [
+        "EMART"
+      ],
+      "note": "금주의 전단 행사 · 점포·품목·포인트 조건 별도",
+      "checkedAt": "2026-10-24T10:49:03+09:00",
+      "trackingTier": "priority",
+      "rightsNote": "공식 출처와 운영 브랜드를 확인한 추적 대상입니다. 공개 열람은 재이용 허락을 뜻하지 않습니다. 기간 한정 대표 세일의 최소 사실만 검토 후 자체 정리하며, 이미지·홍보문·상품 DB를 복제하거나 세일 기간을 추정하지 않습니다."
+    },
+    {
+      "id": "lottemart",
+      "name": "롯데마트",
+      "operator": "롯데쇼핑 롯데마트",
+      "officialUrl": "https://global.lottemart.com/events",
+      "allowedHosts": [
+        "global.lottemart.com"
+      ],
+      "categories": [
+        "life"
+      ],
+      "aliases": [
+        "LOTTE MART"
+      ],
+      "note": "국내 대표 세일의 기간 추가 확인 · 장기·외국인 전용 혜택 제외",
+      "checkedAt": "2026-10-24T10:49:03+09:00",
+      "trackingTier": "priority",
+      "rightsNote": "공식 출처와 운영 브랜드를 확인한 추적 대상입니다. 공개 열람은 재이용 허락을 뜻하지 않습니다. 기간 한정 대표 세일의 최소 사실만 검토 후 자체 정리하며, 이미지·홍보문·상품 DB를 복제하거나 세일 기간을 추정하지 않습니다."
+    },
+    {
+      "id": "modernhouse",
+      "name": "모던하우스",
+      "operator": "주식회사 엠에이치앤코",
+      "officialUrl": "https://www.mhmall.co.kr/",
+      "allowedHosts": [
+        "www.mhmall.co.kr"
+      ],
+      "categories": [
+        "life",
+        "kitchen",
+        "furniture"
+      ],
+      "aliases": [
+        "MODERN HOUSE",
+        "모던하루스"
+      ],
+      "note": "공식몰 6주년 생일파티 · 온라인 쿠폰·품목 조건 확인",
+      "checkedAt": "2026-10-24T10:49:03+09:00",
+      "trackingTier": "priority",
+      "rightsNote": "공식 출처와 운영 브랜드를 확인한 추적 대상입니다. 공개 열람은 재이용 허락을 뜻하지 않습니다. 기간 한정 대표 세일의 최소 사실만 검토 후 자체 정리하며, 이미지·홍보문·상품 DB를 복제하거나 세일 기간을 추정하지 않습니다."
     },
     {
       "id": "uniqlo",
@@ -129,7 +96,471 @@
       ],
       "note": "통일된 행사 기간 추가 확인 필요",
       "rightsNote": "공식 사이트는 확인했으나 상품별 기간을 하나의 브랜드 세일 기간으로 확정하지 못했습니다. 월간 달력에 임의 일정을 추가하지 않습니다.",
-      "checkedAt": "2026-10-24T02:01:14+09:00"
+      "checkedAt": "2026-10-24T02:01:14+09:00",
+      "aliases": [],
+      "trackingTier": "priority"
+    },
+    {
+      "id": "hm",
+      "name": "H&M",
+      "operator": "에이치앤엠헤네스 앤 모리츠",
+      "officialUrl": "https://www2.hm.com/ko_kr/index.html",
+      "allowedHosts": [
+        "www2.hm.com"
+      ],
+      "categories": [
+        "fashion"
+      ],
+      "rightsNote": "공식 홈페이지의 렌더링된 행사 기간을 대조했습니다. 자료 재이용 제한을 고려해 행사명·기간·이용 채널의 최소 사실만 자체 정리합니다. 배너·할인 상품 목록을 복제하지 않습니다.",
+      "checkedAt": "2026-10-24T02:01:14+09:00",
+      "aliases": [
+        "에이치앤엠"
+      ],
+      "trackingTier": "priority",
+      "note": "미드 시즌 세일 · 대상 품목과 온라인·매장 가격 차이 확인"
+    },
+    {
+      "id": "zara",
+      "name": "자라",
+      "operator": "자라 한국 공식 스토어",
+      "officialUrl": "https://www.zara.com/kr/",
+      "allowedHosts": [
+        "www.zara.com"
+      ],
+      "categories": [
+        "fashion"
+      ],
+      "aliases": [
+        "ZARA"
+      ],
+      "note": "특가 코너를 기간 한정 대표 세일로 추정하지 않음",
+      "checkedAt": "2026-10-24T10:49:03+09:00",
+      "trackingTier": "priority",
+      "rightsNote": "공식 출처와 운영 브랜드를 확인한 추적 대상입니다. 공개 열람은 재이용 허락을 뜻하지 않습니다. 기간 한정 대표 세일의 최소 사실만 검토 후 자체 정리하며, 이미지·홍보문·상품 DB를 복제하거나 세일 기간을 추정하지 않습니다."
+    },
+    {
+      "id": "newbalance",
+      "name": "뉴발란스",
+      "operator": "뉴발란스 코리아 공식 스토어",
+      "officialUrl": "https://www.nbkorea.com/",
+      "allowedHosts": [
+        "www.nbkorea.com"
+      ],
+      "categories": [
+        "fashion"
+      ],
+      "aliases": [
+        "NEW BALANCE",
+        "NB"
+      ],
+      "note": "공식몰 행사 상세 열람·기간 추가 확인",
+      "checkedAt": "2026-10-24T10:49:03+09:00",
+      "trackingTier": "priority",
+      "rightsNote": "공식 출처와 운영 브랜드를 확인한 추적 대상입니다. 공개 열람은 재이용 허락을 뜻하지 않습니다. 기간 한정 대표 세일의 최소 사실만 검토 후 자체 정리하며, 이미지·홍보문·상품 DB를 복제하거나 세일 기간을 추정하지 않습니다."
+    },
+    {
+      "id": "topten",
+      "name": "탑텐",
+      "operator": "신성통상 · 굿웨어몰",
+      "officialUrl": "https://display.goodwearmall.com/special/300315/view",
+      "allowedHosts": [
+        "display.goodwearmall.com",
+        "www.goodwearmall.com"
+      ],
+      "categories": [
+        "fashion"
+      ],
+      "rightsNote": "공식 배너·유의사항에서 행사명과 날짜만 최소 요약합니다. 이용약관의 영리 재이용 제한이 있어 사진·문구·상품 가격표·포인트 표를 전재하지 않으며 포괄적 이용허락을 받았다는 뜻은 아닙니다.",
+      "checkedAt": "2026-10-24T02:01:14+09:00",
+      "aliases": [
+        "TOPTEN",
+        "탑텐키즈"
+      ],
+      "trackingTier": "priority",
+      "note": "텐텐데이 · 공통 기간과 온라인 선시작·포인트 조건 구분"
+    },
+    {
+      "id": "jellymallow",
+      "name": "젤리멜로",
+      "operator": "젤리멜로 공식 온라인몰",
+      "officialUrl": "https://jellymallow.com/",
+      "allowedHosts": [
+        "jellymallow.com"
+      ],
+      "categories": [
+        "kids"
+      ],
+      "aliases": [
+        "JELLY MALLOW",
+        "젤리벨로"
+      ],
+      "note": "상품별 신상 할인과 브랜드 대표 세일 구분 · 대표 공지 추가 확인",
+      "checkedAt": "2026-10-24T10:49:03+09:00",
+      "trackingTier": "priority",
+      "rightsNote": "공식 출처와 운영 브랜드를 확인한 추적 대상입니다. 공개 열람은 재이용 허락을 뜻하지 않습니다. 기간 한정 대표 세일의 최소 사실만 검토 후 자체 정리하며, 이미지·홍보문·상품 DB를 복제하거나 세일 기간을 추정하지 않습니다."
+    },
+    {
+      "id": "monbebe",
+      "name": "몽베베",
+      "operator": "몽베베 공식 온라인 스토어",
+      "officialUrl": "https://monbebeshop.co.kr/",
+      "allowedHosts": [
+        "monbebeshop.co.kr"
+      ],
+      "categories": [
+        "kids"
+      ],
+      "aliases": [
+        "MONBEBE",
+        "몽베"
+      ],
+      "note": "상시 SALE 코너 제외 · 기간 한정 대표 공지 추가 확인",
+      "checkedAt": "2026-10-24T10:49:03+09:00",
+      "trackingTier": "priority",
+      "rightsNote": "공식 출처와 운영 브랜드를 확인한 추적 대상입니다. 공개 열람은 재이용 허락을 뜻하지 않습니다. 기간 한정 대표 세일의 최소 사실만 검토 후 자체 정리하며, 이미지·홍보문·상품 DB를 복제하거나 세일 기간을 추정하지 않습니다."
+    },
+    {
+      "id": "littleground",
+      "name": "리틀그라운드",
+      "operator": "서양네트웍스 · 룩스루",
+      "officialUrl": "https://looxloo.com/main_little_ground.html",
+      "allowedHosts": [
+        "looxloo.com",
+        "www.looxloo.com"
+      ],
+      "categories": [
+        "kids"
+      ],
+      "aliases": [
+        "LITTLE GROUND",
+        "리틀그라룬드"
+      ],
+      "note": "공식 브랜드 연결 확인 · 행사 상세 접근 제한으로 추가 확인",
+      "checkedAt": "2026-10-24T10:49:03+09:00",
+      "trackingTier": "priority",
+      "rightsNote": "공식 출처와 운영 브랜드를 확인한 추적 대상입니다. 공개 열람은 재이용 허락을 뜻하지 않습니다. 기간 한정 대표 세일의 최소 사실만 검토 후 자체 정리하며, 이미지·홍보문·상품 DB를 복제하거나 세일 기간을 추정하지 않습니다."
+    },
+    {
+      "id": "minkmui",
+      "name": "밍크뮤",
+      "operator": "서양네트웍스 · 룩스루",
+      "officialUrl": "https://looxloo.com/main_minkmui.html",
+      "allowedHosts": [
+        "looxloo.com",
+        "www.looxloo.com"
+      ],
+      "categories": [
+        "kids"
+      ],
+      "aliases": [
+        "MINKMUI"
+      ],
+      "note": "공식 브랜드 연결 확인 · 행사 상세 접근 제한으로 추가 확인",
+      "checkedAt": "2026-10-24T10:49:03+09:00",
+      "trackingTier": "priority",
+      "rightsNote": "공식 출처와 운영 브랜드를 확인한 추적 대상입니다. 공개 열람은 재이용 허락을 뜻하지 않습니다. 기간 한정 대표 세일의 최소 사실만 검토 후 자체 정리하며, 이미지·홍보문·상품 DB를 복제하거나 세일 기간을 추정하지 않습니다."
+    },
+    {
+      "id": "bebedepino",
+      "name": "베베드피노",
+      "operator": "주식회사 더캐리",
+      "officialUrl": "https://www.bebedepino.com/event.html?cate_no=212",
+      "allowedHosts": [
+        "www.bebedepino.com"
+      ],
+      "categories": [
+        "kids"
+      ],
+      "aliases": [
+        "BEBE DE PINO",
+        "베피"
+      ],
+      "note": "공식 이벤트 목록 확인 · 카드·사은품 안내와 대표 세일 구분",
+      "checkedAt": "2026-10-24T10:49:03+09:00",
+      "trackingTier": "priority",
+      "rightsNote": "공식 출처와 운영 브랜드를 확인한 추적 대상입니다. 공개 열람은 재이용 허락을 뜻하지 않습니다. 기간 한정 대표 세일의 최소 사실만 검토 후 자체 정리하며, 이미지·홍보문·상품 DB를 복제하거나 세일 기간을 추정하지 않습니다."
+    },
+    {
+      "id": "absorba",
+      "name": "압소바",
+      "operator": "해피랜드 · 공식 해피랜드몰",
+      "officialUrl": "https://www.happylandmall.com/dbk/dbk_event_list.php",
+      "allowedHosts": [
+        "www.happylandmall.com"
+      ],
+      "categories": [
+        "kids"
+      ],
+      "aliases": [
+        "ABSORBA"
+      ],
+      "note": "장기 가을 컬렉션 제외 · 단기 대표 세일 추가 확인",
+      "checkedAt": "2026-10-24T10:49:03+09:00",
+      "trackingTier": "priority",
+      "rightsNote": "공식 출처와 운영 브랜드를 확인한 추적 대상입니다. 공개 열람은 재이용 허락을 뜻하지 않습니다. 기간 한정 대표 세일의 최소 사실만 검토 후 자체 정리하며, 이미지·홍보문·상품 DB를 복제하거나 세일 기간을 추정하지 않습니다."
+    },
+    {
+      "id": "hanssem",
+      "name": "한샘",
+      "operator": "주식회사 한샘",
+      "officialUrl": "https://store.hanssem.com/",
+      "allowedHosts": [
+        "store.hanssem.com",
+        "mall.hanssem.com",
+        "company.hanssem.com"
+      ],
+      "categories": [
+        "furniture"
+      ],
+      "aliases": [
+        "HANSSEM"
+      ],
+      "note": "쌤페스타 · 전국 매장과 공식몰의 적용 조건 구분",
+      "checkedAt": "2026-10-24T10:49:03+09:00",
+      "trackingTier": "priority",
+      "rightsNote": "공식 출처와 운영 브랜드를 확인한 추적 대상입니다. 공개 열람은 재이용 허락을 뜻하지 않습니다. 기간 한정 대표 세일의 최소 사실만 검토 후 자체 정리하며, 이미지·홍보문·상품 DB를 복제하거나 세일 기간을 추정하지 않습니다."
+    },
+    {
+      "id": "iloom",
+      "name": "일룸",
+      "operator": "주식회사 일룸",
+      "officialUrl": "https://www.iloom.com/eventNews/event_main.do",
+      "allowedHosts": [
+        "www.iloom.com"
+      ],
+      "categories": [
+        "furniture"
+      ],
+      "rightsNote": "공식 진행 중 이벤트 목록의 행사명·기간을 대조했습니다. 할인율·카드별 회차 등 목록에서 확인하지 못한 세부 내용은 추정하지 않습니다. 이미지·행사 문안을 전재하지 않습니다.",
+      "checkedAt": "2026-10-24T02:01:14+09:00",
+      "aliases": [],
+      "trackingTier": "priority",
+      "note": "장기 식탁 행사·월별 할부 안내 제외 · 단기 대표 세일 추가 확인"
+    },
+    {
+      "id": "muji",
+      "name": "무인양품",
+      "operator": "무인양품 한국 공식 스토어",
+      "officialUrl": "https://mujikorea.co.kr/plan/list",
+      "allowedHosts": [
+        "mujikorea.co.kr"
+      ],
+      "categories": [
+        "life",
+        "fashion",
+        "furniture"
+      ],
+      "aliases": [
+        "MUJI"
+      ],
+      "note": "기획전 목록 확인 · 가격인하·일반 컬렉션 제외",
+      "checkedAt": "2026-10-24T10:49:03+09:00",
+      "trackingTier": "additional",
+      "rightsNote": "공식 출처와 운영 브랜드를 확인한 추적 대상입니다. 공개 열람은 재이용 허락을 뜻하지 않습니다. 기간 한정 대표 세일의 최소 사실만 검토 후 자체 정리하며, 이미지·홍보문·상품 DB를 복제하거나 세일 기간을 추정하지 않습니다."
+    },
+    {
+      "id": "spao",
+      "name": "스파오",
+      "operator": "주식회사 이랜드월드 패션사업부",
+      "officialUrl": "https://www.spao.com/",
+      "allowedHosts": [
+        "www.spao.com"
+      ],
+      "categories": [
+        "fashion"
+      ],
+      "aliases": [
+        "SPAO"
+      ],
+      "note": "공식몰 확인 · 대표 세일 기간 추가 확인",
+      "checkedAt": "2026-10-24T10:49:03+09:00",
+      "trackingTier": "additional",
+      "rightsNote": "공식 출처와 운영 브랜드를 확인한 추적 대상입니다. 공개 열람은 재이용 허락을 뜻하지 않습니다. 기간 한정 대표 세일의 최소 사실만 검토 후 자체 정리하며, 이미지·홍보문·상품 DB를 복제하거나 세일 기간을 추정하지 않습니다."
+    },
+    {
+      "id": "nike",
+      "name": "나이키",
+      "operator": "나이키 코리아",
+      "officialUrl": "https://www.nike.com/kr/",
+      "allowedHosts": [
+        "www.nike.com"
+      ],
+      "categories": [
+        "fashion"
+      ],
+      "aliases": [
+        "NIKE"
+      ],
+      "note": "신상품·회원 혜택 제외 · 기간 한정 대표 세일 추가 확인",
+      "checkedAt": "2026-10-24T10:49:03+09:00",
+      "trackingTier": "additional",
+      "rightsNote": "공식 출처와 운영 브랜드를 확인한 추적 대상입니다. 공개 열람은 재이용 허락을 뜻하지 않습니다. 기간 한정 대표 세일의 최소 사실만 검토 후 자체 정리하며, 이미지·홍보문·상품 DB를 복제하거나 세일 기간을 추정하지 않습니다."
+    },
+    {
+      "id": "adidas",
+      "name": "아디다스",
+      "operator": "아디다스코리아",
+      "officialUrl": "https://www.adidas.co.kr/",
+      "allowedHosts": [
+        "www.adidas.co.kr"
+      ],
+      "categories": [
+        "fashion"
+      ],
+      "aliases": [
+        "ADIDAS"
+      ],
+      "note": "아울렛·가입 쿠폰 제외 · 기간 한정 대표 세일 추가 확인",
+      "checkedAt": "2026-10-24T10:49:03+09:00",
+      "trackingTier": "additional",
+      "rightsNote": "공식 출처와 운영 브랜드를 확인한 추적 대상입니다. 공개 열람은 재이용 허락을 뜻하지 않습니다. 기간 한정 대표 세일의 최소 사실만 검토 후 자체 정리하며, 이미지·홍보문·상품 DB를 복제하거나 세일 기간을 추정하지 않습니다."
+    },
+    {
+      "id": "bluedog",
+      "name": "블루독",
+      "operator": "서양네트웍스 · 룩스루",
+      "officialUrl": "https://looxloo.com/",
+      "allowedHosts": [
+        "looxloo.com",
+        "www.looxloo.com"
+      ],
+      "categories": [
+        "kids"
+      ],
+      "aliases": [
+        "BLUEDOG"
+      ],
+      "note": "공식 자사 브랜드 연결 확인 · 행사 상세 접근 제한으로 추가 확인",
+      "checkedAt": "2026-10-24T10:49:03+09:00",
+      "trackingTier": "additional",
+      "rightsNote": "공식 출처와 운영 브랜드를 확인한 추적 대상입니다. 공개 열람은 재이용 허락을 뜻하지 않습니다. 기간 한정 대표 세일의 최소 사실만 검토 후 자체 정리하며, 이미지·홍보문·상품 DB를 복제하거나 세일 기간을 추정하지 않습니다."
+    },
+    {
+      "id": "samsung",
+      "name": "삼성닷컴",
+      "operator": "삼성전자",
+      "officialUrl": "https://www.samsung.com/sec/shop/",
+      "allowedHosts": [
+        "www.samsung.com"
+      ],
+      "categories": [
+        "appliances"
+      ],
+      "rightsNote": "공식 기획전의 기간·대상 조건을 최소한으로 요약합니다. 제품별 가격·광고 이미지·결제 혜택표를 전재하지 않으며 별도 이용허락을 확보한 자료라는 의미는 아닙니다.",
+      "checkedAt": "2026-10-24T02:01:14+09:00",
+      "aliases": [],
+      "trackingTier": "standard",
+      "note": "31일 초과 쇼핑 대전·개별 체험존 쿠폰 제외 · 단기 대표 세일 추가 확인"
+    },
+    {
+      "id": "lg-electronics",
+      "name": "LG전자",
+      "operator": "LG전자 공식 온라인몰",
+      "officialUrl": "https://www.lge.co.kr/benefits",
+      "allowedHosts": [
+        "www.lge.co.kr"
+      ],
+      "categories": [
+        "appliances"
+      ],
+      "aliases": [
+        "엘지전자",
+        "LGE"
+      ],
+      "note": "공식 혜택 목록 확인 · 일반 카드·구독 혜택 제외",
+      "checkedAt": "2026-10-24T10:49:03+09:00",
+      "trackingTier": "additional",
+      "rightsNote": "공식 출처와 운영 브랜드를 확인한 추적 대상입니다. 공개 열람은 재이용 허락을 뜻하지 않습니다. 기간 한정 대표 세일의 최소 사실만 검토 후 자체 정리하며, 이미지·홍보문·상품 DB를 복제하거나 세일 기간을 추정하지 않습니다."
+    },
+    {
+      "id": "dyson",
+      "name": "다이슨",
+      "operator": "다이슨 코리아 공식몰",
+      "officialUrl": "https://www.dyson.co.kr/",
+      "allowedHosts": [
+        "www.dyson.co.kr"
+      ],
+      "categories": [
+        "appliances"
+      ],
+      "aliases": [
+        "DYSON"
+      ],
+      "note": "공식몰 확인 · 단일 제품 스페셜 딜과 대표 세일 구분",
+      "checkedAt": "2026-10-24T10:49:03+09:00",
+      "trackingTier": "additional",
+      "rightsNote": "공식 출처와 운영 브랜드를 확인한 추적 대상입니다. 공개 열람은 재이용 허락을 뜻하지 않습니다. 기간 한정 대표 세일의 최소 사실만 검토 후 자체 정리하며, 이미지·홍보문·상품 DB를 복제하거나 세일 기간을 추정하지 않습니다."
+    },
+    {
+      "id": "jbl",
+      "name": "JBL",
+      "operator": "삼성닷컴의 JBL 제휴 행사",
+      "officialUrl": "https://www.samsung.com/sec/event/jbl80th/",
+      "allowedHosts": [
+        "www.samsung.com"
+      ],
+      "categories": [
+        "appliances"
+      ],
+      "rightsNote": "삼성닷컴의 공식 제휴 행사 원문을 기준으로 기간·회원·쿠폰 조건만 정리했습니다. 제품별 가격과 홍보물을 복제하지 않습니다.",
+      "checkedAt": "2026-10-24T02:01:14+09:00",
+      "aliases": [],
+      "trackingTier": "standard",
+      "note": "개별 제휴 쿠폰 제외 · 대표 세일 추가 확인"
+    },
+    {
+      "id": "lg-homestyle",
+      "name": "LG 홈스타일",
+      "operator": "LG전자 홈스타일",
+      "officialUrl": "https://homestyle.lge.co.kr/exhibition/detail?exhibitionId=2609001733",
+      "allowedHosts": [
+        "homestyle.lge.co.kr"
+      ],
+      "categories": [
+        "furniture",
+        "kitchen"
+      ],
+      "rightsNote": "이 기획전은 가구·조명·주방·리빙 품목 안내입니다. LG 브랜드라는 이유로 가전 전체 할인으로 분류하지 않습니다. 공식 기간과 품목 범위만 최소 요약하며 상품 DB·홍보물을 전재하지 않습니다.",
+      "checkedAt": "2026-10-24T02:01:14+09:00",
+      "aliases": [],
+      "trackingTier": "standard",
+      "note": "31일 초과 장기 기획전 제외 · 단기 대표 세일 추가 확인"
+    },
+    {
+      "id": "ikea",
+      "name": "이케아",
+      "operator": "이케아 코리아",
+      "officialUrl": "https://www.ikea.com/kr/ko/offers/",
+      "allowedHosts": [
+        "www.ikea.com"
+      ],
+      "categories": [
+        "furniture",
+        "kitchen"
+      ],
+      "rightsNote": "공식 캠페인의 행사 기간·회원·대상·배송 조건만 직접 요약합니다. 사진·로고·상품 설명·전체 상품 목록은 복제하지 않습니다. 권리·약관 검토는 계속 필요합니다.",
+      "checkedAt": "2026-10-24T02:01:14+09:00",
+      "aliases": [],
+      "trackingTier": "standard",
+      "note": "단기 거실·수납 세일 수록 · 장기 배송 혜택 제외"
+    },
+    {
+      "id": "cuckoo",
+      "name": "쿠쿠",
+      "operator": "쿠쿠 공식몰",
+      "officialUrl": "https://www.cuckoo.co.kr/planning",
+      "allowedHosts": [
+        "www.cuckoo.co.kr"
+      ],
+      "categories": [
+        "kitchen",
+        "appliances"
+      ],
+      "rightsNote": "공식 목록과 상세 페이지의 방송일·게시기간을 구분했습니다. 라이브가 게시기간 매일 진행되는 것처럼 표시하지 않으며 가격표·영상·이미지를 복제하지 않습니다.",
+      "checkedAt": "2026-10-24T02:01:14+09:00",
+      "aliases": [],
+      "trackingTier": "standard",
+      "note": "개별 상품 라이브 제외 · 브랜드 대표 세일 추가 확인"
     },
     {
       "id": "tefal",
@@ -144,7 +575,9 @@
       ],
       "note": "이벤트 상세·기간 추가 확인 필요",
       "rightsNote": "공식 이벤트 목록의 내부 콘텐츠 열람이 완료되지 않아 행사명·날짜·할인율을 추정하지 않습니다. 공식 안내 링크만 제공합니다.",
-      "checkedAt": "2026-10-24T02:01:14+09:00"
+      "checkedAt": "2026-10-24T02:01:14+09:00",
+      "aliases": [],
+      "trackingTier": "standard"
     },
     {
       "id": "locknlock",
@@ -159,7 +592,9 @@
       ],
       "note": "행사 종료일 추가 확인 필요",
       "rightsNote": "공식몰 멤버십 행사 링크는 확인했으나 상세 페이지의 날짜를 대조하지 못했습니다. 날짜를 임의로 만들지 않고 공식 안내로 연결합니다.",
-      "checkedAt": "2026-10-24T02:01:14+09:00"
+      "checkedAt": "2026-10-24T02:01:14+09:00",
+      "aliases": [],
+      "trackingTier": "standard"
     }
   ]
 }

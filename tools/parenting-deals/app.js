@@ -1,5 +1,5 @@
 import {EVENTS,SOURCES} from './data.js';
-import {filterEvents,eventState,koreaToday,monthRange,shiftMonth,renderCalendar,renderEvent,escapeHtml as esc} from './model.js';
+import {filterEvents,eventState,koreaToday,monthRange,shiftMonth,renderCalendar,renderEvent,filterSources,escapeHtml as esc} from './model.js';
 const $=id=>document.getElementById(id),today=koreaToday();
 const state={month:today.slice(0,7),category:'all',brand:'all',channel:'all',status:'month',query:'',view:'calendar',selectedDate:today,selectedId:'',rangeStart:'',rangeEnd:''};
 const form=$('sale-filters'),chips=$('sale-categories');
@@ -27,18 +27,21 @@ function render(){
  $('sales-calendar').innerHTML=renderCalendar(state.month,rows,{today:koreaToday(now),selectedDate:state.selectedDate,now});
  $('sales-list').innerHTML=rows.map(e=>renderEvent(e,{now})).join('');
  $('sale-empty').hidden=rows.length!==0;
- $('calendar-section').hidden=state.view!=='calendar';$('sale-list-section').hidden=state.view!=='list';
+ $('calendar-section').hidden=state.view!=='calendar'||rows.length===0;$('sale-list-section').hidden=state.view!=='list';
  document.querySelectorAll('[data-sale-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.saleView===state.view)));
  document.querySelectorAll('[data-sale-category]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.saleCategory===state.category)));
  document.querySelectorAll('[data-status-shortcut]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.statusShortcut===state.status)));
  $('sale-status').value=state.status;
  $('range-note').hidden=!state.rangeStart;
  $('range-label').textContent=state.rangeStart?'선택한 주 '+state.rangeStart+' ~ '+state.rangeEnd:'';
- $('month-context').textContent=state.status==='month'?'선택한 달과 겹치는 공식 공지의 기간입니다.':'선택한 달의 일정에 상태 필터를 적용했습니다.';
+ $('month-context').textContent=state.status==='month'?'선택한 달과 겹치는 기간 한정 대표 세일입니다.':'선택한 달의 일정에 상태 필터를 적용했습니다.';
  renderDetail(rows);
- const longterm=filterEvents(EVENTS,{category:state.category,brand:state.brand,channel:state.channel,query:state.query,placement:'longterm'},now);
- $('longterm-list').innerHTML=longterm.map(e=>renderEvent(e,{now})).join('');$('longterm-section').hidden=longterm.length===0;
- $('source-links').querySelectorAll('[data-source-brand]').forEach(card=>{const source=SOURCES.find(s=>s.id===card.dataset.sourceBrand);card.hidden=state.category!=='all'&&!source.categories.includes(state.category)||state.brand!=='all'&&source.id!==state.brand;});
+ const visibleSources=filterSources(SOURCES,state),sourceIds=new Set(visibleSources.map(source=>source.id));
+ $('source-links').querySelectorAll('[data-source-brand]').forEach(card=>{card.hidden=!sourceIds.has(card.dataset.sourceBrand);});
+ $('source-links').querySelectorAll('[data-source-group]').forEach(group=>{const count=[...group.querySelectorAll('[data-source-brand]')].filter(card=>!card.hidden).length;group.hidden=count===0;group.querySelector('h3>span').textContent=count;});
+ $('source-visible-count').textContent=visibleSources.length+'개 브랜드';
+ $('source-empty').hidden=visibleSources.length!==0;
+
 }
 function selectEvent(id){
  const event=matching().find(e=>e.id===id);if(!event)return;
@@ -55,7 +58,7 @@ document.addEventListener('click',event=>{
  if(target.dataset.saleCategory){state.category=target.dataset.saleCategory;resetRange();state.selectedId='';render();return;}
  if(target.dataset.saleView){state.view=target.dataset.saleView;saveView();render();return;}
  if(target.dataset.statusShortcut){state.status=state.status===target.dataset.statusShortcut?'month':target.dataset.statusShortcut;resetRange();render();return;}
- if(target.dataset.monthStep){state.month=shiftMonth(state.month,Number(target.dataset.monthStep));state.selectedDate=state.month===today.slice(0,7)?today:state.month+'-01';state.selectedId='';resetRange();render();}
+ if(target.dataset.monthStep){state.month=shiftMonth(state.month,Number(target.dataset.monthStep));state.selectedDate=state.month===koreaToday().slice(0,7)?koreaToday():state.month+'-01';state.selectedId='';resetRange();render();}
 });
 form.addEventListener('submit',e=>e.preventDefault());
 $('sale-query').addEventListener('input',e=>{state.query=e.target.value;resetRange();render();});
@@ -63,6 +66,8 @@ for(const [id,key] of [['sale-brand','brand'],['sale-channel','channel'],['sale-
 form.addEventListener('reset',()=>{Object.assign(state,{category:'all',brand:'all',channel:'all',status:'month',query:'',selectedId:''});resetRange();$('sale-query').value='';$('sale-brand').value='all';$('sale-channel').value='all';$('sale-status').value='month';render();});
 $('month-today').addEventListener('click',()=>{state.month=koreaToday().slice(0,7);state.selectedDate=koreaToday();state.selectedId='';resetRange();render();});
 $('clear-range').addEventListener('click',()=>{resetRange();render();});
-$('show-all-status').addEventListener('click',()=>{state.status='month';resetRange();render();});
+$('show-all-status').addEventListener('click',()=>form.reset());
 form.hidden=false;chips.hidden=false;$('sale-view-controls').hidden=false;$('month-buttons').hidden=false;$('status-shortcuts').hidden=false;
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)render();});setInterval(render,60000);render();
+
+if(location.hash==='#tracked-brands')requestAnimationFrame(()=>$('tracked-brands').scrollIntoView({block:'start'}));

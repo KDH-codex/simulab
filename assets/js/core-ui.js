@@ -255,7 +255,7 @@
           title: '🌿 일상·생활',
           items: [
             { title: '아이와 가볼만한 곳 달력', sub: '공식 공지로 확인한 일정 · 비용 · 예약 안내', href: 'tools/kids-outing-calendar/', tool: 'kids-outing-calendar', hot: true },
-            { title: '브랜드 세일 달력', sub: '패션·가전·주방·가구 · 공식 행사 일정', href: 'tools/parenting-deals/', tool: 'parenting-deals', hot: true },
+            { title: '브랜드 세일 달력', sub: '라이프·패션·키즈·가구 · 기간 한정 대표 세일', href: 'tools/parenting-deals/', tool: 'parenting-deals', hot: true },
             { title: '만나이 띠 계산기', sub: '생일 기준 만나이 · 출생연도 띠 · D-Day', href: 'tools/korean-age-calc/', tool: 'korean-age-calc', hot: true },
             { title: '퍼센트 할인율 계산기', sub: '쇼핑 세일가 · 인상률 · 비중 계산', href: 'tools/percent-discount-calc/', tool: 'percent-discount-calc', hot: true },
             { title: '내 인생의 모래시계', sub: '기대수명 대비 생애 진행률 · 잔여 일수', href: 'tools/life-hourglass-sim/', tool: 'life-hourglass-sim' }
