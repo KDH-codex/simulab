@@ -117,13 +117,14 @@ test('shared tool addresses drop every query field and fragment, including legac
 });
 
 test('the actual share action ignores supplied inputs and clears legacy queries before clipboard copy',async()=>{
- let copied,replaced;
+ let copied,replaced;const actions=[];
  const toast={classList:{add(){},remove(){}}};
  const document={readyState:'loading',addEventListener(){},getElementById:()=>toast};
- const window={location:{href:'https://simulab.kr/tools/saju-wealth-sim/?birthYear=1992&salary=90000000#private'},history:{replaceState:(_,__,url)=>{replaced=url;}},addEventListener(){}};
+ const window={location:{href:'https://simulab.kr/tools/saju-wealth-sim/?birthYear=1992&salary=90000000#private'},history:{replaceState:(_,__,url)=>{replaced=url;}},addEventListener(){},SimuLabTracker:{trackEvent:(...args)=>actions.push(args)}};
  const scope={URL,document,window,navigator:{clipboard:{writeText:async text=>{copied=text;}}},setTimeout(){},clearTimeout(){}};
  vm.runInNewContext(await readFile(new URL('../assets/js/core-ui.js',import.meta.url),'utf8'),scope);
  await window.SimuLab.shareSimulationUrl({birthYear:1992,salary:90000000});
  assert.equal(copied,'https://simulab.kr/tools/saju-wealth-sim/');assert.equal(replaced,copied);
  assert.match(toast.textContent,/입력값을 제외/);
+ assert.deepEqual(actions,[['copy_share_url']]);
 });

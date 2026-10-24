@@ -899,6 +899,7 @@
     try { window.history.replaceState(null, '', fullShareUrl); } catch (err) {}
     try {
       await navigator.clipboard.writeText(fullShareUrl);
+      try { window.SimuLabTracker?.trackEvent('copy_share_url'); } catch (err) {}
       showToast('입력값을 제외한 도구 링크를 복사했습니다.');
     } catch (err) {
       showToast('복사하지 못했습니다. 입력값이 제거된 주소창의 도구 링크를 복사해 주세요.');

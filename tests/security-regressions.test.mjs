@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import vm from 'node:vm';
 import {readFile} from 'node:fs/promises';
 import {rankingRows,eventRows} from '../tools/admin-dashboard/render.js';
+import {boot} from '../assets/js/reference-ui.js';
 const rankingCode=await readFile(new URL('../assets/js/game-ranking.js',import.meta.url),'utf8');
 const trackerCode=await readFile(new URL('../assets/js/tracker.js',import.meta.url),'utf8');
 function storage(){const data=new Map();return {getItem:k=>data.get(k)??null,setItem:(k,v)=>data.set(k,String(v)),removeItem:k=>data.delete(k)};}
@@ -34,4 +35,18 @@ test('tracking remains silent without consent and emits only one pageview after 
 });
 test('free-text event labels and names never enter analytics payloads; withdrawal stops events',()=>{
  const {ctx,requests,state}=trackerContext();vm.runInContext(trackerCode,ctx);ctx.window.SimuLabTracker.trackEvent('search_baby_name','민감한이름');ctx.window.SimuLabTracker.trackEvent('calculate','급여 9000');assert.equal(requests.length,2);assert.ok(!JSON.stringify(requests).includes('민감한이름'));assert.ok(!JSON.stringify(requests).includes('급여'));state.allowed=false;ctx.window.SimuLabTracker.trackEvent('calculate','private');assert.equal(requests.length,2);
+});
+test('calculator activity is emitted only for successful user calculations and never contains inputs',()=>{
+ const savedDocument=globalThis.document,savedWindow=globalThis.window;
+ const handlers={},actions=[],result={hidden:true},error={textContent:''};let valid=true;
+ const form={checkValidity:()=>valid,addEventListener:(name,fn)=>{handlers[name]=fn;}};
+ globalThis.document={getElementById:id=>({calculator:form,result,'calc-error':error}[id]),querySelector:()=>null};
+ globalThis.window={SimuLabTracker:{trackEvent:(...args)=>actions.push(args)}};
+ try{
+  boot(()=>({privateIncome:90000000}),input=>input,()=>{});
+  assert.equal(actions.length,0);
+  handlers.submit({preventDefault(){}});assert.deepEqual(actions,[['calculate']]);
+  valid=false;handlers.input();assert.equal(actions.length,1);assert.equal(result.hidden,true);
+  assert.ok(!JSON.stringify(actions).includes('90000000'));
+ }finally{if(savedDocument===undefined)delete globalThis.document;else globalThis.document=savedDocument;if(savedWindow===undefined)delete globalThis.window;else globalThis.window=savedWindow;}
 });
