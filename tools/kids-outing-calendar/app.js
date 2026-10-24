@@ -8,7 +8,7 @@ function init() {
   let rangeMode = 'weekend';
   let selectedDate = today;
   let view = matchMedia('(max-width: 760px)').matches ? 'list' : 'calendar';
-  let region = '전체', theme = 'all', keyword = '', onlyFree = false, includeEnded = false;
+  let region = '전체', theme = 'all', onlyFree = false, includeEnded = false;
   const params = new URLSearchParams(location.search);
   if (/^20\d{2}-(0[1-9]|1[0-2])$/.test(params.get('month') || '')) [year, month] = params.get('month').split('-').map(Number);
   if (['weekend', 'today', 'month', 'day', 'upcoming'].includes(params.get('range'))) rangeMode = params.get('range');
@@ -16,7 +16,6 @@ function init() {
   region = normalizeSearchRegion(params.get('region')) || '전체';
   if (Object.hasOwn(THEMES, params.get('theme'))) theme = params.get('theme');
   if (['list', 'calendar'].includes(params.get('view'))) view = params.get('view');
-  keyword = (params.get('q') || '').slice(0, 100);
   onlyFree = params.get('free') === '1';
   includeEnded = params.get('ended') === '1';
   if (rangeMode === 'today' || rangeMode === 'weekend' || rangeMode === 'day') {
@@ -24,9 +23,6 @@ function init() {
     [year, month] = date.split('-').map(Number);
   }
 
-  $('regionSelect').replaceChildren(...SEARCH_REGIONS.map(value => {
-    const option = document.createElement('option'); option.value = value; option.textContent = value === '전체' ? '전국' : value; return option;
-  }));
   $('themeChips').innerHTML = Object.entries(THEMES).map(([value, label]) => '<button type="button" data-theme="' + value + '">' + label + '</button>').join('');
 
   function range() {
@@ -36,23 +32,20 @@ function init() {
     if (rangeMode === 'day') return { start: selectedDate, end: selectedDate };
     return monthRange(year, month);
   }
-  function options() { return { region, theme, keyword, onlyFree, includeEnded, today }; }
+  function options() { return { region, theme, onlyFree, includeEnded, today }; }
   function renderCoverage() {
     const bounds=range(),records=KidsOutingLogic.getAllFestivals();
     const coverage=groupedCoverageForRange(records,bounds.start,bounds.end,today,{includeEnded});
-    $('coverageSummary').textContent=coverage.filter(r=>r.count).length+'개 권역 · '+coverage.reduce((sum,r)=>sum+r.count,0)+'개 일정';
-    $('regionCoverage').innerHTML=coverage.map(r=>'<button type="button" data-region="'+esc(r.region)+'" aria-pressed="'+String(region===r.region)+'"><span>'+esc(r.region)+'</span><strong>'+r.count+'</strong></button>').join('');
-    for(const option of $('regionSelect').options){
-      const count=coverage.find(r=>r.region===option.value)?.count;
-      option.textContent=option.value==='전체'?'전국':option.value+' · '+count+'개';
-    }
+    const total=coverage.reduce((sum,r)=>sum+r.count,0);
+    $('coverageSummary').textContent=coverage.filter(r=>r.count).length+'개 권역 · '+total+'개 일정';
+    $('regionCoverage').innerHTML=[{region:'전체',count:total},...coverage].map(r=>'<button type="button" data-region="'+esc(r.region)+'" aria-pressed="'+String(region===r.region)+'"><span>'+esc(r.region==='전체'?'전국':r.region)+'</span><strong>'+r.count+'</strong></button>').join('');
     const row=coverage.find(r=>r.region===region);
     const links=sourcesForRegionGroup(region,REGION_SOURCES).map(s=>'<a href="'+esc(safeUrl(s.url))+'" target="_blank" rel="noopener noreferrer" aria-label="'+esc(s.region+' '+s.publisher+' 공식 안내 새 창에서 보기')+'">'+esc(s.region)+' 공식 안내 ↗</a>').join(' · ');
-    $('regionContext').innerHTML=region==='전체'?'지역별 숫자는 선택한 날짜 범위에 수록된 전체 일정입니다. 검색어·주제·무료 조건은 아래 행사 목록에 적용됩니다.':
+    $('regionContext').hidden=region==='전체';
+    $('regionContext').innerHTML=region==='전체'?'':
       '<strong>'+esc(region)+'</strong> · 선택 기간 '+row.count+'개 / 앞으로 60일 '+row.upcomingCount+'개'+(row.nextDate?' · 다음 수록일 '+esc(row.nextDate):'')+'<br>'+links;
   }
   function syncControls() {
-    $('regionSelect').value = region; $('searchFestivalInput').value = keyword;
     $('onlyFree').checked = onlyFree; $('includeEnded').checked = includeEnded;
     document.querySelectorAll('[data-theme]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.theme === theme)));
     document.querySelectorAll('[data-range]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.range === rangeMode)));
@@ -128,13 +121,11 @@ function init() {
       '전국 모든 행사를 담은 목록은 아닙니다. 공지 확인 이후 변경·취소될 수 있으니 출발 전 공식 안내를 확인하세요.';
   }
   function reset() {
-    today = koreaToday(); region = '전체'; theme = 'all'; keyword = ''; onlyFree = false; includeEnded = false; rangeMode = 'weekend';
+    today = koreaToday(); region = '전체'; theme = 'all'; onlyFree = false; includeEnded = false; rangeMode = 'weekend';
     [year, month] = weekendRange(today).start.split('-').map(Number); render();
   }
   $('filterForm').addEventListener('submit', event => event.preventDefault());
   $('filterForm').addEventListener('reset', event => { event.preventDefault(); reset(); });
-  $('searchFestivalInput').addEventListener('input', event => { keyword = event.target.value.slice(0, 100); renderCalendar(); renderResults(); });
-  $('regionSelect').addEventListener('change', event => { region = event.target.value; render(); });
   $('regionCoverage').addEventListener('click',event=>{
     const button=event.target.closest('[data-region]');
     if(!button||!SEARCH_REGIONS.includes(button.dataset.region))return;
@@ -174,12 +165,11 @@ function init() {
     const url = new URL(location.href); url.search = ''; url.hash = '';
     const values = { month: year + '-' + String(month).padStart(2, '0'), range: rangeMode, region, theme, view };
     if (rangeMode === 'day') values.date = selectedDate;
-    if (keyword) values.q = keyword;
     if (onlyFree) values.free = '1';
     if (includeEnded) values.ended = '1';
     Object.entries(values).forEach(([key, value]) => url.searchParams.set(key, value));
     history.replaceState(null, '', url);
-    try { await navigator.clipboard.writeText(url.href); $('shareStatus').textContent = '검색 조건 링크를 복사했습니다.'; }
+    try { await navigator.clipboard.writeText(url.href); $('shareStatus').textContent = '선택 조건 링크를 복사했습니다.'; }
     catch { $('shareStatus').textContent = '주소창의 링크를 복사해 공유하세요: ' + url.href; }
   });
   document.addEventListener('visibilitychange', () => { if (!document.hidden && today !== koreaToday()) render(); });

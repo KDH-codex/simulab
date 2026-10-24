@@ -51,23 +51,21 @@
 <!-- GENERATED:USE-NOTICE:END -->
     <section id="event-finder" class="outing-finder" aria-labelledby="finder-title">
       <div class="outing-section-heading"><h2 id="finder-title">우리 가족의 다음 나들이</h2><span>날짜와 지역부터 골라보세요</span></div>
-      <form id="filterForm" class="outing-filters" role="search" aria-label="행사 검색">
-        <details class="outing-region-panel">
+      <form id="filterForm" class="outing-filters" role="search" aria-label="행사 조건">
+        <details class="outing-region-panel" open>
           <summary>지역별 수록 현황 <span id="coverageSummary">지역별 일정을 확인하세요</span></summary>
-          <p class="outing-filter-hint">선택한 날짜 범위의 수록 건수입니다. 7개 권역으로 묶어 보여드리며, 권역을 누르면 해당 지역의 일정을 함께 볼 수 있습니다.</p>
+          <p class="outing-filter-hint">선택한 날짜 범위의 수록 건수입니다. 전국 또는 권역을 눌러 지역을 선택하세요. 주제·무료 조건은 아래 행사 목록에 적용됩니다.</p>
           <div id="regionCoverage" class="outing-region-grid" aria-label="지역별 일정 선택"></div>
+          <div class="outing-conditions">
+            <div id="themeChips" class="outing-chips" role="group" aria-label="행사 주제"></div>
+            <div class="outing-filter-bottom">
+              <div class="outing-checks"><label><input type="checkbox" id="onlyFree" /> 입장·기본참여 무료</label><label><input type="checkbox" id="includeEnded" /> 지난 행사 포함</label></div>
+              <button type="reset" class="outing-text-button">조건 초기화</button>
+            </div>
+            <p class="outing-filter-hint">무료 필터는 입장·기본참여가 무료로 확인된 일정입니다. 식음료·선택 체험에는 비용이 들 수 있습니다. 요금 미확인·보증금·유료 체험이 확인된 행사는 제외합니다.</p>
+          </div>
         </details>
-        <p id="regionContext" class="outing-region-context" role="status"></p>
-        <div class="outing-inputs">
-          <div class="outing-search"><label for="searchFestivalInput">행사·장소 검색</label><input id="searchFestivalInput" type="search" placeholder="예: 드론, 국화, 여주" autocomplete="off" /></div>
-          <div><label for="regionSelect">지역</label><select id="regionSelect"><option value="전체">전국</option></select></div>
-        </div>
-        <div id="themeChips" class="outing-chips" role="group" aria-label="행사 주제"></div>
-        <div class="outing-filter-bottom">
-          <div class="outing-checks"><label><input type="checkbox" id="onlyFree" /> 입장·기본참여 무료</label><label><input type="checkbox" id="includeEnded" /> 지난 행사 포함</label></div>
-          <button type="reset" class="outing-text-button">조건 초기화</button>
-        </div>
-        <p class="outing-filter-hint">무료 필터는 입장·기본참여가 무료로 확인된 일정입니다. 식음료·선택 체험에는 비용이 들 수 있습니다. 요금 미확인·보증금·유료 체험이 확인된 행사는 제외합니다.</p>
+        <p id="regionContext" class="outing-region-context" role="status" hidden></p>
       </form>
 
       <div class="outing-toolbar">
@@ -90,10 +88,10 @@
         <p class="outing-calendar-hint">날짜를 누르면 해당 기간에 수록된 일정을 볼 수 있습니다. ‘개최기간’ 표시는 매일 운영을 뜻하지 않으며, 프로그램별 운영일·휴무일을 함께 확인하세요.</p>
         <div id="calendarUnifiedGrid" class="outing-calendar" aria-label="월간 행사 달력"></div>
       </div>
-      <noscript><p class="outing-notice">검색과 달력은 자바스크립트가 필요합니다. 아래 ‘확인한 행사와 공식 출처’에서 전체 일정을 확인할 수 있습니다.</p></noscript>
+      <noscript><p class="outing-notice">지역 선택과 달력은 자바스크립트가 필요합니다. 아래 ‘확인한 행사와 공식 출처’에서 전체 일정을 확인할 수 있습니다.</p></noscript>
       <div class="outing-results-heading">
         <div><p id="rangeCaption" class="outing-eyebrow">확인한 행사 찾기</p><h3 id="resultsTitle">행사 목록</h3></div>
-        <button type="button" id="shareFilters" class="outing-share">검색 조건 공유 ↗</button>
+        <button type="button" id="shareFilters" class="outing-share">선택 조건 공유 ↗</button>
       </div>
       <p id="resultsStatus" class="outing-results-status" role="status" aria-live="polite">행사 목록을 불러오는 중입니다. 목록이 나타나지 않으면 아래 공식 출처 목록을 이용해 주세요.</p>
       <div id="festivalCardsGrid" class="outing-cards"></div>

@@ -27,9 +27,7 @@ body:has(.outing) { background:#f6f8f4; }
 .outing h2 { font-size:21px; letter-spacing:-.7px; margin:0; }
 .outing-section-heading>span { font-size:12px; color:var(--muted); }
 .outing-filters { background:#f7f9f6; border:1px solid #e7ece5; padding:19px; border-radius:12px; }
-.outing-inputs { display:grid; grid-template-columns:minmax(0,1fr) 180px; gap:14px; margin-bottom:16px; }
-.outing-inputs label { display:block; font-size:12px; font-weight:700; margin-bottom:7px; }
-.outing-inputs input,.outing-inputs select { width:100%; min-height:46px; border:1px solid #cbd8cf; border-radius:8px; padding:10px 12px; background:#fff; color:var(--ink); }
+.outing-conditions { border-top:1px solid var(--line); margin-top:16px; padding-top:16px; }
 .outing-chips { display:flex; flex-wrap:wrap; gap:7px; }
 .outing-chips button,.outing-view-switch button,.outing-share { min-height:40px; padding:8px 14px; border:1px solid var(--line); border-radius:8px; background:#fff; color:#435d52; font-size:13px; font-weight:650; }
 .outing-chips button[aria-pressed=true] { border-color:var(--green); color:var(--green); background:#eaf4ee; box-shadow:inset 0 0 0 1px var(--green); }
@@ -102,8 +100,7 @@ body:has(.outing) { background:#f6f8f4; }
   .outing-intro { font-size:14px; }.outing-eyebrow { font-size:10px; }
   .outing-hero-links { margin-top:19px; }.outing-finder { padding:17px; border-radius:15px; }
   .outing-section-heading { display:block; }.outing-section-heading>span { display:block; margin-top:6px; }
-  .outing h2 { font-size:19px; }.outing-filters { padding:13px; }.outing-inputs { grid-template-columns:minmax(0,1fr) 140px; gap:9px; }
-  .outing-inputs input,.outing-inputs select { padding:10px 8px; font-size:14px; }
+  .outing h2 { font-size:19px; }.outing-filters { padding:13px; }
   .outing-chips { gap:6px; }.outing-chips button { padding:8px 10px; font-size:12px; }
   .outing-filter-bottom { align-items:flex-start; }.outing-checks { gap:0; flex-direction:column; }
   .outing-cards { grid-template-columns:1fr; }.outing-event { padding:17px; }.outing-event h4 { font-size:17px; }
@@ -114,19 +111,18 @@ body:has(.outing) { background:#f6f8f4; }
   .outing-results-heading { align-items:flex-start; }.outing-share { font-size:11px; padding:8px; white-space:nowrap; }
 }
 @media(prefers-reduced-motion:reduce) { .outing * { scroll-behavior:auto !important; transition:none !important; } }
-.outing-region-panel { border:1px solid var(--line,#dce5dc); border-radius:14px; background:#f7faf6; margin-bottom:14px; padding:14px 16px; }
+.outing-region-panel { margin:0; }
 .outing-region-panel summary { cursor:pointer; font-weight:750; color:#204b3d; display:list-item; }
 .outing-region-panel summary span { font-weight:500; font-size:.82rem; color:#62736a; margin-left:10px; }
 .outing-region-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(88px,1fr)); gap:7px; margin-top:12px; }
 .outing-region-grid button { display:flex; justify-content:space-between; align-items:center; gap:10px; padding:10px 12px; background:#fff; border:1px solid #dbe4dc; border-radius:9px; color:#34473d; font:inherit; cursor:pointer; min-height:44px; white-space:nowrap; }
 .outing-region-grid button[aria-pressed="true"] { background:#176d53; color:#fff; border-color:#176d53; }
-.outing-region-context { font-size:.85rem; color:#53695d; line-height:1.8; margin:0 0 16px; }
+.outing-region-context { font-size:.85rem; color:#53695d; line-height:1.8; margin:14px 0 0; padding-top:12px; border-top:1px solid var(--line); }
 .outing-region-context a { color:#176d53; text-underline-offset:3px; }
 @media(max-width:760px) {
   .outing-region-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
   .outing-region-panel summary span { display:block; margin:5px 0 0 16px; }
 }
 @media(max-width:480px) { .outing-region-grid { grid-template-columns:repeat(2,minmax(0,1fr)); } }
-@media(max-width:480px) { .outing-inputs { grid-template-columns:minmax(0,1fr); } }
 /* Shortcuts shared by the two family information pages. */
 .family-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}.family-tabs a{font-size:12px;border:1px solid #cfddcf;border-radius:24px;padding:9px 15px;text-decoration:none;color:#416e54}.family-tabs a[aria-current]{background:#1c674d;color:#fff;border-color:#1c674d}
