@@ -3,6 +3,7 @@ backup_v1_dark/
 backup_v2_step2/
 scratch/
 node_modules/
+supabase/.temp/
 dist/
 .codex-remote-attachments/
 .env

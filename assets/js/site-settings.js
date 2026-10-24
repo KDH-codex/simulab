@@ -1,11 +1,11 @@
 (function (global) {
   'use strict';
-  // Fill verified operating details before enabling optional analytics or ads.
+  // Optional analytics require an operating contact and visitor consent.
   global.SIMULAB_SITE_SETTINGS = Object.freeze({
-    contactEmail: '', operatorName: 'SimuLab 운영팀',
-    analyticsEnabled: false, analyticsRetentionDays: 30, databaseRegion: 'ap-south-1',
+    contactEmail: 'simulcalcall@gmail.com', operatorName: 'SimuLab 운영팀',
+    analyticsEnabled: true, analyticsRetentionDays: 30, databaseRegion: 'ap-south-1',
     rankingRemoteEnabled: false,
     adsEnabled: false, adsenseClient: 'ca-pub-9815778998394475',
-    policyUpdatedAt: '2026-10-23'
+    policyUpdatedAt: '2026-10-24'
   });
 })(typeof window !== 'undefined' ? window : globalThis);
