@@ -1,4 +1,4 @@
-// Reviewed limited-sale records only. Build time never changes checkedAt.
+// Reviewed sale records and separately labeled member offers. Build time never changes checkedAt.
 export const SOURCES = [
   {
     "id": "kurly",
@@ -353,9 +353,9 @@ export const SOURCES = [
     "aliases": [
       "MUJI"
     ],
-    "note": "기획전 목록 확인 · 가격인하·일반 컬렉션 제외",
-    "checkedAt": "2026-10-24T10:49:03+09:00",
-    "trackingTier": "additional",
+    "note": "한국 공식 앱 신규 가입 쿠폰: 10/8~11/1 · 1인 1장·중복 할인 제외 조건 확인",
+    "checkedAt": "2026-10-25T14:10:44+09:00",
+    "trackingTier": "priority",
     "rightsNote": "공식 출처와 운영 브랜드를 확인한 추적 대상입니다. 공개 열람은 재이용 허락을 뜻하지 않습니다. 기간 한정 대표 세일의 최소 사실만 검토 후 자체 정리하며, 이미지·홍보문·상품 DB를 복제하거나 세일 기간을 추정하지 않습니다."
   },
   {
@@ -595,6 +595,75 @@ export const SOURCES = [
     "checkedAt": "2026-10-24T02:01:14+09:00",
     "aliases": [],
     "trackingTier": "standard"
+  },
+  {
+    "id": "musinsa",
+    "name": "무신사",
+    "operator": "주식회사 무신사 · IFC몰 공식 입점 매장 안내",
+    "officialUrl": "https://www.musinsa.com/",
+    "allowedHosts": [
+      "www.musinsa.com",
+      "corp.musinsa.com",
+      "www.ifcmallseoul.com"
+    ],
+    "categories": [
+      "fashion"
+    ],
+    "aliases": [
+      "MUSINSA",
+      "무신사 스탠다드",
+      "무탠다드"
+    ],
+    "note": "겨울 신상 위크와 IFC몰 스탠다드 슈퍼세일 확인 · 매장별 적용 범위 구분",
+    "checkedAt": "2026-10-25T14:10:44+09:00",
+    "trackingTier": "priority",
+    "rightsNote": "공식 출처와 운영 브랜드를 확인한 추적 대상입니다. 공개 열람은 재이용 허락을 뜻하지 않습니다. 기간 한정 대표 세일의 최소 사실만 검토 후 자체 정리하며, 이미지·홍보문·상품 DB를 복제하거나 세일 기간을 추정하지 않습니다."
+  },
+  {
+    "id": "oliveyoung",
+    "name": "올리브영",
+    "operator": "씨제이올리브영 주식회사",
+    "officialUrl": "https://www.oliveyoung.co.kr/store/main/main.do",
+    "allowedHosts": [
+      "www.oliveyoung.co.kr",
+      "corp.oliveyoung.com"
+    ],
+    "categories": [
+      "beauty"
+    ],
+    "aliases": [
+      "OLIVE YOUNG",
+      "올영",
+      "올영데이",
+      "올리브데이"
+    ],
+    "note": "공식몰 올리브데이 배너와 정기 안내 확인 · 회원·앱 혜택 영역에서 조건 확인",
+    "checkedAt": "2026-10-25T14:10:44+09:00",
+    "trackingTier": "priority",
+    "rightsNote": "공식 출처와 운영 브랜드를 확인한 추적 대상입니다. 공개 열람은 재이용 허락을 뜻하지 않습니다. 기간 한정 대표 세일의 최소 사실만 검토 후 자체 정리하며, 이미지·홍보문·상품 DB를 복제하거나 세일 기간을 추정하지 않습니다."
+  },
+  {
+    "id": "amoremall",
+    "name": "아모레몰",
+    "operator": "주식회사 아모레퍼시픽",
+    "officialUrl": "https://www.amoremall.com/kr/ko/display/event",
+    "allowedHosts": [
+      "www.amoremall.com"
+    ],
+    "categories": [
+      "beauty"
+    ],
+    "aliases": [
+      "AMORE MALL",
+      "아모레퍼시픽",
+      "마몽드",
+      "라네즈",
+      "이니스프리"
+    ],
+    "note": "공식 이벤트 목록과 마몽드 빅 세일 기간·유의사항 확인",
+    "checkedAt": "2026-10-25T14:10:44+09:00",
+    "trackingTier": "priority",
+    "rightsNote": "공식 출처와 운영 브랜드를 확인한 추적 대상입니다. 공개 열람은 재이용 허락을 뜻하지 않습니다. 기간 한정 대표 세일의 최소 사실만 검토 후 자체 정리하며, 이미지·홍보문·상품 DB를 복제하거나 세일 기간을 추정하지 않습니다."
   }
 ];
 export const EVENTS = [
@@ -855,6 +924,184 @@ export const EVENTS = [
     "brandAliases": [
       "마켓컬리",
       "KURLY"
+    ]
+  },
+  {
+    "placement": "calendar",
+    "publicationStatus": "reviewed",
+    "reviewWithinDays": 7,
+    "publicationScope": "facts-summary",
+    "campaignKind": "limited-sale",
+    "campaignScope": "brand",
+    "checkedAt": "2026-10-25T14:10:44+09:00",
+    "id": "musinsa-standard-ifc-super-sale-202610",
+    "brandId": "musinsa",
+    "title": "스탠다드 슈퍼세일 · IFC몰",
+    "shortTitle": "IFC몰 슈퍼세일",
+    "categories": [
+      "fashion"
+    ],
+    "startDate": "2026-10-23",
+    "endDate": "2026-11-01",
+    "benefitType": "mixed",
+    "channels": [
+      "store"
+    ],
+    "summary": "IFC몰 L2 무신사 스탠다드 매장의 의류 세일입니다. 하루특가와 기간특가, 구매 조건별 혜택을 나눠 확인하세요.",
+    "conditions": [
+      "IFC몰 공식 매장 공지를 근거로 한 일정이며, 해당 매장 기준입니다. 다른 매장·온라인몰의 동일 조건을 뜻하지 않습니다.",
+      "하루특가와 기간특가의 대상 상품·할인율은 다릅니다. 당일 가격과 재고를 매장에서 확인하세요.",
+      "구매금액 할인·리뷰 적립·사은품의 세부 조건과 종료 여부를 해당 매장에서 확인하세요."
+    ],
+    "periodNote": "IFC몰 공식 매장 행사 기간 · 여의도 IFC몰 L2 매장 기준",
+    "sourceUrl": "https://www.ifcmallseoul.com/kr/now/view/20000001075",
+    "periodSourceUrl": "https://www.ifcmallseoul.com/kr/now/view/20000001075",
+    "brandName": "무신사",
+    "brandAliases": [
+      "MUSINSA",
+      "무신사 스탠다드",
+      "무탠다드"
+    ]
+  },
+  {
+    "placement": "calendar",
+    "publicationStatus": "reviewed",
+    "reviewWithinDays": 7,
+    "publicationScope": "facts-summary",
+    "campaignKind": "limited-sale",
+    "campaignScope": "brand",
+    "checkedAt": "2026-10-25T14:10:44+09:00",
+    "id": "musinsa-winter-new-week-202610",
+    "brandId": "musinsa",
+    "title": "26 겨울 신상 위크 · 오프라인",
+    "shortTitle": "겨울 신상 위크",
+    "categories": [
+      "fashion"
+    ],
+    "startDate": "2026-10-26",
+    "endDate": "2026-11-15",
+    "benefitType": "mixed",
+    "channels": [
+      "store"
+    ],
+    "summary": "참여 오프라인 매장의 겨울 신상 행사입니다. 브랜드별 추가 할인과 매장용 쿠폰을 살펴보세요.",
+    "conditions": [
+      "공식 공지에 나온 참여 매장에서 진행합니다. 참여 브랜드·상품과 추가 할인율은 매장별로 다릅니다.",
+      "브랜드 포커스 1차는 10/26~11/4, 2차는 11/5~11/15로 나뉘며 참여 브랜드가 달라집니다.",
+      "아우터·장바구니 쿠폰은 무신사 앱의 오프라인 쿠폰과 최소 구매금액·할인 한도를 확인하세요. 일부 품목은 제외됩니다.",
+      "사은품은 한정 수량이며 소진 시 조기 종료될 수 있습니다."
+    ],
+    "periodNote": "무신사 공식 콘텐츠의 오프라인 행사 기간 · 세부 코너별 일정 별도",
+    "sourceUrl": "https://www.musinsa.com/content/1561894598894510593",
+    "periodSourceUrl": "https://www.musinsa.com/content/1561894598894510593",
+    "brandName": "무신사",
+    "brandAliases": [
+      "MUSINSA",
+      "무신사 스탠다드",
+      "무탠다드"
+    ]
+  },
+  {
+    "placement": "calendar",
+    "publicationStatus": "reviewed",
+    "reviewWithinDays": 7,
+    "publicationScope": "facts-summary",
+    "campaignKind": "limited-sale",
+    "campaignScope": "brand",
+    "checkedAt": "2026-10-25T14:10:44+09:00",
+    "id": "amoremall-mamonde-big-sale-202610",
+    "brandId": "amoremall",
+    "title": "마몽드 빅 세일",
+    "shortTitle": "마몽드 빅 세일",
+    "categories": [
+      "beauty"
+    ],
+    "startDate": "2026-10-19",
+    "endDate": "2026-10-25",
+    "benefitType": "mixed",
+    "channels": [
+      "online"
+    ],
+    "summary": "아모레몰의 마몽드 기간 한정 행사입니다. 스킨케어·클렌징 등 행사 상품별 할인과 구성 조건을 확인하세요.",
+    "conditions": [
+      "기간은 아모레몰 공식 이벤트 목록, 세부 조건은 마몽드 행사 상세에서 확인했습니다.",
+      "행사 대상 상품별 할인율·증정 구성이 다릅니다. 표시된 최대 할인율이 모든 상품에 적용되는 것은 아닙니다.",
+      "일부 사은품은 뷰티포인트 전액 결제나 비회원 Npay 구매 시 제외되며, 내부 사정이나 재고에 따라 조기 종료될 수 있습니다."
+    ],
+    "periodNote": "아모레몰 공식 이벤트 목록의 행사 기간 · 상품·사은품 조건 별도",
+    "sourceUrl": "https://www.amoremall.com/kr/ko/display/event_detail?planDisplaySn=15135",
+    "periodSourceUrl": "https://www.amoremall.com/kr/ko/display/event",
+    "brandName": "아모레몰",
+    "brandAliases": [
+      "AMORE MALL",
+      "아모레퍼시픽",
+      "마몽드",
+      "라네즈",
+      "이니스프리"
+    ]
+  }
+];
+export const MEMBER_OFFERS = [
+  {
+    "id": "oliveyoung-olive-day",
+    "brandId": "oliveyoung",
+    "title": "올리브데이 · 등급별 쿠폰",
+    "categories": [
+      "beauty"
+    ],
+    "scheduleKind": "recurring",
+    "recurrence": "매월 25~27일 · 공식 정기 안내",
+    "channels": [
+      "online",
+      "store"
+    ],
+    "summary": "올리브 멤버스의 등급별 쿠폰·혜택 안내입니다. 이번 달 실제 발급 쿠폰과 사용 조건을 앱에서 확인하세요.",
+    "conditions": [
+      "공식 뉴스룸은 매월 25~27일을 정기 일정으로 안내합니다. 이번 달 모든 상품에 같은 할인이 적용된다는 뜻은 아닙니다.",
+      "멤버십 등급에 따라 쿠폰·혜택이 다릅니다. 적용 품목, 최소 구매금액, 할인 한도와 온라인·매장 사용처를 확인하세요.",
+      "선런칭 특가와 결제 혜택은 쿠폰 할인과 적용 조건이 다를 수 있습니다. 실제 결제 화면에서 최종 혜택을 확인하세요."
+    ],
+    "periodNote": "정기 일정 기준 · 이번 달 개별 쿠폰 금액·한도는 앱에서 확인",
+    "sourceUrl": "https://www.oliveyoung.co.kr/store/planshop/getPlanShopDetail.do?dispCatNo=500000100019432",
+    "periodSourceUrl": "https://corp.oliveyoung.com/ko/newsroom/editorial/206",
+    "checkedAt": "2026-10-25T14:10:44+09:00",
+    "reviewWithinDays": 7,
+    "brandName": "올리브영",
+    "brandAliases": [
+      "OLIVE YOUNG",
+      "올영",
+      "올영데이",
+      "올리브데이"
+    ]
+  },
+  {
+    "id": "muji-app-welcome-202610",
+    "brandId": "muji",
+    "title": "MUJI 앱 신규 가입 3천 원 쿠폰",
+    "categories": [
+      "life"
+    ],
+    "scheduleKind": "fixed",
+    "startDate": "2026-10-08",
+    "endDate": "2026-11-01",
+    "channels": [
+      "online",
+      "store"
+    ],
+    "summary": "한국 공식 무인양품 앱의 신규 회원에게 발급하는 가입 축하 쿠폰입니다. 신규 회원당 한 장이며 사용 기한을 확인하세요.",
+    "conditions": [
+      "앱 신규 회원당 1장 발급되며 쿠폰 사용기한은 2026년 11월 1일까지입니다. 온라인 자사몰과 오프라인 매장에서 이용할 수 있습니다.",
+      "생일쿠폰을 포함한 다른 쿠폰·할인과 중복 적용되지 않습니다. 도서·꽃·주류·일부 로컬식품·샵인샵·자수 서비스 등은 제외됩니다.",
+      "구매금액이 3천 원 미만이면 잔액은 소멸되며, 온라인 배송비는 쿠폰 적용 대상이 아닙니다."
+    ],
+    "periodNote": "한국 공식 이벤트 기간 · 앱 신규 회원 대상 · 쿠폰 사용기한 11/1",
+    "sourceUrl": "https://mujikorea.co.kr/plan/view/417",
+    "periodSourceUrl": "https://mujikorea.co.kr/plan/view/417",
+    "checkedAt": "2026-10-25T14:10:44+09:00",
+    "reviewWithinDays": 7,
+    "brandName": "무인양품",
+    "brandAliases": [
+      "MUJI"
     ]
   }
 ];

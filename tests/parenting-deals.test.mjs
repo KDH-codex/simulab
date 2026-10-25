@@ -2,18 +2,19 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import vm from 'node:vm';
-import {MAX_SALE_DAYS,calendarExclusionReason,isCalendarEligible,validateSource,validateEvent,eventState,filterEvents,filterSources,monthWeeks,monthRange,shiftMonth,koreaToday,renderEvent,renderCalendar,renderSourceDirectory,safeOfficialUrl,validDate} from '../tools/parenting-deals/model.js';
+import {MAX_SALE_DAYS,calendarExclusionReason,isCalendarEligible,validateSource,validateEvent,validateMemberOffer,memberOfferState,filterMemberOffers,renderMemberOffer,eventState,filterEvents,filterSources,monthWeeks,monthRange,shiftMonth,koreaToday,renderEvent,renderCalendar,renderSourceDirectory,safeOfficialUrl,validDate} from '../tools/parenting-deals/model.js';
 const {sources}=JSON.parse(await readFile(new URL('../data/deals/sources.json',import.meta.url),'utf8'));
 const raw=JSON.parse(await readFile(new URL('../data/deals/reviewed.json',import.meta.url),'utf8')).events;
 const events=raw.map(event=>{const source=sources.find(s=>s.id===event.brandId);return {...event,brandName:source.name,brandAliases:source.aliases};});
-const at='2026-10-24T12:00:00+09:00',hm=events.find(e=>e.brandId==='hm'),kurly=events.find(e=>e.brandId==='kurly');
+const memberOffers=JSON.parse(await readFile(new URL('../data/deals/reviewed.json',import.meta.url),'utf8')).memberOffers.map(offer=>{const source=sources.find(s=>s.id===offer.brandId);return {...offer,brandName:source.name,brandAliases:source.aliases};});
+const at='2026-10-25T23:00:00+09:00',hm=events.find(e=>e.brandId==='hm'),kurly=events.find(e=>e.brandId==='kurly');
 
-test('31 tracked brands include every requested brand; only seven reviewed limited sales are published',()=>{
- assert.equal(sources.length,31);assert.equal(new Set(sources.map(s=>s.id)).size,31);
- const required=['kurly','emart','lottemart','modernhouse','uniqlo','hm','zara','newbalance','topten','jellymallow','monbebe','littleground','minkmui','bebedepino','absorba','hanssem','iloom'];
+test('34 tracked brands include requested fashion, beauty and life brands with ten reviewed sales',()=>{
+ assert.equal(sources.length,34);assert.equal(new Set(sources.map(s=>s.id)).size,34);
+ const required=['kurly','emart','lottemart','modernhouse','uniqlo','hm','zara','newbalance','topten','jellymallow','monbebe','littleground','minkmui','bebedepino','absorba','hanssem','iloom','musinsa','oliveyoung','muji','amoremall'];
  for(const id of required)assert.equal(sources.find(s=>s.id===id)?.trackingTier,'priority',id);
- assert.equal(events.filter(isCalendarEligible).length,7);assert.equal(events.filter(e=>e.publicationStatus==='held').length,8);
- assert.equal(filterEvents(events,{month:'2026-10'},at).length,7);
+ assert.equal(events.filter(isCalendarEligible).length,10);assert.equal(events.filter(e=>e.publicationStatus==='held').length,8);
+ assert.equal(filterEvents(events,{month:'2026-10'},at).length,10);
  for(const source of sources)assert.deepEqual(validateSource(source,at),[],source.id);
  for(const event of events)assert.deepEqual(validateEvent(event,sources,at),[],event.id);
 });
@@ -106,13 +107,13 @@ test('cancelled and held records never become sales, while watchlist cards discl
  const cancelled={...hm,publicationStatus:'cancelled'};assert.equal(filterEvents([cancelled],{month:'2026-10'},at).length,0);
  assert.equal(eventState(cancelled,at).code,'cancelled');
  const directory=renderSourceDirectory(sources,events,{now:at});
- assert.equal((directory.match(/data-source-brand=/g)||[]).length,31);assert.equal((directory.match(/data-source-group=/g)||[]).length,6);
+ assert.equal((directory.match(/data-source-brand=/g)||[]).length,34);assert.equal((directory.match(/data-source-group=/g)||[]).length,7);
  assert.match(directory,/대표 세일 추가 확인/);assert.match(directory,/행사 상세 접근 제한/);
  assert.doesNotMatch(directory,/세일 없음|상시 진행/);
 });
 
 test('invalid provenance, dates, hosts, price snapshots and incomplete editorial classifications fail validation',()=>{
- for(const changes of [{endDate:'2026-02-30'},{startDate:'2027-01-01'},{checkedAt:'2026-10-25T00:00:00+09:00'},{periodSourceUrl:''},{sourceUrl:'https://www2.hm.com.evil.example/'},{priceWon:1000},{reviewWithinDays:100},{publicationStatus:'automatic'},{startTime:'25:00'},{campaignKind:undefined},{campaignScope:undefined},{endTimeExclusive:'yes'}])assert.ok(validateEvent({...hm,...changes},sources,at).length);
+ for(const changes of [{endDate:'2026-02-30'},{startDate:'2027-01-01'},{checkedAt:'2026-10-26T00:00:00+09:00'},{periodSourceUrl:''},{sourceUrl:'https://www2.hm.com.evil.example/'},{priceWon:1000},{reviewWithinDays:100},{publicationStatus:'automatic'},{startTime:'25:00'},{campaignKind:undefined},{campaignScope:undefined},{endTimeExclusive:'yes'}])assert.ok(validateEvent({...hm,...changes},sources,at).length);
  assert.equal(safeOfficialUrl('javascript:alert(1)',['www2.hm.com']),false);
  assert.equal(safeOfficialUrl('https://user:secret@www2.hm.com/',['www2.hm.com']),false);
  assert.ok(validateSource({...sources[0],aliases:[1]},at).length);
@@ -130,4 +131,28 @@ test('home leads with the expanded calendar and shopping disclosure separates be
  const home=await readFile(new URL('../scripts/build-home.mjs',import.meta.url),'utf8');assert.ok(home.indexOf('class="family-first"')<home.indexOf('class="home-hero"'));assert.match(home,/기간 한정 대표 세일/);
  const scope={};vm.runInNewContext(await readFile(new URL('../assets/js/core-ui.js',import.meta.url),'utf8'),scope);
  assert.equal(scope.SimuLab.getToolNotice('parenting-deals').kind,'shopping');assert.match(scope.SimuLab.getToolNotice('parenting-deals').message,/적립금과 사은품/);
+});
+
+test('beauty and fashion filters find new brands without turning member offers into calendar sales',()=>{
+ assert.deepEqual(filterSources(sources,{category:'beauty'}).map(s=>s.id),['oliveyoung','amoremall']);
+ assert.equal(filterSources(sources,{category:'fashion',query:'무탠다드'})[0].id,'musinsa');
+ assert.equal(filterSources(sources,{category:'life',query:'MUJI'})[0].id,'muji');
+ assert.equal(filterEvents(events,{month:'2026-10',category:'beauty'},at)[0].brandId,'amoremall');
+ assert.equal(filterEvents(events,{month:'2026-10',brand:'musinsa'},at).length,2);
+ assert.equal(filterMemberOffers(memberOffers,{category:'beauty'},at)[0].brandId,'oliveyoung');
+ assert.equal(filterMemberOffers(memberOffers,{brand:'muji',channel:'online',query:'MUJI'},at).length,1);
+ assert.equal(filterMemberOffers(memberOffers,{category:'fashion'},at).length,0);
+ for(const offer of memberOffers){assert.deepEqual(validateMemberOffer(offer,sources,at),[]);assert.equal(isCalendarEligible({...offer,publicationStatus:'reviewed'}),false);}
+});
+
+test('member benefits preserve fixed expiry and never infer this month from recurring guidance',()=>{
+ const muji=memberOffers.find(o=>o.brandId==='muji'),olive=memberOffers.find(o=>o.brandId==='oliveyoung');
+ assert.equal(memberOfferState(olive,at).code,'recurring');assert.equal(memberOfferState(olive,at).active,false);
+ assert.equal(memberOfferState(muji,at).active,true);
+ assert.equal(memberOfferState(muji,'2026-11-02T00:00:00+09:00').code,'ended');
+ assert.equal(memberOfferState(olive,'2026-11-02T00:00:00+09:00').code,'stale');
+ assert.equal(filterMemberOffers(memberOffers,{status:'active'},at).length,1);
+ assert.ok(validateMemberOffer({...olive,startDate:'2026-10-25',endDate:'2026-10-27'},sources,at).length);
+ for(const changes of [{endDate:'2026-02-30'},{checkedAt:'2026-10-26T00:00:00+09:00'},{sourceUrl:'https://mujikorea.co.kr.evil.test/'},{conditions:[]}])assert.ok(validateMemberOffer({...muji,...changes},sources,at).length);
+ const html=renderMemberOffer({...olive,title:'<img src=x>'},{now:at});assert.doesNotMatch(html,/<img src=x>/);assert.match(html,/정기 안내/);assert.doesNotMatch(html,/공지 기간 중/);
 });

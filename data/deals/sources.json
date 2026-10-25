@@ -353,9 +353,9 @@
       "aliases": [
         "MUJI"
       ],
-      "note": "기획전 목록 확인 · 가격인하·일반 컬렉션 제외",
-      "checkedAt": "2026-10-24T10:49:03+09:00",
-      "trackingTier": "additional",
+      "note": "한국 공식 앱 신규 가입 쿠폰: 10/8~11/1 · 1인 1장·중복 할인 제외 조건 확인",
+      "checkedAt": "2026-10-25T14:10:44+09:00",
+      "trackingTier": "priority",
       "rightsNote": "공식 출처와 운영 브랜드를 확인한 추적 대상입니다. 공개 열람은 재이용 허락을 뜻하지 않습니다. 기간 한정 대표 세일의 최소 사실만 검토 후 자체 정리하며, 이미지·홍보문·상품 DB를 복제하거나 세일 기간을 추정하지 않습니다."
     },
     {
@@ -595,6 +595,75 @@
       "checkedAt": "2026-10-24T02:01:14+09:00",
       "aliases": [],
       "trackingTier": "standard"
+    },
+    {
+      "id": "musinsa",
+      "name": "무신사",
+      "operator": "주식회사 무신사 · IFC몰 공식 입점 매장 안내",
+      "officialUrl": "https://www.musinsa.com/",
+      "allowedHosts": [
+        "www.musinsa.com",
+        "corp.musinsa.com",
+        "www.ifcmallseoul.com"
+      ],
+      "categories": [
+        "fashion"
+      ],
+      "aliases": [
+        "MUSINSA",
+        "무신사 스탠다드",
+        "무탠다드"
+      ],
+      "note": "겨울 신상 위크와 IFC몰 스탠다드 슈퍼세일 확인 · 매장별 적용 범위 구분",
+      "checkedAt": "2026-10-25T14:10:44+09:00",
+      "trackingTier": "priority",
+      "rightsNote": "공식 출처와 운영 브랜드를 확인한 추적 대상입니다. 공개 열람은 재이용 허락을 뜻하지 않습니다. 기간 한정 대표 세일의 최소 사실만 검토 후 자체 정리하며, 이미지·홍보문·상품 DB를 복제하거나 세일 기간을 추정하지 않습니다."
+    },
+    {
+      "id": "oliveyoung",
+      "name": "올리브영",
+      "operator": "씨제이올리브영 주식회사",
+      "officialUrl": "https://www.oliveyoung.co.kr/store/main/main.do",
+      "allowedHosts": [
+        "www.oliveyoung.co.kr",
+        "corp.oliveyoung.com"
+      ],
+      "categories": [
+        "beauty"
+      ],
+      "aliases": [
+        "OLIVE YOUNG",
+        "올영",
+        "올영데이",
+        "올리브데이"
+      ],
+      "note": "공식몰 올리브데이 배너와 정기 안내 확인 · 회원·앱 혜택 영역에서 조건 확인",
+      "checkedAt": "2026-10-25T14:10:44+09:00",
+      "trackingTier": "priority",
+      "rightsNote": "공식 출처와 운영 브랜드를 확인한 추적 대상입니다. 공개 열람은 재이용 허락을 뜻하지 않습니다. 기간 한정 대표 세일의 최소 사실만 검토 후 자체 정리하며, 이미지·홍보문·상품 DB를 복제하거나 세일 기간을 추정하지 않습니다."
+    },
+    {
+      "id": "amoremall",
+      "name": "아모레몰",
+      "operator": "주식회사 아모레퍼시픽",
+      "officialUrl": "https://www.amoremall.com/kr/ko/display/event",
+      "allowedHosts": [
+        "www.amoremall.com"
+      ],
+      "categories": [
+        "beauty"
+      ],
+      "aliases": [
+        "AMORE MALL",
+        "아모레퍼시픽",
+        "마몽드",
+        "라네즈",
+        "이니스프리"
+      ],
+      "note": "공식 이벤트 목록과 마몽드 빅 세일 기간·유의사항 확인",
+      "checkedAt": "2026-10-25T14:10:44+09:00",
+      "trackingTier": "priority",
+      "rightsNote": "공식 출처와 운영 브랜드를 확인한 추적 대상입니다. 공개 열람은 재이용 허락을 뜻하지 않습니다. 기간 한정 대표 세일의 최소 사실만 검토 후 자체 정리하며, 이미지·홍보문·상품 DB를 복제하거나 세일 기간을 추정하지 않습니다."
     }
   ]
 }

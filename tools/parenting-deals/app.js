@@ -1,5 +1,5 @@
-import {EVENTS,SOURCES} from './data.js';
-import {filterEvents,eventState,koreaToday,monthRange,shiftMonth,renderCalendar,renderEvent,filterSources,escapeHtml as esc} from './model.js';
+import {EVENTS,SOURCES,MEMBER_OFFERS} from './data.js';
+import {filterEvents,eventState,koreaToday,monthRange,shiftMonth,renderCalendar,renderEvent,filterSources,filterMemberOffers,renderMemberOffer,escapeHtml as esc} from './model.js';
 const $=id=>document.getElementById(id),today=koreaToday();
 const state={month:today.slice(0,7),category:'all',brand:'all',channel:'all',status:'month',query:'',view:'calendar',selectedDate:today,selectedId:'',rangeStart:'',rangeEnd:''};
 const form=$('sale-filters'),chips=$('sale-categories');
@@ -41,6 +41,10 @@ function render(){
  $('source-links').querySelectorAll('[data-source-group]').forEach(group=>{const count=[...group.querySelectorAll('[data-source-brand]')].filter(card=>!card.hidden).length;group.hidden=count===0;group.querySelector('h3>span').textContent=count;});
  $('source-visible-count').textContent=visibleSources.length+'개 브랜드';
  $('source-empty').hidden=visibleSources.length!==0;
+ const memberRows=filterMemberOffers(MEMBER_OFFERS,state,now);
+ $('member-offer-list').innerHTML=memberRows.map(o=>renderMemberOffer(o,{now})).join('');
+ $('member-offer-count').textContent=memberRows.length+'개 안내';
+ $('member-offer-empty').hidden=memberRows.length!==0;
 
 }
 function selectEvent(id){

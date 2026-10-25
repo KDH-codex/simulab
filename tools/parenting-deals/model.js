@@ -1,4 +1,4 @@
-export const CATEGORIES={all:'전체',life:'라이프',fashion:'패션',kids:'유아·키즈 패션',furniture:'가구·리빙',appliances:'가전·디지털',kitchen:'주방용품'};
+export const CATEGORIES={all:'전체',life:'라이프',fashion:'패션',beauty:'뷰티',kids:'유아·키즈 패션',furniture:'가구·리빙',appliances:'가전·디지털',kitchen:'주방용품'};
 export const BENEFITS={sale:'가격 할인',coupon:'쿠폰',points:'적립·페이백',installment:'무이자 할부',shipping:'배송 혜택',live:'쇼핑 라이브',mixed:'복합 혜택'};
 export const CHANNELS={online:'온라인',store:'매장',phone:'전화 주문',unknown:'적용 채널 확인'};
 const DAY=86400000,HOUR=3600000;
@@ -29,13 +29,14 @@ export function filterSources(sources,{category='all',brand='all',query=''}={}){
  const words=query.slice(0,100).trim().toLocaleLowerCase('ko-KR').split(/\s+/).filter(Boolean);
  return sources.filter(source=>(category==='all'||source.categories.includes(category))&&(brand==='all'||source.id===brand)&&words.every(word=>[source.name,...(source.aliases||[]),...source.categories.map(c=>CATEGORIES[c])].join(' ').toLocaleLowerCase('ko-KR').includes(word)));
 }
-export function renderSourceDirectory(sources,events,{now=new Date()}={}){
+export function renderSourceDirectory(sources,events,{now=new Date(),memberOffers=[]}={}){
  return Object.entries(CATEGORIES).filter(([id])=>id!=='all').map(([id,label])=>{
   const members=sources.filter(source=>source.categories[0]===id);
   if(!members.length)return '';
   return '<section class="source-group" data-source-group="'+id+'"><h3>'+escapeHtml(label)+' <span>'+members.length+'</span></h3><div class="source-links">'+members.map(source=>{
    const records=events.filter(event=>isCalendarEligible(event)&&event.brandId===source.id),active=records.filter(event=>eventState(event,now).active).length;
-   const label=active?'기간 한정 세일 '+active+'개':records.length?'수록 일정 '+records.length+'개':'대표 세일 추가 확인';
+   const offers=memberOffers.filter(o=>o.brandId===source.id&&!['ended','stale','pending'].includes(memberOfferState(o,now).code)).length;
+   const label=active?'기간 한정 세일 '+active+'개':records.length?'수록 일정 '+records.length+'개':offers?'회원·앱 혜택 '+offers+'개':'대표 세일 추가 확인';
    return '<a class="source-link" data-source-brand="'+escapeHtml(source.id)+'" href="'+escapeHtml(source.officialUrl)+'" target="_blank" rel="noopener noreferrer"><span>'+escapeHtml(source.name)+'</span><b class="source-status'+(active?' has-sale':'')+'">'+escapeHtml(label)+'</b><small>'+escapeHtml(source.note||'공식 기간·품목·이용 채널 확인')+'</small><small class="source-checked">출처 확인 '+escapeHtml(formatCheckedAt(source.checkedAt))+'</small><span class="source-arrow" aria-hidden="true">↗</span></a>';
   }).join('')+'</div></section>';
  }).join('');
@@ -50,6 +51,49 @@ export function validateSource(source,now=new Date()){
  if(!source.note)errors.push('Missing tracking note');
  if(!validTimestamp(source.checkedAt)||Date.parse(source.checkedAt)>+new Date(now))errors.push('Invalid source review date');
  return errors;
+}
+export function validateMemberOffer(offer,sources,now=new Date()){
+ const errors=[],source=sources.find(s=>s.id===offer.brandId);
+ for(const key of ['id','brandId','title','summary','periodNote','sourceUrl','periodSourceUrl','checkedAt'])if(!offer[key])errors.push('Missing '+key);
+ if(!/^[a-z0-9-]+$/.test(offer.id||''))errors.push('Invalid id');
+ if(!source)errors.push('Unknown official source');
+ for(const key of ['sourceUrl','periodSourceUrl'])if(!source||!safeOfficialUrl(offer[key],source.allowedHosts))errors.push('Unsafe '+key);
+ if(!validTimestamp(offer.checkedAt)||Date.parse(offer.checkedAt)>+new Date(now))errors.push('Invalid offer review date');
+ if(!Array.isArray(offer.categories)||!offer.categories.length||offer.categories.some(c=>c==='all'||!Object.hasOwn(CATEGORIES,c)))errors.push('Invalid categories');
+ if(!Array.isArray(offer.channels)||!offer.channels.length||offer.channels.some(c=>!Object.hasOwn(CHANNELS,c)))errors.push('Invalid channels');
+ if(!Array.isArray(offer.conditions)||!offer.conditions.length)errors.push('Missing conditions');
+ if(!Number.isInteger(offer.reviewWithinDays)||offer.reviewWithinDays<1||offer.reviewWithinDays>14)errors.push('Invalid review interval');
+ if(offer.scheduleKind==='fixed'){
+  if(!validDate(offer.startDate)||!validDate(offer.endDate)||offer.startDate>offer.endDate)errors.push('Invalid offer period');
+ }else if(offer.scheduleKind==='recurring'){
+  if(!offer.recurrence||offer.startDate||offer.endDate)errors.push('Recurring guidance must not invent dates');
+ }else errors.push('Invalid offer schedule kind');
+ return errors;
+}
+export function memberOfferState(offer,now=new Date()){
+ if(!validTimestamp(offer.checkedAt)||Date.parse(offer.checkedAt)>+new Date(now))return {code:'pending',label:'검토 필요',active:false};
+ if(offer.scheduleKind==='fixed'&&(!validDate(offer.startDate)||!validDate(offer.endDate)||offer.startDate>offer.endDate))return {code:'pending',label:'검토 필요',active:false};
+ const today=koreaToday(now);
+ if(offer.scheduleKind==='fixed'&&today>offer.endDate)return {code:'ended',label:'종료된 혜택',active:false};
+ if(+new Date(now)-Date.parse(offer.checkedAt)>offer.reviewWithinDays*DAY)return {code:'stale',label:'재확인 필요',active:false};
+ if(offer.scheduleKind==='recurring')return {code:'recurring',label:'정기 안내 · 이번 달 조건 확인',active:false};
+ if(today<offer.startDate)return {code:'upcoming',label:'시작 예정',active:false};
+ return {code:'active',label:today===offer.endDate?'오늘 종료 예정':'공지 기간 중',active:true};
+}
+export function filterMemberOffers(offers,{month,category='all',brand='all',channel='all',query='',status='month'}={},now=new Date()){
+ const range=month?monthRange(month):null,words=query.slice(0,100).trim().toLocaleLowerCase('ko-KR').split(/\s+/).filter(Boolean),today=koreaToday(now);
+ return offers.filter(o=>{
+  if(category!=='all'&&!o.categories.includes(category)||brand!=='all'&&brand!==o.brandId||channel!=='all'&&!o.channels.includes(channel))return false;
+  if(range&&o.scheduleKind==='fixed'&&(o.endDate<range.start||o.startDate>range.end))return false;
+  if(!words.every(w=>[o.brandName,...(o.brandAliases||[]),o.title,o.summary,...o.categories.map(c=>CATEGORIES[c])].join(' ').toLocaleLowerCase('ko-KR').includes(w)))return false;
+  const state=memberOfferState(o,now);
+  if(status==='active'&&!state.active||status==='upcoming'&&state.code!=='upcoming'||status==='ended'&&state.code!=='ended'||status==='stale'&&state.code!=='stale'||status==='soon'&&(!state.active||!o.endDate||o.endDate>addDays(today,6)))return false;
+  return true;
+ });
+}
+export function renderMemberOffer(offer,{now=new Date()}={}){
+ const e=escapeHtml,state=memberOfferState(offer,now),period=offer.scheduleKind==='recurring'?offer.recurrence:periodText(offer);
+ return `<article class="sale-card member-offer" id="offer-${e(offer.id)}" data-member-offer="${e(offer.id)}"><div class="sale-card-meta"><span class="category-label category-${e(offer.categories[0])}">${e(CATEGORIES[offer.categories[0]])} · 회원·앱 혜택</span><span class="state-label state-${state.code}">${e(state.label)}</span></div><p class="sale-brand">${e(offer.brandName)}</p><h3>${e(offer.title)}</h3><p class="sale-period">${e(period)}<small>${e(offer.periodNote)}</small></p><p class="sale-summary">${e(offer.summary)}</p><div class="benefit-line"><span>대상자·쿠폰 조건 확인</span><span>${offer.channels.map(c=>e(CHANNELS[c])).join(' · ')}</span></div><details class="sale-conditions"><summary>이용 대상과 적용 조건</summary><ul>${offer.conditions.map(c=>'<li>'+e(c)+'</li>').join('')}</ul></details><div class="sale-card-bottom"><p>공지 확인 <time datetime="${e(offer.checkedAt)}">${e(formatCheckedAt(offer.checkedAt))}</time></p><a class="sale-official" href="${e(offer.sourceUrl)}" target="_blank" rel="noopener noreferrer" aria-label="${e(offer.brandName+' '+offer.title)} 공식 안내 새 창에서 보기">공식 안내 ↗</a></div></article>`;
 }
 export function validateEvent(event,sources,now=new Date()){
  const errors=[];const source=sources.find(s=>s.id===event.brandId);
