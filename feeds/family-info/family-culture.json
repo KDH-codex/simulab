@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "snapshotId": "a5fb9eebbe4c79fbbb90fe20",
+  "snapshotId": "7b8117f0df4cc3cbeba5203f",
   "timezone": "Asia/Seoul",
   "categories": [
     {
@@ -14,13 +14,13 @@
       "split": "region",
       "href": "/tools/family-culture/",
       "accent": "blue",
-      "categoryRevision": "4f53cda18c2baa0c",
-      "lastVerifiedAt": null,
-      "lastCollectedAt": null,
+      "categoryRevision": "33509e70e65d72e9",
+      "lastVerifiedAt": "2026-10-26",
+      "lastCollectedAt": "2026-10-26",
       "lastDeployedAt": null,
-      "outcome": "not-run",
-      "verifiedCount": 0,
-      "currentCount": 0,
+      "outcome": "partial-review",
+      "verifiedCount": 15,
+      "currentCount": 15,
       "failures": []
     }
   ],
@@ -36,7 +36,7 @@
       "regions": [
         "서울"
       ],
-      "lastSuccessAt": "2026-10-25"
+      "lastSuccessAt": "2026-10-26"
     },
     {
       "id": "gwacheon-science",
@@ -74,15 +74,735 @@
       "regions": [
         "서울"
       ],
-      "lastSuccessAt": null
+      "lastSuccessAt": "2026-10-26"
     }
   ],
-  "records": [],
-  "siteRevision": "9548bd54a7859e769b5d2024a87c45337abe3de5",
-  "generatedAt": "2026-10-25T10:59:15.502Z",
+  "records": [
+    {
+      "id": "culture-159888",
+      "categoryIds": [
+        "family-culture"
+      ],
+      "title": "겨울의 클래식 동화 · 비발디에서 디즈니까지",
+      "providerId": "seoul-culture",
+      "canonicalUrl": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159888&menuNo=200008",
+      "region": "서울",
+      "location": "롯데콘서트홀",
+      "audience": "4세이상 (2022년생 포함 이전 출생자)",
+      "ageGroups": [
+        "preschool",
+        "elementary"
+      ],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-12-05",
+      "eventEnd": "2026-12-05",
+      "scheduleNote": "토요일 11:30",
+      "feeStatus": "paid",
+      "feeText": "전석 35,000원",
+      "summary": "동화와 익숙한 음악을 함께 듣는 가족 클래식 공연입니다.",
+      "conditions": [
+        "관람연령과 날짜별 운영시간·휴관일을 확인한 후 방문해 주세요.",
+        "예약·예매 필요 여부와 잔여석은 공식 안내의 연결 페이지에서 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26",
+      "evidence": [
+        {
+          "url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159888&menuNo=200008",
+          "publisher": "서울문화포털",
+          "summary": "공식 상세의 관람대상·장소·기간·회차 시간·요금 표를 대조했습니다. 예약 시작일이나 잔여석은 원문에서 확정하지 않아 표시하지 않았습니다.",
+          "verifiedAt": "2026-10-26",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "eventStart",
+            "eventEnd",
+            "feeText"
+          ]
+        }
+      ],
+      "contentHash": "6184bcb805b96b31129ada96ce33b6523e4603fff70559de741b83dd781b4d80",
+      "siteUrl": "/tools/family-culture/#culture-159888"
+    },
+    {
+      "id": "culture-159948",
+      "categoryIds": [
+        "family-culture"
+      ],
+      "title": "리트플레이 · 겨울나그네",
+      "providerId": "seoul-culture",
+      "canonicalUrl": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159948&menuNo=200008",
+      "region": "서울",
+      "location": "강동아트센터 대극장 한강",
+      "audience": "8세 이상 관람가 (2019년생 이상)",
+      "ageGroups": [
+        "elementary"
+      ],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-12-04",
+      "eventEnd": "2026-12-05",
+      "scheduleNote": "12.04.(금) 19:30 / 12.05.(토) 15:00",
+      "feeStatus": "paid",
+      "feeText": "전석 40,000원",
+      "summary": "초등학생 이상 관람 가능한 강동아트센터의 음악극입니다.",
+      "conditions": [
+        "관람연령과 날짜별 운영시간·휴관일을 확인한 후 방문해 주세요.",
+        "예약·예매 필요 여부와 잔여석은 공식 안내의 연결 페이지에서 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26",
+      "evidence": [
+        {
+          "url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159948&menuNo=200008",
+          "publisher": "서울문화포털",
+          "summary": "공식 상세의 관람대상·장소·기간·회차 시간·요금 표를 대조했습니다. 예약 시작일이나 잔여석은 원문에서 확정하지 않아 표시하지 않았습니다.",
+          "verifiedAt": "2026-10-26",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "eventStart",
+            "eventEnd",
+            "feeText"
+          ]
+        }
+      ],
+      "contentHash": "2948c4249adf785420d2812c750b6d23ff6ad790cfd7f0f929b6b52bfd13a0ce",
+      "siteUrl": "/tools/family-culture/#culture-159948"
+    },
+    {
+      "id": "culture-159587",
+      "categoryIds": [
+        "family-culture"
+      ],
+      "title": "서리풀 고음악 · 바로크 노엘",
+      "providerId": "seoul-culture",
+      "canonicalUrl": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159587&menuNo=200008",
+      "region": "서울",
+      "location": "반포심산아트홀",
+      "audience": "초등학생 이상 관람가능",
+      "ageGroups": [
+        "elementary"
+      ],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-12-05",
+      "eventEnd": "2026-12-05",
+      "scheduleNote": "토 15:00",
+      "feeStatus": "paid",
+      "feeText": "R석 2만원 S석 1만5천원",
+      "summary": "초등학생 이상을 위한 반포심산아트홀 고음악 공연입니다.",
+      "conditions": [
+        "관람연령과 날짜별 운영시간·휴관일을 확인한 후 방문해 주세요.",
+        "예약·예매 필요 여부와 잔여석은 공식 안내의 연결 페이지에서 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26",
+      "evidence": [
+        {
+          "url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159587&menuNo=200008",
+          "publisher": "서울문화포털",
+          "summary": "공식 상세의 관람대상·장소·기간·회차 시간·요금 표를 대조했습니다. 예약 시작일이나 잔여석은 원문에서 확정하지 않아 표시하지 않았습니다.",
+          "verifiedAt": "2026-10-26",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "eventStart",
+            "eventEnd",
+            "feeText"
+          ]
+        }
+      ],
+      "contentHash": "73a6d443251d4cddad73605fbcddd7c23167d486a4f9c8991fe4081425fa6819",
+      "siteUrl": "/tools/family-culture/#culture-159587"
+    },
+    {
+      "id": "culture-159957",
+      "categoryIds": [
+        "family-culture"
+      ],
+      "title": "서울시향 우리동네 실내악 · 서울여자대학교",
+      "providerId": "seoul-culture",
+      "canonicalUrl": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159957&menuNo=200008",
+      "region": "서울",
+      "location": "서울여자대학교 대강당",
+      "audience": "8세 이상(2019년생 포함)",
+      "ageGroups": [
+        "elementary"
+      ],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-11-10",
+      "eventEnd": "2026-11-10",
+      "scheduleNote": "18:00",
+      "feeStatus": "free",
+      "feeText": "무료",
+      "summary": "서울여자대학교 대강당에서 열리는 무료 실내악 공연입니다.",
+      "conditions": [
+        "관람연령과 날짜별 운영시간·휴관일을 확인한 후 방문해 주세요.",
+        "예약·예매 필요 여부와 잔여석은 공식 안내의 연결 페이지에서 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26",
+      "evidence": [
+        {
+          "url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159957&menuNo=200008",
+          "publisher": "서울문화포털",
+          "summary": "공식 상세의 관람대상·장소·기간·회차 시간·요금 표를 대조했습니다. 예약 시작일이나 잔여석은 원문에서 확정하지 않아 표시하지 않았습니다.",
+          "verifiedAt": "2026-10-26",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "eventStart",
+            "eventEnd",
+            "feeText"
+          ]
+        }
+      ],
+      "contentHash": "fa17f3eb722183dd187714d1de2609e19ec794e6718770fa5fce7421e1f774cf",
+      "siteUrl": "/tools/family-culture/#culture-159957"
+    },
+    {
+      "id": "culture-159954",
+      "categoryIds": [
+        "family-culture"
+      ],
+      "title": "예술, 마음으로 전하는 가장 특별한 선물",
+      "providerId": "seoul-culture",
+      "canonicalUrl": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159954&menuNo=200008",
+      "region": "서울",
+      "location": "국회도서관 대강당",
+      "audience": "5세 이상 누구나",
+      "ageGroups": [
+        "preschool",
+        "elementary"
+      ],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-11-05",
+      "eventEnd": "2026-11-05",
+      "scheduleNote": "15:00~16:40",
+      "feeStatus": "free",
+      "feeText": "무료",
+      "summary": "5세 이상 가족이 관람할 수 있는 국회도서관 공연입니다.",
+      "conditions": [
+        "관람연령과 날짜별 운영시간·휴관일을 확인한 후 방문해 주세요.",
+        "예약·예매 필요 여부와 잔여석은 공식 안내의 연결 페이지에서 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26",
+      "evidence": [
+        {
+          "url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159954&menuNo=200008",
+          "publisher": "서울문화포털",
+          "summary": "공식 상세의 관람대상·장소·기간·회차 시간·요금 표를 대조했습니다. 예약 시작일이나 잔여석은 원문에서 확정하지 않아 표시하지 않았습니다.",
+          "verifiedAt": "2026-10-26",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "eventStart",
+            "eventEnd",
+            "feeText"
+          ]
+        }
+      ],
+      "contentHash": "8589283dcdcc8b16eca2ffc0d677e75e5ad48eb508c5adea5fdde4496cfb3560",
+      "siteUrl": "/tools/family-culture/#culture-159954"
+    },
+    {
+      "id": "culture-159947",
+      "categoryIds": [
+        "family-culture"
+      ],
+      "title": "최태지의 발레 오픈 리허설 Ⅱ",
+      "providerId": "seoul-culture",
+      "canonicalUrl": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159947&menuNo=200008",
+      "region": "서울",
+      "location": "강동아트센터 소극장 드림",
+      "audience": "8세 이상",
+      "ageGroups": [
+        "elementary"
+      ],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-11-14",
+      "eventEnd": "2026-11-14",
+      "scheduleNote": "15:00 / 18:00",
+      "feeStatus": "paid",
+      "feeText": "전석 40,000원",
+      "summary": "발레를 가까이에서 만나는 8세 이상 대상 공연입니다.",
+      "conditions": [
+        "관람연령과 날짜별 운영시간·휴관일을 확인한 후 방문해 주세요.",
+        "예약·예매 필요 여부와 잔여석은 공식 안내의 연결 페이지에서 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26",
+      "evidence": [
+        {
+          "url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159947&menuNo=200008",
+          "publisher": "서울문화포털",
+          "summary": "공식 상세의 관람대상·장소·기간·회차 시간·요금 표를 대조했습니다. 예약 시작일이나 잔여석은 원문에서 확정하지 않아 표시하지 않았습니다.",
+          "verifiedAt": "2026-10-26",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "eventStart",
+            "eventEnd",
+            "feeText"
+          ]
+        }
+      ],
+      "contentHash": "4906a9480001163aaf482e4abf98fda79dea4f0049320c481904b0b65d204a82",
+      "siteUrl": "/tools/family-culture/#culture-159947"
+    },
+    {
+      "id": "culture-158731",
+      "categoryIds": [
+        "family-culture",
+        "kids-popups"
+      ],
+      "title": "파인캐릭터 2026",
+      "providerId": "seoul-culture",
+      "canonicalUrl": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=158731&menuNo=200008",
+      "region": "서울",
+      "location": "동대문디자인플라자(DDP) 쇼룸 1층 (서울 중구 을지로 281)",
+      "audience": "누구나",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-11-27",
+      "eventEnd": "2026-11-29",
+      "scheduleNote": "10:00 ~ 19:00",
+      "feeStatus": "free",
+      "feeText": "무료",
+      "summary": "캐릭터 작품과 아트토이를 만나는 DDP 전시입니다.",
+      "conditions": [
+        "관람연령과 날짜별 운영시간·휴관일을 확인한 후 방문해 주세요.",
+        "예약·예매 필요 여부와 잔여석은 공식 안내의 연결 페이지에서 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26",
+      "evidence": [
+        {
+          "url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=158731&menuNo=200008",
+          "publisher": "서울문화포털",
+          "summary": "공식 상세의 관람대상·장소·기간·회차 시간·요금 표를 대조했습니다. 예약 시작일이나 잔여석은 원문에서 확정하지 않아 표시하지 않았습니다.",
+          "verifiedAt": "2026-10-26",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "eventStart",
+            "eventEnd",
+            "feeText"
+          ]
+        }
+      ],
+      "contentHash": "951f959e03f8641bf944cd938f6ef77fe52336376f97ba1105c7667bb04f8782",
+      "siteUrl": "/tools/family-culture/#culture-158731"
+    },
+    {
+      "id": "culture-158824",
+      "categoryIds": [
+        "family-culture"
+      ],
+      "title": "서울도시계획 대관람",
+      "providerId": "seoul-culture",
+      "canonicalUrl": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=158824&menuNo=200008",
+      "region": "서울",
+      "location": "서울역사박물관 기획전시실A",
+      "audience": "누구나",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-08-14",
+      "eventEnd": "2026-11-08",
+      "operatingWeekdays": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "scheduleNote": "화 - 일요일 9:00~18:00 ※ 월 휴관(공휴일 개관), 금 21:00 까지 야간개관",
+      "feeStatus": "free",
+      "feeText": "무료",
+      "summary": "서울의 도시계획 기록과 도시의 변화를 살펴보는 전시입니다.",
+      "conditions": [
+        "관람연령과 날짜별 운영시간·휴관일을 확인한 후 방문해 주세요.",
+        "예약·예매 필요 여부와 잔여석은 공식 안내의 연결 페이지에서 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26",
+      "evidence": [
+        {
+          "url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=158824&menuNo=200008",
+          "publisher": "서울문화포털",
+          "summary": "공식 상세의 관람대상·장소·기간·회차 시간·요금 표를 대조했습니다. 예약 시작일이나 잔여석은 원문에서 확정하지 않아 표시하지 않았습니다.",
+          "verifiedAt": "2026-10-26",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "eventStart",
+            "eventEnd",
+            "feeText",
+            "operatingWeekdays"
+          ]
+        }
+      ],
+      "contentHash": "bc0ae00aaaa43c917b1947bc8d24cc185a8d4591cce03592d787e8fe52a94662",
+      "siteUrl": "/tools/family-culture/#culture-158824"
+    },
+    {
+      "id": "culture-158447",
+      "categoryIds": [
+        "family-culture"
+      ],
+      "title": "꿈의숲 마티네 · 벨에포크 아트&뮤직",
+      "providerId": "seoul-culture",
+      "canonicalUrl": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=158447&menuNo=200008",
+      "region": "서울",
+      "location": "북서울꿈의숲 상상톡톡미술관",
+      "audience": "8세 이상 관람 가능",
+      "ageGroups": [
+        "elementary"
+      ],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-10-28",
+      "eventEnd": "2026-10-28",
+      "scheduleNote": "수요일 11:00",
+      "feeStatus": "paid",
+      "feeText": "전석 15,000원",
+      "summary": "상상톡톡미술관에서 미술과 음악을 함께 감상하는 공연입니다.",
+      "conditions": [
+        "관람연령과 날짜별 운영시간·휴관일을 확인한 후 방문해 주세요.",
+        "예약·예매 필요 여부와 잔여석은 공식 안내의 연결 페이지에서 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26",
+      "evidence": [
+        {
+          "url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=158447&menuNo=200008",
+          "publisher": "서울문화포털",
+          "summary": "공식 상세의 관람대상·장소·기간·회차 시간·요금 표를 대조했습니다. 예약 시작일이나 잔여석은 원문에서 확정하지 않아 표시하지 않았습니다.",
+          "verifiedAt": "2026-10-26",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "eventStart",
+            "eventEnd",
+            "feeText"
+          ]
+        }
+      ],
+      "contentHash": "9d72a2ff99f21f9f14526e771692924dd80d2b154a6c04feff9b6263a89e3955",
+      "siteUrl": "/tools/family-culture/#culture-158447"
+    },
+    {
+      "id": "culture-159911",
+      "categoryIds": [
+        "family-culture"
+      ],
+      "title": "공공미술 작품전시 · 평화의 잔상",
+      "providerId": "seoul-culture",
+      "canonicalUrl": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159911&menuNo=200009",
+      "region": "서울",
+      "location": "서울창포원 일대",
+      "audience": "누구나",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-10-24",
+      "eventEnd": "2026-12-13",
+      "scheduleNote": "연중무휴",
+      "feeStatus": "free",
+      "feeText": "무료",
+      "summary": "서울창포원에서 야외 공공미술을 둘러보는 전시입니다.",
+      "conditions": [
+        "관람연령과 날짜별 운영시간·휴관일을 확인한 후 방문해 주세요.",
+        "예약·예매 필요 여부와 잔여석은 공식 안내의 연결 페이지에서 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26",
+      "evidence": [
+        {
+          "url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159911&menuNo=200009",
+          "publisher": "서울문화포털",
+          "summary": "공식 상세의 관람대상·장소·기간·회차 시간·요금 표를 대조했습니다. 예약 시작일이나 잔여석은 원문에서 확정하지 않아 표시하지 않았습니다.",
+          "verifiedAt": "2026-10-26",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "eventStart",
+            "eventEnd",
+            "feeText"
+          ]
+        }
+      ],
+      "contentHash": "e572355508b032934db6629e739ca25e3499ae8f0e1c8842dd58bd356e8c3706",
+      "siteUrl": "/tools/family-culture/#culture-159911"
+    },
+    {
+      "id": "culture-159924",
+      "categoryIds": [
+        "family-culture"
+      ],
+      "title": "서울아트책보고 · 아트북그라피",
+      "providerId": "seoul-culture",
+      "canonicalUrl": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159924&menuNo=200009",
+      "region": "서울",
+      "location": "서울아트책보고 갤러리",
+      "audience": "누구나",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-10-07",
+      "eventEnd": "2026-12-06",
+      "scheduleNote": "10:00~19:00",
+      "feeStatus": "free",
+      "feeText": "무료",
+      "summary": "예술과 출판이 만나는 아트북을 살펴보는 전시입니다.",
+      "conditions": [
+        "관람연령과 날짜별 운영시간·휴관일을 확인한 후 방문해 주세요.",
+        "예약·예매 필요 여부와 잔여석은 공식 안내의 연결 페이지에서 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26",
+      "evidence": [
+        {
+          "url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159924&menuNo=200009",
+          "publisher": "서울문화포털",
+          "summary": "공식 상세의 관람대상·장소·기간·회차 시간·요금 표를 대조했습니다. 예약 시작일이나 잔여석은 원문에서 확정하지 않아 표시하지 않았습니다.",
+          "verifiedAt": "2026-10-26",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "eventStart",
+            "eventEnd",
+            "feeText"
+          ]
+        }
+      ],
+      "contentHash": "fc77b83ba5e016fdbfb02666876af9fb3f98dc010bbce936b25c7e2a5e226a6b",
+      "siteUrl": "/tools/family-culture/#culture-159924"
+    },
+    {
+      "id": "culture-157859",
+      "categoryIds": [
+        "family-culture"
+      ],
+      "title": "서초 공공미술 · Wonder Street",
+      "providerId": "seoul-culture",
+      "canonicalUrl": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=157859&menuNo=200009",
+      "region": "서울",
+      "location": "서초구 전역 원베일리 공공보행로 피카소벽화거리",
+      "audience": "전체관람가",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-04-27",
+      "eventEnd": "2026-11-15",
+      "scheduleNote": "전시 기간 내 상시 운영",
+      "feeStatus": "free",
+      "feeText": "무료",
+      "summary": "공공보행로와 거리에서 만나는 무료 공공미술 전시입니다.",
+      "conditions": [
+        "관람연령과 날짜별 운영시간·휴관일을 확인한 후 방문해 주세요.",
+        "예약·예매 필요 여부와 잔여석은 공식 안내의 연결 페이지에서 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26",
+      "evidence": [
+        {
+          "url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=157859&menuNo=200009",
+          "publisher": "서울문화포털",
+          "summary": "공식 상세의 관람대상·장소·기간·회차 시간·요금 표를 대조했습니다. 예약 시작일이나 잔여석은 원문에서 확정하지 않아 표시하지 않았습니다.",
+          "verifiedAt": "2026-10-26",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "eventStart",
+            "eventEnd",
+            "feeText"
+          ]
+        }
+      ],
+      "contentHash": "c2f5b53af43241de747f77dd0ef0b63a48e850163e52cf72222b601bbe1c4226",
+      "siteUrl": "/tools/family-culture/#culture-157859"
+    },
+    {
+      "id": "culture-159268",
+      "categoryIds": [
+        "family-culture"
+      ],
+      "title": "무계원 · 금별, 우주를 만나다",
+      "providerId": "seoul-culture",
+      "canonicalUrl": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159268&menuNo=200009",
+      "region": "서울",
+      "location": "무계원(서울시 종로구 창의문로 5가길 2)",
+      "audience": "누구나",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-09-10",
+      "eventEnd": "2026-11-01",
+      "operatingWeekdays": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "scheduleNote": "10:00~17:30, 매주 월요일 및 추석 당일 휴관",
+      "feeStatus": "free",
+      "feeText": "무료",
+      "summary": "무계원에서 한국의 아름다움을 살펴보는 기획전시입니다.",
+      "conditions": [
+        "관람연령과 날짜별 운영시간·휴관일을 확인한 후 방문해 주세요.",
+        "예약·예매 필요 여부와 잔여석은 공식 안내의 연결 페이지에서 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26",
+      "evidence": [
+        {
+          "url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159268&menuNo=200009",
+          "publisher": "서울문화포털",
+          "summary": "공식 상세의 관람대상·장소·기간·회차 시간·요금 표를 대조했습니다. 예약 시작일이나 잔여석은 원문에서 확정하지 않아 표시하지 않았습니다.",
+          "verifiedAt": "2026-10-26",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "eventStart",
+            "eventEnd",
+            "feeText",
+            "operatingWeekdays"
+          ]
+        }
+      ],
+      "contentHash": "001e68f9fca39046d7d2c3874122d3baf187f77b944980ee81467c4edc010b6d",
+      "siteUrl": "/tools/family-culture/#culture-159268"
+    },
+    {
+      "id": "culture-158749",
+      "categoryIds": [
+        "family-culture"
+      ],
+      "title": "서울역사박물관 XR · 걷는 순간 역사가 펼쳐집니다",
+      "providerId": "seoul-culture",
+      "canonicalUrl": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=158749&menuNo=200009",
+      "region": "서울",
+      "location": "서울역사박물관 3F 전시실",
+      "audience": "누구나",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-07-01",
+      "eventEnd": "2026-10-31",
+      "scheduleNote": "10:00 / 11:00 / 12:00 / 14:30 / 15:30 / 16:30",
+      "feeStatus": "free",
+      "feeText": "무료",
+      "summary": "박물관에서 XR 콘텐츠로 서울의 역사를 체험하는 전시입니다.",
+      "conditions": [
+        "관람연령과 날짜별 운영시간·휴관일을 확인한 후 방문해 주세요.",
+        "예약·예매 필요 여부와 잔여석은 공식 안내의 연결 페이지에서 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26",
+      "evidence": [
+        {
+          "url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=158749&menuNo=200009",
+          "publisher": "서울문화포털",
+          "summary": "공식 상세의 관람대상·장소·기간·회차 시간·요금 표를 대조했습니다. 예약 시작일이나 잔여석은 원문에서 확정하지 않아 표시하지 않았습니다.",
+          "verifiedAt": "2026-10-26",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "eventStart",
+            "eventEnd",
+            "feeText"
+          ]
+        }
+      ],
+      "contentHash": "514e81d8aebfa2779586207dbd34c049833b0293f74d80e2e7f7b937fe961cb4",
+      "siteUrl": "/tools/family-culture/#culture-158749"
+    },
+    {
+      "id": "culture-155699",
+      "categoryIds": [
+        "family-culture"
+      ],
+      "title": "박노수미술관 · 산수·격물",
+      "providerId": "seoul-culture",
+      "canonicalUrl": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=155699&menuNo=200009",
+      "region": "서울",
+      "location": "종로구립 박노수미술관",
+      "audience": "누구나",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2025-09-19",
+      "eventEnd": "2026-12-06",
+      "operatingWeekdays": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "scheduleNote": "매주 화-일 10:00~18:00 (17:30까지 입장가능)",
+      "feeStatus": "paid",
+      "feeText": "관람료: 성인 3,000원 / 청소년 1,800원 / 어린이 1,200원",
+      "summary": "박노수미술관의 개관 기념 전시로 어린이 관람료가 별도로 있습니다.",
+      "conditions": [
+        "관람연령과 날짜별 운영시간·휴관일을 확인한 후 방문해 주세요.",
+        "예약·예매 필요 여부와 잔여석은 공식 안내의 연결 페이지에서 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26",
+      "evidence": [
+        {
+          "url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=155699&menuNo=200009",
+          "publisher": "서울문화포털",
+          "summary": "공식 상세의 관람대상·장소·기간·회차 시간·요금 표를 대조했습니다. 예약 시작일이나 잔여석은 원문에서 확정하지 않아 표시하지 않았습니다.",
+          "verifiedAt": "2026-10-26",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "eventStart",
+            "eventEnd",
+            "feeText",
+            "operatingWeekdays"
+          ]
+        }
+      ],
+      "contentHash": "c34e923165fa43d8aaa402baeebc279bcaba2ac430f26cceaad881544c776025",
+      "siteUrl": "/tools/family-culture/#culture-155699"
+    }
+  ],
+  "siteRevision": "db804427a9b8ff5a5e787b19db4d2d21409fbbc7",
+  "generatedAt": "2026-10-25T17:13:19.183Z",
   "window": {
-    "start": "2026-10-25",
-    "end": "2026-12-24"
+    "start": "2026-10-26",
+    "end": "2026-12-25"
   },
   "deployment": {
     "status": "verify-live-snapshot",

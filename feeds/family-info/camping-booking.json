@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "snapshotId": "a5fb9eebbe4c79fbbb90fe20",
+  "snapshotId": "7b8117f0df4cc3cbeba5203f",
   "timezone": "Asia/Seoul",
   "categories": [
     {
@@ -14,13 +14,13 @@
       "split": "region",
       "href": "/tools/camping-booking/",
       "accent": "green",
-      "categoryRevision": "08af35df13d94174",
-      "lastVerifiedAt": "2026-10-25",
-      "lastCollectedAt": "2026-10-25",
+      "categoryRevision": "cc139a2c4d8458f0",
+      "lastVerifiedAt": "2026-10-26",
+      "lastCollectedAt": "2026-10-26",
       "lastDeployedAt": null,
       "outcome": "partial-review",
-      "verifiedCount": 1,
-      "currentCount": 1,
+      "verifiedCount": 4,
+      "currentCount": 4,
       "failures": []
     }
   ],
@@ -48,7 +48,19 @@
       "regions": [
         "전국"
       ],
-      "lastSuccessAt": "2026-10-25"
+      "lastSuccessAt": "2026-10-26"
+    },
+    {
+      "id": "cheongju-camp",
+      "name": "청주시 오창미래지 캠핑장",
+      "url": "https://munam.cheongju.go.kr/ochang/",
+      "categoryIds": [
+        "camping-booking"
+      ],
+      "regions": [
+        "충북"
+      ],
+      "lastSuccessAt": "2026-10-26"
     }
   ],
   "records": [
@@ -95,13 +107,163 @@
       ],
       "contentHash": "62a41b82e77b836a6d6dc447118e5e815f1a48a6457f65d148946118988b4832",
       "siteUrl": "/tools/camping-booking/#national-forest-weekend-draw-202611"
+    },
+    {
+      "id": "bisulsan-camp-202611",
+      "categoryIds": [
+        "camping-booking"
+      ],
+      "title": "비슬산자연휴양림 11월 캠핑장 예약",
+      "providerId": "foresttrip",
+      "canonicalUrl": "https://foresttrip.go.kr/pot/cc/nm/selectNticBbrssDtlView.do?hmpgId=ID02030093&menuId=005001&twbbsId=278283&bbrssMsterId=BBRSSMSTER_00000051",
+      "region": "대구",
+      "location": "비슬산자연휴양림 캠핑장·카라반",
+      "audience": "공식 시설 예약 이용자 · 우선예약은 해당 자격자에 한함",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-11-01",
+      "eventEnd": "2026-11-30",
+      "bookingStart": "2026-10-28T09:00:00+09:00",
+      "scheduleNote": "예약 시작과 숙박 가능일을 구분 · 휴관·제외시설·잔여석 확인",
+      "feeStatus": "unknown",
+      "feeText": "객실·데크·인원별 요금은 해당 시설의 공식 요금표 확인",
+      "summary": "리모델링 착공 지연에 따라 11월 캠핑장과 카라반을 정상 운영합니다.",
+      "conditions": [
+        "10월 28일 오전 9시 예약을 시작합니다. 예약 가능한 이용일은 11월 30일까지입니다.",
+        "12월부터의 공사·운영 중단은 별도 공지를 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26",
+      "evidence": [
+        {
+          "url": "https://foresttrip.go.kr/pot/cc/nm/selectNticBbrssDtlView.do?hmpgId=ID02030093&menuId=005001&twbbsId=278283&bbrssMsterId=BBRSSMSTER_00000051",
+          "publisher": "숲나들e · 해당 자연휴양림",
+          "summary": "2026년 상세 공지의 예약 개시 시각·이용 대상월·제외시설·우선예약 자격·운영 중단 조건을 확인했습니다. 개시일을 신청 종료일로 표시하지 않았습니다.",
+          "verifiedAt": "2026-10-26",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "eventStart",
+            "eventEnd",
+            "bookingStart"
+          ]
+        }
+      ],
+      "contentHash": "f893f47e50cf4282cd55c3b3dae59df6c245264c4c181b69112c1999533d073d",
+      "siteUrl": "/tools/camping-booking/#bisulsan-camp-202611"
+    },
+    {
+      "id": "ochang-camp-202611",
+      "categoryIds": [
+        "camping-booking"
+      ],
+      "title": "오창미래지 11·12월 캠핑장 예약",
+      "providerId": "cheongju-camp",
+      "canonicalUrl": "https://munam.cheongju.go.kr/ochang/board.do?bd_seq=8701&bd_type=notice&command=h_board_view&currentPage=1&keyfield=&keyword=",
+      "region": "충북",
+      "location": "오창미래지농촌테마공원 캠핑장",
+      "audience": "공식 시설 예약 이용자 · 우선예약은 해당 자격자에 한함",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-11-11",
+      "eventEnd": "2026-12-28",
+      "bookingStart": "2026-11-02T10:00:00+09:00",
+      "operatingWeekdays": [
+        0,
+        1,
+        3,
+        4,
+        5,
+        6
+      ],
+      "scheduleNote": "예약 시작과 숙박 가능일을 구분 · 휴관·제외시설·잔여석 확인",
+      "feeStatus": "unknown",
+      "feeText": "객실·데크·인원별 요금은 해당 시설의 공식 요금표 확인",
+      "summary": "11월과 12월 캠핑 예약을 같은 날 오픈하는 청주시 공지입니다.",
+      "conditions": [
+        "예약 오픈은 11월 2일 오전 10시 예정입니다.",
+        "매주 화요일은 휴관이며 시스템에서 예약되더라도 취소될 수 있습니다.",
+        "평일 이용객의 청주페이 환급 안내는 대상일·실결제액·가입 조건을 공식 원문에서 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26",
+      "evidence": [
+        {
+          "url": "https://munam.cheongju.go.kr/ochang/board.do?bd_seq=8701&bd_type=notice&command=h_board_view&currentPage=1&keyfield=&keyword=",
+          "publisher": "청주시 오창미래지 캠핑장",
+          "summary": "2026년 상세 공지의 예약 개시 시각·이용 대상월·제외시설·우선예약 자격·운영 중단 조건을 확인했습니다. 개시일을 신청 종료일로 표시하지 않았습니다.",
+          "verifiedAt": "2026-10-26",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "eventStart",
+            "eventEnd",
+            "bookingStart",
+            "operatingWeekdays"
+          ]
+        }
+      ],
+      "contentHash": "597767941e9a12be759e8e6dea3fbabf2ba6a61aa3f53e4447e1f93b8f192dc0",
+      "siteUrl": "/tools/camping-booking/#ochang-camp-202611"
+    },
+    {
+      "id": "unju-forest-202612",
+      "categoryIds": [
+        "camping-booking"
+      ],
+      "title": "운주산승마자연휴양림 12월 예약",
+      "providerId": "foresttrip",
+      "canonicalUrl": "https://www.foresttrip.go.kr/pot/cc/nm/selectNticBbrssDtlView.do?bbrssMsterId=BBRSSMSTER_00000051&hmpgId=ID02030081&menuId=005001&twbbsId=277814",
+      "region": "경북",
+      "location": "운주산승마자연휴양림",
+      "audience": "공식 시설 예약 이용자 · 우선예약은 해당 자격자에 한함",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-12-01",
+      "eventEnd": "2026-12-31",
+      "bookingStart": "2026-11-01T13:00:00+09:00",
+      "scheduleNote": "예약 시작과 숙박 가능일을 구분 · 휴관·제외시설·잔여석 확인",
+      "feeStatus": "unknown",
+      "feeText": "객실·데크·인원별 요금은 해당 시설의 공식 요금표 확인",
+      "summary": "12월 숙박시설의 일반예약과 지역주민·바우처 우선예약을 구분합니다.",
+      "conditions": [
+        "일반예약 11월 1일 13시, 영천시민 우선예약 12시 30분, 산림복지바우처 0시 안내입니다.",
+        "숲속의집 10호·야영데크 6호는 일반예약 대상에서 제외됩니다.",
+        "11월 1일~12월 15일 바비큐장 운영 중지 및 야외 화기사용 금지 안내가 있습니다.",
+        "예약자 신분증이 필요하고 양도는 금지됩니다. 고령 부모 대리예약 예외에는 가족관계 증빙이 필요합니다."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26",
+      "evidence": [
+        {
+          "url": "https://www.foresttrip.go.kr/pot/cc/nm/selectNticBbrssDtlView.do?bbrssMsterId=BBRSSMSTER_00000051&hmpgId=ID02030081&menuId=005001&twbbsId=277814",
+          "publisher": "숲나들e · 해당 자연휴양림",
+          "summary": "2026년 상세 공지의 예약 개시 시각·이용 대상월·제외시설·우선예약 자격·운영 중단 조건을 확인했습니다. 개시일을 신청 종료일로 표시하지 않았습니다.",
+          "verifiedAt": "2026-10-26",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "eventStart",
+            "eventEnd",
+            "bookingStart"
+          ]
+        }
+      ],
+      "contentHash": "a07eae8d8f8e0ff5c505ee56d8150431283b6ca71f0be0d01666a9b07ea2016f",
+      "siteUrl": "/tools/camping-booking/#unju-forest-202612"
     }
   ],
-  "siteRevision": "9548bd54a7859e769b5d2024a87c45337abe3de5",
-  "generatedAt": "2026-10-25T10:59:15.502Z",
+  "siteRevision": "db804427a9b8ff5a5e787b19db4d2d21409fbbc7",
+  "generatedAt": "2026-10-25T17:13:19.183Z",
   "window": {
-    "start": "2026-10-25",
-    "end": "2026-12-24"
+    "start": "2026-10-26",
+    "end": "2026-12-25"
   },
   "deployment": {
     "status": "verify-live-snapshot",

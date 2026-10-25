@@ -1,6 +1,15 @@
 {
   "schemaVersion": 1,
   "timezone": "Asia/Seoul",
+  "researchPolicy": {
+    "minimumDetailedNoticesPerCategory": 15,
+    "currentVerifiedRecordsTarget": 15,
+    "unit": "distinct-official-notice",
+    "excludeFromResearchCount": ["homepage-only", "search-snippet-only", "duplicate", "blocked-before-detail-review"],
+    "priority": "empty-and-under-target-categories-first",
+    "coverage": "regional-and-provider-diversity",
+    "shortfallAction": "expand-official-sources-and-report-actual-shortfall"
+  },
   "timing": "오전·오후·저녁의 기본 시각이며 실제 시작 시각은 달라질 수 있습니다.",
   "categories": [
     {"id":"kids-programs","name":"아이 체험·교육","shortName":"체험·교육","description":"아이 연령에 맞는 체험과 교육의 신청기간·이용일을 확인해요.","day":0,"hour":8,"blogDay":3,"split":"region","href":"/tools/kids-programs/","accent":"green"},

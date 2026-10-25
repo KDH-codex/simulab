@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "snapshotId": "a5fb9eebbe4c79fbbb90fe20",
+  "snapshotId": "7b8117f0df4cc3cbeba5203f",
   "timezone": "Asia/Seoul",
   "categories": [
     {
@@ -14,13 +14,13 @@
       "split": "region",
       "href": "/tools/kids-popups/",
       "accent": "orange",
-      "categoryRevision": "4f53cda18c2baa0c",
-      "lastVerifiedAt": null,
-      "lastCollectedAt": null,
+      "categoryRevision": "834c0a49de52a4f8",
+      "lastVerifiedAt": "2026-10-26",
+      "lastCollectedAt": "2026-10-26",
       "lastDeployedAt": null,
-      "outcome": "not-run",
-      "verifiedCount": 0,
-      "currentCount": 0,
+      "outcome": "partial-review",
+      "verifiedCount": 1,
+      "currentCount": 1,
       "failures": []
     }
   ],
@@ -36,7 +36,7 @@
       "regions": [
         "서울"
       ],
-      "lastSuccessAt": null
+      "lastSuccessAt": "2026-10-26"
     },
     {
       "id": "everland",
@@ -76,12 +76,59 @@
       "lastSuccessAt": null
     }
   ],
-  "records": [],
-  "siteRevision": "9548bd54a7859e769b5d2024a87c45337abe3de5",
-  "generatedAt": "2026-10-25T10:59:15.502Z",
+  "records": [
+    {
+      "id": "culture-158731",
+      "categoryIds": [
+        "family-culture",
+        "kids-popups"
+      ],
+      "title": "파인캐릭터 2026",
+      "providerId": "seoul-culture",
+      "canonicalUrl": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=158731&menuNo=200008",
+      "region": "서울",
+      "location": "동대문디자인플라자(DDP) 쇼룸 1층 (서울 중구 을지로 281)",
+      "audience": "누구나",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-11-27",
+      "eventEnd": "2026-11-29",
+      "scheduleNote": "10:00 ~ 19:00",
+      "feeStatus": "free",
+      "feeText": "무료",
+      "summary": "캐릭터 작품과 아트토이를 만나는 DDP 전시입니다.",
+      "conditions": [
+        "관람연령과 날짜별 운영시간·휴관일을 확인한 후 방문해 주세요.",
+        "예약·예매 필요 여부와 잔여석은 공식 안내의 연결 페이지에서 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26",
+      "evidence": [
+        {
+          "url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=158731&menuNo=200008",
+          "publisher": "서울문화포털",
+          "summary": "공식 상세의 관람대상·장소·기간·회차 시간·요금 표를 대조했습니다. 예약 시작일이나 잔여석은 원문에서 확정하지 않아 표시하지 않았습니다.",
+          "verifiedAt": "2026-10-26",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "eventStart",
+            "eventEnd",
+            "feeText"
+          ]
+        }
+      ],
+      "contentHash": "951f959e03f8641bf944cd938f6ef77fe52336376f97ba1105c7667bb04f8782",
+      "siteUrl": "/tools/family-culture/#culture-158731"
+    }
+  ],
+  "siteRevision": "db804427a9b8ff5a5e787b19db4d2d21409fbbc7",
+  "generatedAt": "2026-10-25T17:13:19.183Z",
   "window": {
-    "start": "2026-10-25",
-    "end": "2026-12-24"
+    "start": "2026-10-26",
+    "end": "2026-12-25"
   },
   "deployment": {
     "status": "verify-live-snapshot",

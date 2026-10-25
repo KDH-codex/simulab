@@ -17,7 +17,7 @@
       ],
       "method": "official-detail-review",
       "authentication": "공개 공지 열람, 신청은 별도 로그인",
-      "lastSuccessAt": "2026-10-25"
+      "lastSuccessAt": "2026-10-26"
     },
     {
       "id": "gyeonggi-share",
@@ -106,7 +106,7 @@
       ],
       "method": "official-detail-review",
       "authentication": "공개 공지 열람, 예약은 별도 로그인",
-      "lastSuccessAt": "2026-10-25"
+      "lastSuccessAt": "2026-10-26"
     },
     {
       "id": "culture-portal",
@@ -141,7 +141,7 @@
       ],
       "method": "official-detail-review",
       "authentication": "공개 공지 열람",
-      "lastSuccessAt": null
+      "lastSuccessAt": "2026-10-26"
     },
     {
       "id": "bokjiro",
@@ -248,6 +248,74 @@
       "method": "official-detail-review",
       "authentication": "공개 지점별 공지",
       "lastSuccessAt": null
+    },
+    {
+      "id": "childcare-portal",
+      "name": "임신육아종합포털 아이사랑",
+      "url": "https://www.childcare.go.kr/",
+      "hosts": [
+        "www.childcare.go.kr"
+      ],
+      "categoryIds": [
+        "local-parenting"
+      ],
+      "regions": [
+        "전국"
+      ],
+      "method": "official-detail-review",
+      "authentication": "공개 상세 공지 열람, 신청·결제는 공식 사이트",
+      "lastSuccessAt": "2026-10-26"
+    },
+    {
+      "id": "seoul-umppa",
+      "name": "서울시 탄생육아 몽땅정보통",
+      "url": "https://umppa.seoul.go.kr/",
+      "hosts": [
+        "umppa.seoul.go.kr"
+      ],
+      "categoryIds": [
+        "family-support"
+      ],
+      "regions": [
+        "서울"
+      ],
+      "method": "official-detail-review",
+      "authentication": "공개 상세 공지 열람, 신청·결제는 공식 사이트",
+      "lastSuccessAt": "2026-10-26"
+    },
+    {
+      "id": "seoulland",
+      "name": "서울랜드",
+      "url": "https://seoulland.co.kr/",
+      "hosts": [
+        "seoulland.co.kr"
+      ],
+      "categoryIds": [
+        "family-discounts"
+      ],
+      "regions": [
+        "경기"
+      ],
+      "method": "official-detail-review",
+      "authentication": "공개 상세 공지 열람, 신청·결제는 공식 사이트",
+      "lastSuccessAt": "2026-10-26"
+    },
+    {
+      "id": "cheongju-camp",
+      "name": "청주시 오창미래지 캠핑장",
+      "url": "https://munam.cheongju.go.kr/ochang/",
+      "hosts": [
+        "munam.cheongju.go.kr"
+      ],
+      "categoryIds": [
+        "camping-booking"
+      ],
+      "regions": [
+        "충북"
+      ],
+      "method": "official-detail-review",
+      "authentication": "공개 상세 공지 열람, 신청·결제는 공식 사이트",
+      "lastSuccessAt": "2026-10-26"
     }
   ]
 }

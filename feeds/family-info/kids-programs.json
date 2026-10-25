@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "snapshotId": "a5fb9eebbe4c79fbbb90fe20",
+  "snapshotId": "7b8117f0df4cc3cbeba5203f",
   "timezone": "Asia/Seoul",
   "categories": [
     {
@@ -14,13 +14,13 @@
       "split": "region",
       "href": "/tools/kids-programs/",
       "accent": "green",
-      "categoryRevision": "ea121ed847c8b453",
-      "lastVerifiedAt": "2026-10-25",
-      "lastCollectedAt": "2026-10-25",
+      "categoryRevision": "0c8da12f14c834d5",
+      "lastVerifiedAt": "2026-10-26",
+      "lastCollectedAt": "2026-10-26",
       "lastDeployedAt": null,
       "outcome": "partial-review",
-      "verifiedCount": 1,
-      "currentCount": 1,
+      "verifiedCount": 7,
+      "currentCount": 7,
       "failures": []
     }
   ],
@@ -36,7 +36,7 @@
       "regions": [
         "서울"
       ],
-      "lastSuccessAt": "2026-10-25"
+      "lastSuccessAt": "2026-10-26"
     },
     {
       "id": "gyeonggi-share",
@@ -132,13 +132,350 @@
       ],
       "contentHash": "b55c28554925e3e7d05da5ae98b3f08c6e0505679f893f1be83bd8a1111ac44c",
       "siteUrl": "/tools/kids-programs/#yangjae-slow-tour-2026"
+    },
+    {
+      "id": "kids-s261024142918364089",
+      "categoryIds": [
+        "kids-programs"
+      ],
+      "title": "월간 호수랩 · 테이프로 만드는 키치 오브제",
+      "providerId": "seoul-reservation",
+      "canonicalUrl": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S261024142918364089",
+      "region": "서울",
+      "district": "송파구",
+      "location": "문화실험공간 호수 (면적 : 624.17)",
+      "audience": "초등학생(4-6학년 대상)",
+      "ageGroups": [
+        "elementary"
+      ],
+      "applicationStart": "2026-10-16T11:00:00+09:00",
+      "applicationEnd": "2026-11-25T00:00:00+09:00",
+      "eventStart": "2026-11-07",
+      "eventEnd": "2026-11-28",
+      "operatingDates": [
+        "2026-11-07",
+        "2026-11-14",
+        "2026-11-21",
+        "2026-11-28"
+      ],
+      "scheduleNote": "11월 토요일 14:00~15:30",
+      "feeStatus": "paid",
+      "feeText": "재료비 20,000원",
+      "summary": "초등 4~6학년이 테이프로 오브제를 만드는 미술 활동입니다.",
+      "conditions": [
+        "마지막 11월28일 회차의 접수 마감은 각 회차 3일 전 0시 규칙으로 계산한 11월25일 0시입니다. 월간 표의 종료일과 회차별 마감을 구분했습니다.",
+        "각 회차 3일 전 0시까지 예약하며, 예약 후 재료비 결제 절차를 확인하세요.",
+        "3일 이내 미결제 시 취소될 수 있고, 신청 인원이 4명 미만이면 폐강될 수 있습니다."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26",
+      "evidence": [
+        {
+          "url": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S261024142918364089",
+          "publisher": "서울 공공서비스예약",
+          "summary": "예약 표와 상세 본문의 대상·접수 시각·운영일·비용·예약 조건을 대조했습니다. 월간 생태 프로그램은 상세에 열거된 실제 날짜만 이용일로 반영했습니다. 마지막 11월28일 회차의 접수 마감은 각 회차 3일 전 0시 규칙으로 계산한 11월25일 0시입니다. 월간 표의 종료일과 회차별 마감을 구분했습니다.",
+          "verifiedAt": "2026-10-26",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd",
+            "operatingDates",
+            "feeText"
+          ]
+        }
+      ],
+      "contentHash": "d2bcc46ae4a60fbe7548968b1432ae85a7123e7afd0d0125395d1bb560320bf2",
+      "siteUrl": "/tools/kids-programs/#kids-s261024142918364089"
+    },
+    {
+      "id": "kids-s260320170624732091",
+      "categoryIds": [
+        "kids-programs"
+      ],
+      "title": "서울역사박물관 어린이박물관 · 개인 관람",
+      "providerId": "seoul-reservation",
+      "canonicalUrl": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S260320170624732091",
+      "region": "서울",
+      "district": "종로구",
+      "location": "서울역사박물관",
+      "audience": "가족(6~13세 어린이를 동반한 가족)",
+      "ageGroups": [
+        "preschool",
+        "elementary"
+      ],
+      "applicationStart": "2026-03-20T14:00:00+09:00",
+      "applicationEnd": "2026-12-30T00:00:00+09:00",
+      "eventStart": "2026-03-27",
+      "eventEnd": "2026-12-31",
+      "scheduleNote": "날짜별 관람 회차는 공식 예약 화면 확인",
+      "feeStatus": "free",
+      "feeText": "관람 무료",
+      "summary": "어린이와 보호자가 함께 서울의 역사를 살펴보는 관람 예약입니다.",
+      "conditions": [
+        "6~13세 어린이를 동반한 가족 대상이며 한 번에 2~5명 예약합니다.",
+        "이용 7일 전 14시부터 전날 24시까지 예약합니다. 시작 후 20분이 지나면 자동 취소될 수 있습니다."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26",
+      "evidence": [
+        {
+          "url": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S260320170624732091",
+          "publisher": "서울 공공서비스예약",
+          "summary": "예약 표와 상세 본문의 대상·접수 시각·운영일·비용·예약 조건을 대조했습니다. 월간 생태 프로그램은 상세에 열거된 실제 날짜만 이용일로 반영했습니다.",
+          "verifiedAt": "2026-10-26",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd",
+            "feeText"
+          ]
+        }
+      ],
+      "contentHash": "e63a09f9d9143a964ca0aae390650d2b111400d34cca962ae2eaf890a5c95c35",
+      "siteUrl": "/tools/kids-programs/#kids-s260320170624732091"
+    },
+    {
+      "id": "kids-s240603093238072625",
+      "categoryIds": [
+        "kids-programs"
+      ],
+      "title": "아리수나라 어린이 물 체험",
+      "providerId": "seoul-reservation",
+      "canonicalUrl": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S240603093238072625",
+      "region": "서울",
+      "district": "광진구",
+      "location": "아리수나라 홍보관",
+      "audience": "성인, 어린이, 초등학생",
+      "ageGroups": [
+        "preschool",
+        "elementary"
+      ],
+      "applicationStart": "2025-06-02T00:00:00+09:00",
+      "applicationEnd": "2026-11-28T17:00:00+09:00",
+      "eventStart": "2024-07-01",
+      "eventEnd": "2026-11-29",
+      "operatingWeekdays": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "scheduleNote": "화~일 5회 운영 · 월요일·1월 1일·설·추석 연휴 휴관",
+      "feeStatus": "free",
+      "feeText": "체험관 무료",
+      "summary": "어린이가 수돗물과 물의 소중함을 놀이로 배우는 체험관입니다.",
+      "conditions": [
+        "공개된 11월30일까지의 기간에서 월요일 휴관을 제외한 마지막 관람일은 11월29일입니다. 전날 17시 예약 규칙에 따른 최종 접수는 11월28일 17시이며, 다음 달 예약은 별도 확인해야 합니다.",
+        "초등학교 3학년 이하 어린이와 보호자가 함께 입장하며 성인 인원도 예약에 포함합니다.",
+        "이용 전날 17시까지 예약하고, 다음 달 예약 개시는 전달 첫 평일 09시입니다.",
+        "어린이 없이 성인만 입장할 수 없으며, 사전 연락 없이 10분 이상 늦으면 입장이 제한될 수 있습니다."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26",
+      "evidence": [
+        {
+          "url": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S240603093238072625",
+          "publisher": "서울 공공서비스예약",
+          "summary": "예약 표와 상세 본문의 대상·접수 시각·운영일·비용·예약 조건을 대조했습니다. 월간 생태 프로그램은 상세에 열거된 실제 날짜만 이용일로 반영했습니다. 공개된 11월30일까지의 기간에서 월요일 휴관을 제외한 마지막 관람일은 11월29일입니다. 전날 17시 예약 규칙에 따른 최종 접수는 11월28일 17시이며, 다음 달 예약은 별도 확인해야 합니다.",
+          "verifiedAt": "2026-10-26",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd",
+            "feeText",
+            "operatingWeekdays"
+          ]
+        }
+      ],
+      "contentHash": "282b892cd53db371719d387516c272ecf84f094cc7f4096f707b8464dd46092f",
+      "siteUrl": "/tools/kids-programs/#kids-s240603093238072625"
+    },
+    {
+      "id": "kids-s261025144658556467",
+      "categoryIds": [
+        "kids-programs"
+      ],
+      "title": "난지생태습지원 · 비밀의 집을 찾아라",
+      "providerId": "seoul-reservation",
+      "canonicalUrl": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S261025144658556467",
+      "region": "서울",
+      "district": "마포구",
+      "location": "난지수변생태학습센터",
+      "audience": "제한없음(일반시민 누구나)",
+      "ageGroups": [],
+      "applicationStart": "2026-10-25T00:00:00+09:00",
+      "applicationEnd": "2026-11-21T12:00:00+09:00",
+      "eventStart": "2026-11-01",
+      "eventEnd": "2026-11-22",
+      "operatingDates": [
+        "2026-11-01",
+        "2026-11-22"
+      ],
+      "scheduleNote": "11/1·11/22 10:00~11:30",
+      "feeStatus": "free",
+      "feeText": "참가비 무료",
+      "summary": "생태해설가와 함께 습지원 동물들의 보금자리를 찾아봅니다.",
+      "conditions": [
+        "마지막 11월22일 회차의 예약은 이용 전날 12시 규칙으로 11월21일 12시까지입니다.",
+        "공공서비스예약 또는 현장 참여이며 잔여석을 확인해 주세요.",
+        "편한 복장·운동화·물을 준비하고, 불참 시 전날까지 취소해 주세요.",
+        "기상과 현장 사정에 따라 변경·취소될 수 있습니다."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26",
+      "evidence": [
+        {
+          "url": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S261025144658556467",
+          "publisher": "서울 공공서비스예약",
+          "summary": "예약 표와 상세 본문의 대상·접수 시각·운영일·비용·예약 조건을 대조했습니다. 월간 생태 프로그램은 상세에 열거된 실제 날짜만 이용일로 반영했습니다. 마지막 11월22일 회차의 예약은 이용 전날 12시 규칙으로 11월21일 12시까지입니다.",
+          "verifiedAt": "2026-10-26",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd",
+            "operatingDates",
+            "feeText"
+          ]
+        }
+      ],
+      "contentHash": "c582053b2b67ac89d08b789c24a4c8a5b041952701fe8f1620945d315adc733e",
+      "siteUrl": "/tools/kids-programs/#kids-s261025144658556467"
+    },
+    {
+      "id": "kids-s261025145159460906",
+      "categoryIds": [
+        "kids-programs"
+      ],
+      "title": "난지생태습지원 · 새와 곤충들의 계절이야기",
+      "providerId": "seoul-reservation",
+      "canonicalUrl": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S261025145159460906",
+      "region": "서울",
+      "district": "마포구",
+      "location": "난지수변생태학습센터",
+      "audience": "제한없음(일반시민 누구나)",
+      "ageGroups": [],
+      "applicationStart": "2026-10-25T00:00:00+09:00",
+      "applicationEnd": "2026-11-27T12:00:00+09:00",
+      "eventStart": "2026-11-14",
+      "eventEnd": "2026-11-28",
+      "operatingDates": [
+        "2026-11-14",
+        "2026-11-21",
+        "2026-11-28"
+      ],
+      "scheduleNote": "11/14·11/21·11/28 14:00~15:30",
+      "feeStatus": "free",
+      "feeText": "참가비 무료",
+      "summary": "새와 곤충의 가을 모습을 해설가와 함께 관찰하는 생태 체험입니다.",
+      "conditions": [
+        "실제 마지막 11월28일 회차의 예약은 이용 전날 12시 규칙으로 11월27일 12시까지입니다.",
+        "공공서비스예약 또는 현장 참여이며 잔여석을 확인해 주세요.",
+        "운동화와 개인 물을 준비하고, 취소는 전날까지 공식 예약에서 진행하세요.",
+        "기상과 현장 사정에 따라 변경·취소될 수 있습니다."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26",
+      "evidence": [
+        {
+          "url": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S261025145159460906",
+          "publisher": "서울 공공서비스예약",
+          "summary": "예약 표와 상세 본문의 대상·접수 시각·운영일·비용·예약 조건을 대조했습니다. 월간 생태 프로그램은 상세에 열거된 실제 날짜만 이용일로 반영했습니다. 실제 마지막 11월28일 회차의 예약은 이용 전날 12시 규칙으로 11월27일 12시까지입니다.",
+          "verifiedAt": "2026-10-26",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd",
+            "operatingDates",
+            "feeText"
+          ]
+        }
+      ],
+      "contentHash": "a32e57ef50603e89b7c33100275f6d9f547ef309c99f4ea27513b7b84318e8f1",
+      "siteUrl": "/tools/kids-programs/#kids-s261025145159460906"
+    },
+    {
+      "id": "kids-s261025144201836459",
+      "categoryIds": [
+        "kids-programs"
+      ],
+      "title": "난지생태습지원 · 가을잎 만다라",
+      "providerId": "seoul-reservation",
+      "canonicalUrl": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S261025144201836459",
+      "region": "서울",
+      "district": "마포구",
+      "location": "난지수변생태학습센터",
+      "audience": "제한없음(일반시민 누구나)",
+      "ageGroups": [],
+      "applicationStart": "2026-10-25T00:00:00+09:00",
+      "applicationEnd": "2026-11-28T12:00:00+09:00",
+      "eventStart": "2026-11-15",
+      "eventEnd": "2026-11-29",
+      "operatingDates": [
+        "2026-11-15",
+        "2026-11-29"
+      ],
+      "scheduleNote": "11/15·11/29 14:00~15:30",
+      "feeStatus": "free",
+      "feeText": "참가비 무료",
+      "summary": "가을잎으로 그림을 만들며 습지원의 자연을 관찰하는 활동입니다.",
+      "conditions": [
+        "마지막 11월29일 회차의 예약은 이용 전날 12시 규칙으로 11월28일 12시까지입니다.",
+        "공공서비스예약 또는 현장 참여이며 잔여석을 확인해 주세요.",
+        "취소는 전날까지 진행하고, 편한 복장과 운동화·물을 준비해 주세요.",
+        "기상과 현장 사정에 따라 변경·취소될 수 있습니다."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26",
+      "evidence": [
+        {
+          "url": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S261025144201836459",
+          "publisher": "서울 공공서비스예약",
+          "summary": "예약 표와 상세 본문의 대상·접수 시각·운영일·비용·예약 조건을 대조했습니다. 월간 생태 프로그램은 상세에 열거된 실제 날짜만 이용일로 반영했습니다. 마지막 11월29일 회차의 예약은 이용 전날 12시 규칙으로 11월28일 12시까지입니다.",
+          "verifiedAt": "2026-10-26",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd",
+            "operatingDates",
+            "feeText"
+          ]
+        }
+      ],
+      "contentHash": "bc7d27bcabe7dabe3172276cb7ae92d70a331c27951f46070dd24f3c275e09c8",
+      "siteUrl": "/tools/kids-programs/#kids-s261025144201836459"
     }
   ],
-  "siteRevision": "9548bd54a7859e769b5d2024a87c45337abe3de5",
-  "generatedAt": "2026-10-25T10:59:15.502Z",
+  "siteRevision": "db804427a9b8ff5a5e787b19db4d2d21409fbbc7",
+  "generatedAt": "2026-10-25T17:13:19.183Z",
   "window": {
-    "start": "2026-10-25",
-    "end": "2026-12-24"
+    "start": "2026-10-26",
+    "end": "2026-12-25"
   },
   "deployment": {
     "status": "verify-live-snapshot",

@@ -2,38 +2,105 @@
   "schemaVersion": 1,
   "categories": {
     "kids-programs": {
-      "lastCollectedAt": "2026-10-25",
+      "lastCollectedAt": "2026-10-26",
       "outcome": "partial-review",
       "providers": [
         {
           "providerId": "seoul-reservation",
           "status": "reviewed",
-          "verified": 1
+          "verified": 6
         }
-      ]
+      ],
+      "researchRunId": "baseline-2026-10-26"
     },
     "camping-booking": {
-      "lastCollectedAt": "2026-10-25",
+      "lastCollectedAt": "2026-10-26",
       "outcome": "partial-review",
       "providers": [
         {
           "providerId": "foresttrip",
           "status": "reviewed",
+          "verified": 2
+        },
+        {
+          "providerId": "cheongju-camp",
+          "status": "reviewed",
+          "verified": 1
+        }
+      ],
+      "researchRunId": "baseline-2026-10-26"
+    },
+    "family-support": {
+      "lastCollectedAt": "2026-10-26",
+      "outcome": "partial-review",
+      "providers": [
+        {
+          "providerId": "seoul-umppa",
+          "status": "reviewed",
+          "verified": 7
+        }
+      ],
+      "researchRunId": "baseline-2026-10-26"
+    },
+    "local-parenting": {
+      "lastCollectedAt": "2026-10-26",
+      "outcome": "partial-review",
+      "researchRunId": "baseline-2026-10-26",
+      "providers": [
+        {
+          "providerId": "childcare-portal",
+          "status": "reviewed",
+          "verified": 3
+        }
+      ]
+    },
+    "family-culture": {
+      "lastCollectedAt": "2026-10-26",
+      "outcome": "partial-review",
+      "researchRunId": "baseline-2026-10-26",
+      "providers": [
+        {
+          "providerId": "seoul-culture",
+          "status": "reviewed",
+          "verified": 15
+        }
+      ]
+    },
+    "kids-popups": {
+      "lastCollectedAt": "2026-10-26",
+      "outcome": "partial-review",
+      "researchRunId": "baseline-2026-10-26",
+      "providers": [
+        {
+          "providerId": "seoul-culture",
+          "status": "reviewed",
           "verified": 1
         }
       ]
     },
-    "family-support": {
-      "lastCollectedAt": "2026-10-25",
+    "brand-sales": {
+      "lastCollectedAt": "2026-10-26",
       "outcome": "partial-review",
+      "researchRunId": "baseline-2026-10-26",
+      "providers": []
+    },
+    "family-discounts": {
+      "lastCollectedAt": "2026-10-26",
+      "outcome": "partial-review",
+      "researchRunId": "baseline-2026-10-26",
       "providers": [
         {
-          "providerId": "seoul-news",
-          "status": "held",
-          "verified": 0,
-          "held": 1
+          "providerId": "seoulland",
+          "status": "reviewed",
+          "verified": 16
         }
       ]
+    },
+    "festivals": {
+      "lastCollectedAt": "2026-10-26",
+      "outcome": "partial-review",
+      "researchRunId": "baseline-2026-10-26",
+      "providers": []
     }
   }
 }

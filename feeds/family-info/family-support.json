@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "snapshotId": "a5fb9eebbe4c79fbbb90fe20",
+  "snapshotId": "7b8117f0df4cc3cbeba5203f",
   "timezone": "Asia/Seoul",
   "categories": [
     {
@@ -14,13 +14,13 @@
       "split": "national-or-region",
       "href": "/tools/family-support/",
       "accent": "green",
-      "categoryRevision": "4f53cda18c2baa0c",
-      "lastVerifiedAt": null,
-      "lastCollectedAt": "2026-10-25",
+      "categoryRevision": "7edddeee2f34b779",
+      "lastVerifiedAt": "2026-10-26",
+      "lastCollectedAt": "2026-10-26",
       "lastDeployedAt": null,
       "outcome": "partial-review",
-      "verifiedCount": 0,
-      "currentCount": 0,
+      "verifiedCount": 7,
+      "currentCount": 7,
       "failures": []
     }
   ],
@@ -50,14 +50,348 @@
         "서울"
       ],
       "lastSuccessAt": null
+    },
+    {
+      "id": "seoul-umppa",
+      "name": "서울시 탄생육아 몽땅정보통",
+      "url": "https://umppa.seoul.go.kr/",
+      "categoryIds": [
+        "family-support"
+      ],
+      "regions": [
+        "서울"
+      ],
+      "lastSuccessAt": "2026-10-26"
     }
   ],
-  "records": [],
-  "siteRevision": "9548bd54a7859e769b5d2024a87c45337abe3de5",
-  "generatedAt": "2026-10-25T10:59:15.502Z",
+  "records": [
+    {
+      "id": "support-00ff21304617cdf52ec6",
+      "categoryIds": [
+        "family-support"
+      ],
+      "title": "서울 임산부 교통비 지원",
+      "providerId": "seoul-umppa",
+      "canonicalUrl": "https://umppa.seoul.go.kr/hmpg/life/cycl/lifeCyclInfoDetail.do?sys_name=biz&doc_id=34B5EA8BEB354E2DB26136CFE52AEFF2",
+      "region": "서울",
+      "location": "서울시 · 온라인 또는 지정 신청처",
+      "audience": "서울에 3개월 이상 계속 거주한 임산부 · 결혼이민자는 별도 조건 확인",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "applicationMode": "relative",
+      "applicationNote": "임신 확인 후부터 출산 후 6개월 이내 신청",
+      "eventStart": null,
+      "eventEnd": null,
+      "feeStatus": "unknown",
+      "feeText": "지원금·바우처 사업 · 지원 범위 밖 본인부담과 개별 이용요금은 공식 확인",
+      "summary": "임산부 교통비 바우처를 지원하는 서울시 사업입니다.",
+      "conditions": [
+        "2026년 7월 1일 이후 신청은 서울 3개월 이상 계속 거주 조건이 적용됩니다.",
+        "협약 카드사와 신청 가능한 카드 종류, 교통수단별 사용처를 확인하세요.",
+        "바우처 금액과 사용 종료일은 신청 시점·대상별 공식 안내를 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26",
+      "evidence": [
+        {
+          "url": "https://umppa.seoul.go.kr/hmpg/life/cycl/lifeCyclInfoDetail.do?sys_name=biz&doc_id=34B5EA8BEB354E2DB26136CFE52AEFF2",
+          "publisher": "서울시 탄생육아 몽땅정보통",
+          "summary": "공식 사업 상세의 신청기한·2026년 변경 조건·거주 및 대상자 요건·지원 내용과 예외를 확인했습니다. 개인별 기한이나 상시 신청에 임의의 연말 종료일을 붙이지 않았습니다.",
+          "verifiedAt": "2026-10-26",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "applicationMode",
+            "applicationNote"
+          ]
+        }
+      ],
+      "contentHash": "9c25109e42057c9f92b28dd0c6e0ce693bcc0c810dcabd89d418651301f73d42",
+      "siteUrl": "/tools/family-support/#support-00ff21304617cdf52ec6"
+    },
+    {
+      "id": "support-51fdff3f7e0f23630bee",
+      "categoryIds": [
+        "family-support"
+      ],
+      "title": "서울 엄마 북(Book)돋움",
+      "providerId": "seoul-umppa",
+      "canonicalUrl": "https://umppa.seoul.go.kr/hmpg/life/cycl/lifeCyclInfoDetail.do?sys_name=biz&doc_id=4ECE63A5582C4749A34BF4867436AAB1",
+      "region": "서울",
+      "location": "서울시 · 온라인 또는 지정 신청처",
+      "audience": "서울 거주 임산부 및 출산 후 6개월 이내 대상자",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "applicationMode": "relative",
+      "applicationNote": "임신 확인 후부터 출산 후 6개월 이내 신청",
+      "eventStart": null,
+      "eventEnd": null,
+      "feeStatus": "unknown",
+      "feeText": "지원금·바우처 사업 · 지원 범위 밖 본인부담과 개별 이용요금은 공식 확인",
+      "summary": "부모를 위한 책과 아기 그림책이 담긴 책꾸러미를 지원합니다.",
+      "conditions": [
+        "서울 거주와 임신·출산 시기 조건을 충족해야 합니다.",
+        "온라인 신청 후 배송·중복 신청 조건을 공식 안내에서 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26",
+      "evidence": [
+        {
+          "url": "https://umppa.seoul.go.kr/hmpg/life/cycl/lifeCyclInfoDetail.do?sys_name=biz&doc_id=4ECE63A5582C4749A34BF4867436AAB1",
+          "publisher": "서울시 탄생육아 몽땅정보통",
+          "summary": "공식 사업 상세의 신청기한·2026년 변경 조건·거주 및 대상자 요건·지원 내용과 예외를 확인했습니다. 개인별 기한이나 상시 신청에 임의의 연말 종료일을 붙이지 않았습니다.",
+          "verifiedAt": "2026-10-26",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "applicationMode",
+            "applicationNote"
+          ]
+        }
+      ],
+      "contentHash": "e002881430cb81f711a2d3c57cca0b52ff49721ba1dcc81b49ee7de806bc8634",
+      "siteUrl": "/tools/family-support/#support-51fdff3f7e0f23630bee"
+    },
+    {
+      "id": "support-a6f029f759c22425dd25",
+      "categoryIds": [
+        "family-support"
+      ],
+      "title": "서울 35세 이상 임산부 의료비 지원",
+      "providerId": "seoul-umppa",
+      "canonicalUrl": "https://umppa.seoul.go.kr/hmpg/life/cycl/lifeCyclInfoDetail.do?sys_name=biz&doc_id=BB80BABF442E40D3BF59EBA63F4DF1D7",
+      "region": "서울",
+      "location": "서울시 · 온라인 또는 지정 신청처",
+      "audience": "신청일 서울 거주 · 분만예정연도 기준 35세 이상 임산부",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "applicationMode": "relative",
+      "applicationNote": "출산·유산일로부터 6개월 이내 신청",
+      "eventStart": null,
+      "eventEnd": null,
+      "feeStatus": "unknown",
+      "feeText": "지원금·바우처 사업 · 지원 범위 밖 본인부담과 개별 이용요금은 공식 확인",
+      "summary": "요건을 충족하는 산전 외래 진료·검사비를 지원하는 사업입니다.",
+      "conditions": [
+        "임신 회당 최대 50만원 한도이며 실제 납부한 외래 의료비가 기준입니다.",
+        "입원 영수증은 대상이 아니며, 유산 처치비 등 세부 범위는 원문에서 확인하세요.",
+        "다문화가족 외국인 임산부는 신청 가능하나 부부 모두 외국인이면 제외됩니다."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26",
+      "evidence": [
+        {
+          "url": "https://umppa.seoul.go.kr/hmpg/life/cycl/lifeCyclInfoDetail.do?sys_name=biz&doc_id=BB80BABF442E40D3BF59EBA63F4DF1D7",
+          "publisher": "서울시 탄생육아 몽땅정보통",
+          "summary": "공식 사업 상세의 신청기한·2026년 변경 조건·거주 및 대상자 요건·지원 내용과 예외를 확인했습니다. 개인별 기한이나 상시 신청에 임의의 연말 종료일을 붙이지 않았습니다.",
+          "verifiedAt": "2026-10-26",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "applicationMode",
+            "applicationNote"
+          ]
+        }
+      ],
+      "contentHash": "7a0c132c84cd57a11e3abee201c5f0e6b4d4e981380d86fe777f91976a3c00b7",
+      "siteUrl": "/tools/family-support/#support-a6f029f759c22425dd25"
+    },
+    {
+      "id": "support-16aa1116dadff60e4ef0",
+      "categoryIds": [
+        "family-support"
+      ],
+      "title": "서울 1인 자영업자 등 임산부 출산급여",
+      "providerId": "seoul-umppa",
+      "canonicalUrl": "https://umppa.seoul.go.kr/hmpg/life/cycl/lifeCyclInfoDetail.do?sys_name=biz&doc_id=16A62AE6CE142993E063A6022162A5D2",
+      "region": "서울",
+      "location": "서울시 · 온라인 또는 지정 신청처",
+      "audience": "고용보험 미적용자 출산급여 수혜자 중 서울 거주 1인 자영업자·프리랜서 등",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "applicationMode": "relative",
+      "applicationNote": "출산일로부터 1년 이내 신청",
+      "eventStart": null,
+      "eventEnd": null,
+      "feeStatus": "unknown",
+      "feeText": "지원금·바우처 사업 · 지원 범위 밖 본인부담과 개별 이용요금은 공식 확인",
+      "summary": "고용보험 미적용 출산급여에 더해 서울시 출산급여를 지원합니다.",
+      "conditions": [
+        "신청일 서울 거주와 자녀의 서울시 출생신고 조건을 확인하세요.",
+        "고용노동부 급여 지급결정통지서 등 증빙이 필요합니다.",
+        "다태아·유산·사산의 지원금액은 다르므로 개별 공식 안내를 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26",
+      "evidence": [
+        {
+          "url": "https://umppa.seoul.go.kr/hmpg/life/cycl/lifeCyclInfoDetail.do?sys_name=biz&doc_id=16A62AE6CE142993E063A6022162A5D2",
+          "publisher": "서울시 탄생육아 몽땅정보통",
+          "summary": "공식 사업 상세의 신청기한·2026년 변경 조건·거주 및 대상자 요건·지원 내용과 예외를 확인했습니다. 개인별 기한이나 상시 신청에 임의의 연말 종료일을 붙이지 않았습니다.",
+          "verifiedAt": "2026-10-26",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "applicationMode",
+            "applicationNote"
+          ]
+        }
+      ],
+      "contentHash": "7343c44325362da4756a78c989436bedcfbe71f0649bd97c69364f09c6b0158a",
+      "siteUrl": "/tools/family-support/#support-16aa1116dadff60e4ef0"
+    },
+    {
+      "id": "support-aa52661382da193af4e4",
+      "categoryIds": [
+        "family-support"
+      ],
+      "title": "서울 1인 자영업자 등 배우자 출산휴가급여",
+      "providerId": "seoul-umppa",
+      "canonicalUrl": "https://umppa.seoul.go.kr/hmpg/life/cycl/lifeCyclInfoDetail.do?sys_name=biz&doc_id=CED87B1387034FF8B72CFF94402F9F87",
+      "region": "서울",
+      "location": "서울시 · 온라인 또는 지정 신청처",
+      "audience": "서울 거주 1인 자영업자·노무제공자·프리랜서 등 배우자 출산휴가 사용 아빠",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "applicationMode": "relative",
+      "applicationNote": "배우자 출산휴가가 끝난 날 이후 12개월 이내 신청",
+      "eventStart": null,
+      "eventEnd": null,
+      "feeStatus": "unknown",
+      "feeText": "지원금·바우처 사업 · 지원 범위 밖 본인부담과 개별 이용요금은 공식 확인",
+      "summary": "고용보험 적용이 어려운 대상자의 배우자 출산휴가를 지원합니다.",
+      "conditions": [
+        "2026년 1월 1일 이후 출생아는 최대 120만원·15일분 안내입니다.",
+        "고용노동부 유사 급여 수혜자와 부동산 임대사업자 등 제외 조건이 있습니다.",
+        "출생연도에 따라 지원 내용이 달라 신청서류와 지급요건을 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26",
+      "evidence": [
+        {
+          "url": "https://umppa.seoul.go.kr/hmpg/life/cycl/lifeCyclInfoDetail.do?sys_name=biz&doc_id=CED87B1387034FF8B72CFF94402F9F87",
+          "publisher": "서울시 탄생육아 몽땅정보통",
+          "summary": "공식 사업 상세의 신청기한·2026년 변경 조건·거주 및 대상자 요건·지원 내용과 예외를 확인했습니다. 개인별 기한이나 상시 신청에 임의의 연말 종료일을 붙이지 않았습니다.",
+          "verifiedAt": "2026-10-26",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "applicationMode",
+            "applicationNote"
+          ]
+        }
+      ],
+      "contentHash": "c7fbe54a6efa7d5d36a6792490b65ecbf73350e54ccf11064579b6da74f8de9d",
+      "siteUrl": "/tools/family-support/#support-aa52661382da193af4e4"
+    },
+    {
+      "id": "support-821a67a849c8daf02231",
+      "categoryIds": [
+        "family-support"
+      ],
+      "title": "서울 둘째 출산 시 첫째아이 돌봄지원",
+      "providerId": "seoul-umppa",
+      "canonicalUrl": "https://umppa.seoul.go.kr/hmpg/life/cycl/lifeCyclInfoDetail.do?sys_name=biz&doc_id=062A1CE5D5848B7EE063A602216299A4",
+      "region": "서울",
+      "location": "서울시 · 온라인 또는 지정 신청처",
+      "audience": "서울에서 둘째 이상 출산으로 12세 이하 기존 자녀 돌봄 공백이 생긴 아이돌봄 이용 가정",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "applicationMode": "ongoing",
+      "applicationNote": "상시 신청 · 임신 판정 후 사전 신청 가능 · 예산 소진 시 종료",
+      "eventStart": null,
+      "eventEnd": null,
+      "feeStatus": "unknown",
+      "feeText": "지원금·바우처 사업 · 지원 범위 밖 본인부담과 개별 이용요금은 공식 확인",
+      "summary": "아이돌봄서비스 이용 시 요건에 따라 본인부담금을 환급합니다.",
+      "conditions": [
+        "2024년 1월 1일 이후 출산 가정으로, 부모 1명 이상과 아동의 서울 주민등록·함께 거주 조건이 있습니다.",
+        "본인부담금은 가형 100%, 나~마형 90%, 가구당 최대 100만원 한도 안내입니다.",
+        "출산 후 1년 이내 서비스 매칭일부터 90일 지원이며, 예산 소진 시 종료됩니다."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26",
+      "evidence": [
+        {
+          "url": "https://umppa.seoul.go.kr/hmpg/life/cycl/lifeCyclInfoDetail.do?sys_name=biz&doc_id=062A1CE5D5848B7EE063A602216299A4",
+          "publisher": "서울시 탄생육아 몽땅정보통",
+          "summary": "공식 사업 상세의 신청기한·2026년 변경 조건·거주 및 대상자 요건·지원 내용과 예외를 확인했습니다. 개인별 기한이나 상시 신청에 임의의 연말 종료일을 붙이지 않았습니다.",
+          "verifiedAt": "2026-10-26",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "applicationMode",
+            "applicationNote"
+          ]
+        }
+      ],
+      "contentHash": "cc35d1ffa7d9b1cecaabe29679a32aa0a0e5c6b14c3a2c6c18fb3f63ee50596c",
+      "siteUrl": "/tools/family-support/#support-821a67a849c8daf02231"
+    },
+    {
+      "id": "support-2a2cd76d07208861688b",
+      "categoryIds": [
+        "family-support"
+      ],
+      "title": "서울엄마아빠택시",
+      "providerId": "seoul-umppa",
+      "canonicalUrl": "https://umppa.seoul.go.kr/hmpg/life/cycl/lifeCyclInfoDetail.do?sys_name=biz&doc_id=3EF7489ACF614F939FEF8514308797D2",
+      "region": "서울",
+      "location": "서울시 · 온라인 또는 지정 신청처",
+      "audience": "서울 주소를 둔 24개월 이하 영아와 주민등록을 함께 둔 실질적 양육자",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "applicationMode": "ongoing",
+      "applicationNote": "2026년 1월 2일부터 연중 상시 신청 · 신청월 기준 24개월 이하",
+      "eventStart": null,
+      "eventEnd": null,
+      "feeStatus": "unknown",
+      "feeText": "지원금·바우처 사업 · 지원 범위 밖 본인부담과 개별 이용요금은 공식 확인",
+      "summary": "영아용 카시트를 갖춘 택시의 이용 포인트를 지원합니다.",
+      "conditions": [
+        "영아 1명당 연 10만원 포인트 지원이며 운영업체는 타다입니다.",
+        "2026년부터 영아당 총 2회·연 1회로 제한되며 2025년부터의 지원횟수를 산정합니다.",
+        "승인일로부터 1년이 되는 달 말일의 하차 시각까지 이용하며, 카시트는 차량당 1개입니다."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26",
+      "evidence": [
+        {
+          "url": "https://umppa.seoul.go.kr/hmpg/life/cycl/lifeCyclInfoDetail.do?sys_name=biz&doc_id=3EF7489ACF614F939FEF8514308797D2",
+          "publisher": "서울시 탄생육아 몽땅정보통",
+          "summary": "공식 사업 상세의 신청기한·2026년 변경 조건·거주 및 대상자 요건·지원 내용과 예외를 확인했습니다. 개인별 기한이나 상시 신청에 임의의 연말 종료일을 붙이지 않았습니다.",
+          "verifiedAt": "2026-10-26",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "applicationMode",
+            "applicationNote"
+          ]
+        }
+      ],
+      "contentHash": "29be36fd89bed29f726f06772a4f5054064e3ada138d1f8312b8e4fb809d0586",
+      "siteUrl": "/tools/family-support/#support-2a2cd76d07208861688b"
+    }
+  ],
+  "siteRevision": "db804427a9b8ff5a5e787b19db4d2d21409fbbc7",
+  "generatedAt": "2026-10-25T17:13:19.183Z",
   "window": {
-    "start": "2026-10-25",
-    "end": "2026-12-24"
+    "start": "2026-10-26",
+    "end": "2026-12-25"
   },
   "deployment": {
     "status": "verify-live-snapshot",

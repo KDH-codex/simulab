@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "timezone": "Asia/Seoul",
-  "updatedAt": "2026-10-25T11:16:38.957Z",
+  "updatedAt": "2026-10-25T17:04:51.678Z",
   "execution": "local-codex-official-source-review",
   "siteAutomations": [
     {
@@ -110,7 +110,116 @@
   "limitations": [
     "로컬 예약 실행에는 PC와 앱이 실행 가능한 상태여야 함",
     "전체 공급자 무인 파서가 아니라 예약된 Codex의 공식 상세 공지 검토 방식",
-    "신규 공개 검증 자료는 체험 1건·휴양림 예약 1건이며 다른 신규 분야는 아직 공개 레코드가 없음",
-    "네이버 실제 게시 성공 이력은 아직 없으며 수목 실행에서 로그인·준비·승인 조건과 게시 URL을 확인해야 함"
-  ]
+    "네이버 실제 게시 성공 이력은 아직 없으며 수목 실행에서 로그인·준비·승인 조건과 게시 URL을 확인해야 함",
+    "2026-10-26 초기 자료 50건 추가. 모든 항목의 공개 유효 15건 목표는 아직 미달이며 조사 완료와 공개 적격을 별도 집계한다."
+  ],
+  "researchPolicy": {
+    "updatedAt": "2026-10-26",
+    "minimumDetailedNoticesPerCategory": 15,
+    "currentVerifiedRecordsTarget": 15,
+    "updatedSiteAutomations": 9,
+    "baselineRunId": "baseline-2026-10-26",
+    "coverage": [
+      {
+        "categoryId": "kids-programs",
+        "minimum": 15,
+        "detailedReviewed": 23,
+        "shortfall": 0,
+        "targetMet": true,
+        "verified": 6,
+        "held": 15,
+        "rejected": 2,
+        "blocked": 0
+      },
+      {
+        "categoryId": "local-parenting",
+        "minimum": 15,
+        "detailedReviewed": 21,
+        "shortfall": 0,
+        "targetMet": true,
+        "verified": 3,
+        "held": 17,
+        "rejected": 1,
+        "blocked": 0
+      },
+      {
+        "categoryId": "family-support",
+        "minimum": 15,
+        "detailedReviewed": 18,
+        "shortfall": 0,
+        "targetMet": true,
+        "verified": 7,
+        "held": 10,
+        "rejected": 1,
+        "blocked": 0
+      },
+      {
+        "categoryId": "camping-booking",
+        "minimum": 15,
+        "detailedReviewed": 21,
+        "shortfall": 0,
+        "targetMet": true,
+        "verified": 3,
+        "held": 11,
+        "rejected": 7,
+        "blocked": 0
+      },
+      {
+        "categoryId": "family-culture",
+        "minimum": 15,
+        "detailedReviewed": 49,
+        "shortfall": 0,
+        "targetMet": true,
+        "verified": 15,
+        "held": 27,
+        "rejected": 7,
+        "blocked": 0
+      },
+      {
+        "categoryId": "kids-popups",
+        "minimum": 15,
+        "detailedReviewed": 16,
+        "shortfall": 0,
+        "targetMet": true,
+        "verified": 1,
+        "held": 1,
+        "rejected": 14,
+        "blocked": 22
+      },
+      {
+        "categoryId": "brand-sales",
+        "minimum": 15,
+        "detailedReviewed": 15,
+        "shortfall": 0,
+        "targetMet": true,
+        "verified": 0,
+        "held": 15,
+        "rejected": 0,
+        "blocked": 3
+      },
+      {
+        "categoryId": "family-discounts",
+        "minimum": 15,
+        "detailedReviewed": 19,
+        "shortfall": 0,
+        "targetMet": true,
+        "verified": 16,
+        "held": 3,
+        "rejected": 0,
+        "blocked": 0
+      },
+      {
+        "categoryId": "festivals",
+        "minimum": 15,
+        "detailedReviewed": 17,
+        "shortfall": 0,
+        "targetMet": true,
+        "verified": 0,
+        "held": 17,
+        "rejected": 0,
+        "blocked": 4
+      }
+    ],
+    "baselineMinimumMet": true
+  }
 }

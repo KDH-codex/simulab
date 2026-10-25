@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "snapshotId": "a5fb9eebbe4c79fbbb90fe20",
+  "snapshotId": "7b8117f0df4cc3cbeba5203f",
   "timezone": "Asia/Seoul",
   "categories": [
     {
@@ -16,11 +16,11 @@
       "accent": "blue",
       "categoryRevision": "c81992132b592ad4",
       "lastVerifiedAt": "2026-10-23",
-      "lastCollectedAt": null,
+      "lastCollectedAt": "2026-10-26",
       "lastDeployedAt": null,
-      "outcome": "existing-reviewed",
+      "outcome": "partial-review",
       "verifiedCount": 42,
-      "currentCount": 37,
+      "currentCount": 13,
       "failures": []
     }
   ],
@@ -2014,11 +2014,11 @@
       "siteUrl": "/tools/kids-outing-calendar/#event-sejong-hangeul-family-2026"
     }
   ],
-  "siteRevision": "9548bd54a7859e769b5d2024a87c45337abe3de5",
-  "generatedAt": "2026-10-25T10:59:15.502Z",
+  "siteRevision": "db804427a9b8ff5a5e787b19db4d2d21409fbbc7",
+  "generatedAt": "2026-10-25T17:13:19.183Z",
   "window": {
-    "start": "2026-10-25",
-    "end": "2026-12-24"
+    "start": "2026-10-26",
+    "end": "2026-12-25"
   },
   "deployment": {
     "status": "verify-live-snapshot",
