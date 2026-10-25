@@ -1,359 +1,933 @@
-/**
- * 세계 20개국 국민총소득(GNI) 및 1인당 소득 공공 빅데이터 (1990~2024)
- * 
- * 출처:
- * 1. 세계은행(World Bank) Open Data - GNI, Atlas method (current US$)
- * 2. 세계은행(World Bank) - GNI per capita, Atlas method (current US$)
- * 3. IMF World Economic Outlook (WEO) Database (2024)
- * 4. 한국은행 경제통계시스템 (BOK ECOS) 2024 국민계정 기준년 개편 결과
- * 
- * 단위:
- * - gniTotal: 10억 달러 (Billion USD)
- * - gniPerCapita: 1인당 달러 (USD)
- */
+// World Bank WDI, source 2, downloaded 2026-10-26; totals in billion current USD, per capita in Atlas USD. Null means unavailable.
+// Reviewed 2026-10-26. See docs/statistics-refresh-20261026.md for source periods.
 
-export const YEARS = [1990, 1995, 2000, 2005, 2010, 2015, 2020, 2022, 2024];
+export const YEARS = [
+  1990,
+  1995,
+  2000,
+  2005,
+  2010,
+  2015,
+  2020,
+  2022,
+  2024,
+  2025
+];
+
+export const LATEST_GNI_YEAR = 2025;
 
 export const COUNTRIES = [
   {
-    code: 'KOR',
-    name: '대한민국',
-    flag: '🇰🇷',
-    continent: '아시아',
-    highlight: true,
-    data: {
-      1990: { gniTotal: 283, gniPerCapita: 6610 },
-      1995: { gniTotal: 556, gniPerCapita: 12330 },
-      2000: { gniTotal: 588, gniPerCapita: 12260 },
-      2005: { gniTotal: 933, gniPerCapita: 19370 },
-      2010: { gniTotal: 1144, gniPerCapita: 23070 },
-      2015: { gniTotal: 1473, gniPerCapita: 28880 },
-      2020: { gniTotal: 1718, gniPerCapita: 33200 },
-      2022: { gniTotal: 1820, gniPerCapita: 35150 },
-      2024: { gniTotal: 1870, gniPerCapita: 36200 }
+    "code": "KOR",
+    "name": "대한민국",
+    "flag": "🇰🇷",
+    "continent": "아시아",
+    "highlight": true,
+    "data": {
+      "1990": {
+        "gniTotal": 291.78,
+        "gniPerCapita": 6660
+      },
+      "1995": {
+        "gniTotal": 584.207,
+        "gniPerCapita": 12230
+      },
+      "2000": {
+        "gniTotal": 593.632,
+        "gniPerCapita": 11460
+      },
+      "2005": {
+        "gniTotal": 965.137,
+        "gniPerCapita": 19230
+      },
+      "2010": {
+        "gniTotal": 1194.538,
+        "gniPerCapita": 23250
+      },
+      "2015": {
+        "gniTotal": 1543.798,
+        "gniPerCapita": 30130
+      },
+      "2020": {
+        "gniTotal": 1758.426,
+        "gniPerCapita": 35000
+      },
+      "2022": {
+        "gniTotal": 1821.087,
+        "gniPerCapita": 38590
+      },
+      "2024": {
+        "gniTotal": 1902.457,
+        "gniPerCapita": 36750
+      },
+      "2025": {
+        "gniTotal": 1904.544,
+        "gniPerCapita": 37880
+      }
     }
   },
   {
-    code: 'USA',
-    name: '미국',
-    flag: '🇺🇸',
-    continent: '아메리카',
-    data: {
-      1990: { gniTotal: 6010, gniPerCapita: 24010 },
-      1995: { gniTotal: 7690, gniPerCapita: 28930 },
-      2000: { gniTotal: 10300, gniPerCapita: 36520 },
-      2005: { gniTotal: 13350, gniPerCapita: 45290 },
-      2010: { gniTotal: 15280, gniPerCapita: 49370 },
-      2015: { gniTotal: 18350, gniPerCapita: 56980 },
-      2020: { gniTotal: 21540, gniPerCapita: 64960 },
-      2022: { gniTotal: 25800, gniPerCapita: 76800 },
-      2024: { gniTotal: 28780, gniPerCapita: 82050 }
+    "code": "USA",
+    "name": "미국",
+    "flag": "🇺🇸",
+    "continent": "아메리카",
+    "data": {
+      "1990": {
+        "gniTotal": 5902.482,
+        "gniPerCapita": 24060
+      },
+      "1995": {
+        "gniTotal": 7575.542,
+        "gniPerCapita": 29040
+      },
+      "2000": {
+        "gniTotal": 10385.197,
+        "gniPerCapita": 35960
+      },
+      "2005": {
+        "gniTotal": 13170.993,
+        "gniPerCapita": 46190
+      },
+      "2010": {
+        "gniTotal": 15185.16,
+        "gniPerCapita": 49180
+      },
+      "2015": {
+        "gniTotal": 18608.138,
+        "gniPerCapita": 56320
+      },
+      "2020": {
+        "gniTotal": 21466.292,
+        "gniPerCapita": 64630
+      },
+      "2022": {
+        "gniTotal": 26207.041,
+        "gniPerCapita": 77230
+      },
+      "2024": {
+        "gniTotal": 28993.443,
+        "gniPerCapita": 82910
+      },
+      "2025": {
+        "gniTotal": 30585.823,
+        "gniPerCapita": 88810
+      }
     }
   },
   {
-    code: 'CHN',
-    name: '중국',
-    flag: '🇨🇳',
-    continent: '아시아',
-    data: {
-      1990: { gniTotal: 395, gniPerCapita: 350 },
-      1995: { gniTotal: 735, gniPerCapita: 610 },
-      2000: { gniTotal: 1205, gniPerCapita: 950 },
-      2005: { gniTotal: 2310, gniPerCapita: 1770 },
-      2010: { gniTotal: 5930, gniPerCapita: 4430 },
-      2015: { gniTotal: 11040, gniPerCapita: 8040 },
-      2020: { gniTotal: 14930, gniPerCapita: 10580 },
-      2022: { gniTotal: 17950, gniPerCapita: 12720 },
-      2024: { gniTotal: 18530, gniPerCapita: 13400 }
+    "code": "CHN",
+    "name": "중국",
+    "flag": "🇨🇳",
+    "continent": "아시아",
+    "data": {
+      "1990": {
+        "gniTotal": 362.524,
+        "gniPerCapita": 330
+      },
+      "1995": {
+        "gniTotal": 726.418,
+        "gniPerCapita": 540
+      },
+      "2000": {
+        "gniTotal": 1209.09,
+        "gniPerCapita": 950
+      },
+      "2005": {
+        "gniTotal": 2301.444,
+        "gniPerCapita": 1790
+      },
+      "2010": {
+        "gniTotal": 6166.492,
+        "gniPerCapita": 4410
+      },
+      "2015": {
+        "gniTotal": 11228.033,
+        "gniPerCapita": 8040
+      },
+      "2020": {
+        "gniTotal": 14878.808,
+        "gniPerCapita": 10740
+      },
+      "2022": {
+        "gniTotal": 18163.546,
+        "gniPerCapita": 13170
+      },
+      "2024": {
+        "gniTotal": 18600.889,
+        "gniPerCapita": 13660
+      },
+      "2025": {
+        "gniTotal": 19384.279,
+        "gniPerCapita": 14230
+      }
     }
   },
   {
-    code: 'JPN',
-    name: '일본',
-    flag: '🇯🇵',
-    continent: '아시아',
-    data: {
-      1990: { gniTotal: 3340, gniPerCapita: 27010 },
-      1995: { gniTotal: 5310, gniPerCapita: 42320 },
-      2000: { gniTotal: 4990, gniPerCapita: 39310 },
-      2005: { gniTotal: 4890, gniPerCapita: 38280 },
-      2010: { gniTotal: 5760, gniPerCapita: 45010 },
-      2015: { gniTotal: 4860, gniPerCapita: 38240 },
-      2020: { gniTotal: 5210, gniPerCapita: 41250 },
-      2022: { gniTotal: 4570, gniPerCapita: 36500 },
-      2024: { gniTotal: 4110, gniPerCapita: 33500 }
+    "code": "JPN",
+    "name": "일본",
+    "flag": "🇯🇵",
+    "continent": "아시아",
+    "data": {
+      "1990": {
+        "gniTotal": 3287.598,
+        "gniPerCapita": 28990
+      },
+      "1995": {
+        "gniTotal": 5686.769,
+        "gniPerCapita": 43580
+      },
+      "2000": {
+        "gniTotal": 5114.258,
+        "gniPerCapita": 37330
+      },
+      "2005": {
+        "gniTotal": 4982.85,
+        "gniPerCapita": 41690
+      },
+      "2010": {
+        "gniTotal": 5965.04,
+        "gniPerCapita": 44290
+      },
+      "2015": {
+        "gniTotal": 4709.299,
+        "gniPerCapita": 40140
+      },
+      "2020": {
+        "gniTotal": 5374.617,
+        "gniPerCapita": 41880
+      },
+      "2022": {
+        "gniTotal": 4711.073,
+        "gniPerCapita": 44300
+      },
+      "2024": {
+        "gniTotal": 4445.04,
+        "gniPerCapita": 37170
+      },
+      "2025": {
+        "gniTotal": 4715.126,
+        "gniPerCapita": 38340
+      }
     }
   },
   {
-    code: 'DEU',
-    name: '독일',
-    flag: '🇩🇪',
-    continent: '유럽',
-    data: {
-      1990: { gniTotal: 1770, gniPerCapita: 22290 },
-      1995: { gniTotal: 2610, gniPerCapita: 31880 },
-      2000: { gniTotal: 2020, gniPerCapita: 24590 },
-      2005: { gniTotal: 2930, gniPerCapita: 35540 },
-      2010: { gniTotal: 3540, gniPerCapita: 43250 },
-      2015: { gniTotal: 3570, gniPerCapita: 43760 },
-      2020: { gniTotal: 4020, gniPerCapita: 48330 },
-      2022: { gniTotal: 4320, gniPerCapita: 51580 },
-      2024: { gniTotal: 4590, gniPerCapita: 54100 }
+    "code": "DEU",
+    "name": "독일",
+    "flag": "🇩🇪",
+    "continent": "유럽",
+    "data": {
+      "1990": {
+        "gniTotal": 1795.931,
+        "gniPerCapita": 21360
+      },
+      "1995": {
+        "gniTotal": 2589.547,
+        "gniPerCapita": 29650
+      },
+      "2000": {
+        "gniTotal": 1955.279,
+        "gniPerCapita": 26380
+      },
+      "2005": {
+        "gniTotal": 2917.037,
+        "gniPerCapita": 36310
+      },
+      "2010": {
+        "gniTotal": 3536.72,
+        "gniPerCapita": 45530
+      },
+      "2015": {
+        "gniTotal": 3492.65,
+        "gniPerCapita": 46590
+      },
+      "2020": {
+        "gniTotal": 4041.531,
+        "gniPerCapita": 48540
+      },
+      "2022": {
+        "gniTotal": 4326.585,
+        "gniPerCapita": 55200
+      },
+      "2024": {
+        "gniTotal": 4847.009,
+        "gniPerCapita": 55090
+      },
+      "2025": {
+        "gniTotal": 5233.769,
+        "gniPerCapita": 60200
+      }
     }
   },
   {
-    code: 'GBR',
-    name: '영국',
-    flag: '🇬🇧',
-    continent: '유럽',
-    data: {
-      1990: { gniTotal: 1060, gniPerCapita: 18450 },
-      1995: { gniTotal: 1350, gniPerCapita: 23220 },
-      2000: { gniTotal: 1670, gniPerCapita: 28310 },
-      2005: { gniTotal: 2510, gniPerCapita: 41530 },
-      2010: { gniTotal: 2490, gniPerCapita: 39680 },
-      2015: { gniTotal: 2950, gniPerCapita: 45190 },
-      2020: { gniTotal: 2790, gniPerCapita: 41570 },
-      2022: { gniTotal: 3180, gniPerCapita: 47100 },
-      2024: { gniTotal: 3490, gniPerCapita: 50800 }
+    "code": "GBR",
+    "name": "영국",
+    "flag": "🇬🇧",
+    "continent": "유럽",
+    "data": {
+      "1990": {
+        "gniTotal": 1121.273,
+        "gniPerCapita": 18640
+      },
+      "1995": {
+        "gniTotal": 1310.427,
+        "gniPerCapita": 21360
+      },
+      "2000": {
+        "gniTotal": 1676.195,
+        "gniPerCapita": 29550
+      },
+      "2005": {
+        "gniTotal": 2577.762,
+        "gniPerCapita": 42840
+      },
+      "2010": {
+        "gniTotal": 2497.833,
+        "gniPerCapita": 42010
+      },
+      "2015": {
+        "gniTotal": 2881.766,
+        "gniPerCapita": 44630
+      },
+      "2020": {
+        "gniTotal": 2666.344,
+        "gniPerCapita": 39350
+      },
+      "2022": {
+        "gniTotal": 3182.928,
+        "gniPerCapita": 49690
+      },
+      "2024": {
+        "gniTotal": 3659.245,
+        "gniPerCapita": 49320
+      },
+      "2025": {
+        "gniTotal": 3977.883,
+        "gniPerCapita": 54550
+      }
     }
   },
   {
-    code: 'FRA',
-    name: '프랑스',
-    flag: '🇫🇷',
-    continent: '유럽',
-    data: {
-      1990: { gniTotal: 1260, gniPerCapita: 21620 },
-      1995: { gniTotal: 1620, gniPerCapita: 27240 },
-      2000: { gniTotal: 1450, gniPerCapita: 23820 },
-      2005: { gniTotal: 2260, gniPerCapita: 35830 },
-      2010: { gniTotal: 2800, gniPerCapita: 43070 },
-      2015: { gniTotal: 2560, gniPerCapita: 38480 },
-      2020: { gniTotal: 2730, gniPerCapita: 40560 },
-      2022: { gniTotal: 2980, gniPerCapita: 43850 },
-      2024: { gniTotal: 3130, gniPerCapita: 45600 }
+    "code": "FRA",
+    "name": "프랑스",
+    "flag": "🇫🇷",
+    "continent": "유럽",
+    "data": {
+      "1990": {
+        "gniTotal": 1262.916,
+        "gniPerCapita": 20470
+      },
+      "1995": {
+        "gniTotal": 1601.805,
+        "gniPerCapita": 25660
+      },
+      "2000": {
+        "gniTotal": 1383.91,
+        "gniPerCapita": 24950
+      },
+      "2005": {
+        "gniTotal": 2231.904,
+        "gniPerCapita": 35870
+      },
+      "2010": {
+        "gniTotal": 2710.818,
+        "gniPerCapita": 44040
+      },
+      "2015": {
+        "gniTotal": 2491.912,
+        "gniPerCapita": 41130
+      },
+      "2020": {
+        "gniTotal": 2701.22,
+        "gniPerCapita": 39690
+      },
+      "2022": {
+        "gniTotal": 2881.608,
+        "gniPerCapita": 46010
+      },
+      "2024": {
+        "gniTotal": 3221.123,
+        "gniPerCapita": 45160
+      },
+      "2025": {
+        "gniTotal": 3425.957,
+        "gniPerCapita": 48630
+      }
     }
   },
   {
-    code: 'IND',
-    name: '인도',
-    flag: '🇮🇳',
-    continent: '아시아',
-    data: {
-      1990: { gniTotal: 326, gniPerCapita: 380 },
-      1995: { gniTotal: 365, gniPerCapita: 380 },
-      2000: { gniTotal: 475, gniPerCapita: 450 },
-      2005: { gniTotal: 835, gniPerCapita: 730 },
-      2010: { gniTotal: 1680, gniPerCapita: 1360 },
-      2015: { gniTotal: 2080, gniPerCapita: 1570 },
-      2020: { gniTotal: 2630, gniPerCapita: 1900 },
-      2022: { gniTotal: 3380, gniPerCapita: 2390 },
-      2024: { gniTotal: 3940, gniPerCapita: 2730 }
+    "code": "IND",
+    "name": "인도",
+    "flag": "🇮🇳",
+    "continent": "아시아",
+    "data": {
+      "1990": {
+        "gniTotal": 316.775,
+        "gniPerCapita": 390
+      },
+      "1995": {
+        "gniTotal": 356.252,
+        "gniPerCapita": 370
+      },
+      "2000": {
+        "gniTotal": 463.42,
+        "gniPerCapita": 440
+      },
+      "2005": {
+        "gniTotal": 814.485,
+        "gniPerCapita": 700
+      },
+      "2010": {
+        "gniTotal": 1657.661,
+        "gniPerCapita": 1210
+      },
+      "2015": {
+        "gniTotal": 2079.183,
+        "gniPerCapita": 1580
+      },
+      "2020": {
+        "gniTotal": 2638.922,
+        "gniPerCapita": 1900
+      },
+      "2022": {
+        "gniTotal": 3203.859,
+        "gniPerCapita": 2360
+      },
+      "2024": {
+        "gniTotal": 3712.419,
+        "gniPerCapita": 2550
+      },
+      "2025": {
+        "gniTotal": 3906.712,
+        "gniPerCapita": 2760
+      }
     }
   },
   {
-    code: 'ITA',
-    name: '이탈리아',
-    flag: '🇮🇹',
-    continent: '유럽',
-    data: {
-      1990: { gniTotal: 1160, gniPerCapita: 20490 },
-      1995: { gniTotal: 1220, gniPerCapita: 21450 },
-      2000: { gniTotal: 1170, gniPerCapita: 20560 },
-      2005: { gniTotal: 1870, gniPerCapita: 32170 },
-      2010: { gniTotal: 2190, gniPerCapita: 36980 },
-      2015: { gniTotal: 1910, gniPerCapita: 31440 },
-      2020: { gniTotal: 1980, gniPerCapita: 33260 },
-      2022: { gniTotal: 2150, gniPerCapita: 36470 },
-      2024: { gniTotal: 2320, gniPerCapita: 39100 }
+    "code": "ITA",
+    "name": "이탈리아",
+    "flag": "🇮🇹",
+    "continent": "유럽",
+    "data": {
+      "1990": {
+        "gniTotal": 1169.477,
+        "gniPerCapita": 18710
+      },
+      "1995": {
+        "gniTotal": 1163.114,
+        "gniPerCapita": 20720
+      },
+      "2000": {
+        "gniTotal": 1145.284,
+        "gniPerCapita": 21980
+      },
+      "2005": {
+        "gniTotal": 1867.902,
+        "gniPerCapita": 32480
+      },
+      "2010": {
+        "gniTotal": 2140.256,
+        "gniPerCapita": 37720
+      },
+      "2015": {
+        "gniTotal": 1832.664,
+        "gniPerCapita": 33460
+      },
+      "2020": {
+        "gniTotal": 1931.76,
+        "gniPerCapita": 32600
+      },
+      "2022": {
+        "gniTotal": 2123.551,
+        "gniPerCapita": 39060
+      },
+      "2024": {
+        "gniTotal": 2378.272,
+        "gniPerCapita": 38640
+      },
+      "2025": {
+        "gniTotal": 2554.479,
+        "gniPerCapita": 42080
+      }
     }
   },
   {
-    code: 'CAN',
-    name: '캐나다',
-    flag: '🇨🇦',
-    continent: '아메리카',
-    data: {
-      1990: { gniTotal: 580, gniPerCapita: 20950 },
-      1995: { gniTotal: 595, gniPerCapita: 20300 },
-      2000: { gniTotal: 725, gniPerCapita: 23640 },
-      2005: { gniTotal: 1140, gniPerCapita: 35370 },
-      2010: { gniTotal: 1570, gniPerCapita: 46210 },
-      2015: { gniTotal: 1610, gniPerCapita: 45050 },
-      2020: { gniTotal: 1650, gniPerCapita: 43390 },
-      2022: { gniTotal: 2110, gniPerCapita: 54100 },
-      2024: { gniTotal: 2240, gniPerCapita: 55200 }
+    "code": "CAN",
+    "name": "캐나다",
+    "flag": "🇨🇦",
+    "continent": "아메리카",
+    "data": {
+      "1990": {
+        "gniTotal": 574.627,
+        "gniPerCapita": 20650
+      },
+      "1995": {
+        "gniTotal": 585.087,
+        "gniPerCapita": 20850
+      },
+      "2000": {
+        "gniTotal": 725.237,
+        "gniPerCapita": 22740
+      },
+      "2005": {
+        "gniTotal": 1149.136,
+        "gniPerCapita": 34310
+      },
+      "2010": {
+        "gniTotal": 1585.38,
+        "gniPerCapita": 44490
+      },
+      "2015": {
+        "gniTotal": 1532.664,
+        "gniPerCapita": 47580
+      },
+      "2020": {
+        "gniTotal": 1643.688,
+        "gniPerCapita": 43900
+      },
+      "2022": {
+        "gniTotal": 2168.804,
+        "gniPerCapita": 54070
+      },
+      "2024": {
+        "gniTotal": 2234.538,
+        "gniPerCapita": 54110
+      },
+      "2025": {
+        "gniTotal": 2322.446,
+        "gniPerCapita": 56420
+      }
     }
   },
   {
-    code: 'BRA',
-    name: '브라질',
-    flag: '🇧🇷',
-    continent: '아메리카',
-    data: {
-      1990: { gniTotal: 440, gniPerCapita: 2950 },
-      1995: { gniTotal: 745, gniPerCapita: 4570 },
-      2000: { gniTotal: 645, gniPerCapita: 3680 },
-      2005: { gniTotal: 865, gniPerCapita: 4630 },
-      2010: { gniTotal: 2130, gniPerCapita: 10820 },
-      2015: { gniTotal: 1840, gniPerCapita: 8990 },
-      2020: { gniTotal: 1490, gniPerCapita: 6980 },
-      2022: { gniTotal: 1910, gniPerCapita: 8870 },
-      2024: { gniTotal: 2180, gniPerCapita: 10100 }
+    "code": "BRA",
+    "name": "브라질",
+    "flag": "🇧🇷",
+    "continent": "아메리카",
+    "data": {
+      "1990": {
+        "gniTotal": 374.726,
+        "gniPerCapita": 2470
+      },
+      "1995": {
+        "gniTotal": 758.586,
+        "gniPerCapita": 3440
+      },
+      "2000": {
+        "gniTotal": 636.573,
+        "gniPerCapita": 3950
+      },
+      "2005": {
+        "gniTotal": 865.86,
+        "gniPerCapita": 4030
+      },
+      "2010": {
+        "gniTotal": 2140.606,
+        "gniPerCapita": 9750
+      },
+      "2015": {
+        "gniTotal": 1768.3,
+        "gniPerCapita": 10330
+      },
+      "2020": {
+        "gniTotal": 1445.311,
+        "gniPerCapita": 8080
+      },
+      "2022": {
+        "gniTotal": 1895.346,
+        "gniPerCapita": 8440
+      },
+      "2024": {
+        "gniTotal": 2112.836,
+        "gniPerCapita": 9930
+      },
+      "2025": {
+        "gniTotal": 2205.743,
+        "gniPerCapita": 10550
+      }
     }
   },
   {
-    code: 'RUS',
-    name: '러시아',
-    flag: '🇷🇺',
-    continent: '유럽',
-    data: {
-      1990: { gniTotal: 520, gniPerCapita: 3500 },
-      1995: { gniTotal: 390, gniPerCapita: 2630 },
-      2000: { gniTotal: 250, gniPerCapita: 1710 },
-      2005: { gniTotal: 740, gniPerCapita: 5130 },
-      2010: { gniTotal: 1510, gniPerCapita: 10550 },
-      2015: { gniTotal: 1330, gniPerCapita: 9110 },
-      2020: { gniTotal: 1480, gniPerCapita: 10170 },
-      2022: { gniTotal: 1970, gniPerCapita: 13580 },
-      2024: { gniTotal: 2060, gniPerCapita: 14250 }
+    "code": "RUS",
+    "name": "러시아",
+    "flag": "🇷🇺",
+    "continent": "유럽",
+    "data": {
+      "1990": {
+        "gniTotal": 515.98,
+        "gniPerCapita": null
+      },
+      "1995": {
+        "gniTotal": 392.166,
+        "gniPerCapita": 2640
+      },
+      "2000": {
+        "gniTotal": 252.974,
+        "gniPerCapita": 1710
+      },
+      "2005": {
+        "gniTotal": 745.49,
+        "gniPerCapita": 4450
+      },
+      "2010": {
+        "gniTotal": 1477.812,
+        "gniPerCapita": 9980
+      },
+      "2015": {
+        "gniTotal": 1325.733,
+        "gniPerCapita": 11740
+      },
+      "2020": {
+        "gniTotal": 1458.071,
+        "gniPerCapita": 10660
+      },
+      "2022": {
+        "gniTotal": 2245.361,
+        "gniPerCapita": 12890
+      },
+      "2024": {
+        "gniTotal": 2158.964,
+        "gniPerCapita": 15330
+      },
+      "2025": {
+        "gniTotal": 2543.379,
+        "gniPerCapita": 15960
+      }
     }
   },
   {
-    code: 'AUS',
-    name: '호주',
-    flag: '🇦🇺',
-    continent: '오세아니아',
-    data: {
-      1990: { gniTotal: 310, gniPerCapita: 18190 },
-      1995: { gniTotal: 375, gniPerCapita: 20760 },
-      2000: { gniTotal: 405, gniPerCapita: 21190 },
-      2005: { gniTotal: 695, gniPerCapita: 34180 },
-      2010: { gniTotal: 1130, gniPerCapita: 51090 },
-      2015: { gniTotal: 1360, gniPerCapita: 56980 },
-      2020: { gniTotal: 1370, gniPerCapita: 53620 },
-      2022: { gniTotal: 1690, gniPerCapita: 64950 },
-      2024: { gniTotal: 1790, gniPerCapita: 66800 }
+    "code": "AUS",
+    "name": "호주",
+    "flag": "🇦🇺",
+    "continent": "오세아니아",
+    "data": {
+      "1990": {
+        "gniTotal": 300.991,
+        "gniPerCapita": 17370
+      },
+      "1995": {
+        "gniTotal": 356.046,
+        "gniPerCapita": 19400
+      },
+      "2000": {
+        "gniTotal": 404.912,
+        "gniPerCapita": 21340
+      },
+      "2005": {
+        "gniTotal": 671.051,
+        "gniPerCapita": 30790
+      },
+      "2010": {
+        "gniTotal": 1107.932,
+        "gniPerCapita": 46900
+      },
+      "2015": {
+        "gniTotal": 1329.207,
+        "gniPerCapita": 60780
+      },
+      "2020": {
+        "gniTotal": 1301.591,
+        "gniPerCapita": 53770
+      },
+      "2022": {
+        "gniTotal": 1629.212,
+        "gniPerCapita": 60790
+      },
+      "2024": {
+        "gniTotal": 1695.733,
+        "gniPerCapita": 62680
+      },
+      "2025": {
+        "gniTotal": 1748.457,
+        "gniPerCapita": 64120
+      }
     }
   },
   {
-    code: 'ESP',
-    name: '스페인',
-    flag: '🇪🇸',
-    continent: '유럽',
-    data: {
-      1990: { gniTotal: 520, gniPerCapita: 13380 },
-      1995: { gniTotal: 605, gniPerCapita: 15280 },
-      2000: { gniTotal: 600, gniPerCapita: 14840 },
-      2005: { gniTotal: 1140, gniPerCapita: 26230 },
-      2010: { gniTotal: 1480, gniPerCapita: 31690 },
-      2015: { gniTotal: 1250, gniPerCapita: 26860 },
-      2020: { gniTotal: 1300, gniPerCapita: 27440 },
-      2022: { gniTotal: 1440, gniPerCapita: 30140 },
-      2024: { gniTotal: 1650, gniPerCapita: 34100 }
+    "code": "ESP",
+    "name": "스페인",
+    "flag": "🇪🇸",
+    "continent": "유럽",
+    "data": {
+      "1990": {
+        "gniTotal": 530.017,
+        "gniPerCapita": 12190
+      },
+      "1995": {
+        "gniTotal": 608.998,
+        "gniPerCapita": 14810
+      },
+      "2000": {
+        "gniTotal": 593.825,
+        "gniPerCapita": 15770
+      },
+      "2005": {
+        "gniTotal": 1138.732,
+        "gniPerCapita": 25910
+      },
+      "2010": {
+        "gniTotal": 1407.118,
+        "gniPerCapita": 32060
+      },
+      "2015": {
+        "gniTotal": 1205.222,
+        "gniPerCapita": 28700
+      },
+      "2020": {
+        "gniTotal": 1292.136,
+        "gniPerCapita": 27410
+      },
+      "2022": {
+        "gniTotal": 1456.076,
+        "gniPerCapita": 32690
+      },
+      "2024": {
+        "gniTotal": 1721.317,
+        "gniPerCapita": 33550
+      },
+      "2025": {
+        "gniTotal": 1905.176,
+        "gniPerCapita": 37120
+      }
     }
   },
   {
-    code: 'MEX',
-    name: '멕시코',
-    flag: '🇲🇽',
-    continent: '아메리카',
-    data: {
-      1990: { gniTotal: 280, gniPerCapita: 3330 },
-      1995: { gniTotal: 340, gniPerCapita: 3710 },
-      2000: { gniTotal: 670, gniPerCapita: 6780 },
-      2005: { gniTotal: 870, gniPerCapita: 8250 },
-      2010: { gniTotal: 1040, gniPerCapita: 9280 },
-      2015: { gniTotal: 1160, gniPerCapita: 9760 },
-      2020: { gniTotal: 1070, gniPerCapita: 8460 },
-      2022: { gniTotal: 1380, gniPerCapita: 10820 },
-      2024: { gniTotal: 1810, gniPerCapita: 13800 }
+    "code": "MEX",
+    "name": "멕시코",
+    "flag": "🇲🇽",
+    "continent": "아메리카",
+    "data": {
+      "1990": {
+        "gniTotal": 252.628,
+        "gniPerCapita": 2820
+      },
+      "1995": {
+        "gniTotal": 366.827,
+        "gniPerCapita": 5110
+      },
+      "2000": {
+        "gniTotal": 726.951,
+        "gniPerCapita": 6570
+      },
+      "2005": {
+        "gniTotal": 904.18,
+        "gniPerCapita": 8490
+      },
+      "2010": {
+        "gniTotal": 1093.238,
+        "gniPerCapita": 9470
+      },
+      "2015": {
+        "gniTotal": 1182.963,
+        "gniPerCapita": 10580
+      },
+      "2020": {
+        "gniTotal": 1085.048,
+        "gniPerCapita": 8920
+      },
+      "2022": {
+        "gniTotal": 1432.993,
+        "gniPerCapita": 10730
+      },
+      "2024": {
+        "gniTotal": 1779.406,
+        "gniPerCapita": 12760
+      },
+      "2025": {
+        "gniTotal": 1776.305,
+        "gniPerCapita": 13730
+      }
     }
   },
   {
-    code: 'IDN',
-    name: '인도네시아',
-    flag: '🇮🇩',
-    continent: '아시아',
-    data: {
-      1990: { gniTotal: 115, gniPerCapita: 630 },
-      1995: { gniTotal: 215, gniPerCapita: 1090 },
-      2000: { gniTotal: 165, gniPerCapita: 780 },
-      2005: { gniTotal: 295, gniPerCapita: 1300 },
-      2010: { gniTotal: 720, gniPerCapita: 2960 },
-      2015: { gniTotal: 870, gniPerCapita: 3370 },
-      2020: { gniTotal: 1050, gniPerCapita: 3860 },
-      2022: { gniTotal: 1280, gniPerCapita: 4620 },
-      2024: { gniTotal: 1470, gniPerCapita: 5180 }
+    "code": "IDN",
+    "name": "인도네시아",
+    "flag": "🇮🇩",
+    "continent": "아시아",
+    "data": {
+      "1990": {
+        "gniTotal": 100.923,
+        "gniPerCapita": 560
+      },
+      "1995": {
+        "gniTotal": 196.188,
+        "gniPerCapita": 970
+      },
+      "2000": {
+        "gniTotal": 154.078,
+        "gniPerCapita": 570
+      },
+      "2005": {
+        "gniTotal": 271.958,
+        "gniPerCapita": 1200
+      },
+      "2010": {
+        "gniTotal": 734.988,
+        "gniPerCapita": 2490
+      },
+      "2015": {
+        "gniTotal": 832.299,
+        "gniPerCapita": 3390
+      },
+      "2020": {
+        "gniTotal": 1029.975,
+        "gniPerCapita": 3850
+      },
+      "2022": {
+        "gniTotal": 1283.471,
+        "gniPerCapita": 4520
+      },
+      "2024": {
+        "gniTotal": 1360.121,
+        "gniPerCapita": 4920
+      },
+      "2025": {
+        "gniTotal": 1407.196,
+        "gniPerCapita": 5120
+      }
     }
   },
   {
-    code: 'NLD',
-    name: '네덜란드',
-    flag: '🇳🇱',
-    continent: '유럽',
-    data: {
-      1990: { gniTotal: 310, gniPerCapita: 20720 },
-      1995: { gniTotal: 440, gniPerCapita: 28450 },
-      2000: { gniTotal: 415, gniPerCapita: 26050 },
-      2005: { gniTotal: 670, gniPerCapita: 41040 },
-      2010: { gniTotal: 880, gniPerCapita: 52930 },
-      2015: { gniTotal: 800, gniPerCapita: 47160 },
-      2020: { gniTotal: 920, gniPerCapita: 52750 },
-      2022: { gniTotal: 1020, gniPerCapita: 57640 },
-      2024: { gniTotal: 1130, gniPerCapita: 62800 }
+    "code": "NLD",
+    "name": "네덜란드",
+    "flag": "🇳🇱",
+    "continent": "유럽",
+    "data": {
+      "1990": {
+        "gniTotal": 309.671,
+        "gniPerCapita": 19910
+      },
+      "1995": {
+        "gniTotal": 449.871,
+        "gniPerCapita": 27120
+      },
+      "2000": {
+        "gniTotal": 414.34,
+        "gniPerCapita": 28140
+      },
+      "2005": {
+        "gniTotal": 678.588,
+        "gniPerCapita": 42280
+      },
+      "2010": {
+        "gniTotal": 848.188,
+        "gniPerCapita": 54000
+      },
+      "2015": {
+        "gniTotal": 764.254,
+        "gniPerCapita": 49670
+      },
+      "2020": {
+        "gniTotal": 905.74,
+        "gniPerCapita": 51490
+      },
+      "2022": {
+        "gniTotal": 1034.598,
+        "gniPerCapita": 62110
+      },
+      "2024": {
+        "gniTotal": 1203.141,
+        "gniPerCapita": 62500
+      },
+      "2025": {
+        "gniTotal": 1304.615,
+        "gniPerCapita": 68530
+      }
     }
   },
   {
-    code: 'SAU',
-    name: '사우디',
-    flag: '🇸🇦',
-    continent: '아시아',
-    data: {
-      1990: { gniTotal: 120, gniPerCapita: 7430 },
-      1995: { gniTotal: 145, gniPerCapita: 7790 },
-      2000: { gniTotal: 190, gniPerCapita: 9020 },
-      2005: { gniTotal: 325, gniPerCapita: 13530 },
-      2010: { gniTotal: 535, gniPerCapita: 19440 },
-      2015: { gniTotal: 670, gniPerCapita: 21180 },
-      2020: { gniTotal: 735, gniPerCapita: 21020 },
-      2022: { gniTotal: 1020, gniPerCapita: 28400 },
-      2024: { gniTotal: 1110, gniPerCapita: 31200 }
+    "code": "SAU",
+    "name": "사우디",
+    "flag": "🇸🇦",
+    "continent": "아시아",
+    "data": {
+      "1990": {
+        "gniTotal": 125.609,
+        "gniPerCapita": 11230
+      },
+      "1995": {
+        "gniTotal": 146.147,
+        "gniPerCapita": 11020
+      },
+      "2000": {
+        "gniTotal": 189.994,
+        "gniPerCapita": 10450
+      },
+      "2005": {
+        "gniTotal": 328.891,
+        "gniPerCapita": 14620
+      },
+      "2010": {
+        "gniTotal": 542.915,
+        "gniPerCapita": 21820
+      },
+      "2015": {
+        "gniTotal": 714.778,
+        "gniPerCapita": 26580
+      },
+      "2020": {
+        "gniTotal": 779.167,
+        "gniPerCapita": 26940
+      },
+      "2022": {
+        "gniTotal": 1247.676,
+        "gniPerCapita": 35110
+      },
+      "2024": {
+        "gniTotal": 1262.85,
+        "gniPerCapita": 35990
+      },
+      "2025": {
+        "gniTotal": 1287.607,
+        "gniPerCapita": 36070
+      }
     }
   },
   {
-    code: 'CHE',
-    name: '스위스',
-    flag: '🇨🇭',
-    continent: '유럽',
-    data: {
-      1990: { gniTotal: 260, gniPerCapita: 38780 },
-      1995: { gniTotal: 345, gniPerCapita: 49020 },
-      2000: { gniTotal: 290, gniPerCapita: 40480 },
-      2005: { gniTotal: 435, gniPerCapita: 58540 },
-      2010: { gniTotal: 615, gniPerCapita: 78560 },
-      2015: { gniTotal: 710, gniPerCapita: 85750 },
-      2020: { gniTotal: 765, gniPerCapita: 88520 },
-      2022: { gniTotal: 840, gniPerCapita: 95530 },
-      2024: { gniTotal: 935, gniPerCapita: 103500 }
-    }
-  },
-  {
-    code: 'TWN',
-    name: '대만',
-    flag: '🇹🇼',
-    continent: '아시아',
-    data: {
-      1990: { gniTotal: 170, gniPerCapita: 8350 },
-      1995: { gniTotal: 280, gniPerCapita: 13130 },
-      2000: { gniTotal: 335, gniPerCapita: 15140 },
-      2005: { gniTotal: 375, gniPerCapita: 16480 },
-      2010: { gniTotal: 450, gniPerCapita: 19440 },
-      2015: { gniTotal: 540, gniPerCapita: 23020 },
-      2020: { gniTotal: 690, gniPerCapita: 29280 },
-      2022: { gniTotal: 780, gniPerCapita: 33320 },
-      2024: { gniTotal: 820, gniPerCapita: 35100 }
+    "code": "CHE",
+    "name": "스위스",
+    "flag": "🇨🇭",
+    "continent": "유럽",
+    "data": {
+      "1990": {
+        "gniTotal": 274.873,
+        "gniPerCapita": 37570
+      },
+      "1995": {
+        "gniTotal": 365.954,
+        "gniPerCapita": 49030
+      },
+      "2000": {
+        "gniTotal": 300.192,
+        "gniPerCapita": 45030
+      },
+      "2005": {
+        "gniTotal": 458.282,
+        "gniPerCapita": 63630
+      },
+      "2010": {
+        "gniTotal": 641.441,
+        "gniPerCapita": 80400
+      },
+      "2015": {
+        "gniTotal": 711.643,
+        "gniPerCapita": 88150
+      },
+      "2020": {
+        "gniTotal": 728.789,
+        "gniPerCapita": 83150
+      },
+      "2022": {
+        "gniTotal": 827.181,
+        "gniPerCapita": 97920
+      },
+      "2024": {
+        "gniTotal": 939.732,
+        "gniPerCapita": 99920
+      },
+      "2025": {
+        "gniTotal": 1035.198,
+        "gniPerCapita": 110330
+      }
     }
   }
 ];

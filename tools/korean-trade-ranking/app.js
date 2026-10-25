@@ -1,13 +1,13 @@
 /**
  * 우리나라 수출입 품목 순위 시뮬레이터 인터랙션 (app.js)
- * 
+ *
  * 주요 기능:
  * 1. 24개년 10대 수출 품목 랭킹 바 차트 및 타임 슬라이더/자동 재생 애니메이션
  * 2. 6대 주력 품목(반도체, 자동차 등) 시계열 꺾은선 캔버스 차트 및 성장률 분석
  * 3. 수입 TOP5 품목 및 2000~2024 무역수지 흑자/적자 테이블 렌더링
  */
 
-import { TRADE_YEARS, IMPORT_TOP5_2024 } from './data.js';
+import { TRADE_YEARS, IMPORT_REFERENCE_2024 } from './data.js';
 import { getExportRankingsByYear, getProductGrowthStats, getTradeBalanceHistory } from './logic.js';
 
 // 연도별 마일스톤 문구
@@ -18,13 +18,14 @@ const MILESTONES = {
   2015: '사상 최대 무역 흑자 (903억 달러 달성)',
   2020: '코로나19 팬데믹 충격 속 반도체 선방',
   2022: '글로벌 원자재·에너지 가격 폭등 (적자 전환)',
-  2024: '반도체 HBM 슈퍼사이클 & 역대급 자동차 수출'
+  2024: '2024년 연간 실적',
+  2025: '2025년 연간 잠정 실적 · 2026-01-01 발표'
 };
 
 // 애플리케이션 상태
 const state = {
   activeTab: 'rank',
-  currentYearIndex: 6, // 기본값: 2024년 (마지막 인덱스)
+  currentYearIndex: TRADE_YEARS.length - 1, // 기본값: 2024년 (마지막 인덱스)
   isPlaying: false,
   playTimer: null,
   selectedProduct: '반도체'
@@ -290,7 +291,7 @@ function renderProductGrowth() {
   const stats = getProductGrowthStats(state.selectedProduct);
 
   if (elements.canvasTitle) {
-    elements.canvasTitle.textContent = `${stats.name} 24개년 수출액 추이 (2000~2024)`;
+    elements.canvasTitle.textContent = `${stats.name} 수록 연도별 수출액 추이 (2000~${stats.lastYear})`;
   }
 
   if (elements.growthHero) {
@@ -301,11 +302,11 @@ function renderProductGrowth() {
           <strong class="stat-num">${stats.firstVal.toLocaleString()}억 $</strong>
         </div>
         <div class="growth-stat-item">
-          <span class="stat-lbl">2024년 수출액</span>
+          <span class="stat-lbl">${stats.lastYear}년 수출액</span>
           <strong class="stat-num" style="color: #059669;">${stats.lastVal.toLocaleString()}억 $</strong>
         </div>
         <div class="growth-stat-item">
-          <span class="stat-lbl">24년간 성장 배수</span>
+          <span class="stat-lbl">${stats.lastYear - stats.firstYear}년간 성장 배수</span>
           <strong class="stat-num" style="color: #2563eb;">+${stats.growthMultiplier}배 🚀</strong>
         </div>
       </div>
@@ -432,11 +433,11 @@ function drawGrowthCanvas(cachedStats) {
 function renderImportAndBalance() {
   // 1. 수입 그리드
   if (elements.importGrid) {
-    elements.importGrid.innerHTML = IMPORT_TOP5_2024.map(it => {
+    elements.importGrid.innerHTML = IMPORT_REFERENCE_2024.map(it => {
       return `
         <div class="import-item-card">
           <div class="import-top-row">
-            <span class="import-rank">수입 ${it.rank}위</span>
+            <span class="import-rank">2024년 연간 참고</span>
             <span class="import-icon">${it.icon}</span>
           </div>
           <div class="import-name">${it.name}</div>

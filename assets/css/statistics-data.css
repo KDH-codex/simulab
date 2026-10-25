@@ -1,0 +1,11 @@
+.tool-hero-card .tool-title{color:#fff}
+.statistics-update{margin:1.25rem 0 0;padding:1.2rem 1.3rem;border:1px solid #c7d2fe;border-radius:16px;background:var(--bg-subtle,#f5f7ff);color:var(--text-primary,#172554);text-align:left;font-size:.9rem;line-height:1.7}
+.statistics-update h2{font-size:1rem;margin:0 0 .6rem;font-weight:800}
+.statistics-update p{margin:.35rem 0}
+.statistics-update .statistics-period{color:var(--text-secondary,#475569);font-size:.8rem}
+.statistics-update a{color:var(--accent,#4f46e5);text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+.statistics-update-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:.7rem;margin:.8rem 0}
+.statistics-update-grid>div{border:1px solid var(--border-color,#dbe2ef);border-radius:12px;padding:.8rem;background:var(--bg-card,#fff)}
+.statistics-update-grid span{display:block;font-size:.8rem;color:var(--text-secondary,#475569)}
+.statistics-update-grid strong{display:block;font-size:1.2rem;line-height:1.5;margin-top:.15rem}
+@media(max-width:480px){.statistics-update{padding:1rem}.statistics-update-grid{grid-template-columns:1fr}.statistics-update-grid>div{padding:.65rem .8rem}}

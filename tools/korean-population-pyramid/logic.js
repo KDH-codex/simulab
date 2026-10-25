@@ -7,15 +7,15 @@
  * 3. 사용자 출생연도 입력 시 당시 초등학교(국민학교) 교실 풍경 매칭
  */
 
-import { POP_YEARS, POP_AGE_GROUPS, POPULATION_PYRAMID_DATA, ELEMENTARY_HISTORY, REGIONAL_ELEMENTARY_2024 } from './data.js';
+import { POP_YEARS, POP_AGE_GROUPS, POPULATION_PYRAMID_DATA, ELEMENTARY_HISTORY, REGIONAL_ELEMENTARY_2026 } from './data.js';
 
 /**
  * 1. 특정 연도의 인구 피라미드 데이터 반환
  * @param {number} year - 조회 연도 (예: 2024)
  * @returns {Object} 총인구, 중위연령, 고령화율, 연령대별 남녀 인구 및 최대값 대비 %
  */
-export function getPyramidByYear(year = 2024) {
-  const safeYear = POP_YEARS.includes(year) ? year : 2024;
+export function getPyramidByYear(year = POP_YEARS.at(-1)) {
+  const safeYear = POP_YEARS.includes(year) ? year : POP_YEARS.at(-1);
   const data = POPULATION_PYRAMID_DATA[safeYear];
 
   // 차트 너비 기준을 위한 단일 연령대/성별 최대 인구수 찾기 (통상 450만명 수준)
@@ -61,8 +61,9 @@ export function getElementaryStats() {
 
   return {
     history: ELEMENTARY_HISTORY,
-    regional: REGIONAL_ELEMENTARY_2024,
+    regional: REGIONAL_ELEMENTARY_2026,
     peakStudents: peakYear.students,
+    latestYear: latest.year,
     latestStudents: latest.students,
     declineRate
   };
@@ -128,6 +129,7 @@ export function matchMyGenerationSchool(birthYear = 1988) {
     students: closestHist.students,
     classSize: closestHist.classSize,
     comment: closestHist.comment,
+    latestYear: latest.year,
     latestStudents: latest.students,
     latestClassSize: latest.classSize,
     studentRatio,

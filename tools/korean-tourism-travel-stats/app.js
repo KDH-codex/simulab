@@ -1,13 +1,13 @@
 /**
  * 대한민국 연도별 출입국 관광객 통계 인터랙션 (app.js)
- * 
+ *
  * 주요 기능:
  * 1. 24개년 출입국 관광객(출국자 vs 입국자) Canvas 시계열 꺾은선 차트 렌더링
  * 2. 2000~2024 대한민국 관광수지(적자) 히스토리 테이블 렌더링
  * 3. 2024년 한국인 인기 여행지 TOP 5 vs 방한 외국인 국적 TOP 5 렌더링
  */
 
-import { TOURISM_YEARS, TOURISM_STATS, OUTBOUND_TOP5_2024, INBOUND_TOP5_2024 } from './data.js';
+import { TOURISM_YEARS, TOURISM_STATS, OUTBOUND_TOP5_2026, INBOUND_TOP5_2026 } from './data.js';
 import { getTourismTimeSeries, getTourismQuickInsights } from './logic.js';
 
 // 애플리케이션 상태
@@ -96,11 +96,11 @@ function switchTab(tabId) {
  * 탭 1: 24년 출입국 시계열 차트 렌더링
  */
 function renderTrendTab() {
-  const d2024 = TOURISM_STATS[2024];
-  const ratio = (d2024.outbound / d2024.inbound).toFixed(2);
+  const latest = TOURISM_STATS[TOURISM_YEARS.at(-1)];
+  const ratio = (latest.outbound / latest.inbound).toFixed(2);
 
-  if (elements.heroOutboundVal) elements.heroOutboundVal.textContent = `${d2024.outbound.toLocaleString()}만 명`;
-  if (elements.heroInboundVal) elements.heroInboundVal.textContent = `${d2024.inbound.toLocaleString()}만 명`;
+  if (elements.heroOutboundVal) elements.heroOutboundVal.textContent = `${latest.outbound.toLocaleString(undefined, {maximumFractionDigits: 2})}만 명`;
+  if (elements.heroInboundVal) elements.heroInboundVal.textContent = `${latest.inbound.toLocaleString(undefined, {maximumFractionDigits: 2})}만 명`;
   if (elements.heroRatioVal) elements.heroRatioVal.textContent = `${ratio}배`;
 
   drawTourismCanvas();
@@ -185,7 +185,7 @@ function drawTourismCanvas() {
     // 점 및 핵심 연도 값 라벨 표기 (2000, 2019, 2021, 2024)
     points.forEach((pt, idx) => {
       const yr = series[idx].year;
-      const isKeyYear = [2000, 2019, 2021, 2024].includes(yr);
+      const isKeyYear = [2000, 2019, 2021, 2025].includes(yr);
 
       ctx.beginPath();
       ctx.arc(pt.x, pt.y, isKeyYear ? 5 : 3.5, 0, Math.PI * 2);
@@ -221,18 +221,13 @@ function renderBalanceTable() {
 
   const series = getTourismTimeSeries();
   elements.balanceTbody.innerHTML = series.map(row => {
-    const isDeficit = row.balance < 0;
-    const sign = isDeficit ? '-' : '+';
-    const absVal = Math.abs(row.balance);
-    const statusText = isDeficit ? '적자' : '흑자';
-
     return `
       <tr>
         <td><strong>${row.year}년</strong></td>
-        <td><strong style="color: #2563eb;">${row.outbound.toLocaleString()}만 명</strong></td>
-        <td><strong style="color: #059669;">${row.inbound.toLocaleString()}만 명</strong></td>
+        <td><strong style="color: #2563eb;">${row.outbound.toLocaleString(undefined, {maximumFractionDigits: 2})}만 명</strong></td>
+        <td><strong style="color: #059669;">${row.inbound.toLocaleString(undefined, {maximumFractionDigits: 2})}만 명</strong></td>
         <td style="color: #475569;">${row.diff > 0 ? `출국 +${row.diff.toLocaleString()}만` : `입국 +${Math.abs(row.diff).toLocaleString()}만`}</td>
-        <td><span class="tag-deficit">${sign}${absVal.toLocaleString()}억 $ (${statusText})</span></td>
+
         <td style="color: #64748b; font-size: 0.84rem;">${row.highlight}</td>
       </tr>
     `;
@@ -245,7 +240,7 @@ function renderBalanceTable() {
 function renderDestinations() {
   // 1. 한국인 인기 여행지 TOP 5
   if (elements.outboundDestList) {
-    elements.outboundDestList.innerHTML = OUTBOUND_TOP5_2024.map(it => {
+    elements.outboundDestList.innerHTML = OUTBOUND_TOP5_2026.map(it => {
       let rankClass = `dest-rank-${it.rank}`;
       return `
         <div class="dest-item-card">
@@ -255,7 +250,7 @@ function renderDestinations() {
               <span>${it.flag}</span>
               <span>${it.country}</span>
             </div>
-            <div class="dest-visitors">${it.visitors.toLocaleString()}만 명 <small style="color: #64748b; font-size: 0.8rem;">(${it.share}%)</small></div>
+            <div class="dest-visitors">${it.visitors.toLocaleString(undefined, {maximumFractionDigits: 2})}만 명 <small style="color: #64748b; font-size: 0.8rem;">${it.period ? it.period : `(${it.share}%)`}</small></div>
           </div>
           <div class="dest-comment">${it.comment}</div>
         </div>
@@ -265,7 +260,7 @@ function renderDestinations() {
 
   // 2. 한국을 찾은 외국인 국적 TOP 5
   if (elements.inboundDestList) {
-    elements.inboundDestList.innerHTML = INBOUND_TOP5_2024.map(it => {
+    elements.inboundDestList.innerHTML = INBOUND_TOP5_2026.map(it => {
       let rankClass = `dest-rank-${it.rank}`;
       return `
         <div class="dest-item-card">
@@ -275,7 +270,7 @@ function renderDestinations() {
               <span>${it.flag}</span>
               <span>${it.country}</span>
             </div>
-            <div class="dest-visitors">${it.visitors.toLocaleString()}만 명 <small style="color: #64748b; font-size: 0.8rem;">(${it.share}%)</small></div>
+            <div class="dest-visitors">${it.visitors.toLocaleString(undefined, {maximumFractionDigits: 2})}만 명 <small style="color: #64748b; font-size: 0.8rem;">${it.period ? it.period : `(${it.share}%)`}</small></div>
           </div>
           <div class="dest-comment">${it.comment}</div>
         </div>

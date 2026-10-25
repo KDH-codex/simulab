@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>세계 30개국 인구 면적 순위 | UN·세계은행 2024 공공 빅데이터</title>
-  <meta name="description" content="세계 30대 주요국 인구, 영토 면적, 인구밀도 순위 비교. 인구 1위 인도, 영토 1위 러시아부터 OECD 인구밀도 1위(515명/㎢) 대한민국의 글로벌 영토 및 인구 위상을 확인하세요.">
+  <title>주요 29개국 인구 면적 순위 | UN·세계은행 2026 인구 전망 빅데이터</title>
+  <meta name="description" content="주요 29개국의 2026년 인구 전망과 2024년 표면적을 비교합니다. 인구밀도는 서로 다른 기준연도의 두 지표로 계산한 참고치이며 수록 국가 안의 순위입니다.">
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="세계 30개국 인구 면적 순위 (2024) | SimuLab">
-  <meta property="og:description" content="인구 1위 인도부터 영토 1위 러시아까지! UN·세계은행 공식 데이터로 보는 30개국 인구·면적·밀도 랭킹.">
+  <meta property="og:title" content="주요 29개국 인구 면적 순위 (2026 전망) | SimuLab">
+  <meta property="og:description" content="주요 29개국의 2026년 인구 전망과 2024년 표면적을 비교합니다. 인구밀도는 서로 다른 기준연도의 두 지표로 계산한 참고치이며 수록 국가 안의 순위입니다.">
   <meta property="og:url" content="https://simulab.co.kr/tools/world-population-area-rank/index.html">
 
   <!-- Style Sheets -->
@@ -20,13 +20,14 @@
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    "name": "세계 30개국 인구 면적 순위 시뮬레이터",
-    "description": "UN 및 세계은행(World Bank) 공공 빅데이터를 기반으로 세계 30개국의 인구, 영토 면적, 인구밀도를 비교 및 시각화합니다.",
+    "name": "주요 29개국 인구 면적 순위 시뮬레이터",
+    "description": "주요 29개국의 2026년 인구 전망과 2024년 표면적을 비교합니다. 인구밀도는 서로 다른 기준연도의 두 지표로 계산한 참고치이며 수록 국가 안의 순위입니다.",
     "applicationCategory": "EducationalApplication",
     "operatingSystem": "All"
   }
   </script>
 <meta name="google-adsense-account" content="ca-pub-9815778998394475">
+<link rel="stylesheet" href="../../assets/css/statistics-data.css?v=20261023_overhaul1">
 <link rel="canonical" href="https://simulab.kr/tools/world-population-area-rank/">
 </head>
 <body class="tool-page">
@@ -37,17 +38,17 @@
     <!-- 도구 헤더 카드 -->
     <header class="tool-hero-card">
       <div class="tool-badge-row">
-        <span class="tool-badge badge-official">🏛️ UN DESA · World Bank 공식 통계</span>
-        <span class="tool-badge badge-timeseries">🌍 2024년 최신 집계</span>
-        <span class="tool-badge badge-live">📊 30개 주요국 인구·영토 분석</span>
+        <span class="tool-badge badge-official">🏛️ World Bank 인구 전망 · 면적 통계</span>
+        <span class="tool-badge badge-timeseries">🌍 2026년 인구 전망</span>
+        <span class="tool-badge badge-live">📊 29개 수록국 인구·영토 분석</span>
       </div>
-      <h1 class="tool-title">세계 30개국 인구 면적 순위</h1>
-      <p class="tool-desc">
-        인구 1위 인도부터 영토 1위 러시아, 그리고 OECD 인구밀도 1위 대한민국까지! 세계 30대 주요국의 인구, 영토 면적, 인구밀도를 인터랙티브 차트로 한눈에 비교해 보세요.
-      </p>
+      <h1 class="tool-title">주요 29개국 인구 면적 순위</h1>
+      <p class="tool-desc">인구와 면적, 인구밀도를 주요 29개국 안에서 비교해 보세요. 인구는 2026년 전망이며 면적은 2024년 표면적(내수면 포함)입니다.</p>
     <!-- GENERATED:USE-NOTICE:START -->
 <aside id="tool-use-notice" class="tool-use-notice" data-notice-kind="statistics" aria-labelledby="tool-use-notice-title"><strong id="tool-use-notice-title">통계 해석 전 확인</strong><p>통계의 집계 연도·표본·단위·원자료와 추정 범위를 확인해 주세요. 수록 시점의 자료로 현재의 실시간 값이나 개인의 정확한 순위를 보장하지 않습니다.</p><a href="#legal-disclaimer">이용 범위와 면책고지 보기 ↓</a></aside>
 <!-- GENERATED:USE-NOTICE:END -->
+
+<aside class="statistics-update" aria-label="자료 기준과 업데이트"><h2>2026년 인구 전망으로 업데이트</h2><p><strong>인구: 2026년 전망 · 면적: 2024년 표면적</strong></p><p>확정 인구 집계와 구분해 보세요. 인구밀도는 전망 인구를 표면적(내수면 포함)으로 나눈 참고값입니다. 순위는 수록 29개국 안에서 비교합니다.</p><p class="statistics-period">자료 확인: 2026-10-26 · <a href="https://api.worldbank.org/v2/country/KOR/indicator/SP.POP.TOTL?source=40&amp;date=2026&amp;format=json" target="_blank" rel="noopener noreferrer">인구 전망</a> · <a href="https://data.worldbank.org/indicator/AG.SRF.TOTL.K2" target="_blank" rel="noopener noreferrer">면적</a></p></aside>
 
     </header>
 
@@ -88,7 +89,7 @@
       <div class="rank-chart-card">
         <div class="chart-header-row">
           <div>
-            <h2 class="chart-main-title" id="rank-chart-title">세계 30개국 인구수 순위 (2024년)</h2>
+            <h2 class="chart-main-title" id="rank-chart-title">주요 29개국 인구수 순위 (2026년 전망)</h2>
             <p class="chart-sub-title" id="rank-chart-subtitle">단위: 만 명 (10,000 Persons) · UN World Population Prospects</p>
           </div>
           <div class="korea-rank-badge" id="korea-rank-badge">
@@ -136,7 +137,6 @@
           <option value="GBR">🇬🇧 영국 (한국의 2.4배 영토)</option>
           <option value="FRA">🇫🇷 프랑스 (한국의 5.5배 영토)</option>
           <option value="DEU">🇩🇪 독일 (한국의 3.5배 영토)</option>
-          <option value="TWN">🇹🇼 대만 (한국의 1/3 크기)</option>
         </select>
       </div>
 
@@ -153,12 +153,7 @@
         <h3 class="source-title">공공 인구·지리 빅데이터 출처 및 기준 안내</h3>
       </div>
       <div class="source-body">
-        <ul class="source-list">
-          <li><strong>UN DESA (유엔 경제사회국):</strong> World Population Prospects 2024 공식 추계 인구.</li>
-          <li><strong>세계은행(World Bank) Open Data:</strong> Land Area (제곱킬로미터) 공식 영토 통계.</li>
-          <li><strong>인구밀도 기준:</strong> 총인구를 공식 육지 면적으로 나눈 1㎢당 인구 수 (Persons per sq. km).</li>
-          <li><strong>면책 조항:</strong> 본 도구는 교육 및 통계 시각화 목적의 정보 서비스이며, 각국 정부의 최신 영토/인구 통관 기준에 따라 수치가 소폭 상이할 수 있습니다.</li>
-        </ul>
+        <ul class="source-list"><li><a href="https://api.worldbank.org/v2/country/KOR/indicator/SP.POP.TOTL?source=40&amp;date=2026&amp;format=json" target="_blank" rel="noopener noreferrer">세계은행 인구 전망(source 40)</a> · SP.POP.TOTL, 2026년 전망치. 원자료 갱신 2026-07-01.</li><li><a href="https://data.worldbank.org/indicator/AG.SRF.TOTL.K2" target="_blank" rel="noopener noreferrer">세계은행 표면적</a> · AG.SRF.TOTL.K2, 2024년 자료. 내수면을 포함하며 육지 면적 지표가 아닙니다.</li><li>밀도 = 2026년 전망 인구 ÷ 2024년 표면적. 공식 2026년 확정 인구밀도가 아닌 계산 참고치입니다.</li><li>대만은 동일 원자료에 없어 제외했습니다. 수록 29개국을 비교하며 세계 전체 순위나 세계 상위 29개국 목록은 아닙니다.</li></ul>
       </div>
     </aside>
 

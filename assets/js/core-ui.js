@@ -313,15 +313,15 @@
         {
           title: '📊 재미있는 공공 빅데이터',
           items: [
-            { title: '가구 순자산 정리·평균 비교', sub: '2024년 가구 평균과 입력 금액 비교', href: 'tools/korean-wealth-percentile-calc/', tool: 'korean-wealth-percentile-calc', hot: true },
+            { title: '가구 순자산 정리·평균 비교', sub: '2025년 가구 평균과 입력 금액 비교', href: 'tools/korean-wealth-percentile-calc/', tool: 'korean-wealth-percentile-calc', hot: true },
             { title: '대한민국 평균 vs 나', sub: '연봉·근무시간·점심값 5각형 레이더 차트', href: 'tools/korean-average-vs-me/', tool: 'korean-average-vs-me', hot: true },
             { title: '아기이름 후보 찾기', sub: '이름 후보 탐색 · 기기에 찜하기', href: 'tools/korean-baby-name-trend/', tool: 'korean-baby-name-trend', hot: true },
             { title: '전국 도시별 소득 & 집값', sub: '17개 시도별 소득·아파트값·PIR·1인가구', href: 'tools/korean-city-income-housing/', tool: 'korean-city-income-housing', hot: true },
-            { title: '세계 20개국 소득 순위변화', sub: '1990~2024 GNI·1인당 소득 순위 레이스', href: 'tools/world-gni-ranking-race/', tool: 'world-gni-ranking-race', hot: true },
-            { title: '우리나라 수출입 품목 순위', sub: '2000~2024 반도체·자동차 24년 순위', href: 'tools/korean-trade-ranking/', tool: 'korean-trade-ranking', hot: true },
-            { title: '연도별 출입국 관광객 통계', sub: '2000~2024 해외여행객 vs 방한객', href: 'tools/korean-tourism-travel-stats/', tool: 'korean-tourism-travel-stats', hot: true },
-            { title: '대한민국 연령별 인구와 초등생수', sub: '1970~2024 인구 피라미드 & 초등생 급감', href: 'tools/korean-population-pyramid/', tool: 'korean-population-pyramid', hot: true },
-            { title: '세계 30개국 인구 면적 순위', sub: '인구·영토·인구밀도 3대 지표 비교', href: 'tools/world-population-area-rank/', tool: 'world-population-area-rank', hot: true }
+            { title: '주요 19개국 소득 순위변화', sub: '1990~2025 세계은행 GNI·Atlas 1인당 소득', href: 'tools/world-gni-ranking-race/', tool: 'world-gni-ranking-race', hot: true },
+            { title: '우리나라 수출입 품목 순위', sub: '2025년 연간·2026년 1~9월 수출입 누계', href: 'tools/korean-trade-ranking/', tool: 'korean-trade-ranking', hot: true },
+            { title: '연도별 출입국 관광객 통계', sub: '2025년 연간·2026년 1~8월 관광 누계', href: 'tools/korean-tourism-travel-stats/', tool: 'korean-tourism-travel-stats', hot: true },
+            { title: '대한민국 연령별 인구와 초등생수', sub: '2026년 9월 인구·2026년 초등학생 통계', href: 'tools/korean-population-pyramid/', tool: 'korean-population-pyramid', hot: true },
+            { title: '주요 29개국 인구 면적 순위', sub: '2026년 인구 전망·2024년 표면적 비교', href: 'tools/world-population-area-rank/', tool: 'world-population-area-rank', hot: true }
           ]
         }
       ]

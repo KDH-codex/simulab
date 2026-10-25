@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <strong style="color:#ef4444;">${regA.pir}년</strong>
           </div>
           <div class="spec-row">
-            <span>1인당 연소득</span>
+            <span>1인당 가계총처분가능소득 (2024)</span>
             <strong>${regA.income.toLocaleString()}만원</strong>
           </div>
           <div class="spec-row">
@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <strong style="color:#ef4444;">${regB.pir}년</strong>
           </div>
           <div class="spec-row">
-            <span>1인당 연소득</span>
+            <span>1인당 가계총처분가능소득 (2024)</span>
             <strong>${regB.income.toLocaleString()}만원</strong>
           </div>
           <div class="spec-row">

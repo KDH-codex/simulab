@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- SEO 최적화 메타 태그 (도구 제목: 전국 도시별 소득 & 집값, 13자) -->
   <title>전국 도시별 소득 & 집값 | SimuLab</title>
-  <meta name="description" content="2024~2025 통계청 및 한국부동산원 공공 빅데이터 기반! 전국 17개 시도별 평균 아파트값, 1인당 소득, 내 집 마련 소요기간(PIR), 1인가구 비중, 행정구역 면적을 한눈에 1:1 비교하고 10개년 실거래가 추이를 분석해보세요." />
+  <meta name="description" content="전국 17개 시도 2024년 지역소득 잠정치를 대조하고 1인당 가계총처분가능소득을 비교합니다. 집값·PIR 등은 기존 2024~2025년 참고값으로 2026년 시세가 아닙니다." />
   <!-- 오픈그래프 (SNS 공유) -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="전국 도시별 소득 & 집값 | 내가 사는 지역의 집값과 소득은?" />
-  <meta property="og:description" content="통계청·한국부동산원 공식 데이터 기반 17개 시도별 집값, 소득, PIR 내집마련 난이도 비교 시뮬레이터!" />
+  <meta property="og:description" content="전국 17개 시도 2024년 지역소득 잠정치를 대조하고 1인당 가계총처분가능소득을 비교합니다. 집값·PIR 등은 기존 2024~2025년 참고값으로 2026년 시세가 아닙니다." />
   <meta property="og:url" content="https://simulab.kr/tools/korean-city-income-housing/index.html" />
 
   <link rel="icon" type="image/svg+xml" href="../../favicon.svg" />
@@ -241,6 +241,7 @@
     }
   </style>
 <meta name="google-adsense-account" content="ca-pub-9815778998394475">
+<link rel="stylesheet" href="../../assets/css/statistics-data.css?v=20261023_overhaul1">
 <link rel="canonical" href="https://simulab.kr/tools/korean-city-income-housing/">
 </head>
 <body class="bg-gray-50 text-gray-900">
@@ -251,18 +252,20 @@
     <!-- 헤더 영역 -->
     <div style="text-align: center; margin-bottom: 1.75rem;">
       <span class="hero-badge-stats">
-        🏙️ 별별 통계 · 통계청 &amp; 한국부동산원 공공 빅데이터
+        🏙️ 별별 통계 · 지표별 기준연도 확인
       </span>
       <h1 style="font-size: 1.75rem; font-weight: 850; letter-spacing: -0.02em; margin-bottom: 0.5rem;">
         전국 도시별 소득 &amp; 집값
       </h1>
       <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.5; max-width: 640px; margin: 0 auto;">
-        내가 사는 지역의 평균 연봉과 아파트값은 전국에서 몇 위일까?<br />
+        내가 사는 지역의 1인당 가계총처분가능소득은 얼마일까?<br />
         17개 시도별 소득 대비 집값 배수(PIR), 1인가구 비율, 행정 면적을 한눈에 비교해 보세요.
       </p>
     <!-- GENERATED:USE-NOTICE:START -->
 <aside id="tool-use-notice" class="tool-use-notice" data-notice-kind="statistics" aria-labelledby="tool-use-notice-title"><strong id="tool-use-notice-title">통계 해석 전 확인</strong><p>통계의 집계 연도·표본·단위·원자료와 추정 범위를 확인해 주세요. 수록 시점의 자료로 현재의 실시간 값이나 개인의 정확한 순위를 보장하지 않습니다.</p><a href="#legal-disclaimer">이용 범위와 면책고지 보기 ↓</a></aside>
 <!-- GENERATED:USE-NOTICE:END -->
+
+<aside class="statistics-update" aria-label="자료 기준과 업데이트"><h2>지역소득은 최신 공표된 2024년 잠정치로 정정</h2><p><strong>1인당 가계총처분가능소득: 2024년 잠정 실적 · 2025-12-23 발표</strong></p><p>서울 3,222만원 등 17개 시도의 값을 공식 표와 대조했습니다. 개인의 연봉이나 가구당 소득과 다른 지표입니다. 2026년 실적은 아직 제공하지 않습니다.</p><p>집값·가구소득·PIR·1인가구 등 나머지 항목은 기존 2024~2025년 참고값입니다. 2026년 시세로 갱신하지 않았습니다. 지역 구분도 2024년 17개 시도 기준입니다.</p><p class="statistics-period">자료 확인: 2026-10-26 · <a href="https://www.mods.go.kr/boardDownload.es?bid=243&amp;list_no=442567&amp;seq=1" target="_blank" rel="noopener noreferrer">2024 지역소득 원자료</a></p></aside>
 
     </div>
 
@@ -316,7 +319,7 @@
         <div class="sort-chips-bar">
           <button class="sort-chip-btn active" data-sort="housingPrice">🏢 집값 높은 순</button>
           <button class="sort-chip-btn" data-sort="pir">⏳ 내집마련(PIR) 높은 순</button>
-          <button class="sort-chip-btn" data-sort="income">💰 1인당 소득 높은 순</button>
+          <button class="sort-chip-btn" data-sort="income">💰 2024 가계처분가능소득 순</button>
           <button class="sort-chip-btn" data-sort="singleRatio">👤 1인가구 비중 높은 순</button>
           <button class="sort-chip-btn" data-sort="area">🗺️ 면적 넓은 순</button>
         </div>
@@ -330,7 +333,7 @@
                 <th style="text-align: left;">지역명</th>
                 <th style="text-align: right;">평균 아파트값</th>
                 <th style="text-align: right;">PIR(소요연수)</th>
-                <th style="text-align: right;">1인 소득</th>
+                <th style="text-align: right;">1인당 가계처분가능소득(2024)</th>
                 <th style="text-align: right;">1인가구 비중</th>
                 <th style="text-align: right;">면적</th>
               </tr>
@@ -369,8 +372,8 @@
         <div style="margin-top: 1.5rem; padding: 1rem; background: var(--bg-subtle); border-radius: 12px; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6;">
           <strong>💡 10개년 아파트값 핵심 포인트:</strong>
           <ul style="margin: 0.35rem 0 0 1.2rem; padding: 0;">
-            <li><strong>서울 아파트값:</strong> 2015년 평균 5.4억원에서 2021년 12.8억원으로 2.3배 이상 급등한 후, 2024년 현재 12.4억원 선에서 견고한 양극화를 형성하고 있습니다.</li>
-            <li><strong>지방 광역시:</strong> 2020~2021년 유동성 장세에 함께 상승했으나, 서울과의 가격 격차 배수는 2015년 2.2배에서 2024년 현재 3.2배 수준으로 더욱 확대되었습니다.</li>
+            <li><strong>서울 아파트값:</strong> 2015년 평균 5.4억원에서 2021년 12.8억원으로 2.3배 이상 급등한 후, 2024년 수록 참고값 12.4억원 선에서 견고한 양극화를 형성하고 있습니다.</li>
+            <li><strong>지방 광역시:</strong> 2020~2021년 유동성 장세에 함께 상승했으나, 서울과의 가격 격차 배수는 2015년 2.2배에서 2024년 수록 참고값 3.2배 수준으로 더욱 확대되었습니다.</li>
           </ul>
         </div>
       </div>
@@ -380,7 +383,7 @@
     <div class="stats-source-box">
       <strong>📌 데이터 출처 및 법적 면책 안내 (공공누리 제1유형 준수)</strong>
       <ul style="margin: 0.5rem 0 0 1.2rem; padding: 0;">
-        <li>본 서비스의 기준 데이터는 <strong>통계청</strong> 『지역소득통계』 및 『인구주택총조사』, <strong>한국부동산원</strong> 『공동주택 실거래가격지수』, <strong>국토교통부</strong> 『지적통계연보』의 공식 데이터를 가공하여 제작되었습니다.</li>
+        <li>1인당 소득은 2024년 지역소득(잠정)의 가계총처분가능소득으로 대조했습니다. 그 외 집값·가구소득·PIR·1인가구·인구·면적 등은 기존 2024~2025년 참고값으로 이번 갱신에서 원자료를 모두 재확인하지 못했습니다.</li>
         <li>PIR(Price to Income Ratio)은 해당 지역 가구 평균 연소득 대비 아파트 평균 매매가격의 배수이며, 개인의 실질적인 세금, 생활비, 금융 대출 한도에 따라 실제 내 집 마련 소요 기간과 차이가 있을 수 있습니다.</li>
         <li>대한민국 공공데이터법 제3조 및 저작권법 제24조의2에 따라 공공저작물 자유이용허락기준(공공누리 제1유형: 출처표시)을 엄격히 준수합니다.</li>
       </ul>

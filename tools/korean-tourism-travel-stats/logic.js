@@ -7,7 +7,7 @@
  * 3. 2024년 최신 한국인 선호 여행지 및 방한 외래객 순위 정리
  */
 
-import { TOURISM_YEARS, TOURISM_STATS, OUTBOUND_TOP5_2024, INBOUND_TOP5_2024 } from './data.js';
+import { TOURISM_YEARS, TOURISM_STATS, OUTBOUND_TOP5_2026, INBOUND_TOP5_2026 } from './data.js';
 
 /**
  * 1. 2000~2024년 전체 출입국 시계열 데이터 반환
@@ -36,8 +36,8 @@ export function getTourismTimeSeries() {
  * @param {number} year - 조회 연도 (예: 2024)
  * @returns {Object} 상세 분석 객체
  */
-export function getYearlyTourismDetail(year = 2024) {
-  const safeYear = TOURISM_YEARS.includes(year) ? year : 2024;
+export function getYearlyTourismDetail(year = TOURISM_YEARS.at(-1)) {
+  const safeYear = TOURISM_YEARS.includes(year) ? year : TOURISM_YEARS.at(-1);
   const d = TOURISM_STATS[safeYear];
 
   const peak2019 = TOURISM_STATS[2019];
@@ -63,19 +63,19 @@ export function getYearlyTourismDetail(year = 2024) {
  * @returns {Object} 인사이트 텍스트 및 국적별 통계
  */
 export function getTourismQuickInsights() {
-  const d2024 = TOURISM_STATS[2024];
-  const topOutbound = OUTBOUND_TOP5_2024[0]; // 일본
-  const topInbound = INBOUND_TOP5_2024[0];   // 중국
+  const latest = TOURISM_STATS[TOURISM_YEARS.at(-1)];
+  const topOutbound = OUTBOUND_TOP5_2026[0]; // 일본
+  const topInbound = INBOUND_TOP5_2026[0];   // 중국
 
   return {
-    outboundTotal: d2024.outbound,
-    inboundTotal: d2024.inbound,
-    balanceDeficit: Math.abs(d2024.balance),
+    outboundTotal: latest.outbound,
+    inboundTotal: latest.inbound,
+    balanceDeficit: null,
     topOutboundCountry: topOutbound.country,
-    topOutboundShare: topOutbound.share,
+    topOutboundShare: null,
     topInboundCountry: topInbound.country,
     topInboundShare: topInbound.share,
-    outboundTop5: OUTBOUND_TOP5_2024,
-    inboundTop5: INBOUND_TOP5_2024
+    outboundTop5: OUTBOUND_TOP5_2026,
+    inboundTop5: INBOUND_TOP5_2026
   };
 }

@@ -53,12 +53,7 @@ export function compareWithKorea(targetCode = 'USA') {
   // 인구밀도 배수 (한국 / 상대국)
   const densityRatio = (kor.density / target.density).toFixed(1);
 
-  let story = '';
-  if (target.area > kor.area) {
-    story = `${target.name}의 영토는 대한민국(약 10만 ㎢)의 약 <strong>${areaRatio}배</strong>에 달하지만, 1㎢당 인구밀도는 대한민국이 ${target.name}보다 <strong>${densityRatio}배 더 빽빽</strong>합니다.`;
-  } else {
-    story = `대한민국의 영토는 ${target.name}의 약 <strong>${(kor.area / target.area).toFixed(1)}배</strong> 크기이며, 인구는 약 <strong>${popRatio}배</strong> 수준입니다.`;
-  }
+  const story = `${target.name}의 표면적은 한국의 <strong>${areaRatio}배</strong>, 2026년 전망 인구는 한국의 <strong>${popRatio}배</strong>입니다. 계산한 한국의 인구밀도는 ${target.name}의 <strong>${densityRatio}배</strong>입니다.`;
 
   return {
     kor,
@@ -74,7 +69,7 @@ export function compareWithKorea(targetCode = 'USA') {
  * 3. 1㎢당 체감 밀도 시각화용 대표 국가 6종
  */
 export function getDensityVisualData() {
-  const codes = ['BGD', 'TWN', 'KOR', 'JPN', 'USA', 'AUS'];
+  const codes = ['BGD', 'IND', 'KOR', 'JPN', 'USA', 'AUS'];
   return codes.map(code => {
     return WORLD_COUNTRIES_DATA.find(c => c.code === code);
   });

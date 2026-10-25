@@ -7,17 +7,17 @@
  * 3. 연도별 무역수지(흑자/적자) 및 통계 인사이트 리포트 생성
  */
 
-import { TRADE_YEARS, TRADE_TOTALS, EXPORT_RANKINGS, TIMELINE_KEY_PRODUCTS, IMPORT_TOP5_2024 } from './data.js';
+import { TRADE_YEARS, TRADE_TOTALS, EXPORT_RANKINGS, TIMELINE_KEY_PRODUCTS, IMPORT_REFERENCE_2024 } from './data.js';
 
 /**
  * 1. 선택 연도의 수출 10대 품목 및 바 차트용 퍼센트 반환
  * @param {number} year - 조회 연도 (예: 2024)
  * @returns {Object} 총 수출액, 무역수지, 10대 품목 목록
  */
-export function getExportRankingsByYear(year = 2024) {
-  const safeYear = TRADE_YEARS.includes(year) ? year : 2024;
-  const list = EXPORT_RANKINGS[safeYear] || EXPORT_RANKINGS[2024];
-  const summary = TRADE_TOTALS[safeYear] || TRADE_TOTALS[2024];
+export function getExportRankingsByYear(year = TRADE_YEARS.at(-1)) {
+  const safeYear = TRADE_YEARS.includes(year) ? year : TRADE_YEARS.at(-1);
+  const list = EXPORT_RANKINGS[safeYear] || EXPORT_RANKINGS[TRADE_YEARS.at(-1)];
+  const summary = TRADE_TOTALS[safeYear] || TRADE_TOTALS[TRADE_YEARS.at(-1)];
 
   // 1위 품목의 금액(최대값)을 기준으로 상대 막대 너비(%) 계산
   const maxAmount = list.length > 0 ? list[0].amount : 1;
@@ -91,9 +91,9 @@ export function getTradeBalanceHistory() {
  * @returns {Object} 무역 요약 문구
  */
 export function getTradeQuickFacts() {
-  const latest = TRADE_TOTALS[2024];
-  const semi = EXPORT_RANKINGS[2024][0]; // 반도체
-  const auto = EXPORT_RANKINGS[2024][1]; // 자동차
+  const latest = TRADE_TOTALS[TRADE_YEARS.at(-1)];
+  const semi = EXPORT_RANKINGS[TRADE_YEARS.at(-1)][0]; // 반도체
+  const auto = EXPORT_RANKINGS[TRADE_YEARS.at(-1)][1]; // 자동차
 
   return {
     totalExport: latest.export,
@@ -101,7 +101,7 @@ export function getTradeQuickFacts() {
     semiShare: semi.share,
     autoShare: auto.share,
     combinedTop2Share: (semi.share + auto.share).toFixed(1),
-    importTop1: IMPORT_TOP5_2024[0],
-    importTop2: IMPORT_TOP5_2024[1]
+    importTop1: IMPORT_REFERENCE_2024[0],
+    importTop2: IMPORT_REFERENCE_2024[1]
   };
 }

@@ -1,13 +1,13 @@
 /**
  * 대한민국 연령별 인구와 초등생수 시뮬레이터 인터랙션 (app.js)
- * 
+ *
  * 주요 기능:
  * 1. 50개년 대칭형 인구 피라미드 애니메이션 및 지표(중위연령, 고령화율) 업데이트
  * 2. 54개년 초등학생 수 Canvas 시계열 꺾은선 차트 및 17개 시도별 테이블
  * 3. 출생연도 입력 기반 세대별 초등학교(국민학교) 교실 풍경 대조기
  */
 
-import { POP_YEARS, REGIONAL_ELEMENTARY_2024, ELEMENTARY_HISTORY } from './data.js';
+import { POP_YEARS, REGIONAL_ELEMENTARY_2026, ELEMENTARY_HISTORY } from './data.js';
 import { getPyramidByYear, matchMyGenerationSchool } from './logic.js';
 
 // 연도별 마일스톤 문구
@@ -18,13 +18,14 @@ const MILESTONES = {
   2000: '방추형(항아리) 전환 및 고령화사회(7%) 공식 진입',
   2010: '베이비붐 세대 은퇴 시작 및 유소년 감소',
   2020: '고령사회(14%) 돌파 및 대한민국 총인구 데드크로스',
-  2024: '역삼각형 심화 · 초고령사회(20%) 목전 & 유소년 최저'
+  2024: '2024년 12월 말 주민등록 인구',
+  2026: '2026년 9월 말 주민등록 인구'
 };
 
 // 애플리케이션 상태
 const state = {
   activeTab: 'pyramid',
-  currentYearIndex: 6, // 기본값: 2024년 (마지막 인덱스)
+  currentYearIndex: POP_YEARS.length - 1, // 기본값: 2024년 (마지막 인덱스)
   isPlaying: false,
   playTimer: null,
   myBirthYear: 1988
@@ -234,10 +235,10 @@ function renderPyramid() {
   const p = getPyramidByYear(currentYear);
 
   // 헤더 및 지표 갱신
-  if (elements.displayYear) elements.displayYear.textContent = `${currentYear}년`;
+  if (elements.displayYear) elements.displayYear.textContent = `${currentYear === 2026 ? "2026년 9월" : "2024년 12월"}`;
   if (elements.displayMilestone) elements.displayMilestone.textContent = MILESTONES[currentYear] || '';
 
-  if (elements.popTotalVal) elements.popTotalVal.textContent = `${p.totalPop.toLocaleString()}만 명`;
+  if (elements.popTotalVal) elements.popTotalVal.textContent = `${p.totalPop.toLocaleString(undefined, {maximumFractionDigits: 2})}만 명`;
   if (elements.popMedianVal) elements.popMedianVal.textContent = `${p.medianAge}세`;
   if (elements.popElderlyVal) elements.popElderlyVal.textContent = `${p.elderlyRate}%`;
   if (elements.popYouthVal) elements.popYouthVal.textContent = `${p.youthRate}%`;
@@ -250,7 +251,7 @@ function renderPyramid() {
       <div class="pyramid-row">
         <!-- 좌측 남성 -->
         <div class="bar-side-male">
-          <span class="val-label-male">${r.maleVal}만</span>
+          <span class="val-label-male">${r.maleVal.toFixed(1)}만</span>
           <div class="track-male">
             <div class="fill-male" style="width: ${r.malePercent}%;"></div>
           </div>
@@ -264,7 +265,7 @@ function renderPyramid() {
           <div class="track-female">
             <div class="fill-female" style="width: ${r.femalePercent}%;"></div>
           </div>
-          <span class="val-label-female">${r.femaleVal}만</span>
+          <span class="val-label-female">${r.femaleVal.toFixed(1)}만</span>
         </div>
       </div>
     `;
@@ -286,14 +287,14 @@ function renderPyramid() {
 function renderSchoolTab() {
   // 1. 17개 시도별 테이블
   if (elements.regionalTbody) {
-    elements.regionalTbody.innerHTML = REGIONAL_ELEMENTARY_2024.map((r, idx) => {
+    elements.regionalTbody.innerHTML = REGIONAL_ELEMENTARY_2026.map((r, idx) => {
       return `
         <tr>
           <td><strong>${idx + 1}위</strong></td>
           <td><strong>${r.region}</strong></td>
           <td>${r.students.toLocaleString()}명</td>
           <td>${r.share}%</td>
-          <td><strong style="color: #2563eb;">${r.classSize}명</strong></td>
+
         </tr>
       `;
     }).join('');
@@ -427,7 +428,7 @@ function renderMyAgeResult() {
       </div>
 
       <div class="contrast-box current-box">
-        <div class="contrast-header">2024년 현재 초등학교 교실</div>
+        <div class="contrast-header">${info.latestYear}년 초등학교 교실</div>
         <div class="contrast-main-num" style="color: #dc2626;">${info.latestStudents.toLocaleString()}만 명</div>
         <div class="contrast-sub">학급당 학생 수: <strong>${info.latestClassSize}명</strong> (초등학교)</div>
       </div>
@@ -435,8 +436,8 @@ function renderMyAgeResult() {
 
     <div class="contrast-story-box">
       <strong>🏫 세대별 교실 풍경 회상:</strong><br>
-      당신이 <strong>${info.schoolName}</strong>에 입학하던 ${info.enterYear}년 무렵에는 전국에 무려 <strong>${info.students.toLocaleString()}만 명</strong>의 친구들이 함께 학교를 다녔으며, 한 반에 <strong>${info.classSize}명</strong>이 북적이던 시절이었습니다.<br>
-      하지만 2024년 현재 초등학생 수는 <strong>${info.latestStudents.toLocaleString()}만 명</strong>으로 <strong>${info.studentRatio}배 감소</strong>했고, 한 반 학생 수도 <strong>${info.classDiff}명</strong>이나 줄어든 20명 수준입니다.<br>
+      입학연도(${info.enterYear}년)와 가장 가까운 수록 통계인 ${info.matchedYear}년에는 전국에 무려 <strong>${info.students.toLocaleString()}만 명</strong>의 친구들이 함께 학교를 다녔으며, 한 반에 <strong>${info.classSize}명</strong>이 북적이던 시절이었습니다.<br>
+      ${info.latestYear}년 초등학생 수는 <strong>${info.latestStudents.toLocaleString()}만 명</strong>입니다. 당시 수는 현재의 <strong>${info.studentRatio}배</strong>이며, 학급당 학생 수는 현재 <strong>${info.latestClassSize}명</strong>입니다.<br>
       <small style="color: #475569; display: block; margin-top: 0.4rem;">* ${info.comment}</small>
     </div>
   `;

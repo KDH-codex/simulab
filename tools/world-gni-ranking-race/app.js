@@ -1,6 +1,6 @@
 /**
- * 세계 20개국 소득 순위변화 시뮬레이터 인터랙션 (app.js)
- * 
+ * 주요 19개국 소득 순위변화 시뮬레이터 인터랙션 (app.js)
+ *
  * 주요 기능:
  * 1. 30년 랭킹 레이스 바 차트 및 타임 슬라이더/자동 재생 애니메이션
  * 2. 한국 vs 타 국가 1:1 맞대결 시계열 꺾은선 캔버스 차트 렌더링
@@ -20,13 +20,14 @@ const YEAR_MILESTONES = {
   2015: '세계 10대 경제규모 진입 가시권',
   2020: '코로나19 팬데믹 및 K-수출 호조',
   2022: '글로벌 인플레이션 및 고환율 격변기',
-  2024: '사상 최초 한일 1인당 소득 역전 (선진국 안착)'
+  2024: '세계은행 연간 실적',
+  2025: '최신 수록 연간 실적 · 세계은행 WDI'
 };
 
 // 애플리케이션 상태 (State)
 const state = {
   activeTab: 'race',
-  currentYearIndex: 8, // 기본값: 2024년 (마지막 인덱스)
+  currentYearIndex: YEARS.length - 1, // 기본값: 2024년 (마지막 인덱스)
   raceMetric: 'gniTotal', // 'gniTotal' 또는 'gniPerCapita'
   isPlaying: false,
   playTimer: null,
@@ -282,16 +283,16 @@ function renderRaceBars() {
   if (elements.displayYear) elements.displayYear.textContent = `${currentYear}년`;
   if (elements.displayMilestone) elements.displayMilestone.textContent = YEAR_MILESTONES[currentYear] || '';
 
-  const metricTitle = metric === 'gniTotal' ? '명목 총 GNI 순위' : '1인당 GNI(국민소득) 순위';
+  const metricTitle = metric === 'gniTotal' ? '명목 총 GNI 순위' : '1인당 GNI(Atlas 방식) 순위';
   const metricUnit = metric === 'gniTotal' ? '10억 달러 (Billion USD)' : '달러 (USD)';
-  if (elements.chartMainTitle) elements.chartMainTitle.textContent = `${currentYear}년 세계 20개국 ${metricTitle}`;
-  if (elements.chartSubTitle) elements.chartSubTitle.textContent = `단위: ${metricUnit} · 세계은행 Atlas Method`;
+  if (elements.chartMainTitle) elements.chartMainTitle.textContent = `${currentYear}년 주요 19개국 ${metricTitle}`;
+  if (elements.chartSubTitle) elements.chartSubTitle.textContent = `단위: ${metricUnit} · 세계은행 ${metric === 'gniTotal' ? '명목 달러' : 'Atlas 방식'} · 수록 국가 내 순위`;
 
   // 한국 순위 배지 갱신
   const korItem = rankings.find(r => r.code === 'KOR');
   if (korItem && elements.koreaRankText) {
     const valFormatted = metric === 'gniTotal' ? `${korItem.value.toLocaleString()}B$` : `${korItem.value.toLocaleString()}$`;
-    elements.koreaRankText.textContent = `세계 ${korItem.rank}위 (${valFormatted})`;
+    elements.koreaRankText.textContent = `수록 ${rankings.length}개국 중 ${korItem.rank}위 (${valFormatted})`;
   }
 
   // 20개국 막대 바 HTML 조립
@@ -350,13 +351,13 @@ function renderCompareView() {
   if (elements.summaryTargetGrowth) elements.summaryTargetGrowth.textContent = `1990년 대비 +${result.targetGrowth}배 성장`;
 
   if (elements.legendTargetName) elements.legendTargetName.textContent = result.target.name;
-  if (elements.lineChartTitle) elements.lineChartTitle.textContent = `1990~2024 한국 vs ${result.target.name} ${result.metricLabel} 추이`;
+  if (elements.lineChartTitle) elements.lineChartTitle.textContent = `1990~2025 한국 vs ${result.target.name} ${result.metricLabel} 추이`;
 
   // 인사이트 박스
   if (elements.compareInsightBox) {
     let crossoverBadge = '';
     if (result.crossoverYear) {
-      crossoverBadge = `<div style="font-weight: 850; color: #1e40af; margin-bottom: 0.35rem;">🏆 역전 달성 연도: ${result.crossoverYear}년 골든크로스!</div>`;
+      crossoverBadge = `<div style="font-weight: 850; color: #1e40af; margin-bottom: 0.35rem;">🏆 수록 연도 사이 역전 확인: ${result.crossoverYear}년</div>`;
     }
     elements.compareInsightBox.innerHTML = `
       ${crossoverBadge}
@@ -421,13 +422,14 @@ function drawCompareCanvas(cachedResult) {
   }
 
   // x축 좌표 매핑
-  const xCoords = YEARS.map((_, idx) => {
-    return padding.left + (chartW / (YEARS.length - 1)) * idx;
+  const compareYears = result.comparisons.map(c => c.year);
+  const xCoords = compareYears.map((_, idx) => {
+    return padding.left + (chartW / (compareYears.length - 1)) * idx;
   });
 
   // x축 연도 라벨 그리기
   ctx.textAlign = 'center';
-  YEARS.forEach((yr, idx) => {
+  compareYears.forEach((yr, idx) => {
     const x = xCoords[idx];
     ctx.fillText(`'${String(yr).slice(2)}`, x, height - padding.bottom + 18);
   });
@@ -507,15 +509,15 @@ function renderSalaryResult() {
         <span class="closest-flag">${data.closestCountry.flag}</span>
         <div class="closest-info">
           <span class="closest-name">${data.closestCountry.name} (${data.closestCountry.code})</span>
-          <span class="closest-stat">2024년 1인당 GNI: <strong>${data.closestCountry.value.toLocaleString()}$</strong> (내 연봉과의 차이: 약 ${Math.abs(data.salaryUsd - data.closestCountry.value).toLocaleString()}$)</span>
+          <span class="closest-stat">${data.year}년 1인당 GNI(Atlas): <strong>${data.closestCountry.value.toLocaleString()}$</strong> (내 연봉과의 차이: 약 ${Math.abs(data.salaryUsd - data.closestCountry.value).toLocaleString()}$)</span>
         </div>
       </div>
     </div>
 
     <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 0.85rem; padding: 1.1rem 1.35rem; color: #1e3a8a; font-size: 0.94rem; line-height: 1.6;">
-      <strong style="color: #1d4ed8;">📊 글로벌 비교 진단:</strong><br>
-      당신의 연봉(세전 <strong>${data.salaryManwon.toLocaleString()}만원</strong>)은 세계 20대 경제 대국 중 <strong>${beatCount}개국(${beatPercent}%)</strong>의 1인당 국민소득보다 높습니다.<br>
-      ${beatCount >= 10 ? '🎉 전 세계 상위 선진국 레벨에 도달해 있으며 글로벌 경쟁력을 입증하고 있습니다!' : '💪 신흥국 평균을 크게 웃돌며 강력한 성장 잠재력을 지니고 있습니다.'}
+      <strong style="color: #1d4ed8;">📊 국가 평균과의 산술 비교:</strong><br>
+      환산 연봉은 수록 ${data.totalCount}개국 중 <strong>${beatCount}개국(${beatPercent}%)</strong>의 ${data.year}년 1인당 GNI보다 높습니다.<br>
+      국가 평균과 개인의 세전 연봉은 다른 지표입니다. 이 비율은 개인 소득 순위나 세계 인구의 백분위가 아닙니다. Atlas 방식의 환산 기준도 입력 환율과 다릅니다.
     </div>
   `;
 }

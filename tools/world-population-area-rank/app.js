@@ -1,6 +1,6 @@
 /**
- * 세계 30개국 인구 면적 순위 시뮬레이터 인터랙션 (app.js)
- * 
+ * 수록 29개국 인구 면적 순위 시뮬레이터 인터랙션 (app.js)
+ *
  * 주요 기능:
  * 1. 인구, 면적, 인구밀도 3대 지표 실시간 순위 바 차트 렌더링
  * 2. 1㎢당 인구밀도 점(Dot) 밀집도 체감 시각화
@@ -12,22 +12,22 @@ import { getRankingsByMetric, compareWithKorea, getDensityVisualData } from './l
 // 지표별 메타 정보
 const METRIC_META = {
   population: {
-    title: '세계 30개국 인구수 순위 (2024년)',
-    subtitle: '단위: 만 명 (10,000 Persons) · UN World Population Prospects',
+    title: '수록 29개국 인구수 순위 (2026년 전망)',
+    subtitle: '단위: 만 명 (10,000 Persons) · 세계은행 인구 전망(source 40)',
     unit: '만 명',
-    format: val => `${val.toLocaleString()}만 명`
+    format: val => `${val.toLocaleString(undefined, {maximumFractionDigits: 2})}만 명`
   },
   area: {
-    title: '세계 30개국 영토 면적 순위',
-    subtitle: '단위: 만 ㎢ (10,000 sq. km) · 세계은행(World Bank) 육지 면적',
+    title: '수록 29개국 표면적 순위',
+    subtitle: '단위: 만 ㎢ (10,000 sq. km) · 세계은행 2024년 표면적(내수면 포함)',
     unit: '만 ㎢',
-    format: val => `${val.toLocaleString()}만 ㎢`
+    format: val => `${val.toLocaleString(undefined, {maximumFractionDigits: 2})}만 ㎢`
   },
   density: {
-    title: '세계 30개국 인구밀도 순위',
-    subtitle: '단위: 명/㎢ (Persons per sq. km) · 1㎢당 거주 인원',
+    title: '수록 29개국 인구밀도 순위',
+    subtitle: '단위: 명/㎢ (Persons per sq. km) · 2026년 전망 인구 ÷ 2024년 표면적',
     unit: '명/㎢',
-    format: val => `${val.toLocaleString()}명/㎢`
+    format: val => `${val.toLocaleString(undefined, {maximumFractionDigits: 2})}명/㎢`
   }
 };
 

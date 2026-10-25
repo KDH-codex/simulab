@@ -86,7 +86,7 @@ test('energy estimate matches published equation without prescribing intake or m
  assert.equal(Object.keys(male).some(k=>/gain|loss|intake|prescription/i.test(k)),false);
 });
 test('household mean comparison supports negative equity and never turns it into a percentile',()=>{
- const r=wealth({assets:448940000,debts:0});assert.equal(r.ratio,100);assert.equal(r.difference,0);
+ const r=wealth({assets:471440000,debts:0});assert.equal(r.ratio,100);assert.equal(r.difference,0);
  assert.equal(wealth({assets:0,debts:1000000}).net,-1000000);
  assert.equal('percentile' in r,false);assert.throws(()=>wealth({assets:NaN}),RangeError);
 });

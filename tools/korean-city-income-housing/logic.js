@@ -3,20 +3,20 @@
  * [별별 통계] 전국 도시별 소득 & 집값 데이터 및 연산 로직 (logic.js)
  * --------------------------------------------------------------------------
  * 출처:
- * 1. 통계청 『지역소득통계 (1인당 개인소득)』 및 『인구주택총조사 (1인가구 비중)』
+ * 1. 국가데이터처 『2024년 지역소득(잠정): 1인당 가계총처분가능소득』 및 『인구주택총조사 (1인가구 비중)』
  * 2. 한국부동산원 『공동주택 실거래가격지수 및 시도별 평균 아파트 매매가격』
  * 3. 국토교통부 『지적통계연보 (시도별 행정구역 면적)』
  * ==========================================================================
  */
 
 export const CityIncomeHousingLogic = {
-  // 1. 전국 17개 시도 최신 공식 지표 데이터 (2024~2025 기준)
+  // 1. 17개 시도: 소득은 2024년 지역소득(잠정) 대조값, 나머지는 기존 참고값
   REGIONS_DATA: {
     seoul: {
       id: 'seoul',
       name: '서울특별시',
       shortName: '서울',
-      income: 2611,        // 1인당 연간 개인소득 (만원)
+      income: 3222, // 2024년 1인당 가계총처분가능소득(잠정), 만원
       householdIncome: 6850,// 가구당 평균 연소득 (만원)
       housingPrice: 124000,// 평균 아파트 매매가 (만원 = 12억 4천)
       pyeongPrice: 4250,   // 평당 평균 매매가 (만원)
@@ -28,7 +28,7 @@ export const CityIncomeHousingLogic = {
       id: 'gyeonggi',
       name: '경기도',
       shortName: '경기',
-      income: 2420,
+      income: 2791, // 2024년 1인당 가계총처분가능소득(잠정), 만원
       householdIncome: 6520,
       housingPrice: 53500,
       pyeongPrice: 1850,
@@ -40,7 +40,7 @@ export const CityIncomeHousingLogic = {
       id: 'incheon',
       name: '인천광역시',
       shortName: '인천',
-      income: 2280,
+      income: 2687, // 2024년 1인당 가계총처분가능소득(잠정), 만원
       householdIncome: 5890,
       housingPrice: 38500,
       pyeongPrice: 1350,
@@ -52,7 +52,7 @@ export const CityIncomeHousingLogic = {
       id: 'busan',
       name: '부산광역시',
       shortName: '부산',
-      income: 2340,
+      income: 2616, // 2024년 1인당 가계총처분가능소득(잠정), 만원
       householdIncome: 5780,
       housingPrice: 39000,
       pyeongPrice: 1380,
@@ -64,7 +64,7 @@ export const CityIncomeHousingLogic = {
       id: 'daegu',
       name: '대구광역시',
       shortName: '대구',
-      income: 2260,
+      income: 2578, // 2024년 1인당 가계총처분가능소득(잠정), 만원
       householdIncome: 5650,
       housingPrice: 35000,
       pyeongPrice: 1240,
@@ -76,7 +76,7 @@ export const CityIncomeHousingLogic = {
       id: 'gwangju',
       name: '광주광역시',
       shortName: '광주',
-      income: 2370,
+      income: 2778, // 2024년 1인당 가계총처분가능소득(잠정), 만원
       householdIncome: 5820,
       housingPrice: 34500,
       pyeongPrice: 1210,
@@ -88,7 +88,7 @@ export const CityIncomeHousingLogic = {
       id: 'daejeon',
       name: '대전광역시',
       shortName: '대전',
-      income: 2410,
+      income: 2875, // 2024년 1인당 가계총처분가능소득(잠정), 만원
       householdIncome: 6050,
       housingPrice: 38000,
       pyeongPrice: 1320,
@@ -100,7 +100,7 @@ export const CityIncomeHousingLogic = {
       id: 'ulsan',
       name: '울산광역시',
       shortName: '울산',
-      income: 2710,       // 1인당 소득 전국 1위
+      income: 3112, // 2024년 1인당 가계총처분가능소득(잠정), 만원
       householdIncome: 6980,
       housingPrice: 32000,
       pyeongPrice: 1120,
@@ -112,7 +112,7 @@ export const CityIncomeHousingLogic = {
       id: 'sejong',
       name: '세종특별자치시',
       shortName: '세종',
-      income: 2520,
+      income: 2838, // 2024년 1인당 가계총처분가능소득(잠정), 만원
       householdIncome: 6950,
       housingPrice: 51000,
       pyeongPrice: 1780,
@@ -124,7 +124,7 @@ export const CityIncomeHousingLogic = {
       id: 'gangwon',
       name: '강원특별자치도',
       shortName: '강원',
-      income: 2210,
+      income: 2524, // 2024년 1인당 가계총처분가능소득(잠정), 만원
       householdIncome: 5320,
       housingPrice: 21000,
       pyeongPrice: 750,
@@ -136,7 +136,7 @@ export const CityIncomeHousingLogic = {
       id: 'chungbuk',
       name: '충청북도',
       shortName: '충북',
-      income: 2250,
+      income: 2655, // 2024년 1인당 가계총처분가능소득(잠정), 만원
       householdIncome: 5480,
       housingPrice: 21500,
       pyeongPrice: 770,
@@ -148,7 +148,7 @@ export const CityIncomeHousingLogic = {
       id: 'chungnam',
       name: '충청남도',
       shortName: '충남',
-      income: 2310,
+      income: 2561, // 2024년 1인당 가계총처분가능소득(잠정), 만원
       householdIncome: 5720,
       housingPrice: 23000,
       pyeongPrice: 810,
@@ -160,7 +160,7 @@ export const CityIncomeHousingLogic = {
       id: 'jeonbuk',
       name: '전북특별자치도',
       shortName: '전북',
-      income: 2200,
+      income: 2613, // 2024년 1인당 가계총처분가능소득(잠정), 만원
       householdIncome: 5250,
       housingPrice: 21000,
       pyeongPrice: 740,
@@ -172,7 +172,7 @@ export const CityIncomeHousingLogic = {
       id: 'jeonnam',
       name: '전라남도',
       shortName: '전남',
-      income: 2230,
+      income: 2680, // 2024년 1인당 가계총처분가능소득(잠정), 만원
       householdIncome: 5310,
       housingPrice: 19500,
       pyeongPrice: 690,
@@ -184,7 +184,7 @@ export const CityIncomeHousingLogic = {
       id: 'gyeongbuk',
       name: '경상북도',
       shortName: '경북',
-      income: 2240,
+      income: 2486, // 2024년 1인당 가계총처분가능소득(잠정), 만원
       householdIncome: 5410,
       housingPrice: 20500,
       pyeongPrice: 720,
@@ -196,7 +196,7 @@ export const CityIncomeHousingLogic = {
       id: 'gyeongnam',
       name: '경상남도',
       shortName: '경남',
-      income: 2270,
+      income: 2506, // 2024년 1인당 가계총처분가능소득(잠정), 만원
       householdIncome: 5610,
       housingPrice: 26500,
       pyeongPrice: 930,
@@ -208,7 +208,7 @@ export const CityIncomeHousingLogic = {
       id: 'jeju',
       name: '제주특별자치도',
       shortName: '제주',
-      income: 2290,
+      income: 2461, // 2024년 1인당 가계총처분가능소득(잠정), 만원
       householdIncome: 5750,
       housingPrice: 37000,
       pyeongPrice: 1310,
