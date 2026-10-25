@@ -17,6 +17,8 @@ test('PostgreSQL enforces the new admin and public-write boundaries',async t=>{
  assert.ok(collectorFile);
  const collectorSql=await readFile(new URL('../supabase/migrations/'+collectorFile,import.meta.url),'utf8');
  await db.exec(collectorSql);await db.exec(collectorSql);
+ const guideFile=(await readdir(new URL('../supabase/migrations/',import.meta.url))).find(name=>name.endsWith('_add_weekday_guide_analytics.sql'));
+ assert.ok(guideFile);const guideSql=await readFile(new URL('../supabase/migrations/'+guideFile,import.meta.url),'utf8');await db.exec(guideSql);await db.exec(guideSql);
  const admin=randomUUID(),member=randomUUID();
  await db.query('INSERT INTO auth.users(id) VALUES($1),($2)',[admin,member]);await db.query('INSERT INTO simulab_private.admin_users(user_id) VALUES($1)',[admin]);
  async function as(role,uid,fn){assert.ok(['anon','authenticated'].includes(role));await db.exec('SET ROLE '+role);await db.query("SELECT set_config('request.jwt.claim.sub',$1,false)",[uid||'']);try{return await fn();}finally{await db.exec('RESET ROLE');await db.query("SELECT set_config('request.jwt.claim.sub','',false)");}}
@@ -51,11 +53,11 @@ test('PostgreSQL enforces the new admin and public-write boundaries',async t=>{
  });
  await t.test('collection covers new public tools and keeps timestamps and raw fields server-owned',async()=>{
   const id=randomUUID();
-  for(const tool of ['home-portal','parenting-deals','kids-outing-calendar']){
+  for(const tool of ['home-portal','parenting-deals','kids-outing-calendar','working-parents-guide','pay-work-guide','living-cost-guide']){
    const result=await as('anon',null,()=>db.query("SELECT public.record_site_activity($1,$2,'page_view') AS accepted",[id,tool]));
    assert.equal(result.rows[0].accepted,true);
   }
-  for(const tool of ['parenting-deals','kids-outing-calendar']){
+  for(const tool of ['parenting-deals','kids-outing-calendar','working-parents-guide','pay-work-guide','living-cost-guide']){
    const result=await as('authenticated',member,()=>db.query("SELECT public.record_site_activity($1,$2,'share') AS accepted",[id,tool]));
    assert.equal(result.rows[0].accepted,true);
   }

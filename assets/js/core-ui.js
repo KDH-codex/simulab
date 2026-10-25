@@ -204,6 +204,15 @@
      ------------------------------------------------------------------------ */
   const SITE_MENU = [
     {
+      id: 'weekday', label: '평일 생활', icon: '☀️', hot: true,
+      desc: '육아휴직과 복직, 월급과 퇴직, 생활비 비교에 필요한 공식 정보와 확인 목록을 모았습니다.',
+      subgroups: [{title:'일하는 날의 생활 안내',items:[
+        {title:'육아휴직·복직',sub:'휴가·단축근무 · 보육·돌봄 공식 안내',href:'tools/working-parents-guide/',tool:'working-parents-guide',hot:true},
+        {title:'월급·퇴직',sub:'급여명세서 · 퇴직금·실업급여 확인 목록',href:'tools/pay-work-guide/',tool:'pay-work-guide',hot:true},
+        {title:'생활비 절약',sub:'장보기 · 통신·멤버십 · 주거비 비교',href:'tools/living-cost-guide/',tool:'living-cost-guide',hot:true}
+      ]}]
+    },
+    {
       id: 'finance',
       label: '금융·재테크',
       icon: '💰',
@@ -621,6 +630,9 @@
        240자가 넘는 .page-subtitle 은 2줄로 접어 "자세히 보기"로 펼칩니다. (내용은 삭제하지 않음)
      ------------------------------------------------------------------------ */
   const TOOL_NAMES = {
+    'working-parents-guide': '육아휴직·복직',
+    'pay-work-guide': '월급·퇴직',
+    'living-cost-guide': '생활비 절약',
     'parenting-deals': '브랜드 세일 달력',
     'leverage-etf-sim': '레버리지 복리·변동성 계산기',
     'dividend-tax-sim': '배당 복리 & 세금 계산기',
@@ -715,7 +727,10 @@
     if (['home','admin-dashboard','legal'].includes(id)) return null;
     let kind = 'general', title = '계산·정보 이용 안내';
     let message = '입력 조건과 표시된 가정에 따른 참고 결과입니다. 단위·반올림·적용 기준을 확인하고, 계약이나 신청 전에는 공식 자료와 대조해 주세요.';
-    if (id === 'kids-outing-calendar') {
+    if (['working-parents-guide','pay-work-guide','living-cost-guide'].includes(id)) {
+      kind = 'guide'; title = '신청·구매 전 공식 조건을 확인하세요';
+      message = '공식 안내를 확인해 정리한 목록입니다. 제도 신청 자격·지급액·가격을 실시간으로 확인하지 않습니다. 출처 확인일과 본인 조건을 살펴보고 담당 기관이나 서비스에서 최신 안내를 확인해 주세요.';
+    } else if (id === 'kids-outing-calendar') {
       kind = 'events'; title = '방문 전 공식 안내를 확인하세요';
       message = '공식 출처와 확인일을 제공하지만 일정·요금·운영 회차는 변경될 수 있습니다. 예약 잔여석은 실시간 조회하지 않으며, 어린이 참여 조건은 주최 기관의 최신 안내를 확인해 주세요.';
     } else if (id === 'parenting-deals') {

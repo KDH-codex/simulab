@@ -4,7 +4,7 @@ import {fileURLToPath} from 'node:url';
 import {spawnSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 const root=fileURLToPath(new URL('../',import.meta.url));
-for(const script of ['build-event-data.mjs','build-parenting-deals.mjs','build-home.mjs','build-legal.mjs','normalize-pages.mjs','build-kids-calendar.mjs','build-publishing-ui.mjs']) {
+for(const script of ['build-event-data.mjs','build-parenting-deals.mjs','build-weekday-guides.mjs','build-home.mjs','build-legal.mjs','normalize-pages.mjs','build-kids-calendar.mjs','build-publishing-ui.mjs']) {
  const result=spawnSync(process.execPath,[path.join(root,'scripts',script)],{cwd:root,stdio:'inherit'});if(result.status!==0)process.exit(result.status||1);
 }
 const destination=path.resolve(root,'dist');

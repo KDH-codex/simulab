@@ -6,7 +6,7 @@ function filter() {
   const words=search.value.trim().toLocaleLowerCase('ko-KR').split(/\s+/).filter(Boolean); let count=0;
   cards.forEach(card=>{card.hidden=!(category==='all'||category===card.dataset.category)||!words.every(word=>card.dataset.search.toLocaleLowerCase('ko-KR').includes(word)); if(!card.hidden)count++;});
   groups.forEach(group=>{group.hidden=![...group.querySelectorAll('[data-tool]')].some(card=>!card.hidden); if(words.length||category!=='all') group.open=!group.hidden;});
-  document.getElementById('catalog-status').textContent=count+'개 도구'+(words.length?' · 검색 결과':'');
+  document.getElementById('catalog-status').textContent=count+'개 도구·안내'+(words.length?' · 검색 결과':'');
   document.getElementById('catalog-empty').hidden=count!==0;
   document.querySelectorAll('[data-category-filter]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.categoryFilter===category)));
 }

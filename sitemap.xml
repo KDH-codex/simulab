@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url><loc>https://simulab.kr/</loc><lastmod>2026-10-24</lastmod></url>
+<url><loc>https://simulab.kr/</loc><lastmod>2026-10-25</lastmod></url>
 <url><loc>https://simulab.kr/tools/alcohol-widmark-calc/</loc><lastmod>2026-10-23</lastmod></url>
 <url><loc>https://simulab.kr/tools/area-pyeong-calc/</loc><lastmod>2026-10-23</lastmod></url>
 <url><loc>https://simulab.kr/tools/caffeine-sleep-calc/</loc><lastmod>2026-10-23</lastmod></url>
@@ -17,7 +17,7 @@
 <url><loc>https://simulab.kr/tools/inflation-purchasing-power-calc/</loc><lastmod>2026-10-23</lastmod></url>
 <url><loc>https://simulab.kr/tools/invest-animal-mbti/</loc><lastmod>2026-10-23</lastmod></url>
 <url><loc>https://simulab.kr/tools/jeonse-wolse-sim/</loc><lastmod>2026-10-23</lastmod></url>
-<url><loc>https://simulab.kr/tools/kids-outing-calendar/</loc><lastmod>2026-10-24</lastmod></url>
+<url><loc>https://simulab.kr/tools/kids-outing-calendar/</loc><lastmod>2026-10-25</lastmod></url>
 <url><loc>https://simulab.kr/tools/korean-age-calc/</loc><lastmod>2026-10-23</lastmod></url>
 <url><loc>https://simulab.kr/tools/korean-average-vs-me/</loc><lastmod>2026-10-23</lastmod></url>
 <url><loc>https://simulab.kr/tools/korean-baby-name-trend/</loc><lastmod>2026-10-23</lastmod></url>
@@ -29,6 +29,7 @@
 <url><loc>https://simulab.kr/tools/ladder-draw-game/</loc><lastmod>2026-10-23</lastmod></url>
 <url><loc>https://simulab.kr/tools/leverage-etf-sim/</loc><lastmod>2026-10-23</lastmod></url>
 <url><loc>https://simulab.kr/tools/life-hourglass-sim/</loc><lastmod>2026-10-23</lastmod></url>
+<url><loc>https://simulab.kr/tools/living-cost-guide/</loc><lastmod>2026-10-25</lastmod></url>
 <url><loc>https://simulab.kr/tools/loan-mortgage-calc/</loc><lastmod>2026-10-23</lastmod></url>
 <url><loc>https://simulab.kr/tools/logistics-roi-calc/</loc><lastmod>2026-10-23</lastmod></url>
 <url><loc>https://simulab.kr/tools/lotto-draw-sim/</loc><lastmod>2026-10-23</lastmod></url>
@@ -37,8 +38,9 @@
 <url><loc>https://simulab.kr/tools/missed-investment-calc/</loc><lastmod>2026-10-23</lastmod></url>
 <url><loc>https://simulab.kr/tools/national-pension-sim/</loc><lastmod>2026-10-23</lastmod></url>
 <url><loc>https://simulab.kr/tools/opportunity-cost-calc/</loc><lastmod>2026-10-23</lastmod></url>
-<url><loc>https://simulab.kr/tools/parenting-deals/</loc><lastmod>2026-10-24</lastmod></url>
+<url><loc>https://simulab.kr/tools/parenting-deals/</loc><lastmod>2026-10-25</lastmod></url>
 <url><loc>https://simulab.kr/tools/past-apt-timemachine/</loc><lastmod>2026-10-23</lastmod></url>
+<url><loc>https://simulab.kr/tools/pay-work-guide/</loc><lastmod>2026-10-25</lastmod></url>
 <url><loc>https://simulab.kr/tools/percent-discount-calc/</loc><lastmod>2026-10-23</lastmod></url>
 <url><loc>https://simulab.kr/tools/retirement-survival-sim/</loc><lastmod>2026-10-23</lastmod></url>
 <url><loc>https://simulab.kr/tools/running-zone-calc/</loc><lastmod>2026-10-23</lastmod></url>
@@ -50,10 +52,11 @@
 <url><loc>https://simulab.kr/tools/stock-target-compound-calc/</loc><lastmod>2026-10-23</lastmod></url>
 <url><loc>https://simulab.kr/tools/stock-water-ride-calc/</loc><lastmod>2026-10-23</lastmod></url>
 <url><loc>https://simulab.kr/tools/unemployment-benefit-calc/</loc><lastmod>2026-10-23</lastmod></url>
+<url><loc>https://simulab.kr/tools/working-parents-guide/</loc><lastmod>2026-10-25</lastmod></url>
 <url><loc>https://simulab.kr/tools/world-gni-ranking-race/</loc><lastmod>2026-10-23</lastmod></url>
 <url><loc>https://simulab.kr/tools/world-population-area-rank/</loc><lastmod>2026-10-23</lastmod></url>
-<url><loc>https://simulab.kr/legal/about.html</loc><lastmod>2026-10-24</lastmod></url>
-<url><loc>https://simulab.kr/legal/editorial.html</loc><lastmod>2026-10-24</lastmod></url>
-<url><loc>https://simulab.kr/legal/privacy.html</loc><lastmod>2026-10-24</lastmod></url>
-<url><loc>https://simulab.kr/legal/terms.html</loc><lastmod>2026-10-24</lastmod></url>
+<url><loc>https://simulab.kr/legal/about.html</loc><lastmod>2026-10-25</lastmod></url>
+<url><loc>https://simulab.kr/legal/editorial.html</loc><lastmod>2026-10-25</lastmod></url>
+<url><loc>https://simulab.kr/legal/privacy.html</loc><lastmod>2026-10-25</lastmod></url>
+<url><loc>https://simulab.kr/legal/terms.html</loc><lastmod>2026-10-25</lastmod></url>
 </urlset>

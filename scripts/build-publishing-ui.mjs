@@ -38,6 +38,9 @@ for (const entry of await readdir(new URL('tools/', root), {withFileTypes:true})
     if (name === 'kids-outing-calendar') {
       if (!html.includes('<section id="event-finder"')) throw new Error('Missing calendar notice anchor');
       html = html.replace('<section id="event-finder"', notice + '\n    <section id="event-finder"');
+    } else if (['working-parents-guide','pay-work-guide','living-cost-guide'].includes(name)) {
+      if (!html.includes('<div id="guide-notice-anchor"></div>')) throw new Error('Missing guide notice anchor');
+      html = html.replace('<div id="guide-notice-anchor"></div>', '<div id="guide-notice-anchor"></div>\n' + notice);
     } else if (name === 'parenting-deals') {
       if (!html.includes('<div id="sale-notice-anchor"></div>')) throw new Error('Missing sale notice anchor');
       html = html.replace('<div id="sale-notice-anchor"></div>', '<div id="sale-notice-anchor"></div>\n' + notice);
@@ -51,6 +54,7 @@ for (const entry of await readdir(new URL('tools/', root), {withFileTypes:true})
     adCount++;
     if (name === 'kids-outing-calendar') html = html.replace(/<section\b[^>]*id="source-policy"[^>]*>/, match => advertisement + '\n    ' + match);
     else if (name === 'parenting-deals') html = html.replace(/([ \t]*)<section id="publishing-policy"/, (_, indent) => indent + advertisement + '\n' + indent + '<section id="publishing-policy"');
+    else if (['working-parents-guide','pay-work-guide','living-cost-guide'].includes(name)) html = html.replace('<section id="guide-source-policy"', advertisement + '\n<section id="guide-source-policy"');
     else if (/<article\b/.test(html)) html = html.replace(/([ \t]*)<article\b/, (_, indent) => indent + advertisement + '\n' + indent + '<article');
     else html = html.replace('<!-- GENERATED:DISCLAIMER:START -->', advertisement + '\n    <!-- GENERATED:DISCLAIMER:START -->');
     return html;
