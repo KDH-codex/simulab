@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "timezone": "Asia/Seoul",
+  "updatedAt": "2026-10-25T11:16:38.957Z",
+  "execution": "local-codex-official-source-review",
+  "siteAutomations": [
+    {
+      "categoryId": "kids-programs",
+      "automationId": "simulab",
+      "status": "ACTIVE",
+      "name": "SimuLab · 일요일 오전 · 아이 체험·교육",
+      "rrule": "FREQ=WEEKLY;BYDAY=SU;BYHOUR=8;BYMINUTE=0;BYSECOND=0"
+    },
+    {
+      "categoryId": "local-parenting",
+      "automationId": "simulab-2",
+      "status": "ACTIVE",
+      "name": "SimuLab · 일요일 오후 · 도서관·육아지원센터",
+      "rrule": "FREQ=WEEKLY;BYDAY=SU;BYHOUR=15;BYMINUTE=0;BYSECOND=0"
+    },
+    {
+      "categoryId": "family-support",
+      "automationId": "simulab-3",
+      "status": "ACTIVE",
+      "name": "SimuLab · 일요일 저녁 · 육아·가족 지원사업",
+      "rrule": "FREQ=WEEKLY;BYDAY=SU;BYHOUR=19;BYMINUTE=0;BYSECOND=0"
+    },
+    {
+      "categoryId": "camping-booking",
+      "automationId": "simulab-4",
+      "status": "ACTIVE",
+      "name": "SimuLab · 월요일 오전 · 공공 캠핑장·휴양림",
+      "rrule": "FREQ=WEEKLY;BYDAY=MO;BYHOUR=8;BYMINUTE=0;BYSECOND=0"
+    },
+    {
+      "categoryId": "family-culture",
+      "automationId": "simulab-5",
+      "status": "ACTIVE",
+      "name": "SimuLab · 월요일 오후 · 어린이 공연·전시",
+      "rrule": "FREQ=WEEKLY;BYDAY=MO;BYHOUR=15;BYMINUTE=0;BYSECOND=0"
+    },
+    {
+      "categoryId": "kids-popups",
+      "automationId": "simulab-6",
+      "status": "ACTIVE",
+      "name": "SimuLab · 월요일 저녁 · 키즈 팝업·캐릭터 행사",
+      "rrule": "FREQ=WEEKLY;BYDAY=MO;BYHOUR=19;BYMINUTE=0;BYSECOND=0"
+    },
+    {
+      "categoryId": "brand-sales",
+      "automationId": "simulab-7",
+      "status": "ACTIVE",
+      "name": "SimuLab · 화요일 오전 · 브랜드 세일",
+      "rrule": "FREQ=WEEKLY;BYDAY=TU;BYHOUR=8;BYMINUTE=0;BYSECOND=0"
+    },
+    {
+      "categoryId": "family-discounts",
+      "automationId": "simulab-8",
+      "status": "ACTIVE",
+      "name": "SimuLab · 화요일 오후 · 가족 외식·시설 할인",
+      "rrule": "FREQ=WEEKLY;BYDAY=TU;BYHOUR=15;BYMINUTE=0;BYSECOND=0"
+    },
+    {
+      "categoryId": "festivals",
+      "automationId": "automation",
+      "status": "ACTIVE",
+      "replacedSchedule": "월·목 오전 9시 축제·세일 통합 검토",
+      "name": "SimuLab · 화요일 저녁 · 축제·지역 행사",
+      "rrule": "FREQ=WEEKLY;BYDAY=TU;BYHOUR=19;BYMINUTE=0;BYSECOND=0"
+    }
+  ],
+  "blogAutomation": {
+    "automationId": "simulab-9",
+    "status": "ACTIVE",
+    "days": [
+      "WE",
+      "TH"
+    ],
+    "hour": 8,
+    "name": "SimuLab · 수·목 지역·분야별 블로그",
+    "rrule": "FREQ=WEEKLY;BYDAY=WE,TH;BYHOUR=8;BYMINUTE=0;BYSECOND=0",
+    "wednesdayCategories": [
+      "kids-programs",
+      "local-parenting",
+      "family-support",
+      "camping-booking",
+      "brand-sales"
+    ],
+    "thursdayCategories": [
+      "family-culture",
+      "kids-popups",
+      "family-discounts",
+      "festivals"
+    ]
+  },
+  "cutover": {
+    "oldId": "automation",
+    "oldName": "나들이·브랜드 세일 달력 정기 검토",
+    "oldSchedule": "월·목 오전 9시 KST",
+    "lastRunAtBeforeCutover": null,
+    "newUse": "화요일 저녁 축제 전용으로 같은 ID를 변경",
+    "duplicateOldCombinedJob": false
+  },
+  "deployment": {
+    "commit": "7858d5e607a54c91ec8fa6e28a35950a41fd966b",
+    "snapshotId": "a5fb9eebbe4c79fbbb90fe20",
+    "verifiedAt": "2026-10-25T11:06:02.360Z",
+    "url": "https://simulab.kr/tools/family-info-calendar/"
+  },
+  "limitations": [
+    "로컬 예약 실행에는 PC와 앱이 실행 가능한 상태여야 함",
+    "전체 공급자 무인 파서가 아니라 예약된 Codex의 공식 상세 공지 검토 방식",
+    "신규 공개 검증 자료는 체험 1건·휴양림 예약 1건이며 다른 신규 분야는 아직 공개 레코드가 없음",
+    "네이버 실제 게시 성공 이력은 아직 없으며 수목 실행에서 로그인·준비·승인 조건과 게시 URL을 확인해야 함"
+  ]
+}
