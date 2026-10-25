@@ -227,5 +227,28 @@
       }
     ],
     "baselineMinimumMet": true
+  },
+  "latestCategoryRuns": {
+    "camping-booking": {
+      "runId": "camping-booking-20261026-080111",
+      "verifiedAt": "2026-10-25T23:13:25.712Z",
+      "newRecords": 11,
+      "revalidated": 4,
+      "currentPublic": 15,
+      "otherCategoryRecordsPreserved": 48,
+      "research": {
+        "minimum": 15,
+        "detailedReviewed": 21,
+        "shortfall": 0,
+        "targetMet": true,
+        "verified": 15,
+        "held": 5,
+        "rejected": 1,
+        "blocked": 3
+      },
+      "heldAndIncomplete": 7,
+      "rejectedAndExcluded": 3,
+      "deployment": "pending"
+    }
   }
 }

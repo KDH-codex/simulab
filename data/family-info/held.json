@@ -1,1 +1,91 @@
-{"schemaVersion":1,"records":[{"id":"seoul-farm-single-parent-202611","categoryIds":["family-support"],"canonicalUrl":"https://news.seoul.go.kr/gov/archives/581571","checkedAt":"2026-10-25","reason":"제목은 부여·11월 7일이나 소개 본문은 괴산·10월 3주차로 기재. 신청 방법도 네이버폼·구글폼 안내가 혼재하여 장소와 신청 경로를 확정하지 못함. 상세 첨부자료 및 담당기관의 정정 확인 전 비공개."}]}
+{
+  "schemaVersion": 1,
+  "records": [
+    {
+      "id": "seoul-farm-single-parent-202611",
+      "categoryIds": [
+        "family-support"
+      ],
+      "canonicalUrl": "https://news.seoul.go.kr/gov/archives/581571",
+      "checkedAt": "2026-10-25",
+      "reason": "제목은 부여·11월 7일이나 소개 본문은 괴산·10월 3주차로 기재. 신청 방법도 네이버폼·구글폼 안내가 혼재하여 장소와 신청 경로를 확정하지 못함. 상세 첨부자료 및 담당기관의 정정 확인 전 비공개."
+    },
+    {
+      "id": "camp-held-qwmjazmda2niz0d2jic0lkpti3nji4ng",
+      "categoryIds": [
+        "camping-booking"
+      ],
+      "canonicalUrl": "https://www.foresttrip.go.kr/pot/cc/nm/selectNticBbrssDtlView.do?bbrssMsterId=BBRSSMSTER_00000051&hmpgId=ID02030066&twbbsId=276286",
+      "checkedAt": "2026-10-25T23:15:38.277Z",
+      "reason": "2026년10/1 예약·11/1 이용 시작, 동물등록/최근1년 광견병접종 증명,15kg제한·13세이상 보호자·견종/객실제한을 확인했습니다. 별도 요금·현재 시설별 예약정책과 유효기간 확인 후 공개 후보로 유지합니다.",
+      "detailReviewed": true,
+      "runId": "camping-booking-20261026-080111"
+    },
+    {
+      "id": "camp-held-qwmjazmda1osz0d2jic0lkpti3odezmw",
+      "categoryIds": [
+        "camping-booking"
+      ],
+      "canonicalUrl": "https://www.foresttrip.go.kr/pot/cc/nm/selectNticBbrssDtlView.do?bbrssMsterId=BBRSSMSTER_00000051&hmpgId=ID02030059&twbbsId=278133",
+      "checkedAt": "2026-10-25T23:15:38.278Z",
+      "reason": "1~4야영장과 다목적데크가2026년12/1~2027년3/31 휴장함을 상세에서 확인했습니다. 겨울 캠핑을 가능한 예약으로 공개하지 않았으며 숙박시설의 별도 예약공지가 추가로 필요합니다.",
+      "detailReviewed": true,
+      "runId": "camping-booking-20261026-080111"
+    },
+    {
+      "id": "camp-held-jx2lkpvmynja5mjkymtu3mtk3odu3nji",
+      "categoryIds": [
+        "camping-booking"
+      ],
+      "canonicalUrl": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S260929215719785762",
+      "checkedAt": "2026-10-25T23:15:38.278Z",
+      "reason": "11월 실제 예약 상세의10/15 15시 개시·11/10휴장·19~22시 운영·보호자동반·조리금지와 예약마감 표기를 확인했습니다. 취소석/세부 요금 추가 확인 전에는 신청 가능 자료로 게시하지 않았습니다.",
+      "detailReviewed": true,
+      "runId": "camping-booking-20261026-080111"
+    },
+    {
+      "id": "camp-held-qwmjazmda1nyz0d2jic0lkpti2nzi5mw",
+      "categoryIds": [
+        "camping-booking"
+      ],
+      "canonicalUrl": "https://www.foresttrip.go.kr/pot/cc/nm/selectNticBbrssDtlView.do?bbrssMsterId=BBRSSMSTER_00000051&hmpgId=ID02030057&twbbsId=267293",
+      "checkedAt": "2026-10-25T23:15:38.278Z",
+      "reason": "9월1~30일 일부시설 공사 외에10월1일부터 추가 환경공사로 휴장한다는 상세 수정 내용을 확인했습니다. 재개일이 명시되지 않아 이용 가능한 예약으로 공개하지 않았습니다.",
+      "detailReviewed": true,
+      "runId": "camping-booking-20261026-080111"
+    },
+    {
+      "id": "camp-held-qwmjazmdawmyz0d2jic0lkpti1nzg1mg",
+      "categoryIds": [
+        "camping-booking"
+      ],
+      "canonicalUrl": "https://www.foresttrip.go.kr/pot/cc/nm/selectNticBbrssDtlView.do?bbrssMsterId=BBRSSMSTER_00000051&hmpgId=ID02030003&twbbsId=257852",
+      "checkedAt": "2026-10-25T23:15:38.278Z",
+      "reason": "상세의 첨부 PDF를 읽지 않아 실제 예약 정책/결제조건 확인 미완료입니다. 제목·본문 안내만으로 완료 조사에 세지 않았습니다.",
+      "detailReviewed": false,
+      "runId": "camping-booking-20261026-080111"
+    },
+    {
+      "id": "camp-held-jx2lkpvmynjazmdkxnda0nti0mzu2mte",
+      "categoryIds": [
+        "camping-booking"
+      ],
+      "canonicalUrl": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S260309140452435611",
+      "checkedAt": "2026-10-25T23:15:38.278Z",
+      "reason": "서울시 지역캠핑장 공통정책은 함평11월 공지로 조사·공개했습니다. 지역·월만 다른 공지로 조사 건수를 부풀리지 않고 별도 비용/시민접수 표기를 추가 확인합니다.",
+      "detailReviewed": false,
+      "runId": "camping-booking-20261026-080111"
+    },
+    {
+      "id": "camp-held-qwmjazmda4mcz0d2jic0lkptixmze4ma",
+      "categoryIds": [
+        "camping-booking"
+      ],
+      "canonicalUrl": "https://www.foresttrip.go.kr/pot/cc/nm/selectNticBbrssDtlView.do?bbrssMsterId=BBRSSMSTER_00000051&hmpgId=ID02030080&twbbsId=213180",
+      "checkedAt": "2026-10-25T23:15:38.278Z",
+      "reason": "상세 수정일2025-08-15의 예약 양도·매매 제한과 본인확인·허용 가족 대리입실 조건을 읽었습니다. 제한 공지만으로2026년 예약 일정을 만들지 않았습니다.",
+      "detailReviewed": true,
+      "runId": "camping-booking-20261026-080111"
+    }
+  ]
+}

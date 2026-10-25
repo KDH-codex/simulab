@@ -14,21 +14,32 @@
       "researchRunId": "baseline-2026-10-26"
     },
     "camping-booking": {
-      "lastCollectedAt": "2026-10-26",
+      "lastCollectedAt": "2026-10-25T23:13:25.712Z",
       "outcome": "partial-review",
       "providers": [
         {
           "providerId": "foresttrip",
           "status": "reviewed",
-          "verified": 2
+          "verified": 12
         },
         {
           "providerId": "cheongju-camp",
           "status": "reviewed",
           "verified": 1
+        },
+        {
+          "providerId": "seoul-camping",
+          "status": "reviewed",
+          "verified": 1
+        },
+        {
+          "providerId": "hwaseong-ecofarm",
+          "status": "reviewed",
+          "verified": 1
         }
       ],
-      "researchRunId": "baseline-2026-10-26"
+      "researchRunId": "camping-booking-20261026-080111",
+      "note": "이번 실행 상세21건(검증15건), 신규11건·재검증4건. 공개유효15건·부족0건. 보류/탈락·첨부 미확인·접근차단은 내부조사에 별도 기록"
     },
     "family-support": {
       "lastCollectedAt": "2026-10-26",

@@ -106,7 +106,7 @@
       ],
       "method": "official-detail-review",
       "authentication": "공개 공지 열람, 예약은 별도 로그인",
-      "lastSuccessAt": "2026-10-26"
+      "lastSuccessAt": "2026-10-25T23:13:25.712Z"
     },
     {
       "id": "culture-portal",
@@ -315,7 +315,41 @@
       ],
       "method": "official-detail-review",
       "authentication": "공개 상세 공지 열람, 신청·결제는 공식 사이트",
-      "lastSuccessAt": "2026-10-26"
+      "lastSuccessAt": "2026-10-25T23:13:25.712Z"
+    },
+    {
+      "id": "seoul-camping",
+      "name": "서울시 공공서비스예약 · 지역 캠핑장",
+      "url": "https://yeyak.seoul.go.kr/",
+      "hosts": [
+        "yeyak.seoul.go.kr"
+      ],
+      "categoryIds": [
+        "camping-booking"
+      ],
+      "regions": [
+        "전국"
+      ],
+      "method": "official-detail-review",
+      "authentication": "공개 상세 공지 열람 · 신청은 공식 회원/본인인증·증빙 절차",
+      "lastSuccessAt": "2026-10-25T23:13:25.712Z"
+    },
+    {
+      "id": "hwaseong-ecofarm",
+      "name": "화성에코팜테마파크",
+      "url": "https://hsecofarm.hscity.go.kr/reservation/",
+      "hosts": [
+        "hsecofarm.hscity.go.kr"
+      ],
+      "categoryIds": [
+        "camping-booking"
+      ],
+      "regions": [
+        "경기"
+      ],
+      "method": "official-detail-review",
+      "authentication": "공개 상세 공지 열람 · 신청은 공식 회원/본인인증·증빙 절차",
+      "lastSuccessAt": "2026-10-25T23:13:25.712Z"
     }
   ]
 }

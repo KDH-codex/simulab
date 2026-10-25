@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "snapshotId": "7b8117f0df4cc3cbeba5203f",
+  "snapshotId": "e9afbb7bca78d9e67503fe08",
   "timezone": "Asia/Seoul",
   "categories": [
     {
@@ -124,8 +124,8 @@
       "siteUrl": "/tools/family-culture/#culture-158731"
     }
   ],
-  "siteRevision": "db804427a9b8ff5a5e787b19db4d2d21409fbbc7",
-  "generatedAt": "2026-10-25T17:13:19.183Z",
+  "siteRevision": "441ded00a5848768fb5d8745de96742825f701a7",
+  "generatedAt": "2026-10-25T23:18:33.684Z",
   "window": {
     "start": "2026-10-26",
     "end": "2026-12-25"
