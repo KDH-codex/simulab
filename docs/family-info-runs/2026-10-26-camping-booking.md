@@ -17,4 +17,6 @@
 
 검증: 이번 runId의 `family:audit --require-minimum` 통과(상세21·공개15·부족0), 전체 테스트103건 및 전체 빌드 통과. 공개 경로·가족 정보 생성물·publishing UI·기존 행사 데이터·달력의 check를 통과했다. 데스크톱1280px와 모바일360px에서15개 카드와 긴 요금 설명을 확인했고 가로 넘침이 없었다. 다른8개 분야 정본48건과 확인시각은 동일하다.
 
-운영 배포 전 검증 스냅샷은 `e9afbb7bca78d9e67503fe08`이다. 실제 배포 결과는 완료 후 자동화 상태 문서의 latestCategoryRuns.camping-booking에 기록한다.
+배포: 콘텐츠 커밋 `5f095b077e652c3d1d745856b4001c6682d5753c`를 최신main 위에 일반push했다. [Cloudflare Workers Builds](https://github.com/KDH-codex/simulab/runs/121323424917)는2026-10-25T23:24:20Z에success를 반환했다. 이후 `verify-family-deployment.mjs`가2026-10-25T23:24:38.183Z에 운영 피드와8개 페이지의 스냅샷 `e9afbb7bca78d9e67503fe08` 및 siteRevision의 콘텐츠 커밋 일치를 확인했다. 운영 캠핑 화면에서도15개 카드를 확인했다.
+
+상세별 보류·탈락 및3개 접근 차단은 연구 기록에 남아 있다. 이 자료를 공개 목록에 넣지 않았으며, 공개 유효15건과 이번 실행의 상세 조사 최소15건을 모두 충족했다.

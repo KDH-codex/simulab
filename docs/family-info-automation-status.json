@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "timezone": "Asia/Seoul",
-  "updatedAt": "2026-10-25T17:15:23.128Z",
+  "updatedAt": "2026-10-25T23:24:38.183Z",
   "execution": "local-codex-official-source-review",
   "siteAutomations": [
     {
@@ -102,15 +102,17 @@
     "duplicateOldCombinedJob": false
   },
   "deployment": {
-    "commit": "534de1ebe48f9e0293903c7fd81435958c9cc385",
-    "snapshotId": "7b8117f0df4cc3cbeba5203f",
-    "siteRevision": "534de1ebe48f9e0293903c7fd81435958c9cc385",
-    "verifiedAt": "2026-10-25T17:15:23.128Z",
-    "url": "https://simulab.kr/tools/family-info-calendar/",
+    "commit": "5f095b077e652c3d1d745856b4001c6682d5753c",
+    "snapshotId": "e9afbb7bca78d9e67503fe08",
+    "siteRevision": "5f095b077e652c3d1d745856b4001c6682d5753c",
+    "verifiedAt": "2026-10-25T23:24:38.183Z",
+    "url": "https://simulab.kr/tools/camping-booking/",
     "pagesVerified": 8,
     "github": "pushed-to-main",
-    "cloudflare": "production-verified",
-    "newVerifiedRecords": 50,
+    "cloudflare": "build-success-and-production-verified",
+    "cloudflareCheckUrl": "https://github.com/KDH-codex/simulab/runs/121323424917",
+    "cloudflareBuildId": "448edb2f-80d4-4bc4-8ffe-d13f043ad1ed",
+    "newVerifiedRecords": 11,
     "testsPassed": 103
   },
   "limitations": [
@@ -248,7 +250,29 @@
       },
       "heldAndIncomplete": 7,
       "rejectedAndExcluded": 3,
-      "deployment": "pending"
+      "publicShortfall": 0,
+      "validation": {
+        "runMinimumAudit": "passed",
+        "testsPassed": 103,
+        "build": "passed",
+        "publicAndGeneratedChecks": "passed",
+        "desktopWidth": 1280,
+        "mobileWidth": 360,
+        "horizontalOverflow": false
+      },
+      "deployment": {
+        "github": "pushed-to-main",
+        "contentCommit": "5f095b077e652c3d1d745856b4001c6682d5753c",
+        "cloudflare": "success",
+        "cloudflareCheckUrl": "https://github.com/KDH-codex/simulab/runs/121323424917",
+        "cloudflareBuildId": "448edb2f-80d4-4bc4-8ffe-d13f043ad1ed",
+        "cloudflareCompletedAt": "2026-10-25T23:24:20Z",
+        "production": "verified",
+        "snapshotId": "e9afbb7bca78d9e67503fe08",
+        "siteRevision": "5f095b077e652c3d1d745856b4001c6682d5753c",
+        "verifiedAt": "2026-10-25T23:24:38.183Z",
+        "pagesVerified": 8
+      }
     }
   }
 }
