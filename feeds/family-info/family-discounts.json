@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "snapshotId": "a5fb9eebbe4c79fbbb90fe20",
+  "timezone": "Asia/Seoul",
+  "categories": [
+    {
+      "id": "family-discounts",
+      "name": "가족 외식·시설 할인",
+      "shortName": "외식·시설 할인",
+      "description": "외식과 관광시설 혜택의 카드·요일·이용채널 조건을 함께 살펴요.",
+      "day": 2,
+      "hour": 15,
+      "blogDay": 4,
+      "split": "discount-sector",
+      "href": "/tools/family-discounts/",
+      "accent": "orange",
+      "categoryRevision": "4f53cda18c2baa0c",
+      "lastVerifiedAt": null,
+      "lastCollectedAt": null,
+      "lastDeployedAt": null,
+      "outcome": "not-run",
+      "verifiedCount": 0,
+      "currentCount": 0,
+      "failures": []
+    }
+  ],
+  "providers": [
+    {
+      "id": "lotteworld",
+      "name": "롯데월드 어드벤처",
+      "url": "https://adventure.lotteworld.com/",
+      "categoryIds": [
+        "family-discounts"
+      ],
+      "regions": [
+        "서울"
+      ],
+      "lastSuccessAt": null
+    },
+    {
+      "id": "everland",
+      "name": "에버랜드",
+      "url": "https://www.everland.com/",
+      "categoryIds": [
+        "family-discounts",
+        "kids-popups"
+      ],
+      "regions": [
+        "경기"
+      ],
+      "lastSuccessAt": null
+    }
+  ],
+  "records": [],
+  "siteRevision": "9548bd54a7859e769b5d2024a87c45337abe3de5",
+  "generatedAt": "2026-10-25T10:59:15.502Z",
+  "window": {
+    "start": "2026-10-25",
+    "end": "2026-12-24"
+  },
+  "deployment": {
+    "status": "verify-live-snapshot",
+    "lastConfirmedAt": null
+  }
+}

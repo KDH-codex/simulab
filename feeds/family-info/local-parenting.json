@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "snapshotId": "a5fb9eebbe4c79fbbb90fe20",
+  "timezone": "Asia/Seoul",
+  "categories": [
+    {
+      "id": "local-parenting",
+      "name": "도서관·육아지원센터",
+      "shortName": "도서관·육아",
+      "description": "우리 동네 도서관과 육아지원센터의 프로그램을 찾아요.",
+      "day": 0,
+      "hour": 15,
+      "blogDay": 3,
+      "split": "region",
+      "href": "/tools/local-parenting/",
+      "accent": "blue",
+      "categoryRevision": "4f53cda18c2baa0c",
+      "lastVerifiedAt": null,
+      "lastCollectedAt": null,
+      "lastDeployedAt": null,
+      "outcome": "not-run",
+      "verifiedCount": 0,
+      "currentCount": 0,
+      "failures": []
+    }
+  ],
+  "providers": [
+    {
+      "id": "seoul-library",
+      "name": "서울도서관",
+      "url": "https://lib.seoul.go.kr/",
+      "categoryIds": [
+        "local-parenting"
+      ],
+      "regions": [
+        "서울"
+      ],
+      "lastSuccessAt": null
+    },
+    {
+      "id": "seoul-childcare",
+      "name": "서울시육아종합지원센터",
+      "url": "https://seoul.childcare.go.kr/",
+      "categoryIds": [
+        "local-parenting"
+      ],
+      "regions": [
+        "서울"
+      ],
+      "lastSuccessAt": null
+    },
+    {
+      "id": "seoul-news",
+      "name": "서울시 분야별 소식",
+      "url": "https://news.seoul.go.kr/",
+      "categoryIds": [
+        "family-support",
+        "local-parenting",
+        "kids-programs"
+      ],
+      "regions": [
+        "서울"
+      ],
+      "lastSuccessAt": null
+    }
+  ],
+  "records": [],
+  "siteRevision": "9548bd54a7859e769b5d2024a87c45337abe3de5",
+  "generatedAt": "2026-10-25T10:59:15.502Z",
+  "window": {
+    "start": "2026-10-25",
+    "end": "2026-12-24"
+  },
+  "deployment": {
+    "status": "verify-live-snapshot",
+    "lastConfirmedAt": null
+  }
+}

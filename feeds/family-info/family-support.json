@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "snapshotId": "a5fb9eebbe4c79fbbb90fe20",
+  "timezone": "Asia/Seoul",
+  "categories": [
+    {
+      "id": "family-support",
+      "name": "육아·가족 지원사업",
+      "shortName": "가족 지원",
+      "description": "거주지와 대상 조건을 살피고 가족 지원사업의 신청일을 챙겨요.",
+      "day": 0,
+      "hour": 19,
+      "blogDay": 3,
+      "split": "national-or-region",
+      "href": "/tools/family-support/",
+      "accent": "green",
+      "categoryRevision": "4f53cda18c2baa0c",
+      "lastVerifiedAt": null,
+      "lastCollectedAt": "2026-10-25",
+      "lastDeployedAt": null,
+      "outcome": "partial-review",
+      "verifiedCount": 0,
+      "currentCount": 0,
+      "failures": []
+    }
+  ],
+  "providers": [
+    {
+      "id": "bokjiro",
+      "name": "복지로",
+      "url": "https://www.bokjiro.go.kr/",
+      "categoryIds": [
+        "family-support"
+      ],
+      "regions": [
+        "전국"
+      ],
+      "lastSuccessAt": null
+    },
+    {
+      "id": "seoul-news",
+      "name": "서울시 분야별 소식",
+      "url": "https://news.seoul.go.kr/",
+      "categoryIds": [
+        "family-support",
+        "local-parenting",
+        "kids-programs"
+      ],
+      "regions": [
+        "서울"
+      ],
+      "lastSuccessAt": null
+    }
+  ],
+  "records": [],
+  "siteRevision": "9548bd54a7859e769b5d2024a87c45337abe3de5",
+  "generatedAt": "2026-10-25T10:59:15.502Z",
+  "window": {
+    "start": "2026-10-25",
+    "end": "2026-12-24"
+  },
+  "deployment": {
+    "status": "verify-live-snapshot",
+    "lastConfirmedAt": null
+  }
+}

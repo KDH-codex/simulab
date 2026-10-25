@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "snapshotId": "a5fb9eebbe4c79fbbb90fe20",
+  "timezone": "Asia/Seoul",
+  "categories": [
+    {
+      "id": "kids-popups",
+      "name": "키즈 팝업·캐릭터 행사",
+      "shortName": "키즈 팝업",
+      "description": "아이와 좋아하는 캐릭터를 만나요. 지점·기간·입장방식을 확인해요.",
+      "day": 1,
+      "hour": 19,
+      "blogDay": 4,
+      "split": "region",
+      "href": "/tools/kids-popups/",
+      "accent": "orange",
+      "categoryRevision": "4f53cda18c2baa0c",
+      "lastVerifiedAt": null,
+      "lastCollectedAt": null,
+      "lastDeployedAt": null,
+      "outcome": "not-run",
+      "verifiedCount": 0,
+      "currentCount": 0,
+      "failures": []
+    }
+  ],
+  "providers": [
+    {
+      "id": "seoul-culture",
+      "name": "서울문화포털",
+      "url": "https://culture.seoul.go.kr/",
+      "categoryIds": [
+        "family-culture",
+        "kids-popups"
+      ],
+      "regions": [
+        "서울"
+      ],
+      "lastSuccessAt": null
+    },
+    {
+      "id": "everland",
+      "name": "에버랜드",
+      "url": "https://www.everland.com/",
+      "categoryIds": [
+        "family-discounts",
+        "kids-popups"
+      ],
+      "regions": [
+        "경기"
+      ],
+      "lastSuccessAt": null
+    },
+    {
+      "id": "lotte-shopping",
+      "name": "롯데백화점",
+      "url": "https://www.lotteshopping.com/",
+      "categoryIds": [
+        "kids-popups"
+      ],
+      "regions": [
+        "전국"
+      ],
+      "lastSuccessAt": null
+    },
+    {
+      "id": "hyundai-department",
+      "name": "현대백화점",
+      "url": "https://www.ehyundai.com/",
+      "categoryIds": [
+        "kids-popups"
+      ],
+      "regions": [
+        "전국"
+      ],
+      "lastSuccessAt": null
+    }
+  ],
+  "records": [],
+  "siteRevision": "9548bd54a7859e769b5d2024a87c45337abe3de5",
+  "generatedAt": "2026-10-25T10:59:15.502Z",
+  "window": {
+    "start": "2026-10-25",
+    "end": "2026-12-24"
+  },
+  "deployment": {
+    "status": "verify-live-snapshot",
+    "lastConfirmedAt": null
+  }
+}

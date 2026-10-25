@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "categories": {
+    "kids-programs": {
+      "lastCollectedAt": "2026-10-25",
+      "outcome": "partial-review",
+      "providers": [
+        {
+          "providerId": "seoul-reservation",
+          "status": "reviewed",
+          "verified": 1
+        }
+      ]
+    },
+    "camping-booking": {
+      "lastCollectedAt": "2026-10-25",
+      "outcome": "partial-review",
+      "providers": [
+        {
+          "providerId": "foresttrip",
+          "status": "reviewed",
+          "verified": 1
+        }
+      ]
+    },
+    "family-support": {
+      "lastCollectedAt": "2026-10-25",
+      "outcome": "partial-review",
+      "providers": [
+        {
+          "providerId": "seoul-news",
+          "status": "held",
+          "verified": 0,
+          "held": 1
+        }
+      ]
+    }
+  }
+}

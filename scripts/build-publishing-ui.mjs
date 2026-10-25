@@ -5,6 +5,8 @@ const root = new URL('../', import.meta.url), scope = {};
 vm.runInNewContext(await readFile(new URL('assets/js/core-ui.js', root), 'utf8'), scope);
 const {buildToolNoticeHtml, buildSmartDisclaimerHtml} = scope.SimuLab;
 const check = process.argv.includes('--check');
+const familyCategories=JSON.parse(await readFile(new URL('data/family-info/schedule.json',root),'utf8')).categories;
+const familyPages=['family-info-calendar',...familyCategories.filter(c=>!['brand-sales','festivals'].includes(c.id)).map(c=>c.id)];
 const block = (name, html) => `<!-- GENERATED:${name}:START -->\n${html}\n<!-- GENERATED:${name}:END -->`;
 const advertisement = block('AD-PLACEMENT', '<aside class="ad-placement" aria-label="광고 게재 준비 영역" data-ad-state="pending"><span class="ad-placement-label">광고</span><p>광고 게재 준비 중</p></aside>');
 
@@ -35,7 +37,10 @@ for (const entry of await readdir(new URL('tools/', root), {withFileTypes:true})
     if (/data-ad-slot|id=["'](?:legal-disclaimer|disclaimer-container)["']/.test(html)) throw new Error('Unexpected legacy container: ' + name);
     const notice = block('USE-NOTICE', buildToolNoticeHtml(name));
     const title = /<h1\b[^>]*>[\s\S]*?<\/h1>(?:\s*<p\b[^>]*>[\s\S]*?<\/p>)?/;
-    if (name === 'kids-outing-calendar') {
+    if (familyPages.includes(name)) {
+      if (!html.includes('<div id="family-notice-anchor"></div>')) throw new Error('Missing family notice anchor');
+      html = html.replace('<div id="family-notice-anchor"></div>', '<div id="family-notice-anchor"></div>\n' + notice);
+    } else if (name === 'kids-outing-calendar') {
       if (!html.includes('<section id="event-finder"')) throw new Error('Missing calendar notice anchor');
       html = html.replace('<section id="event-finder"', notice + '\n    <section id="event-finder"');
     } else if (['working-parents-guide','pay-work-guide','living-cost-guide'].includes(name)) {
@@ -52,7 +57,8 @@ for (const entry of await readdir(new URL('tools/', root), {withFileTypes:true})
     html = html.replace('</main>', '\n\n  ' + disclaimer + '\n  </main>');
     if (['alcohol-widmark-calc','game-tetris'].includes(name)) return html;
     adCount++;
-    if (name === 'kids-outing-calendar') html = html.replace(/<section\b[^>]*id="source-policy"[^>]*>/, match => advertisement + '\n    ' + match);
+    if (familyPages.includes(name)) html = html.replace('<section id="official-sources"', advertisement + '\n<section id="official-sources"');
+    else if (name === 'kids-outing-calendar') html = html.replace(/<section\b[^>]*id="source-policy"[^>]*>/, match => advertisement + '\n    ' + match);
     else if (name === 'parenting-deals') html = html.replace(/([ \t]*)<section id="publishing-policy"/, (_, indent) => indent + advertisement + '\n' + indent + '<section id="publishing-policy"');
     else if (['working-parents-guide','pay-work-guide','living-cost-guide'].includes(name)) html = html.replace('<section id="guide-source-policy"', advertisement + '\n<section id="guide-source-policy"');
     else if (/<article\b/.test(html)) html = html.replace(/([ \t]*)<article\b/, (_, indent) => indent + advertisement + '\n' + indent + '<article');

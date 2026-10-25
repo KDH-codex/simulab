@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "snapshotId": "a5fb9eebbe4c79fbbb90fe20",
+  "timezone": "Asia/Seoul",
+  "categories": [
+    {
+      "id": "family-culture",
+      "name": "어린이 공연·전시",
+      "shortName": "공연·전시",
+      "description": "어린이 공연과 전시, 실내 나들이의 관람연령·예약조건을 살펴요.",
+      "day": 1,
+      "hour": 15,
+      "blogDay": 4,
+      "split": "region",
+      "href": "/tools/family-culture/",
+      "accent": "blue",
+      "categoryRevision": "4f53cda18c2baa0c",
+      "lastVerifiedAt": null,
+      "lastCollectedAt": null,
+      "lastDeployedAt": null,
+      "outcome": "not-run",
+      "verifiedCount": 0,
+      "currentCount": 0,
+      "failures": []
+    }
+  ],
+  "providers": [
+    {
+      "id": "seoul-reservation",
+      "name": "서울 공공서비스예약",
+      "url": "https://yeyak.seoul.go.kr/",
+      "categoryIds": [
+        "kids-programs",
+        "family-culture"
+      ],
+      "regions": [
+        "서울"
+      ],
+      "lastSuccessAt": "2026-10-25"
+    },
+    {
+      "id": "gwacheon-science",
+      "name": "국립과천과학관",
+      "url": "https://www.sciencecenter.go.kr/",
+      "categoryIds": [
+        "kids-programs",
+        "family-culture"
+      ],
+      "regions": [
+        "경기"
+      ],
+      "lastSuccessAt": null
+    },
+    {
+      "id": "culture-portal",
+      "name": "문화포털",
+      "url": "https://www.culture.go.kr/",
+      "categoryIds": [
+        "family-culture"
+      ],
+      "regions": [
+        "전국"
+      ],
+      "lastSuccessAt": null
+    },
+    {
+      "id": "seoul-culture",
+      "name": "서울문화포털",
+      "url": "https://culture.seoul.go.kr/",
+      "categoryIds": [
+        "family-culture",
+        "kids-popups"
+      ],
+      "regions": [
+        "서울"
+      ],
+      "lastSuccessAt": null
+    }
+  ],
+  "records": [],
+  "siteRevision": "9548bd54a7859e769b5d2024a87c45337abe3de5",
+  "generatedAt": "2026-10-25T10:59:15.502Z",
+  "window": {
+    "start": "2026-10-25",
+    "end": "2026-12-24"
+  },
+  "deployment": {
+    "status": "verify-live-snapshot",
+    "lastConfirmedAt": null
+  }
+}

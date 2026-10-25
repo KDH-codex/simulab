@@ -22,6 +22,7 @@ const schema = {
   })) }
 };
 let html = await readFile(page, 'utf8');
+if(!html.includes('href="/tools/family-info-calendar/"'))html=html.replace(/(<main\b[^>]*>)/,'$1\n<nav class="family-tabs" aria-label="가족 정보"><a href="/tools/family-info-calendar/">가족 정보 모아보기 ↗</a><a href="/tools/parenting-deals/">브랜드 세일 달력 ↗</a></nav>');
 for (const [marker, content] of Object.entries({
   SCHEMA: '<script type="application/ld+json">' + JSON.stringify(schema).replaceAll('<', '\\u003c') + '</script>',
   REVIEW: '<p>마지막 검토 <time datetime="' + DATA_REVIEWED_AT + '">' + DATA_REVIEWED_AT + '</time> · ' + FESTIVALS.length + '개 행사</p>',

@@ -4,7 +4,7 @@ import {fileURLToPath} from 'node:url';
 import {spawnSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 const root=fileURLToPath(new URL('../',import.meta.url));
-for(const script of ['build-event-data.mjs','build-parenting-deals.mjs','build-weekday-guides.mjs','build-home.mjs','build-legal.mjs','normalize-pages.mjs','build-kids-calendar.mjs','build-publishing-ui.mjs']) {
+for(const script of ['build-event-data.mjs','build-parenting-deals.mjs','build-family-info.mjs','build-weekday-guides.mjs','build-home.mjs','build-legal.mjs','normalize-pages.mjs','build-kids-calendar.mjs','build-publishing-ui.mjs']) {
  const result=spawnSync(process.execPath,[path.join(root,'scripts',script)],{cwd:root,stdio:'inherit'});if(result.status!==0)process.exit(result.status||1);
 }
 const destination=path.resolve(root,'dist');
@@ -14,6 +14,10 @@ try{if((await lstat(destination)).isSymbolicLink())throw new Error('Refusing sym
 await mkdir(destination,{recursive:true});
 const publicRoots=['assets','tools','legal','admin'];
 for(const folder of publicRoots)await cp(path.join(root,folder),path.join(destination,folder),{recursive:true,filter:source=>!/(?:^|[\\/])(?:node_modules|\.git|scratch)(?:[\\/]|$)|\.backup\.|\.map$/i.test(source)&&!/[\\/]tools[\\/]game-tetris[\\/](?:app|logic)\.js$/i.test(source)});
+// Only explicitly generated public feeds are admitted. Internal data remains private.
+const familySchedule=JSON.parse(await readFile(path.join(root,'data/family-info/schedule.json'),'utf8'));
+await mkdir(path.join(destination,'feeds/family-info'),{recursive:true});
+for(const id of ['latest',...familySchedule.categories.map(c=>c.id)])await cp(path.join(root,'feeds/family-info',id+'.json'),path.join(destination,'feeds/family-info',id+'.json'));
 for(const file of await readdir(root))if(/^(index\.html|favicon\.svg|manifest\.json|ads\.txt|robots\.txt|naver[a-f0-9]+\.html|_headers|_redirects)$/.test(file))await cp(path.join(root,file),path.join(destination,file));
 const pages=['index.html'];
 for(const entry of await readdir(path.join(root,'tools'),{withFileTypes:true}))if(entry.isDirectory()&&!['admin-dashboard','game-tetris'].includes(entry.name)){

@@ -7,7 +7,9 @@
     "events:audit": "node scripts/audit-events.mjs",
     "events:collect": "node scripts/collect-event-candidates.mjs",
     "preview": "node scripts/preview.mjs --port=4180",
-    "deals:audit": "node scripts/audit-deals.mjs"
+    "deals:audit": "node scripts/audit-deals.mjs",
+    "family:audit": "node scripts/audit-family-info.mjs",
+    "family:blog": "node scripts/prepare-family-blog.mjs"
   },
   "engines": {
     "node": ">=22"

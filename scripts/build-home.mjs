@@ -15,7 +15,7 @@ const today=koreaToday(),weekend=weekendRange(today);
 const events=selectAcrossRegions(filterEvents({...weekend,today,includeEnded:false},FESTIVALS),3);
 const title='시뮬랩 — 평일 생활 안내, 주말 나들이와 브랜드 세일 달력';
 const description='육아휴직·복직, 월급·퇴직, 생활비 절약에 필요한 공식 안내를 모았습니다. 아이와 가볼 만한 곳, 브랜드 세일 달력과 생활 계산기도 함께 살펴보세요.';
-const html=`<!doctype html>
+let html=`<!doctype html>
 <html lang="ko" data-default-theme="light" data-theme="light">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light">
@@ -55,6 +55,8 @@ const html=`<!doctype html>
 <section class="home-principles"><div><span>01</span><h2>가정을 확인하고</h2><p>숫자는 조건에 따라 달라집니다.<br>입력 단위와 계산 기준을 함께 살펴보세요.</p></div><div><span>02</span><h2>출처를 살펴보고</h2><p>통계와 행사 안내는 집계 시점과<br>공식 공지의 확인 범위를 표시합니다.</p></div><div><span>03</span><h2>오류는 바로잡고</h2><p>확인되지 않은 값을 확정하지 않습니다.<br><a href="/legal/editorial.html">정보·정정 기준 알아보기 ↗</a></p></div></section>
 </main><footer id="site-footer"></footer><script src="/assets/js/core-ui.js?v=20261023"></script><script type="module" src="/assets/js/home.js?v=20261023"></script>
 </body></html>\n`;
+const familyHub=`<section class="family-hub-home" aria-labelledby="family-hub-title"><div class="section-intro"><div><p class="home-eyebrow">신청일도, 함께 나갈 날도</p><h2 id="family-hub-title">우리 가족에게 필요한 정보.</h2></div><a href="/tools/family-info-calendar/">9개 분야 모아보기 ↗</a></div><p>체험과 도서관, 가족 지원부터 캠핑·공연·팝업·할인까지.<br>공식 공지의 신청일과 이용 조건을 함께 살펴보세요.</p><div class="family-hub-home-grid">${groups.find(g=>g.id==='family').items.filter(t=>t.tool!=='family-info-calendar').map(t=>`<a href="/tools/${t.tool}/"><strong>${esc(t.title)}</strong><span>${esc(t.sub)}</span><b aria-hidden="true">↗</b></a>`).join('')}</div></section>`;
+html=html.replace('<section id="weekday-life"',familyHub+'\n<section id="weekday-life"');
 if(process.argv.includes('--check')) {
   // The page is date-sensitive; validate catalog identity separately from weekend contents.
   const current=await readFile(new URL('index.html',root),'utf8');

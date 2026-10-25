@@ -204,6 +204,20 @@
      ------------------------------------------------------------------------ */
   const SITE_MENU = [
     {
+      id:'family',label:'가족 정보',icon:'◷',hot:true,
+      desc:'체험·교육·육아·공연·캠핑의 신청일과 이용일을 공식 조건과 함께 확인합니다.',
+      subgroups:[{title:'신청일과 함께 나갈 날',items:[
+        {title:'가족 정보 통합 달력',sub:'9개 분야 · 신청일과 이용일을 나누어 확인',href:'tools/family-info-calendar/',tool:'family-info-calendar',hot:true},
+        {title:'아이 체험·교육',sub:'접수기간 · 공식 대상 연령 · 이용일',href:'tools/kids-programs/',tool:'kids-programs'},
+        {title:'도서관·육아지원센터',sub:'지역·회원 조건 · 프로그램 신청',href:'tools/local-parenting/',tool:'local-parenting'},
+        {title:'육아·가족 지원사업',sub:'신청기간 · 거주지·지원 자격 확인',href:'tools/family-support/',tool:'family-support'},
+        {title:'공공 캠핑장·휴양림',sub:'예약 개시 · 추첨 · 이용기간',href:'tools/camping-booking/',tool:'camping-booking'},
+        {title:'어린이 공연·전시',sub:'관람연령 · 운영일 · 예약 조건',href:'tools/family-culture/',tool:'family-culture'},
+        {title:'키즈 팝업·캐릭터 행사',sub:'지점 · 기간 · 현장입장·예약 안내',href:'tools/kids-popups/',tool:'kids-popups'},
+        {title:'가족 외식·시설 할인',sub:'외식·관광시설 · 카드·요일·채널 조건',href:'tools/family-discounts/',tool:'family-discounts'}
+      ]}]
+    },
+    {
       id: 'weekday', label: '평일 생활', icon: '☀️', hot: true,
       desc: '육아휴직과 복직, 월급과 퇴직, 생활비 비교에 필요한 공식 정보와 확인 목록을 모았습니다.',
       subgroups: [{title:'일하는 날의 생활 안내',items:[
@@ -727,7 +741,10 @@
     if (['home','admin-dashboard','legal'].includes(id)) return null;
     let kind = 'general', title = '계산·정보 이용 안내';
     let message = '입력 조건과 표시된 가정에 따른 참고 결과입니다. 단위·반올림·적용 기준을 확인하고, 계약이나 신청 전에는 공식 자료와 대조해 주세요.';
-    if (['working-parents-guide','pay-work-guide','living-cost-guide'].includes(id)) {
+    if (['family-info-calendar','kids-programs','local-parenting','family-support','camping-booking','family-culture','kids-popups','family-discounts'].includes(id)) {
+      kind='family';title='신청일과 이용 조건을 함께 확인하세요';
+      message='공식 공지를 확인한 정보만 안내합니다. 신청기간·이용기간·대상·비용은 서로 다를 수 있으며, 확인일 이후 변경될 수 있습니다. 예약 잔여석·지원 자격·최종 할인 적용은 공식 상세 공지에서 다시 확인하세요.';
+    } else if (['working-parents-guide','pay-work-guide','living-cost-guide'].includes(id)) {
       kind = 'guide'; title = '신청·구매 전 공식 조건을 확인하세요';
       message = '공식 안내를 확인해 정리한 목록입니다. 제도 신청 자격·지급액·가격을 실시간으로 확인하지 않습니다. 출처 확인일과 본인 조건을 살펴보고 담당 기관이나 서비스에서 최신 안내를 확인해 주세요.';
     } else if (id === 'kids-outing-calendar') {

@@ -1,0 +1,556 @@
+{
+  "schemaVersion": 1,
+  "snapshotId": "a5fb9eebbe4c79fbbb90fe20",
+  "timezone": "Asia/Seoul",
+  "categories": [
+    {
+      "id": "brand-sales",
+      "name": "브랜드 세일",
+      "shortName": "브랜드 세일",
+      "description": "기간 한정 대표 세일의 일정과 회원·구매 조건을 확인해요.",
+      "day": 2,
+      "hour": 8,
+      "blogDay": 3,
+      "split": "sale-sector",
+      "href": "/tools/parenting-deals/",
+      "accent": "orange",
+      "categoryRevision": "d38b5fb83f5874bf",
+      "lastVerifiedAt": "2026-10-25T14:10:44+09:00",
+      "lastCollectedAt": null,
+      "lastDeployedAt": null,
+      "outcome": "existing-reviewed",
+      "verifiedCount": 10,
+      "currentCount": 10,
+      "failures": []
+    }
+  ],
+  "providers": [],
+  "records": [
+    {
+      "id": "sale-hm-midseason-202610",
+      "categoryIds": [
+        "brand-sales"
+      ],
+      "title": "H&M · 미드 시즌 세일",
+      "providerId": "legacy-brand-hm",
+      "canonicalUrl": "https://www2.hm.com/ko_kr/index.html",
+      "region": "전국",
+      "location": "온라인·매장별 조건 확인",
+      "audience": "대상 품목·회원 조건 확인",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-10-14",
+      "eventEnd": "2026-10-25T23:59:00+09:00",
+      "scheduleNote": "공식 홈페이지에서 종료일·23:59 종료를 확인",
+      "endExclusive": false,
+      "endInclusiveMinute": true,
+      "feeStatus": "unknown",
+      "feeText": "품목별 가격과 할인 조건 확인",
+      "summary": "의류·잡화의 행사 대상 품목을 살펴보는 미드 시즌 세일입니다.",
+      "conditions": [
+        "대상 품목·사이즈와 적용 가격은 공식몰에서 확인하세요.",
+        "공식 안내는 매장과 온라인 가격이 다를 수 있다고 명시합니다."
+      ],
+      "publicationStatus": "verified",
+      "lifecycleStatus": null,
+      "verifiedAt": "2026-10-24T02:01:14+09:00",
+      "evidence": [
+        {
+          "url": "https://www2.hm.com/ko_kr/index.html",
+          "publisher": "H&M",
+          "summary": "공식 홈페이지에서 종료일·23:59 종료를 확인",
+          "verifiedAt": "2026-10-24T02:01:14+09:00",
+          "fields": [
+            "title",
+            "eventStart",
+            "eventEnd",
+            "conditions"
+          ]
+        }
+      ],
+      "sectorIds": [
+        "fashion"
+      ],
+      "legacyId": "hm-midseason-202610",
+      "contentHash": "d13b1d542d41b3e669659624e77691d96605e5da0070c270ea84b47ae1f1b42a",
+      "siteUrl": "/tools/parenting-deals/#sale-hm-midseason-202610"
+    },
+    {
+      "id": "sale-topten-tentenday-202610",
+      "categoryIds": [
+        "brand-sales"
+      ],
+      "title": "탑텐 · 텐텐데이",
+      "providerId": "legacy-brand-topten",
+      "canonicalUrl": "https://display.goodwearmall.com/special/300315/view",
+      "region": "전국",
+      "location": "온라인·매장별 조건 확인",
+      "audience": "대상 품목·회원 조건 확인",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-10-23",
+      "eventEnd": "2026-11-08",
+      "scheduleNote": "배너 공지 기준 · 온라인 시작 시각은 별도 안내",
+      "endExclusive": false,
+      "endInclusiveMinute": false,
+      "feeStatus": "unknown",
+      "feeText": "품목별 가격과 할인 조건 확인",
+      "summary": "탑텐·탑텐키즈의 행사 상품과 구매 혜택을 안내하는 기획전입니다.",
+      "conditions": [
+        "달력은 공식 배너의 공통 안내 기간입니다. 온라인 유의사항은 10월 22일 20시 선시작을 별도로 안내합니다.",
+        "페이백은 추후 지급되는 포인트입니다. 현재 결제금액에서 현금 할인처럼 빼지 마세요.",
+        "대상 상품·회원 가입·구매 확정·포인트 사용기한은 공식 유의사항을 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "lifecycleStatus": null,
+      "verifiedAt": "2026-10-24T02:01:14+09:00",
+      "evidence": [
+        {
+          "url": "https://display.goodwearmall.com/special/300315/view",
+          "publisher": "탑텐",
+          "summary": "배너 공지 기준 · 온라인 시작 시각은 별도 안내",
+          "verifiedAt": "2026-10-24T02:01:14+09:00",
+          "fields": [
+            "title",
+            "eventStart",
+            "eventEnd",
+            "conditions"
+          ]
+        }
+      ],
+      "sectorIds": [
+        "fashion"
+      ],
+      "legacyId": "topten-tentenday-202610",
+      "contentHash": "e401e806921add1f9b86c2dab4173e7ebd225ae7dacea3aafe4f4cd8bd3fca6e",
+      "siteUrl": "/tools/parenting-deals/#sale-topten-tentenday-202610"
+    },
+    {
+      "id": "sale-ikea-storage-202610",
+      "categoryIds": [
+        "brand-sales"
+      ],
+      "title": "이케아 · 거실·수납 제품 멤버 할인",
+      "providerId": "legacy-brand-ikea",
+      "canonicalUrl": "https://www.ikea.com/kr/ko/campaigns/storage-week-fy27-l2-pub47d55da0/",
+      "region": "전국",
+      "location": "온라인·매장별 조건 확인",
+      "audience": "대상 품목·회원 조건 확인",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-10-08",
+      "eventEnd": "2026-10-27",
+      "scheduleNote": "공식 캠페인 유의사항의 행사 기간",
+      "endExclusive": false,
+      "endInclusiveMinute": false,
+      "feeStatus": "unknown",
+      "feeText": "품목별 가격과 할인 조건 확인",
+      "summary": "할인 태그가 있는 일부 거실·수납 제품에 적용하는 멤버 대상 10% 할인 안내입니다.",
+      "conditions": [
+        "IKEA Family 또는 IKEA Business Network 멤버 대상입니다.",
+        "전 매장·팝업스토어·공식 웹사이트·앱 안내이며 할인 태그가 있는 일부 제품에 한정됩니다.",
+        "재고 소진 시 구매가 어려울 수 있고 조립·배송 서비스 비용은 할인 대상에서 제외됩니다."
+      ],
+      "publicationStatus": "verified",
+      "lifecycleStatus": null,
+      "verifiedAt": "2026-10-24T02:01:14+09:00",
+      "evidence": [
+        {
+          "url": "https://www.ikea.com/kr/ko/campaigns/storage-week-fy27-l2-pub47d55da0/",
+          "publisher": "이케아",
+          "summary": "공식 캠페인 유의사항의 행사 기간",
+          "verifiedAt": "2026-10-24T02:01:14+09:00",
+          "fields": [
+            "title",
+            "eventStart",
+            "eventEnd",
+            "conditions"
+          ]
+        }
+      ],
+      "sectorIds": [
+        "furniture",
+        "kitchen"
+      ],
+      "legacyId": "ikea-storage-202610",
+      "contentHash": "b393814e167c2731dcb2541d887988d4e65f7c36521a9b5065b8a53bed99fa04",
+      "siteUrl": "/tools/parenting-deals/#sale-ikea-storage-202610"
+    },
+    {
+      "id": "sale-modernhouse-birthday-202610",
+      "categoryIds": [
+        "brand-sales"
+      ],
+      "title": "모던하우스 · 공식몰 6주년 생일파티",
+      "providerId": "legacy-brand-modernhouse",
+      "canonicalUrl": "https://www.mhmall.co.kr/shop/plan.html?plan_id=789",
+      "region": "전국",
+      "location": "온라인",
+      "audience": "대상 품목·회원 조건 확인",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-10-19",
+      "eventEnd": "2026-10-25",
+      "scheduleNote": "공식 기획전 배너의 10.19–10.25 기간 확인",
+      "endExclusive": false,
+      "endInclusiveMinute": false,
+      "feeStatus": "unknown",
+      "feeText": "품목별 가격과 할인 조건 확인",
+      "summary": "모던하우스 공식몰의 침구·주방·생활용품 등을 모은 6주년 기간 한정 세일입니다.",
+      "conditions": [
+        "쿠폰은 일별 선착순 한정 안내가 있습니다. 발급 수량·대상 품목과 최소 구매 조건을 확인하세요.",
+        "공식몰 온라인 행사 기준입니다. 오프라인 매장에 같은 조건이 적용된다고 추정하지 않습니다.",
+        "쿠폰·할인·증정 혜택의 조건은 각각 다르며 품절·조기 종료 가능성이 있습니다."
+      ],
+      "publicationStatus": "verified",
+      "lifecycleStatus": null,
+      "verifiedAt": "2026-10-24T10:49:03+09:00",
+      "evidence": [
+        {
+          "url": "https://www.mhmall.co.kr/shop/plan.html?plan_id=789",
+          "publisher": "모던하우스",
+          "summary": "공식 기획전 배너의 10.19–10.25 기간 확인",
+          "verifiedAt": "2026-10-24T10:49:03+09:00",
+          "fields": [
+            "title",
+            "eventStart",
+            "eventEnd",
+            "conditions"
+          ]
+        }
+      ],
+      "sectorIds": [
+        "life",
+        "kitchen",
+        "furniture"
+      ],
+      "legacyId": "modernhouse-birthday-202610",
+      "contentHash": "7937ee6dfe6b3f4ec9b3191b5cf4c7a3ef1cf1ffefaf1885c7ee990ce493412a",
+      "siteUrl": "/tools/parenting-deals/#sale-modernhouse-birthday-202610"
+    },
+    {
+      "id": "sale-hanssem-festa-202609",
+      "categoryIds": [
+        "brand-sales"
+      ],
+      "title": "한샘 · 하반기 쌤페스타",
+      "providerId": "legacy-brand-hanssem",
+      "canonicalUrl": "https://store.hanssem.com/plan/19811?componentId=15523",
+      "region": "전국",
+      "location": "온라인·매장별 조건 확인",
+      "audience": "대상 품목·회원 조건 확인",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-09-28",
+      "eventEnd": "2026-10-26",
+      "scheduleNote": "공식 기획전 본 행사 기준 · 사전 알림·설치 기한과 구분",
+      "endExclusive": false,
+      "endInclusiveMinute": false,
+      "feeStatus": "unknown",
+      "feeText": "품목별 가격과 할인 조건 확인",
+      "summary": "가구·인테리어·생활용품을 모아 진행하는 한샘의 하반기 대표 할인 행사입니다.",
+      "conditions": [
+        "매장 전용 혜택과 한샘몰·앱 쿠폰의 적용 대상은 다릅니다. 모든 품목에 같은 할인율을 적용하지 않습니다.",
+        "회원·쿠폰 발급·최소 구매금액과 대상 상품 조건을 공식 공지에서 확인하세요.",
+        "인테리어 패키지는 행사 중 상담·계약 외에 별도 설치 완료 기한과 최소 금액 조건이 있습니다."
+      ],
+      "publicationStatus": "verified",
+      "lifecycleStatus": null,
+      "verifiedAt": "2026-10-24T10:49:03+09:00",
+      "evidence": [
+        {
+          "url": "https://store.hanssem.com/plan/19811?componentId=15523",
+          "publisher": "한샘",
+          "summary": "공식 기획전 본 행사 기준 · 사전 알림·설치 기한과 구분",
+          "verifiedAt": "2026-10-24T10:49:03+09:00",
+          "fields": [
+            "title",
+            "eventStart",
+            "eventEnd",
+            "conditions"
+          ]
+        }
+      ],
+      "sectorIds": [
+        "furniture"
+      ],
+      "legacyId": "hanssem-festa-202609",
+      "contentHash": "2a50294954d2c620fb39e0d41d021a938f5d23a56b4b956457f4d7502661bea9",
+      "siteUrl": "/tools/parenting-deals/#sale-hanssem-festa-202609"
+    },
+    {
+      "id": "sale-emart-weekly-20261022",
+      "categoryIds": [
+        "brand-sales"
+      ],
+      "title": "이마트 · 금주의 먹거리 전단 행사",
+      "providerId": "legacy-brand-emart",
+      "canonicalUrl": "https://store.emart.com/news/leaflet.do?division=2",
+      "region": "전국",
+      "location": "온라인·매장별 조건 확인",
+      "audience": "대상 품목·회원 조건 확인",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-10-22",
+      "eventEnd": "2026-10-29",
+      "scheduleNote": "공식 금주 전단의 공통 기간 · 품목별 세부 일정 별도",
+      "endExclusive": false,
+      "endInclusiveMinute": false,
+      "feeStatus": "unknown",
+      "feeText": "품목별 가격과 할인 조건 확인",
+      "summary": "이마트 공식 전단에 안내된 이번 주 신선·가공식품 행사입니다. 품목별 할인과 적립 조건을 확인하세요.",
+      "conditions": [
+        "참여 점포·휴점일·대상 품목에 따라 적용 여부가 다릅니다. 방문 점포의 전단을 확인하세요.",
+        "일부 혜택은 신세계포인트 적립이나 특정 카드 전액 결제 조건이 있습니다. 적립금은 즉시 할인과 다릅니다.",
+        "전단 안의 하루 특가·한우데이·사전예약은 별도 기간입니다. 10월 29일 이후 종료일 미정 안내를 이 행사에 포함하지 않았습니다."
+      ],
+      "publicationStatus": "verified",
+      "lifecycleStatus": null,
+      "verifiedAt": "2026-10-24T10:49:03+09:00",
+      "evidence": [
+        {
+          "url": "https://store.emart.com/news/leaflet.do?division=2",
+          "publisher": "이마트",
+          "summary": "공식 금주 전단의 공통 기간 · 품목별 세부 일정 별도",
+          "verifiedAt": "2026-10-24T10:49:03+09:00",
+          "fields": [
+            "title",
+            "eventStart",
+            "eventEnd",
+            "conditions"
+          ]
+        }
+      ],
+      "sectorIds": [
+        "life"
+      ],
+      "legacyId": "emart-weekly-20261022",
+      "contentHash": "3a3b90e13cf8a9ecf929191e45bba802b107390813a0ae57c0347b66be00c878",
+      "siteUrl": "/tools/parenting-deals/#sale-emart-weekly-20261022"
+    },
+    {
+      "id": "sale-kurly-living-week-202610",
+      "categoryIds": [
+        "brand-sales"
+      ],
+      "title": "컬리 · 10월 리빙위크",
+      "providerId": "legacy-brand-kurly",
+      "canonicalUrl": "https://event.kurly.com/lego/event/2026/1019/livingfair",
+      "region": "전국",
+      "location": "온라인",
+      "audience": "대상 품목·회원 조건 확인",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-10-19T11:00:00+09:00",
+      "eventEnd": "2026-10-26T11:00:00+09:00",
+      "scheduleNote": "공식 행사 쿠폰 기간 · 10/19 11:00부터 10/26 11:00 전까지",
+      "endExclusive": true,
+      "endInclusiveMinute": false,
+      "feeStatus": "unknown",
+      "feeText": "품목별 가격과 할인 조건 확인",
+      "summary": "컬리의 리빙·생필품을 모은 기간 한정 기획전입니다. 참여 상품의 행사 쿠폰과 별도 타임특가 조건을 확인하세요.",
+      "conditions": [
+        "달력은 공식 유의사항에 명시된 행사 쿠폰 사용 기간을 표시합니다. 7일 한정 특가 등 개별 코너의 기간은 별도 확인하세요.",
+        "쿠폰은 ID당 1회 사용, 대상 상품·최소 구매 등 각 쿠폰 조건을 충족해야 적용됩니다.",
+        "일부 브랜드·카테고리가 제외되며, 뷰티·의류·주얼리 등 패션 카테고리는 행사 쿠폰 대상이 아닙니다.",
+        "행사는 중단·변동될 수 있으며 내려받은 쿠폰도 혜택이 제한될 수 있습니다."
+      ],
+      "publicationStatus": "verified",
+      "lifecycleStatus": null,
+      "verifiedAt": "2026-10-24T10:52:23+09:00",
+      "evidence": [
+        {
+          "url": "https://event.kurly.com/lego/event/2026/1019/livingfair",
+          "publisher": "컬리",
+          "summary": "공식 행사 쿠폰 기간 · 10/19 11:00부터 10/26 11:00 전까지",
+          "verifiedAt": "2026-10-24T10:52:23+09:00",
+          "fields": [
+            "title",
+            "eventStart",
+            "eventEnd",
+            "conditions"
+          ]
+        }
+      ],
+      "sectorIds": [
+        "life",
+        "kitchen",
+        "furniture"
+      ],
+      "legacyId": "kurly-living-week-202610",
+      "contentHash": "9deb95292e226e4199739addb382160a5a8eb4df1b9662fa9fc98c5ab7455f1f",
+      "siteUrl": "/tools/parenting-deals/#sale-kurly-living-week-202610"
+    },
+    {
+      "id": "sale-musinsa-standard-ifc-super-sale-202610",
+      "categoryIds": [
+        "brand-sales"
+      ],
+      "title": "무신사 · 스탠다드 슈퍼세일 · IFC몰",
+      "providerId": "legacy-brand-musinsa",
+      "canonicalUrl": "https://www.ifcmallseoul.com/kr/now/view/20000001075",
+      "region": "전국",
+      "location": "온라인·매장별 조건 확인",
+      "audience": "대상 품목·회원 조건 확인",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-10-23",
+      "eventEnd": "2026-11-01",
+      "scheduleNote": "IFC몰 공식 매장 행사 기간 · 여의도 IFC몰 L2 매장 기준",
+      "endExclusive": false,
+      "endInclusiveMinute": false,
+      "feeStatus": "unknown",
+      "feeText": "품목별 가격과 할인 조건 확인",
+      "summary": "IFC몰 L2 무신사 스탠다드 매장의 의류 세일입니다. 하루특가와 기간특가, 구매 조건별 혜택을 나눠 확인하세요.",
+      "conditions": [
+        "IFC몰 공식 매장 공지를 근거로 한 일정이며, 해당 매장 기준입니다. 다른 매장·온라인몰의 동일 조건을 뜻하지 않습니다.",
+        "하루특가와 기간특가의 대상 상품·할인율은 다릅니다. 당일 가격과 재고를 매장에서 확인하세요.",
+        "구매금액 할인·리뷰 적립·사은품의 세부 조건과 종료 여부를 해당 매장에서 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "lifecycleStatus": null,
+      "verifiedAt": "2026-10-25T14:10:44+09:00",
+      "evidence": [
+        {
+          "url": "https://www.ifcmallseoul.com/kr/now/view/20000001075",
+          "publisher": "무신사",
+          "summary": "IFC몰 공식 매장 행사 기간 · 여의도 IFC몰 L2 매장 기준",
+          "verifiedAt": "2026-10-25T14:10:44+09:00",
+          "fields": [
+            "title",
+            "eventStart",
+            "eventEnd",
+            "conditions"
+          ]
+        }
+      ],
+      "sectorIds": [
+        "fashion"
+      ],
+      "legacyId": "musinsa-standard-ifc-super-sale-202610",
+      "contentHash": "1612ca0d3758801ca0589466ffefa04b0e75a80221e27a93b27ec397495b3cf9",
+      "siteUrl": "/tools/parenting-deals/#sale-musinsa-standard-ifc-super-sale-202610"
+    },
+    {
+      "id": "sale-musinsa-winter-new-week-202610",
+      "categoryIds": [
+        "brand-sales"
+      ],
+      "title": "무신사 · 26 겨울 신상 위크 · 오프라인",
+      "providerId": "legacy-brand-musinsa",
+      "canonicalUrl": "https://www.musinsa.com/content/1561894598894510593",
+      "region": "전국",
+      "location": "온라인·매장별 조건 확인",
+      "audience": "대상 품목·회원 조건 확인",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-10-26",
+      "eventEnd": "2026-11-15",
+      "scheduleNote": "무신사 공식 콘텐츠의 오프라인 행사 기간 · 세부 코너별 일정 별도",
+      "endExclusive": false,
+      "endInclusiveMinute": false,
+      "feeStatus": "unknown",
+      "feeText": "품목별 가격과 할인 조건 확인",
+      "summary": "참여 오프라인 매장의 겨울 신상 행사입니다. 브랜드별 추가 할인과 매장용 쿠폰을 살펴보세요.",
+      "conditions": [
+        "공식 공지에 나온 참여 매장에서 진행합니다. 참여 브랜드·상품과 추가 할인율은 매장별로 다릅니다.",
+        "브랜드 포커스 1차는 10/26~11/4, 2차는 11/5~11/15로 나뉘며 참여 브랜드가 달라집니다.",
+        "아우터·장바구니 쿠폰은 무신사 앱의 오프라인 쿠폰과 최소 구매금액·할인 한도를 확인하세요. 일부 품목은 제외됩니다.",
+        "사은품은 한정 수량이며 소진 시 조기 종료될 수 있습니다."
+      ],
+      "publicationStatus": "verified",
+      "lifecycleStatus": null,
+      "verifiedAt": "2026-10-25T14:10:44+09:00",
+      "evidence": [
+        {
+          "url": "https://www.musinsa.com/content/1561894598894510593",
+          "publisher": "무신사",
+          "summary": "무신사 공식 콘텐츠의 오프라인 행사 기간 · 세부 코너별 일정 별도",
+          "verifiedAt": "2026-10-25T14:10:44+09:00",
+          "fields": [
+            "title",
+            "eventStart",
+            "eventEnd",
+            "conditions"
+          ]
+        }
+      ],
+      "sectorIds": [
+        "fashion"
+      ],
+      "legacyId": "musinsa-winter-new-week-202610",
+      "contentHash": "805dd69de26f3e2526391da8d0293c023501b184e3dd33b03990b3648062e0b9",
+      "siteUrl": "/tools/parenting-deals/#sale-musinsa-winter-new-week-202610"
+    },
+    {
+      "id": "sale-amoremall-mamonde-big-sale-202610",
+      "categoryIds": [
+        "brand-sales"
+      ],
+      "title": "아모레몰 · 마몽드 빅 세일",
+      "providerId": "legacy-brand-amoremall",
+      "canonicalUrl": "https://www.amoremall.com/kr/ko/display/event_detail?planDisplaySn=15135",
+      "region": "전국",
+      "location": "온라인",
+      "audience": "대상 품목·회원 조건 확인",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-10-19",
+      "eventEnd": "2026-10-25",
+      "scheduleNote": "아모레몰 공식 이벤트 목록의 행사 기간 · 상품·사은품 조건 별도",
+      "endExclusive": false,
+      "endInclusiveMinute": false,
+      "feeStatus": "unknown",
+      "feeText": "품목별 가격과 할인 조건 확인",
+      "summary": "아모레몰의 마몽드 기간 한정 행사입니다. 스킨케어·클렌징 등 행사 상품별 할인과 구성 조건을 확인하세요.",
+      "conditions": [
+        "기간은 아모레몰 공식 이벤트 목록, 세부 조건은 마몽드 행사 상세에서 확인했습니다.",
+        "행사 대상 상품별 할인율·증정 구성이 다릅니다. 표시된 최대 할인율이 모든 상품에 적용되는 것은 아닙니다.",
+        "일부 사은품은 뷰티포인트 전액 결제나 비회원 Npay 구매 시 제외되며, 내부 사정이나 재고에 따라 조기 종료될 수 있습니다."
+      ],
+      "publicationStatus": "verified",
+      "lifecycleStatus": null,
+      "verifiedAt": "2026-10-25T14:10:44+09:00",
+      "evidence": [
+        {
+          "url": "https://www.amoremall.com/kr/ko/display/event",
+          "publisher": "아모레몰",
+          "summary": "아모레몰 공식 이벤트 목록의 행사 기간 · 상품·사은품 조건 별도",
+          "verifiedAt": "2026-10-25T14:10:44+09:00",
+          "fields": [
+            "title",
+            "eventStart",
+            "eventEnd",
+            "conditions"
+          ]
+        }
+      ],
+      "sectorIds": [
+        "beauty"
+      ],
+      "legacyId": "amoremall-mamonde-big-sale-202610",
+      "contentHash": "b13a51aee9949b517b1e37b9cfeda094765d095820a701d34534af71940a28fd",
+      "siteUrl": "/tools/parenting-deals/#sale-amoremall-mamonde-big-sale-202610"
+    }
+  ],
+  "siteRevision": "9548bd54a7859e769b5d2024a87c45337abe3de5",
+  "generatedAt": "2026-10-25T10:59:15.502Z",
+  "window": {
+    "start": "2026-10-25",
+    "end": "2026-12-24"
+  },
+  "deployment": {
+    "status": "verify-live-snapshot",
+    "lastConfirmedAt": null
+  }
+}

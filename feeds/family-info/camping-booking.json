@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "snapshotId": "a5fb9eebbe4c79fbbb90fe20",
+  "timezone": "Asia/Seoul",
+  "categories": [
+    {
+      "id": "camping-booking",
+      "name": "공공 캠핑장·휴양림",
+      "shortName": "캠핑·휴양림",
+      "description": "일반예약·추첨·우선예약을 구분해 다음 나들이를 준비해요.",
+      "day": 1,
+      "hour": 8,
+      "blogDay": 3,
+      "split": "region",
+      "href": "/tools/camping-booking/",
+      "accent": "green",
+      "categoryRevision": "08af35df13d94174",
+      "lastVerifiedAt": "2026-10-25",
+      "lastCollectedAt": "2026-10-25",
+      "lastDeployedAt": null,
+      "outcome": "partial-review",
+      "verifiedCount": 1,
+      "currentCount": 1,
+      "failures": []
+    }
+  ],
+  "providers": [
+    {
+      "id": "gyeonggi-share",
+      "name": "경기공유서비스",
+      "url": "https://share.gg.go.kr/",
+      "categoryIds": [
+        "kids-programs",
+        "camping-booking"
+      ],
+      "regions": [
+        "경기"
+      ],
+      "lastSuccessAt": null
+    },
+    {
+      "id": "foresttrip",
+      "name": "숲나들e",
+      "url": "https://www.foresttrip.go.kr/",
+      "categoryIds": [
+        "camping-booking"
+      ],
+      "regions": [
+        "전국"
+      ],
+      "lastSuccessAt": "2026-10-25"
+    }
+  ],
+  "records": [
+    {
+      "id": "national-forest-weekend-draw-202611",
+      "categoryIds": [
+        "camping-booking"
+      ],
+      "title": "국립자연휴양림 12월 주말 추첨 · 11월 접수",
+      "providerId": "foresttrip",
+      "canonicalUrl": "https://foresttrip.go.kr/pot/cc/fa/selectFaqBbrssListView.do?bbrssMsterId=BBRSSMSTER_00000002&hmpgId=FRIP&nowPage=1&srwrd=%EC%98%88%EC%95%BD",
+      "region": "전국",
+      "location": "국립자연휴양림 48개소 · 개별 시설 확인",
+      "audience": "숲나들e 예약 이용자 · 개별 휴양림의 이용 자격 확인",
+      "ageGroups": [],
+      "applicationStart": "2026-11-04T09:00:00+09:00",
+      "applicationEnd": "2026-11-09T18:00:00+09:00",
+      "eventStart": null,
+      "eventEnd": null,
+      "feeStatus": "unknown",
+      "feeText": "시설·객실·인원별 이용요금은 각 휴양림에서 확인",
+      "summary": "2026년 공식 예약 정책의 매월 4~9일 익월 주말 추첨 접수 규칙을 11월 신청 일정으로 정리했습니다.",
+      "conditions": [
+        "국립 48개 휴양림의 비수기 주말 추첨 정책입니다. 공립·사립 휴양림의 일정에 적용하지 마세요.",
+        "공식 정책은 매월 4일 09시~9일 18시 익월분 접수, 10일 16시 추첨 발표로 안내합니다.",
+        "우선예약·성수기·개별 시설 공지와 실제 예약 가능일은 별도 확인이 필요합니다. 예약 성공과 잔여 객실을 보장하지 않습니다."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-25",
+      "evidence": [
+        {
+          "url": "https://foresttrip.go.kr/pot/cc/fa/selectFaqBbrssListView.do?bbrssMsterId=BBRSSMSTER_00000002&hmpgId=FRIP&nowPage=1&srwrd=%EC%98%88%EC%95%BD",
+          "publisher": "숲나들e · 국립자연휴양림관리소",
+          "summary": "국립 48개 시설 대상 2026년 FAQ의 매월 4~9일 09~18시 익월 주말 접수 규칙으로 산출한 11월 신청기간입니다. 개별 시설 이용일·요금은 확정하지 않았습니다.",
+          "verifiedAt": "2026-10-25",
+          "fields": [
+            "title",
+            "audience",
+            "applicationStart",
+            "applicationEnd",
+            "conditions"
+          ]
+        }
+      ],
+      "contentHash": "62a41b82e77b836a6d6dc447118e5e815f1a48a6457f65d148946118988b4832",
+      "siteUrl": "/tools/camping-booking/#national-forest-weekend-draw-202611"
+    }
+  ],
+  "siteRevision": "9548bd54a7859e769b5d2024a87c45337abe3de5",
+  "generatedAt": "2026-10-25T10:59:15.502Z",
+  "window": {
+    "start": "2026-10-25",
+    "end": "2026-12-24"
+  },
+  "deployment": {
+    "status": "verify-live-snapshot",
+    "lastConfirmedAt": null
+  }
+}
