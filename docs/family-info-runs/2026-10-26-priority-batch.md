@@ -42,4 +42,6 @@
 
 1차 축제·세일: GitHub main `ff3a41b4ed84cbbe9cc1bd83d6a3ebed916a1561` 반영, [Cloudflare 빌드 성공](https://github.com/KDH-codex/simulab/runs/121392844434)(2026-10-26T04:07:48Z). 운영8개 페이지와 피드를2026-10-26T04:08:47.898Z 대조하여 snapshotId `77040c9b88d8e46bce1de24c`, siteRevision 동일 커밋을 확인했다.
 
-나머지6개 분야는 로컬 검증을 통과했고 운영 배포 확인을 진행한다. 최종 GitHub·Cloudflare·운영 검증 영수증은 확인 후 기록한다.
+나머지6개 분야: GitHub main `a7604874dccf4c5f82ef0f350b2960859c9bdfe8` 반영. [Cloudflare 빌드 성공](https://github.com/KDH-codex/simulab/runs/121563661530)(2026-10-26T12:09:54Z, build `14a2d552-cb74-4f3a-8d44-bf1947d3169f`). `node scripts/verify-family-deployment.mjs`로2026-10-26T12:10:29.619Z에 운영8개 페이지·피드의 snapshotId `c0a044e253b8012893aad804`, siteRevision `a7604874dccf4c5f82ef0f350b2960859c9bdfe8` 일치를 확인했다. 운영 브라우저의9개 분야별 공개 건수도 표와 일치하며 화면 증빙은 `scratch/today-update/family-info-production.png`에 저장했다.
+
+최소 조사와 공개 목표의 부족분은9개 분야 모두0건이다. 접근 실패·상충·종료 자료는 내부 조사 기록에 남기고 공개하지 않았다. 일부 공급자 실패가 남은 분야의 `partial-review` 상태는 유지하며 모든 출처 수집 성공으로 바꾸지 않았다. 이 배포 기록을 추가하는 후속 문서 커밋은 같은 콘텐츠 스냅샷을 유지한다.

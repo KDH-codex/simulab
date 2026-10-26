@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "timezone": "Asia/Seoul",
-  "updatedAt": "2026-10-26T12:08:07.445Z",
+  "updatedAt": "2026-10-26T12:11:26.530Z",
   "execution": "local-codex-official-source-review",
   "siteAutomations": [
     {
@@ -111,17 +111,18 @@
     "duplicateOldCombinedJob": false
   },
   "deployment": {
-    "commit": "5f095b077e652c3d1d745856b4001c6682d5753c",
-    "snapshotId": "e9afbb7bca78d9e67503fe08",
-    "siteRevision": "5f095b077e652c3d1d745856b4001c6682d5753c",
-    "verifiedAt": "2026-10-25T23:24:38.183Z",
-    "url": "https://simulab.kr/tools/camping-booking/",
-    "pagesVerified": 8,
     "github": "pushed-to-main",
-    "cloudflare": "build-success-and-production-verified",
-    "cloudflareCheckUrl": "https://github.com/KDH-codex/simulab/runs/121323424917",
-    "cloudflareBuildId": "448edb2f-80d4-4bc4-8ffe-d13f043ad1ed",
-    "newVerifiedRecords": 11,
+    "contentCommit": "a7604874dccf4c5f82ef0f350b2960859c9bdfe8",
+    "cloudflare": "success",
+    "cloudflareCheckUrl": "https://github.com/KDH-codex/simulab/runs/121563661530",
+    "cloudflareBuildId": "14a2d552-cb74-4f3a-8d44-bf1947d3169f",
+    "cloudflareCompletedAt": "2026-10-26T12:09:54Z",
+    "production": "verified",
+    "snapshotId": "c0a044e253b8012893aad804",
+    "siteRevision": "a7604874dccf4c5f82ef0f350b2960859c9bdfe8",
+    "verifiedAt": "2026-10-26T12:10:29.619Z",
+    "pagesVerified": 8,
+    "url": "https://simulab.kr/tools/family-info-calendar/",
     "testsPassed": 103
   },
   "limitations": [
@@ -310,9 +311,17 @@
         "horizontalOverflow": false
       },
       "deployment": {
-        "github": "pending",
-        "cloudflare": "pending",
-        "production": "pending"
+        "github": "pushed-to-main",
+        "contentCommit": "a7604874dccf4c5f82ef0f350b2960859c9bdfe8",
+        "cloudflare": "success",
+        "cloudflareCheckUrl": "https://github.com/KDH-codex/simulab/runs/121563661530",
+        "cloudflareBuildId": "14a2d552-cb74-4f3a-8d44-bf1947d3169f",
+        "cloudflareCompletedAt": "2026-10-26T12:09:54Z",
+        "production": "verified",
+        "snapshotId": "c0a044e253b8012893aad804",
+        "siteRevision": "a7604874dccf4c5f82ef0f350b2960859c9bdfe8",
+        "verifiedAt": "2026-10-26T12:10:29.619Z",
+        "pagesVerified": 8
       }
     },
     "brand-sales": {
@@ -342,9 +351,17 @@
         "horizontalOverflow": false
       },
       "deployment": {
-        "github": "pending",
-        "cloudflare": "pending",
-        "production": "pending"
+        "github": "pushed-to-main",
+        "contentCommit": "a7604874dccf4c5f82ef0f350b2960859c9bdfe8",
+        "cloudflare": "success",
+        "cloudflareCheckUrl": "https://github.com/KDH-codex/simulab/runs/121563661530",
+        "cloudflareBuildId": "14a2d552-cb74-4f3a-8d44-bf1947d3169f",
+        "cloudflareCompletedAt": "2026-10-26T12:09:54Z",
+        "production": "verified",
+        "snapshotId": "c0a044e253b8012893aad804",
+        "siteRevision": "a7604874dccf4c5f82ef0f350b2960859c9bdfe8",
+        "verifiedAt": "2026-10-26T12:10:29.619Z",
+        "pagesVerified": 8
       }
     },
     "kids-popups": {
@@ -374,9 +391,17 @@
         "horizontalOverflow": false
       },
       "deployment": {
-        "github": "pending",
-        "cloudflare": "pending",
-        "production": "pending"
+        "github": "pushed-to-main",
+        "contentCommit": "a7604874dccf4c5f82ef0f350b2960859c9bdfe8",
+        "cloudflare": "success",
+        "cloudflareCheckUrl": "https://github.com/KDH-codex/simulab/runs/121563661530",
+        "cloudflareBuildId": "14a2d552-cb74-4f3a-8d44-bf1947d3169f",
+        "cloudflareCompletedAt": "2026-10-26T12:09:54Z",
+        "production": "verified",
+        "snapshotId": "c0a044e253b8012893aad804",
+        "siteRevision": "a7604874dccf4c5f82ef0f350b2960859c9bdfe8",
+        "verifiedAt": "2026-10-26T12:10:29.619Z",
+        "pagesVerified": 8
       }
     },
     "local-parenting": {
@@ -406,9 +431,17 @@
         "horizontalOverflow": false
       },
       "deployment": {
-        "github": "pending",
-        "cloudflare": "pending",
-        "production": "pending"
+        "github": "pushed-to-main",
+        "contentCommit": "a7604874dccf4c5f82ef0f350b2960859c9bdfe8",
+        "cloudflare": "success",
+        "cloudflareCheckUrl": "https://github.com/KDH-codex/simulab/runs/121563661530",
+        "cloudflareBuildId": "14a2d552-cb74-4f3a-8d44-bf1947d3169f",
+        "cloudflareCompletedAt": "2026-10-26T12:09:54Z",
+        "production": "verified",
+        "snapshotId": "c0a044e253b8012893aad804",
+        "siteRevision": "a7604874dccf4c5f82ef0f350b2960859c9bdfe8",
+        "verifiedAt": "2026-10-26T12:10:29.619Z",
+        "pagesVerified": 8
       }
     },
     "kids-programs": {
@@ -438,9 +471,17 @@
         "horizontalOverflow": false
       },
       "deployment": {
-        "github": "pending",
-        "cloudflare": "pending",
-        "production": "pending"
+        "github": "pushed-to-main",
+        "contentCommit": "a7604874dccf4c5f82ef0f350b2960859c9bdfe8",
+        "cloudflare": "success",
+        "cloudflareCheckUrl": "https://github.com/KDH-codex/simulab/runs/121563661530",
+        "cloudflareBuildId": "14a2d552-cb74-4f3a-8d44-bf1947d3169f",
+        "cloudflareCompletedAt": "2026-10-26T12:09:54Z",
+        "production": "verified",
+        "snapshotId": "c0a044e253b8012893aad804",
+        "siteRevision": "a7604874dccf4c5f82ef0f350b2960859c9bdfe8",
+        "verifiedAt": "2026-10-26T12:10:29.619Z",
+        "pagesVerified": 8
       }
     },
     "family-support": {
@@ -470,9 +511,17 @@
         "horizontalOverflow": false
       },
       "deployment": {
-        "github": "pending",
-        "cloudflare": "pending",
-        "production": "pending"
+        "github": "pushed-to-main",
+        "contentCommit": "a7604874dccf4c5f82ef0f350b2960859c9bdfe8",
+        "cloudflare": "success",
+        "cloudflareCheckUrl": "https://github.com/KDH-codex/simulab/runs/121563661530",
+        "cloudflareBuildId": "14a2d552-cb74-4f3a-8d44-bf1947d3169f",
+        "cloudflareCompletedAt": "2026-10-26T12:09:54Z",
+        "production": "verified",
+        "snapshotId": "c0a044e253b8012893aad804",
+        "siteRevision": "a7604874dccf4c5f82ef0f350b2960859c9bdfe8",
+        "verifiedAt": "2026-10-26T12:10:29.619Z",
+        "pagesVerified": 8
       }
     },
     "family-culture": {
@@ -502,9 +551,17 @@
         "horizontalOverflow": false
       },
       "deployment": {
-        "github": "pending",
-        "cloudflare": "pending",
-        "production": "pending"
+        "github": "pushed-to-main",
+        "contentCommit": "a7604874dccf4c5f82ef0f350b2960859c9bdfe8",
+        "cloudflare": "success",
+        "cloudflareCheckUrl": "https://github.com/KDH-codex/simulab/runs/121563661530",
+        "cloudflareBuildId": "14a2d552-cb74-4f3a-8d44-bf1947d3169f",
+        "cloudflareCompletedAt": "2026-10-26T12:09:54Z",
+        "production": "verified",
+        "snapshotId": "c0a044e253b8012893aad804",
+        "siteRevision": "a7604874dccf4c5f82ef0f350b2960859c9bdfe8",
+        "verifiedAt": "2026-10-26T12:10:29.619Z",
+        "pagesVerified": 8
       }
     },
     "family-discounts": {
@@ -534,9 +591,17 @@
         "horizontalOverflow": false
       },
       "deployment": {
-        "github": "pending",
-        "cloudflare": "pending",
-        "production": "pending"
+        "github": "pushed-to-main",
+        "contentCommit": "a7604874dccf4c5f82ef0f350b2960859c9bdfe8",
+        "cloudflare": "success",
+        "cloudflareCheckUrl": "https://github.com/KDH-codex/simulab/runs/121563661530",
+        "cloudflareBuildId": "14a2d552-cb74-4f3a-8d44-bf1947d3169f",
+        "cloudflareCompletedAt": "2026-10-26T12:09:54Z",
+        "production": "verified",
+        "snapshotId": "c0a044e253b8012893aad804",
+        "siteRevision": "a7604874dccf4c5f82ef0f350b2960859c9bdfe8",
+        "verifiedAt": "2026-10-26T12:10:29.619Z",
+        "pagesVerified": 8
       }
     }
   },
@@ -544,7 +609,7 @@
   "manualPriorityBatch": {
     "runId": "manual-all-20261026",
     "date": "2026-10-26",
-    "status": "validated-awaiting-deployment",
+    "status": "production-verified",
     "priority": [
       "festivals",
       "brand-sales",
@@ -753,6 +818,21 @@
       "siteRevision": "ff3a41b4ed84cbbe9cc1bd83d6a3ebed916a1561",
       "verifiedAt": "2026-10-26T04:08:47.898Z",
       "pagesVerified": 8
-    }
+    },
+    "completedAt": "2026-10-26T12:10:29.619Z",
+    "deployment": {
+      "github": "pushed-to-main",
+      "contentCommit": "a7604874dccf4c5f82ef0f350b2960859c9bdfe8",
+      "cloudflare": "success",
+      "cloudflareCheckUrl": "https://github.com/KDH-codex/simulab/runs/121563661530",
+      "cloudflareBuildId": "14a2d552-cb74-4f3a-8d44-bf1947d3169f",
+      "cloudflareCompletedAt": "2026-10-26T12:09:54Z",
+      "production": "verified",
+      "snapshotId": "c0a044e253b8012893aad804",
+      "siteRevision": "a7604874dccf4c5f82ef0f350b2960859c9bdfe8",
+      "verifiedAt": "2026-10-26T12:10:29.619Z",
+      "pagesVerified": 8
+    },
+    "proof": "scratch/today-update/family-info-production.png"
   }
 }
