@@ -6,7 +6,7 @@ import {fromTourAPI,fromStandard,parseCSV,prepareCandidates,normalizeRegion} fro
 import {collectTourAPI} from '../scripts/events/tourapi.mjs';
 const window={start:'2026-10-23',end:'2026-12-22'},stamp='2026-10-23T00:00:00Z';
 test('all 17 search regions have actual reviewed records, and missing regions are never fabricated',()=>{
- const coverage=coverageForRange(FESTIVALS,window.start,window.end,window.start);
+ const coverage=coverageForRange(FESTIVALS,window.start,window.end,'2026-10-26',{includeEnded:true});
  assert.equal(coverage.length,17);assert.ok(coverage.every(row=>row.count>0));
  const empty=coverageForRange([],window.start,window.end,window.start);assert.ok(empty.every(row=>row.count===0&&row.upcomingCount===0&&row.nextDate===null));
  const historical=coverageForRange(FESTIVALS,'2026-10-24','2026-10-25','2027-01-01',{includeEnded:true});

@@ -217,13 +217,14 @@
       "conditions": [
         "IKEA Family 또는 IKEA Business Network 멤버 대상입니다.",
         "전 매장·팝업스토어·공식 웹사이트·앱 안내이며 할인 태그가 있는 일부 제품에 한정됩니다.",
-        "재고 소진 시 구매가 어려울 수 있고 조립·배송 서비스 비용은 할인 대상에서 제외됩니다."
+        "재고 소진 시 구매가 어려울 수 있고 조립·배송 서비스 비용은 할인 대상에서 제외됩니다.",
+        "10/25~27 마지막3일의 온라인 한정 추가5% 안내를 재확인했습니다. 기본 회원10%할인과 적용 채널이 다르며, 단순 합산15%로 표시하지 않습니다."
       ],
       "periodNote": "공식 캠페인 유의사항의 행사 기간",
       "sourceUrl": "https://www.ikea.com/kr/ko/campaigns/storage-week-fy27-l2-pub47d55da0/",
       "publicationScope": "facts-summary",
       "periodSourceUrl": "https://www.ikea.com/kr/ko/campaigns/storage-week-fy27-l2-pub47d55da0/",
-      "checkedAt": "2026-10-24T02:01:14+09:00",
+      "checkedAt": "2026-10-26T12:50:41+09:00",
       "campaignKind": "limited-sale",
       "campaignScope": "category"
     },
@@ -398,7 +399,7 @@
       "publicationScope": "schedule-only",
       "campaignKind": "limited-sale",
       "campaignScope": "multi-category",
-      "checkedAt": "2026-10-24T10:49:03+09:00",
+      "checkedAt": "2026-10-26T12:50:41+09:00",
       "id": "hanssem-festa-202609",
       "brandId": "hanssem",
       "title": "하반기 쌤페스타",
@@ -430,7 +431,7 @@
       "publicationScope": "schedule-only",
       "campaignKind": "limited-sale",
       "campaignScope": "multi-category",
-      "checkedAt": "2026-10-24T10:49:03+09:00",
+      "checkedAt": "2026-10-26T12:50:41+09:00",
       "id": "emart-weekly-20261022",
       "brandId": "emart",
       "title": "금주의 먹거리 전단 행사",
@@ -498,7 +499,7 @@
       "publicationScope": "facts-summary",
       "campaignKind": "limited-sale",
       "campaignScope": "brand",
-      "checkedAt": "2026-10-25T14:10:44+09:00",
+      "checkedAt": "2026-10-26T12:50:41+09:00",
       "id": "musinsa-standard-ifc-super-sale-202610",
       "brandId": "musinsa",
       "title": "스탠다드 슈퍼세일 · IFC몰",
@@ -529,7 +530,7 @@
       "publicationScope": "facts-summary",
       "campaignKind": "limited-sale",
       "campaignScope": "brand",
-      "checkedAt": "2026-10-25T14:10:44+09:00",
+      "checkedAt": "2026-10-26T12:50:41+09:00",
       "id": "musinsa-winter-new-week-202610",
       "brandId": "musinsa",
       "title": "26 겨울 신상 위크 · 오프라인",
@@ -548,7 +549,8 @@
         "공식 공지에 나온 참여 매장에서 진행합니다. 참여 브랜드·상품과 추가 할인율은 매장별로 다릅니다.",
         "브랜드 포커스 1차는 10/26~11/4, 2차는 11/5~11/15로 나뉘며 참여 브랜드가 달라집니다.",
         "아우터·장바구니 쿠폰은 무신사 앱의 오프라인 쿠폰과 최소 구매금액·할인 한도를 확인하세요. 일부 품목은 제외됩니다.",
-        "사은품은 한정 수량이며 소진 시 조기 종료될 수 있습니다."
+        "사은품은 한정 수량이며 소진 시 조기 종료될 수 있습니다.",
+        "아우터15% 쿠폰은10만원 이상·최대18,000원, 장바구니 쿠폰은15만/20만/30만/40만원 구매별5/6/7/8%와 각 한도가 있습니다. 쿠폰별 중복·제외 품목은 앱에서 확인하세요."
       ],
       "periodNote": "무신사 공식 콘텐츠의 오프라인 행사 기간 · 세부 코너별 일정 별도",
       "sourceUrl": "https://www.musinsa.com/content/1561894598894510593",
@@ -583,6 +585,330 @@
       ],
       "periodNote": "아모레몰 공식 이벤트 목록의 행사 기간 · 상품·사은품 조건 별도",
       "sourceUrl": "https://www.amoremall.com/kr/ko/display/event_detail?planDisplaySn=15135",
+      "periodSourceUrl": "https://www.amoremall.com/kr/ko/display/event"
+    },
+    {
+      "placement": "calendar",
+      "publicationStatus": "reviewed",
+      "reviewWithinDays": 7,
+      "publicationScope": "facts-summary",
+      "campaignKind": "limited-sale",
+      "campaignScope": "multi-category",
+      "checkedAt": "2026-10-26T12:50:41+09:00",
+      "benefitType": "mixed",
+      "channels": [
+        "online"
+      ],
+      "id": "naver-nepda-202610",
+      "brandId": "naver-store",
+      "title": "넾다세일 · 하반기 쇼핑 축제",
+      "shortTitle": "넾다세일",
+      "categories": [
+        "life",
+        "fashion",
+        "beauty",
+        "kids",
+        "furniture",
+        "appliances",
+        "kitchen"
+      ],
+      "startDate": "2026-10-26",
+      "endDate": "2026-11-08",
+      "summary": "네이버플러스 스토어의 여러 상품군이 참여하는 기간 한정 쇼핑 행사입니다. 할인·쿠폰·적립은 각각의 적용 조건을 확인하세요.",
+      "conditions": [
+        "전체 행사기간은 10/26~11/8입니다. 10/26 가전·디지털, 10/27 키즈·육아 릴레이 등 날짜별 대상이 다릅니다.",
+        "5·7·10% 쿠폰과 최대7만원 할인은 쿠폰별 최소 구매금액·한도·대상 상품을 확인해야 하며 모든 상품에 같은 할인율이 적용되지 않습니다. 선착순 발급은 매일00·10·18시 안내입니다.",
+        "10/26 멤버십데이의20만원 이상 구매3% 추가 적립과 컬리N마트30% 쿠폰은 당일·회원·대상 조건이며 전체14일 혜택으로 표시하지 않습니다.",
+        "멤버십3개월 무료 이용권은 최근1개월 가입 이력이 없는 신규 가입자 대상 선착순이며 조기 종료될 수 있습니다. 가입 후 이용·해지 조건은 공식 신청 화면을 확인하세요.",
+        "할인과 포인트 적립·사은품은 별도 혜택입니다. 결제 전 적용 상품·제외 품목·쿠폰 중복·반품 시 혜택 회수 조건을 확인하세요."
+      ],
+      "periodNote": "네이버2026-10-26 공식 발표의 전체 행사기간 · 회차·쿠폰별 기간 별도",
+      "sourceUrl": "https://www.navercorp.com/media/pressReleasesDetail?seq=10034785",
+      "periodSourceUrl": "https://www.navercorp.com/media/pressReleasesDetail?seq=10034785"
+    },
+    {
+      "placement": "calendar",
+      "publicationStatus": "reviewed",
+      "reviewWithinDays": 7,
+      "publicationScope": "facts-summary",
+      "campaignKind": "limited-sale",
+      "campaignScope": "multi-category",
+      "checkedAt": "2026-10-26T12:50:41+09:00",
+      "benefitType": "mixed",
+      "channels": [
+        "online"
+      ],
+      "id": "11st-grand-202611",
+      "brandId": "11st",
+      "title": "2026 그랜드십일절",
+      "shortTitle": "그랜드십일절",
+      "categories": [
+        "life",
+        "fashion",
+        "beauty",
+        "kids",
+        "furniture",
+        "appliances",
+        "kitchen"
+      ],
+      "startDate": "2026-11-01",
+      "endDate": "2026-11-11",
+      "summary": "11번가가 예고한 연중 대표 쇼핑 행사입니다.10/26~31 사전 예약구매와11월 본행사를 구분해 살펴보세요.",
+      "conditions": [
+        "본행사 11/1~11과 사전 프로모션 10/26~31은 서로 다른 기간입니다.",
+        "사전 선착순1만원 장바구니 쿠폰은4만원 이상 구매·11/11사용 조건입니다. 무료11번가플러스 첫 가입자 또는 최근2개월 미구매 멤버십 회원 대상입니다.",
+        "타임딜·멤버십 한정 딜·라이브·경품의 대상과 사용기한은 각 코너에서 확인해야 합니다. 상품 가격·재고·쿠폰 중복 및 취소 시 회수 조건을 결제 전 확인하세요."
+      ],
+      "periodNote": "11번가10/21 공식 보도자료의11월 본행사 기간 · 사전행사 별도",
+      "sourceUrl": "https://m.11stcorp.com/pr/detail?contentId=1843",
+      "periodSourceUrl": "https://m.11stcorp.com/pr/detail?contentId=1843"
+    },
+    {
+      "placement": "calendar",
+      "publicationStatus": "reviewed",
+      "reviewWithinDays": 7,
+      "publicationScope": "facts-summary",
+      "campaignKind": "limited-sale",
+      "campaignScope": "category",
+      "checkedAt": "2026-10-26T12:50:41+09:00",
+      "benefitType": "mixed",
+      "channels": [
+        "online"
+      ],
+      "id": "amoremall-15178-202610",
+      "brandId": "amoremall",
+      "title": "아모레베이직 · 뷰티툴 최대37%",
+      "shortTitle": "아모레베이직",
+      "categories": [
+        "beauty"
+      ],
+      "startDate": "2026-10-26",
+      "endDate": "2026-11-01",
+      "summary": "브러시·뷰티소품·PB뷰티 등 여러 도구의 기간 한정 할인 행사입니다.",
+      "conditions": [
+        "표시된 최대37%는 대상 브러시 등 일부 품목 기준입니다. 상품별 할인과 실 결제금액 기준 구매 혜택을 확인하세요.",
+        "뷰티포인트 전액 결제 시 스페셜 사은품·기프트카드 증정에서 제외되며 비회원 Npay 구매는 스페셜 사은품 제외 안내가 있습니다.",
+        "교환·환불 시 사은품을 함께 반납해야 합니다. 재고 소진·내부 사정에 따라 조기 종료되거나 사은품이 대체될 수 있으므로 최종 주문 조건을 확인하세요."
+      ],
+      "periodNote": "아모레몰 공식 이벤트 목록의 기간 · 상세 기획전의 대상·유의사항 대조",
+      "sourceUrl": "https://www.amoremall.com/kr/ko/display/event_detail?planDisplaySn=15178",
+      "periodSourceUrl": "https://www.amoremall.com/kr/ko/display/event"
+    },
+    {
+      "placement": "calendar",
+      "publicationStatus": "reviewed",
+      "reviewWithinDays": 7,
+      "publicationScope": "facts-summary",
+      "campaignKind": "limited-sale",
+      "campaignScope": "brand",
+      "checkedAt": "2026-10-26T12:50:41+09:00",
+      "benefitType": "mixed",
+      "channels": [
+        "online"
+      ],
+      "id": "amoremall-15176-202610",
+      "brandId": "amoremall",
+      "title": "마몽드 · 환절기 집중 케어",
+      "shortTitle": "마몽드",
+      "categories": [
+        "beauty"
+      ],
+      "startDate": "2026-10-26",
+      "endDate": "2026-11-01",
+      "summary": "로즈·선케어·세라마이드·선물 세트 등 여러 라인을 모은 브랜드 행사입니다.",
+      "conditions": [
+        "로즈·선케어·세라마이드 등 라인별 할인과 구성·증정 수량을 확인하세요.",
+        "뷰티포인트 전액 결제 시 스페셜 사은품·기프트카드 증정에서 제외되며 비회원 Npay 구매는 스페셜 사은품 제외 안내가 있습니다.",
+        "교환·환불 시 사은품을 함께 반납해야 합니다. 재고 소진·내부 사정에 따라 조기 종료되거나 사은품이 대체될 수 있으므로 최종 주문 조건을 확인하세요."
+      ],
+      "periodNote": "아모레몰 공식 이벤트 목록의 기간 · 상세 기획전의 대상·유의사항 대조",
+      "sourceUrl": "https://www.amoremall.com/kr/ko/display/event_detail?planDisplaySn=15176",
+      "periodSourceUrl": "https://www.amoremall.com/kr/ko/display/event"
+    },
+    {
+      "placement": "calendar",
+      "publicationStatus": "reviewed",
+      "reviewWithinDays": 7,
+      "publicationScope": "facts-summary",
+      "campaignKind": "limited-sale",
+      "campaignScope": "brand",
+      "checkedAt": "2026-10-26T12:50:41+09:00",
+      "benefitType": "mixed",
+      "channels": [
+        "online"
+      ],
+      "id": "amoremall-15102-202610",
+      "brandId": "amoremall",
+      "title": "프리메라 · 클렌징·스킨케어 기획전",
+      "shortTitle": "프리메라",
+      "categories": [
+        "beauty"
+      ],
+      "startDate": "2026-10-26",
+      "endDate": "2026-11-01",
+      "summary": "클렌저·비타티놀·보습·선케어 등 여러 라인이 참여하는 브랜드 기획전입니다.",
+      "conditions": [
+        "클렌징·보습·선케어 등 품목별 할인율과 사은품 적용은 주문 단계에서 확인하세요.",
+        "뷰티포인트 전액 결제 시 스페셜 사은품·기프트카드 증정에서 제외되며 비회원 Npay 구매는 스페셜 사은품 제외 안내가 있습니다.",
+        "교환·환불 시 사은품을 함께 반납해야 합니다. 재고 소진·내부 사정에 따라 조기 종료되거나 사은품이 대체될 수 있으므로 최종 주문 조건을 확인하세요."
+      ],
+      "periodNote": "아모레몰 공식 이벤트 목록의 기간 · 상세 기획전의 대상·유의사항 대조",
+      "sourceUrl": "https://www.amoremall.com/kr/ko/display/event_detail?planDisplaySn=15102",
+      "periodSourceUrl": "https://www.amoremall.com/kr/ko/display/event"
+    },
+    {
+      "placement": "calendar",
+      "publicationStatus": "reviewed",
+      "reviewWithinDays": 7,
+      "publicationScope": "facts-summary",
+      "campaignKind": "limited-sale",
+      "campaignScope": "brand",
+      "checkedAt": "2026-10-26T12:50:41+09:00",
+      "benefitType": "mixed",
+      "channels": [
+        "online"
+      ],
+      "id": "amoremall-15059-202610",
+      "brandId": "amoremall",
+      "title": "라네즈 · 보습·장벽 케어",
+      "shortTitle": "라네즈",
+      "categories": [
+        "beauty"
+      ],
+      "startDate": "2026-10-26",
+      "endDate": "2026-11-01",
+      "summary": "크림스킨·워터뱅크·립케어·슬리핑 마스크를 모은 브랜드 행사입니다.",
+      "conditions": [
+        "구매금액대 사은품은 모든 할인 후 뷰티포인트·기프트카드 사용액을 포함한 최종 결제금액 기준입니다. 라이브와 일반 상품 금액은 합산되지 않습니다.",
+        "뷰티포인트 전액 결제 시 스페셜 사은품·기프트카드 증정에서 제외되며 비회원 Npay 구매는 스페셜 사은품 제외 안내가 있습니다.",
+        "교환·환불 시 사은품을 함께 반납해야 합니다. 재고 소진·내부 사정에 따라 조기 종료되거나 사은품이 대체될 수 있으므로 최종 주문 조건을 확인하세요."
+      ],
+      "periodNote": "아모레몰 공식 이벤트 목록의 기간 · 상세 기획전의 대상·유의사항 대조",
+      "sourceUrl": "https://www.amoremall.com/kr/ko/display/event_detail?planDisplaySn=15059",
+      "periodSourceUrl": "https://www.amoremall.com/kr/ko/display/event"
+    },
+    {
+      "placement": "calendar",
+      "publicationStatus": "reviewed",
+      "reviewWithinDays": 7,
+      "publicationScope": "facts-summary",
+      "campaignKind": "limited-sale",
+      "campaignScope": "brand",
+      "checkedAt": "2026-10-26T12:50:41+09:00",
+      "benefitType": "mixed",
+      "channels": [
+        "online"
+      ],
+      "id": "amoremall-15055-202610",
+      "brandId": "amoremall",
+      "title": "아이오페 · 고기능 스킨케어 기획전",
+      "shortTitle": "아이오페",
+      "categories": [
+        "beauty"
+      ],
+      "startDate": "2026-10-26",
+      "endDate": "2026-11-01",
+      "summary": "슈퍼바이탈·레티놀·남성기초·선케어·쿠션 등 여러 라인을 모은 행사입니다.",
+      "conditions": [
+        "사은품 적용 여부는 결제 페이지와 주문내역에서 확인합니다. 라이브와 일반 상품 구매액은 합산되지 않습니다.",
+        "뷰티포인트 전액 결제 시 스페셜 사은품·기프트카드 증정에서 제외되며 비회원 Npay 구매는 스페셜 사은품 제외 안내가 있습니다.",
+        "교환·환불 시 사은품을 함께 반납해야 합니다. 재고 소진·내부 사정에 따라 조기 종료되거나 사은품이 대체될 수 있으므로 최종 주문 조건을 확인하세요."
+      ],
+      "periodNote": "아모레몰 공식 이벤트 목록의 기간 · 상세 기획전의 대상·유의사항 대조",
+      "sourceUrl": "https://www.amoremall.com/kr/ko/display/event_detail?planDisplaySn=15055",
+      "periodSourceUrl": "https://www.amoremall.com/kr/ko/display/event"
+    },
+    {
+      "placement": "calendar",
+      "publicationStatus": "reviewed",
+      "reviewWithinDays": 7,
+      "publicationScope": "facts-summary",
+      "campaignKind": "limited-sale",
+      "campaignScope": "brand",
+      "checkedAt": "2026-10-26T12:50:41+09:00",
+      "benefitType": "mixed",
+      "channels": [
+        "online"
+      ],
+      "id": "amoremall-15129-202610",
+      "brandId": "amoremall",
+      "title": "퍼즐우드 · 전 품목 할인·쿠폰",
+      "shortTitle": "퍼즐우드",
+      "categories": [
+        "beauty"
+      ],
+      "startDate": "2026-10-19",
+      "endDate": "2026-11-01",
+      "summary": "디퓨저·핸드크림·인센스 등 퍼즐우드 품목의 공식 기획전입니다.",
+      "conditions": [
+        "10% 할인과 5% 쿠폰은 적용 순서와 조건을 함께 확인하세요. 쿠폰 한도·제외 품목·실 결제금액에 따라 혜택이 달라집니다.",
+        "뷰티포인트 전액 결제 시 스페셜 사은품·기프트카드 증정에서 제외되며 비회원 Npay 구매는 스페셜 사은품 제외 안내가 있습니다.",
+        "교환·환불 시 사은품을 함께 반납해야 합니다. 재고 소진·내부 사정에 따라 조기 종료되거나 사은품이 대체될 수 있으므로 최종 주문 조건을 확인하세요."
+      ],
+      "periodNote": "아모레몰 공식 이벤트 목록의 기간 · 상세 기획전의 대상·유의사항 대조",
+      "sourceUrl": "https://www.amoremall.com/kr/ko/display/event_detail?planDisplaySn=15129",
+      "periodSourceUrl": "https://www.amoremall.com/kr/ko/display/event"
+    },
+    {
+      "placement": "calendar",
+      "publicationStatus": "reviewed",
+      "reviewWithinDays": 7,
+      "publicationScope": "facts-summary",
+      "campaignKind": "limited-sale",
+      "campaignScope": "brand",
+      "checkedAt": "2026-10-26T12:50:41+09:00",
+      "benefitType": "mixed",
+      "channels": [
+        "online"
+      ],
+      "id": "amoremall-15092-202610",
+      "brandId": "amoremall",
+      "title": "에스쁘아 · 가을 메이크업 기획전",
+      "shortTitle": "에스쁘아",
+      "categories": [
+        "beauty"
+      ],
+      "startDate": "2026-10-19",
+      "endDate": "2026-11-01",
+      "summary": "베이스·립·아이·선케어·뷰티툴을 모은 브랜드 행사입니다.",
+      "conditions": [
+        "증정 기준은 모든 할인 후, 뷰티포인트·기프트카드 차감 전 금액입니다. 기프트카드는 주문당1회, 구매확정 후 발급되므로 즉시 할인과 구분하세요.",
+        "뷰티포인트 전액 결제 시 스페셜 사은품·기프트카드 증정에서 제외되며 비회원 Npay 구매는 스페셜 사은품 제외 안내가 있습니다.",
+        "교환·환불 시 사은품을 함께 반납해야 합니다. 재고 소진·내부 사정에 따라 조기 종료되거나 사은품이 대체될 수 있으므로 최종 주문 조건을 확인하세요."
+      ],
+      "periodNote": "아모레몰 공식 이벤트 목록의 기간 · 상세 기획전의 대상·유의사항 대조",
+      "sourceUrl": "https://www.amoremall.com/kr/ko/display/event_detail?planDisplaySn=15092",
+      "periodSourceUrl": "https://www.amoremall.com/kr/ko/display/event"
+    },
+    {
+      "placement": "calendar",
+      "publicationStatus": "reviewed",
+      "reviewWithinDays": 7,
+      "publicationScope": "facts-summary",
+      "campaignKind": "limited-sale",
+      "campaignScope": "brand",
+      "checkedAt": "2026-10-26T12:50:41+09:00",
+      "benefitType": "mixed",
+      "channels": [
+        "online"
+      ],
+      "id": "amoremall-15089-202610",
+      "brandId": "amoremall",
+      "title": "이니스프리 · 가을 보습·탄력 기획전",
+      "shortTitle": "이니스프리",
+      "categories": [
+        "beauty"
+      ],
+      "startDate": "2026-10-19",
+      "endDate": "2026-11-01",
+      "summary": "앰플·세럼·클렌징·크림·선케어 등 여러 품목군을 모은 행사입니다.",
+      "conditions": [
+        "유채꿀 립밤1+1은10/26~30의5일 혜택이며 전체 행사 종료일11/1과 다릅니다. 기프트카드는 주문당1회 구매확정 시 발급됩니다.",
+        "뷰티포인트 전액 결제 시 스페셜 사은품·기프트카드 증정에서 제외되며 비회원 Npay 구매는 스페셜 사은품 제외 안내가 있습니다.",
+        "교환·환불 시 사은품을 함께 반납해야 합니다. 재고 소진·내부 사정에 따라 조기 종료되거나 사은품이 대체될 수 있으므로 최종 주문 조건을 확인하세요."
+      ],
+      "periodNote": "아모레몰 공식 이벤트 목록의 기간 · 상세 기획전의 대상·유의사항 대조",
+      "sourceUrl": "https://www.amoremall.com/kr/ko/display/event_detail?planDisplaySn=15089",
       "periodSourceUrl": "https://www.amoremall.com/kr/ko/display/event"
     }
   ],

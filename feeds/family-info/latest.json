@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "snapshotId": "e9afbb7bca78d9e67503fe08",
+  "snapshotId": "77040c9b88d8e46bce1de24c",
   "timezone": "Asia/Seoul",
   "categories": [
     {
@@ -134,14 +134,23 @@
       "split": "sale-sector",
       "href": "/tools/parenting-deals/",
       "accent": "orange",
-      "categoryRevision": "d38b5fb83f5874bf",
-      "lastVerifiedAt": "2026-10-25T14:10:44+09:00",
-      "lastCollectedAt": "2026-10-26",
+      "categoryRevision": "b68b7335e2cd9ff0",
+      "lastVerifiedAt": "2026-10-26T12:50:41+09:00",
+      "lastCollectedAt": "2026-10-26T03:50:41.026Z",
       "lastDeployedAt": null,
       "outcome": "partial-review",
-      "verifiedCount": 10,
-      "currentCount": 7,
-      "failures": []
+      "verifiedCount": 20,
+      "currentCount": 16,
+      "failures": [
+        {
+          "providerId": "gmarket",
+          "status": "failed"
+        },
+        {
+          "providerId": "kurly",
+          "status": "failed"
+        }
+      ]
     },
     {
       "id": "family-discounts",
@@ -174,14 +183,19 @@
       "split": "region",
       "href": "/tools/kids-outing-calendar/",
       "accent": "blue",
-      "categoryRevision": "c81992132b592ad4",
-      "lastVerifiedAt": "2026-10-23",
-      "lastCollectedAt": "2026-10-26",
+      "categoryRevision": "e7122d61e3f87193",
+      "lastVerifiedAt": "2026-10-26",
+      "lastCollectedAt": "2026-10-26T03:44:36.786Z",
       "lastDeployedAt": null,
       "outcome": "partial-review",
-      "verifiedCount": 42,
-      "currentCount": 13,
-      "failures": []
+      "verifiedCount": 55,
+      "currentCount": 26,
+      "failures": [
+        {
+          "providerId": "busan",
+          "status": "failed"
+        }
+      ]
     }
   ],
   "providers": [
@@ -3777,19 +3791,19 @@
       "feeText": "보증금: 캠프닉 팀당 1만원, 산책 1인 5천원, 팔각클럽 5천원",
       "summary": "캠프닉 10/23~11/7 금·토 / 산책 10/23·24, 11/6·7 / 팔각클럽 11/14",
       "conditions": [
-        "사전예약 · 주차별 접수 일정 상이 · 팔각클럽 11/2 접수 시작",
+        "주차별 사전예약 · 팔각클럽11/2 10시 접수,11/14 17:30~19시·19:30~21시",
         "프로그램별 상이 · 캠프닉 17:00~22:00",
         "공식 안내는 참여 확인 후 보증금 환불 예정입니다. 어린이 참가 조건과 야간 이동 동선은 예약 전에 확인하세요."
       ],
       "publicationStatus": "verified",
       "lifecycleStatus": null,
-      "verifiedAt": "2026-10-23",
+      "verifiedAt": "2026-10-26",
       "evidence": [
         {
           "url": "https://parks.seoul.go.kr/story/news/detailView.do?bIdx=3849&key=2604070028",
           "publisher": "서울특별시 정원도시국",
           "summary": "실제 운영일 7일, 프로그램별 장소·시간·보증금·예약일 확인. 매일 개최 아님.",
-          "verifiedAt": "2026-10-23",
+          "verifiedAt": "2026-10-26",
           "fields": [
             "title",
             "eventStart",
@@ -3798,7 +3812,7 @@
         }
       ],
       "legacyId": "namsan-night-2026",
-      "contentHash": "996ac2cb5c7c2f96fc1ec12ec6736b57000bafc6ed8b8b396b10efaca48ffa82",
+      "contentHash": "6f6a7ae629cae5448e4b2eae8e11a9ae85cc4a2bb1747defaa1fde8cfae8dcb3",
       "siteUrl": "/tools/kids-outing-calendar/#event-namsan-night-2026"
     },
     {
@@ -4054,12 +4068,12 @@
       "summary": "국화 전시, 공예 만들기와 곤충 체험",
       "conditions": [
         "프로그램별 접수 방법 확인 필요",
-        "공연·체험별 시간 확인 필요",
+        "10:00~21:00",
         "체험마다 운영 조건이 다릅니다. 국화 관람과 체험 비용을 각각 확인하세요."
       ],
       "publicationStatus": "verified",
       "lifecycleStatus": null,
-      "verifiedAt": "2026-10-23",
+      "verifiedAt": "2026-10-26",
       "evidence": [
         {
           "url": "https://www.iksan.go.kr/gukhwa",
@@ -4071,10 +4085,21 @@
             "eventStart",
             "eventEnd"
           ]
+        },
+        {
+          "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13345",
+          "publisher": "문화체육관광부(한국관광공사 연계)",
+          "summary": "10/23~11/1,중앙체육공원10~21시,무료 관람과 프로그램 확인. 선택 체험·음식 구매 별도.",
+          "verifiedAt": "2026-10-26",
+          "fields": [
+            "title",
+            "eventStart",
+            "eventEnd"
+          ]
         }
       ],
       "legacyId": "iksan-chrysanthemum-2026",
-      "contentHash": "3b0f11054a1cbc6cfc14de4e645777156106848755c2c698f22ae91f00fb1ace",
+      "contentHash": "8712e64b3dcba8d1d90dc8dcc4ff9dde5ac626386f1466420c919b5dce4516aa",
       "siteUrl": "/tools/kids-outing-calendar/#event-iksan-chrysanthemum-2026"
     },
     {
@@ -4236,7 +4261,7 @@
       "canonicalUrl": "https://www.visitjeju.net/kr/festival/view?contentsid=CNTS_300000000014508&menuId=DOM_000001718007000000",
       "region": "제주",
       "location": "제주올레 19·20코스 · 날짜별 출발지 다름",
-      "audience": "장거리 걷기 행사입니다. 아이의 체력에 맞는 구간과 날짜별 출발지를 확인하세요.",
+      "audience": "20인 이상 단체,2010년 이후 출생 청소년, 장애인·국가유공자는25,000원 안내입니다. 사전신청은10/9종료됐으며 추가 참가 가능 여부를 문의하세요. 개인 컵·식기 지참 친환경 캠페인이 있습니다.",
       "ageGroups": [],
       "applicationStart": null,
       "applicationEnd": null,
@@ -4250,17 +4275,17 @@
       "conditions": [
         "공지상 사전신청 기간 종료(10/9) · 추가 참가 가능 여부 문의",
         "08:00~17:00",
-        "장거리 걷기 행사입니다. 아이의 체력에 맞는 구간과 날짜별 출발지를 확인하세요."
+        "20인 이상 단체,2010년 이후 출생 청소년, 장애인·국가유공자는25,000원 안내입니다. 사전신청은10/9종료됐으며 추가 참가 가능 여부를 문의하세요. 개인 컵·식기 지참 친환경 캠페인이 있습니다."
       ],
       "publicationStatus": "verified",
       "lifecycleStatus": null,
-      "verifiedAt": "2026-10-23",
+      "verifiedAt": "2026-10-26",
       "evidence": [
         {
           "url": "https://www.visitjeju.net/kr/festival/view?contentsid=CNTS_300000000014508&menuId=DOM_000001718007000000",
           "publisher": "제주관광공사 비짓제주",
           "summary": "11월 5~7일 19·20코스, 시간·참가비·사전신청 종료일 확인.",
-          "verifiedAt": "2026-10-23",
+          "verifiedAt": "2026-10-26",
           "fields": [
             "title",
             "eventStart",
@@ -4269,7 +4294,7 @@
         }
       ],
       "legacyId": "jeju-olle-2026",
-      "contentHash": "62a2e65195dc3e60535d7460b57efabb08f3f7f5dbad73eea5c934e75805c378",
+      "contentHash": "17f368644d447331b9c6c7c6efc001edd2db48c7a7cb5199b0232268bad75473",
       "siteUrl": "/tools/kids-outing-calendar/#event-jeju-olle-2026"
     },
     {
@@ -4346,13 +4371,13 @@
       ],
       "publicationStatus": "verified",
       "lifecycleStatus": null,
-      "verifiedAt": "2026-10-23",
+      "verifiedAt": "2026-10-26",
       "evidence": [
         {
           "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=12777",
           "publisher": "문화체육관광부(한국관광공사 연계)",
           "summary": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
-          "verifiedAt": "2026-10-23",
+          "verifiedAt": "2026-10-26",
           "fields": [
             "title",
             "eventStart",
@@ -4817,13 +4842,13 @@
       ],
       "publicationStatus": "verified",
       "lifecycleStatus": null,
-      "verifiedAt": "2026-10-23",
+      "verifiedAt": "2026-10-26",
       "evidence": [
         {
           "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13388",
           "publisher": "문화체육관광부(한국관광공사 연계)",
           "summary": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
-          "verifiedAt": "2026-10-23",
+          "verifiedAt": "2026-10-26",
           "fields": [
             "title",
             "eventStart",
@@ -5001,13 +5026,13 @@
       ],
       "publicationStatus": "verified",
       "lifecycleStatus": null,
-      "verifiedAt": "2026-10-23",
+      "verifiedAt": "2026-10-26",
       "evidence": [
         {
           "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13555",
           "publisher": "문화체육관광부(한국관광공사 연계)",
           "summary": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
-          "verifiedAt": "2026-10-23",
+          "verifiedAt": "2026-10-26",
           "fields": [
             "title",
             "eventStart",
@@ -5047,13 +5072,13 @@
       ],
       "publicationStatus": "verified",
       "lifecycleStatus": null,
-      "verifiedAt": "2026-10-23",
+      "verifiedAt": "2026-10-26",
       "evidence": [
         {
           "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=12626",
           "publisher": "문화체육관광부(한국관광공사 연계)",
           "summary": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
-          "verifiedAt": "2026-10-23",
+          "verifiedAt": "2026-10-26",
           "fields": [
             "title",
             "eventStart",
@@ -5231,13 +5256,13 @@
       ],
       "publicationStatus": "verified",
       "lifecycleStatus": null,
-      "verifiedAt": "2026-10-23",
+      "verifiedAt": "2026-10-26",
       "evidence": [
         {
           "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13374",
           "publisher": "문화체육관광부(한국관광공사 연계)",
           "summary": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
-          "verifiedAt": "2026-10-23",
+          "verifiedAt": "2026-10-26",
           "fields": [
             "title",
             "eventStart",
@@ -5323,13 +5348,13 @@
       ],
       "publicationStatus": "verified",
       "lifecycleStatus": null,
-      "verifiedAt": "2026-10-23",
+      "verifiedAt": "2026-10-26",
       "evidence": [
         {
           "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=12275",
           "publisher": "문화체육관광부(한국관광공사 연계)",
           "summary": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
-          "verifiedAt": "2026-10-23",
+          "verifiedAt": "2026-10-26",
           "fields": [
             "title",
             "eventStart",
@@ -5369,13 +5394,13 @@
       ],
       "publicationStatus": "verified",
       "lifecycleStatus": null,
-      "verifiedAt": "2026-10-23",
+      "verifiedAt": "2026-10-26",
       "evidence": [
         {
           "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=12036",
           "publisher": "문화체육관광부(한국관광공사 연계)",
           "summary": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
-          "verifiedAt": "2026-10-23",
+          "verifiedAt": "2026-10-26",
           "fields": [
             "title",
             "eventStart",
@@ -5632,6 +5657,609 @@
       "siteUrl": "/tools/kids-outing-calendar/#event-sejong-hangeul-family-2026"
     },
     {
+      "id": "festival-mcst-13422-2026",
+      "categoryIds": [
+        "festivals"
+      ],
+      "title": "2026 서울국제정원박람회",
+      "providerId": "legacy-festivals",
+      "canonicalUrl": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13422",
+      "region": "서울",
+      "location": "서울숲",
+      "audience": "서울숲은 성동구이며 원문 개최지역의 중구 표기와 차이가 있어 실제 행사장 서울숲을 기준으로 안내합니다.",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-05-01",
+      "eventEnd": "2026-10-27",
+      "operatingDates": null,
+      "scheduleNote": "공식 개최기간입니다. 개별 프로그램·휴무·시설별 운영은 별도 확인하세요.",
+      "feeStatus": "free",
+      "feeText": "입장 무료 · 별도 판매·체험 비용은 확인 필요",
+      "summary": "서울숲 정원 전시와 정원문화 콘텐츠",
+      "conditions": [
+        "사전예약·현장 접수와 잔여석은 프로그램별 공식 안내 확인",
+        "12:00~19:00",
+        "서울숲은 성동구이며 원문 개최지역의 중구 표기와 차이가 있어 실제 행사장 서울숲을 기준으로 안내합니다."
+      ],
+      "publicationStatus": "verified",
+      "lifecycleStatus": null,
+      "verifiedAt": "2026-10-26",
+      "evidence": [
+        {
+          "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13422",
+          "publisher": "문화체육관광부(한국관광공사 연계)",
+          "summary": "2026년 개최기간 2026-05-01~2026-10-27, 실제 장소·시간·입장 무료 · 별도 판매·체험 비용은 확인 필요를 상세 표와 본문으로 대조. 연령·거주 제한·신청/취소 조건은 명시되지 않은 범위를 확정하지 않음.",
+          "verifiedAt": "2026-10-26",
+          "fields": [
+            "title",
+            "eventStart",
+            "eventEnd"
+          ]
+        }
+      ],
+      "legacyId": "mcst-13422-2026",
+      "contentHash": "24362b2477abec033d97e50d4652d429faad3f24620bed7104803b7b8d6c60d8",
+      "siteUrl": "/tools/kids-outing-calendar/#event-mcst-13422-2026"
+    },
+    {
+      "id": "festival-mcst-13560-2026",
+      "categoryIds": [
+        "festivals"
+      ],
+      "title": "2026 장항 1931 밤의 기행",
+      "providerId": "legacy-festivals",
+      "canonicalUrl": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13560",
+      "region": "충남",
+      "location": "장항도시탐험역",
+      "audience": "매일 열리는 행사가 아닙니다. 남은 일정은10/30·31이며 테마와 체험 접수 조건은 날짜별로 확인하세요.",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-10-10",
+      "eventEnd": "2026-10-31",
+      "operatingDates": [
+        "2026-10-10",
+        "2026-10-17",
+        "2026-10-30",
+        "2026-10-31"
+      ],
+      "scheduleNote": "실제 운영일10/10·17·30·31만 표시",
+      "feeStatus": "mixed",
+      "feeText": "입장 무료 · 일부 체험 프로그램 유료",
+      "summary": "근현대 장항의 생활문화를 만나는 공연·전시·체험",
+      "conditions": [
+        "사전예약·현장 접수와 잔여석은 프로그램별 공식 안내 확인",
+        "17:00~21:00",
+        "매일 열리는 행사가 아닙니다. 남은 일정은10/30·31이며 테마와 체험 접수 조건은 날짜별로 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "lifecycleStatus": null,
+      "verifiedAt": "2026-10-26",
+      "evidence": [
+        {
+          "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13560",
+          "publisher": "문화체육관광부(한국관광공사 연계)",
+          "summary": "2026년 개최기간 2026-10-10~2026-10-31, 실제 장소·시간·입장 무료 · 일부 체험 프로그램 유료를 상세 표와 본문으로 대조. 실제 운영일4일을 본문으로 확인. 연령·거주 제한·신청/취소 조건은 명시되지 않은 범위를 확정하지 않음.",
+          "verifiedAt": "2026-10-26",
+          "fields": [
+            "title",
+            "eventStart",
+            "eventEnd"
+          ]
+        }
+      ],
+      "legacyId": "mcst-13560-2026",
+      "contentHash": "7e3d3059952a9951b90fd916330c43b1f95fa6f56dd88533a9efd57b342c3d45",
+      "siteUrl": "/tools/kids-outing-calendar/#event-mcst-13560-2026"
+    },
+    {
+      "id": "festival-mcst-13545-2026",
+      "categoryIds": [
+        "festivals"
+      ],
+      "title": "2026 동두천시 책문화축제",
+      "providerId": "legacy-festivals",
+      "canonicalUrl": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13545",
+      "region": "경기",
+      "location": "복합문화커뮤니티센터 1층 일원",
+      "audience": "명사 강연·어린이 독서골든벨 등 프로그램별 대상과 사전신청 여부는 도서관 공지를 확인하세요.",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-10-31",
+      "eventEnd": "2026-10-31",
+      "operatingDates": null,
+      "scheduleNote": "공식 개최기간입니다. 개별 프로그램·휴무·시설별 운영은 별도 확인하세요.",
+      "feeStatus": "free",
+      "feeText": "기본 참여 무료 · 북마켓 구매 별도",
+      "summary": "독서골든벨, 매직버블쇼, 북마켓과 사람책 체험",
+      "conditions": [
+        "사전예약·현장 접수와 잔여석은 프로그램별 공식 안내 확인",
+        "15:30~19:00",
+        "명사 강연·어린이 독서골든벨 등 프로그램별 대상과 사전신청 여부는 도서관 공지를 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "lifecycleStatus": null,
+      "verifiedAt": "2026-10-26",
+      "evidence": [
+        {
+          "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13545",
+          "publisher": "문화체육관광부(한국관광공사 연계)",
+          "summary": "2026년 개최기간 2026-10-31~2026-10-31, 실제 장소·시간·기본 참여 무료 · 북마켓 구매 별도를 상세 표와 본문으로 대조. 연령·거주 제한·신청/취소 조건은 명시되지 않은 범위를 확정하지 않음.",
+          "verifiedAt": "2026-10-26",
+          "fields": [
+            "title",
+            "eventStart",
+            "eventEnd"
+          ]
+        }
+      ],
+      "legacyId": "mcst-13545-2026",
+      "contentHash": "5791faedc33267c70b090de7cdc98b4b7d6b7bd50ca31c27d9bd7a8dd642c166",
+      "siteUrl": "/tools/kids-outing-calendar/#event-mcst-13545-2026"
+    },
+    {
+      "id": "festival-mcst-13528-2026",
+      "categoryIds": [
+        "festivals"
+      ],
+      "title": "2026 성북거리문화축제 다다페스타",
+      "providerId": "legacy-festivals",
+      "canonicalUrl": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13528",
+      "region": "서울",
+      "location": "꿈의숲아이파크-래미안장위퍼스트하이 사이길",
+      "audience": "장위뉴타운 일대 거리 행사입니다. 차량 이동·유모차 동선과 부스별 참여 조건을 확인하세요.",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-10-31",
+      "eventEnd": "2026-10-31",
+      "operatingDates": null,
+      "scheduleNote": "공식 개최기간입니다. 개별 프로그램·휴무·시설별 운영은 별도 확인하세요.",
+      "feeStatus": "free",
+      "feeText": "기본 관람 무료 · 부스별 구매·체험 비용 별도 확인",
+      "summary": "거리 공연, 어린이 플리마켓과 주민 참여 부스",
+      "conditions": [
+        "사전예약·현장 접수와 잔여석은 프로그램별 공식 안내 확인",
+        "11:00~17:00",
+        "장위뉴타운 일대 거리 행사입니다. 차량 이동·유모차 동선과 부스별 참여 조건을 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "lifecycleStatus": null,
+      "verifiedAt": "2026-10-26",
+      "evidence": [
+        {
+          "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13528",
+          "publisher": "문화체육관광부(한국관광공사 연계)",
+          "summary": "2026년 개최기간 2026-10-31~2026-10-31, 실제 장소·시간·기본 관람 무료 · 부스별 구매·체험 비용 별도 확인를 상세 표와 본문으로 대조. 연령·거주 제한·신청/취소 조건은 명시되지 않은 범위를 확정하지 않음.",
+          "verifiedAt": "2026-10-26",
+          "fields": [
+            "title",
+            "eventStart",
+            "eventEnd"
+          ]
+        }
+      ],
+      "legacyId": "mcst-13528-2026",
+      "contentHash": "3a034092ca85ef420d1f90df51b6ef10e7e13cc8e1fce2e9292f5ea34150f0b3",
+      "siteUrl": "/tools/kids-outing-calendar/#event-mcst-13528-2026"
+    },
+    {
+      "id": "festival-mcst-13510-2026",
+      "categoryIds": [
+        "festivals"
+      ],
+      "title": "2026 세미원 수련문화제",
+      "providerId": "legacy-festivals",
+      "canonicalUrl": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13510",
+      "region": "경기",
+      "location": "세미원 · 양평군 양서면 양수로93",
+      "audience": "유료 표기는 확인했으나 연령별 금액·휴무일은 상세 표에서 확정하지 않았습니다. 방문 전 관람안내를 확인하세요.",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-09-01",
+      "eventEnd": "2026-10-31",
+      "operatingDates": null,
+      "scheduleNote": "공식 개최기간입니다. 개별 프로그램·휴무·시설별 운영은 별도 확인하세요.",
+      "feeStatus": "paid",
+      "feeText": "유료 · 연령별 입장료·감면 금액은 공식 관람안내 확인",
+      "summary": "수련과 가을 정원, 전통정원 경관 관람",
+      "conditions": [
+        "사전예약·현장 접수와 잔여석은 프로그램별 공식 안내 확인",
+        "09:00~18:00",
+        "유료 표기는 확인했으나 연령별 금액·휴무일은 상세 표에서 확정하지 않았습니다. 방문 전 관람안내를 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "lifecycleStatus": null,
+      "verifiedAt": "2026-10-26",
+      "evidence": [
+        {
+          "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13510",
+          "publisher": "문화체육관광부(한국관광공사 연계)",
+          "summary": "2026년 개최기간 2026-09-01~2026-10-31, 실제 장소·시간·유료 · 연령별 입장료·감면 금액은 공식 관람안내 확인를 상세 표와 본문으로 대조. 연령·거주 제한·신청/취소 조건은 명시되지 않은 범위를 확정하지 않음.",
+          "verifiedAt": "2026-10-26",
+          "fields": [
+            "title",
+            "eventStart",
+            "eventEnd"
+          ]
+        }
+      ],
+      "legacyId": "mcst-13510-2026",
+      "contentHash": "0e5b364c823df71bd4465936e4adcb80949ad4b7f60b7c0aae3adbce8eee37dc",
+      "siteUrl": "/tools/kids-outing-calendar/#event-mcst-13510-2026"
+    },
+    {
+      "id": "festival-mcst-13333-2026",
+      "categoryIds": [
+        "festivals"
+      ],
+      "title": "2026 예산사과축제",
+      "providerId": "legacy-festivals",
+      "canonicalUrl": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13333",
+      "region": "충남",
+      "location": "예당호 출렁다리 일원",
+      "audience": "사과 세일 판매장은 축제 이틀간 운영합니다. 체험별 연령·예약·재료비는 별도 확인하세요.",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-10-30",
+      "eventEnd": "2026-10-31",
+      "operatingDates": null,
+      "scheduleNote": "공식 개최기간입니다. 개별 프로그램·휴무·시설별 운영은 별도 확인하세요.",
+      "feeStatus": "mixed",
+      "feeText": "입장 무료 · 사과·음식 구매 및 개별 체험 별도",
+      "summary": "예산사과 판매와 사과를 주제로 한 문화·체험",
+      "conditions": [
+        "사전예약·현장 접수와 잔여석은 프로그램별 공식 안내 확인",
+        "30일10:00~20:00 /31일10:00~18:00",
+        "사과 세일 판매장은 축제 이틀간 운영합니다. 체험별 연령·예약·재료비는 별도 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "lifecycleStatus": null,
+      "verifiedAt": "2026-10-26",
+      "evidence": [
+        {
+          "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13333",
+          "publisher": "문화체육관광부(한국관광공사 연계)",
+          "summary": "2026년 개최기간 2026-10-30~2026-10-31, 실제 장소·시간·입장 무료 · 사과·음식 구매 및 개별 체험 별도를 상세 표와 본문으로 대조. 연령·거주 제한·신청/취소 조건은 명시되지 않은 범위를 확정하지 않음.",
+          "verifiedAt": "2026-10-26",
+          "fields": [
+            "title",
+            "eventStart",
+            "eventEnd"
+          ]
+        }
+      ],
+      "legacyId": "mcst-13333-2026",
+      "contentHash": "c5ec1c8db26a10bb096eff5d8ebff6eb0bc2cc9d90c57d756513b6afc0522e38",
+      "siteUrl": "/tools/kids-outing-calendar/#event-mcst-13333-2026"
+    },
+    {
+      "id": "festival-mcst-12731-2026",
+      "categoryIds": [
+        "festivals"
+      ],
+      "title": "2026 마토예술제 · 브로드웨이 인 안정리",
+      "providerId": "legacy-festivals",
+      "canonicalUrl": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=12731",
+      "region": "경기",
+      "location": "평택 안정리예술인광장",
+      "audience": "10월 31일 16~20시 회차입니다. 스탬프 투어와 체험별 참여 방법을 확인하세요.",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-10-31",
+      "eventEnd": "2026-10-31",
+      "operatingDates": null,
+      "scheduleNote": "공식 개최기간입니다. 개별 프로그램·휴무·시설별 운영은 별도 확인하세요.",
+      "feeStatus": "free",
+      "feeText": "기본 관람 무료 · 개별 부스 비용 별도 확인",
+      "summary": "뮤지컬 주제 공연, 스탬프 투어와 포토존",
+      "conditions": [
+        "사전예약·현장 접수와 잔여석은 프로그램별 공식 안내 확인",
+        "16:00~20:00",
+        "10월 31일 16~20시 회차입니다. 스탬프 투어와 체험별 참여 방법을 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "lifecycleStatus": null,
+      "verifiedAt": "2026-10-26",
+      "evidence": [
+        {
+          "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=12731",
+          "publisher": "문화체육관광부(한국관광공사 연계)",
+          "summary": "2026년 개최기간 2026-10-31~2026-10-31, 실제 장소·시간·기본 관람 무료 · 개별 부스 비용 별도 확인를 상세 표와 본문으로 대조. 연령·거주 제한·신청/취소 조건은 명시되지 않은 범위를 확정하지 않음.",
+          "verifiedAt": "2026-10-26",
+          "fields": [
+            "title",
+            "eventStart",
+            "eventEnd"
+          ]
+        }
+      ],
+      "legacyId": "mcst-12731-2026",
+      "contentHash": "c90a52c9aa6e85b750c833f0e36ff4bd930d3a9f1d5a222cc0dcae95c5d35840",
+      "siteUrl": "/tools/kids-outing-calendar/#event-mcst-12731-2026"
+    },
+    {
+      "id": "festival-mcst-13554-2026",
+      "categoryIds": [
+        "festivals"
+      ],
+      "title": "2026 경기·양주·지작사 드론봇 페스티벌",
+      "providerId": "legacy-festivals",
+      "canonicalUrl": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13554",
+      "region": "경기",
+      "location": "양주시 광적면 가납리비행장",
+      "audience": "실제 시연·경연·공연 회차와 체험 연령, 군 시설 입장·교통 통제는 프로그램별 안내를 확인하세요.",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-10-30",
+      "eventEnd": "2026-11-01",
+      "operatingDates": null,
+      "scheduleNote": "공식 개최기간입니다. 개별 프로그램·휴무·시설별 운영은 별도 확인하세요.",
+      "feeStatus": "mixed",
+      "feeText": "입장 무료 · 일부 체험 유료",
+      "summary": "드론·로봇 전시와 시민 체험, 군문화 공연",
+      "conditions": [
+        "사전예약·현장 접수와 잔여석은 프로그램별 공식 안내 확인",
+        "09:00~21:00",
+        "실제 시연·경연·공연 회차와 체험 연령, 군 시설 입장·교통 통제는 프로그램별 안내를 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "lifecycleStatus": null,
+      "verifiedAt": "2026-10-26",
+      "evidence": [
+        {
+          "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13554",
+          "publisher": "문화체육관광부(한국관광공사 연계)",
+          "summary": "2026년 개최기간 2026-10-30~2026-11-01, 실제 장소·시간·입장 무료 · 일부 체험 유료를 상세 표와 본문으로 대조. 연령·거주 제한·신청/취소 조건은 명시되지 않은 범위를 확정하지 않음.",
+          "verifiedAt": "2026-10-26",
+          "fields": [
+            "title",
+            "eventStart",
+            "eventEnd"
+          ]
+        }
+      ],
+      "legacyId": "mcst-13554-2026",
+      "contentHash": "0f82335c4f0b764ad7dc3641d9e6354f592a625133183945d92d186b072b6028",
+      "siteUrl": "/tools/kids-outing-calendar/#event-mcst-13554-2026"
+    },
+    {
+      "id": "festival-mcst-13552-2026",
+      "categoryIds": [
+        "festivals"
+      ],
+      "title": "2026 목포 국가유산야행",
+      "providerId": "legacy-festivals",
+      "canonicalUrl": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13552",
+      "region": "전남",
+      "location": "목포근대역사문화공간 일원",
+      "audience": "야간에 여러 장소를 이동합니다. 유산별 개방 시간과 어린이 체험·신청 조건을 확인하세요.",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-10-30",
+      "eventEnd": "2026-11-01",
+      "operatingDates": null,
+      "scheduleNote": "공식 개최기간입니다. 개별 프로그램·휴무·시설별 운영은 별도 확인하세요.",
+      "feeStatus": "free",
+      "feeText": "기본 관람 무료 · 개별 체험·판매 비용 별도 확인",
+      "summary": "목포 개항·근대문화유산의 야간 관람과 공연",
+      "conditions": [
+        "사전예약·현장 접수와 잔여석은 프로그램별 공식 안내 확인",
+        "18:00~22:00",
+        "야간에 여러 장소를 이동합니다. 유산별 개방 시간과 어린이 체험·신청 조건을 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "lifecycleStatus": null,
+      "verifiedAt": "2026-10-26",
+      "evidence": [
+        {
+          "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13552",
+          "publisher": "문화체육관광부(한국관광공사 연계)",
+          "summary": "2026년 개최기간 2026-10-30~2026-11-01, 실제 장소·시간·기본 관람 무료 · 개별 체험·판매 비용 별도 확인를 상세 표와 본문으로 대조. 연령·거주 제한·신청/취소 조건은 명시되지 않은 범위를 확정하지 않음.",
+          "verifiedAt": "2026-10-26",
+          "fields": [
+            "title",
+            "eventStart",
+            "eventEnd"
+          ]
+        }
+      ],
+      "legacyId": "mcst-13552-2026",
+      "contentHash": "f5a34ea9a285eae97a31fa817c325bc1e15dd50acf71e9b7ebeb7a7b4b89c09b",
+      "siteUrl": "/tools/kids-outing-calendar/#event-mcst-13552-2026"
+    },
+    {
+      "id": "festival-mcst-13533-2026",
+      "categoryIds": [
+        "festivals"
+      ],
+      "title": "2026 밀양 매운맛 축제",
+      "providerId": "legacy-festivals",
+      "canonicalUrl": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13533",
+      "region": "경남",
+      "location": "밀양강변 일원",
+      "audience": "매운맛 도전 프로그램의 참가 연령과 음식 자극도·알레르기를 확인하세요.",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-10-31",
+      "eventEnd": "2026-11-01",
+      "operatingDates": null,
+      "scheduleNote": "공식 개최기간입니다. 개별 프로그램·휴무·시설별 운영은 별도 확인하세요.",
+      "feeStatus": "mixed",
+      "feeText": "입장 무료 · 음식 구매·개별 체험 비용 별도",
+      "summary": "매운맛 음식과 문화공연·브랜드 체험",
+      "conditions": [
+        "사전예약·현장 접수와 잔여석은 프로그램별 공식 안내 확인",
+        "11:00~21:00",
+        "매운맛 도전 프로그램의 참가 연령과 음식 자극도·알레르기를 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "lifecycleStatus": null,
+      "verifiedAt": "2026-10-26",
+      "evidence": [
+        {
+          "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13533",
+          "publisher": "문화체육관광부(한국관광공사 연계)",
+          "summary": "2026년 개최기간 2026-10-31~2026-11-01, 실제 장소·시간·입장 무료 · 음식 구매·개별 체험 비용 별도를 상세 표와 본문으로 대조. 연령·거주 제한·신청/취소 조건은 명시되지 않은 범위를 확정하지 않음.",
+          "verifiedAt": "2026-10-26",
+          "fields": [
+            "title",
+            "eventStart",
+            "eventEnd"
+          ]
+        }
+      ],
+      "legacyId": "mcst-13533-2026",
+      "contentHash": "7a042927aaba3fd35bc95e2a610f7614c7467cc372a037f57443123b6b5688a2",
+      "siteUrl": "/tools/kids-outing-calendar/#event-mcst-13533-2026"
+    },
+    {
+      "id": "festival-mcst-13366-2026",
+      "categoryIds": [
+        "festivals"
+      ],
+      "title": "2026 성남동 커피페스티벌",
+      "providerId": "legacy-festivals",
+      "canonicalUrl": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13366",
+      "region": "울산",
+      "location": "울산 중구 문화의 거리",
+      "audience": "커피 중심의 일반 축제입니다. 카페인 음료와 어린이 참여 프로그램을 구분해 확인하세요.",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-10-30",
+      "eventEnd": "2026-11-01",
+      "operatingDates": null,
+      "scheduleNote": "공식 개최기간입니다. 개별 프로그램·휴무·시설별 운영은 별도 확인하세요.",
+      "feeStatus": "mixed",
+      "feeText": "입장 무료 · 커피·먹거리 구매 및 개별 체험 별도",
+      "summary": "커피 시연과 바리스타 경연, 문화공연",
+      "conditions": [
+        "사전예약·현장 접수와 잔여석은 프로그램별 공식 안내 확인",
+        "10:00~20:00",
+        "커피 중심의 일반 축제입니다. 카페인 음료와 어린이 참여 프로그램을 구분해 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "lifecycleStatus": null,
+      "verifiedAt": "2026-10-26",
+      "evidence": [
+        {
+          "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13366",
+          "publisher": "문화체육관광부(한국관광공사 연계)",
+          "summary": "2026년 개최기간 2026-10-30~2026-11-01, 실제 장소·시간·입장 무료 · 커피·먹거리 구매 및 개별 체험 별도를 상세 표와 본문으로 대조. 연령·거주 제한·신청/취소 조건은 명시되지 않은 범위를 확정하지 않음.",
+          "verifiedAt": "2026-10-26",
+          "fields": [
+            "title",
+            "eventStart",
+            "eventEnd"
+          ]
+        }
+      ],
+      "legacyId": "mcst-13366-2026",
+      "contentHash": "e63b00c3ef290b89adf28e33cf83d97a7f45ef7825e0594aa3232dd675806267",
+      "siteUrl": "/tools/kids-outing-calendar/#event-mcst-13366-2026"
+    },
+    {
+      "id": "festival-mcst-12919-2026",
+      "categoryIds": [
+        "festivals"
+      ],
+      "title": "2026 유성국화축제",
+      "providerId": "legacy-festivals",
+      "canonicalUrl": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=12919",
+      "region": "대전",
+      "location": "유림공원 일원",
+      "audience": "개별 체험과 야간 공연이 매일 같은 시간에 열리는 것은 아닙니다. 날짜별 운영을 확인하세요.",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-10-17",
+      "eventEnd": "2026-11-01",
+      "operatingDates": null,
+      "scheduleNote": "공식 개최기간입니다. 개별 프로그램·휴무·시설별 운영은 별도 확인하세요.",
+      "feeStatus": "free",
+      "feeText": "기본 관람 무료 · 개별 체험 비용 별도 확인",
+      "summary": "국화·과학 조형물과 야간 경관, 가드닝·목재 체험",
+      "conditions": [
+        "사전예약·현장 접수와 잔여석은 프로그램별 공식 안내 확인",
+        "10:00~22:00",
+        "개별 체험과 야간 공연이 매일 같은 시간에 열리는 것은 아닙니다. 날짜별 운영을 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "lifecycleStatus": null,
+      "verifiedAt": "2026-10-26",
+      "evidence": [
+        {
+          "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=12919",
+          "publisher": "문화체육관광부(한국관광공사 연계)",
+          "summary": "2026년 개최기간 2026-10-17~2026-11-01, 실제 장소·시간·기본 관람 무료 · 개별 체험 비용 별도 확인를 상세 표와 본문으로 대조. 연령·거주 제한·신청/취소 조건은 명시되지 않은 범위를 확정하지 않음.",
+          "verifiedAt": "2026-10-26",
+          "fields": [
+            "title",
+            "eventStart",
+            "eventEnd"
+          ]
+        }
+      ],
+      "legacyId": "mcst-12919-2026",
+      "contentHash": "7c5256052a7c02a11efc25025e997269cf20bf38f839136ab5b3a8ccd4891682",
+      "siteUrl": "/tools/kids-outing-calendar/#event-mcst-12919-2026"
+    },
+    {
+      "id": "festival-mcst-12641-2026",
+      "categoryIds": [
+        "festivals"
+      ],
+      "title": "2026 포천 한탄강 가든페스타",
+      "providerId": "legacy-festivals",
+      "canonicalUrl": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=12641",
+      "region": "경기",
+      "location": "포천 한탄강 생태경관단지",
+      "audience": "출렁다리·전기자전거 등 시설별 이용 제한과 별도 요금·감면 조건을 확인하세요.",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-09-12",
+      "eventEnd": "2026-11-01",
+      "operatingDates": null,
+      "scheduleNote": "공식 개최기간입니다. 개별 프로그램·휴무·시설별 운영은 별도 확인하세요.",
+      "feeStatus": "paid",
+      "feeText": "유료 · 입장료·전기자전거 요금과 연령별 감면은 공식 안내 확인",
+      "summary": "가을꽃·주제 정원, 뽀로로 포토존과 전기자전거 체험",
+      "conditions": [
+        "사전예약·현장 접수와 잔여석은 프로그램별 공식 안내 확인",
+        "09:00~18:00 ·17:00 입장마감 /전기자전거 매표16:30마감",
+        "출렁다리·전기자전거 등 시설별 이용 제한과 별도 요금·감면 조건을 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "lifecycleStatus": null,
+      "verifiedAt": "2026-10-26",
+      "evidence": [
+        {
+          "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=12641",
+          "publisher": "문화체육관광부(한국관광공사 연계)",
+          "summary": "2026년 개최기간 2026-09-12~2026-11-01, 실제 장소·시간·유료 · 입장료·전기자전거 요금과 연령별 감면은 공식 안내 확인를 상세 표와 본문으로 대조. 연령·거주 제한·신청/취소 조건은 명시되지 않은 범위를 확정하지 않음.",
+          "verifiedAt": "2026-10-26",
+          "fields": [
+            "title",
+            "eventStart",
+            "eventEnd"
+          ]
+        }
+      ],
+      "legacyId": "mcst-12641-2026",
+      "contentHash": "75a1f010f463488a85cdffb6cb13c5c3abdbe9834e3f3b0a870f53b2c88dd867",
+      "siteUrl": "/tools/kids-outing-calendar/#event-mcst-12641-2026"
+    },
+    {
       "id": "sale-hm-midseason-202610",
       "categoryIds": [
         "brand-sales"
@@ -5757,17 +6385,18 @@
       "conditions": [
         "IKEA Family 또는 IKEA Business Network 멤버 대상입니다.",
         "전 매장·팝업스토어·공식 웹사이트·앱 안내이며 할인 태그가 있는 일부 제품에 한정됩니다.",
-        "재고 소진 시 구매가 어려울 수 있고 조립·배송 서비스 비용은 할인 대상에서 제외됩니다."
+        "재고 소진 시 구매가 어려울 수 있고 조립·배송 서비스 비용은 할인 대상에서 제외됩니다.",
+        "10/25~27 마지막3일의 온라인 한정 추가5% 안내를 재확인했습니다. 기본 회원10%할인과 적용 채널이 다르며, 단순 합산15%로 표시하지 않습니다."
       ],
       "publicationStatus": "verified",
       "lifecycleStatus": null,
-      "verifiedAt": "2026-10-24T02:01:14+09:00",
+      "verifiedAt": "2026-10-26T12:50:41+09:00",
       "evidence": [
         {
           "url": "https://www.ikea.com/kr/ko/campaigns/storage-week-fy27-l2-pub47d55da0/",
           "publisher": "이케아",
           "summary": "공식 캠페인 유의사항의 행사 기간",
-          "verifiedAt": "2026-10-24T02:01:14+09:00",
+          "verifiedAt": "2026-10-26T12:50:41+09:00",
           "fields": [
             "title",
             "eventStart",
@@ -5781,7 +6410,7 @@
         "kitchen"
       ],
       "legacyId": "ikea-storage-202610",
-      "contentHash": "b393814e167c2731dcb2541d887988d4e65f7c36521a9b5065b8a53bed99fa04",
+      "contentHash": "5058caadf22853a7ffc5ae998a37f57737e2a152cf51067d73966162b59ead9a",
       "siteUrl": "/tools/parenting-deals/#sale-ikea-storage-202610"
     },
     {
@@ -5866,13 +6495,13 @@
       ],
       "publicationStatus": "verified",
       "lifecycleStatus": null,
-      "verifiedAt": "2026-10-24T10:49:03+09:00",
+      "verifiedAt": "2026-10-26T12:50:41+09:00",
       "evidence": [
         {
           "url": "https://store.hanssem.com/plan/19811?componentId=15523",
           "publisher": "한샘",
           "summary": "공식 기획전 본 행사 기준 · 사전 알림·설치 기한과 구분",
-          "verifiedAt": "2026-10-24T10:49:03+09:00",
+          "verifiedAt": "2026-10-26T12:50:41+09:00",
           "fields": [
             "title",
             "eventStart",
@@ -5917,13 +6546,13 @@
       ],
       "publicationStatus": "verified",
       "lifecycleStatus": null,
-      "verifiedAt": "2026-10-24T10:49:03+09:00",
+      "verifiedAt": "2026-10-26T12:50:41+09:00",
       "evidence": [
         {
           "url": "https://store.emart.com/news/leaflet.do?division=2",
           "publisher": "이마트",
           "summary": "공식 금주 전단의 공통 기간 · 품목별 세부 일정 별도",
-          "verifiedAt": "2026-10-24T10:49:03+09:00",
+          "verifiedAt": "2026-10-26T12:50:41+09:00",
           "fields": [
             "title",
             "eventStart",
@@ -6022,13 +6651,13 @@
       ],
       "publicationStatus": "verified",
       "lifecycleStatus": null,
-      "verifiedAt": "2026-10-25T14:10:44+09:00",
+      "verifiedAt": "2026-10-26T12:50:41+09:00",
       "evidence": [
         {
           "url": "https://www.ifcmallseoul.com/kr/now/view/20000001075",
           "publisher": "무신사",
           "summary": "IFC몰 공식 매장 행사 기간 · 여의도 IFC몰 L2 매장 기준",
-          "verifiedAt": "2026-10-25T14:10:44+09:00",
+          "verifiedAt": "2026-10-26T12:50:41+09:00",
           "fields": [
             "title",
             "eventStart",
@@ -6070,17 +6699,18 @@
         "공식 공지에 나온 참여 매장에서 진행합니다. 참여 브랜드·상품과 추가 할인율은 매장별로 다릅니다.",
         "브랜드 포커스 1차는 10/26~11/4, 2차는 11/5~11/15로 나뉘며 참여 브랜드가 달라집니다.",
         "아우터·장바구니 쿠폰은 무신사 앱의 오프라인 쿠폰과 최소 구매금액·할인 한도를 확인하세요. 일부 품목은 제외됩니다.",
-        "사은품은 한정 수량이며 소진 시 조기 종료될 수 있습니다."
+        "사은품은 한정 수량이며 소진 시 조기 종료될 수 있습니다.",
+        "아우터15% 쿠폰은10만원 이상·최대18,000원, 장바구니 쿠폰은15만/20만/30만/40만원 구매별5/6/7/8%와 각 한도가 있습니다. 쿠폰별 중복·제외 품목은 앱에서 확인하세요."
       ],
       "publicationStatus": "verified",
       "lifecycleStatus": null,
-      "verifiedAt": "2026-10-25T14:10:44+09:00",
+      "verifiedAt": "2026-10-26T12:50:41+09:00",
       "evidence": [
         {
           "url": "https://www.musinsa.com/content/1561894598894510593",
           "publisher": "무신사",
           "summary": "무신사 공식 콘텐츠의 오프라인 행사 기간 · 세부 코너별 일정 별도",
-          "verifiedAt": "2026-10-25T14:10:44+09:00",
+          "verifiedAt": "2026-10-26T12:50:41+09:00",
           "fields": [
             "title",
             "eventStart",
@@ -6093,7 +6723,7 @@
         "fashion"
       ],
       "legacyId": "musinsa-winter-new-week-202610",
-      "contentHash": "805dd69de26f3e2526391da8d0293c023501b184e3dd33b03990b3648062e0b9",
+      "contentHash": "ecf1363da5952bd7c8948bbbbf61592d2401d3486e35ad2c0f98d31b0748e6f1",
       "siteUrl": "/tools/parenting-deals/#sale-musinsa-winter-new-week-202610"
     },
     {
@@ -6146,10 +6776,534 @@
       "legacyId": "amoremall-mamonde-big-sale-202610",
       "contentHash": "b13a51aee9949b517b1e37b9cfeda094765d095820a701d34534af71940a28fd",
       "siteUrl": "/tools/parenting-deals/#sale-amoremall-mamonde-big-sale-202610"
+    },
+    {
+      "id": "sale-naver-nepda-202610",
+      "categoryIds": [
+        "brand-sales"
+      ],
+      "title": "네이버플러스 스토어 · 넾다세일 · 하반기 쇼핑 축제",
+      "providerId": "legacy-brand-naver-store",
+      "canonicalUrl": "https://www.navercorp.com/media/pressReleasesDetail?seq=10034785",
+      "region": "전국",
+      "location": "온라인",
+      "audience": "대상 품목·회원 조건 확인",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-10-26",
+      "eventEnd": "2026-11-08",
+      "scheduleNote": "네이버2026-10-26 공식 발표의 전체 행사기간 · 회차·쿠폰별 기간 별도",
+      "endExclusive": false,
+      "endInclusiveMinute": false,
+      "feeStatus": "unknown",
+      "feeText": "품목별 가격과 할인 조건 확인",
+      "summary": "네이버플러스 스토어의 여러 상품군이 참여하는 기간 한정 쇼핑 행사입니다. 할인·쿠폰·적립은 각각의 적용 조건을 확인하세요.",
+      "conditions": [
+        "전체 행사기간은 10/26~11/8입니다. 10/26 가전·디지털, 10/27 키즈·육아 릴레이 등 날짜별 대상이 다릅니다.",
+        "5·7·10% 쿠폰과 최대7만원 할인은 쿠폰별 최소 구매금액·한도·대상 상품을 확인해야 하며 모든 상품에 같은 할인율이 적용되지 않습니다. 선착순 발급은 매일00·10·18시 안내입니다.",
+        "10/26 멤버십데이의20만원 이상 구매3% 추가 적립과 컬리N마트30% 쿠폰은 당일·회원·대상 조건이며 전체14일 혜택으로 표시하지 않습니다.",
+        "멤버십3개월 무료 이용권은 최근1개월 가입 이력이 없는 신규 가입자 대상 선착순이며 조기 종료될 수 있습니다. 가입 후 이용·해지 조건은 공식 신청 화면을 확인하세요.",
+        "할인과 포인트 적립·사은품은 별도 혜택입니다. 결제 전 적용 상품·제외 품목·쿠폰 중복·반품 시 혜택 회수 조건을 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "lifecycleStatus": null,
+      "verifiedAt": "2026-10-26T12:50:41+09:00",
+      "evidence": [
+        {
+          "url": "https://www.navercorp.com/media/pressReleasesDetail?seq=10034785",
+          "publisher": "네이버플러스 스토어",
+          "summary": "네이버2026-10-26 공식 발표의 전체 행사기간 · 회차·쿠폰별 기간 별도",
+          "verifiedAt": "2026-10-26T12:50:41+09:00",
+          "fields": [
+            "title",
+            "eventStart",
+            "eventEnd",
+            "conditions"
+          ]
+        }
+      ],
+      "sectorIds": [
+        "life",
+        "fashion",
+        "beauty",
+        "kids",
+        "furniture",
+        "appliances",
+        "kitchen"
+      ],
+      "legacyId": "naver-nepda-202610",
+      "contentHash": "7b38f5b9f353ede4642bf4bfc9bb498ff50445b1d0ebeb75ee55fb585eb849f1",
+      "siteUrl": "/tools/parenting-deals/#sale-naver-nepda-202610"
+    },
+    {
+      "id": "sale-11st-grand-202611",
+      "categoryIds": [
+        "brand-sales"
+      ],
+      "title": "11번가 · 2026 그랜드십일절",
+      "providerId": "legacy-brand-11st",
+      "canonicalUrl": "https://m.11stcorp.com/pr/detail?contentId=1843",
+      "region": "전국",
+      "location": "온라인",
+      "audience": "대상 품목·회원 조건 확인",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-11-01",
+      "eventEnd": "2026-11-11",
+      "scheduleNote": "11번가10/21 공식 보도자료의11월 본행사 기간 · 사전행사 별도",
+      "endExclusive": false,
+      "endInclusiveMinute": false,
+      "feeStatus": "unknown",
+      "feeText": "품목별 가격과 할인 조건 확인",
+      "summary": "11번가가 예고한 연중 대표 쇼핑 행사입니다.10/26~31 사전 예약구매와11월 본행사를 구분해 살펴보세요.",
+      "conditions": [
+        "본행사 11/1~11과 사전 프로모션 10/26~31은 서로 다른 기간입니다.",
+        "사전 선착순1만원 장바구니 쿠폰은4만원 이상 구매·11/11사용 조건입니다. 무료11번가플러스 첫 가입자 또는 최근2개월 미구매 멤버십 회원 대상입니다.",
+        "타임딜·멤버십 한정 딜·라이브·경품의 대상과 사용기한은 각 코너에서 확인해야 합니다. 상품 가격·재고·쿠폰 중복 및 취소 시 회수 조건을 결제 전 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "lifecycleStatus": null,
+      "verifiedAt": "2026-10-26T12:50:41+09:00",
+      "evidence": [
+        {
+          "url": "https://m.11stcorp.com/pr/detail?contentId=1843",
+          "publisher": "11번가",
+          "summary": "11번가10/21 공식 보도자료의11월 본행사 기간 · 사전행사 별도",
+          "verifiedAt": "2026-10-26T12:50:41+09:00",
+          "fields": [
+            "title",
+            "eventStart",
+            "eventEnd",
+            "conditions"
+          ]
+        }
+      ],
+      "sectorIds": [
+        "life",
+        "fashion",
+        "beauty",
+        "kids",
+        "furniture",
+        "appliances",
+        "kitchen"
+      ],
+      "legacyId": "11st-grand-202611",
+      "contentHash": "39c0ca429598ddec608d95934d49ca69378b4423dd08b33d4106be00b3aeb974",
+      "siteUrl": "/tools/parenting-deals/#sale-11st-grand-202611"
+    },
+    {
+      "id": "sale-amoremall-15178-202610",
+      "categoryIds": [
+        "brand-sales"
+      ],
+      "title": "아모레몰 · 아모레베이직 · 뷰티툴 최대37%",
+      "providerId": "legacy-brand-amoremall",
+      "canonicalUrl": "https://www.amoremall.com/kr/ko/display/event_detail?planDisplaySn=15178",
+      "region": "전국",
+      "location": "온라인",
+      "audience": "대상 품목·회원 조건 확인",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-10-26",
+      "eventEnd": "2026-11-01",
+      "scheduleNote": "아모레몰 공식 이벤트 목록의 기간 · 상세 기획전의 대상·유의사항 대조",
+      "endExclusive": false,
+      "endInclusiveMinute": false,
+      "feeStatus": "unknown",
+      "feeText": "품목별 가격과 할인 조건 확인",
+      "summary": "브러시·뷰티소품·PB뷰티 등 여러 도구의 기간 한정 할인 행사입니다.",
+      "conditions": [
+        "표시된 최대37%는 대상 브러시 등 일부 품목 기준입니다. 상품별 할인과 실 결제금액 기준 구매 혜택을 확인하세요.",
+        "뷰티포인트 전액 결제 시 스페셜 사은품·기프트카드 증정에서 제외되며 비회원 Npay 구매는 스페셜 사은품 제외 안내가 있습니다.",
+        "교환·환불 시 사은품을 함께 반납해야 합니다. 재고 소진·내부 사정에 따라 조기 종료되거나 사은품이 대체될 수 있으므로 최종 주문 조건을 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "lifecycleStatus": null,
+      "verifiedAt": "2026-10-26T12:50:41+09:00",
+      "evidence": [
+        {
+          "url": "https://www.amoremall.com/kr/ko/display/event",
+          "publisher": "아모레몰",
+          "summary": "아모레몰 공식 이벤트 목록의 기간 · 상세 기획전의 대상·유의사항 대조",
+          "verifiedAt": "2026-10-26T12:50:41+09:00",
+          "fields": [
+            "title",
+            "eventStart",
+            "eventEnd",
+            "conditions"
+          ]
+        }
+      ],
+      "sectorIds": [
+        "beauty"
+      ],
+      "legacyId": "amoremall-15178-202610",
+      "contentHash": "f11029be110d5697c1f3cd6553753a431b716417dece16d627c2c36aa2df4b06",
+      "siteUrl": "/tools/parenting-deals/#sale-amoremall-15178-202610"
+    },
+    {
+      "id": "sale-amoremall-15176-202610",
+      "categoryIds": [
+        "brand-sales"
+      ],
+      "title": "아모레몰 · 마몽드 · 환절기 집중 케어",
+      "providerId": "legacy-brand-amoremall",
+      "canonicalUrl": "https://www.amoremall.com/kr/ko/display/event_detail?planDisplaySn=15176",
+      "region": "전국",
+      "location": "온라인",
+      "audience": "대상 품목·회원 조건 확인",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-10-26",
+      "eventEnd": "2026-11-01",
+      "scheduleNote": "아모레몰 공식 이벤트 목록의 기간 · 상세 기획전의 대상·유의사항 대조",
+      "endExclusive": false,
+      "endInclusiveMinute": false,
+      "feeStatus": "unknown",
+      "feeText": "품목별 가격과 할인 조건 확인",
+      "summary": "로즈·선케어·세라마이드·선물 세트 등 여러 라인을 모은 브랜드 행사입니다.",
+      "conditions": [
+        "로즈·선케어·세라마이드 등 라인별 할인과 구성·증정 수량을 확인하세요.",
+        "뷰티포인트 전액 결제 시 스페셜 사은품·기프트카드 증정에서 제외되며 비회원 Npay 구매는 스페셜 사은품 제외 안내가 있습니다.",
+        "교환·환불 시 사은품을 함께 반납해야 합니다. 재고 소진·내부 사정에 따라 조기 종료되거나 사은품이 대체될 수 있으므로 최종 주문 조건을 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "lifecycleStatus": null,
+      "verifiedAt": "2026-10-26T12:50:41+09:00",
+      "evidence": [
+        {
+          "url": "https://www.amoremall.com/kr/ko/display/event",
+          "publisher": "아모레몰",
+          "summary": "아모레몰 공식 이벤트 목록의 기간 · 상세 기획전의 대상·유의사항 대조",
+          "verifiedAt": "2026-10-26T12:50:41+09:00",
+          "fields": [
+            "title",
+            "eventStart",
+            "eventEnd",
+            "conditions"
+          ]
+        }
+      ],
+      "sectorIds": [
+        "beauty"
+      ],
+      "legacyId": "amoremall-15176-202610",
+      "contentHash": "22b1bece39d062b9b2b457b36507cf4b1a39d915a0f0f1c04eca80395f725286",
+      "siteUrl": "/tools/parenting-deals/#sale-amoremall-15176-202610"
+    },
+    {
+      "id": "sale-amoremall-15102-202610",
+      "categoryIds": [
+        "brand-sales"
+      ],
+      "title": "아모레몰 · 프리메라 · 클렌징·스킨케어 기획전",
+      "providerId": "legacy-brand-amoremall",
+      "canonicalUrl": "https://www.amoremall.com/kr/ko/display/event_detail?planDisplaySn=15102",
+      "region": "전국",
+      "location": "온라인",
+      "audience": "대상 품목·회원 조건 확인",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-10-26",
+      "eventEnd": "2026-11-01",
+      "scheduleNote": "아모레몰 공식 이벤트 목록의 기간 · 상세 기획전의 대상·유의사항 대조",
+      "endExclusive": false,
+      "endInclusiveMinute": false,
+      "feeStatus": "unknown",
+      "feeText": "품목별 가격과 할인 조건 확인",
+      "summary": "클렌저·비타티놀·보습·선케어 등 여러 라인이 참여하는 브랜드 기획전입니다.",
+      "conditions": [
+        "클렌징·보습·선케어 등 품목별 할인율과 사은품 적용은 주문 단계에서 확인하세요.",
+        "뷰티포인트 전액 결제 시 스페셜 사은품·기프트카드 증정에서 제외되며 비회원 Npay 구매는 스페셜 사은품 제외 안내가 있습니다.",
+        "교환·환불 시 사은품을 함께 반납해야 합니다. 재고 소진·내부 사정에 따라 조기 종료되거나 사은품이 대체될 수 있으므로 최종 주문 조건을 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "lifecycleStatus": null,
+      "verifiedAt": "2026-10-26T12:50:41+09:00",
+      "evidence": [
+        {
+          "url": "https://www.amoremall.com/kr/ko/display/event",
+          "publisher": "아모레몰",
+          "summary": "아모레몰 공식 이벤트 목록의 기간 · 상세 기획전의 대상·유의사항 대조",
+          "verifiedAt": "2026-10-26T12:50:41+09:00",
+          "fields": [
+            "title",
+            "eventStart",
+            "eventEnd",
+            "conditions"
+          ]
+        }
+      ],
+      "sectorIds": [
+        "beauty"
+      ],
+      "legacyId": "amoremall-15102-202610",
+      "contentHash": "23e7ea3f60af9ae5a8cd84dbf7359a3725f776d64fb2a7fc9d3001716f742793",
+      "siteUrl": "/tools/parenting-deals/#sale-amoremall-15102-202610"
+    },
+    {
+      "id": "sale-amoremall-15059-202610",
+      "categoryIds": [
+        "brand-sales"
+      ],
+      "title": "아모레몰 · 라네즈 · 보습·장벽 케어",
+      "providerId": "legacy-brand-amoremall",
+      "canonicalUrl": "https://www.amoremall.com/kr/ko/display/event_detail?planDisplaySn=15059",
+      "region": "전국",
+      "location": "온라인",
+      "audience": "대상 품목·회원 조건 확인",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-10-26",
+      "eventEnd": "2026-11-01",
+      "scheduleNote": "아모레몰 공식 이벤트 목록의 기간 · 상세 기획전의 대상·유의사항 대조",
+      "endExclusive": false,
+      "endInclusiveMinute": false,
+      "feeStatus": "unknown",
+      "feeText": "품목별 가격과 할인 조건 확인",
+      "summary": "크림스킨·워터뱅크·립케어·슬리핑 마스크를 모은 브랜드 행사입니다.",
+      "conditions": [
+        "구매금액대 사은품은 모든 할인 후 뷰티포인트·기프트카드 사용액을 포함한 최종 결제금액 기준입니다. 라이브와 일반 상품 금액은 합산되지 않습니다.",
+        "뷰티포인트 전액 결제 시 스페셜 사은품·기프트카드 증정에서 제외되며 비회원 Npay 구매는 스페셜 사은품 제외 안내가 있습니다.",
+        "교환·환불 시 사은품을 함께 반납해야 합니다. 재고 소진·내부 사정에 따라 조기 종료되거나 사은품이 대체될 수 있으므로 최종 주문 조건을 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "lifecycleStatus": null,
+      "verifiedAt": "2026-10-26T12:50:41+09:00",
+      "evidence": [
+        {
+          "url": "https://www.amoremall.com/kr/ko/display/event",
+          "publisher": "아모레몰",
+          "summary": "아모레몰 공식 이벤트 목록의 기간 · 상세 기획전의 대상·유의사항 대조",
+          "verifiedAt": "2026-10-26T12:50:41+09:00",
+          "fields": [
+            "title",
+            "eventStart",
+            "eventEnd",
+            "conditions"
+          ]
+        }
+      ],
+      "sectorIds": [
+        "beauty"
+      ],
+      "legacyId": "amoremall-15059-202610",
+      "contentHash": "e572e1737835f79afaa926bde363e19ee7e82cd1e99cd5b3d4fdfd0147c1308c",
+      "siteUrl": "/tools/parenting-deals/#sale-amoremall-15059-202610"
+    },
+    {
+      "id": "sale-amoremall-15055-202610",
+      "categoryIds": [
+        "brand-sales"
+      ],
+      "title": "아모레몰 · 아이오페 · 고기능 스킨케어 기획전",
+      "providerId": "legacy-brand-amoremall",
+      "canonicalUrl": "https://www.amoremall.com/kr/ko/display/event_detail?planDisplaySn=15055",
+      "region": "전국",
+      "location": "온라인",
+      "audience": "대상 품목·회원 조건 확인",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-10-26",
+      "eventEnd": "2026-11-01",
+      "scheduleNote": "아모레몰 공식 이벤트 목록의 기간 · 상세 기획전의 대상·유의사항 대조",
+      "endExclusive": false,
+      "endInclusiveMinute": false,
+      "feeStatus": "unknown",
+      "feeText": "품목별 가격과 할인 조건 확인",
+      "summary": "슈퍼바이탈·레티놀·남성기초·선케어·쿠션 등 여러 라인을 모은 행사입니다.",
+      "conditions": [
+        "사은품 적용 여부는 결제 페이지와 주문내역에서 확인합니다. 라이브와 일반 상품 구매액은 합산되지 않습니다.",
+        "뷰티포인트 전액 결제 시 스페셜 사은품·기프트카드 증정에서 제외되며 비회원 Npay 구매는 스페셜 사은품 제외 안내가 있습니다.",
+        "교환·환불 시 사은품을 함께 반납해야 합니다. 재고 소진·내부 사정에 따라 조기 종료되거나 사은품이 대체될 수 있으므로 최종 주문 조건을 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "lifecycleStatus": null,
+      "verifiedAt": "2026-10-26T12:50:41+09:00",
+      "evidence": [
+        {
+          "url": "https://www.amoremall.com/kr/ko/display/event",
+          "publisher": "아모레몰",
+          "summary": "아모레몰 공식 이벤트 목록의 기간 · 상세 기획전의 대상·유의사항 대조",
+          "verifiedAt": "2026-10-26T12:50:41+09:00",
+          "fields": [
+            "title",
+            "eventStart",
+            "eventEnd",
+            "conditions"
+          ]
+        }
+      ],
+      "sectorIds": [
+        "beauty"
+      ],
+      "legacyId": "amoremall-15055-202610",
+      "contentHash": "c5e7901edde065c05f4d158e0240faab276e5e05bab4fddfad209c7d49cbdb68",
+      "siteUrl": "/tools/parenting-deals/#sale-amoremall-15055-202610"
+    },
+    {
+      "id": "sale-amoremall-15129-202610",
+      "categoryIds": [
+        "brand-sales"
+      ],
+      "title": "아모레몰 · 퍼즐우드 · 전 품목 할인·쿠폰",
+      "providerId": "legacy-brand-amoremall",
+      "canonicalUrl": "https://www.amoremall.com/kr/ko/display/event_detail?planDisplaySn=15129",
+      "region": "전국",
+      "location": "온라인",
+      "audience": "대상 품목·회원 조건 확인",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-10-19",
+      "eventEnd": "2026-11-01",
+      "scheduleNote": "아모레몰 공식 이벤트 목록의 기간 · 상세 기획전의 대상·유의사항 대조",
+      "endExclusive": false,
+      "endInclusiveMinute": false,
+      "feeStatus": "unknown",
+      "feeText": "품목별 가격과 할인 조건 확인",
+      "summary": "디퓨저·핸드크림·인센스 등 퍼즐우드 품목의 공식 기획전입니다.",
+      "conditions": [
+        "10% 할인과 5% 쿠폰은 적용 순서와 조건을 함께 확인하세요. 쿠폰 한도·제외 품목·실 결제금액에 따라 혜택이 달라집니다.",
+        "뷰티포인트 전액 결제 시 스페셜 사은품·기프트카드 증정에서 제외되며 비회원 Npay 구매는 스페셜 사은품 제외 안내가 있습니다.",
+        "교환·환불 시 사은품을 함께 반납해야 합니다. 재고 소진·내부 사정에 따라 조기 종료되거나 사은품이 대체될 수 있으므로 최종 주문 조건을 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "lifecycleStatus": null,
+      "verifiedAt": "2026-10-26T12:50:41+09:00",
+      "evidence": [
+        {
+          "url": "https://www.amoremall.com/kr/ko/display/event",
+          "publisher": "아모레몰",
+          "summary": "아모레몰 공식 이벤트 목록의 기간 · 상세 기획전의 대상·유의사항 대조",
+          "verifiedAt": "2026-10-26T12:50:41+09:00",
+          "fields": [
+            "title",
+            "eventStart",
+            "eventEnd",
+            "conditions"
+          ]
+        }
+      ],
+      "sectorIds": [
+        "beauty"
+      ],
+      "legacyId": "amoremall-15129-202610",
+      "contentHash": "380af39b004e61150146e05a16ef7d4946bcb05ec832d7301eff8a2a37baa21b",
+      "siteUrl": "/tools/parenting-deals/#sale-amoremall-15129-202610"
+    },
+    {
+      "id": "sale-amoremall-15092-202610",
+      "categoryIds": [
+        "brand-sales"
+      ],
+      "title": "아모레몰 · 에스쁘아 · 가을 메이크업 기획전",
+      "providerId": "legacy-brand-amoremall",
+      "canonicalUrl": "https://www.amoremall.com/kr/ko/display/event_detail?planDisplaySn=15092",
+      "region": "전국",
+      "location": "온라인",
+      "audience": "대상 품목·회원 조건 확인",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-10-19",
+      "eventEnd": "2026-11-01",
+      "scheduleNote": "아모레몰 공식 이벤트 목록의 기간 · 상세 기획전의 대상·유의사항 대조",
+      "endExclusive": false,
+      "endInclusiveMinute": false,
+      "feeStatus": "unknown",
+      "feeText": "품목별 가격과 할인 조건 확인",
+      "summary": "베이스·립·아이·선케어·뷰티툴을 모은 브랜드 행사입니다.",
+      "conditions": [
+        "증정 기준은 모든 할인 후, 뷰티포인트·기프트카드 차감 전 금액입니다. 기프트카드는 주문당1회, 구매확정 후 발급되므로 즉시 할인과 구분하세요.",
+        "뷰티포인트 전액 결제 시 스페셜 사은품·기프트카드 증정에서 제외되며 비회원 Npay 구매는 스페셜 사은품 제외 안내가 있습니다.",
+        "교환·환불 시 사은품을 함께 반납해야 합니다. 재고 소진·내부 사정에 따라 조기 종료되거나 사은품이 대체될 수 있으므로 최종 주문 조건을 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "lifecycleStatus": null,
+      "verifiedAt": "2026-10-26T12:50:41+09:00",
+      "evidence": [
+        {
+          "url": "https://www.amoremall.com/kr/ko/display/event",
+          "publisher": "아모레몰",
+          "summary": "아모레몰 공식 이벤트 목록의 기간 · 상세 기획전의 대상·유의사항 대조",
+          "verifiedAt": "2026-10-26T12:50:41+09:00",
+          "fields": [
+            "title",
+            "eventStart",
+            "eventEnd",
+            "conditions"
+          ]
+        }
+      ],
+      "sectorIds": [
+        "beauty"
+      ],
+      "legacyId": "amoremall-15092-202610",
+      "contentHash": "d2dab609765c634b2d45822bc281bdce48d0d2f4018896851ef73e05ee605a28",
+      "siteUrl": "/tools/parenting-deals/#sale-amoremall-15092-202610"
+    },
+    {
+      "id": "sale-amoremall-15089-202610",
+      "categoryIds": [
+        "brand-sales"
+      ],
+      "title": "아모레몰 · 이니스프리 · 가을 보습·탄력 기획전",
+      "providerId": "legacy-brand-amoremall",
+      "canonicalUrl": "https://www.amoremall.com/kr/ko/display/event_detail?planDisplaySn=15089",
+      "region": "전국",
+      "location": "온라인",
+      "audience": "대상 품목·회원 조건 확인",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-10-19",
+      "eventEnd": "2026-11-01",
+      "scheduleNote": "아모레몰 공식 이벤트 목록의 기간 · 상세 기획전의 대상·유의사항 대조",
+      "endExclusive": false,
+      "endInclusiveMinute": false,
+      "feeStatus": "unknown",
+      "feeText": "품목별 가격과 할인 조건 확인",
+      "summary": "앰플·세럼·클렌징·크림·선케어 등 여러 품목군을 모은 행사입니다.",
+      "conditions": [
+        "유채꿀 립밤1+1은10/26~30의5일 혜택이며 전체 행사 종료일11/1과 다릅니다. 기프트카드는 주문당1회 구매확정 시 발급됩니다.",
+        "뷰티포인트 전액 결제 시 스페셜 사은품·기프트카드 증정에서 제외되며 비회원 Npay 구매는 스페셜 사은품 제외 안내가 있습니다.",
+        "교환·환불 시 사은품을 함께 반납해야 합니다. 재고 소진·내부 사정에 따라 조기 종료되거나 사은품이 대체될 수 있으므로 최종 주문 조건을 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "lifecycleStatus": null,
+      "verifiedAt": "2026-10-26T12:50:41+09:00",
+      "evidence": [
+        {
+          "url": "https://www.amoremall.com/kr/ko/display/event",
+          "publisher": "아모레몰",
+          "summary": "아모레몰 공식 이벤트 목록의 기간 · 상세 기획전의 대상·유의사항 대조",
+          "verifiedAt": "2026-10-26T12:50:41+09:00",
+          "fields": [
+            "title",
+            "eventStart",
+            "eventEnd",
+            "conditions"
+          ]
+        }
+      ],
+      "sectorIds": [
+        "beauty"
+      ],
+      "legacyId": "amoremall-15089-202610",
+      "contentHash": "57be1eb2352abf67471d5e7d088155f93eed7967c3816d66079c8d85d650e9f7",
+      "siteUrl": "/tools/parenting-deals/#sale-amoremall-15089-202610"
     }
   ],
-  "siteRevision": "441ded00a5848768fb5d8745de96742825f701a7",
-  "generatedAt": "2026-10-25T23:18:33.684Z",
+  "siteRevision": "ba7b6fdb48b05b218350a3760e83da828f7fd163",
+  "generatedAt": "2026-10-26T04:05:36.188Z",
   "window": {
     "start": "2026-10-26",
     "end": "2026-12-25"

@@ -5,21 +5,142 @@
     "minimumDetailedNoticesPerCategory": 15,
     "currentVerifiedRecordsTarget": 15,
     "unit": "distinct-official-notice",
-    "excludeFromResearchCount": ["homepage-only", "search-snippet-only", "duplicate", "blocked-before-detail-review"],
+    "excludeFromResearchCount": [
+      "homepage-only",
+      "search-snippet-only",
+      "duplicate",
+      "blocked-before-detail-review"
+    ],
     "priority": "empty-and-under-target-categories-first",
     "coverage": "regional-and-provider-diversity",
     "shortfallAction": "expand-official-sources-and-report-actual-shortfall"
   },
   "timing": "오전·오후·저녁의 기본 시각이며 실제 시작 시각은 달라질 수 있습니다.",
   "categories": [
-    {"id":"kids-programs","name":"아이 체험·교육","shortName":"체험·교육","description":"아이 연령에 맞는 체험과 교육의 신청기간·이용일을 확인해요.","day":0,"hour":8,"blogDay":3,"split":"region","href":"/tools/kids-programs/","accent":"green"},
-    {"id":"local-parenting","name":"도서관·육아지원센터","shortName":"도서관·육아","description":"우리 동네 도서관과 육아지원센터의 프로그램을 찾아요.","day":0,"hour":15,"blogDay":3,"split":"region","href":"/tools/local-parenting/","accent":"blue"},
-    {"id":"family-support","name":"육아·가족 지원사업","shortName":"가족 지원","description":"거주지와 대상 조건을 살피고 가족 지원사업의 신청일을 챙겨요.","day":0,"hour":19,"blogDay":3,"split":"national-or-region","href":"/tools/family-support/","accent":"green"},
-    {"id":"camping-booking","name":"공공 캠핑장·휴양림","shortName":"캠핑·휴양림","description":"일반예약·추첨·우선예약을 구분해 다음 나들이를 준비해요.","day":1,"hour":8,"blogDay":3,"split":"region","href":"/tools/camping-booking/","accent":"green"},
-    {"id":"family-culture","name":"어린이 공연·전시","shortName":"공연·전시","description":"어린이 공연과 전시, 실내 나들이의 관람연령·예약조건을 살펴요.","day":1,"hour":15,"blogDay":4,"split":"region","href":"/tools/family-culture/","accent":"blue"},
-    {"id":"kids-popups","name":"키즈 팝업·캐릭터 행사","shortName":"키즈 팝업","description":"아이와 좋아하는 캐릭터를 만나요. 지점·기간·입장방식을 확인해요.","day":1,"hour":19,"blogDay":4,"split":"region","href":"/tools/kids-popups/","accent":"orange"},
-    {"id":"brand-sales","name":"브랜드 세일","shortName":"브랜드 세일","description":"기간 한정 대표 세일의 일정과 회원·구매 조건을 확인해요.","day":2,"hour":8,"blogDay":3,"split":"sale-sector","href":"/tools/parenting-deals/","accent":"orange"},
-    {"id":"family-discounts","name":"가족 외식·시설 할인","shortName":"외식·시설 할인","description":"외식과 관광시설 혜택의 카드·요일·이용채널 조건을 함께 살펴요.","day":2,"hour":15,"blogDay":4,"split":"discount-sector","href":"/tools/family-discounts/","accent":"orange"},
-    {"id":"festivals","name":"축제·지역 행사","shortName":"축제·행사","description":"지역별 축제와 행사의 실제 운영일·비용·예약 안내를 확인해요.","day":2,"hour":19,"blogDay":4,"split":"region","href":"/tools/kids-outing-calendar/","accent":"blue"}
-  ]
+    {
+      "id": "kids-programs",
+      "name": "아이 체험·교육",
+      "shortName": "체험·교육",
+      "description": "아이 연령에 맞는 체험과 교육의 신청기간·이용일을 확인해요.",
+      "day": 0,
+      "hour": 8,
+      "blogDay": 3,
+      "split": "region",
+      "href": "/tools/kids-programs/",
+      "accent": "green"
+    },
+    {
+      "id": "local-parenting",
+      "name": "도서관·육아지원센터",
+      "shortName": "도서관·육아",
+      "description": "우리 동네 도서관과 육아지원센터의 프로그램을 찾아요.",
+      "day": 0,
+      "hour": 15,
+      "blogDay": 3,
+      "split": "region",
+      "href": "/tools/local-parenting/",
+      "accent": "blue"
+    },
+    {
+      "id": "family-support",
+      "name": "육아·가족 지원사업",
+      "shortName": "가족 지원",
+      "description": "거주지와 대상 조건을 살피고 가족 지원사업의 신청일을 챙겨요.",
+      "day": 0,
+      "hour": 19,
+      "blogDay": 3,
+      "split": "national-or-region",
+      "href": "/tools/family-support/",
+      "accent": "green"
+    },
+    {
+      "id": "camping-booking",
+      "name": "공공 캠핑장·휴양림",
+      "shortName": "캠핑·휴양림",
+      "description": "일반예약·추첨·우선예약을 구분해 다음 나들이를 준비해요.",
+      "day": 1,
+      "hour": 8,
+      "blogDay": 3,
+      "split": "region",
+      "href": "/tools/camping-booking/",
+      "accent": "green"
+    },
+    {
+      "id": "family-culture",
+      "name": "어린이 공연·전시",
+      "shortName": "공연·전시",
+      "description": "어린이 공연과 전시, 실내 나들이의 관람연령·예약조건을 살펴요.",
+      "day": 1,
+      "hour": 15,
+      "blogDay": 4,
+      "split": "region",
+      "href": "/tools/family-culture/",
+      "accent": "blue"
+    },
+    {
+      "id": "kids-popups",
+      "name": "키즈 팝업·캐릭터 행사",
+      "shortName": "키즈 팝업",
+      "description": "아이와 좋아하는 캐릭터를 만나요. 지점·기간·입장방식을 확인해요.",
+      "day": 1,
+      "hour": 19,
+      "blogDay": 4,
+      "split": "region",
+      "href": "/tools/kids-popups/",
+      "accent": "orange"
+    },
+    {
+      "id": "brand-sales",
+      "name": "브랜드 세일",
+      "shortName": "브랜드 세일",
+      "description": "기간 한정 대표 세일의 일정과 회원·구매 조건을 확인해요.",
+      "day": 2,
+      "hour": 8,
+      "blogDay": 3,
+      "split": "sale-sector",
+      "href": "/tools/parenting-deals/",
+      "accent": "orange"
+    },
+    {
+      "id": "family-discounts",
+      "name": "가족 외식·시설 할인",
+      "shortName": "외식·시설 할인",
+      "description": "외식과 관광시설 혜택의 카드·요일·이용채널 조건을 함께 살펴요.",
+      "day": 2,
+      "hour": 15,
+      "blogDay": 4,
+      "split": "discount-sector",
+      "href": "/tools/family-discounts/",
+      "accent": "orange"
+    },
+    {
+      "id": "festivals",
+      "name": "축제·지역 행사",
+      "shortName": "축제·행사",
+      "description": "지역별 축제와 행사의 실제 운영일·비용·예약 안내를 확인해요.",
+      "day": 2,
+      "hour": 19,
+      "blogDay": 4,
+      "split": "region",
+      "href": "/tools/kids-outing-calendar/",
+      "accent": "blue"
+    }
+  ],
+  "regularUpdatesStartDate": "2026-11-01",
+  "manualBatch": {
+    "date": "2026-10-26",
+    "priority": [
+      "festivals",
+      "brand-sales",
+      "kids-popups",
+      "local-parenting",
+      "kids-programs",
+      "family-support",
+      "family-culture",
+      "family-discounts",
+      "camping-booking"
+    ],
+    "campingCompletedEarlier": true,
+    "reason": "사용자 요청: 이번 주는 오늘 하루 일괄 갱신, 정기 업데이트는11/1부터"
+  }
 }

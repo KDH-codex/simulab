@@ -90,10 +90,42 @@
       ]
     },
     "brand-sales": {
-      "lastCollectedAt": "2026-10-26",
+      "lastCollectedAt": "2026-10-26T03:50:41.026Z",
       "outcome": "partial-review",
-      "researchRunId": "baseline-2026-10-26",
-      "providers": []
+      "providers": [
+        {
+          "providerId": "naver-store",
+          "status": "reviewed",
+          "verified": 1
+        },
+        {
+          "providerId": "11st",
+          "status": "reviewed",
+          "verified": 1
+        },
+        {
+          "providerId": "amoremall",
+          "status": "reviewed",
+          "verified": 8
+        },
+        {
+          "providerId": "existing-sale-sources",
+          "status": "reviewed",
+          "verified": 5
+        },
+        {
+          "providerId": "gmarket",
+          "status": "failed",
+          "verified": 0
+        },
+        {
+          "providerId": "kurly",
+          "status": "failed",
+          "verified": 0
+        }
+      ],
+      "researchRunId": "manual-all-20261026",
+      "note": "신규10·기존재검증5. 원문 상세25건(검증15·보류2·탈락8), 미완료/목록3·접근실패2 별도. 기존34개 추적 유지,네이버와11번가 추가."
     },
     "family-discounts": {
       "lastCollectedAt": "2026-10-26",
@@ -108,10 +140,32 @@
       ]
     },
     "festivals": {
-      "lastCollectedAt": "2026-10-26",
+      "lastCollectedAt": "2026-10-26T03:44:36.786Z",
       "outcome": "partial-review",
-      "researchRunId": "baseline-2026-10-26",
-      "providers": []
+      "providers": [
+        {
+          "providerId": "mcst",
+          "status": "reviewed",
+          "verified": 21
+        },
+        {
+          "providerId": "seoul-parks",
+          "status": "reviewed",
+          "verified": 1
+        },
+        {
+          "providerId": "visitjeju",
+          "status": "reviewed",
+          "verified": 1
+        },
+        {
+          "providerId": "busan",
+          "status": "failed",
+          "verified": 0
+        }
+      ],
+      "researchRunId": "manual-all-20261026",
+      "note": "공식 상세26건 검토:신규13·기존재검증10·보류3. 부산 접근 실패1건은 조사수 제외. 공개유효26건."
     }
   }
 }

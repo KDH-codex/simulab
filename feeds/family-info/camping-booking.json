@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "snapshotId": "e9afbb7bca78d9e67503fe08",
+  "snapshotId": "77040c9b88d8e46bce1de24c",
   "timezone": "Asia/Seoul",
   "categories": [
     {
@@ -965,8 +965,8 @@
       "siteUrl": "/tools/camping-booking/#geumsan-foresttown-202611"
     }
   ],
-  "siteRevision": "441ded00a5848768fb5d8745de96742825f701a7",
-  "generatedAt": "2026-10-25T23:18:33.684Z",
+  "siteRevision": "ba7b6fdb48b05b218350a3760e83da828f7fd163",
+  "generatedAt": "2026-10-26T04:05:36.188Z",
   "window": {
     "start": "2026-10-26",
     "end": "2026-12-25"

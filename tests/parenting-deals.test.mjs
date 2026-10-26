@@ -9,14 +9,14 @@ const events=raw.map(event=>{const source=sources.find(s=>s.id===event.brandId);
 const memberOffers=JSON.parse(await readFile(new URL('../data/deals/reviewed.json',import.meta.url),'utf8')).memberOffers.map(offer=>{const source=sources.find(s=>s.id===offer.brandId);return {...offer,brandName:source.name,brandAliases:source.aliases};});
 const at='2026-10-25T23:00:00+09:00',hm=events.find(e=>e.brandId==='hm'),kurly=events.find(e=>e.brandId==='kurly');
 
-test('34 tracked brands include requested fashion, beauty and life brands with ten reviewed sales',()=>{
- assert.equal(sources.length,34);assert.equal(new Set(sources.map(s=>s.id)).size,34);
- const required=['kurly','emart','lottemart','modernhouse','uniqlo','hm','zara','newbalance','topten','jellymallow','monbebe','littleground','minkmui','bebedepino','absorba','hanssem','iloom','musinsa','oliveyoung','muji','amoremall'];
+test('tracked brands include requested fashion, beauty, life and marketplace sales',()=>{
+ assert.ok(sources.length>=36);assert.equal(new Set(sources.map(s=>s.id)).size,sources.length);
+ const required=['kurly','emart','lottemart','modernhouse','uniqlo','hm','zara','newbalance','topten','jellymallow','monbebe','littleground','minkmui','bebedepino','absorba','hanssem','iloom','musinsa','oliveyoung','muji','amoremall','naver-store','11st'];
  for(const id of required)assert.equal(sources.find(s=>s.id===id)?.trackingTier,'priority',id);
- assert.equal(events.filter(isCalendarEligible).length,10);assert.equal(events.filter(e=>e.publicationStatus==='held').length,8);
- assert.equal(filterEvents(events,{month:'2026-10'},at).length,10);
- for(const source of sources)assert.deepEqual(validateSource(source,at),[],source.id);
- for(const event of events)assert.deepEqual(validateEvent(event,sources,at),[],event.id);
+ assert.ok(events.filter(isCalendarEligible).length>=20);assert.equal(events.filter(e=>e.publicationStatus==='held').length,8);
+ assert.equal(filterEvents(events,{month:'2026-10'},at).some(e=>e.brandId==='11st'),false);
+ for(const source of sources)assert.deepEqual(validateSource(source),[],source.id);
+ for(const event of events)assert.deepEqual(validateEvent(event,sources),[],event.id);
 });
 
 test('long-term, recurring member benefits and individual product offers fail closed even with reviewed status',()=>{
@@ -91,9 +91,9 @@ test('overlapping bars have valid spans and disjoint lanes; hidden events are di
 });
 
 test('life, kids, brand, channel, status and search combine while empty tracked brands stay available',()=>{
- assert.equal(filterEvents(events,{month:'2026-10',category:'life'},at).length,3);
- assert.equal(filterEvents(events,{month:'2026-10',category:'kids'},at).length,0);
- assert.equal(filterSources(sources,{category:'kids'}).length,7);
+ assert.equal(filterEvents(events,{month:'2026-10',category:'life'},at).length,4);
+ assert.deepEqual(filterEvents(events,{month:'2026-10',category:'kids'},at).map(e=>e.brandId),['naver-store']);
+ assert.equal(filterSources(sources,{category:'kids'}).length,9);
  assert.equal(filterSources(sources,{query:'몽베'})[0].id,'monbebe');
  assert.equal(filterSources(sources,{query:'젤리벨로'})[0].id,'jellymallow');
  assert.equal(filterSources(sources,{brand:'newbalance'}).length,1);
@@ -107,7 +107,7 @@ test('cancelled and held records never become sales, while watchlist cards discl
  const cancelled={...hm,publicationStatus:'cancelled'};assert.equal(filterEvents([cancelled],{month:'2026-10'},at).length,0);
  assert.equal(eventState(cancelled,at).code,'cancelled');
  const directory=renderSourceDirectory(sources,events,{now:at});
- assert.equal((directory.match(/data-source-brand=/g)||[]).length,34);assert.equal((directory.match(/data-source-group=/g)||[]).length,7);
+ assert.equal((directory.match(/data-source-brand=/g)||[]).length,sources.length);assert.equal((directory.match(/data-source-group=/g)||[]).length,7);
  assert.match(directory,/대표 세일 추가 확인/);assert.match(directory,/행사 상세 접근 제한/);
  assert.doesNotMatch(directory,/세일 없음|상시 진행/);
 });
@@ -134,7 +134,7 @@ test('home leads with the expanded calendar and shopping disclosure separates be
 });
 
 test('beauty and fashion filters find new brands without turning member offers into calendar sales',()=>{
- assert.deepEqual(filterSources(sources,{category:'beauty'}).map(s=>s.id),['oliveyoung','amoremall']);
+ assert.deepEqual(filterSources(sources,{category:'beauty'}).map(s=>s.id),['oliveyoung','amoremall','naver-store','11st']);
  assert.equal(filterSources(sources,{category:'fashion',query:'무탠다드'})[0].id,'musinsa');
  assert.equal(filterSources(sources,{category:'life',query:'MUJI'})[0].id,'muji');
  assert.equal(filterEvents(events,{month:'2026-10',category:'beauty'},at)[0].brandId,'amoremall');

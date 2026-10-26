@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "timezone": "Asia/Seoul",
-  "updatedAt": "2026-10-25T23:24:38.183Z",
+  "updatedAt": "2026-10-26T04:02:20.104Z",
   "execution": "local-codex-official-source-review",
   "siteAutomations": [
     {
@@ -9,56 +9,64 @@
       "automationId": "simulab",
       "status": "ACTIVE",
       "name": "SimuLab · 일요일 오전 · 아이 체험·교육",
-      "rrule": "FREQ=WEEKLY;BYDAY=SU;BYHOUR=8;BYMINUTE=0;BYSECOND=0"
+      "rrule": "DTSTART;TZID=Asia/Seoul:20261101T080000\nRRULE:FREQ=WEEKLY;BYDAY=SU;BYHOUR=8;BYMINUTE=0;BYSECOND=0",
+      "firstScheduledDate": "2026-11-01"
     },
     {
       "categoryId": "local-parenting",
       "automationId": "simulab-2",
       "status": "ACTIVE",
       "name": "SimuLab · 일요일 오후 · 도서관·육아지원센터",
-      "rrule": "FREQ=WEEKLY;BYDAY=SU;BYHOUR=15;BYMINUTE=0;BYSECOND=0"
+      "rrule": "DTSTART;TZID=Asia/Seoul:20261101T150000\nRRULE:FREQ=WEEKLY;BYDAY=SU;BYHOUR=15;BYMINUTE=0;BYSECOND=0",
+      "firstScheduledDate": "2026-11-01"
     },
     {
       "categoryId": "family-support",
       "automationId": "simulab-3",
       "status": "ACTIVE",
       "name": "SimuLab · 일요일 저녁 · 육아·가족 지원사업",
-      "rrule": "FREQ=WEEKLY;BYDAY=SU;BYHOUR=19;BYMINUTE=0;BYSECOND=0"
+      "rrule": "DTSTART;TZID=Asia/Seoul:20261101T190000\nRRULE:FREQ=WEEKLY;BYDAY=SU;BYHOUR=19;BYMINUTE=0;BYSECOND=0",
+      "firstScheduledDate": "2026-11-01"
     },
     {
       "categoryId": "camping-booking",
       "automationId": "simulab-4",
       "status": "ACTIVE",
       "name": "SimuLab · 월요일 오전 · 공공 캠핑장·휴양림",
-      "rrule": "FREQ=WEEKLY;BYDAY=MO;BYHOUR=8;BYMINUTE=0;BYSECOND=0"
+      "rrule": "DTSTART;TZID=Asia/Seoul:20261102T080000\nRRULE:FREQ=WEEKLY;BYDAY=MO;BYHOUR=8;BYMINUTE=0;BYSECOND=0",
+      "firstScheduledDate": "2026-11-02"
     },
     {
       "categoryId": "family-culture",
       "automationId": "simulab-5",
       "status": "ACTIVE",
       "name": "SimuLab · 월요일 오후 · 어린이 공연·전시",
-      "rrule": "FREQ=WEEKLY;BYDAY=MO;BYHOUR=15;BYMINUTE=0;BYSECOND=0"
+      "rrule": "DTSTART;TZID=Asia/Seoul:20261102T150000\nRRULE:FREQ=WEEKLY;BYDAY=MO;BYHOUR=15;BYMINUTE=0;BYSECOND=0",
+      "firstScheduledDate": "2026-11-02"
     },
     {
       "categoryId": "kids-popups",
       "automationId": "simulab-6",
       "status": "ACTIVE",
       "name": "SimuLab · 월요일 저녁 · 키즈 팝업·캐릭터 행사",
-      "rrule": "FREQ=WEEKLY;BYDAY=MO;BYHOUR=19;BYMINUTE=0;BYSECOND=0"
+      "rrule": "DTSTART;TZID=Asia/Seoul:20261102T190000\nRRULE:FREQ=WEEKLY;BYDAY=MO;BYHOUR=19;BYMINUTE=0;BYSECOND=0",
+      "firstScheduledDate": "2026-11-02"
     },
     {
       "categoryId": "brand-sales",
       "automationId": "simulab-7",
       "status": "ACTIVE",
       "name": "SimuLab · 화요일 오전 · 브랜드 세일",
-      "rrule": "FREQ=WEEKLY;BYDAY=TU;BYHOUR=8;BYMINUTE=0;BYSECOND=0"
+      "rrule": "DTSTART;TZID=Asia/Seoul:20261103T080000\nRRULE:FREQ=WEEKLY;BYDAY=TU;BYHOUR=8;BYMINUTE=0;BYSECOND=0",
+      "firstScheduledDate": "2026-11-03"
     },
     {
       "categoryId": "family-discounts",
       "automationId": "simulab-8",
       "status": "ACTIVE",
       "name": "SimuLab · 화요일 오후 · 가족 외식·시설 할인",
-      "rrule": "FREQ=WEEKLY;BYDAY=TU;BYHOUR=15;BYMINUTE=0;BYSECOND=0"
+      "rrule": "DTSTART;TZID=Asia/Seoul:20261103T150000\nRRULE:FREQ=WEEKLY;BYDAY=TU;BYHOUR=15;BYMINUTE=0;BYSECOND=0",
+      "firstScheduledDate": "2026-11-03"
     },
     {
       "categoryId": "festivals",
@@ -66,7 +74,8 @@
       "status": "ACTIVE",
       "replacedSchedule": "월·목 오전 9시 축제·세일 통합 검토",
       "name": "SimuLab · 화요일 저녁 · 축제·지역 행사",
-      "rrule": "FREQ=WEEKLY;BYDAY=TU;BYHOUR=19;BYMINUTE=0;BYSECOND=0"
+      "rrule": "DTSTART;TZID=Asia/Seoul:20261103T190000\nRRULE:FREQ=WEEKLY;BYDAY=TU;BYHOUR=19;BYMINUTE=0;BYSECOND=0",
+      "firstScheduledDate": "2026-11-03"
     }
   ],
   "blogAutomation": {
@@ -274,5 +283,36 @@
         "pagesVerified": 8
       }
     }
+  },
+  "regularUpdatesStartDate": "2026-11-01",
+  "manualPriorityBatch": {
+    "runId": "manual-all-20261026",
+    "date": "2026-10-26",
+    "status": "in-progress",
+    "priority": [
+      "festivals",
+      "brand-sales",
+      "kids-popups",
+      "local-parenting",
+      "kids-programs",
+      "family-support",
+      "family-culture",
+      "family-discounts",
+      "camping-booking"
+    ],
+    "completedResearch": [
+      "festivals",
+      "brand-sales"
+    ],
+    "campingRunId": "camping-booking-20261026-080111",
+    "remaining": [
+      "kids-popups",
+      "local-parenting",
+      "kids-programs",
+      "family-support",
+      "family-culture",
+      "family-discounts"
+    ],
+    "blogScheduleChanged": false
   }
 }

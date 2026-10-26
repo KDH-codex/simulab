@@ -1,6 +1,6 @@
 // Generated from data/events/reviewed.json. Edit reviewed records, not this file.
 // checkedAt is an editorial review date, never a build or collection timestamp.
-export const DATA_REVIEWED_AT = "2026-10-23";
+export const DATA_REVIEWED_AT = "2026-10-26";
 export const REGION_SOURCES = [
   {
     "region": "서울",
@@ -253,7 +253,7 @@ export const FESTIVALS = [
     "program": "캠프닉 10/23~11/7 금·토 / 산책 10/23·24, 11/6·7 / 팔각클럽 11/14",
     "feeStatus": "mixed",
     "fee": "보증금: 캠프닉 팀당 1만원, 산책 1인 5천원, 팔각클럽 5천원",
-    "booking": "사전예약 · 주차별 접수 일정 상이 · 팔각클럽 11/2 접수 시작",
+    "booking": "주차별 사전예약 · 팔각클럽11/2 10시 접수,11/14 17:30~19시·19:30~21시",
     "familyNote": "공식 안내는 참여 확인 후 보증금 환불 예정입니다. 어린이 참가 조건과 야간 이동 동선은 예약 전에 확인하세요.",
     "dates": [
       "2026-10-23",
@@ -266,14 +266,14 @@ export const FESTIVALS = [
     ],
     "scheduleNote": "10/23·24·30·31, 11/6·7·14만 운영 · 날짜별 프로그램 다름",
     "verificationStatus": "verified",
-    "checkedAt": "2026-10-23",
+    "checkedAt": "2026-10-26",
     "sources": [
       {
         "publisher": "서울특별시 정원도시국",
         "title": "남산 나이트 페스티벌 프로그램 안내",
         "url": "https://parks.seoul.go.kr/story/news/detailView.do?bIdx=3849&key=2604070028",
         "facts": "실제 운영일 7일, 프로그램별 장소·시간·보증금·예약일 확인. 매일 개최 아님.",
-        "checkedAt": "2026-10-23"
+        "checkedAt": "2026-10-26"
       }
     ]
   },
@@ -415,14 +415,14 @@ export const FESTIVALS = [
     "startDate": "2026-10-23",
     "endDate": "2026-11-01",
     "location": "익산 중앙체육공원 · 전북 익산시 하나로 322",
-    "time": "공연·체험별 시간 확인 필요",
+    "time": "10:00~21:00",
     "program": "국화 전시, 공예 만들기와 곤충 체험",
     "feeStatus": "unknown",
     "fee": "입장·체험 비용 확인 필요",
     "booking": "프로그램별 접수 방법 확인 필요",
     "familyNote": "체험마다 운영 조건이 다릅니다. 국화 관람과 체험 비용을 각각 확인하세요.",
     "verificationStatus": "verified",
-    "checkedAt": "2026-10-23",
+    "checkedAt": "2026-10-26",
     "sources": [
       {
         "publisher": "익산시",
@@ -430,6 +430,13 @@ export const FESTIVALS = [
         "url": "https://www.iksan.go.kr/gukhwa",
         "facts": "2026년 체험 운영기간 10월 23일~11월 1일 및 행사장 주소 확인. 과거 회차 이미지도 있어 회차 번호 미기재.",
         "checkedAt": "2026-10-23"
+      },
+      {
+        "publisher": "문화체육관광부(한국관광공사 연계)",
+        "title": "익산천만송이 국화축제 상세",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13345",
+        "facts": "10/23~11/1,중앙체육공원10~21시,무료 관람과 프로그램 확인. 선택 체험·음식 구매 별도.",
+        "checkedAt": "2026-10-26"
       }
     ]
   },
@@ -531,16 +538,16 @@ export const FESTIVALS = [
     "feeStatus": "paid",
     "fee": "일반 참가비 3만원 / 할인 대상 2만5천원",
     "booking": "공지상 사전신청 기간 종료(10/9) · 추가 참가 가능 여부 문의",
-    "familyNote": "장거리 걷기 행사입니다. 아이의 체력에 맞는 구간과 날짜별 출발지를 확인하세요.",
+    "familyNote": "20인 이상 단체,2010년 이후 출생 청소년, 장애인·국가유공자는25,000원 안내입니다. 사전신청은10/9종료됐으며 추가 참가 가능 여부를 문의하세요. 개인 컵·식기 지참 친환경 캠페인이 있습니다.",
     "verificationStatus": "verified",
-    "checkedAt": "2026-10-23",
+    "checkedAt": "2026-10-26",
     "sources": [
       {
         "publisher": "제주관광공사 비짓제주",
         "title": "2026 제주올레걷기축제",
         "url": "https://www.visitjeju.net/kr/festival/view?contentsid=CNTS_300000000014508&menuId=DOM_000001718007000000",
         "facts": "11월 5~7일 19·20코스, 시간·참가비·사전신청 종료일 확인.",
-        "checkedAt": "2026-10-23"
+        "checkedAt": "2026-10-26"
       }
     ]
   },
@@ -589,14 +596,14 @@ export const FESTIVALS = [
     "scheduleType": "period",
     "scheduleNote": "공식 안내의 개최기간입니다. 휴무일과 개별 프로그램의 운영일·시간은 별도로 확인하세요.",
     "verificationStatus": "verified",
-    "checkedAt": "2026-10-23",
+    "checkedAt": "2026-10-26",
     "sources": [
       {
         "publisher": "문화체육관광부(한국관광공사 연계)",
         "title": "부산글로벌웹툰페스티벌 상세 공지",
         "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=12777",
         "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
-        "checkedAt": "2026-10-23"
+        "checkedAt": "2026-10-26"
       }
     ]
   },
@@ -876,14 +883,14 @@ export const FESTIVALS = [
     "scheduleType": "period",
     "scheduleNote": "공식 안내의 개최기간입니다. 휴무일과 개별 프로그램의 운영일·시간은 별도로 확인하세요.",
     "verificationStatus": "verified",
-    "checkedAt": "2026-10-23",
+    "checkedAt": "2026-10-26",
     "sources": [
       {
         "publisher": "문화체육관광부(한국관광공사 연계)",
         "title": "청춘양구 펀치볼 시래기사과축제 상세 공지",
         "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13388",
         "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
-        "checkedAt": "2026-10-23"
+        "checkedAt": "2026-10-26"
       }
     ]
   },
@@ -988,14 +995,14 @@ export const FESTIVALS = [
     "scheduleType": "period",
     "scheduleNote": "공식 안내의 개최기간입니다. 휴무일과 개별 프로그램의 운영일·시간은 별도로 확인하세요.",
     "verificationStatus": "verified",
-    "checkedAt": "2026-10-23",
+    "checkedAt": "2026-10-26",
     "sources": [
       {
         "publisher": "문화체육관광부(한국관광공사 연계)",
         "title": "부여국화축제 상세 공지",
         "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13555",
         "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
-        "checkedAt": "2026-10-23"
+        "checkedAt": "2026-10-26"
       }
     ]
   },
@@ -1016,14 +1023,14 @@ export const FESTIVALS = [
     "scheduleType": "period",
     "scheduleNote": "공식 안내의 개최기간입니다. 휴무일과 개별 프로그램의 운영일·시간은 별도로 확인하세요.",
     "verificationStatus": "verified",
-    "checkedAt": "2026-10-23",
+    "checkedAt": "2026-10-26",
     "sources": [
       {
         "publisher": "문화체육관광부(한국관광공사 연계)",
         "title": "김제 자원순환 새로보미 축제 상세 공지",
         "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=12626",
         "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
-        "checkedAt": "2026-10-23"
+        "checkedAt": "2026-10-26"
       }
     ]
   },
@@ -1128,14 +1135,14 @@ export const FESTIVALS = [
     "scheduleType": "continuous",
     "scheduleNote": "공식 안내의 개최기간입니다. 휴무일과 개별 프로그램의 운영일·시간은 별도로 확인하세요.",
     "verificationStatus": "verified",
-    "checkedAt": "2026-10-23",
+    "checkedAt": "2026-10-26",
     "sources": [
       {
         "publisher": "문화체육관광부(한국관광공사 연계)",
         "title": "여수밤바다 불꽃축제 상세 공지",
         "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13374",
         "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
-        "checkedAt": "2026-10-23"
+        "checkedAt": "2026-10-26"
       }
     ]
   },
@@ -1184,14 +1191,14 @@ export const FESTIVALS = [
     "scheduleType": "period",
     "scheduleNote": "공식 안내의 개최기간입니다. 휴무일과 개별 프로그램의 운영일·시간은 별도로 확인하세요.",
     "verificationStatus": "verified",
-    "checkedAt": "2026-10-23",
+    "checkedAt": "2026-10-26",
     "sources": [
       {
         "publisher": "문화체육관광부(한국관광공사 연계)",
         "title": "예천활축제 상세 공지",
         "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=12275",
         "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
-        "checkedAt": "2026-10-23"
+        "checkedAt": "2026-10-26"
       }
     ]
   },
@@ -1212,14 +1219,14 @@ export const FESTIVALS = [
     "scheduleType": "period",
     "scheduleNote": "공식 안내의 개최기간입니다. 휴무일과 개별 프로그램의 운영일·시간은 별도로 확인하세요.",
     "verificationStatus": "verified",
-    "checkedAt": "2026-10-23",
+    "checkedAt": "2026-10-26",
     "sources": [
       {
         "publisher": "문화체육관광부(한국관광공사 연계)",
         "title": "구미라면 축제 상세 공지",
         "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=12036",
         "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
-        "checkedAt": "2026-10-23"
+        "checkedAt": "2026-10-26"
       }
     ]
   },
@@ -1371,6 +1378,376 @@ export const FESTIVALS = [
         "url": "https://www.sjcf.or.kr/bbsctt/view.do?bbscttSn=2610210001&historyBackSw=Y&key=2111060065",
         "facts": "본문과 공식 첨부 안내 이미지에서 가족 회차 10/25·11/7, 시간·대상·비엔날레 전시관 확인. 요금 미확인.",
         "checkedAt": "2026-10-23"
+      }
+    ]
+  },
+  {
+    "id": "mcst-13422-2026",
+    "title": "2026 서울국제정원박람회",
+    "region": "서울",
+    "theme": "nature",
+    "startDate": "2026-05-01",
+    "endDate": "2026-10-27",
+    "location": "서울숲",
+    "time": "12:00~19:00",
+    "program": "서울숲 정원 전시와 정원문화 콘텐츠",
+    "feeStatus": "free",
+    "fee": "입장 무료 · 별도 판매·체험 비용은 확인 필요",
+    "booking": "사전예약·현장 접수와 잔여석은 프로그램별 공식 안내 확인",
+    "familyNote": "서울숲은 성동구이며 원문 개최지역의 중구 표기와 차이가 있어 실제 행사장 서울숲을 기준으로 안내합니다.",
+    "scheduleType": "period",
+    "scheduleNote": "공식 개최기간입니다. 개별 프로그램·휴무·시설별 운영은 별도 확인하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-10-26",
+    "sources": [
+      {
+        "publisher": "문화체육관광부(한국관광공사 연계)",
+        "title": "서울국제정원박람회 공식 상세",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13422",
+        "facts": "2026년 개최기간 2026-05-01~2026-10-27, 실제 장소·시간·입장 무료 · 별도 판매·체험 비용은 확인 필요를 상세 표와 본문으로 대조. 연령·거주 제한·신청/취소 조건은 명시되지 않은 범위를 확정하지 않음.",
+        "checkedAt": "2026-10-26"
+      }
+    ]
+  },
+  {
+    "id": "mcst-13560-2026",
+    "title": "2026 장항 1931 밤의 기행",
+    "region": "충남",
+    "theme": "light",
+    "startDate": "2026-10-10",
+    "endDate": "2026-10-31",
+    "location": "장항도시탐험역",
+    "time": "17:00~21:00",
+    "program": "근현대 장항의 생활문화를 만나는 공연·전시·체험",
+    "feeStatus": "mixed",
+    "fee": "입장 무료 · 일부 체험 프로그램 유료",
+    "booking": "사전예약·현장 접수와 잔여석은 프로그램별 공식 안내 확인",
+    "familyNote": "매일 열리는 행사가 아닙니다. 남은 일정은10/30·31이며 테마와 체험 접수 조건은 날짜별로 확인하세요.",
+    "scheduleType": "dates",
+    "scheduleNote": "실제 운영일10/10·17·30·31만 표시",
+    "dates": [
+      "2026-10-10",
+      "2026-10-17",
+      "2026-10-30",
+      "2026-10-31"
+    ],
+    "verificationStatus": "verified",
+    "checkedAt": "2026-10-26",
+    "sources": [
+      {
+        "publisher": "문화체육관광부(한국관광공사 연계)",
+        "title": "장항 1931 밤의 기행 공식 상세",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13560",
+        "facts": "2026년 개최기간 2026-10-10~2026-10-31, 실제 장소·시간·입장 무료 · 일부 체험 프로그램 유료를 상세 표와 본문으로 대조. 실제 운영일4일을 본문으로 확인. 연령·거주 제한·신청/취소 조건은 명시되지 않은 범위를 확정하지 않음.",
+        "checkedAt": "2026-10-26"
+      }
+    ]
+  },
+  {
+    "id": "mcst-13545-2026",
+    "title": "2026 동두천시 책문화축제",
+    "region": "경기",
+    "theme": "kids",
+    "startDate": "2026-10-31",
+    "endDate": "2026-10-31",
+    "location": "복합문화커뮤니티센터 1층 일원",
+    "time": "15:30~19:00",
+    "program": "독서골든벨, 매직버블쇼, 북마켓과 사람책 체험",
+    "feeStatus": "free",
+    "fee": "기본 참여 무료 · 북마켓 구매 별도",
+    "booking": "사전예약·현장 접수와 잔여석은 프로그램별 공식 안내 확인",
+    "familyNote": "명사 강연·어린이 독서골든벨 등 프로그램별 대상과 사전신청 여부는 도서관 공지를 확인하세요.",
+    "scheduleType": "period",
+    "scheduleNote": "공식 개최기간입니다. 개별 프로그램·휴무·시설별 운영은 별도 확인하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-10-26",
+    "sources": [
+      {
+        "publisher": "문화체육관광부(한국관광공사 연계)",
+        "title": "동두천시 책문화축제 공식 상세",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13545",
+        "facts": "2026년 개최기간 2026-10-31~2026-10-31, 실제 장소·시간·기본 참여 무료 · 북마켓 구매 별도를 상세 표와 본문으로 대조. 연령·거주 제한·신청/취소 조건은 명시되지 않은 범위를 확정하지 않음.",
+        "checkedAt": "2026-10-26"
+      }
+    ]
+  },
+  {
+    "id": "mcst-13528-2026",
+    "title": "2026 성북거리문화축제 다다페스타",
+    "region": "서울",
+    "theme": "kids",
+    "startDate": "2026-10-31",
+    "endDate": "2026-10-31",
+    "location": "꿈의숲아이파크-래미안장위퍼스트하이 사이길",
+    "time": "11:00~17:00",
+    "program": "거리 공연, 어린이 플리마켓과 주민 참여 부스",
+    "feeStatus": "free",
+    "fee": "기본 관람 무료 · 부스별 구매·체험 비용 별도 확인",
+    "booking": "사전예약·현장 접수와 잔여석은 프로그램별 공식 안내 확인",
+    "familyNote": "장위뉴타운 일대 거리 행사입니다. 차량 이동·유모차 동선과 부스별 참여 조건을 확인하세요.",
+    "scheduleType": "period",
+    "scheduleNote": "공식 개최기간입니다. 개별 프로그램·휴무·시설별 운영은 별도 확인하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-10-26",
+    "sources": [
+      {
+        "publisher": "문화체육관광부(한국관광공사 연계)",
+        "title": "성북거리문화축제 다다페스타 공식 상세",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13528",
+        "facts": "2026년 개최기간 2026-10-31~2026-10-31, 실제 장소·시간·기본 관람 무료 · 부스별 구매·체험 비용 별도 확인를 상세 표와 본문으로 대조. 연령·거주 제한·신청/취소 조건은 명시되지 않은 범위를 확정하지 않음.",
+        "checkedAt": "2026-10-26"
+      }
+    ]
+  },
+  {
+    "id": "mcst-13510-2026",
+    "title": "2026 세미원 수련문화제",
+    "region": "경기",
+    "theme": "nature",
+    "startDate": "2026-09-01",
+    "endDate": "2026-10-31",
+    "location": "세미원 · 양평군 양서면 양수로93",
+    "time": "09:00~18:00",
+    "program": "수련과 가을 정원, 전통정원 경관 관람",
+    "feeStatus": "paid",
+    "fee": "유료 · 연령별 입장료·감면 금액은 공식 관람안내 확인",
+    "booking": "사전예약·현장 접수와 잔여석은 프로그램별 공식 안내 확인",
+    "familyNote": "유료 표기는 확인했으나 연령별 금액·휴무일은 상세 표에서 확정하지 않았습니다. 방문 전 관람안내를 확인하세요.",
+    "scheduleType": "period",
+    "scheduleNote": "공식 개최기간입니다. 개별 프로그램·휴무·시설별 운영은 별도 확인하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-10-26",
+    "sources": [
+      {
+        "publisher": "문화체육관광부(한국관광공사 연계)",
+        "title": "세미원 수련문화제 공식 상세",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13510",
+        "facts": "2026년 개최기간 2026-09-01~2026-10-31, 실제 장소·시간·유료 · 연령별 입장료·감면 금액은 공식 관람안내 확인를 상세 표와 본문으로 대조. 연령·거주 제한·신청/취소 조건은 명시되지 않은 범위를 확정하지 않음.",
+        "checkedAt": "2026-10-26"
+      }
+    ]
+  },
+  {
+    "id": "mcst-13333-2026",
+    "title": "2026 예산사과축제",
+    "region": "충남",
+    "theme": "food",
+    "startDate": "2026-10-30",
+    "endDate": "2026-10-31",
+    "location": "예당호 출렁다리 일원",
+    "time": "30일10:00~20:00 /31일10:00~18:00",
+    "program": "예산사과 판매와 사과를 주제로 한 문화·체험",
+    "feeStatus": "mixed",
+    "fee": "입장 무료 · 사과·음식 구매 및 개별 체험 별도",
+    "booking": "사전예약·현장 접수와 잔여석은 프로그램별 공식 안내 확인",
+    "familyNote": "사과 세일 판매장은 축제 이틀간 운영합니다. 체험별 연령·예약·재료비는 별도 확인하세요.",
+    "scheduleType": "period",
+    "scheduleNote": "공식 개최기간입니다. 개별 프로그램·휴무·시설별 운영은 별도 확인하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-10-26",
+    "sources": [
+      {
+        "publisher": "문화체육관광부(한국관광공사 연계)",
+        "title": "예산사과축제 공식 상세",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13333",
+        "facts": "2026년 개최기간 2026-10-30~2026-10-31, 실제 장소·시간·입장 무료 · 사과·음식 구매 및 개별 체험 별도를 상세 표와 본문으로 대조. 연령·거주 제한·신청/취소 조건은 명시되지 않은 범위를 확정하지 않음.",
+        "checkedAt": "2026-10-26"
+      }
+    ]
+  },
+  {
+    "id": "mcst-12731-2026",
+    "title": "2026 마토예술제 · 브로드웨이 인 안정리",
+    "region": "경기",
+    "theme": "kids",
+    "startDate": "2026-10-31",
+    "endDate": "2026-10-31",
+    "location": "평택 안정리예술인광장",
+    "time": "16:00~20:00",
+    "program": "뮤지컬 주제 공연, 스탬프 투어와 포토존",
+    "feeStatus": "free",
+    "fee": "기본 관람 무료 · 개별 부스 비용 별도 확인",
+    "booking": "사전예약·현장 접수와 잔여석은 프로그램별 공식 안내 확인",
+    "familyNote": "10월 31일 16~20시 회차입니다. 스탬프 투어와 체험별 참여 방법을 확인하세요.",
+    "scheduleType": "period",
+    "scheduleNote": "공식 개최기간입니다. 개별 프로그램·휴무·시설별 운영은 별도 확인하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-10-26",
+    "sources": [
+      {
+        "publisher": "문화체육관광부(한국관광공사 연계)",
+        "title": "마토예술제 · 브로드웨이 인 안정리 공식 상세",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=12731",
+        "facts": "2026년 개최기간 2026-10-31~2026-10-31, 실제 장소·시간·기본 관람 무료 · 개별 부스 비용 별도 확인를 상세 표와 본문으로 대조. 연령·거주 제한·신청/취소 조건은 명시되지 않은 범위를 확정하지 않음.",
+        "checkedAt": "2026-10-26"
+      }
+    ]
+  },
+  {
+    "id": "mcst-13554-2026",
+    "title": "2026 경기·양주·지작사 드론봇 페스티벌",
+    "region": "경기",
+    "theme": "kids",
+    "startDate": "2026-10-30",
+    "endDate": "2026-11-01",
+    "location": "양주시 광적면 가납리비행장",
+    "time": "09:00~21:00",
+    "program": "드론·로봇 전시와 시민 체험, 군문화 공연",
+    "feeStatus": "mixed",
+    "fee": "입장 무료 · 일부 체험 유료",
+    "booking": "사전예약·현장 접수와 잔여석은 프로그램별 공식 안내 확인",
+    "familyNote": "실제 시연·경연·공연 회차와 체험 연령, 군 시설 입장·교통 통제는 프로그램별 안내를 확인하세요.",
+    "scheduleType": "period",
+    "scheduleNote": "공식 개최기간입니다. 개별 프로그램·휴무·시설별 운영은 별도 확인하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-10-26",
+    "sources": [
+      {
+        "publisher": "문화체육관광부(한국관광공사 연계)",
+        "title": "경기·양주·지작사 드론봇 페스티벌 공식 상세",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13554",
+        "facts": "2026년 개최기간 2026-10-30~2026-11-01, 실제 장소·시간·입장 무료 · 일부 체험 유료를 상세 표와 본문으로 대조. 연령·거주 제한·신청/취소 조건은 명시되지 않은 범위를 확정하지 않음.",
+        "checkedAt": "2026-10-26"
+      }
+    ]
+  },
+  {
+    "id": "mcst-13552-2026",
+    "title": "2026 목포 국가유산야행",
+    "region": "전남",
+    "theme": "light",
+    "startDate": "2026-10-30",
+    "endDate": "2026-11-01",
+    "location": "목포근대역사문화공간 일원",
+    "time": "18:00~22:00",
+    "program": "목포 개항·근대문화유산의 야간 관람과 공연",
+    "feeStatus": "free",
+    "fee": "기본 관람 무료 · 개별 체험·판매 비용 별도 확인",
+    "booking": "사전예약·현장 접수와 잔여석은 프로그램별 공식 안내 확인",
+    "familyNote": "야간에 여러 장소를 이동합니다. 유산별 개방 시간과 어린이 체험·신청 조건을 확인하세요.",
+    "scheduleType": "period",
+    "scheduleNote": "공식 개최기간입니다. 개별 프로그램·휴무·시설별 운영은 별도 확인하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-10-26",
+    "sources": [
+      {
+        "publisher": "문화체육관광부(한국관광공사 연계)",
+        "title": "목포 국가유산야행 공식 상세",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13552",
+        "facts": "2026년 개최기간 2026-10-30~2026-11-01, 실제 장소·시간·기본 관람 무료 · 개별 체험·판매 비용 별도 확인를 상세 표와 본문으로 대조. 연령·거주 제한·신청/취소 조건은 명시되지 않은 범위를 확정하지 않음.",
+        "checkedAt": "2026-10-26"
+      }
+    ]
+  },
+  {
+    "id": "mcst-13533-2026",
+    "title": "2026 밀양 매운맛 축제",
+    "region": "경남",
+    "theme": "food",
+    "startDate": "2026-10-31",
+    "endDate": "2026-11-01",
+    "location": "밀양강변 일원",
+    "time": "11:00~21:00",
+    "program": "매운맛 음식과 문화공연·브랜드 체험",
+    "feeStatus": "mixed",
+    "fee": "입장 무료 · 음식 구매·개별 체험 비용 별도",
+    "booking": "사전예약·현장 접수와 잔여석은 프로그램별 공식 안내 확인",
+    "familyNote": "매운맛 도전 프로그램의 참가 연령과 음식 자극도·알레르기를 확인하세요.",
+    "scheduleType": "period",
+    "scheduleNote": "공식 개최기간입니다. 개별 프로그램·휴무·시설별 운영은 별도 확인하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-10-26",
+    "sources": [
+      {
+        "publisher": "문화체육관광부(한국관광공사 연계)",
+        "title": "밀양 매운맛 축제 공식 상세",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13533",
+        "facts": "2026년 개최기간 2026-10-31~2026-11-01, 실제 장소·시간·입장 무료 · 음식 구매·개별 체험 비용 별도를 상세 표와 본문으로 대조. 연령·거주 제한·신청/취소 조건은 명시되지 않은 범위를 확정하지 않음.",
+        "checkedAt": "2026-10-26"
+      }
+    ]
+  },
+  {
+    "id": "mcst-13366-2026",
+    "title": "2026 성남동 커피페스티벌",
+    "region": "울산",
+    "theme": "food",
+    "startDate": "2026-10-30",
+    "endDate": "2026-11-01",
+    "location": "울산 중구 문화의 거리",
+    "time": "10:00~20:00",
+    "program": "커피 시연과 바리스타 경연, 문화공연",
+    "feeStatus": "mixed",
+    "fee": "입장 무료 · 커피·먹거리 구매 및 개별 체험 별도",
+    "booking": "사전예약·현장 접수와 잔여석은 프로그램별 공식 안내 확인",
+    "familyNote": "커피 중심의 일반 축제입니다. 카페인 음료와 어린이 참여 프로그램을 구분해 확인하세요.",
+    "scheduleType": "period",
+    "scheduleNote": "공식 개최기간입니다. 개별 프로그램·휴무·시설별 운영은 별도 확인하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-10-26",
+    "sources": [
+      {
+        "publisher": "문화체육관광부(한국관광공사 연계)",
+        "title": "성남동 커피페스티벌 공식 상세",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13366",
+        "facts": "2026년 개최기간 2026-10-30~2026-11-01, 실제 장소·시간·입장 무료 · 커피·먹거리 구매 및 개별 체험 별도를 상세 표와 본문으로 대조. 연령·거주 제한·신청/취소 조건은 명시되지 않은 범위를 확정하지 않음.",
+        "checkedAt": "2026-10-26"
+      }
+    ]
+  },
+  {
+    "id": "mcst-12919-2026",
+    "title": "2026 유성국화축제",
+    "region": "대전",
+    "theme": "nature",
+    "startDate": "2026-10-17",
+    "endDate": "2026-11-01",
+    "location": "유림공원 일원",
+    "time": "10:00~22:00",
+    "program": "국화·과학 조형물과 야간 경관, 가드닝·목재 체험",
+    "feeStatus": "free",
+    "fee": "기본 관람 무료 · 개별 체험 비용 별도 확인",
+    "booking": "사전예약·현장 접수와 잔여석은 프로그램별 공식 안내 확인",
+    "familyNote": "개별 체험과 야간 공연이 매일 같은 시간에 열리는 것은 아닙니다. 날짜별 운영을 확인하세요.",
+    "scheduleType": "period",
+    "scheduleNote": "공식 개최기간입니다. 개별 프로그램·휴무·시설별 운영은 별도 확인하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-10-26",
+    "sources": [
+      {
+        "publisher": "문화체육관광부(한국관광공사 연계)",
+        "title": "유성국화축제 공식 상세",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=12919",
+        "facts": "2026년 개최기간 2026-10-17~2026-11-01, 실제 장소·시간·기본 관람 무료 · 개별 체험 비용 별도 확인를 상세 표와 본문으로 대조. 연령·거주 제한·신청/취소 조건은 명시되지 않은 범위를 확정하지 않음.",
+        "checkedAt": "2026-10-26"
+      }
+    ]
+  },
+  {
+    "id": "mcst-12641-2026",
+    "title": "2026 포천 한탄강 가든페스타",
+    "region": "경기",
+    "theme": "nature",
+    "startDate": "2026-09-12",
+    "endDate": "2026-11-01",
+    "location": "포천 한탄강 생태경관단지",
+    "time": "09:00~18:00 ·17:00 입장마감 /전기자전거 매표16:30마감",
+    "program": "가을꽃·주제 정원, 뽀로로 포토존과 전기자전거 체험",
+    "feeStatus": "paid",
+    "fee": "유료 · 입장료·전기자전거 요금과 연령별 감면은 공식 안내 확인",
+    "booking": "사전예약·현장 접수와 잔여석은 프로그램별 공식 안내 확인",
+    "familyNote": "출렁다리·전기자전거 등 시설별 이용 제한과 별도 요금·감면 조건을 확인하세요.",
+    "scheduleType": "period",
+    "scheduleNote": "공식 개최기간입니다. 개별 프로그램·휴무·시설별 운영은 별도 확인하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-10-26",
+    "sources": [
+      {
+        "publisher": "문화체육관광부(한국관광공사 연계)",
+        "title": "포천 한탄강 가든페스타 공식 상세",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=12641",
+        "facts": "2026년 개최기간 2026-09-12~2026-11-01, 실제 장소·시간·유료 · 입장료·전기자전거 요금과 연령별 감면은 공식 안내 확인를 상세 표와 본문으로 대조. 연령·거주 제한·신청/취소 조건은 명시되지 않은 범위를 확정하지 않음.",
+        "checkedAt": "2026-10-26"
       }
     ]
   }
