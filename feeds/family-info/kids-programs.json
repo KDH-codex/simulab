@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "snapshotId": "77040c9b88d8e46bce1de24c",
+  "snapshotId": "c0a044e253b8012893aad804",
   "timezone": "Asia/Seoul",
   "categories": [
     {
@@ -14,13 +14,13 @@
       "split": "region",
       "href": "/tools/kids-programs/",
       "accent": "green",
-      "categoryRevision": "0c8da12f14c834d5",
-      "lastVerifiedAt": "2026-10-26",
-      "lastCollectedAt": "2026-10-26",
+      "categoryRevision": "c8600962daf3cfa1",
+      "lastVerifiedAt": "2026-10-26T07:09:31.578Z",
+      "lastCollectedAt": "2026-10-26T07:09:31.578Z",
       "lastDeployedAt": null,
       "outcome": "partial-review",
-      "verifiedCount": 7,
-      "currentCount": 7,
+      "verifiedCount": 16,
+      "currentCount": 16,
       "failures": []
     }
   ],
@@ -36,7 +36,7 @@
       "regions": [
         "서울"
       ],
-      "lastSuccessAt": "2026-10-26"
+      "lastSuccessAt": "2026-10-26T07:09:31.578Z"
     },
     {
       "id": "gyeonggi-share",
@@ -77,6 +77,19 @@
         "서울"
       ],
       "lastSuccessAt": null
+    },
+    {
+      "id": "childcare-portal",
+      "name": "임신육아종합포털 아이사랑",
+      "url": "https://www.childcare.go.kr/",
+      "categoryIds": [
+        "local-parenting",
+        "kids-programs"
+      ],
+      "regions": [
+        "전국"
+      ],
+      "lastSuccessAt": "2026-10-26T07:04:04.416Z"
     }
   ],
   "records": [
@@ -108,29 +121,34 @@
       "conditions": [
         "선착순 인터넷 예약이며 실제 선택 가능한 회차와 잔여석은 공식 예약 화면에서 확인하세요.",
         "운영기간 중 예약은 2회 이내입니다. 시작 10분 전에 집결해 주세요.",
-        "비·기상특보 또는 참여 인원 부족으로 취소될 수 있습니다."
+        "비·기상특보 또는 참여 인원 부족으로 취소될 수 있습니다.",
+        "영리 목적 사설 교육기관은 예약할 수 없으며,휠체어 이용자는 행사 특성상 참여가 어렵다는 안내입니다.",
+        "5명 미달이면 취소되며 불참·취소 미처리 시 향후 예약에 불이익이 있을 수 있습니다.당일 잔여석은 현장 접수 가능 여부를 확인하세요."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-25",
+      "verifiedAt": "2026-10-26T07:09:31.578Z",
       "evidence": [
         {
           "url": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S260307155459409616",
           "publisher": "서울 공공서비스예약 · 서초구청",
-          "summary": "2026년 상세 공지의 대상·접수 시각·운영기간·무료 표기와 1일 2회 운영, 예약 횟수 및 기상 취소 조건을 대조했습니다.",
-          "verifiedAt": "2026-10-25",
+          "summary": "2026/5/1~10/31·접수4/20 9시~10/29 23:59·2021년생5세이상·무료·일2회90분·기간2회제한·5명미달/기상취소·10분전집결·영리단체예약불가·휠체어조건 확인.",
+          "verifiedAt": "2026-10-26T07:09:31.578Z",
           "fields": [
             "title",
             "audience",
+            "ageGroups",
+            "conditions",
+            "scheduleNote",
+            "location",
             "applicationStart",
             "applicationEnd",
             "eventStart",
             "eventEnd",
-            "feeText",
-            "conditions"
+            "feeText"
           ]
         }
       ],
-      "contentHash": "b55c28554925e3e7d05da5ae98b3f08c6e0505679f893f1be83bd8a1111ac44c",
+      "contentHash": "e71303dea72920340985ebea969c04e3b40baf109de9bbe073b5bc75abbfab0a",
       "siteUrl": "/tools/kids-programs/#yangjae-slow-tour-2026"
     },
     {
@@ -160,25 +178,49 @@
       ],
       "scheduleNote": "11월 토요일 14:00~15:30",
       "feeStatus": "paid",
-      "feeText": "재료비 20,000원",
+      "feeText": "회차별 재료비20,000원 · 예약 후 공식 안내에 따라 별도 납부",
       "summary": "초등 4~6학년이 테이프로 오브제를 만드는 미술 활동입니다.",
       "conditions": [
-        "마지막 11월28일 회차의 접수 마감은 각 회차 3일 전 0시 규칙으로 계산한 11월25일 0시입니다. 월간 표의 종료일과 회차별 마감을 구분했습니다.",
-        "각 회차 3일 전 0시까지 예약하며, 예약 후 재료비 결제 절차를 확인하세요.",
-        "3일 이내 미결제 시 취소될 수 있고, 신청 인원이 4명 미만이면 폐강될 수 있습니다."
+        "초등4~6학년 대상이며 회차별6명,각 회차를 독립적으로 신청하는 원데이 수업입니다.",
+        "11/7·14·21·28 각14:00~15:30입니다.각 회차3일 전0시까지 예약하며 마지막 접수는11/25 0시입니다.",
+        "예약을 먼저 한 뒤 재료비를 납부하세요.이용자·입금자명을 맞추며3일 이상 미입금하면 취소될 수 있습니다.",
+        "신청4명 미만이면 폐강되고,수업3일 전 이후 재료비 환불은 불가하다는 안내입니다.마실 물을 준비하세요."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26",
+      "verifiedAt": "2026-10-26T07:09:31.578Z",
       "evidence": [
         {
           "url": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S261024142918364089",
-          "publisher": "서울 공공서비스예약",
-          "summary": "예약 표와 상세 본문의 대상·접수 시각·운영일·비용·예약 조건을 대조했습니다. 월간 생태 프로그램은 상세에 열거된 실제 날짜만 이용일로 반영했습니다. 마지막 11월28일 회차의 접수 마감은 각 회차 3일 전 0시 규칙으로 계산한 11월25일 0시입니다. 월간 표의 종료일과 회차별 마감을 구분했습니다.",
-          "verifiedAt": "2026-10-26",
+          "publisher": "서울 공공서비스예약 · 공식 운영기관",
+          "summary": "실제2026년11월 토요일4회차·초등4~6학년·각6명·재료비2만원·3일전0시접수·미입금/4명미달 취소·3일전이후환불불가 확인.",
+          "verifiedAt": "2026-10-26T07:09:31.578Z",
           "fields": [
             "title",
             "audience",
+            "ageGroups",
             "conditions",
+            "scheduleNote",
+            "location",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd",
+            "operatingDates",
+            "feeText"
+          ]
+        },
+        {
+          "url": "https://yeyak.seoul.go.kr/management/ckImgSubmit.do?uid=1a2db653-52ab-4768-8545-1593828c0f76&fileName=image01.jpg",
+          "publisher": "서울 공공서비스예약 · 프로그램 원본 포스터",
+          "summary": "원본 이미지 직접 열람. 실제2026년11월 토요일4회차·초등4~6학년·각6명·재료비2만원·3일전0시접수·미입금/4명미달 취소·3일전이후환불불가 확인.",
+          "verifiedAt": "2026-10-26T07:09:31.578Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "scheduleNote",
+            "location",
             "applicationStart",
             "applicationEnd",
             "eventStart",
@@ -188,7 +230,7 @@
           ]
         }
       ],
-      "contentHash": "d2bcc46ae4a60fbe7548968b1432ae85a7123e7afd0d0125395d1bb560320bf2",
+      "contentHash": "c4c851c8920a72ef2b6cffbbcd06a16ca9866c5ebb5333730a888c22914a28c7",
       "siteUrl": "/tools/kids-programs/#kids-s261024142918364089"
     },
     {
@@ -211,35 +253,90 @@
       "applicationEnd": "2026-12-30T00:00:00+09:00",
       "eventStart": "2026-03-27",
       "eventEnd": "2026-12-31",
-      "scheduleNote": "날짜별 관람 회차는 공식 예약 화면 확인",
+      "operatingWeekdays": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        0
+      ],
+      "scheduleNote": "화~일10:00~11:30 /13:10~14:20 /14:40~15:50 /16:10~17:20 · 월 휴관",
       "feeStatus": "free",
       "feeText": "관람 무료",
       "summary": "어린이와 보호자가 함께 서울의 역사를 살펴보는 관람 예약입니다.",
       "conditions": [
-        "6~13세 어린이를 동반한 가족 대상이며 한 번에 2~5명 예약합니다.",
-        "이용 7일 전 14시부터 전날 24시까지 예약합니다. 시작 후 20분이 지나면 자동 취소될 수 있습니다."
+        "6~13세 어린이를 동반한 가족 대상이며 보호자도 포함해 한 가족 최대5명을 신청합니다.어린이·성인 단독 입장은 불가합니다.",
+        "한 ID당 하루1회만 예약할 수 있으며 같은 날 중복 예약·다른 가족 양도는 불가합니다.다자녀5명 이상 가족은 확인서류를 준비하세요.",
+        "이용7일 전14시부터 전날까지 예약합니다.공개 접수표의 전체 마감은12/30 0시이며 예약 가능한 실제 날짜를 확인하세요.",
+        "회차 시작20분 경과 시 자동 취소·입장 제한됩니다.사전 취소 없는 불참은60일간 이용 제한과 해당 기간 예약 취소 대상입니다.",
+        "현장 접수는회차30분 전부터 선착순이며 대기자 우선입니다.평일1·2회차는 단체와 함께 관람합니다."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26",
+      "verifiedAt": "2026-10-26T07:09:31.578Z",
       "evidence": [
         {
           "url": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S260320170624732091",
-          "publisher": "서울 공공서비스예약",
-          "summary": "예약 표와 상세 본문의 대상·접수 시각·운영일·비용·예약 조건을 대조했습니다. 월간 생태 프로그램은 상세에 열거된 실제 날짜만 이용일로 반영했습니다.",
-          "verifiedAt": "2026-10-26",
+          "publisher": "서울 공공서비스예약 · 공식 운영기관",
+          "summary": "개인 관람 실제 본문·원본2026안내2장을 대조.6~13세/2021년생 기준·화~일4회차·보호자포함5명·ID1일1회·20분취소·노쇼60일제한·증빙·양도불가 확인.단체예약공지는 같은시설관람의 추가안내로 통합.",
+          "verifiedAt": "2026-10-26T07:09:31.578Z",
           "fields": [
             "title",
             "audience",
+            "ageGroups",
             "conditions",
+            "scheduleNote",
+            "location",
             "applicationStart",
             "applicationEnd",
             "eventStart",
             "eventEnd",
+            "operatingWeekdays",
+            "feeText"
+          ]
+        },
+        {
+          "url": "https://yeyak.seoul.go.kr/management/ckImgSubmit.do?uid=b3b3b0ba-d9e7-4674-8610-773b829b602c&fileName=(%EA%B0%9C%EC%9D%B8)2026%EB%85%84_%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%B0%95%EB%AC%BC%EA%B4%80_%EA%B4%80%EB%9E%8C_%EC%95%88%EB%82%B4_10%EC%9B%94_1.png",
+          "publisher": "서울 공공서비스예약 · 프로그램 원본 포스터",
+          "summary": "원본 이미지 직접 열람. 개인 관람 실제 본문·원본2026안내2장을 대조.6~13세/2021년생 기준·화~일4회차·보호자포함5명·ID1일1회·20분취소·노쇼60일제한·증빙·양도불가 확인.단체예약공지는 같은시설관람의 추가안내로 통합.",
+          "verifiedAt": "2026-10-26T07:09:31.578Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "scheduleNote",
+            "location",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd",
+            "operatingWeekdays",
+            "feeText"
+          ]
+        },
+        {
+          "url": "https://yeyak.seoul.go.kr/management/ckImgSubmit.do?uid=6256029e-bd03-48db-a3f4-979e43ce2e44&fileName=(%EA%B0%9C%EC%9D%B8)2026%EB%85%84_%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%B0%95%EB%AC%BC%EA%B4%80_%EA%B4%80%EB%9E%8C_%EC%95%88%EB%82%B4_10%EC%9B%94_2.png",
+          "publisher": "서울 공공서비스예약 · 프로그램 원본 포스터",
+          "summary": "원본 이미지 직접 열람. 개인 관람 실제 본문·원본2026안내2장을 대조.6~13세/2021년생 기준·화~일4회차·보호자포함5명·ID1일1회·20분취소·노쇼60일제한·증빙·양도불가 확인.단체예약공지는 같은시설관람의 추가안내로 통합.",
+          "verifiedAt": "2026-10-26T07:09:31.578Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "scheduleNote",
+            "location",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd",
+            "operatingWeekdays",
             "feeText"
           ]
         }
       ],
-      "contentHash": "e63a09f9d9143a964ca0aae390650d2b111400d34cca962ae2eaf890a5c95c35",
+      "contentHash": "07e553cc01f18bfe881b9acf3bd7456a22117343c81517c49a68c9ac34556716",
       "siteUrl": "/tools/kids-programs/#kids-s260320170624732091"
     },
     {
@@ -270,38 +367,41 @@
         5,
         6
       ],
-      "scheduleNote": "화~일 5회 운영 · 월요일·1월 1일·설·추석 연휴 휴관",
+      "scheduleNote": "화~일9:30~10:50 /11:00~12:20 /13:00~14:20 /14:30~15:50 /16:00~17:40",
       "feeStatus": "free",
       "feeText": "체험관 무료",
       "summary": "어린이가 수돗물과 물의 소중함을 놀이로 배우는 체험관입니다.",
       "conditions": [
-        "공개된 11월30일까지의 기간에서 월요일 휴관을 제외한 마지막 관람일은 11월29일입니다. 전날 17시 예약 규칙에 따른 최종 접수는 11월28일 17시이며, 다음 달 예약은 별도 확인해야 합니다.",
-        "초등학교 3학년 이하 어린이와 보호자가 함께 입장하며 성인 인원도 예약에 포함합니다.",
-        "이용 전날 17시까지 예약하고, 다음 달 예약 개시는 전달 첫 평일 09시입니다.",
-        "어린이 없이 성인만 입장할 수 없으며, 사전 연락 없이 10분 이상 늦으면 입장이 제한될 수 있습니다."
+        "초등3학년 이하 어린이와 보호자가 함께 입장하며 성인 인원도 예약에 포함합니다.어린이 없이 성인만 입장할 수 없습니다.",
+        "전달 첫 평일09시부터 다음 달 예약이 열립니다.이용 전날17시 마감이며 월요일 휴관을 제외한 현재 공개 마지막 이용일11/29의 예약은11/28 17시까지입니다.",
+        "개인용 실내화를 준비하세요.물 외의 음식·젤리·음료는 섭취할 수 없습니다.",
+        "사전 연락 없이10분 이상 늦으면 현장 대기자가 입장할 수 있고 정원이 차면 입장하지 못합니다.불참·지각은 사전 연락하세요."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26",
+      "verifiedAt": "2026-10-26T07:09:31.578Z",
       "evidence": [
         {
           "url": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S240603093238072625",
-          "publisher": "서울 공공서비스예약",
-          "summary": "예약 표와 상세 본문의 대상·접수 시각·운영일·비용·예약 조건을 대조했습니다. 월간 생태 프로그램은 상세에 열거된 실제 날짜만 이용일로 반영했습니다. 공개된 11월30일까지의 기간에서 월요일 휴관을 제외한 마지막 관람일은 11월29일입니다. 전날 17시 예약 규칙에 따른 최종 접수는 11월28일 17시이며, 다음 달 예약은 별도 확인해야 합니다.",
-          "verifiedAt": "2026-10-26",
+          "publisher": "서울 공공서비스예약 · 공식 운영기관",
+          "summary": "현재 상세의2026/11/30까지 전체기간·매주월휴관·다음달예약개시·실제5회차·초등3학년이하/보호자필수·실내화·10분지각·음식제한 확인.마지막 실제이용11/29와전날17시 계산유지.",
+          "verifiedAt": "2026-10-26T07:09:31.578Z",
           "fields": [
             "title",
             "audience",
+            "ageGroups",
             "conditions",
+            "scheduleNote",
+            "location",
             "applicationStart",
             "applicationEnd",
             "eventStart",
             "eventEnd",
-            "feeText",
-            "operatingWeekdays"
+            "operatingWeekdays",
+            "feeText"
           ]
         }
       ],
-      "contentHash": "282b892cd53db371719d387516c272ecf84f094cc7f4096f707b8464dd46092f",
+      "contentHash": "121e865464277d3e13281665a913d41cf1d235776b5ae927af411f5c5800406c",
       "siteUrl": "/tools/kids-programs/#kids-s240603093238072625"
     },
     {
@@ -336,17 +436,20 @@
         "기상과 현장 사정에 따라 변경·취소될 수 있습니다."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26",
+      "verifiedAt": "2026-10-26T07:09:31.578Z",
       "evidence": [
         {
           "url": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S261025144658556467",
-          "publisher": "서울 공공서비스예약",
-          "summary": "예약 표와 상세 본문의 대상·접수 시각·운영일·비용·예약 조건을 대조했습니다. 월간 생태 프로그램은 상세에 열거된 실제 날짜만 이용일로 반영했습니다. 마지막 11월22일 회차의 예약은 이용 전날 12시 규칙으로 11월21일 12시까지입니다.",
-          "verifiedAt": "2026-10-26",
+          "publisher": "서울 공공서비스예약 · 공식 운영기관",
+          "summary": "실제2026년11월 본문의운영일 2026-11-01·2026-11-22와회차시간·누구나·무료·전날12시예약·1일전취소·물/운동화·기상변경/사전취소통지 조건 재검증.전체기간을매일회차로 확장하지 않음.",
+          "verifiedAt": "2026-10-26T07:09:31.578Z",
           "fields": [
             "title",
             "audience",
+            "ageGroups",
             "conditions",
+            "scheduleNote",
+            "location",
             "applicationStart",
             "applicationEnd",
             "eventStart",
@@ -356,7 +459,7 @@
           ]
         }
       ],
-      "contentHash": "c582053b2b67ac89d08b789c24a4c8a5b041952701fe8f1620945d315adc733e",
+      "contentHash": "d3793386257450b9ec80d34a82a555af15c928804fbc67f97c8b7bf2ad9f2ce6",
       "siteUrl": "/tools/kids-programs/#kids-s261025144658556467"
     },
     {
@@ -392,17 +495,20 @@
         "기상과 현장 사정에 따라 변경·취소될 수 있습니다."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26",
+      "verifiedAt": "2026-10-26T07:09:31.578Z",
       "evidence": [
         {
           "url": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S261025145159460906",
-          "publisher": "서울 공공서비스예약",
-          "summary": "예약 표와 상세 본문의 대상·접수 시각·운영일·비용·예약 조건을 대조했습니다. 월간 생태 프로그램은 상세에 열거된 실제 날짜만 이용일로 반영했습니다. 실제 마지막 11월28일 회차의 예약은 이용 전날 12시 규칙으로 11월27일 12시까지입니다.",
-          "verifiedAt": "2026-10-26",
+          "publisher": "서울 공공서비스예약 · 공식 운영기관",
+          "summary": "실제2026년11월 본문의운영일 2026-11-14·2026-11-21·2026-11-28와회차시간·누구나·무료·전날12시예약·1일전취소·물/운동화·기상변경/사전취소통지 조건 재검증.전체기간을매일회차로 확장하지 않음.",
+          "verifiedAt": "2026-10-26T07:09:31.578Z",
           "fields": [
             "title",
             "audience",
+            "ageGroups",
             "conditions",
+            "scheduleNote",
+            "location",
             "applicationStart",
             "applicationEnd",
             "eventStart",
@@ -412,7 +518,7 @@
           ]
         }
       ],
-      "contentHash": "a32e57ef50603e89b7c33100275f6d9f547ef309c99f4ea27513b7b84318e8f1",
+      "contentHash": "4444ced8534fad88a6a13a41648d6641a34ab9aadde72dc089db6cf43bbdfb89",
       "siteUrl": "/tools/kids-programs/#kids-s261025145159460906"
     },
     {
@@ -447,17 +553,20 @@
         "기상과 현장 사정에 따라 변경·취소될 수 있습니다."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26",
+      "verifiedAt": "2026-10-26T07:09:31.578Z",
       "evidence": [
         {
           "url": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S261025144201836459",
-          "publisher": "서울 공공서비스예약",
-          "summary": "예약 표와 상세 본문의 대상·접수 시각·운영일·비용·예약 조건을 대조했습니다. 월간 생태 프로그램은 상세에 열거된 실제 날짜만 이용일로 반영했습니다. 마지막 11월29일 회차의 예약은 이용 전날 12시 규칙으로 11월28일 12시까지입니다.",
-          "verifiedAt": "2026-10-26",
+          "publisher": "서울 공공서비스예약 · 공식 운영기관",
+          "summary": "실제2026년11월 본문의운영일 2026-11-15·2026-11-29와회차시간·누구나·무료·전날12시예약·1일전취소·물/운동화·기상변경/사전취소통지 조건 재검증.전체기간을매일회차로 확장하지 않음.",
+          "verifiedAt": "2026-10-26T07:09:31.578Z",
           "fields": [
             "title",
             "audience",
+            "ageGroups",
             "conditions",
+            "scheduleNote",
+            "location",
             "applicationStart",
             "applicationEnd",
             "eventStart",
@@ -467,12 +576,765 @@
           ]
         }
       ],
-      "contentHash": "bc7d27bcabe7dabe3172276cb7ae92d70a331c27951f46070dd24f3c275e09c8",
+      "contentHash": "1fc9c3ba382063542d79bf2c3d1ea60dd234b57c91eddc4667084633e63ea23c",
       "siteUrl": "/tools/kids-programs/#kids-s261025144201836459"
+    },
+    {
+      "id": "parenting-53154",
+      "categoryIds": [
+        "local-parenting",
+        "kids-programs"
+      ],
+      "title": "광주 · 고무밴드 기차와 상자자동차 부모자녀 체험",
+      "providerId": "childcare-portal",
+      "canonicalUrl": "https://www.childcare.go.kr/?EDCEVENTSEQ=53154&flag=CSl&menuno=328",
+      "region": "광주",
+      "location": "광주육아종합지원센터 2층 체험활동실 · 광산구 첨단강변로100",
+      "audience": "영아(24개월~2023년생) 또는 유아(2020~2022년생)와 양육자 각7가족",
+      "ageGroups": [
+        "preschool"
+      ],
+      "applicationStart": "2026-10-20T13:00:00+09:00",
+      "applicationEnd": "2026-11-01",
+      "eventStart": "2026-11-07",
+      "eventEnd": "2026-11-07",
+      "scheduleNote": "11/7 영아10:00~11:30 / 유아12:00~13:30",
+      "feeStatus": "unknown",
+      "feeText": "참가비 미표기 · 신청 전 운영 센터 확인",
+      "summary": "연령별 회차에서 양육자와 함께 기차·자동차 놀이를 즐깁니다.",
+      "conditions": [
+        "한 가족은 양육자1명과 자녀1명으로 구성하며 회차별7가족14명입니다.",
+        "광주 긴급아이돌봄센터 홈페이지 로그인 후 부모자녀참여활동에서 신청하는 안내입니다.",
+        "10/20 13시 선착순이며 접수표11/1 전 마감될 수 있습니다. 자녀 생년과 회차를 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T07:04:04.416Z",
+      "evidence": [
+        {
+          "url": "https://www.childcare.go.kr/?EDCEVENTSEQ=53154&flag=CSl&menuno=328",
+          "publisher": "아이사랑 · 광주육아종합지원센터",
+          "summary": "공식 상세·포스터의11/7 실제2회차,영아/유아 생년·각7가족1+1·센터2층·10/20 13시 신청 대조.",
+          "verifiedAt": "2026-10-26T07:04:04.416Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "location",
+            "scheduleNote",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd"
+          ]
+        },
+        {
+          "url": "https://central.childcare.go.kr/component/file/ND_directDownload.do?fn=img.gif&fp=/upload/images/001897/20261016134908373_5RERH8IA.jpg",
+          "publisher": "아이사랑 · 광주육아종합지원센터",
+          "summary": "공식 공지에 연결된 원본 포스터를 직접 열람. 공식 상세·포스터의11/7 실제2회차,영아/유아 생년·각7가족1+1·센터2층·10/20 13시 신청 대조.",
+          "verifiedAt": "2026-10-26T07:04:04.416Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "location",
+            "scheduleNote",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd"
+          ]
+        }
+      ],
+      "contentHash": "5f8d6ab9a62e389caf523617246c94d31a76b8781a551e9b57f460ff0173cfc5",
+      "siteUrl": "/tools/local-parenting/#parenting-53154"
+    },
+    {
+      "id": "parenting-53198",
+      "categoryIds": [
+        "local-parenting",
+        "kids-programs"
+      ],
+      "title": "인천 · 미니김밥 부모자녀 요리체험",
+      "providerId": "childcare-portal",
+      "canonicalUrl": "https://www.childcare.go.kr/?EDCEVENTSEQ=53198&flag=CSl&menuno=328",
+      "region": "인천",
+      "location": "인천광역시육아종합지원센터 소교육장",
+      "audience": "인천 거주 2020~2023년생 영유아와 양육자 · 회차별7가족",
+      "ageGroups": [
+        "preschool"
+      ],
+      "applicationStart": "2026-11-02T10:00:00+09:00",
+      "applicationEnd": "2026-11-10",
+      "eventStart": "2026-11-12",
+      "eventEnd": "2026-11-12",
+      "scheduleNote": "11/12 15:00~16:10 /16:20~17:30 · 2회차",
+      "feeStatus": "unknown",
+      "feeText": "참가비 미표기 · 신청 전 운영 센터 확인",
+      "summary": "부모와 아이가 함께 재료를 다루고 미니김밥을 만드는 요리 체험입니다.",
+      "conditions": [
+        "부모다움 홈페이지에 로그인한 뒤 해당 교육을 신청하세요. 선착순·실제 잔여석은 별도 확인이 필요합니다.",
+        "불참 시 센터에 미리 연락해 주세요. 이수증은 실제 참석자에게 발급하는 안내입니다.",
+        "앞치마를 준비하세요. 쌀·참기름·오이·당근·햄·어묵·김 등 재료의 알레르기를 확인하고 센터와 상담하세요.",
+        "회차별7가족 대상이며11/2 10시부터 선착순으로 신청합니다."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T07:04:04.416Z",
+      "evidence": [
+        {
+          "url": "https://www.childcare.go.kr/?EDCEVENTSEQ=53198&flag=CSl&menuno=328",
+          "publisher": "아이사랑 · 인천광역시육아종합지원센터",
+          "summary": "공식2개 회차와 원본 포스터의11/12 실제시간·인천거주·2020~2023년생·7가족·11/2 10시~11/10·앞치마·알레르기 준비 대조.",
+          "verifiedAt": "2026-10-26T07:04:04.416Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "location",
+            "scheduleNote",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd"
+          ]
+        },
+        {
+          "url": "https://central.childcare.go.kr/component/file/ND_directDownload.do?fn=img.gif&fp=/upload/images/001901/20261021133258484_O1OC2BP3.png",
+          "publisher": "아이사랑 · 인천광역시육아종합지원센터",
+          "summary": "공식 공지에 연결된 원본 포스터를 직접 열람. 공식2개 회차와 원본 포스터의11/12 실제시간·인천거주·2020~2023년생·7가족·11/2 10시~11/10·앞치마·알레르기 준비 대조.",
+          "verifiedAt": "2026-10-26T07:04:04.416Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "location",
+            "scheduleNote",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd"
+          ]
+        },
+        {
+          "url": "https://www.childcare.go.kr/?EDCEVENTSEQ=53197&flag=CSl&menuno=328",
+          "publisher": "아이사랑 · 인천광역시육아종합지원센터",
+          "summary": "동일 프로그램의 추가 회차 상세를 대조. 공식2개 회차와 원본 포스터의11/12 실제시간·인천거주·2020~2023년생·7가족·11/2 10시~11/10·앞치마·알레르기 준비 대조.",
+          "verifiedAt": "2026-10-26T07:04:04.416Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "location",
+            "scheduleNote",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd"
+          ]
+        }
+      ],
+      "contentHash": "412423593078cbd0e81aaa666561a48af88bf327da7d34d93d63647b137476e3",
+      "siteUrl": "/tools/local-parenting/#parenting-53198"
+    },
+    {
+      "id": "parenting-53228",
+      "categoryIds": [
+        "local-parenting",
+        "kids-programs"
+      ],
+      "title": "전남 · 신체 3종 경기 부모자녀 체험",
+      "providerId": "childcare-portal",
+      "canonicalUrl": "https://www.childcare.go.kr/?EDCEVENTSEQ=53228&flag=CSl&menuno=328",
+      "region": "전남",
+      "location": "전남육아종합지원센터 아이꿈터실",
+      "audience": "2020~2022년생 유아1명과 양육자1명 · 회차별8팀",
+      "ageGroups": [
+        "preschool"
+      ],
+      "applicationStart": "2026-11-16T10:00:00+09:00",
+      "applicationEnd": "2026-11-20",
+      "eventStart": "2026-11-21",
+      "eventEnd": "2026-11-21",
+      "scheduleNote": "11/21 A10:00~11:00 /B11:20~12:20",
+      "feeStatus": "free",
+      "feeText": "교육 무료 · 간식·홍보물품 제공 안내",
+      "summary": "양육자와 유아가 신체 놀이 세 종목에 함께 참여하는 체험입니다.",
+      "conditions": [
+        "전남 센터 홈페이지 로그인 후 영유아가정지원·부모교육신청에서 신청합니다.11/16 10시부터 선착순입니다.",
+        "양육자1명+해당 연령 유아1명만 참여하며 초등학생 이상 자녀는 입실이 제한됩니다.",
+        "자녀2명 이상이면 각자 신청하고 비고란에 자녀 이름·생년월일을 적어야 합니다.",
+        "안전사고에 대한 보호자 책임에 동의한 경우 참여할 수 있습니다. 회차별 잔여석을 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T07:04:04.416Z",
+      "evidence": [
+        {
+          "url": "https://www.childcare.go.kr/?EDCEVENTSEQ=53228&flag=CSl&menuno=328",
+          "publisher": "아이사랑 · 전남육아종합지원센터",
+          "summary": "A/B실제2회차 상세·공식포스터의11/21시간·2020~2022생·1+1·각8팀·무료·11/16 10시~20·초등입실제한·개별자녀등록·보호자책임 확인.",
+          "verifiedAt": "2026-10-26T07:04:04.416Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "location",
+            "scheduleNote",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd",
+            "feeText"
+          ]
+        },
+        {
+          "url": "https://central.childcare.go.kr/component/file/ND_directDownload.do?fn=img.gif&fp=/upload/images/001903/20261023140742768_3JZPXGWH.jpg",
+          "publisher": "아이사랑 · 전남육아종합지원센터",
+          "summary": "공식 공지에 연결된 원본 포스터를 직접 열람. A/B실제2회차 상세·공식포스터의11/21시간·2020~2022생·1+1·각8팀·무료·11/16 10시~20·초등입실제한·개별자녀등록·보호자책임 확인.",
+          "verifiedAt": "2026-10-26T07:04:04.416Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "location",
+            "scheduleNote",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd",
+            "feeText"
+          ]
+        },
+        {
+          "url": "https://www.childcare.go.kr/?EDCEVENTSEQ=53229&flag=CSl&menuno=328",
+          "publisher": "아이사랑 · 전남육아종합지원센터",
+          "summary": "동일 프로그램의 추가 회차 상세를 대조. A/B실제2회차 상세·공식포스터의11/21시간·2020~2022생·1+1·각8팀·무료·11/16 10시~20·초등입실제한·개별자녀등록·보호자책임 확인.",
+          "verifiedAt": "2026-10-26T07:04:04.416Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "location",
+            "scheduleNote",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd",
+            "feeText"
+          ]
+        }
+      ],
+      "contentHash": "55469c9bfc6885c216af6fa368608ee9518777405c15c0a77aa0750ab1e33f3a",
+      "siteUrl": "/tools/local-parenting/#parenting-53228"
+    },
+    {
+      "id": "kids-s260918081141931556",
+      "categoryIds": [
+        "kids-programs"
+      ],
+      "title": "서울식물원 · 마주 봄 서로 봄 가족 자율감상",
+      "providerId": "seoul-reservation",
+      "canonicalUrl": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S260918081141931556",
+      "region": "서울",
+      "district": "강서구",
+      "location": "식물문화센터2층 프로젝트홀2 인포데스크에서 워크북 수령",
+      "audience": "초등학생 어린이를 동반한 가족 · 보호자 최소1명 필수",
+      "ageGroups": [
+        "elementary"
+      ],
+      "applicationStart": "2026-09-18T12:00:00+09:00",
+      "applicationEnd": "2026-10-28T00:00:00+09:00",
+      "eventStart": "2026-10-01",
+      "eventEnd": "2026-10-28",
+      "operatingDates": [
+        "2026-10-01",
+        "2026-10-02",
+        "2026-10-03",
+        "2026-10-04",
+        "2026-10-07",
+        "2026-10-08",
+        "2026-10-09",
+        "2026-10-10",
+        "2026-10-11",
+        "2026-10-13",
+        "2026-10-14",
+        "2026-10-15",
+        "2026-10-16",
+        "2026-10-17",
+        "2026-10-18",
+        "2026-10-20",
+        "2026-10-21",
+        "2026-10-22",
+        "2026-10-25",
+        "2026-10-27",
+        "2026-10-28"
+      ],
+      "scheduleNote": "워크북수령10:30~12:00 /14:00~15:30 · 월요일·10/6·23·24·29~31 제외",
+      "feeStatus": "mixed",
+      "feeText": "워크북 프로그램 무료 · 온실·주제원 관람 입장권 별도 구매",
+      "summary": "전시 감상 워크북으로 식물원 작품을 보고 글과 그림으로 표현하는 자율 활동입니다.",
+      "conditions": [
+        "예약은 보호자를 제외한 어린이 수로 신청하고 보호자 수는 이용정보에 적습니다.회차별워크북10개가 소진되면 조기 마감됩니다.",
+        "예약표의10/31까지 범위와 달리10/29~31은 운영 제외입니다.실제 마지막10/28 회차는 전날24시까지 접수하는 규칙을 적용했습니다.",
+        "워크북은 신청한 회차의 수령 시간에만 받습니다.개인물·편한신발을 준비하고 불참 시 전날까지 취소·연락하세요.",
+        "온라인양도는 인정되지 않으며 온실·주제원 입장권을 별도로 발권해야 합니다."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T07:09:31.578Z",
+      "evidence": [
+        {
+          "url": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S260918081141931556",
+          "publisher": "서울 공공서비스예약 · 공식 운영기관",
+          "summary": "2026년10월 모집 실제본문에서 초등가족/보호자·워크북10개·2회수령시간·요일및예외휴관·10/29~31미운영·무료프로그램/유료공간분리·전날24시접수·양도불가 확인.",
+          "verifiedAt": "2026-10-26T07:09:31.578Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "scheduleNote",
+            "location",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd",
+            "operatingDates",
+            "feeText"
+          ]
+        },
+        {
+          "url": "https://yeyak.seoul.go.kr/management/ckImgSubmit.do?uid=6b056ce9-850a-414b-893a-094c87bcfa8b&fileName=%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7%202026-08-28%20101333%20%EB%B3%B5%EC%82%AC.jpg",
+          "publisher": "서울 공공서비스예약 · 프로그램 원본 포스터",
+          "summary": "원본 이미지 직접 열람. 2026년10월 모집 실제본문에서 초등가족/보호자·워크북10개·2회수령시간·요일및예외휴관·10/29~31미운영·무료프로그램/유료공간분리·전날24시접수·양도불가 확인.",
+          "verifiedAt": "2026-10-26T07:09:31.578Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "scheduleNote",
+            "location",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd",
+            "operatingDates",
+            "feeText"
+          ]
+        },
+        {
+          "url": "https://yeyak.seoul.go.kr/management/ckImgSubmit.do?uid=62de8fda-18f6-4347-a490-486ecd17e00d&fileName=%EC%9B%8C%ED%81%AC%EB%B6%81-%EC%9B%B9%EC%A0%84%EB%8B%A8(%EC%8B%A0%EA%B7%9C%EC%A0%9C%EC%9E%91).jpg",
+          "publisher": "서울 공공서비스예약 · 프로그램 원본 포스터",
+          "summary": "원본 이미지 직접 열람. 2026년10월 모집 실제본문에서 초등가족/보호자·워크북10개·2회수령시간·요일및예외휴관·10/29~31미운영·무료프로그램/유료공간분리·전날24시접수·양도불가 확인.",
+          "verifiedAt": "2026-10-26T07:09:31.578Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "scheduleNote",
+            "location",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd",
+            "operatingDates",
+            "feeText"
+          ]
+        }
+      ],
+      "contentHash": "7da37c52732482c57f63b2868fcf92566e1eae88dfefcb63758b1fe538ca2de1",
+      "siteUrl": "/tools/kids-programs/#kids-s260918081141931556"
+    },
+    {
+      "id": "kids-s261020161116202700",
+      "categoryIds": [
+        "kids-programs"
+      ],
+      "title": "서울식물원 함께정원 · 크리스마스를 기다리는 겨울정원",
+      "providerId": "seoul-reservation",
+      "canonicalUrl": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S261020161116202700",
+      "region": "서울",
+      "district": "강서구",
+      "location": "서울식물원 어린이정원학교",
+      "audience": "6세 이상 어린이 동반 가족 · 팀당2~4인,6팀",
+      "ageGroups": [
+        "preschool",
+        "elementary"
+      ],
+      "applicationStart": "2026-10-25T10:00:00+09:00",
+      "applicationEnd": "2026-11-26T09:00:00+09:00",
+      "eventStart": "2026-11-07",
+      "eventEnd": "2026-11-28",
+      "operatingDates": [
+        "2026-11-07",
+        "2026-11-14",
+        "2026-11-21",
+        "2026-11-28"
+      ],
+      "scheduleNote": "11/7·14·21·28 10:00~11:30",
+      "feeStatus": "paid",
+      "feeText": "팀당10,000원 · 2~4인 가족 기준,주차 별도",
+      "summary": "시클라멘의 특징과 관리법을 배우고 가족의 겨울정원을 만드는 체험입니다.",
+      "conditions": [
+        "서울시 통합회원 로그인 후 선착순 신청합니다.프로그램 시작10분 전 도착하고 마실 물을 준비하세요.",
+        "주차비는 지원하지 않습니다.운영 내용·시간은 변경될 수 있으며 취소 안내는 예약한 휴대전화 문자로 전달합니다.",
+        "인원50% 미달이면 취소될 수 있습니다.무단불참 시 이후 신청 프로그램에서 제외될 수 있습니다.",
+        "취소·환불은 예약당일/7일전 전액,6~3일전10% 공제,2~1일전30% 공제,이용일 이후 환불불가 안내를 확인하세요.",
+        "회차2일 전09시까지 신청하며 실제 잔여팀을 확인하세요.만들기 활동은 변경될 수 있습니다."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T07:09:31.578Z",
+      "evidence": [
+        {
+          "url": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S261020161116202700",
+          "publisher": "서울 공공서비스예약 · 공식 운영기관",
+          "summary": "원본11월포스터의4개실제토요일10~11:30·6세이상동반2~4인·6팀·팀1만원·시클라멘겨울정원과접수10/25 10시~11/26 9시·인원50%미달/환불조건 확인.",
+          "verifiedAt": "2026-10-26T07:09:31.578Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "scheduleNote",
+            "location",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd",
+            "operatingDates",
+            "feeText"
+          ]
+        },
+        {
+          "url": "https://yeyak.seoul.go.kr/cmsdata/web_upload/temp/20261020/1792480325346ZQ4H2L5PHFSRSRQ5RLON7WBPK.jpg",
+          "publisher": "서울 공공서비스예약 · 프로그램 원본 포스터",
+          "summary": "원본 이미지 직접 열람. 원본11월포스터의4개실제토요일10~11:30·6세이상동반2~4인·6팀·팀1만원·시클라멘겨울정원과접수10/25 10시~11/26 9시·인원50%미달/환불조건 확인.",
+          "verifiedAt": "2026-10-26T07:09:31.578Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "scheduleNote",
+            "location",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd",
+            "operatingDates",
+            "feeText"
+          ]
+        }
+      ],
+      "contentHash": "66f861edb894f2eeb474b7c78495a6bb2ec1b881979f3baa8a9cf8eb3632e20c",
+      "siteUrl": "/tools/kids-programs/#kids-s261020161116202700"
+    },
+    {
+      "id": "kids-s261020162947096360",
+      "categoryIds": [
+        "kids-programs"
+      ],
+      "title": "서울식물원 출동 기후히어로 · 아무것도 사지 않는 날",
+      "providerId": "seoul-reservation",
+      "canonicalUrl": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S261020162947096360",
+      "region": "서울",
+      "district": "강서구",
+      "location": "서울식물원 어린이정원학교",
+      "audience": "초등1~3학년 어린이10명",
+      "ageGroups": [
+        "elementary"
+      ],
+      "applicationStart": "2026-10-25T10:00:00+09:00",
+      "applicationEnd": "2026-11-26T09:00:00+09:00",
+      "eventStart": "2026-11-07",
+      "eventEnd": "2026-11-28",
+      "operatingDates": [
+        "2026-11-07",
+        "2026-11-14",
+        "2026-11-21",
+        "2026-11-28"
+      ],
+      "scheduleNote": "11/7·14·21·28 13:30~15:00 /15:30~17:00",
+      "feeStatus": "paid",
+      "feeText": "1인5,000원 · 주차 별도",
+      "summary": "탄소발자국과 지속 가능한 소비를 배우며 미니북을 만드는 어린이 환경교육입니다.",
+      "conditions": [
+        "서울시 통합회원 로그인 후 선착순 신청합니다.프로그램 시작10분 전 도착하고 마실 물을 준비하세요.",
+        "주차비는 지원하지 않습니다.운영 내용·시간은 변경될 수 있으며 취소 안내는 예약한 휴대전화 문자로 전달합니다.",
+        "인원50% 미달이면 취소될 수 있습니다.무단불참 시 이후 신청 프로그램에서 제외될 수 있습니다.",
+        "취소·환불은 예약당일/7일전 전액,6~3일전10% 공제,2~1일전30% 공제,이용일 이후 환불불가 안내를 확인하세요.",
+        "초등1~3학년 대상이며 회차2일 전09시 접수 마감입니다.가족 공동 참가비가 아닌 어린이1인 요금입니다."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T07:09:31.578Z",
+      "evidence": [
+        {
+          "url": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S261020162947096360",
+          "publisher": "서울 공공서비스예약 · 공식 운영기관",
+          "summary": "원본11월포스터의초1~3·10명·4개토요일2회차·인당5천원·탄소발자국/소비/미니북·2일전9시접수·인원50%미달·환불확인.",
+          "verifiedAt": "2026-10-26T07:09:31.578Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "scheduleNote",
+            "location",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd",
+            "operatingDates",
+            "feeText"
+          ]
+        },
+        {
+          "url": "https://yeyak.seoul.go.kr/cmsdata/web_upload/temp/20261020/1792481460516LTL2LB9QY3L9ROCRVHD9CL3Q3.jpg",
+          "publisher": "서울 공공서비스예약 · 프로그램 원본 포스터",
+          "summary": "원본 이미지 직접 열람. 원본11월포스터의초1~3·10명·4개토요일2회차·인당5천원·탄소발자국/소비/미니북·2일전9시접수·인원50%미달·환불확인.",
+          "verifiedAt": "2026-10-26T07:09:31.578Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "scheduleNote",
+            "location",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd",
+            "operatingDates",
+            "feeText"
+          ]
+        }
+      ],
+      "contentHash": "e3c917dc4ea8743266a7bda1e7a56603f53b53039efc95a38c0a32e5fd0fb4f8",
+      "siteUrl": "/tools/kids-programs/#kids-s261020162947096360"
+    },
+    {
+      "id": "kids-s261019141959364257",
+      "categoryIds": [
+        "kids-programs"
+      ],
+      "title": "서울우리소리박물관 · 꿈나무 해금교실 나도 연주자",
+      "providerId": "seoul-reservation",
+      "canonicalUrl": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S261019141959364257",
+      "region": "서울",
+      "district": "종로구",
+      "location": "우리소리도서관 다목적실 및 서울우리소리박물관 누마루",
+      "audience": "초등3~6학년 · 기수별10명",
+      "ageGroups": [
+        "elementary"
+      ],
+      "applicationStart": "2026-10-22T10:00:00+09:00",
+      "applicationEnd": "2026-11-08T10:00:00+09:00",
+      "eventStart": "2026-11-03",
+      "eventEnd": "2026-11-14",
+      "operatingDates": [
+        "2026-11-03",
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07",
+        "2026-11-10",
+        "2026-11-11",
+        "2026-11-12",
+        "2026-11-13",
+        "2026-11-14"
+      ],
+      "scheduleNote": "1기11/3~7,2기11/10~14 · 화~금15:30~17:00,토11:00~13:00",
+      "feeStatus": "free",
+      "feeText": "교육비 무료",
+      "summary": "해금의 기본 자세와 연주를 배우고 마지막 날 발표회에 참여하는5일 과정입니다.",
+      "conditions": [
+        "기수별5일 과정입니다.원하는 기수와 출석 가능한 날짜를 확인한 뒤 선착순 신청하세요.회차별로 별개 프로그램을 신청하는 방식이 아닙니다.",
+        "화~목은 우리소리도서관 다목적실,금·토는 박물관 누마루 안내입니다.기수에 따라 날짜가 다릅니다.",
+        "5회차 발표회는 교육생의 가족2인까지 동반 관람 가능합니다.일반 수업의 보호자 동반 조건과 구분해 확인하세요.",
+        "예약 취소는 이용1일 전까지 가능하다는 접수표 안내이며 실제 기수별 마감·취소는 공식 예약에서 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T07:09:31.578Z",
+      "evidence": [
+        {
+          "url": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S261019141959364257",
+          "publisher": "서울 공공서비스예약 · 공식 운영기관",
+          "summary": "원본모집이미지에서2026/11/3~7,10~14기수·5일과정·초3~6각10명·무료·화~금/토실제시간·장소변경·발표회가족2인 대조.",
+          "verifiedAt": "2026-10-26T07:09:31.578Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "scheduleNote",
+            "location",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd",
+            "operatingDates",
+            "feeText"
+          ]
+        },
+        {
+          "url": "https://yeyak.seoul.go.kr/management/ckImgSubmit.do?uid=9457138b-e7bd-4d75-a016-73d29eaae88f&fileName=1.%20%EB%B0%A9%EA%B3%BC%ED%9B%84%20%EA%B5%AD%EC%95%85%EA%B8%B0%20%EC%B2%B4%ED%97%98%EA%B5%90%EC%8B%A4%20%EC%95%88%EB%82%B4%EB%AC%B8001.jpg",
+          "publisher": "서울 공공서비스예약 · 프로그램 원본 포스터",
+          "summary": "원본 이미지 직접 열람. 원본모집이미지에서2026/11/3~7,10~14기수·5일과정·초3~6각10명·무료·화~금/토실제시간·장소변경·발표회가족2인 대조.",
+          "verifiedAt": "2026-10-26T07:09:31.578Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "scheduleNote",
+            "location",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd",
+            "operatingDates",
+            "feeText"
+          ]
+        }
+      ],
+      "contentHash": "59d3953da6e61c450453a297fdc30b93d28a68ace572e51499182cfdf6dd9424",
+      "siteUrl": "/tools/kids-programs/#kids-s261019141959364257"
+    },
+    {
+      "id": "kids-s260109144637470874",
+      "categoryIds": [
+        "kids-programs"
+      ],
+      "title": "난지생태습지원 · 2026 한강생태 유아놀이",
+      "providerId": "seoul-reservation",
+      "canonicalUrl": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S260109144637470874",
+      "region": "서울",
+      "district": "마포구",
+      "location": "난지생태습지원 입구 · 주차장 안쪽 화장실 옆 집결",
+      "audience": "만3~5세 유치원·어린이집 기관 및 단체 · 회당15~20명",
+      "ageGroups": [
+        "preschool"
+      ],
+      "applicationStart": "2026-01-09T00:00:00+09:00",
+      "applicationEnd": "2026-12-29T12:00:00+09:00",
+      "eventStart": "2026-02-01",
+      "eventEnd": "2026-12-31",
+      "operatingWeekdays": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "scheduleNote": "2~12월 월~금10:00~11:30 · 기관별 고정 요일·날짜 예약 확인",
+      "feeStatus": "free",
+      "feeText": "프로그램 무료 · 주차료 별도,기관 안전보험은 기관 의무",
+      "summary": "기관이 신청해 유아 발달에 맞는 계절별 생태체험과 놀이에 참여합니다.",
+      "conditions": [
+        "개별 가족 신청이 아닌 기관·단체15~20명 대상입니다.기관명과 연령을 적고 월별 동일 요일을 선택하는 안내입니다.",
+        "이용2일 전12시 접수 마감,2일 전까지 취소합니다.최종12/31운영일의 접수는12/29 12시 규칙에 따릅니다.",
+        "기관은 양육자 개인정보동의서를 사전에 받아 제출하고 안전보험·질병·알레르기를 확인해야 합니다.",
+        "11월은 가을이 오는 소리,12월은 오리 등 조류 주제입니다.기상·기관 사정에 따라 변경·취소될 수 있습니다.",
+        "설·추석·근로자의날 센터 휴관이며 실제 예약 가능한 날짜는 공식 달력에서 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T07:09:31.578Z",
+      "evidence": [
+        {
+          "url": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S260109144637470874",
+          "publisher": "서울 공공서비스예약 · 공식 운영기관",
+          "summary": "2026연간상세본문의2~12월/월금10~11:30·만3~5기관15~20·무료·2일전12시접수/2일전취소·기관보험/동의/알레르기·월별주제·휴관확인.",
+          "verifiedAt": "2026-10-26T07:09:31.578Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "scheduleNote",
+            "location",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd",
+            "operatingWeekdays",
+            "feeText"
+          ]
+        }
+      ],
+      "contentHash": "3bf1ca76329ba4992ecc643edee416cbe467fd7477ed293363fb0b56d17198b3",
+      "siteUrl": "/tools/kids-programs/#kids-s260109144637470874"
+    },
+    {
+      "id": "kids-s261024162658645277",
+      "categoryIds": [
+        "kids-programs"
+      ],
+      "title": "난지생태습지원 · 한강생태공원 가을맞이",
+      "providerId": "seoul-reservation",
+      "canonicalUrl": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S261024162658645277",
+      "region": "서울",
+      "district": "마포구",
+      "location": "난지수변생태학습센터2층 교육실",
+      "audience": "일반시민 누구나 · 회당20명",
+      "ageGroups": [],
+      "applicationStart": "2026-10-24T00:00:00+09:00",
+      "applicationEnd": "2026-11-29T12:00:00+09:00",
+      "eventStart": "2026-11-02",
+      "eventEnd": "2026-11-30",
+      "operatingWeekdays": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "scheduleNote": "11월 월~금14:00 · 실제 선택 가능일 확인",
+      "feeStatus": "free",
+      "feeText": "프로그램 무료 · 주차 별도",
+      "summary": "전문 해설가와 갈대·가을습지·생물·자연 악기를 탐구하는 평일 생태체험입니다.",
+      "conditions": [
+        "본문의11월 프로그램으로 평일14시 운영합니다.포괄 예약표의10월기간을 실제 회차로 확장하지 않았습니다.",
+        "이용 전날12시까지 예약하고 전날까지 취소해 주세요.공공예약 또는 현장 참여는 잔여석 확인이 필요합니다.",
+        "운동화·편한복장·개인물을 준비하고 활동사진·개인정보 동의를 확인하세요.",
+        "별도 취소 안내가 없으면 우천에도 진행하나 기상·현장 사정으로 변경·취소될 수 있습니다.엘리베이터는 센터에 사전 문의하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T07:09:31.578Z",
+      "evidence": [
+        {
+          "url": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S261024162658645277",
+          "publisher": "서울 공공서비스예약 · 공식 운영기관",
+          "summary": "실제2026년11월본문의월금14시·누구나20명·무료·전날12시예약·1일전취소·준비물·활동동의·기상취소 확인.",
+          "verifiedAt": "2026-10-26T07:09:31.578Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "scheduleNote",
+            "location",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd",
+            "operatingWeekdays",
+            "feeText"
+          ]
+        }
+      ],
+      "contentHash": "c4dbb2fc7c1189fe5b1afbdf5a8ef35e9e66947fbbd63deb9cc7f80790242a28",
+      "siteUrl": "/tools/kids-programs/#kids-s261024162658645277"
     }
   ],
-  "siteRevision": "ba7b6fdb48b05b218350a3760e83da828f7fd163",
-  "generatedAt": "2026-10-26T04:05:36.188Z",
+  "siteRevision": "ff3a41b4ed84cbbe9cc1bd83d6a3ebed916a1561",
+  "generatedAt": "2026-10-26T12:06:27.577Z",
   "window": {
     "start": "2026-10-26",
     "end": "2026-12-25"

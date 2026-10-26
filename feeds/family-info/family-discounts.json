@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "snapshotId": "77040c9b88d8e46bce1de24c",
+  "snapshotId": "c0a044e253b8012893aad804",
   "timezone": "Asia/Seoul",
   "categories": [
     {
@@ -14,13 +14,13 @@
       "split": "discount-sector",
       "href": "/tools/family-discounts/",
       "accent": "orange",
-      "categoryRevision": "e5385bdd74ed9acf",
-      "lastVerifiedAt": "2026-10-26",
-      "lastCollectedAt": "2026-10-26",
+      "categoryRevision": "82bfaeaa79357174",
+      "lastVerifiedAt": "2026-10-26T07:29:00.467Z",
+      "lastCollectedAt": "2026-10-26T07:29:00.467Z",
       "lastDeployedAt": null,
-      "outcome": "partial-review",
-      "verifiedCount": 16,
-      "currentCount": 16,
+      "outcome": "reviewed",
+      "verifiedCount": 19,
+      "currentCount": 19,
       "failures": []
     }
   ],
@@ -60,7 +60,33 @@
       "regions": [
         "경기"
       ],
-      "lastSuccessAt": "2026-10-26"
+      "lastSuccessAt": "2026-10-26T07:29:00.467Z"
+    },
+    {
+      "id": "legoland",
+      "name": "레고랜드 코리아",
+      "url": "https://www.legoland.kr/",
+      "categoryIds": [
+        "kids-popups",
+        "family-discounts"
+      ],
+      "regions": [
+        "강원"
+      ],
+      "lastSuccessAt": "2026-10-26T04:20:37.942Z"
+    },
+    {
+      "id": "acc-culture",
+      "name": "국립아시아문화전당",
+      "url": "https://www.acc.go.kr/",
+      "categoryIds": [
+        "family-culture",
+        "family-discounts"
+      ],
+      "regions": [
+        "광주"
+      ],
+      "lastSuccessAt": "2026-10-26T07:25:10.328Z"
     }
   ],
   "records": [
@@ -81,39 +107,39 @@
       "applicationEnd": null,
       "eventStart": "2026-10-01",
       "eventEnd": "2026-11-30",
-      "scheduleNote": "시설 운영시간·야간권 입장시각은 공식 안내 확인",
+      "scheduleNote": "종일권·16시 이후 야간권 구분 · 시설별 운영 확인",
       "feeStatus": "paid",
-      "feeText": "종일권 1인 21,900원 · 야간권 19,900원",
+      "feeText": "종일권1인21,900원 · 16시이후 야간권19,900원,본인+동반1인 각각 적용",
       "summary": "대상 카드로 결제하면 동반 1인까지 같은 요금을 적용받습니다.",
       "conditions": [
-        "카드 이용실적과 무관하게 본인 포함 최대 2매·1일 1회입니다.",
-        "선불·기프트·기업카드는 제외되며 소유자 본인이 대상 카드로 결제해야 합니다.",
-        "다른 할인과의 중복 적용, 유료 체험·특별시설 제외 및 당일 운영 여부를 확인하세요."
+        "KB국민·비씨 신용/체크카드 회원 대상이며 기업·선불·기프트카드는 제외됩니다.BC페이북 결제 포함 안내입니다.",
+        "카드 실적과 무관하게 본인포함최대2매·1일1회이며 카드 소유자 본인이 직접 대상 카드로 결제해야 합니다.",
+        "두 카드사의 같은 기간·요금 혜택을 한 건으로 안내합니다.다른 쿠폰·제휴 할인과 중복되지 않으며 운영정책에 따라 변경·중단될 수 있습니다."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26",
+      "verifiedAt": "2026-10-26T07:29:00.467Z",
       "evidence": [
         {
           "url": "https://seoulland.co.kr/?p=40_view&idx=380",
-          "publisher": "서울랜드",
-          "summary": "공식 프로모션 상세의 2026년 적용기간·대상·결제수단·동반인 범위·요금표·증빙과 중복 제한을 대조했습니다. 포인트 차감과 실제 할인 결제를 구분했습니다.",
-          "verifiedAt": "2026-10-26",
+          "publisher": "서울랜드 공식 프로모션",
+          "summary": "KB380과BC427 두 원문의10/1~11/30·동일21,900/19,900·본인+1인·1일1회2매·소유자직접결제·제외카드·중복불가를대조하고 기존한레코드유지.",
+          "verifiedAt": "2026-10-26T07:29:00.467Z",
           "fields": [
             "title",
             "audience",
             "conditions",
             "eventStart",
             "eventEnd",
-            "feeText"
+            "feeText",
+            "scheduleNote"
           ]
         },
         {
           "url": "https://seoulland.co.kr/?p=40_view&idx=427",
-          "publisher": "서울랜드",
-          "summary": "동일 기간 비씨카드 공식 상세에서도 같은 본인·동반 1인 요금 및 제외카드·본인결제 조건을 별도로 확인했습니다.",
-          "verifiedAt": "2026-10-26",
+          "publisher": "서울랜드 공식 비씨카드 프로모션",
+          "summary": "비씨카드공식별도원문에서도동일10/1~11/30·본인+동반1인/1일2매·21,900/19,900·직접결제와제외카드를확인.카드별복제하지않고통합.",
+          "verifiedAt": "2026-10-26T07:29:00.467Z",
           "fields": [
-            "title",
             "audience",
             "conditions",
             "eventStart",
@@ -122,7 +148,7 @@
           ]
         }
       ],
-      "contentHash": "9d6500cca2817b266acccbe0e67316cc7785004e12890b3c40a52aa23c5ac3f2",
+      "contentHash": "fbe1c95142d7fc537bed782462b4f007c54d25450c42efa83538ec813e1c5796",
       "siteUrl": "/tools/family-discounts/#seoulland-380-202610"
     },
     {
@@ -142,34 +168,35 @@
       "applicationEnd": null,
       "eventStart": "2026-09-28",
       "eventEnd": "2026-10-31",
-      "scheduleNote": "시설 운영시간·야간권 입장시각은 공식 안내 확인",
+      "scheduleNote": "종일권·16시 이후 야간권 구분 · 시설별 운영 확인",
       "feeStatus": "paid",
-      "feeText": "종일권 26,000원 · 야간권 22,500원",
+      "feeText": "회원본인 종일26,000원 · 16시이후야간22,500원",
       "summary": "제휴카드의 이용실적을 충족한 회원 본인에게 적용되는 현장 할인입니다.",
       "conditions": [
-        "신한·삼성·NH농협·우리·씨티·하나 대상 카드이며 기업·선불카드는 제외됩니다.",
-        "실적 충족 여부와 카드별 적용 가능 여부는 카드사 확인이 필요합니다.",
-        "다른 할인과의 중복 적용, 유료 체험·특별시설 제외 및 당일 운영 여부를 확인하세요."
+        "신한·삼성·NH농협·우리·씨티·하나의대상제휴카드중실적충족회원본인만적용합니다.기업·선불카드는제외됩니다.",
+        "실적 충족 여부는 카드사에서 확인해야 하며 현장 결제 혜택입니다.동반인에게같은50%가자동적용되는사업이아닙니다.",
+        "입장·놀이시설용파크이용권이며체험·코인시설·기획전시·유료공연은제외됩니다.다른쿠폰·제휴할인과중복되지않습니다."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26",
+      "verifiedAt": "2026-10-26T07:29:00.467Z",
       "evidence": [
         {
           "url": "https://seoulland.co.kr/?p=40_view&idx=252",
-          "publisher": "서울랜드",
-          "summary": "공식 프로모션 상세의 2026년 적용기간·대상·결제수단·동반인 범위·요금표·증빙과 중복 제한을 대조했습니다. 포인트 차감과 실제 할인 결제를 구분했습니다.",
-          "verifiedAt": "2026-10-26",
+          "publisher": "서울랜드 공식 프로모션",
+          "summary": "9/28~10/31·6개카드사/실적충족본인·26천/22.5천·제외카드·현장·유료시설제외·중복불가 확인.",
+          "verifiedAt": "2026-10-26T07:29:00.467Z",
           "fields": [
             "title",
             "audience",
             "conditions",
             "eventStart",
             "eventEnd",
-            "feeText"
+            "feeText",
+            "scheduleNote"
           ]
         }
       ],
-      "contentHash": "e721c6eb5ec28bed5a7d854a20828e972083b17f61a73ec2be8a99e6e97370a6",
+      "contentHash": "9241052d7c8e6c985106b9c86e0c0e2da2cfb13956253aaaa2592b3bea30af0d",
       "siteUrl": "/tools/family-discounts/#seoulland-252-202610"
     },
     {
@@ -189,34 +216,36 @@
       "applicationEnd": null,
       "eventStart": "2026-10-01",
       "eventEnd": "2026-11-30",
-      "scheduleNote": "시설 운영시간·야간권 입장시각은 공식 안내 확인",
+      "scheduleNote": "종일권·16시 이후 야간권 구분 · 시설별 운영 확인",
       "feeStatus": "paid",
-      "feeText": "어른 종일권 20,800원 결제 + 26,000 M포인트 차감",
+      "feeText": "어른종일20,800원+26,000 M포인트 · 청소년18,400원+23,000점·어린이17,200원+21,500점",
       "summary": "M포인트를 사용하고 나머지 금액을 현대카드로 결제하는 혜택입니다.",
       "conditions": [
-        "현장 결제 전용이며 온라인 예매·간편결제에는 적용되지 않습니다.",
-        "필요한 M포인트가 부족하면 이용할 수 있습니다. 현금 할인율과 포인트 차감을 구분하세요.",
-        "다른 할인과의 중복 적용, 유료 체험·특별시설 제외 및 당일 운영 여부를 확인하세요."
+        "정상가50%를M포인트로차감하고추가10%할인후나머지를현대카드로결제하는방식입니다.현금만60%할인하는혜택이아닙니다.",
+        "필요한M포인트가부족하면이용할수없습니다.법인·기프트카드는제외됩니다.",
+        "현장 결제만가능하며온라인·네이버페이/카카오페이/PAYCO등간편결제는적용되지않습니다.",
+        "어른야간은18,000원+22,500점,청소년15,600원+19,500점,어린이14,400원+18,000점입니다.다른할인과중복불가·변경/중단가능안내입니다."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26",
+      "verifiedAt": "2026-10-26T07:29:00.467Z",
       "evidence": [
         {
           "url": "https://seoulland.co.kr/?p=40_view&idx=209",
-          "publisher": "서울랜드",
-          "summary": "공식 프로모션 상세의 2026년 적용기간·대상·결제수단·동반인 범위·요금표·증빙과 중복 제한을 대조했습니다. 포인트 차감과 실제 할인 결제를 구분했습니다.",
-          "verifiedAt": "2026-10-26",
+          "publisher": "서울랜드 공식 프로모션",
+          "summary": "10/1~11/30·현금과M포인트연령별실차감표·현장만/온라인간편결제불가·포인트부족시불가를확인.기존부족시이용가능오류정정.",
+          "verifiedAt": "2026-10-26T07:29:00.467Z",
           "fields": [
             "title",
             "audience",
             "conditions",
             "eventStart",
             "eventEnd",
-            "feeText"
+            "feeText",
+            "scheduleNote"
           ]
         }
       ],
-      "contentHash": "c1525fc63829033e08abfbcb7e1f9243a48d9cc806469e0015240eb23715ea7e",
+      "contentHash": "abb4d84d04bb3a00b437233461253964eacda32bf78d82d1e852f902a6058698",
       "siteUrl": "/tools/family-discounts/#seoulland-209-202610"
     },
     {
@@ -236,34 +265,35 @@
       "applicationEnd": null,
       "eventStart": "2026-10-01",
       "eventEnd": "2026-10-31",
-      "scheduleNote": "시설 운영시간·야간권 입장시각은 공식 안내 확인",
+      "scheduleNote": "종일권·16시 이후 야간권 구분 · 시설별 운영 확인",
       "feeStatus": "paid",
-      "feeText": "어른 종일권 31,200원 · 청소년 27,600원 · 어린이 25,800원",
+      "feeText": "종일어른31,200원·청소년27,600원·어린이25,800원 · 야간27,000/23,400/21,600원",
       "summary": "카드 실적과 관계없이 적용되는 롯데카드 회원 본인 현장 할인입니다.",
       "conditions": [
-        "카드 소유자 본인 명의 카드가 필요합니다.",
-        "청소년·어린이도 본인 이름의 가족카드·체크카드 등이 있어야 해당 요금이 적용됩니다.",
-        "다른 할인과의 중복 적용, 유료 체험·특별시설 제외 및 당일 운영 여부를 확인하세요."
+        "롯데카드전회원의본인현장결제40%할인입니다.체크카드포함·선불/기프트제외이며실적과무관합니다.",
+        "청소년·어린이요금도해당이용자본인명의롯데가족/체크카드가있어야적용합니다.부모명의카드만으로어린이요금을보장하지않습니다.",
+        "다른쿠폰·제휴할인과중복되지않습니다.방문일운영시간과구입후취소/환불규정은공식구매처에서확인하세요."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26",
+      "verifiedAt": "2026-10-26T07:29:00.467Z",
       "evidence": [
         {
           "url": "https://seoulland.co.kr/?p=40_view&idx=257",
-          "publisher": "서울랜드",
-          "summary": "공식 프로모션 상세의 2026년 적용기간·대상·결제수단·동반인 범위·요금표·증빙과 중복 제한을 대조했습니다. 포인트 차감과 실제 할인 결제를 구분했습니다.",
-          "verifiedAt": "2026-10-26",
+          "publisher": "서울랜드 공식 프로모션",
+          "summary": "10/1~31·실적무관40·연령별종일/야간표·청소년/어린이본인명의카드조건·현장/중복불가 확인.",
+          "verifiedAt": "2026-10-26T07:29:00.467Z",
           "fields": [
             "title",
             "audience",
             "conditions",
             "eventStart",
             "eventEnd",
-            "feeText"
+            "feeText",
+            "scheduleNote"
           ]
         }
       ],
-      "contentHash": "a68e2f1937c1404791cbf594a11c731ba5bd303b07bd13026ad5d1f3c109f8b4",
+      "contentHash": "28f7dca8b59ca1ddfef98cb083cedeeaceaf37097c7bf16cf41ca735a879b0d6",
       "siteUrl": "/tools/family-discounts/#seoulland-257-202610"
     },
     {
@@ -283,34 +313,35 @@
       "applicationEnd": null,
       "eventStart": "2026-10-01",
       "eventEnd": "2026-10-31",
-      "scheduleNote": "시설 운영시간·야간권 입장시각은 공식 안내 확인",
+      "scheduleNote": "종일권·16시 이후 야간권 구분 · 시설별 운영 확인",
       "feeStatus": "paid",
-      "feeText": "본인 50% · 동반 2인 40% 할인",
+      "feeText": "KT본인종일어른26,000원·청소년23,000원·어린이21,500원 · 동반2인은40%할인",
       "summary": "현장 매표소에서 KT멤버십을 제시하는 회원 할인입니다.",
       "conditions": [
-        "멤버십 소유자가 현장에서 직접 결제해야 합니다.",
-        "모바일 멤버십은 가능하지만 캡처 이미지는 사용할 수 없습니다.",
-        "다른 할인과의 중복 적용, 유료 체험·특별시설 제외 및 당일 운영 여부를 확인하세요."
+        "KT멤버십전회원본인50%·동반2인40%입니다.실제모바일멤버십카드를제시하며캡처본은사용할수없습니다.",
+        "본인야간어른22,500원·청소년19,500원·어린이18,000원입니다.동반2인종일어른31,200원·청소년27,600원·어린이25,800원입니다.",
+        "멤버십소유자가직접현장결제해야하며다른할인과중복되지않습니다.야간권은16시이후입장안내입니다."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26",
+      "verifiedAt": "2026-10-26T07:29:00.467Z",
       "evidence": [
         {
           "url": "https://seoulland.co.kr/?p=40_view&idx=386",
-          "publisher": "서울랜드",
-          "summary": "공식 프로모션 상세의 2026년 적용기간·대상·결제수단·동반인 범위·요금표·증빙과 중복 제한을 대조했습니다. 포인트 차감과 실제 할인 결제를 구분했습니다.",
-          "verifiedAt": "2026-10-26",
+          "publisher": "서울랜드 공식 프로모션",
+          "summary": "10/1~31·KT본인50/동반2인40·연령별가격·캡처불가·현장본인결제·중복불가 확인.",
+          "verifiedAt": "2026-10-26T07:29:00.467Z",
           "fields": [
             "title",
             "audience",
             "conditions",
             "eventStart",
             "eventEnd",
-            "feeText"
+            "feeText",
+            "scheduleNote"
           ]
         }
       ],
-      "contentHash": "f760fe0c822e974af6ec7dab2c67678d258f39ab5fc50ae5d586c1701a028865",
+      "contentHash": "d2160a90e338777ec8a3e46ed2bf17e4094b173bd72ec776007b19715d425962",
       "siteUrl": "/tools/family-discounts/#seoulland-386-202610"
     },
     {
@@ -330,34 +361,36 @@
       "applicationEnd": null,
       "eventStart": "2026-10-01",
       "eventEnd": "2026-10-31",
-      "scheduleNote": "시설 운영시간·야간권 입장시각은 공식 안내 확인",
+      "scheduleNote": "종일권·16시 이후 야간권 구분 · 시설별 운영 확인",
       "feeStatus": "paid",
-      "feeText": "본인 40% · 동반 1인 30% 할인 또는 MP포인트 적립",
+      "feeText": "SKT할인형본인종일어른31,200원·청소년27,600원·어린이25,800원 · 적립형은정상가결제",
       "summary": "멤버십 유형에 따라 할인과 포인트 적립을 구분해 이용하는 혜택입니다.",
       "conditions": [
-        "SKT 원타임 바코드를 제시해야 하며 캡처본은 사용할 수 없습니다.",
-        "적립형은 정상가 결제 후 포인트를 제공하므로 할인 결제와 다릅니다.",
-        "다른 할인과의 중복 적용, 유료 체험·특별시설 제외 및 당일 운영 여부를 확인하세요."
+        "할인형은본인40%·동반1인30%할인,적립형은정상가결제후본인40%·동반30%상당MP포인트지급입니다.두방식을구분해선택하세요.",
+        "실시간OTB원타임바코드를제시하며캡처본은불가합니다.멤버십본인현장결제만가능합니다.",
+        "적립형어른종일은52,000원결제후20,800포인트,동반어른은52,000원결제후15,600포인트입니다.현금즉시할인가로표시하지않았습니다.",
+        "MP포인트사용시추가적립은실물결제액기준입니다.다른쿠폰·제휴할인과중복되지않습니다."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26",
+      "verifiedAt": "2026-10-26T07:29:00.467Z",
       "evidence": [
         {
           "url": "https://seoulland.co.kr/?p=40_view&idx=260",
-          "publisher": "서울랜드",
-          "summary": "공식 프로모션 상세의 2026년 적용기간·대상·결제수단·동반인 범위·요금표·증빙과 중복 제한을 대조했습니다. 포인트 차감과 실제 할인 결제를 구분했습니다.",
-          "verifiedAt": "2026-10-26",
+          "publisher": "서울랜드 공식 프로모션",
+          "summary": "10/1~31·할인형/적립형실결제가차이·본인40/동반1인30·원타임바코드캡처불가·포인트사용후실물기준적립·중복불가 확인.",
+          "verifiedAt": "2026-10-26T07:29:00.467Z",
           "fields": [
             "title",
             "audience",
             "conditions",
             "eventStart",
             "eventEnd",
-            "feeText"
+            "feeText",
+            "scheduleNote"
           ]
         }
       ],
-      "contentHash": "47bd5c053a8fa9ccb80a05cf0f6cc028522de3886849b72c02f2d4c5eebe102f",
+      "contentHash": "d5d9298b31ee6590b52a83d121a43fc5c1ae2bf741742333cac9ddb2bbb508a3",
       "siteUrl": "/tools/family-discounts/#seoulland-260-202610"
     },
     {
@@ -377,34 +410,35 @@
       "applicationEnd": null,
       "eventStart": "2026-09-28",
       "eventEnd": "2026-10-31",
-      "scheduleNote": "시설 운영시간·야간권 입장시각은 공식 안내 확인",
+      "scheduleNote": "종일권·16시 이후 야간권 구분 · 시설별 운영 확인",
       "feeStatus": "paid",
-      "feeText": "VIP 본인 50% · 일반 본인 40% · 동반 1인 30% 할인",
+      "feeText": "LGU+VIP본인50%·일반40%,동반1인30% · VIP어른종일26,000원",
       "summary": "멤버십 등급에 따라 본인 할인율이 달라지는 현장 혜택입니다.",
       "conditions": [
-        "회원 본인이 멤버십 카드를 제시하고 현장에서 결제해야 합니다.",
-        "동반인 할인과 본인 할인을 구분해 확인하세요.",
-        "다른 할인과의 중복 적용, 유료 체험·특별시설 제외 및 당일 운영 여부를 확인하세요."
+        "VIP와일반등급의본인할인율이다릅니다.모바일을포함한멤버십카드를매표소에제시합니다.",
+        "일반본인어른종일31,200원·야간27,000원,VIP본인어른종일26,000원·야간22,500원입니다.동반어른종일36,400원·야간31,500원입니다.",
+        "멤버십소유자본인이직접현장결제해야하며다른할인과중복되지않습니다.청소년·어린이가격은별도요금표를확인하세요."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26",
+      "verifiedAt": "2026-10-26T07:29:00.467Z",
       "evidence": [
         {
           "url": "https://seoulland.co.kr/?p=40_view&idx=259",
-          "publisher": "서울랜드",
-          "summary": "공식 프로모션 상세의 2026년 적용기간·대상·결제수단·동반인 범위·요금표·증빙과 중복 제한을 대조했습니다. 포인트 차감과 실제 할인 결제를 구분했습니다.",
-          "verifiedAt": "2026-10-26",
+          "publisher": "서울랜드 공식 프로모션",
+          "summary": "9/28~10/31·VIP50/일반40/동반1인30·등급/연령별표·멤버십제시/현장본인·중복불가 확인.",
+          "verifiedAt": "2026-10-26T07:29:00.467Z",
           "fields": [
             "title",
             "audience",
             "conditions",
             "eventStart",
             "eventEnd",
-            "feeText"
+            "feeText",
+            "scheduleNote"
           ]
         }
       ],
-      "contentHash": "9e80ad9cb1eff7b292c25023b11eeaf8ab771d9f827f3eef474ba29275e6e964",
+      "contentHash": "ad0b8b5634d8e43e4e6bb6546834af2e2e7485c6acb87836cfb3172e7a91ff75",
       "siteUrl": "/tools/family-discounts/#seoulland-259-202610"
     },
     {
@@ -424,34 +458,35 @@
       "applicationEnd": null,
       "eventStart": "2026-09-30",
       "eventEnd": "2026-12-30",
-      "scheduleNote": "시설 운영시간·야간권 입장시각은 공식 안내 확인",
+      "scheduleNote": "종일권·16시 이후 야간권 구분 · 시설별 운영 확인",
       "feeStatus": "paid",
-      "feeText": "종일권 각 26,000원 · 야간권 각 22,500원",
+      "feeText": "본인·동반1인 각각종일26,000원 · 16시이후야간22,500원",
       "summary": "현장에서 네이버페이 포인트·머니로 결제하는 할인입니다.",
       "conditions": [
-        "결제금액만큼 포인트와 머니를 보유해야 합니다.",
-        "현장 결제 전용이며 카드 결제 혜택과 혼동하지 마세요.",
-        "다른 할인과의 중복 적용, 유료 체험·특별시설 제외 및 당일 운영 여부를 확인하세요."
+        "네이버페이포인트·머니로결제하는혜택입니다.결제금액만큼포인트/머니를미리보유해야합니다.",
+        "현장결제에만적용되며네이버페이의모든카드결제가자동할인되는행사가아닙니다.",
+        "본인+동반1인각각적용,다른할인쿠폰·제휴할인과중복되지않습니다.적용기간은9/30~12/30입니다."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26",
+      "verifiedAt": "2026-10-26T07:29:00.467Z",
       "evidence": [
         {
           "url": "https://seoulland.co.kr/?p=40_view&idx=243",
-          "publisher": "서울랜드",
-          "summary": "공식 프로모션 상세의 2026년 적용기간·대상·결제수단·동반인 범위·요금표·증빙과 중복 제한을 대조했습니다. 포인트 차감과 실제 할인 결제를 구분했습니다.",
-          "verifiedAt": "2026-10-26",
+          "publisher": "서울랜드 공식 프로모션",
+          "summary": "9/30~12/30·포인트/머니전용/충분한잔액·각26천/22.5천·동반1인·현장만·중복불가 확인.",
+          "verifiedAt": "2026-10-26T07:29:00.467Z",
           "fields": [
             "title",
             "audience",
             "conditions",
             "eventStart",
             "eventEnd",
-            "feeText"
+            "feeText",
+            "scheduleNote"
           ]
         }
       ],
-      "contentHash": "374cb6d637d8c012c8d00efbfaf2811bd5e6c9ee3af8cb3a3d539a44a369ccf1",
+      "contentHash": "7ce360af7ca366888007ecbef88817c9c4e06be8e78cb85cb73a919b492b940c",
       "siteUrl": "/tools/family-discounts/#seoulland-243-202610"
     },
     {
@@ -471,34 +506,35 @@
       "applicationEnd": null,
       "eventStart": "2026-10-01",
       "eventEnd": "2026-10-31",
-      "scheduleNote": "시설 운영시간·야간권 입장시각은 공식 안내 확인",
+      "scheduleNote": "종일권·16시 이후 야간권 구분 · 시설별 운영 확인",
       "feeStatus": "paid",
-      "feeText": "종일권 본인·동반 1인 각 26,000원",
+      "feeText": "본인·동반1인 종일권각26,000원",
       "summary": "문화누리카드로 현장에서 결제할 때 적용되는 이용권 혜택입니다.",
       "conditions": [
-        "현장 결제에만 적용됩니다.",
-        "카드 잔액이 부족하면 충전 후 이용해야 합니다.",
-        "다른 할인과의 중복 적용, 유료 체험·특별시설 제외 및 당일 운영 여부를 확인하세요."
+        "문화누리카드매표소결제고객본인과동반1인에게같은종일요금이적용됩니다.",
+        "현장결제만가능하며카드잔액이부족하면충전후이용하는안내입니다.다른할인과중복되지않습니다.",
+        "문화누리카드발급자격·충전가능여부와놀이시설외별도유료서비스는공식구매처에서확인하세요."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26",
+      "verifiedAt": "2026-10-26T07:29:00.467Z",
       "evidence": [
         {
           "url": "https://seoulland.co.kr/?p=40_view&idx=416",
-          "publisher": "서울랜드",
-          "summary": "공식 프로모션 상세의 2026년 적용기간·대상·결제수단·동반인 범위·요금표·증빙과 중복 제한을 대조했습니다. 포인트 차감과 실제 할인 결제를 구분했습니다.",
-          "verifiedAt": "2026-10-26",
+          "publisher": "서울랜드 공식 프로모션",
+          "summary": "10/1~31·문화누리현장결제·본인/동반1인각26천·잔액부족충전·중복불가 확인.",
+          "verifiedAt": "2026-10-26T07:29:00.467Z",
           "fields": [
             "title",
             "audience",
             "conditions",
             "eventStart",
             "eventEnd",
-            "feeText"
+            "feeText",
+            "scheduleNote"
           ]
         }
       ],
-      "contentHash": "fe7d9d2a62d334f20edf8cd571ec1ff3e8b39f4013dfaf67bf09428a0a8bf209",
+      "contentHash": "a3dc75dd8d7b9ca24bc76eab71575810e2e1bf731906604ec584d13b1c650c16",
       "siteUrl": "/tools/family-discounts/#seoulland-416-202610"
     },
     {
@@ -518,34 +554,35 @@
       "applicationEnd": null,
       "eventStart": "2026-09-28",
       "eventEnd": "2026-10-31",
-      "scheduleNote": "시설 운영시간·야간권 입장시각은 공식 안내 확인",
+      "scheduleNote": "종일권·16시 이후 야간권 구분 · 시설별 운영 확인",
       "feeStatus": "paid",
-      "feeText": "본인 20,000원 + 20,000포인트 차감 · 동반 1인 40% 할인",
+      "feeText": "본인20,000원결제+블루멤버스20,000점차감 · 동반1인40%할인",
       "summary": "포인트 차감과 추가 결제가 필요한 블루멤버스 회원 혜택입니다.",
       "conditions": [
-        "월 1회 제공되며 회원 본인의 포인트로 현장에서 결제해야 합니다.",
-        "포인트가 부족하면 이용할 수 없습니다.",
-        "다른 할인과의 중복 적용, 유료 체험·특별시설 제외 및 당일 운영 여부를 확인하세요."
+        "블루멤버스회원본인의20,000점차감조건이며현금20,000원도별도결제합니다.포인트가20,000점미만이면이용할수없습니다.",
+        "월1회·현장결제전용이며매표소에블루멤버십카드를제시합니다.",
+        "동반1인40%할인으로어른종일31,200원·야간27,000원,청소년/어린이는연령별요금표를확인하세요.다른할인과중복되지않습니다."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26",
+      "verifiedAt": "2026-10-26T07:29:00.467Z",
       "evidence": [
         {
           "url": "https://seoulland.co.kr/?p=40_view&idx=288",
-          "publisher": "서울랜드",
-          "summary": "공식 프로모션 상세의 2026년 적용기간·대상·결제수단·동반인 범위·요금표·증빙과 중복 제한을 대조했습니다. 포인트 차감과 실제 할인 결제를 구분했습니다.",
-          "verifiedAt": "2026-10-26",
+          "publisher": "서울랜드 공식 프로모션",
+          "summary": "9/28~10/31·2만원현금+2만점·월1회·본인포인트/현장·동반1인40·포인트부족불가·중복불가 확인.",
+          "verifiedAt": "2026-10-26T07:29:00.467Z",
           "fields": [
             "title",
             "audience",
             "conditions",
             "eventStart",
             "eventEnd",
-            "feeText"
+            "feeText",
+            "scheduleNote"
           ]
         }
       ],
-      "contentHash": "d01a4a4730d82357267abd0b0a1aca5a9de3254f3fee45313c09ed9f986f4f45",
+      "contentHash": "3e0cd30c0aeac54b41ff04b428ba076e50cf1bb70c64c59f33e1d32912e32741",
       "siteUrl": "/tools/family-discounts/#seoulland-288-202610"
     },
     {
@@ -565,34 +602,35 @@
       "applicationEnd": null,
       "eventStart": "2026-09-01",
       "eventEnd": "2026-10-31",
-      "scheduleNote": "시설 운영시간·야간권 입장시각은 공식 안내 확인",
+      "scheduleNote": "14시·18시 이후 요금 구분 · 당일 운영 확인",
       "feeStatus": "paid",
-      "feeText": "오후 2시 이후 18,000원 · 오후 6시 이후 10,000원",
+      "feeText": "14시이후18,000원 · 18시이후10,000원",
       "summary": "동물원에서 찍은 호랑이 사진을 제시하는 시간대별 할인입니다.",
       "conditions": [
-        "당일 현장 매표소에 본인이 직접 촬영한 사진을 제시합니다.",
-        "설호가 나오지 않으면 다른 호랑이 또는 방사장 사진도 인정한다는 안내입니다.",
-        "다른 할인과의 중복 적용, 유료 체험·특별시설 제외 및 당일 운영 여부를 확인하세요."
+        "서울대공원동물원이용고객이직접찍은설호사진을당일서울랜드현장매표소에제시하는혜택입니다.",
+        "인터넷·타인사진은인증되지않을수있습니다.설호가방사장에없으면다른호랑이나방사장사진도인정하는안내입니다.",
+        "입장시각별요금이다르고다른할인과중복되지않습니다.현장사정으로변경·조기종료될수있습니다."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26",
+      "verifiedAt": "2026-10-26T07:29:00.467Z",
       "evidence": [
         {
           "url": "https://seoulland.co.kr/?p=40_view&idx=429",
-          "publisher": "서울랜드",
-          "summary": "공식 프로모션 상세의 2026년 적용기간·대상·결제수단·동반인 범위·요금표·증빙과 중복 제한을 대조했습니다. 포인트 차감과 실제 할인 결제를 구분했습니다.",
-          "verifiedAt": "2026-10-26",
+          "publisher": "서울랜드 공식 프로모션",
+          "summary": "9/1~10/31·동물원고객/당일본인사진·설호부재시대체사진·AFTER2/6실요금·타인사진불가·변경/중복불가 확인.",
+          "verifiedAt": "2026-10-26T07:29:00.467Z",
           "fields": [
             "title",
             "audience",
             "conditions",
             "eventStart",
             "eventEnd",
-            "feeText"
+            "feeText",
+            "scheduleNote"
           ]
         }
       ],
-      "contentHash": "004446af5a587145f68e0cbac817efb2d9c6127d15bed8273180731d5a0c0cd5",
+      "contentHash": "8d63717780f5101a80b258537aa27848a2cbd65960e6d0a1900a953dec05193d",
       "siteUrl": "/tools/family-discounts/#seoulland-429-202610"
     },
     {
@@ -612,34 +650,36 @@
       "applicationEnd": null,
       "eventStart": "2026-09-01",
       "eventEnd": "2026-10-31",
-      "scheduleNote": "시설 운영시간·야간권 입장시각은 공식 안내 확인",
+      "scheduleNote": "종일권·16시 이후 야간권 구분 · 시설별 운영 확인",
       "feeStatus": "paid",
-      "feeText": "종일권 25,000원 · 야간권 21,500원",
+      "feeText": "중·고·대학생종일25,000원·야간21,500원",
       "summary": "학생 증빙과 서울랜드 카카오 채널 추가가 필요한 이용권 혜택입니다.",
       "conditions": [
-        "서울랜드 카카오플러스채널 친구 추가 화면을 제시합니다.",
-        "학생증·재학증명서·청소년증 등 학생임을 증명할 서류가 필요합니다.",
-        "다른 할인과의 중복 적용, 유료 체험·특별시설 제외 및 당일 운영 여부를 확인하세요."
+        "중·고·대학생이서울랜드카카오채널을추가하고학생증·재학증명서등을매표소에제시하는혜택입니다.초등학생대상요금이아닙니다.",
+        "토스페이생애첫결제3천원적립은홈페이지PC온라인에서별도조건으로진행하며현장결제에는적용되지않습니다.",
+        "토스ID당1회·전체가맹점첫결제고객만가능,결제화면에혜택이표시되는지확인하세요.취소하면지급포인트회수·예산소진조기종료될수있습니다.",
+        "학생할인은다른쿠폰·제휴할인과중복되지않습니다.추가적립을모든학생의확정할인가로빼지않았습니다."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26",
+      "verifiedAt": "2026-10-26T07:29:00.467Z",
       "evidence": [
         {
           "url": "https://seoulland.co.kr/?p=40_view&idx=431",
-          "publisher": "서울랜드",
-          "summary": "공식 프로모션 상세의 2026년 적용기간·대상·결제수단·동반인 범위·요금표·증빙과 중복 제한을 대조했습니다. 포인트 차감과 실제 할인 결제를 구분했습니다.",
-          "verifiedAt": "2026-10-26",
+          "publisher": "서울랜드 공식 프로모션",
+          "summary": "9/1~10/31·중고대학생증빙/카카오채널·25천/21.5천·PC첫토스한정적립/취소회수·현장적용불가·중복불가 확인.",
+          "verifiedAt": "2026-10-26T07:29:00.467Z",
           "fields": [
             "title",
             "audience",
             "conditions",
             "eventStart",
             "eventEnd",
-            "feeText"
+            "feeText",
+            "scheduleNote"
           ]
         }
       ],
-      "contentHash": "8d293d508fd5b45c5a4d5f0b453bbeae3300e00fe6e60dc3505db3ed3aa5bdfe",
+      "contentHash": "e6b86ee2d5f9809bfc24ec2045e53d3e5b8d792b9198982cb46c406097cb90bf",
       "siteUrl": "/tools/family-discounts/#seoulland-431-202610"
     },
     {
@@ -659,34 +699,35 @@
       "applicationEnd": null,
       "eventStart": "2026-09-01",
       "eventEnd": "2026-10-31",
-      "scheduleNote": "시설 운영시간·야간권 입장시각은 공식 안내 확인",
+      "scheduleNote": "종일권·16시 이후 야간권 구분 · 시설별 운영 확인",
       "feeStatus": "paid",
-      "feeText": "평일 종일 21,900원·야간 18,900원 / 주말 종일 23,000원·야간 20,000원",
+      "feeText": "미취학어린이 평일종일21,900원·야간18,900원 /주말종일23,000원·야간20,000원",
       "summary": "미취학 어린이의 연령을 확인한 뒤 적용하는 현장 할인입니다.",
       "conditions": [
-        "서울랜드 카카오플러스채널 친구 추가 화면을 제시합니다.",
-        "미취학 어린이임을 확인할 증빙서류가 필요하며, 동반 보호자 요금은 별도입니다.",
-        "다른 할인과의 중복 적용, 유료 체험·특별시설 제외 및 당일 운영 여부를 확인하세요."
+        "36개월~초등학교입학전미취학어린이대상입니다.카카오채널추가와연령확인서류를매표소에제시해야합니다.",
+        "평일/주말,종일/16시이후야간요금이다릅니다.부모·보호자의동반입장권은별도확인·구매해야합니다.",
+        "다른쿠폰·제휴할인과중복되지않습니다.입학여부·증빙과방문일운영을확인하세요."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26",
+      "verifiedAt": "2026-10-26T07:29:00.467Z",
       "evidence": [
         {
           "url": "https://seoulland.co.kr/?p=40_view&idx=430",
-          "publisher": "서울랜드",
-          "summary": "공식 프로모션 상세의 2026년 적용기간·대상·결제수단·동반인 범위·요금표·증빙과 중복 제한을 대조했습니다. 포인트 차감과 실제 할인 결제를 구분했습니다.",
-          "verifiedAt": "2026-10-26",
+          "publisher": "서울랜드 공식 프로모션",
+          "summary": "9/1~10/31·36개월~입학전·평일21,900/18,900주말23,000/20,000·채널추가/연령서류·중복불가 확인.",
+          "verifiedAt": "2026-10-26T07:29:00.467Z",
           "fields": [
             "title",
             "audience",
             "conditions",
             "eventStart",
             "eventEnd",
-            "feeText"
+            "feeText",
+            "scheduleNote"
           ]
         }
       ],
-      "contentHash": "2c7c2720d97695dcd54bbda8198b932bbfda3e4ee2e5f694a764beaa1fad0fe7",
+      "contentHash": "58b689e129b2905dce0e9041582774889ca022b29706a323e8ca8359ed344c71",
       "siteUrl": "/tools/family-discounts/#seoulland-430-202610"
     },
     {
@@ -706,34 +747,35 @@
       "applicationEnd": null,
       "eventStart": "2026-10-01",
       "eventEnd": "2026-10-31",
-      "scheduleNote": "시설 운영시간·야간권 입장시각은 공식 안내 확인",
+      "scheduleNote": "16시 이후 입장 한정 · 당일 운영 확인",
       "feeStatus": "paid",
-      "feeText": "오후 4시 이후 본인 15,000원",
+      "feeText": "귀신코스튬본인16시이후15,000원",
       "summary": "현장에서 코스튬을 확인한 뒤 적용하는 오후 이용권 혜택입니다.",
       "conditions": [
-        "선글라스·마스크 등 단순 소품이나 일반 사복은 인정되지 않습니다.",
-        "현장 상황에 따라 변경되거나 조기 종료될 수 있습니다.",
-        "다른 할인과의 중복 적용, 유료 체험·특별시설 제외 및 당일 운영 여부를 확인하세요."
+        "귀신메이크업·페이스페인팅·가면·귀신콘셉트의상착용을현장직원이확인한경우본인에게적용합니다.",
+        "16시이후입장한정이며선글라스·마스크등단순소품이나일반사복만으로는인정되지않습니다.",
+        "다른혜택과중복불가할수있으며현장사정으로조기종료·변경될수있습니다.코스튬할인이귀신동굴등개별시설연령/이용조건을면제하는안내는아닙니다."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26",
+      "verifiedAt": "2026-10-26T07:29:00.467Z",
       "evidence": [
         {
           "url": "https://seoulland.co.kr/?p=40_view&idx=426",
-          "publisher": "서울랜드",
-          "summary": "공식 프로모션 상세의 2026년 적용기간·대상·결제수단·동반인 범위·요금표·증빙과 중복 제한을 대조했습니다. 포인트 차감과 실제 할인 결제를 구분했습니다.",
-          "verifiedAt": "2026-10-26",
+          "publisher": "서울랜드 공식 프로모션",
+          "summary": "10/1~31·AFTER4/본인15천·귀신분장현장확인·단순소품/사복제외·조기종료조건 확인.",
+          "verifiedAt": "2026-10-26T07:29:00.467Z",
           "fields": [
             "title",
             "audience",
             "conditions",
             "eventStart",
             "eventEnd",
-            "feeText"
+            "feeText",
+            "scheduleNote"
           ]
         }
       ],
-      "contentHash": "4bf2b5c64c0cae20b5f8927184035b5b16941b75fed4b4bb3a7f5e62379939bc",
+      "contentHash": "bb5ad70af91ac5b668239c513f7c9e433a7af1e4e90d67db2a867fdb98579aa0",
       "siteUrl": "/tools/family-discounts/#seoulland-426-202610"
     },
     {
@@ -753,34 +795,35 @@
       "applicationEnd": null,
       "eventStart": "2026-01-01",
       "eventEnd": "2026-10-31",
-      "scheduleNote": "시설 운영시간·야간권 입장시각은 공식 안내 확인",
+      "scheduleNote": "종일권·16시 이후 야간권 구분 · 시설별 운영 확인",
       "feeStatus": "paid",
-      "feeText": "종일권 각 26,000원 · 야간권 각 22,500원",
+      "feeText": "생일자와동반최대3인 각각종일26,000원·야간22,500원",
       "summary": "생일 증빙을 제시하면 동반인도 같은 요금으로 이용하는 혜택입니다.",
       "conditions": [
-        "주민등록번호상 생일을 기준으로 합니다.",
-        "생일자 본인이 생년월일이 표시된 신분증 등 증빙을 직접 제시해야 합니다.",
-        "다른 할인과의 중복 적용, 유료 체험·특별시설 제외 및 당일 운영 여부를 확인하세요."
+        "주민등록번호의생일이속한달을기준으로생일자본인과동반최대3인에게같은요금을적용합니다.임의의음력생일기준이아닙니다.",
+        "본인이생년월일이기재된신분증·등본·건강보험증·여권·학생증등을직접제시해야합니다.",
+        "야간권은16시이후입장안내이며다른할인과중복되지않습니다.현재게시된혜택기한은10/31입니다."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26",
+      "verifiedAt": "2026-10-26T07:29:00.467Z",
       "evidence": [
         {
           "url": "https://seoulland.co.kr/?p=40_view&idx=383",
-          "publisher": "서울랜드",
-          "summary": "공식 프로모션 상세의 2026년 적용기간·대상·결제수단·동반인 범위·요금표·증빙과 중복 제한을 대조했습니다. 포인트 차감과 실제 할인 결제를 구분했습니다.",
-          "verifiedAt": "2026-10-26",
+          "publisher": "서울랜드 공식 프로모션",
+          "summary": "1/1~10/31·주민번호생일해당월·생일자직접생년증빙·동반3인같은26천/22.5천·중복불가 확인.",
+          "verifiedAt": "2026-10-26T07:29:00.467Z",
           "fields": [
             "title",
             "audience",
             "conditions",
             "eventStart",
             "eventEnd",
-            "feeText"
+            "feeText",
+            "scheduleNote"
           ]
         }
       ],
-      "contentHash": "bef80964e2ffa6619b2772c59344e498b7369f439918775f2af36eccd11d4a71",
+      "contentHash": "12299a982362d48e3231b6a958c92bfe023537b2aeb4c44f625b284863f9fec6",
       "siteUrl": "/tools/family-discounts/#seoulland-383-202610"
     },
     {
@@ -800,39 +843,220 @@
       "applicationEnd": null,
       "eventStart": "2026-04-01",
       "eventEnd": "2026-10-31",
-      "scheduleNote": "시설 운영시간·야간권 입장시각은 공식 안내 확인",
+      "scheduleNote": "종일권·16시 이후 야간권 구분 · 시설별 운영 확인",
       "feeStatus": "paid",
-      "feeText": "종일권 26,000원",
+      "feeText": "대공원역사진인증 정문종일권26,000원",
       "summary": "대공원역 이름이 보이는 사진을 제시하는 정문 현장 할인입니다.",
       "conditions": [
-        "촬영한 역명 사진을 정문 매표소에 제시해야 합니다.",
-        "다른 할인쿠폰·제휴카드 할인과 중복 적용되지 않습니다.",
-        "다른 할인과의 중복 적용, 유료 체험·특별시설 제외 및 당일 운영 여부를 확인하세요."
+        "대공원역역명이표시된사진을직접촬영해정문매표소·검표소에제시하는정문입장객혜택입니다.",
+        "다른출입구나역명없는교통카드내역만으로같은혜택이보장되는안내가아닙니다.",
+        "다른쿠폰·제휴할인과중복되지않습니다.현장증빙확인과당일정문운영·발권안내를확인하세요."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26",
+      "verifiedAt": "2026-10-26T07:29:00.467Z",
       "evidence": [
         {
           "url": "https://seoulland.co.kr/?p=40_view&idx=413",
-          "publisher": "서울랜드",
-          "summary": "공식 프로모션 상세의 2026년 적용기간·대상·결제수단·동반인 범위·요금표·증빙과 중복 제한을 대조했습니다. 포인트 차감과 실제 할인 결제를 구분했습니다.",
-          "verifiedAt": "2026-10-26",
+          "publisher": "서울랜드 공식 프로모션",
+          "summary": "4/1~10/31·정문입장객·대공원역역명사진·종일26천·정문제시·중복불가 확인.",
+          "verifiedAt": "2026-10-26T07:29:00.467Z",
           "fields": [
             "title",
             "audience",
             "conditions",
             "eventStart",
             "eventEnd",
+            "feeText",
+            "scheduleNote"
+          ]
+        }
+      ],
+      "contentHash": "e41ed795e24699b88c355e9234ddbf68b51319dced600a57900ba443cfeeca9b",
+      "siteUrl": "/tools/family-discounts/#seoulland-413-202610"
+    },
+    {
+      "id": "legoland-brick-or-treat-2026",
+      "categoryIds": [
+        "kids-popups",
+        "family-discounts"
+      ],
+      "title": "레고랜드 Brick or Treat · 몬스터 캐릭터 가을 행사",
+      "providerId": "legoland",
+      "canonicalUrl": "https://www.legoland.kr/%ED%8C%8C%ED%81%AC%EC%9D%B4%EB%B2%A4%ED%8A%B8/%EC%9D%B4-%EC%8B%9C%EC%A6%8C-%EC%B6%95%EC%A0%9C%EC%9D%B4%EB%B2%A4%ED%8A%B8/y26-brick-or-treat/",
+      "region": "강원",
+      "district": "춘천시",
+      "location": "레고랜드 코리아 · LEGO 캐슬 등 파크 내",
+      "audience": "가족 방문객 · 만12세 이하 어린이는 만16세 이상 보호자 동반 필수",
+      "ageGroups": [
+        "preschool",
+        "elementary"
+      ],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-09-11",
+      "eventEnd": "2026-11-15",
+      "scheduleNote": "파크 운영일·공연 회차별 상이 · 코스튬 행사는 주말·공휴일15시 안내",
+      "feeStatus": "paid",
+      "feeText": "대인 온라인 사전 특가47,000원~ / 정상가66,000원~ · 날짜별 상이, 주차·일부 시설 별도",
+      "summary": "몬스터 캐릭터 공연과 스탬프 원정대, 코스튬·브릭 체험을 만나는 가을 행사입니다.",
+      "conditions": [
+        "입장일 기준36개월 미만은 무료이며, 만12세 이하 어린이는 만16세 이상 보호자 동반 입장이 필요합니다. 증빙과 날짜별 티켓 조건을 확인하세요.",
+        "코스튬 행사는2014~2024년생 어린이 대상이며 코스튬 준비 필수입니다. 당일12~14:30 캐슬 몬스터 스테이지에서30팀 사전 접수,14:50까지 도착 안내입니다.",
+        "코스튬 참가10팀 미만이면 행사 취소·접수자 포토타임 예정이며 현장·기상에 따라 변경될 수 있습니다. 무서운 복장은 제한될 수 있습니다.",
+        "브릭 콘테스트는10/24~11/15 상시 운영으로 확대됐습니다. 주중 접수15:30·발표16시, 주말 접수16:30·발표17시이며 종료 전 경품 미수령 시 선정 취소입니다.",
+        "호텔 몬스터 락 댄스 파티는 호텔 투숙객 한정입니다. 파크 입장권만으로 호텔 프로그램 참여를 보장하지 않습니다.",
+        "입장 당일 온라인·현장 구매는 사전 특가가 적용되지 않는 안내입니다. 주차료·일부 시설 비용은 별도이며, 취소·환불과 실제 운영일은 공식 구매·운영 캘린더를 확인하세요.",
+        "불꽃놀이는20:30 안내이지만 기상에 따라 취소될 수 있고 매일 운영하는 프로그램이 아닙니다. 날짜를 확인한 뒤 방문하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T04:20:37.942Z",
+      "evidence": [
+        {
+          "url": "https://www.legoland.kr/%ED%8C%8C%ED%81%AC%EC%9D%B4%EB%B2%A4%ED%8A%B8/%EC%9D%B4-%EC%8B%9C%EC%A6%8C-%EC%B6%95%EC%A0%9C%EC%9D%B4%EB%B2%A4%ED%8A%B8/y26-brick-or-treat/",
+          "publisher": "레고랜드 코리아",
+          "summary": "2026년9/11~11/15 공식 시즌 상세와 갱신된10/24브릭 콘테스트 조건, 코스튬 연령·인원·접수·취소·요금·보호자 및 호텔 제한을 대조.",
+          "verifiedAt": "2026-10-26T04:20:37.942Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "eventStart",
+            "eventEnd",
+            "feeText",
+            "conditions"
+          ]
+        }
+      ],
+      "contentHash": "a22c4da2e49561541083d0ecd7565c2916d9e2ef201d5142b63e378534492a4d",
+      "siteUrl": "/tools/kids-popups/#legoland-brick-or-treat-2026"
+    },
+    {
+      "id": "acc-em-0000009913",
+      "categoryIds": [
+        "family-culture",
+        "family-discounts"
+      ],
+      "title": "광주 ACC · 인상파 찬란한 순간들",
+      "providerId": "acc-culture",
+      "canonicalUrl": "https://www.acc.go.kr/main/exhibition.do?PID=0203&action=Read&bnkey=EM_0000009913",
+      "region": "광주",
+      "district": "동구",
+      "location": "문화창조원B3 복합전시6·7관 · 문화전당로38",
+      "audience": "모든 연령 · 36개월미만 무료,증빙 필요",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-09-23",
+      "eventEnd": "2027-02-21",
+      "operatingWeekdays": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        0
+      ],
+      "scheduleNote": "화·목·금·일10~18시 /수·토10~20시 · 월휴관,입장종료1시간전",
+      "feeStatus": "paid",
+      "feeText": "성인13,000원·청소년/어린이10,000원 · 36개월미만 무료",
+      "summary": "모네·르누아르·반고흐·세잔 등 인상파 거장의 원화를 만나는 전시입니다.",
+      "conditions": [
+        "매표·입장은관람종료1시간전 마감이며 퇴장후재입장이 불가합니다.",
+        "다자녀우대카드 성인9,100원·청소년/어린이7,000원,지역주민등할인은해당증빙을제시해야합니다.중복할인불가·미증빙차액조건입니다.",
+        "전시해설은화~일11·14·16시,B3대나무정원에서40분강연형으로무료선착순70명입니다.전시장내투어가 아니며별도취소될수있습니다.",
+        "연계체험은별도비용·예약이며10/27~11/8운영공백이있습니다.전시입장권만으로매일체험을보장하지않습니다.",
+        "온라인취소·환불은각예매처규정입니다.A4보다큰가방·백팩,음식물반입·플래시/삼각대촬영은제한됩니다.주차3시간무료는현장등록필수입니다."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T07:25:10.328Z",
+      "evidence": [
+        {
+          "url": "https://www.acc.go.kr/main/exhibition.do?PID=0203&action=Read&bnkey=EM_0000009913",
+          "publisher": "국립아시아문화전당 공식 전시 상세",
+          "summary": "공식실제상세전체의기간·월휴관/2시간대·입장1시간전·모든연령·13천/10천/36개월미만무료·다자녀/지역증빙·재입장불가·환불/가방·도슨트·별도체험운영공백 확인.",
+          "verifiedAt": "2026-10-26T07:25:10.328Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "location",
+            "scheduleNote",
+            "eventStart",
+            "eventEnd",
+            "operatingWeekdays",
             "feeText"
           ]
         }
       ],
-      "contentHash": "83d1f32e070c80d7859a5a550c36ddf27f1b3b647efb26c52e3c970ac6d199ac",
-      "siteUrl": "/tools/family-discounts/#seoulland-413-202610"
+      "contentHash": "16fd9b81d988502fe75f5dbc4228c0c39b3f14ec5572b8ada63cfdf61a028f93",
+      "siteUrl": "/tools/family-culture/#acc-em-0000009913"
+    },
+    {
+      "id": "acc-em-0000009927",
+      "categoryIds": [
+        "family-culture",
+        "family-discounts"
+      ],
+      "title": "광주 ACC · 식객 맛의 뒤편",
+      "providerId": "acc-culture",
+      "canonicalUrl": "https://www.acc.go.kr/main/exhibition.do?PID=0203&action=Read&bnkey=EM_0000009927",
+      "region": "광주",
+      "district": "동구",
+      "location": "국립아시아문화전당 어린이문화원 다목적홀",
+      "audience": "모든 연령 · 미취학아동 만6세이하 무료",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-09-17",
+      "eventEnd": "2026-12-13",
+      "operatingWeekdays": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        0
+      ],
+      "scheduleNote": "화~일10~18시 · 입장17:30마감,월휴관",
+      "feeStatus": "paid",
+      "feeText": "일반10,000원 · 만6세이하무료,문화패스등조건별할인",
+      "summary": "허영만의 만화 식객 속 음식과 사람·남도의 삶을 공간으로 만나는 전시입니다.",
+      "conditions": [
+        "월요일휴관이며입장마감17:30입니다.모든연령관람안내,미취학만6세이하무료는증빙을준비하세요.",
+        "지역주민8천원,문화패스만7~24세·문화누리·경로등5천원은해당증빙지참후현장구입안내입니다.중복할인은불가합니다.",
+        "8/31종료된사전판매7천원혜택은지금새로살수있는가격이아닙니다.기구매사전권의관람기한은10/31이며이후취소·환불불가안내입니다.",
+        "온라인은모바일티켓이며미사용티켓만현장에서지류로바꿀수있습니다.지류분실/훼손시재발급불가,취소·환불은각예매처규정입니다.",
+        "10명이상단체는사전문의가필요합니다.비공식거래·양도문제는주최/예매처가책임지지않는안내입니다."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T07:25:10.328Z",
+      "evidence": [
+        {
+          "url": "https://www.acc.go.kr/main/exhibition.do?PID=0203&action=Read&bnkey=EM_0000009927",
+          "publisher": "국립아시아문화전당 공식 전시 상세",
+          "summary": "공식실제상세의9/17~12/13·월휴관/10~18/17:30입장·전연령/6세이하무료·정가1만원·각증빙할인·이미끝난사전판매와10/31사용기한·모바일/분실/환불·단체조건 확인.",
+          "verifiedAt": "2026-10-26T07:25:10.328Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "location",
+            "scheduleNote",
+            "eventStart",
+            "eventEnd",
+            "operatingWeekdays",
+            "feeText"
+          ]
+        }
+      ],
+      "contentHash": "a126b2f4f96f9d9a831ff8b0b0c00d46e66036b54b8eebb6b61f1654654a4504",
+      "siteUrl": "/tools/family-culture/#acc-em-0000009927"
     }
   ],
-  "siteRevision": "ba7b6fdb48b05b218350a3760e83da828f7fd163",
-  "generatedAt": "2026-10-26T04:05:36.188Z",
+  "siteRevision": "ff3a41b4ed84cbbe9cc1bd83d6a3ebed916a1561",
+  "generatedAt": "2026-10-26T12:06:27.577Z",
   "window": {
     "start": "2026-10-26",
     "end": "2026-12-25"

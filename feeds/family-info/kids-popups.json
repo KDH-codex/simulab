@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "snapshotId": "77040c9b88d8e46bce1de24c",
+  "snapshotId": "c0a044e253b8012893aad804",
   "timezone": "Asia/Seoul",
   "categories": [
     {
@@ -14,14 +14,19 @@
       "split": "region",
       "href": "/tools/kids-popups/",
       "accent": "orange",
-      "categoryRevision": "834c0a49de52a4f8",
-      "lastVerifiedAt": "2026-10-26",
-      "lastCollectedAt": "2026-10-26",
+      "categoryRevision": "850d50623ecfad97",
+      "lastVerifiedAt": "2026-10-26T12:05:49.609Z",
+      "lastCollectedAt": "2026-10-26T12:05:49.609Z",
       "lastDeployedAt": null,
       "outcome": "partial-review",
-      "verifiedCount": 1,
-      "currentCount": 1,
-      "failures": []
+      "verifiedCount": 16,
+      "currentCount": 16,
+      "failures": [
+        {
+          "providerId": "pokemon",
+          "status": "failed"
+        }
+      ]
     }
   ],
   "providers": [
@@ -36,7 +41,7 @@
       "regions": [
         "서울"
       ],
-      "lastSuccessAt": "2026-10-26"
+      "lastSuccessAt": "2026-10-26T07:25:10.328Z"
     },
     {
       "id": "everland",
@@ -73,7 +78,104 @@
       "regions": [
         "전국"
       ],
-      "lastSuccessAt": null
+      "lastSuccessAt": "2026-10-26T04:20:37.942Z"
+    },
+    {
+      "id": "legoland",
+      "name": "레고랜드 코리아",
+      "url": "https://www.legoland.kr/",
+      "categoryIds": [
+        "kids-popups",
+        "family-discounts"
+      ],
+      "regions": [
+        "강원"
+      ],
+      "lastSuccessAt": "2026-10-26T04:20:37.942Z"
+    },
+    {
+      "id": "stellive",
+      "name": "스텔라이브 공식 공지",
+      "url": "https://stellive.me",
+      "categoryIds": [
+        "kids-popups"
+      ],
+      "regions": [
+        "서울"
+      ],
+      "lastSuccessAt": "2026-10-26T04:20:37.942Z"
+    },
+    {
+      "id": "sangsangmadang",
+      "name": "KT&G 상상마당",
+      "url": "https://www.sangsangmadang.com/",
+      "categoryIds": [
+        "kids-popups"
+      ],
+      "regions": [
+        "서울"
+      ],
+      "lastSuccessAt": "2026-10-26T12:05:49.609Z"
+    },
+    {
+      "id": "hybe-weverse",
+      "name": "HYBE · Weverse 공식 팝업 공지",
+      "url": "https://weverse.io/",
+      "categoryIds": [
+        "kids-popups"
+      ],
+      "regions": [
+        "서울"
+      ],
+      "lastSuccessAt": "2026-10-26T12:05:49.609Z"
+    },
+    {
+      "id": "lotte-department",
+      "name": "롯데백화점",
+      "url": "https://www.lotteshopping.com/",
+      "categoryIds": [
+        "kids-popups"
+      ],
+      "regions": [
+        "전국"
+      ],
+      "lastSuccessAt": "2026-10-26T12:05:49.609Z"
+    },
+    {
+      "id": "shinsegae-department",
+      "name": "신세계백화점 · 그룹 뉴스룸",
+      "url": "https://www.shinsegae.com/",
+      "categoryIds": [
+        "kids-popups"
+      ],
+      "regions": [
+        "전국"
+      ],
+      "lastSuccessAt": "2026-10-26T12:05:49.609Z"
+    },
+    {
+      "id": "popcondplay",
+      "name": "팝콘D플레이 · 대원뮤지엄·캐릭터 공식 공지",
+      "url": "https://www.popcondplay.com/",
+      "categoryIds": [
+        "kids-popups"
+      ],
+      "regions": [
+        "전국"
+      ],
+      "lastSuccessAt": "2026-10-26T12:05:49.609Z"
+    },
+    {
+      "id": "kakao-friends",
+      "name": "카카오 · 카카오프렌즈 공식 보도자료",
+      "url": "https://www.kakaocorp.com/",
+      "categoryIds": [
+        "kids-popups"
+      ],
+      "regions": [
+        "서울"
+      ],
+      "lastSuccessAt": "2026-10-26T12:05:49.609Z"
     }
   ],
   "records": [
@@ -94,38 +196,994 @@
       "applicationEnd": null,
       "eventStart": "2026-11-27",
       "eventEnd": "2026-11-29",
-      "scheduleNote": "10:00 ~ 19:00",
+      "scheduleNote": "11/27~29 10:00~19:00 · 입장마감18:30",
       "feeStatus": "free",
       "feeText": "무료",
       "summary": "캐릭터 작품과 아트토이를 만나는 DDP 전시입니다.",
       "conditions": [
-        "관람연령과 날짜별 운영시간·휴관일을 확인한 후 방문해 주세요.",
-        "예약·예매 필요 여부와 잔여석은 공식 안내의 연결 페이지에서 확인하세요."
+        "관람 입장료는 무료이며 작품·굿즈 구매는 별도입니다.행사장 입장마감은18:30입니다.",
+        "공식 홈페이지 사전등록 시 QR로 현장 추가등록 없이 간편 입장하는 안내입니다.등록·현장 입장 조건과 당일 혼잡을 확인하세요.",
+        "장소는DDP쇼룸1층입니다.작품 전시·판매·협업·라이선싱이 함께 진행되어 개별 체험·판매가격은 별도 확인이 필요합니다."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26",
+      "verifiedAt": "2026-10-26T07:25:10.328Z",
       "evidence": [
         {
           "url": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=158731&menuNo=200008",
-          "publisher": "서울문화포털",
-          "summary": "공식 상세의 관람대상·장소·기간·회차 시간·요금 표를 대조했습니다. 예약 시작일이나 잔여석은 원문에서 확정하지 않아 표시하지 않았습니다.",
-          "verifiedAt": "2026-10-26",
+          "publisher": "서울문화포털 · 공식 행사 상세",
+          "summary": "주최측 실제메인행사 상세에11/27~29·DDP쇼룸1층·10~19/입장18:30·무료·사전QR입장명시.판매/체험별비용은무료입장과구분.",
+          "verifiedAt": "2026-10-26T07:25:10.328Z",
           "fields": [
             "title",
             "audience",
+            "ageGroups",
             "conditions",
+            "location",
+            "scheduleNote",
+            "eventStart",
+            "eventEnd",
+            "feeText"
+          ]
+        },
+        {
+          "url": "https://finecharacter.kr/",
+          "publisher": "공식 공연장·재단·운영기관",
+          "summary": "운영기관 원문 직접 대조. 주최측 실제메인행사 상세에11/27~29·DDP쇼룸1층·10~19/입장18:30·무료·사전QR입장명시.판매/체험별비용은무료입장과구분.",
+          "verifiedAt": "2026-10-26T07:25:10.328Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "location",
+            "scheduleNote",
             "eventStart",
             "eventEnd",
             "feeText"
           ]
         }
       ],
-      "contentHash": "951f959e03f8641bf944cd938f6ef77fe52336376f97ba1105c7667bb04f8782",
+      "contentHash": "0671f0fc983502d3e397b695a7762888e91455ce5a81ed495352e1c0d2de126b",
       "siteUrl": "/tools/family-culture/#culture-158731"
+    },
+    {
+      "id": "teenieping-hyundai-tour-202610",
+      "categoryIds": [
+        "kids-popups"
+      ],
+      "title": "캐치티니핑 팝업 · 현대 점포 순회",
+      "providerId": "hyundai-department",
+      "canonicalUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E1102610510328&category=event",
+      "region": "전국",
+      "location": "김포·대전·부산·송도·대구·청주·스페이스원 순회 · 지점별 일정 확인",
+      "audience": "티니핑 캐릭터 행사 방문객 · 구체 연령 제한 미표기",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-10-15",
+      "eventEnd": "2027-03-07",
+      "operatingDates": [
+        "2026-10-15",
+        "2026-10-16",
+        "2026-10-17",
+        "2026-10-18",
+        "2026-10-19",
+        "2026-10-20",
+        "2026-10-21",
+        "2026-10-22",
+        "2026-10-23",
+        "2026-10-24",
+        "2026-10-25",
+        "2026-10-26",
+        "2026-10-27",
+        "2026-10-28",
+        "2026-10-29",
+        "2026-10-30",
+        "2026-10-31",
+        "2026-11-01",
+        "2026-11-05",
+        "2026-11-06",
+        "2026-11-07",
+        "2026-11-08",
+        "2026-11-09",
+        "2026-11-10",
+        "2026-11-11",
+        "2026-11-12",
+        "2026-11-13",
+        "2026-11-14",
+        "2026-11-15",
+        "2026-11-16",
+        "2026-11-17",
+        "2026-11-18",
+        "2026-11-19",
+        "2026-11-20",
+        "2026-11-21",
+        "2026-11-22",
+        "2026-11-26",
+        "2026-11-27",
+        "2026-11-28",
+        "2026-11-29",
+        "2026-11-30",
+        "2026-12-01",
+        "2026-12-02",
+        "2026-12-03",
+        "2026-12-04",
+        "2026-12-05",
+        "2026-12-06",
+        "2026-12-07",
+        "2026-12-08",
+        "2026-12-09",
+        "2026-12-10",
+        "2026-12-11",
+        "2026-12-12",
+        "2026-12-13",
+        "2026-12-17",
+        "2026-12-18",
+        "2026-12-19",
+        "2026-12-20",
+        "2026-12-21",
+        "2026-12-22",
+        "2026-12-23",
+        "2026-12-24",
+        "2026-12-25",
+        "2026-12-26",
+        "2026-12-27",
+        "2026-12-28",
+        "2026-12-29",
+        "2026-12-30",
+        "2026-12-31",
+        "2027-01-01",
+        "2027-01-02",
+        "2027-01-03",
+        "2027-01-07",
+        "2027-01-08",
+        "2027-01-09",
+        "2027-01-10",
+        "2027-01-11",
+        "2027-01-12",
+        "2027-01-13",
+        "2027-01-14",
+        "2027-01-15",
+        "2027-01-16",
+        "2027-01-17",
+        "2027-01-18",
+        "2027-01-19",
+        "2027-01-20",
+        "2027-01-21",
+        "2027-01-22",
+        "2027-01-23",
+        "2027-01-24",
+        "2027-01-28",
+        "2027-01-29",
+        "2027-01-30",
+        "2027-01-31",
+        "2027-02-01",
+        "2027-02-02",
+        "2027-02-03",
+        "2027-02-04",
+        "2027-02-05",
+        "2027-02-06",
+        "2027-02-07",
+        "2027-02-08",
+        "2027-02-09",
+        "2027-02-10",
+        "2027-02-11",
+        "2027-02-12",
+        "2027-02-13",
+        "2027-02-14",
+        "2027-02-18",
+        "2027-02-19",
+        "2027-02-20",
+        "2027-02-21",
+        "2027-02-22",
+        "2027-02-23",
+        "2027-02-24",
+        "2027-02-25",
+        "2027-02-26",
+        "2027-02-27",
+        "2027-02-28",
+        "2027-03-01",
+        "2027-03-02",
+        "2027-03-03",
+        "2027-03-04",
+        "2027-03-05",
+        "2027-03-06",
+        "2027-03-07"
+      ],
+      "scheduleNote": "공식 순회 일정의 운영 구간만 표시 · 지점·공연 회차별 시간은 공식 안내 확인",
+      "feeStatus": "unknown",
+      "feeText": "입장료·참여 비용 미확인 · 상품 구매 별도",
+      "summary": "스테이지티니핑 포토타임·싱어롱과 캐릭터 굿즈를 만나는 순회 팝업입니다.",
+      "conditions": [
+        "공식 일정: 김포10/15~11/1, 대전11/5~22, 부산11/26~12/13, 송도12/17~2027/1/3입니다.",
+        "이후 대구2027/1/7~24, 청주1/28~2/14, 스페이스원2/18~3/7 순회 안내입니다. 지역마다 같은 날짜에 열리지 않습니다.",
+        "포토타임·싱어롱의 실제 회차와 참가 방법, 보호자 조건·입장료는 원문 이미지에서 확정하지 못했습니다. 방문할 지점의 당일 안내를 확인하세요.",
+        "상품 구매 비용은 별도이며 지점·층·운영 시간과 휴점 여부를 방문 전에 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T04:20:37.942Z",
+      "evidence": [
+        {
+          "url": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E1102610510328&category=event",
+          "publisher": "현대백화점",
+          "summary": "실제 상세 본문과 공식 일정 이미지(2026/10/20 게시)를 열람.7개 순회 구간·포토타임·싱어롱을 대조했으며 하나의 공고를 지역별 복제하지 않음.",
+          "verifiedAt": "2026-10-26T04:20:37.942Z",
+          "fields": [
+            "title",
+            "audience",
+            "eventStart",
+            "eventEnd",
+            "operatingDates",
+            "conditions"
+          ]
+        }
+      ],
+      "contentHash": "1021b90ee482b79836f367742c50c594834d6923fdb6c50e92bee3b87776d8aa",
+      "siteUrl": "/tools/kids-popups/#teenieping-hyundai-tour-202610"
+    },
+    {
+      "id": "legoland-brick-or-treat-2026",
+      "categoryIds": [
+        "kids-popups",
+        "family-discounts"
+      ],
+      "title": "레고랜드 Brick or Treat · 몬스터 캐릭터 가을 행사",
+      "providerId": "legoland",
+      "canonicalUrl": "https://www.legoland.kr/%ED%8C%8C%ED%81%AC%EC%9D%B4%EB%B2%A4%ED%8A%B8/%EC%9D%B4-%EC%8B%9C%EC%A6%8C-%EC%B6%95%EC%A0%9C%EC%9D%B4%EB%B2%A4%ED%8A%B8/y26-brick-or-treat/",
+      "region": "강원",
+      "district": "춘천시",
+      "location": "레고랜드 코리아 · LEGO 캐슬 등 파크 내",
+      "audience": "가족 방문객 · 만12세 이하 어린이는 만16세 이상 보호자 동반 필수",
+      "ageGroups": [
+        "preschool",
+        "elementary"
+      ],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-09-11",
+      "eventEnd": "2026-11-15",
+      "scheduleNote": "파크 운영일·공연 회차별 상이 · 코스튬 행사는 주말·공휴일15시 안내",
+      "feeStatus": "paid",
+      "feeText": "대인 온라인 사전 특가47,000원~ / 정상가66,000원~ · 날짜별 상이, 주차·일부 시설 별도",
+      "summary": "몬스터 캐릭터 공연과 스탬프 원정대, 코스튬·브릭 체험을 만나는 가을 행사입니다.",
+      "conditions": [
+        "입장일 기준36개월 미만은 무료이며, 만12세 이하 어린이는 만16세 이상 보호자 동반 입장이 필요합니다. 증빙과 날짜별 티켓 조건을 확인하세요.",
+        "코스튬 행사는2014~2024년생 어린이 대상이며 코스튬 준비 필수입니다. 당일12~14:30 캐슬 몬스터 스테이지에서30팀 사전 접수,14:50까지 도착 안내입니다.",
+        "코스튬 참가10팀 미만이면 행사 취소·접수자 포토타임 예정이며 현장·기상에 따라 변경될 수 있습니다. 무서운 복장은 제한될 수 있습니다.",
+        "브릭 콘테스트는10/24~11/15 상시 운영으로 확대됐습니다. 주중 접수15:30·발표16시, 주말 접수16:30·발표17시이며 종료 전 경품 미수령 시 선정 취소입니다.",
+        "호텔 몬스터 락 댄스 파티는 호텔 투숙객 한정입니다. 파크 입장권만으로 호텔 프로그램 참여를 보장하지 않습니다.",
+        "입장 당일 온라인·현장 구매는 사전 특가가 적용되지 않는 안내입니다. 주차료·일부 시설 비용은 별도이며, 취소·환불과 실제 운영일은 공식 구매·운영 캘린더를 확인하세요.",
+        "불꽃놀이는20:30 안내이지만 기상에 따라 취소될 수 있고 매일 운영하는 프로그램이 아닙니다. 날짜를 확인한 뒤 방문하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T04:20:37.942Z",
+      "evidence": [
+        {
+          "url": "https://www.legoland.kr/%ED%8C%8C%ED%81%AC%EC%9D%B4%EB%B2%A4%ED%8A%B8/%EC%9D%B4-%EC%8B%9C%EC%A6%8C-%EC%B6%95%EC%A0%9C%EC%9D%B4%EB%B2%A4%ED%8A%B8/y26-brick-or-treat/",
+          "publisher": "레고랜드 코리아",
+          "summary": "2026년9/11~11/15 공식 시즌 상세와 갱신된10/24브릭 콘테스트 조건, 코스튬 연령·인원·접수·취소·요금·보호자 및 호텔 제한을 대조.",
+          "verifiedAt": "2026-10-26T04:20:37.942Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "eventStart",
+            "eventEnd",
+            "feeText",
+            "conditions"
+          ]
+        }
+      ],
+      "contentHash": "a22c4da2e49561541083d0ecd7565c2916d9e2ef201d5142b63e378534492a4d",
+      "siteUrl": "/tools/kids-popups/#legoland-brick-or-treat-2026"
+    },
+    {
+      "id": "cherop-mongmo-daegu-202610",
+      "categoryIds": [
+        "kids-popups"
+      ],
+      "title": "체로프몽모 팝업 · 더현대 대구",
+      "providerId": "hyundai-department",
+      "canonicalUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4602610509486&branchCd=B00146000&category=event",
+      "region": "대구",
+      "location": "더현대 대구9층 더 포럼 by 하이메 아욘",
+      "audience": "캐릭터 인형·굿즈 방문객 · 연령 제한 미표기",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-10-21",
+      "eventEnd": "2026-11-11",
+      "scheduleNote": "백화점 영업시간·휴점일과 포토네컷 운영 확인",
+      "feeStatus": "unknown",
+      "feeText": "입장료·참여 비용 미확인 · 상품 구매 별도",
+      "summary": "애착인형·키링과 몽모 프레임 포토네컷을 만나는 캐릭터 팝업입니다.",
+      "conditions": [
+        "공식 기간10/21~11/11,9층 더 포럼 안내입니다. 사전 예약·입장료는 별도 확정되지 않아 방문 전 확인이 필요합니다.",
+        "5만원 이상 구매 시 리유저블백,10만원 이상 구매 시 몽모 얼굴인형 증정 안내입니다. 금액별 혜택의 중복 여부와 사은품 재고는 현장 확인하세요.",
+        "대표 상품과 사은품은 한정 수량이며 프로모션이 조기 종료될 수 있습니다. 상품별 할인율과 제외 품목이 다릅니다.",
+        "상품 구매·포토네컷 비용 및 어린이 동반 조건은 현장 안내를 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T04:20:37.942Z",
+      "evidence": [
+        {
+          "url": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?evntCrdCd=E4602610509486&branchCd=B00146000&category=event",
+          "publisher": "현대백화점 더현대 대구",
+          "summary": "실제 상세의 기간·층·인형/키링/포토네컷·구매금액별 증정·조기 소진 조건 확인. 입장료나 연령을 무료/유아 가능으로 추정하지 않음.",
+          "verifiedAt": "2026-10-26T04:20:37.942Z",
+          "fields": [
+            "title",
+            "audience",
+            "eventStart",
+            "eventEnd",
+            "conditions"
+          ]
+        }
+      ],
+      "contentHash": "4ff6237efdff43ff5a986512b232009eef00f262ce69135a0c82912c05b6e292",
+      "siteUrl": "/tools/kids-popups/#cherop-mongmo-daegu-202610"
+    },
+    {
+      "id": "samuel-chungcheong-202610",
+      "categoryIds": [
+        "kids-popups"
+      ],
+      "title": "사무엘 캐릭터 팝업 · 현대백화점 충청점",
+      "providerId": "hyundai-department",
+      "canonicalUrl": "https://www.ehyundai.com/mobile/SN/SN_0201000.do?evntCrdCd=E4702610510697&branchCd=B00147000&category=event",
+      "region": "충북",
+      "district": "청주시",
+      "location": "현대백화점 충청점2층 유니클로 옆 팝업 스튜디오",
+      "audience": "캐릭터 인형·키링 방문객 · 연령 제한 미표기",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-10-23",
+      "eventEnd": "2026-11-05",
+      "scheduleNote": "백화점 영업시간·휴점일 확인",
+      "feeStatus": "unknown",
+      "feeText": "입장료·참여 비용 미확인 · 상품 구매 별도",
+      "summary": "랜덤박스와 토끼·고양이 등 캐릭터 키링을 만나는 기간 한정 팝업입니다.",
+      "conditions": [
+        "공식 기간10/23~11/5이며 장소는2층 유니클로 옆입니다. 입장료·예약·보호자 조건은 별도 확인하세요.",
+        "일부 품목15% 할인 안내이며 모든 상품에 같은 할인율이 적용되는 것은 아닙니다. 상품 구매는 별도입니다.",
+        "상품·사은품은 한정 수량으로 조기 소진될 수 있으며 정상가·할인율은 최초판매가 기준입니다."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T04:20:37.942Z",
+      "evidence": [
+        {
+          "url": "https://www.ehyundai.com/mobile/SN/SN_0201000.do?evntCrdCd=E4702610510697&branchCd=B00147000&category=event",
+          "publisher": "현대백화점 충청점",
+          "summary": "10/23~11/5 실제 기간·2층 장소·캐릭터 랜덤박스/키링·일부품목 할인·소진 조건을 대조.",
+          "verifiedAt": "2026-10-26T04:20:37.942Z",
+          "fields": [
+            "title",
+            "audience",
+            "eventStart",
+            "eventEnd",
+            "conditions"
+          ]
+        }
+      ],
+      "contentHash": "a118e12ab61e354773e4568f9cfaa3f635e76c7c12a0608b8510b29aab943fba",
+      "siteUrl": "/tools/kids-popups/#samuel-chungcheong-202610"
+    },
+    {
+      "id": "stellive-stella-mode-on-202610",
+      "categoryIds": [
+        "kids-popups"
+      ],
+      "title": "STELLA MODE:ON · 스텔라이브 캐릭터 팝업",
+      "providerId": "stellive",
+      "canonicalUrl": "https://stellive.me/news/14801",
+      "region": "서울",
+      "district": "광진구",
+      "location": "본다빈치뮤지엄 능동 · 서울 광진구 광나루로441",
+      "address": "서울특별시 광진구 광나루로441",
+      "audience": "방문객 · 만14세 미만 아동 등 보호자가 필요한 경우 증빙 후 보호자1명 동반 가능",
+      "ageGroups": [
+        "preschool",
+        "elementary"
+      ],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-10-23",
+      "eventEnd": "2026-11-01",
+      "scheduleNote": "매일10:00~20:00 ·10/26~11/1 사전예약과 현장입장 병행",
+      "feeStatus": "unknown",
+      "feeText": "입장료·참여 비용 미확인 · 상품 구매 별도",
+      "summary": "캐릭터 전시 공간과 굿즈를 만나는 공식 팝업입니다. 예약·보호자·현장 대기 조건을 확인하세요.",
+      "conditions": [
+        "10/23~25는 네이버 사전예약만 운영했고,10/26~11/1은 사전예약과 현장 입장을 함께 운영하는 변경 공지입니다. 실제 잔여석은 별도 확인하세요.",
+        "혼잡 시 나우웨이팅으로 입장을 안내합니다. 실제 호출 알림을 직원에게 제시해야 하며 캡처 화면은 인정되지 않습니다. 호출 후15분 경과 시 입장이 제한될 수 있습니다.",
+        "동일 시간대2매 예매로 일반 동반인 입장·양도는 불가합니다. 다만 만14세 미만 아동·장애인 등 보호자가 필요한 경우 보호자1명 동반이 가능하며 가족관계증명서 등 증빙이 필요합니다.",
+        "일반 상품은 랜덤 상품을 제외하고 팬딩ID당 하루 최대3개 구매 제한 안내입니다. 같은 날 재입장해도 한도가 늘지 않으며 다계정 우회 구매는 주문 취소·퇴실·계정 제한 대상입니다.",
+        "전시 소품은 만지지 말고 눈으로 관람하세요. 입장료는 방문 전 운영사에 확인하세요. 상품 결제·수령·AS는 공식 상세를 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T04:20:37.942Z",
+      "evidence": [
+        {
+          "url": "https://stellive.me/news/14801",
+          "publisher": "스텔라이브",
+          "summary": "10/20최종운영 공지에서10/23~11/1 10~20시,광나루로441,만14세미만 보호자 예외·증빙·일반동반/양도 불가·하루구매한도·주문취소 조건 확인.",
+          "verifiedAt": "2026-10-26T04:20:37.942Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "eventStart",
+            "eventEnd",
+            "conditions"
+          ]
+        },
+        {
+          "url": "https://stellive.me/news/14805",
+          "publisher": "스텔라이브",
+          "summary": "10/20현장 입장 변경 공지의10/26~11/1 현장 병행·나우웨이팅 실 알림·호출15분 제한·국내번호 없는 경우 이메일 안내를 대조.",
+          "verifiedAt": "2026-10-26T04:20:37.942Z",
+          "fields": [
+            "scheduleNote",
+            "conditions"
+          ]
+        }
+      ],
+      "contentHash": "3d005237d4596f69c163d9126f1bdf5dbb49891d5c0d09fecbc34168feb6bec9",
+      "siteUrl": "/tools/kids-popups/#stellive-stella-mode-on-202610"
+    },
+    {
+      "id": "popup-sangsang-3190",
+      "categoryIds": [
+        "kids-popups"
+      ],
+      "title": "상상마당 캐릭터 브랜드 디자인 워크숍 3기 팝업",
+      "providerId": "sangsangmadang",
+      "canonicalUrl": "https://www.sangsangmadang.com/display/detail/3190",
+      "region": "서울",
+      "district": "마포구",
+      "location": "KT&G 상상마당 홍대 디자인스퀘어 2F · 어울마당로65",
+      "audience": "캐릭터 전시 방문객 · 관람 연령 제한 별도 미표기",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-10-20",
+      "eventEnd": "2026-11-01",
+      "scheduleNote": "매일11:00~21:00",
+      "feeStatus": "free",
+      "feeText": "전시 관람 무료 · 굿즈 구매 별도",
+      "summary": "동물 캐릭터 등 신진 작가들의 브랜드 이야기와 문구·생활잡화 굿즈를 만나는 팝업 전시입니다.",
+      "conditions": [
+        "작가들이 만든10개 브랜드가 참여하는 하나의 팝업 전시입니다.",
+        "공식 안내의 관람료는 무료입니다. 문구·생활잡화 등 상품 구매 비용은 별도입니다.",
+        "사전 예약·어린이 보호자 동반·입장 인원 제한은 전시 담당처에 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T12:05:49.609Z",
+      "evidence": [
+        {
+          "url": "https://www.sangsangmadang.com/display/detail/3190",
+          "publisher": "KT&G 상상마당",
+          "summary": "공식 전시 상세의2026/10/20~11/1·11~21시·홍대2층·무료와 참여 브랜드/굿즈를 확인.",
+          "verifiedAt": "2026-10-26T12:05:49.609Z",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "eventStart",
+            "eventEnd",
+            "scheduleNote",
+            "feeText"
+          ]
+        }
+      ],
+      "contentHash": "5ea7775f668dba9af0159ec6f131f842da509d0be772d7ed2b6beb2250d8a96e",
+      "siteUrl": "/tools/kids-popups/#popup-sangsang-3190"
+    },
+    {
+      "id": "popup-gliddy-202610",
+      "categoryIds": [
+        "kids-popups"
+      ],
+      "title": "Gliddy 캐릭터 팝업 · 만14세 이상 계정 예약",
+      "providerId": "hybe-weverse",
+      "canonicalUrl": "https://weverse.io/evan/notice/40109?hl=ko",
+      "region": "서울",
+      "district": "성동구",
+      "location": "카시나 성수 · 성수이로7길41",
+      "audience": "Weverse 가입자 · 한국 만14세 이상 계정, 예약1건당1명",
+      "ageGroups": [],
+      "applicationStart": "2026-10-22T11:00:00+09:00",
+      "applicationEnd": null,
+      "eventStart": "2026-10-28",
+      "eventEnd": "2026-11-03",
+      "scheduleNote": "11:00~20:00 · 예약 회차별 최대30분",
+      "feeStatus": "unknown",
+      "feeText": "입장료 미확인 · 상품 구매와 유료 체험은 별도",
+      "summary": "EVAN 공식 캐릭터 Gliddy의 예약제 팝업입니다. 계정 연령과 QR 입장 조건을 확인하세요.",
+      "conditions": [
+        "한국은 만14세, 미국 만13세, 그 외 지역 만16세 이상 Weverse 계정이 필요합니다. 계정당 행사 전체1회, 예약1건당1명이며 어린이 동반 예외는 별도 확인하세요.",
+        "로그인된 앱·웹 예약의 실제 QR을 제시해야 합니다. 캡처·촬영 화면, 양도·매매는 불가합니다. 예약10분 전 대기하고20분 이상 늦으면 입장 불가입니다.",
+        "최대30분 이용, 퇴장 후 재입장 불가입니다. 변경하려면 기존 예약 취소 후 빈 회차를 다시 예약해야 하며 자리가 보장되지 않습니다. 미예약자는 빈 회차를 실시간 예약한 뒤 입장합니다.",
+        "상품 결제는 카드·삼성/애플/알리/위챗/유니온페이만 가능합니다. 품목별 구매 한도와 재고가 있으며 초과 구매는 거부·취소될 수 있습니다.",
+        "상품 교환·환불은 구매14일 이내 상품·영수증·결제수단 지참이 필요합니다. 랜덤 상품은 불량만 교환하며 사용·포장/태그 훼손·증정품 미반납 등은 제한됩니다. 종료 후는 공식 이메일로 문의하세요.",
+        "5만원 이상 구매 시 투명 포토카드 랜덤1매,10만원 이상은 포토이즘 당일1회 안내입니다. 증정품 소진 시 종료되며 영수증 분할·합산은 불가합니다. 건물 주차·주차 지원은 없습니다."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T12:05:49.609Z",
+      "evidence": [
+        {
+          "url": "https://weverse.io/evan/notice/40109?hl=ko",
+          "publisher": "HYBE · Weverse 공식 팝업 공지",
+          "summary": "공식 전체 이용안내의2026년도·날짜·운영시간·계정 최소연령·1회/1인·30분·QR·예약 취소와14일 상품환불·혜택 제한을 확인.",
+          "verifiedAt": "2026-10-26T12:05:49.609Z",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "eventStart",
+            "eventEnd",
+            "applicationStart",
+            "scheduleNote"
+          ]
+        }
+      ],
+      "contentHash": "47bd64daa09fc5268bab5dc4aba56e70da5475de8c9cab8d416c2ca0b2f16815",
+      "siteUrl": "/tools/kids-popups/#popup-gliddy-202610"
+    },
+    {
+      "id": "popup-shinchan-changwon-202610",
+      "categoryIds": [
+        "kids-popups"
+      ],
+      "title": "짱구는 못말려 캐릭터 팝업 · 롯데 창원점",
+      "providerId": "lotte-department",
+      "canonicalUrl": "https://www.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000568180",
+      "region": "경남",
+      "district": "창원시",
+      "location": "롯데백화점 창원점 영플라자 B1 특설매장",
+      "audience": "짱구 캐릭터 방문객 · 구체 연령 제한 미표기",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-10-30",
+      "eventEnd": "2026-11-12",
+      "scheduleNote": "백화점 영업시간·휴점일 확인",
+      "feeStatus": "unknown",
+      "feeText": "입장료 미확인 · 상품 구매와 유료 체험은 별도",
+      "summary": "짱구 포토존과 캐릭터 굿즈를 만나는 창원점 기간 한정 팝업입니다.",
+      "conditions": [
+        "2026년10/30~11/12, 영플라자 지하1층 특설매장 안내입니다. 방문일의 영업시간과 휴점일을 확인하세요.",
+        "입장료·사전 예약·보호자 조건은 공식 지점에 별도 확인하세요. 굿즈는 상품별 유료입니다.",
+        "짱구20인치 캐리어100개 한정 등 한정 수량 상품이 있습니다. 실제 재고·구매 한도와 교환·환불 조건은 현장 판매 안내를 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T12:05:49.609Z",
+      "evidence": [
+        {
+          "url": "https://www.lotteshopping.com/shpgnews/shpgnewsDetail?shpgNewsNo=SNM00000000000568180",
+          "publisher": "롯데백화점",
+          "summary": "실제 상세 본문의26년10/30~11/12·영플라자B1·포토존·상품 수량을 확인. 브라우저 표시D-4로 미래 행사 확인, 숨김 종료 템플릿은 상태 근거로 사용하지 않음.",
+          "verifiedAt": "2026-10-26T12:05:49.609Z",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "eventStart",
+            "eventEnd",
+            "scheduleNote"
+          ]
+        }
+      ],
+      "contentHash": "09f41a377bea6fe74639e5413febf0b8a5d7b9360fa4c26f04d61fa984b9aa92",
+      "siteUrl": "/tools/kids-popups/#popup-shinchan-changwon-202610"
+    },
+    {
+      "id": "popup-shinsegae-character-festa-202610",
+      "categoryIds": [
+        "kids-popups"
+      ],
+      "title": "블로키×하비소울 두근두근 캐릭터 페스타",
+      "providerId": "shinsegae-department",
+      "canonicalUrl": "https://www.shinsegaegroupnewsroom.com/shinsegae-department-store-to-host-exciting-character-festa/",
+      "region": "서울",
+      "district": "서초구",
+      "location": "신세계백화점 강남점 센트럴시티1층 오픈스테이지",
+      "audience": "캐릭터·피규어 행사 방문객 · 연령 제한 미표기",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": null,
+      "eventEnd": "2026-11-03",
+      "scheduleNote": "현재 진행 중~11/3 · 개시일과 일별 운영시간은 공식 지점 확인",
+      "feeStatus": "unknown",
+      "feeText": "입장료 미확인 · 상품 구매와 유료 체험은 별도",
+      "summary": "포켓몬·짱구·산리오 등50여 IP의 피규어와 굿즈, 대형 포토존을 만나는 팝업입니다.",
+      "conditions": [
+        "2026/10/25 공식 보도자료에서11/3까지 진행 중인 행사로 안내합니다. 개시일과 일별 운영시간은 지점에 확인하세요.",
+        "포토존·입체 피규어 전시와 약950종 굿즈가 있습니다. 1회1만원 랜덤 뽑기는 별도 유료입니다.",
+        "5만원 이상 구매 시 랜덤 굿즈,9만원 이상은 캐릭터 다이어리 선착순 증정입니다. 사은품은 한정 수량으로 소진 시 종료됩니다.",
+        "입장료·사전 예약·보호자 조건과 금액별 사은품 중복 여부·상품 교환/환불은 현장 안내를 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T12:05:49.609Z",
+      "evidence": [
+        {
+          "url": "https://www.shinsegaegroupnewsroom.com/shinsegae-department-store-to-host-exciting-character-festa/",
+          "publisher": "신세계백화점 · 그룹 뉴스룸",
+          "summary": "10/25 공식 보도자료 원문 전체에서11/3 종료·진행 중·장소·50IP/950굿즈·1만원 뽑기·구매 사은품을 확인. 공식 개시일 미표기로 null 유지.",
+          "verifiedAt": "2026-10-26T12:05:49.609Z",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "eventEnd",
+            "scheduleNote"
+          ]
+        }
+      ],
+      "contentHash": "7b69393d0c101a9452f93e15eae3f5927e70bd1b32c4d9b91fc8298b36c0c88c",
+      "siteUrl": "/tools/kids-popups/#popup-shinsegae-character-festa-202610"
+    },
+    {
+      "id": "popup-tinyville-daejeon-202610",
+      "categoryIds": [
+        "kids-popups"
+      ],
+      "title": "타이니빌 캐릭터 팝업 · 대전신세계",
+      "providerId": "shinsegae-department",
+      "canonicalUrl": "https://www.shinsegae.com/shopping/view.do?mainCd=11&pageLink=%2Fcms12%2FSC00060%2Finfo%2Ftheme%2F8662716_5346.txt&contentDtlCd=06&contentId=8662716&storeCd=SC00060&brandCd=",
+      "region": "대전",
+      "location": "대전신세계 Art & Science 6층 아트테라스",
+      "audience": "캐릭터 굿즈 방문객 · 연령 제한 미표기",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-10-16",
+      "eventEnd": "2026-11-01",
+      "operatingDates": [
+        "2026-10-16",
+        "2026-10-17",
+        "2026-10-18",
+        "2026-10-20",
+        "2026-10-21",
+        "2026-10-22",
+        "2026-10-23",
+        "2026-10-24",
+        "2026-10-25",
+        "2026-10-26",
+        "2026-10-27",
+        "2026-10-28",
+        "2026-10-29",
+        "2026-10-30",
+        "2026-10-31",
+        "2026-11-01"
+      ],
+      "scheduleNote": "10/19 휴점 제외 · 일별 백화점 영업시간 확인",
+      "feeStatus": "unknown",
+      "feeText": "입장료 미확인 · 상품 구매와 유료 체험은 별도",
+      "summary": "디즈니·산리오·스펀지밥 등 다양한 캐릭터의 굿즈를 만나는 대전 팝업입니다.",
+      "conditions": [
+        "공식 기간10/16~11/1,6층 아트테라스이며10/19는 휴점입니다. 방문일의 일별 영업시간을 확인하세요.",
+        "3만원 이상 구매 시 크레인게임1인1회,5만원 이상5천원·8만원 이상8천원 할인,10만원 이상 럭키드로우 안내입니다. 혜택 중복·제외 상품·재고는 현장 확인하세요.",
+        "입장료와 예약·보호자 조건은 지점에 별도 확인하세요. 상품별 표시 가격은 굿즈 구매 비용입니다."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T12:05:49.609Z",
+      "evidence": [
+        {
+          "url": "https://www.shinsegae.com/shopping/view.do?mainCd=11&pageLink=%2Fcms12%2FSC00060%2Finfo%2Ftheme%2F8662716_5346.txt&contentDtlCd=06&contentId=8662716&storeCd=SC00060&brandCd=",
+          "publisher": "신세계백화점 · 그룹 뉴스룸",
+          "summary": "실제 브라우저 상세의2026/10/16~11/1·6층과 공식 원본 포스터의10/19 휴점·금액별 게임/할인/럭키드로우를 직접 대조.",
+          "verifiedAt": "2026-10-26T12:05:49.609Z",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "eventStart",
+            "eventEnd",
+            "operatingDates",
+            "scheduleNote"
+          ]
+        },
+        {
+          "url": "https://www.shinsegae.com/cms12/SC00060/info/theme/__icsFiles/afieldfile/2026/10/16/1016_sh14.jpg",
+          "publisher": "대전신세계 공식 행사 포스터",
+          "summary": "공식 원본 포스터를 직접 열람해 캐릭터 구성·10/19 휴점·금액별 혜택을 확인.",
+          "verifiedAt": "2026-10-26T12:05:49.609Z",
+          "fields": [
+            "title",
+            "audience",
+            "eventStart",
+            "eventEnd",
+            "operatingDates",
+            "conditions"
+          ]
+        }
+      ],
+      "contentHash": "ac9a108a967b438b40b4ea4ff9029f80c7dc9f729a1572d681d008bd1697aeda",
+      "siteUrl": "/tools/kids-popups/#popup-tinyville-daejeon-202610"
+    },
+    {
+      "id": "popup-moomin-yongsan-202610",
+      "categoryIds": [
+        "kids-popups"
+      ],
+      "title": "무민 팝업 IN 용산",
+      "providerId": "popcondplay",
+      "canonicalUrl": "https://www.popcondplay.com/ip/news/view/723",
+      "region": "서울",
+      "district": "용산구",
+      "location": "아이파크몰 리빙파크3F 도파민 스테이션",
+      "audience": "무민 캐릭터 방문객 · 연령 제한 미표기",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-10-12",
+      "eventEnd": "2026-11-01",
+      "scheduleNote": "10:30~22:00",
+      "feeStatus": "unknown",
+      "feeText": "입장료 미확인 · 상품 구매와 유료 체험은 별도",
+      "summary": "무민샵 코리아의 용산 팝업에서 국내 단독 캐릭터 MD를 만날 수 있습니다.",
+      "conditions": [
+        "무민샵 코리아가 게시한 용산 팝업 공지의 기간·장소·운영시간입니다.",
+        "일부 단독 MD는 품절되면 재입고가 어려울 수 있습니다. 재고·구매 한도는 현장 확인하세요.",
+        "상품 구매 비용은 별도입니다. 입장료·예약·보호자 동반·교환/환불 조건은 운영사에 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T12:05:49.609Z",
+      "evidence": [
+        {
+          "url": "https://www.popcondplay.com/ip/news/view/723",
+          "publisher": "팝콘D플레이 · 대원뮤지엄·캐릭터 공식 공지",
+          "summary": "팝콘D플레이 무민샵코리아 게시 원문723·724의2026/10/12~11/1·용산리빙파크3층·10:30~22·단독MD 및 재입고 제한 확인.",
+          "verifiedAt": "2026-10-26T12:05:49.609Z",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "eventStart",
+            "eventEnd",
+            "scheduleNote"
+          ]
+        },
+        {
+          "url": "https://www.popcondplay.com/ip/news/view/724",
+          "publisher": "무민샵 코리아",
+          "summary": "같은 팝업의 후속 안내에서 동일 일정·장소·시간을 대조. 별도 행사로 생성하지 않음.",
+          "verifiedAt": "2026-10-26T12:05:49.609Z",
+          "fields": [
+            "eventStart",
+            "eventEnd",
+            "scheduleNote",
+            "conditions"
+          ]
+        }
+      ],
+      "contentHash": "49752a3708819602f8dacf28310ae7d731a7461c9bd7aea317294358c48f4dd0",
+      "siteUrl": "/tools/kids-popups/#popup-moomin-yongsan-202610"
+    },
+    {
+      "id": "popup-kakao-riot-202610",
+      "categoryIds": [
+        "kids-popups"
+      ],
+      "title": "카카오프렌즈×라이엇 게임즈 월즈 팝업",
+      "providerId": "kakao-friends",
+      "canonicalUrl": "https://www.kakaocorp.com/page/detail/12176?lang=KOR",
+      "region": "서울",
+      "district": "송파구",
+      "location": "잠실 롯데월드몰 · 세부 층과 입장 위치는 운영사 확인",
+      "audience": "카카오프렌즈·리그 오브 레전드 팬 · 구체 관람연령 미표기",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-10-23",
+      "eventEnd": "2026-11-01",
+      "scheduleNote": "일별 운영시간·회차·예약 조건은 공식 운영사 확인",
+      "feeStatus": "unknown",
+      "feeText": "입장료 미확인 · 상품 구매와 유료 체험은 별도",
+      "summary": "월즈 시즌에 춘식이와 라이엇 게임즈의 협업 콘텐츠를 체험하는 공식 팝업 공간입니다.",
+      "conditions": [
+        "공식 보도자료의 팝업 기간은10/23~11/1입니다. 오픈 첫 주말 기념 이벤트는10/25까지로 종료됐습니다.",
+        "세부 층·입장 위치·일별 운영시간·예약·입장료·어린이 보호자 조건은 방문 전 운영사에 확인하세요.",
+        "온라인 공개 콘텐츠·뉴욕 옥외광고 일정은 이 팝업의 방문 일정이나 참여 혜택에 포함되지 않습니다."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T12:05:49.609Z",
+      "evidence": [
+        {
+          "url": "https://www.kakaocorp.com/page/detail/12176?lang=KOR",
+          "publisher": "카카오 · 카카오프렌즈 공식 보도자료",
+          "summary": "10/22 카카오 공식 보도자료 본문에서2026/10/23~11/1 롯데월드몰 팝업과 첫주말10/25 종료 이벤트를 분리 확인.",
+          "verifiedAt": "2026-10-26T12:05:49.609Z",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "eventStart",
+            "eventEnd",
+            "scheduleNote"
+          ]
+        }
+      ],
+      "contentHash": "fb1cf305acfb52c8ef8dcfbdda10eddf753ffb0984164845ec05130b4dfcb0ea",
+      "siteUrl": "/tools/kids-popups/#popup-kakao-riot-202610"
+    },
+    {
+      "id": "popup-bbnexdo-dreams-202610",
+      "categoryIds": [
+        "kids-popups"
+      ],
+      "title": "BBNEXDO in Sweet Dreams · 만14세 이상 계정 예약",
+      "providerId": "hybe-weverse",
+      "canonicalUrl": "https://weverse.io/boynextdoor/notice/39964?hl=ko",
+      "region": "서울",
+      "district": "영등포구",
+      "location": "더현대 서울 B1 아이코닉 · 여의대로108",
+      "audience": "Weverse 가입자 · 한국 만14세 이상 계정, 예약1건당1명",
+      "ageGroups": [],
+      "applicationStart": "2026-10-16T14:00:00+09:00",
+      "applicationEnd": null,
+      "eventStart": "2026-10-21",
+      "eventEnd": "2026-11-03",
+      "operatingDates": [
+        "2026-10-21",
+        "2026-10-22",
+        "2026-10-23",
+        "2026-10-24",
+        "2026-10-25",
+        "2026-10-26",
+        "2026-10-27",
+        "2026-10-28",
+        "2026-10-29",
+        "2026-10-30",
+        "2026-10-31",
+        "2026-11-01",
+        "2026-11-03"
+      ],
+      "scheduleNote": "월~목10:30~20:00, 금~일20:30까지 ·11/2 휴점 제외",
+      "feeStatus": "unknown",
+      "feeText": "입장료 미확인 · 상품 구매와 유료 체험은 별도",
+      "summary": "BOYNEXTDOOR 캐릭터 BBNEXDO의 팝업입니다. 예약 연령·11/2 휴점·미예약 구매 제한을 확인하세요.",
+      "conditions": [
+        "한국 만14세·미국 만13세·그 외 만16세 이상 Weverse 계정이 필요합니다. 계정당 주차별1회·예약1건당1명입니다. 어린이 동반 예외는 별도 확인하세요.",
+        "1주차10/21~25,2주차10/26~11/3이며11/2는 휴점입니다. 로그인된 실제 예약 QR이 필요하고 캡처·촬영·양도·매매는 불가합니다.",
+        "예약10분 전 대기,20분 이상 늦으면 입장 불가, 최대1시간 이용·재입장 불가입니다. 첫 회차는B2 여의도역 연결통로, 나머지는B1 매장 우측 대기 안내입니다.",
+        "예약 변경은 기존 예약 취소 후 잔여 회차 재예약 방식입니다. 현장 워크인은 허용될 수 있으나 관람·체험만 가능하며 상품 구매는 사전 예약 QR이 필요합니다.",
+        "상품별 수량 제한과 조기 품절이 있으며 초과 구매는 거부·취소될 수 있습니다. 현금·카드·현대백화점 상품권 등 결제 안내를 확인하세요.",
+        "교환·환불은 구매7일 이내 상품·영수증·결제수단 지참, 운영 중 구매 매장에서만 가능합니다. 증정품 반납이 필요하며 사용·포장/태그 훼손 등은 불가합니다. 종료 후는 공식 이메일로 문의하세요.",
+        "7만원 이상 포토카드 랜덤1매,10만원 이상 포토이즘 당일1회,15만원 이상 캡슐1회 안내입니다. 증정품 소진 시 종료, 영수증 분할·합산은 불가합니다. QR 음성 콘텐츠용 개인 이어폰을 준비하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T12:05:49.609Z",
+      "evidence": [
+        {
+          "url": "https://weverse.io/boynextdoor/notice/39964?hl=ko",
+          "publisher": "HYBE · Weverse 공식 팝업 공지",
+          "summary": "공식 전체 이용안내의2026년도·일정·11/2 휴점·계정연령·주차별1회·1명·60분·미예약상품구매불가·7일환불·혜택과 영수증 제한을 확인.",
+          "verifiedAt": "2026-10-26T12:05:49.609Z",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "eventStart",
+            "eventEnd",
+            "applicationStart",
+            "operatingDates",
+            "scheduleNote"
+          ]
+        }
+      ],
+      "contentHash": "a21c53c51f78a546e26f7f319544d4c67a34a3cde378a42c0ba018b5d39c6214",
+      "siteUrl": "/tools/kids-popups/#popup-bbnexdo-dreams-202610"
+    },
+    {
+      "id": "popup-peachpit25-yongsan-202610",
+      "categoryIds": [
+        "kids-popups"
+      ],
+      "title": "PEACH-PIT 25주년 기념 특별전 · 캐릭캐릭 체인지!",
+      "providerId": "popcondplay",
+      "canonicalUrl": "https://www.popcondplay.com/reserve/view/94",
+      "region": "서울",
+      "district": "용산구",
+      "location": "아이파크몰 용산점6F 팝콘디스퀘어 대원뮤지엄",
+      "audience": "어린이24개월 이상·청소년·성인 요금 구분 ·24개월 미만 조건은 별도 확인",
+      "ageGroups": [
+        "preschool",
+        "elementary"
+      ],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-10-24",
+      "eventEnd": "2026-11-29",
+      "scheduleNote": "10:30~20:00 · 매표·입장19:00 마감",
+      "feeStatus": "paid",
+      "feeText": "성인22,000원 / 만13~18세20,000원 /24개월~만12세17,000원 · 굿즈 패키지 별도",
+      "summary": "로젠메이든·캐릭캐릭 체인지!의 원화와 캐릭터 굿즈를 만나는 기간 한정 특별전입니다.",
+      "conditions": [
+        "성인은 만19세 이상, 청소년 만13~18세, 어린이24개월~만12세 요금입니다. 24개월 미만 입장·증빙과 보호자 조건은 운영사에 확인하세요.",
+        "티켓은2026/10/24~11/29 내 사용해야 합니다. 미사용 티켓 취소 요청은11/29까지 가능하며 기간을 넘긴 미사용 티켓은 환불되지 않는 안내입니다.",
+        "공식 고객센터 답변에서 MD샵은 전시 입장권을 소지하고 입장을 완료한 관람객만 이용할 수 있다고 안내합니다.",
+        "굿즈 패키지는25,000~50,000원이며 포함 품목이 다릅니다. 한정 수량은 소진되면 별도 공지 없이 판매 종료될 수 있습니다."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T12:05:49.609Z",
+      "evidence": [
+        {
+          "url": "https://www.popcondplay.com/reserve/view/94",
+          "publisher": "팝콘D플레이 · 대원뮤지엄·캐릭터 공식 공지",
+          "summary": "공식 예매 상세 전체의2026/10/24~11/29·입장마감·연령별 요금·패키지·유효기한 및 공식 고객센터의 미사용취소/MD샵입장권 조건을 확인.",
+          "verifiedAt": "2026-10-26T12:05:49.609Z",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "eventStart",
+            "eventEnd",
+            "scheduleNote",
+            "feeText",
+            "ageGroups"
+          ]
+        }
+      ],
+      "contentHash": "3ad1855ad5ad505f693e5e03ea2084ce6af3ec5887fe4f9118dac87ceb75d04d",
+      "siteUrl": "/tools/kids-popups/#popup-peachpit25-yongsan-202610"
+    },
+    {
+      "id": "popup-harrypotter-busan-202610",
+      "categoryIds": [
+        "kids-popups"
+      ],
+      "title": "해리포터 마호도코로 팝업스토어 · 부산",
+      "providerId": "popcondplay",
+      "canonicalUrl": "https://www.popcondplay.com/reserve/view/110",
+      "region": "부산",
+      "district": "부산진구",
+      "location": "롯데백화점 부산본점 B1 팬덤 스페이스",
+      "audience": "해리포터 캐릭터 방문객 · 연령 제한과 어린이 동반은 별도 확인",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "eventStart": "2026-10-30",
+      "eventEnd": "2026-11-01",
+      "scheduleNote": "10:30~20:00, 금~일 연장20:30 · 현장 접수/입장은20시까지 안내",
+      "feeStatus": "unknown",
+      "feeText": "입장료 미확인 · 상품 구매와 유료 체험은 별도",
+      "summary": "부산에서 열리는 해리포터 팝업입니다. 오전 사전 예약과 정오 이후 현장 접수의 입장 방식을 구분하세요.",
+      "conditions": [
+        "공식 운영 기간은2026/10/30~11/1입니다. 정상10:30~20:00·금토일 연장20:30, 현장 접수·입장은12~20시 안내이므로 마감은 현장에서 확인하세요.",
+        "사전 예약 우선 입장은10:30~12시,10:30/11:00/11:30 시작30분 회차입니다. 회차10분 전 도착하고 실제 예약 화면을 준비하세요. 늦으면 대기·입장 제한될 수 있습니다.",
+        "예약은 선착순이며1인(ID)1회·최대2매입니다. 예약 날짜·회차만 입장 가능하며 시간 변경은 어렵고 양도·재판매는 불가합니다.",
+        "미예약자는 당일 현장 접수 순서로12시부터 입장하며, 상황에 따라 일찍 시작하거나 접수가 조기 마감될 수 있습니다. 예약은 상품 재고·구매를 보장하지 않습니다.",
+        "상품별 구매 한도·조기 품절이 있습니다. 교환·환불은 구매7일 이내 영수증 지참이 필요하고 사용·포장/라벨 훼손은 제한, 랜덤·검수 상품은 교환·환불 불가 안내입니다.",
+        "입장료·예약 취소와 보호자 동반 조건은 공식 운영사에 확인하세요. 혼잡 시 입장 인원·이용 시간이 제한될 수 있습니다."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T12:05:49.609Z",
+      "evidence": [
+        {
+          "url": "https://www.popcondplay.com/reserve/view/110",
+          "publisher": "팝콘D플레이 · 대원뮤지엄·캐릭터 공식 공지",
+          "summary": "공식 예매 상세 전체의2026/10/30~11/1 운영기간·B1·연장영업과 현장20시 제한·오전3회차·ID1회2매·예약/현장 절차·7일상품환불 제한을 확인.",
+          "verifiedAt": "2026-10-26T12:05:49.609Z",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "eventStart",
+            "eventEnd",
+            "scheduleNote"
+          ]
+        }
+      ],
+      "contentHash": "4d89cc2b8679d6d874e94c4ddea5501fa15d383ea5f4605ce22d2910fd38ced9",
+      "siteUrl": "/tools/kids-popups/#popup-harrypotter-busan-202610"
     }
   ],
-  "siteRevision": "ba7b6fdb48b05b218350a3760e83da828f7fd163",
-  "generatedAt": "2026-10-26T04:05:36.188Z",
+  "siteRevision": "ff3a41b4ed84cbbe9cc1bd83d6a3ebed916a1561",
+  "generatedAt": "2026-10-26T12:06:27.577Z",
   "window": {
     "start": "2026-10-26",
     "end": "2026-12-25"

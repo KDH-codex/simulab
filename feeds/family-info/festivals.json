@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "snapshotId": "77040c9b88d8e46bce1de24c",
+  "snapshotId": "c0a044e253b8012893aad804",
   "timezone": "Asia/Seoul",
   "categories": [
     {
@@ -2633,8 +2633,8 @@
       "siteUrl": "/tools/kids-outing-calendar/#event-mcst-12641-2026"
     }
   ],
-  "siteRevision": "ba7b6fdb48b05b218350a3760e83da828f7fd163",
-  "generatedAt": "2026-10-26T04:05:36.188Z",
+  "siteRevision": "ff3a41b4ed84cbbe9cc1bd83d6a3ebed916a1561",
+  "generatedAt": "2026-10-26T12:06:27.577Z",
   "window": {
     "start": "2026-10-26",
     "end": "2026-12-25"

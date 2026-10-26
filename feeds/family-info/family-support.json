@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "snapshotId": "77040c9b88d8e46bce1de24c",
+  "snapshotId": "c0a044e253b8012893aad804",
   "timezone": "Asia/Seoul",
   "categories": [
     {
@@ -14,13 +14,13 @@
       "split": "national-or-region",
       "href": "/tools/family-support/",
       "accent": "green",
-      "categoryRevision": "7edddeee2f34b779",
-      "lastVerifiedAt": "2026-10-26",
-      "lastCollectedAt": "2026-10-26",
+      "categoryRevision": "28307fde57ca58a1",
+      "lastVerifiedAt": "2026-10-26T07:15:46.246Z",
+      "lastCollectedAt": "2026-10-26T07:15:46.246Z",
       "lastDeployedAt": null,
       "outcome": "partial-review",
-      "verifiedCount": 7,
-      "currentCount": 7,
+      "verifiedCount": 17,
+      "currentCount": 17,
       "failures": []
     }
   ],
@@ -61,7 +61,43 @@
       "regions": [
         "서울"
       ],
-      "lastSuccessAt": "2026-10-26"
+      "lastSuccessAt": "2026-10-26T07:15:46.246Z"
+    },
+    {
+      "id": "ehealth",
+      "name": "공공보건포털 e보건소",
+      "url": "https://www.e-health.go.kr/",
+      "categoryIds": [
+        "family-support"
+      ],
+      "regions": [
+        "전국"
+      ],
+      "lastSuccessAt": "2026-10-26T07:15:46.246Z"
+    },
+    {
+      "id": "korea-policy",
+      "name": "대한민국 정책브리핑 · 보건복지부",
+      "url": "https://m.korea.kr/",
+      "categoryIds": [
+        "family-support"
+      ],
+      "regions": [
+        "전국"
+      ],
+      "lastSuccessAt": "2026-10-26T07:15:46.246Z"
+    },
+    {
+      "id": "mohw-family",
+      "name": "보건복지부 출산정책",
+      "url": "https://www.mohw.go.kr/",
+      "categoryIds": [
+        "family-support"
+      ],
+      "regions": [
+        "전국"
+      ],
+      "lastSuccessAt": "2026-10-26T07:15:46.246Z"
     }
   ],
   "records": [
@@ -85,20 +121,22 @@
       "eventEnd": null,
       "feeStatus": "unknown",
       "feeText": "지원금·바우처 사업 · 지원 범위 밖 본인부담과 개별 이용요금은 공식 확인",
-      "summary": "임산부 교통비 바우처를 지원하는 서울시 사업입니다.",
+      "summary": "임산부 본인 명의 협약카드에70~100만원의 교통비 바우처를 지급합니다.",
       "conditions": [
-        "2026년 7월 1일 이후 신청은 서울 3개월 이상 계속 거주 조건이 적용됩니다.",
-        "협약 카드사와 신청 가능한 카드 종류, 교통수단별 사용처를 확인하세요.",
-        "바우처 금액과 사용 종료일은 신청 시점·대상별 공식 안내를 확인하세요."
+        "2026/7/1 이후 신청은 서울시3개월 이상 계속 거주 조건이며 임신 확인 후~출산6개월 이내 신청합니다.부부 모두 외국인이면 제외됩니다.",
+        "협약6개 카드사에서 임산부 본인 명의 신용·체크카드를 준비합니다.전용 국민행복카드는 지급 불가이며 지급 후 카드사를 바꿀 수 없습니다.",
+        "임신 중 신청은 분만예정일,출산 후 신청은 출생일로부터12개월이 되는 달 말일까지 사용합니다.2026/3/30 이전 신청자는6개월 기준입니다.",
+        "버스·지하철 후불교통은 사용전표가 종료일 이후 접수되면 자부담이며 복원되지 않습니다.서울 유류비 가맹점·코레일 공식 예매 등 사용처를 확인하세요.",
+        "셀프주유소 선승인과 실제 승인의 합계보다 잔액이 적으면 자부담될 수 있습니다.신청시점·대상별 지급액과 서류를 확인하세요."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26",
+      "verifiedAt": "2026-10-26T07:15:46.246Z",
       "evidence": [
         {
-          "url": "https://umppa.seoul.go.kr/hmpg/life/cycl/lifeCyclInfoDetail.do?sys_name=biz&doc_id=34B5EA8BEB354E2DB26136CFE52AEFF2",
+          "url": "https://umppa.seoul.go.kr/hmpg/life/cycl/lifeCyclInfoDetail.do?doc_id=34B5EA8BEB354E2DB26136CFE52AEFF2&sys_name=biz",
           "publisher": "서울시 탄생육아 몽땅정보통",
-          "summary": "공식 사업 상세의 신청기한·2026년 변경 조건·거주 및 대상자 요건·지원 내용과 예외를 확인했습니다. 개인별 기한이나 상시 신청에 임의의 연말 종료일을 붙이지 않았습니다.",
-          "verifiedAt": "2026-10-26",
+          "summary": "현재원문의70~100만원 범위·26/7/1거주3개월/최소임신주차폐지·출산6개월신청·12개월/과거6개월사용·카드변경불가·후불전표/유류비·외국인가구제외 확인.",
+          "verifiedAt": "2026-10-26T07:15:46.246Z",
           "fields": [
             "title",
             "audience",
@@ -108,7 +146,7 @@
           ]
         }
       ],
-      "contentHash": "9c25109e42057c9f92b28dd0c6e0ce693bcc0c810dcabd89d418651301f73d42",
+      "contentHash": "61051d8c8a11224d026aea898f506b812ac17a68a2d166c78a6f362ef0100a4e",
       "siteUrl": "/tools/family-support/#support-00ff21304617cdf52ec6"
     },
     {
@@ -131,19 +169,21 @@
       "eventEnd": null,
       "feeStatus": "unknown",
       "feeText": "지원금·바우처 사업 · 지원 범위 밖 본인부담과 개별 이용요금은 공식 확인",
-      "summary": "부모를 위한 책과 아기 그림책이 담긴 책꾸러미를 지원합니다.",
+      "summary": "엄마아빠 책1권·아기 그림책2권과 육아정책 안내 책꾸러미를 배송합니다.",
       "conditions": [
-        "서울 거주와 임신·출산 시기 조건을 충족해야 합니다.",
-        "온라인 신청 후 배송·중복 신청 조건을 공식 안내에서 확인하세요."
+        "서울 거주 임신 확인 후~출산6개월 이내 대상입니다.임산부 교통비 신청과 함께 엄마 북돋움을 신청할 수 있습니다.",
+        "교통비와 함께 신청하면 교통비 지급일로부터 약3주 이내 발송 안내입니다.주소·연락처가 틀리면 반송되거나 배송이 제한될 수 있습니다.",
+        "조손·부자가정 등 시스템 이용이 어려우면 서울도서관 별도 신청을 확인하세요.쌍둥이는 신청 후1:1문의 절차가 있습니다.",
+        "월간 온라인 강연은 책꾸러미 신청과 별도로 서울도서관 강연 모집을 확인하세요."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26",
+      "verifiedAt": "2026-10-26T07:15:46.246Z",
       "evidence": [
         {
-          "url": "https://umppa.seoul.go.kr/hmpg/life/cycl/lifeCyclInfoDetail.do?sys_name=biz&doc_id=4ECE63A5582C4749A34BF4867436AAB1",
+          "url": "https://umppa.seoul.go.kr/hmpg/life/cycl/lifeCyclInfoDetail.do?doc_id=4ECE63A5582C4749A34BF4867436AAB1&sys_name=biz",
           "publisher": "서울시 탄생육아 몽땅정보통",
-          "summary": "공식 사업 상세의 신청기한·2026년 변경 조건·거주 및 대상자 요건·지원 내용과 예외를 확인했습니다. 개인별 기한이나 상시 신청에 임의의 연말 종료일을 붙이지 않았습니다.",
-          "verifiedAt": "2026-10-26",
+          "summary": "실제본문의서울거주·임신~출산6개월·책1+2권·정책안내·교통비연계신청·약3주배송·주소오기입제한·조손/부자가정별도신청·쌍둥이문의 확인.",
+          "verifiedAt": "2026-10-26T07:15:46.246Z",
           "fields": [
             "title",
             "audience",
@@ -153,7 +193,7 @@
           ]
         }
       ],
-      "contentHash": "e002881430cb81f711a2d3c57cca0b52ff49721ba1dcc81b49ee7de806bc8634",
+      "contentHash": "33973275c339d4ac6e843e80fbe633f4f6e9a8d7409979ced692d5b530596534",
       "siteUrl": "/tools/family-support/#support-51fdff3f7e0f23630bee"
     },
     {
@@ -178,18 +218,19 @@
       "feeText": "지원금·바우처 사업 · 지원 범위 밖 본인부담과 개별 이용요금은 공식 확인",
       "summary": "요건을 충족하는 산전 외래 진료·검사비를 지원하는 사업입니다.",
       "conditions": [
-        "임신 회당 최대 50만원 한도이며 실제 납부한 외래 의료비가 기준입니다.",
-        "입원 영수증은 대상이 아니며, 유산 처치비 등 세부 범위는 원문에서 확인하세요.",
-        "다문화가족 외국인 임산부는 신청 가능하나 부부 모두 외국인이면 제외됩니다."
+        "임신 회당 실제 납부한 산전 외래 진료·검사비를 최대50만원 지원하며 출산·유산 후6개월 이내 신청합니다.분만예정연도를 기준으로35세 이상인지 확인하세요.",
+        "국민행복카드 임산부 바우처와 중복 사용은 불가합니다.입원비·약제비·제증명료·외국 의료기관 비용·면제/감면액은 제외됩니다.",
+        "유산 처치비는 수술 당일 의료비에 한해 한도 내 신청하는 안내입니다.영수증의 외래/입원 표기를 확인하세요.",
+        "임신확인서·진료비 영수증·세부내역·결제 영수증을 모아1회 신청합니다.외국인 임산부는 내국인 배우자 증빙이 필요하며 부부 모두 외국인이면 제외됩니다."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26",
+      "verifiedAt": "2026-10-26T07:15:46.246Z",
       "evidence": [
         {
-          "url": "https://umppa.seoul.go.kr/hmpg/life/cycl/lifeCyclInfoDetail.do?sys_name=biz&doc_id=BB80BABF442E40D3BF59EBA63F4DF1D7",
+          "url": "https://umppa.seoul.go.kr/hmpg/life/cycl/lifeCyclInfoDetail.do?doc_id=BB80BABF442E40D3BF59EBA63F4DF1D7&sys_name=biz",
           "publisher": "서울시 탄생육아 몽땅정보통",
-          "summary": "공식 사업 상세의 신청기한·2026년 변경 조건·거주 및 대상자 요건·지원 내용과 예외를 확인했습니다. 개인별 기한이나 상시 신청에 임의의 연말 종료일을 붙이지 않았습니다.",
-          "verifiedAt": "2026-10-26",
+          "summary": "현재원문의35세예정연도·서울거주·임신회당50만원·출산/유산6개월·국민행복카드중복불가·입원/약제/증명/해외/감면제외·영수증합산1회신청 확인.",
+          "verifiedAt": "2026-10-26T07:15:46.246Z",
           "fields": [
             "title",
             "audience",
@@ -199,7 +240,7 @@
           ]
         }
       ],
-      "contentHash": "7a0c132c84cd57a11e3abee201c5f0e6b4d4e981380d86fe777f91976a3c00b7",
+      "contentHash": "269aeff1cfcde8f95c394ca57a21bc41deb7ec85cd50aaeb5c7cdeb8fb6cce44",
       "siteUrl": "/tools/family-support/#support-a6f029f759c22425dd25"
     },
     {
@@ -222,20 +263,21 @@
       "eventEnd": null,
       "feeStatus": "unknown",
       "feeText": "지원금·바우처 사업 · 지원 범위 밖 본인부담과 개별 이용요금은 공식 확인",
-      "summary": "고용보험 미적용 출산급여에 더해 서울시 출산급여를 지원합니다.",
+      "summary": "고용보험 미적용자 출산급여150만원 수혜자에게 서울시90만원(다태아170만원)을 추가 지원합니다.",
       "conditions": [
-        "신청일 서울 거주와 자녀의 서울시 출생신고 조건을 확인하세요.",
-        "고용노동부 급여 지급결정통지서 등 증빙이 필요합니다.",
-        "다태아·유산·사산의 지원금액은 다르므로 개별 공식 안내를 확인하세요."
+        "고용노동부 고용보험 미적용자 출산급여 수혜자여야 하며 신청일 서울 거주·자녀 서울시 출생신고·출산1년 이내 조건입니다.",
+        "단태아 서울시 추가90만원,다태아170만원 안내입니다.유산·사산은 임신기간별18~90만원 또는66~170만원으로 달라집니다.",
+        "고용노동부 지급결정통지서(직인 포함)와 가족관계증명서 등 증빙을 준비해 온라인 신청합니다.",
+        "거짓·부정 청구는 급여 환수 및 제재부가금 대상입니다.정부 급여와 서울시 추가 급여를 중복 금액으로 계산하지 마세요."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26",
+      "verifiedAt": "2026-10-26T07:15:46.246Z",
       "evidence": [
         {
-          "url": "https://umppa.seoul.go.kr/hmpg/life/cycl/lifeCyclInfoDetail.do?sys_name=biz&doc_id=16A62AE6CE142993E063A6022162A5D2",
+          "url": "https://umppa.seoul.go.kr/hmpg/life/cycl/lifeCyclInfoDetail.do?doc_id=16A62AE6CE142993E063A6022162A5D2&sys_name=biz",
           "publisher": "서울시 탄생육아 몽땅정보통",
-          "summary": "공식 사업 상세의 신청기한·2026년 변경 조건·거주 및 대상자 요건·지원 내용과 예외를 확인했습니다. 개인별 기한이나 상시 신청에 임의의 연말 종료일을 붙이지 않았습니다.",
-          "verifiedAt": "2026-10-26",
+          "summary": "공식상세의정부150+서울90/다태아170·유사산주수별차등·수혜선행·서울주소/출생신고·출산1년기한·증빙·부정수급환수 확인.",
+          "verifiedAt": "2026-10-26T07:15:46.246Z",
           "fields": [
             "title",
             "audience",
@@ -245,7 +287,7 @@
           ]
         }
       ],
-      "contentHash": "7343c44325362da4756a78c989436bedcfbe71f0649bd97c69364f09c6b0158a",
+      "contentHash": "7f5fd361f5c70eda1daf06e3d770261cb78ed680ac6797b08c119ba448c08086",
       "siteUrl": "/tools/family-support/#support-16aa1116dadff60e4ef0"
     },
     {
@@ -270,18 +312,20 @@
       "feeText": "지원금·바우처 사업 · 지원 범위 밖 본인부담과 개별 이용요금은 공식 확인",
       "summary": "고용보험 적용이 어려운 대상자의 배우자 출산휴가를 지원합니다.",
       "conditions": [
-        "2026년 1월 1일 이후 출생아는 최대 120만원·15일분 안내입니다.",
-        "고용노동부 유사 급여 수혜자와 부동산 임대사업자 등 제외 조건이 있습니다.",
-        "출생연도에 따라 지원 내용이 달라 신청서류와 지급요건을 확인하세요."
+        "2026/1/1 이후 출생아는 최대120만원·15일분이며 출산일부터120일 이내 휴가를 사용합니다.토·일·공휴일도 휴가일수에 포함하고 최대3번 분할 안내입니다.",
+        "2025년 출생아는 최대80만원·10일분,출산90일 이내 휴가 등 기준이 다릅니다.마지막 휴가 사용 후 일괄 신청하며 휴가 종료 후12개월 이내 기한입니다.",
+        "출산 전18개월 중3개월 이상 인정 소득활동,신청자와 자녀의 서울 주민등록·자녀 서울 출생신고 요건을 확인하세요.",
+        "고용노동부 유사 급여 수혜자,부동산 임대업만 영위하는 경우,신청자·배우자·자녀 모두 외국인인 경우는 제외됩니다.",
+        "가족관계·직인 있는 사업소득 증빙·계약서 등 직종별 서류가 필요합니다.행정정보로 확인되지 않으면 추가 제출을 요구할 수 있습니다."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26",
+      "verifiedAt": "2026-10-26T07:15:46.246Z",
       "evidence": [
         {
-          "url": "https://umppa.seoul.go.kr/hmpg/life/cycl/lifeCyclInfoDetail.do?sys_name=biz&doc_id=CED87B1387034FF8B72CFF94402F9F87",
+          "url": "https://umppa.seoul.go.kr/hmpg/life/cycl/lifeCyclInfoDetail.do?doc_id=CED87B1387034FF8B72CFF94402F9F87&sys_name=biz",
           "publisher": "서울시 탄생육아 몽땅정보통",
-          "summary": "공식 사업 상세의 신청기한·2026년 변경 조건·거주 및 대상자 요건·지원 내용과 예외를 확인했습니다. 개인별 기한이나 상시 신청에 임의의 연말 종료일을 붙이지 않았습니다.",
-          "verifiedAt": "2026-10-26",
+          "summary": "2026/2025 출생연도별금액·120/90일휴가·주말산입차이·3회분할·18개월중3개월소득·종료후12개월일괄신청·서울주소/출생신고·제외·증빙 확인.",
+          "verifiedAt": "2026-10-26T07:15:46.246Z",
           "fields": [
             "title",
             "audience",
@@ -291,7 +335,7 @@
           ]
         }
       ],
-      "contentHash": "c7fbe54a6efa7d5d36a6792490b65ecbf73350e54ccf11064579b6da74f8de9d",
+      "contentHash": "5a3bff67da82749e34f4af4126deb25df1a9cba988fd44dafab8d0de43d85b61",
       "siteUrl": "/tools/family-support/#support-aa52661382da193af4e4"
     },
     {
@@ -316,18 +360,19 @@
       "feeText": "지원금·바우처 사업 · 지원 범위 밖 본인부담과 개별 이용요금은 공식 확인",
       "summary": "아이돌봄서비스 이용 시 요건에 따라 본인부담금을 환급합니다.",
       "conditions": [
-        "2024년 1월 1일 이후 출산 가정으로, 부모 1명 이상과 아동의 서울 주민등록·함께 거주 조건이 있습니다.",
-        "본인부담금은 가형 100%, 나~마형 90%, 가구당 최대 100만원 한도 안내입니다.",
-        "출산 후 1년 이내 서비스 매칭일부터 90일 지원이며, 예산 소진 시 종료됩니다."
+        "2024/1/1 이후 둘째 이상 출산 가정 중 기존12세 이하 자녀 돌봄 공백·아이돌봄서비스 이용 조건입니다.부모1명 이상과 아동이 서울 주민등록상 함께 거주해야 합니다.",
+        "본인부담금은 가형100%,나~마형90%,가구당최대100만원 한도입니다.서비스 비용을 먼저 결제한 뒤 제공기관 정산으로 환급합니다.",
+        "출산 후1년 이내 매칭일부터90일 지원하며 예산 소진 시 종료됩니다.임신 판정 후 사전신청도 가능합니다.",
+        "정부지원 아이돌봄 신규 이용자는 소득유형 판정·아이돌봄서비스 신청·이 사업 신청을 각각 진행합니다.출생/임신증명서와 첫째 자녀 확인 등 서류를 준비하세요."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26",
+      "verifiedAt": "2026-10-26T07:15:46.246Z",
       "evidence": [
         {
-          "url": "https://umppa.seoul.go.kr/hmpg/life/cycl/lifeCyclInfoDetail.do?sys_name=biz&doc_id=062A1CE5D5848B7EE063A602216299A4",
+          "url": "https://umppa.seoul.go.kr/hmpg/life/cycl/lifeCyclInfoDetail.do?doc_id=062A1CE5D5848B7EE063A602216299A4&sys_name=biz",
           "publisher": "서울시 탄생육아 몽땅정보통",
-          "summary": "공식 사업 상세의 신청기한·2026년 변경 조건·거주 및 대상자 요건·지원 내용과 예외를 확인했습니다. 개인별 기한이나 상시 신청에 임의의 연말 종료일을 붙이지 않았습니다.",
-          "verifiedAt": "2026-10-26",
+          "summary": "2024이후출산/첫째12세이하·함께서울거주·가형100%/나~마90%·100만원한도·선결제후환급·1년내매칭90일·예산종료·별도3단계신청 확인.",
+          "verifiedAt": "2026-10-26T07:15:46.246Z",
           "fields": [
             "title",
             "audience",
@@ -337,7 +382,7 @@
           ]
         }
       ],
-      "contentHash": "cc35d1ffa7d9b1cecaabe29679a32aa0a0e5c6b14c3a2c6c18fb3f63ee50596c",
+      "contentHash": "976cba22608c443d12b86875cbe15424e0d62ab35543f2129ba1401afb35bd7e",
       "siteUrl": "/tools/family-support/#support-821a67a849c8daf02231"
     },
     {
@@ -362,18 +407,20 @@
       "feeText": "지원금·바우처 사업 · 지원 범위 밖 본인부담과 개별 이용요금은 공식 확인",
       "summary": "영아용 카시트를 갖춘 택시의 이용 포인트를 지원합니다.",
       "conditions": [
-        "영아 1명당 연 10만원 포인트 지원이며 운영업체는 타다입니다.",
-        "2026년부터 영아당 총 2회·연 1회로 제한되며 2025년부터의 지원횟수를 산정합니다.",
-        "승인일로부터 1년이 되는 달 말일의 하차 시각까지 이용하며, 카시트는 차량당 1개입니다."
+        "영아1명당연10만원 포인트,운영업체 타다 안내입니다.2026년부터 영아당총2회·연1회이며2025년 지급부터 횟수를 산정합니다.",
+        "신청월기준24개월 이하,영아와 주민등록을 함께 둔 부모·조부모·3촌이내 친인척 등 실질 양육자 조건입니다.위탁아동도 안내된 자격을 확인하세요.",
+        "최종승인일부터1년이 되는 달 말일23:59 하차까지 사용하며 남은 포인트는 소멸합니다.앱 설치 지연으로 사용기간이 연장되지는 않습니다.",
+        "몽땅정보통과 운영사 앱 가입 휴대전화 번호가 같아야 지급됩니다.차량1대당카시트1개이며 영아 미동반 탑승은 환수될 수 있습니다.",
+        "기본5천원,다자녀/증명서발급한부모 추가5천원 등 운영사 쿠폰은 해당조건·동일사용기한을 확인하세요."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26",
+      "verifiedAt": "2026-10-26T07:15:46.246Z",
       "evidence": [
         {
-          "url": "https://umppa.seoul.go.kr/hmpg/life/cycl/lifeCyclInfoDetail.do?sys_name=biz&doc_id=3EF7489ACF614F939FEF8514308797D2",
+          "url": "https://umppa.seoul.go.kr/hmpg/life/cycl/lifeCyclInfoDetail.do?doc_id=3EF7489ACF614F939FEF8514308797D2&sys_name=biz",
           "publisher": "서울시 탄생육아 몽땅정보통",
-          "summary": "공식 사업 상세의 신청기한·2026년 변경 조건·거주 및 대상자 요건·지원 내용과 예외를 확인했습니다. 개인별 기한이나 상시 신청에 임의의 연말 종료일을 붙이지 않았습니다.",
-          "verifiedAt": "2026-10-26",
+          "summary": "2026연중신청·24개월/동일주민등록·10만원·총2회제한·최종승인1년되는달말하차·소멸·전화번호일치·영아미동반환수·쿠폰조건 확인.",
+          "verifiedAt": "2026-10-26T07:15:46.246Z",
           "fields": [
             "title",
             "audience",
@@ -383,12 +430,509 @@
           ]
         }
       ],
-      "contentHash": "29be36fd89bed29f726f06772a4f5054064e3ada138d1f8312b8e4fb809d0586",
+      "contentHash": "87806cd596c7f591fa906691e69b3f28769bf19d5f7f60d27e1823ade8d1515c",
       "siteUrl": "/tools/family-support/#support-2a2cd76d07208861688b"
+    },
+    {
+      "id": "support-355d6dfb1a2b4323ab369daa44cc8f8f",
+      "categoryIds": [
+        "family-support"
+      ],
+      "title": "서울 · 난임·임산부 심리상담센터",
+      "providerId": "seoul-umppa",
+      "canonicalUrl": "https://umppa.seoul.go.kr/hmpg/life/cycl/lifeCyclInfoDetail.do?doc_id=355D6DFB1A2B4323AB369DAA44CC8F8F&sys_name=biz",
+      "region": "서울",
+      "location": "강남·송파·보라매·금천 지역 센터 · 전화 예약 후 방문",
+      "audience": "난임부부·유산/사산 경험부부·임산부·양육모",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "applicationMode": "relative",
+      "applicationNote": "센터별 전화 예약 후 상담 일시 협의 · 개인별 종결까지 상담",
+      "eventStart": null,
+      "eventEnd": null,
+      "scheduleNote": "평일09:00~17:00 안내 · 센터별 예약 확인",
+      "feeStatus": "unknown",
+      "feeText": "신청 비용 미표기 · 서비스별 본인부담금 확인",
+      "summary": "전담 상담사가 등록부터 종결까지1:1 상담과 정서 지원 프로그램을 제공합니다.",
+      "conditions": [
+        "방문 전 센터로 전화해 상담 예약이 필요합니다.개인별 상담 시간이 길어질 수 있으므로 예약 시간을 확인하세요.",
+        "강남·송파 서울권역과 보라매·금천 서남권역 센터 안내를 한 사업으로 묶었습니다.지역별 별도 혜택으로 중복 신청하지 마세요.",
+        "이용 대상과 비용·초기 상담 서류·일정 변경/취소는 예약할 센터에서 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T07:15:46.246Z",
+      "evidence": [
+        {
+          "url": "https://umppa.seoul.go.kr/hmpg/life/cycl/lifeCyclInfoDetail.do?doc_id=355D6DFB1A2B4323AB369DAA44CC8F8F&sys_name=biz",
+          "publisher": "서울시 탄생육아 몽땅정보통",
+          "summary": "현재상세의대상·전담1:1등록~종결·전화사전예약·평일9~17·4센터 확인.권역중복안내는 별도사업으로 세지 않음.",
+          "verifiedAt": "2026-10-26T07:15:46.246Z",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "applicationMode",
+            "applicationNote"
+          ]
+        }
+      ],
+      "contentHash": "178ae13d336d2652d5a25eca1f398a4559018526299cb6d01d4bfc35f44b46f1",
+      "siteUrl": "/tools/family-support/#support-355d6dfb1a2b4323ab369daa44cc8f8f"
+    },
+    {
+      "id": "support-f0257b1d98e744d1859aeda7082d1349",
+      "categoryIds": [
+        "family-support"
+      ],
+      "title": "서울아기 건강 첫걸음 · 방문 건강관리",
+      "providerId": "seoul-umppa",
+      "canonicalUrl": "https://umppa.seoul.go.kr/hmpg/life/cycl/lifeCyclInfoDetail.do?doc_id=F0257B1D98E744D1859AEDA7082D1349&sys_name=biz",
+      "region": "서울",
+      "location": "서울시 관할 보건소 신청 후 가정 방문",
+      "audience": "서울시 임산부 및 만2세 미만 영유아 가정",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "applicationMode": "ongoing",
+      "applicationNote": "연중 평일 신청 · 보건소와 방문 날짜 협의",
+      "eventStart": null,
+      "eventEnd": null,
+      "scheduleNote": "연중 평일 · 개인별 방문 일정",
+      "feeStatus": "unknown",
+      "feeText": "신청 비용 미표기 · 서비스별 본인부담금 확인",
+      "summary": "영유아 건강간호사가 가정을 방문해 아기 건강관리와 양육을 지원합니다.",
+      "conditions": [
+        "서울시 임신출산정보센터 또는 관할 보건소에 신청한 뒤 방문 날짜를 협의합니다.",
+        "보편방문은 신청 가정,지속방문은 고위험 가정에 만2세까지 약30회 안내로 대상에 따라 횟수가 다릅니다.",
+        "산전·산후 우울증 선별과 양육 교육을 포함하며 개별 치료를 보장하는 안내는 아닙니다.비용·변경/취소는 보건소에 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T07:15:46.246Z",
+      "evidence": [
+        {
+          "url": "https://umppa.seoul.go.kr/hmpg/life/cycl/lifeCyclInfoDetail.do?doc_id=F0257B1D98E744D1859AEDA7082D1349&sys_name=biz",
+          "publisher": "서울시 탄생육아 몽땅정보통",
+          "summary": "실제원문의서울임산부/만2세미만·연중평일·보편/고위험지속방문차이·약30회·우울선별·신청후방문협의 확인.생애초기건강관리의중복서울안내는통합.",
+          "verifiedAt": "2026-10-26T07:15:46.246Z",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "applicationMode",
+            "applicationNote"
+          ]
+        }
+      ],
+      "contentHash": "3949b3a5d673237dcb54d699ad459dca7a469767dfc9557aefdf1757c86afd7b",
+      "siteUrl": "/tools/family-support/#support-f0257b1d98e744d1859aeda7082d1349"
+    },
+    {
+      "id": "support-95248c9a74c14b51968f2bbda16ae467",
+      "categoryIds": [
+        "family-support"
+      ],
+      "title": "서울 · 산모·신생아 건강관리 본인부담금 지원",
+      "providerId": "seoul-umppa",
+      "canonicalUrl": "https://umppa.seoul.go.kr/hmpg/life/cycl/lifeCyclInfoDetail.do?doc_id=95248C9A74C14B51968F2BBDA16AE467&sys_name=biz",
+      "region": "서울",
+      "location": "서비스 이용 후 주소지 보건소 신청",
+      "audience": "건강관리 바우처를 이용한 기초생활수급/차상위 산모 또는 중위소득150%이하 비혼 산모",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "applicationMode": "relative",
+      "applicationNote": "건강관리서비스 이용 후 증빙을 갖춰 관할 보건소에 신청 · 자치구별 접수기한 확인",
+      "eventStart": null,
+      "eventEnd": null,
+      "feeStatus": "unknown",
+      "feeText": "신청 비용 미표기 · 서비스별 본인부담금 확인",
+      "summary": "요건을 충족하는 저소득·비혼 산모의 건강관리서비스 본인부담금90%를 지원합니다.",
+      "conditions": [
+        "기초생활수급자·차상위계층 또는 중위소득150%이하 비혼모 조건입니다.모든 출산 가정에 같은 비율이 적용되는 사업이 아닙니다.",
+        "비혼모는 표준 서비스까지90% 지원 안내이며 실제 인정 서비스·상한은 보건소에서 확인하세요.",
+        "서비스 이용 후 소득·비혼 출산 등 증빙을 준비해 주소지 보건소로 신청합니다.접수 마감·중복지원·환수 조건은 개별 확인이 필요합니다."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T07:15:46.246Z",
+      "evidence": [
+        {
+          "url": "https://umppa.seoul.go.kr/hmpg/life/cycl/lifeCyclInfoDetail.do?doc_id=95248C9A74C14B51968F2BBDA16AE467&sys_name=biz",
+          "publisher": "서울시 탄생육아 몽땅정보통",
+          "summary": "공식상세의저소득기초/차상위·비혼모중위150%/표준서비스·본인부담90%·서비스이용후증빙보건소신청 확인.기한미표기를임의연말마감으로만들지않음.",
+          "verifiedAt": "2026-10-26T07:15:46.246Z",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "applicationMode",
+            "applicationNote"
+          ]
+        }
+      ],
+      "contentHash": "a10b5f58b0a1298ffa71f7e44207c1b3d903b6af29c36af990cc3ffc02ca8608",
+      "siteUrl": "/tools/family-support/#support-95248c9a74c14b51968f2bbda16ae467"
+    },
+    {
+      "id": "support-59f45fe9bc024848ad07143c962e6869",
+      "categoryIds": [
+        "family-support"
+      ],
+      "title": "서울형 손주돌봄수당 · 친인척·민간형",
+      "providerId": "seoul-umppa",
+      "canonicalUrl": "https://umppa.seoul.go.kr/hmpg/life/cycl/lifeCyclInfoDetail.do?doc_id=59F45FE9BC024848AD07143C962E6869&sys_name=biz",
+      "region": "서울",
+      "location": "몽땅정보통 신청 · 서울 거주 아동 돌봄",
+      "audience": "서울 거주24~36개월 아동·부모 가정 중 중위소득150%이하 및 양육공백 가정",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "applicationMode": "relative",
+      "applicationNote": "23개월이 되는 달부터 매월1~15일 신청 · 소득판정·돌봄월별 자격 확인",
+      "eventStart": null,
+      "eventEnd": null,
+      "feeStatus": "unknown",
+      "feeText": "신청 비용 미표기 · 서비스별 본인부담금 확인",
+      "summary": "친인척 돌봄수당 또는 지정 민간서비스 이용권 중 한 유형으로 돌봄비를 지원합니다.",
+      "conditions": [
+        "부모와 아동이 서울 주민등록상 거주하고 부 또는 모와 아동의 주소가 같아야 합니다.중위소득150%이하,맞벌이·한부모·다자녀 등 양육공백 요건을 모두 확인하세요.",
+        "매월1~15일 신청,25일까지 자치구 선정,전월말 조력자 교육/기관가입 후 돌봄하는 절차입니다.정부 아이돌봄 소득판정이 없으면15일전 별도 신청도 필요합니다.",
+        "친인척형은4촌이내 조력자1명·월40시간 충족 시 아동1/2/3명에30/45/60만원입니다.조력자는타지역거주도가능하나 수급 계좌명의자는 서울시민 조건입니다.",
+        "친인척 돌봄은1일4시간까지만 인정하며22~06시,어린이집기본보육9~16시는 제외됩니다.시작/종료QR와 교육 등 기록 요건이 있습니다.",
+        "민간형은지정기관 월20~40시간 이용에 비례하여 한도 내 지원하고 자부담이 발생할 수 있습니다.미사용 시간은 이월되지 않습니다.",
+        "친인척·민간형은택1이며 해당월 정부지원 아이돌봄서비스 미이용을 확인한 뒤 다음달20일 지원 안내입니다.거짓 돌봄·신청은 자치구의 환수·중지 규정을 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T07:15:46.246Z",
+      "evidence": [
+        {
+          "url": "https://umppa.seoul.go.kr/hmpg/life/cycl/lifeCyclInfoDetail.do?doc_id=59F45FE9BC024848AD07143C962E6869&sys_name=biz",
+          "publisher": "서울시 탄생육아 몽땅정보통",
+          "summary": "2026소득표를포함한두유형상세대조:24~36개월/23개월신청·매월1~15·중위150/맞벌이25%경감·양육공백·주소·30/45/60만원·40h/민간20~40h·일4h·야간/보육시간제외·정부아이돌봄중복불가·QR·교육·수급자서울조건 확인.",
+          "verifiedAt": "2026-10-26T07:15:46.246Z",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "applicationMode",
+            "applicationNote"
+          ]
+        },
+        {
+          "url": "https://umppa.seoul.go.kr/hmpg/life/cycl/lifeCyclInfoDetail.do?doc_id=FBBD14E6690A4A898D077E618324D3F6&sys_name=biz",
+          "publisher": "서울시 탄생육아 몽땅정보통",
+          "summary": "같은 손주돌봄사업 민간형 상세의월20~40시간·시간당지원/월한도·자부담·미사용이월불가·정부아이돌봄미이용과공통자격 대조.",
+          "verifiedAt": "2026-10-26T07:15:46.246Z",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "applicationMode",
+            "applicationNote"
+          ]
+        }
+      ],
+      "contentHash": "e475014918e1b692a5a18c253929729f0605b8d761cf8ecf1abc0f01ab547172",
+      "siteUrl": "/tools/family-support/#support-59f45fe9bc024848ad07143c962e6869"
+    },
+    {
+      "id": "support-c692c02dcc084e7ba5a232101911372d",
+      "categoryIds": [
+        "family-support"
+      ],
+      "title": "서울 · 다둥이 행복카드",
+      "providerId": "seoul-umppa",
+      "canonicalUrl": "https://umppa.seoul.go.kr/hmpg/life/cycl/lifeCyclInfoDetail.do?doc_id=C692C02DCC084E7BA5A232101911372D&sys_name=biz",
+      "region": "서울",
+      "location": "카드사·은행 또는 서울지갑 앱 발급",
+      "audience": "서울 주민등록2자녀 이상 가정 · 막내18세 이하",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "applicationMode": "relative",
+      "applicationNote": "공식 자격·개인별 신청 시기와 관할 기관의 접수 상태 확인",
+      "eventStart": null,
+      "eventEnd": null,
+      "feeStatus": "unknown",
+      "feeText": "신청 비용 미표기 · 서비스별 본인부담금 확인",
+      "summary": "감면시설과 협력업체에서 카드 제시 또는 결제로 다자녀 혜택을 받는 카드입니다.",
+      "conditions": [
+        "막내18세 이하·서울 주민등록·2자녀이상 요건을 확인하세요.시설별 감면 내용과 제출 증빙은 다릅니다.",
+        "신한·우리 신용/체크카드는 카드사·은행별 신청 경로가 다르며 발급·연회비·금융상품 조건은 카드사에서 확인하세요.",
+        "신분확인용 모바일카드는 서울지갑 앱 가입·로그인 후 발급합니다.신용카드 발급이 필수인 방식만 있는 것은 아닙니다.",
+        "혜택은 해당 감면시설·협력업체 운영시간과 적용 조건에 따릅니다.모든 시설이 무료인 카드로 안내하지 않습니다."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T07:15:46.246Z",
+      "evidence": [
+        {
+          "url": "https://umppa.seoul.go.kr/hmpg/life/cycl/lifeCyclInfoDetail.do?doc_id=C692C02DCC084E7BA5A232101911372D&sys_name=biz",
+          "publisher": "서울시 탄생육아 몽땅정보통",
+          "summary": "현재상세의서울2자녀/막내18이하·신한/우리발급·서울지갑신분용카드·감면시설조건 확인.각시설 혜택을개별공고로복제않음.",
+          "verifiedAt": "2026-10-26T07:15:46.246Z",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "applicationMode",
+            "applicationNote"
+          ]
+        }
+      ],
+      "contentHash": "c0a7a5395ebdd097bd76057368e48651afbfaebe9f851dbc0c4141ba886cc36b",
+      "siteUrl": "/tools/family-support/#support-c692c02dcc084e7ba5a232101911372d"
+    },
+    {
+      "id": "support-07515e1194824541a6e372968c7d54ec",
+      "categoryIds": [
+        "family-support"
+      ],
+      "title": "서울아이발달지원센터 · 발달검사와 상담",
+      "providerId": "seoul-umppa",
+      "canonicalUrl": "https://umppa.seoul.go.kr/hmpg/life/cycl/lifeCyclInfoDetail.do?doc_id=07515E1194824541A6E372968C7D54EC&sys_name=biz",
+      "region": "서울",
+      "location": "서울아이발달지원센터 온라인 예약",
+      "audience": "어린이집 재원아동 및 가정양육아동 · 검사별 세부 연령은 예약 확인",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "applicationMode": "relative",
+      "applicationNote": "공식 자격·개인별 신청 시기와 관할 기관의 접수 상태 확인",
+      "eventStart": null,
+      "eventEnd": null,
+      "scheduleNote": "평일09~18시·토10~17시 · 야간 운영일은 센터 확인",
+      "feeStatus": "unknown",
+      "feeText": "신청 비용 미표기 · 서비스별 본인부담금 확인",
+      "summary": "발달 선별검사 후 아동별 상담·교육·재평가와 필요한 치료기관 연계를 제공합니다.",
+      "conditions": [
+        "센터 홈페이지에서 발달검사를 예약합니다.각 검사별 자녀 연령·거주지·이용 자격과 잔여 일정을 확인하세요.",
+        "검사 후 정상/관찰필요/도움필요 분류에 따라 상담·교육·재평가·연계를 제공하며 모든 아동에게 같은 치료를 제공하는 안내는 아닙니다.",
+        "원문 야간 요일 표기에 문자가 깨져 있어 특정 요일을 확정하지 않았습니다.이용료·예약 변경/취소는 센터에서 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T07:15:46.246Z",
+      "evidence": [
+        {
+          "url": "https://umppa.seoul.go.kr/hmpg/life/cycl/lifeCyclInfoDetail.do?doc_id=07515E1194824541A6E372968C7D54EC&sys_name=biz",
+          "publisher": "서울시 탄생육아 몽땅정보통",
+          "summary": "실제상세의재원/가정양육아동·온라인발달검사예약·분류별상담/재평가/연계·주간운영확인.야간요일손상값과미표기세부연령·비용은추정안함.",
+          "verifiedAt": "2026-10-26T07:15:46.246Z",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "applicationMode",
+            "applicationNote"
+          ]
+        }
+      ],
+      "contentHash": "84c63ab32bfbb18845ae1df3ee4a4d816acd9331c6c6b640d1ca7c6947559cd0",
+      "siteUrl": "/tools/family-support/#support-07515e1194824541a6e372968c7d54ec"
+    },
+    {
+      "id": "support-5860eba4dc8b4da4b7391edac4a197eb",
+      "categoryIds": [
+        "family-support"
+      ],
+      "title": "서울장난감도서관 · 장난감·육아용품 대여",
+      "providerId": "seoul-umppa",
+      "canonicalUrl": "https://umppa.seoul.go.kr/hmpg/life/cycl/lifeCyclInfoDetail.do?doc_id=5860EBA4DC8B4DA4B7391EDAC4A197EB&sys_name=biz",
+      "region": "서울",
+      "location": "서울장난감도서관 회원가입 후 대여",
+      "audience": "서울 거주 또는 서울 소재 직장인 가정의 미취학 영유아 · 장애아동은 만12세까지",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "applicationMode": "relative",
+      "applicationNote": "공식 자격·개인별 신청 시기와 관할 기관의 접수 상태 확인",
+      "eventStart": null,
+      "eventEnd": null,
+      "scheduleNote": "화~금10:00~18:30 /토·일11:00~17:00 · 지점·휴관 확인",
+      "feeStatus": "unknown",
+      "feeText": "신청 비용 미표기 · 서비스별 본인부담금 확인",
+      "summary": "회원 가정이 장난감·도서·DVD·육아용품과 장애 영유아 장난감을 빌릴 수 있습니다.",
+      "conditions": [
+        "서울 거주 시민 또는 서울 소재 직장인 가정 자녀의 미취학 조건이며 장애아동은만12세까지 안내입니다.",
+        "공식 장난감도서관 홈페이지 회원가입 후 이용합니다.거주/재직·자녀·장애 증빙과 회원비는 별도 확인하세요.",
+        "지점별 대여가능 품목·수량·기간·연장·연체·파손배상 조건을 확인한 뒤 대여하세요.모든 품목의 재고를 보장하지 않습니다."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T07:15:46.246Z",
+      "evidence": [
+        {
+          "url": "https://umppa.seoul.go.kr/hmpg/life/cycl/lifeCyclInfoDetail.do?doc_id=5860EBA4DC8B4DA4B7391EDAC4A197EB&sys_name=biz",
+          "publisher": "서울시 탄생육아 몽땅정보통",
+          "summary": "공식상세의서울거주/서울직장·미취학/장애12세·회원가입·품목·화금/주말시간 확인.회비·재고·연체규정미확정은unknown으로분리.",
+          "verifiedAt": "2026-10-26T07:15:46.246Z",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "applicationMode",
+            "applicationNote"
+          ]
+        }
+      ],
+      "contentHash": "b7cc7cc5feff17ed48a923b16892c8b2559a2731d74f08b961b92d27e51bc5dc",
+      "siteUrl": "/tools/family-support/#support-5860eba4dc8b4da4b7391edac4a197eb"
+    },
+    {
+      "id": "ehealth-preconception",
+      "categoryIds": [
+        "family-support"
+      ],
+      "title": "전국 · 임신 사전건강관리 검사비 지원",
+      "providerId": "ehealth",
+      "canonicalUrl": "https://www.e-health.go.kr/gh/caSrvcGud/selectMdclSupGudInfo.do?heBiz=PG00003&menuId=200097",
+      "region": "전국",
+      "location": "온라인 또는 주소지 관할 기관",
+      "audience": "20~49세 남녀 검사 희망자 · 15~19세 부부 등 예외 조건 확인",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "applicationMode": "relative",
+      "applicationNote": "사전 신청 후3개월 이내 검사 · 검사일부터1개월 이내 청구",
+      "eventStart": null,
+      "eventEnd": null,
+      "feeStatus": "unknown",
+      "feeText": "지원한도 초과·제외 비용 등 개인별 본인부담 확인",
+      "summary": "여성 최대13만원·남성 최대5만원의 가임력 검사비를 주기별 지원합니다.",
+      "conditions": [
+        "결혼·자녀 여부와 무관하며 내국인 배우자가 있는 외국인도 신청할 수 있습니다.15~19세는부부(예비·사실혼포함) 예외 대상입니다.",
+        "29세이하/30~34세/35~49세 각주기1회,최대3회입니다.여성AMH·부인과초음파,남성정자정밀형태를포함한정액검사가 대상입니다.",
+        "e보건소 또는 주소지보건소에 신청하고 검사의뢰서를 받아 사업참여 의료기관에 제시합니다.신청일부터3개월내 검사·검사일부터1개월내청구 기한을 지키세요.",
+        "영수증·세부내역·본인통장 등 증빙이 필요합니다.지원한도초과·추가검사 비용과 지역별 예산·접수상태를 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T07:15:46.246Z",
+      "evidence": [
+        {
+          "url": "https://www.e-health.go.kr/gh/caSrvcGud/selectMdclSupGudInfo.do?heBiz=PG00003&menuId=200097",
+          "publisher": "공공보건포털 e보건소",
+          "summary": "중앙운영기관 e보건소 실제상세에서전국20~49세/예외·주기3회·여13/남5만원·검사항목·사전의뢰서·신청3개월검사·검사1개월청구·3개월내지급·증빙 확인.서울요약공고와같은사업으로 한 레코드.",
+          "verifiedAt": "2026-10-26T07:15:46.246Z",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "applicationMode",
+            "applicationNote"
+          ]
+        }
+      ],
+      "contentHash": "caeaf47ef77c4cb98312486243404e0797243ed60b883ccf8ac1b3f9f54aa7e6",
+      "siteUrl": "/tools/family-support/#ehealth-preconception"
+    },
+    {
+      "id": "national-parent-pay-2026",
+      "categoryIds": [
+        "family-support"
+      ],
+      "title": "전국 · 2026 부모급여",
+      "providerId": "korea-policy",
+      "canonicalUrl": "https://m.korea.kr/multi/visualNewsView.do?newsId=148957936",
+      "region": "전국",
+      "location": "온라인 또는 주소지 관할 기관",
+      "audience": "만2세 미만 아동을 양육하는 가정",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "applicationMode": "relative",
+      "applicationNote": "출생일부터60일 이내 신청 시 출생월부터 소급 · 이후 신청·서비스 전환은 관할 확인",
+      "eventStart": null,
+      "eventEnd": null,
+      "feeStatus": "unknown",
+      "feeText": "지원한도 초과·제외 비용 등 개인별 본인부담 확인",
+      "summary": "가정양육0세 월100만원·1세 월50만원을 지원하며 보육서비스 이용 시 차액 지급 기준이 적용됩니다.",
+      "conditions": [
+        "2026/1/14 보건복지부 안내 기준입니다.방문은전국읍면동,온라인은복지로·정부24에서 신청하며 출생신고와 함께 원스톱 신청도 가능합니다.",
+        "어린이집 이용시 보육료를 뺀 차액입니다.0세는100만원-58만4천원=41만6천원,1세는보육료51만5천원으로 현금차액이 없다는2026안내입니다.",
+        "어린이집·종일제아이돌봄 이용은 해당 서비스를 별도로 신청해야 합니다.현금급여와 서비스지원금을 전액 중복 지급하는 방식이 아닙니다.",
+        "가정양육급여는매월25일,어린이집차액은익월20일 안내입니다.출생60일 기한과 서비스변경 시점을 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T07:15:46.246Z",
+      "evidence": [
+        {
+          "url": "https://m.korea.kr/multi/visualNewsView.do?newsId=148957936",
+          "publisher": "대한민국 정책브리핑 · 보건복지부",
+          "summary": "2026보건복지부 공식카드뉴스 본문전체의만2세미만·0세100/1세50·보육차액/0세41.6만원·60일소급·신청채널·서비스별도신청·지급일 확인.",
+          "verifiedAt": "2026-10-26T07:15:46.246Z",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "applicationMode",
+            "applicationNote"
+          ]
+        }
+      ],
+      "contentHash": "0c5f7590c34747415d8caafe408b56457174013c02fea9413d5732d5ac13ec2b",
+      "siteUrl": "/tools/family-support/#national-parent-pay-2026"
+    },
+    {
+      "id": "national-first-meeting",
+      "categoryIds": [
+        "family-support"
+      ],
+      "title": "전국 · 첫만남이용권",
+      "providerId": "mohw-family",
+      "canonicalUrl": "https://www.mohw.go.kr/menu.es?mid=a10711020100",
+      "region": "전국",
+      "location": "온라인 또는 주소지 관할 기관",
+      "audience": "2024년 이후 출생신고·주민등록번호를 부여받은 출생2년 미만 아동",
+      "ageGroups": [],
+      "applicationStart": null,
+      "applicationEnd": null,
+      "applicationMode": "relative",
+      "applicationNote": "출생 후 별도 지급 신청 필요 · 출생일부터2년 사용기한 내 여유 있게 신청",
+      "eventStart": null,
+      "eventEnd": null,
+      "feeStatus": "unknown",
+      "feeText": "지원한도 초과·제외 비용 등 개인별 본인부담 확인",
+      "summary": "첫째200만원·둘째이상300만원의 양육 바우처를 국민행복카드로 지급합니다.",
+      "conditions": [
+        "출생신고만으로 자동 지급되지 않습니다.주민센터 또는정부24 등에서 별도로 신청하며 신분·보호자·출생순위 증빙이 필요할 수 있습니다.",
+        "2024년 이후 출생아의 사용기한은출생일부터2년입니다.2026/9/15기준법령안내로 현재기한을 추가 대조했습니다.",
+        "유흥·사행·일부위생·레저·성인용품·면세점 등 제외업종이 있습니다.모든 가맹점에서 현금처럼 쓸 수 있는 지원은 아닙니다.",
+        "보호자 대리신청은위임장·신분증 등 추가서류가 필요합니다.특수 보호아동·국적/출생신고 예외는 관할 기관에서 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T07:15:46.246Z",
+      "evidence": [
+        {
+          "url": "https://www.mohw.go.kr/menu.es?mid=a10711020100",
+          "publisher": "보건복지부 출산정책",
+          "summary": "보건복지부 사업별실제상세의2024이후출생/2년미만·첫째200/둘째300·국민행복카드·제외업종·증빙과2026/9/15법령정보의2년사용·별도신청을 대조.",
+          "verifiedAt": "2026-10-26T07:15:46.246Z",
+          "fields": [
+            "title",
+            "audience",
+            "conditions",
+            "applicationMode",
+            "applicationNote"
+          ]
+        },
+        {
+          "url": "https://www.easylaw.go.kr/CSP/OnhunqueansInfoRetrieve.laf?onhunqnaAstSeq=97&onhunqueSeq=6574&pagingType=&recommandType=1&retrieveType=&sch=&sortType=&targetRow=1",
+          "publisher": "법제처 찾기쉬운 생활법령정보",
+          "summary": "2026/9/15기준 안내의출생2년사용기한·첫째200/둘째300·출생신고외별도신청을직접 확인.",
+          "verifiedAt": "2026-10-26T07:15:46.246Z",
+          "fields": [
+            "title",
+            "audience",
+            "applicationMode",
+            "applicationNote",
+            "conditions"
+          ]
+        }
+      ],
+      "contentHash": "3bd87e82bf364d2b53e10994df388a244e6669cdcf6d3ee5dc211f942aac27d3",
+      "siteUrl": "/tools/family-support/#national-first-meeting"
     }
   ],
-  "siteRevision": "ba7b6fdb48b05b218350a3760e83da828f7fd163",
-  "generatedAt": "2026-10-26T04:05:36.188Z",
+  "siteRevision": "ff3a41b4ed84cbbe9cc1bd83d6a3ebed916a1561",
+  "generatedAt": "2026-10-26T12:06:27.577Z",
   "window": {
     "start": "2026-10-26",
     "end": "2026-12-25"

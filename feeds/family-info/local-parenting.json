@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "snapshotId": "77040c9b88d8e46bce1de24c",
+  "snapshotId": "c0a044e253b8012893aad804",
   "timezone": "Asia/Seoul",
   "categories": [
     {
@@ -14,13 +14,13 @@
       "split": "region",
       "href": "/tools/local-parenting/",
       "accent": "blue",
-      "categoryRevision": "23d940c5bf1b77c0",
-      "lastVerifiedAt": "2026-10-26",
-      "lastCollectedAt": "2026-10-26",
+      "categoryRevision": "3fe3fd5c1f170082",
+      "lastVerifiedAt": "2026-10-26T07:04:04.416Z",
+      "lastCollectedAt": "2026-10-26T07:04:04.416Z",
       "lastDeployedAt": null,
       "outcome": "partial-review",
-      "verifiedCount": 3,
-      "currentCount": 3,
+      "verifiedCount": 16,
+      "currentCount": 16,
       "failures": []
     }
   ],
@@ -68,12 +68,13 @@
       "name": "임신육아종합포털 아이사랑",
       "url": "https://www.childcare.go.kr/",
       "categoryIds": [
-        "local-parenting"
+        "local-parenting",
+        "kids-programs"
       ],
       "regions": [
         "전국"
       ],
-      "lastSuccessAt": "2026-10-26"
+      "lastSuccessAt": "2026-10-26T07:04:04.416Z"
     }
   ],
   "records": [
@@ -84,35 +85,57 @@
       ],
       "title": "인천형 부모교육 · 똑똑한 영양 행복한 성장",
       "providerId": "childcare-portal",
-      "canonicalUrl": "https://www.childcare.go.kr/?menuno=328&flag=CSl&EDCEVENTSEQ=53201",
+      "canonicalUrl": "https://www.childcare.go.kr/?EDCEVENTSEQ=53201&flag=CSl&menuno=328",
       "region": "인천",
-      "location": "비대면 화상교육(ZOOM)",
-      "audience": "영유아를 양육하는 부모·양육자",
+      "location": "실시간 ZOOM",
+      "audience": "인천 거주 0~12개월 영아의 부모 15명",
       "ageGroups": [],
-      "applicationStart": "2026-10-19",
+      "applicationStart": "2026-10-19T10:00:00+09:00",
       "applicationEnd": "2026-11-10",
       "eventStart": "2026-11-11",
       "eventEnd": "2026-11-11",
-      "scheduleNote": "10:00~12:00",
+      "scheduleNote": "11/11 10:00~12:00 · 온라인 부모교육",
       "feeStatus": "unknown",
-      "feeText": "공식 상세에서 비용을 확정하지 않아 신청 전 센터 확인 필요",
-      "summary": "영유아 영양을 주제로 진행하는 부모교육입니다.",
+      "feeText": "참가비 미표기 · 신청 전 운영 센터 확인",
+      "summary": "영아의 적절한 영양 섭취와 건강한 성장을 배우는 부모교육입니다.",
       "conditions": [
-        "주최는 인천광역시육아종합지원센터입니다. 신청 방법과 세부 자격은 센터에서 확인해 주세요.",
-        "접수기간과 실제 잔여석은 다를 수 있습니다. 화상교육은 접속 안내도 확인하세요."
+        "부모다움 홈페이지에 로그인한 뒤 해당 교육을 신청하세요. 선착순·실제 잔여석은 별도 확인이 필요합니다.",
+        "불참 시 센터에 미리 연락해 주세요. 이수증은 실제 참석자에게 발급하는 안내입니다.",
+        "인천 거주 및 자녀 월령을 확인하세요. 포스터는 10/19 10시부터 선착순, 접수표는 11/10까지로 안내하며 조기 마감될 수 있습니다."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26",
+      "verifiedAt": "2026-10-26T07:04:04.416Z",
       "evidence": [
         {
-          "url": "https://www.childcare.go.kr/?menuno=328&flag=CSl&EDCEVENTSEQ=53201",
+          "url": "https://www.childcare.go.kr/?EDCEVENTSEQ=53201&flag=CSl&menuno=328",
           "publisher": "아이사랑 · 인천광역시육아종합지원센터",
-          "summary": "아이사랑 행사 상세의 주최기관·장소·행사일과 접수기간을 확인했습니다. 부모·조부모 대상은 공식 프로그램 제목으로 확인하며 비용은 미확인으로 분리했습니다.",
-          "verifiedAt": "2026-10-26",
+          "summary": "상세 접수표와 포스터에서 2026/11/11 10~12시, 인천·0~12개월 영아 부모15명,10/19 10시 개시·11/10 외부 마감, 로그인·불참 연락·참석 이수증 확인. 비용 미표기.",
+          "verifiedAt": "2026-10-26T07:04:04.416Z",
           "fields": [
             "title",
             "audience",
+            "ageGroups",
             "conditions",
+            "location",
+            "scheduleNote",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd"
+          ]
+        },
+        {
+          "url": "https://central.childcare.go.kr/component/file/ND_directDownload.do?fn=img.gif&fp=/upload/images/001901/20261021133647255_LIIOLMIJ.jpg",
+          "publisher": "아이사랑 · 인천광역시육아종합지원센터",
+          "summary": "공식 공지에 연결된 원본 포스터를 직접 열람. 상세 접수표와 포스터에서 2026/11/11 10~12시, 인천·0~12개월 영아 부모15명,10/19 10시 개시·11/10 외부 마감, 로그인·불참 연락·참석 이수증 확인. 비용 미표기.",
+          "verifiedAt": "2026-10-26T07:04:04.416Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "location",
+            "scheduleNote",
             "applicationStart",
             "applicationEnd",
             "eventStart",
@@ -120,7 +143,7 @@
           ]
         }
       ],
-      "contentHash": "7a7fd15d324c0345d105c4178283345985e77fd96ca41a41e8a973bb60d23467",
+      "contentHash": "c842fab5e15971768c0bfdf07d197cbecbf6b0ac8a006179bb7fb509a580782a",
       "siteUrl": "/tools/local-parenting/#parenting-53201"
     },
     {
@@ -130,35 +153,56 @@
       ],
       "title": "공통 부모교육 · 안전하고 건강한 우리 집",
       "providerId": "childcare-portal",
-      "canonicalUrl": "https://www.childcare.go.kr/?menuno=328&flag=CSl&EDCEVENTSEQ=53141",
+      "canonicalUrl": "https://www.childcare.go.kr/?EDCEVENTSEQ=53141&flag=CSl&menuno=328",
       "region": "인천",
-      "location": "비대면 화상교육(ZOOM)",
-      "audience": "영유아를 양육하는 부모·양육자",
+      "location": "실시간 ZOOM",
+      "audience": "인천 지역 영유아 부모·양육자",
       "ageGroups": [],
-      "applicationStart": "2026-10-30",
+      "applicationStart": "2026-10-30T10:00:00+09:00",
       "applicationEnd": "2026-11-06",
       "eventStart": "2026-11-18",
       "eventEnd": "2026-11-18",
-      "scheduleNote": "10:00~12:00",
+      "scheduleNote": "11/18 10:00~12:00",
       "feeStatus": "unknown",
-      "feeText": "공식 상세에서 비용을 확정하지 않아 신청 전 센터 확인 필요",
+      "feeText": "참가비 미표기 · 신청 전 운영 센터 확인",
       "summary": "가정의 안전과 건강을 다루는 온라인 부모교육입니다.",
       "conditions": [
-        "주최는 인천광역시육아종합지원센터입니다. 신청 방법과 세부 자격은 센터에서 확인해 주세요.",
-        "접수기간과 실제 잔여석은 다를 수 있습니다. 화상교육은 접속 안내도 확인하세요."
+        "부모다움 홈페이지에 로그인한 뒤 해당 교육을 신청하세요. 선착순·실제 잔여석은 별도 확인이 필요합니다.",
+        "불참 시 센터에 미리 연락해 주세요. 이수증은 실제 참석자에게 발급하는 안내입니다."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26",
+      "verifiedAt": "2026-10-26T07:04:04.416Z",
       "evidence": [
         {
-          "url": "https://www.childcare.go.kr/?menuno=328&flag=CSl&EDCEVENTSEQ=53141",
+          "url": "https://www.childcare.go.kr/?EDCEVENTSEQ=53141&flag=CSl&menuno=328",
           "publisher": "아이사랑 · 인천광역시육아종합지원센터",
-          "summary": "아이사랑 행사 상세의 주최기관·장소·행사일과 접수기간을 확인했습니다. 부모·조부모 대상은 공식 프로그램 제목으로 확인하며 비용은 미확인으로 분리했습니다.",
-          "verifiedAt": "2026-10-26",
+          "summary": "포스터와 접수표의11/18 10~12시,지역 내 영유아 부모,10/30 10시~11/6 신청,ZOOM·로그인·불참 연락·이수증 대조. 비용 미표기.",
+          "verifiedAt": "2026-10-26T07:04:04.416Z",
           "fields": [
             "title",
             "audience",
+            "ageGroups",
             "conditions",
+            "location",
+            "scheduleNote",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd"
+          ]
+        },
+        {
+          "url": "https://central.childcare.go.kr/component/file/ND_directDownload.do?fn=img.gif&fp=/upload/images/001896/20261015163653990_GLSXMFIC.jpg",
+          "publisher": "아이사랑 · 인천광역시육아종합지원센터",
+          "summary": "공식 공지에 연결된 원본 포스터를 직접 열람. 포스터와 접수표의11/18 10~12시,지역 내 영유아 부모,10/30 10시~11/6 신청,ZOOM·로그인·불참 연락·이수증 대조. 비용 미표기.",
+          "verifiedAt": "2026-10-26T07:04:04.416Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "location",
+            "scheduleNote",
             "applicationStart",
             "applicationEnd",
             "eventStart",
@@ -166,45 +210,219 @@
           ]
         }
       ],
-      "contentHash": "c37926545d8c7aaebf6d4c86147c52bf9c9652f7000fcd7038debd1e604eeef6",
+      "contentHash": "a47ef3c0afa96034b9581db704d220cc8529e51d8c7405e4a284781f05fb4477",
       "siteUrl": "/tools/local-parenting/#parenting-53141"
     },
     {
-      "id": "parenting-53022",
+      "id": "parenting-53162",
       "categoryIds": [
         "local-parenting"
       ],
-      "title": "조부모교육 · 책벌레 응급실에서 배우는 손주 마음 처방전",
+      "title": "경남 · 어린이집으로 찾아가는 부모의 긍정적 자아존중감 교육",
       "providerId": "childcare-portal",
-      "canonicalUrl": "https://www.childcare.go.kr/?menuno=328&flag=CSl&EDCEVENTSEQ=53022",
-      "region": "인천",
-      "location": "인천광역시육아종합지원센터 대교육장",
-      "audience": "손자녀를 돌보는 조부모",
+      "canonicalUrl": "https://www.childcare.go.kr/?EDCEVENTSEQ=53162&flag=CSl&menuno=328",
+      "region": "경남",
+      "location": "선정된 경남도 내 어린이집",
+      "audience": "경남도 내 어린이집 기관 신청 · 영유아 부모 10~30명",
       "ageGroups": [],
-      "applicationStart": "2026-10-01",
-      "applicationEnd": "2026-10-01",
-      "eventStart": "2026-11-18",
-      "eventEnd": "2026-11-18",
-      "scheduleNote": "10:00~12:00",
-      "feeStatus": "unknown",
-      "feeText": "공식 상세에서 비용을 확정하지 않아 신청 전 센터 확인 필요",
-      "summary": "그림책을 통해 손자녀의 마음을 이해하는 조부모교육입니다.",
+      "applicationStart": "2026-10-20T11:00:00+09:00",
+      "applicationEnd": "2026-10-30",
+      "eventStart": "2026-11-02",
+      "eventEnd": "2026-11-27",
+      "scheduleNote": "11월 중 어린이집과 일정을 조율하는 2시간 방문 교육 · 매일 운영 아님",
+      "feeStatus": "free",
+      "feeText": "전문 강사 방문 교육 무료 · 장소·다과·장비는 신청 기관 준비",
+      "summary": "부모의 긍정적인 자아존중감을 주제로 전문가가 어린이집을 방문합니다.",
       "conditions": [
-        "주최는 인천광역시육아종합지원센터입니다. 신청 방법과 세부 자격은 센터에서 확인해 주세요.",
-        "접수기간과 실제 잔여석은 다를 수 있습니다. 화상교육은 접속 안내도 확인하세요."
+        "개별 가정이 아닌 어린이집이 경남 센터 홈페이지에서 기관 인증서로 로그인해 신청합니다.",
+        "포스터는10/20 11시부터 선착순, 접수표는10/30까지 안내합니다. 선정과 실제 교육 날짜는 기관과 조율합니다.",
+        "부모10명 미만이면 폐강될 수 있으며30명 초과는 센터와 사전 협의가 필요합니다.",
+        "교육 공간·빔/스크린·컴퓨터·마이크 등 장비와 다과는 기관이 준비합니다."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26",
+      "verifiedAt": "2026-10-26T07:04:04.416Z",
       "evidence": [
         {
-          "url": "https://www.childcare.go.kr/?menuno=328&flag=CSl&EDCEVENTSEQ=53022",
-          "publisher": "아이사랑 · 인천광역시육아종합지원센터",
-          "summary": "아이사랑 행사 상세의 주최기관·장소·행사일과 접수기간을 확인했습니다. 부모·조부모 대상은 공식 프로그램 제목으로 확인하며 비용은 미확인으로 분리했습니다.",
-          "verifiedAt": "2026-10-26",
+          "url": "https://www.childcare.go.kr/?EDCEVENTSEQ=53162&flag=CSl&menuno=328",
+          "publisher": "아이사랑 · 경상남도육아종합지원센터",
+          "summary": "원본 포스터의 경남 운영기관·기관 인증서 신청·부모10~30명·무료2시간 방문·인원 미달 폐강·기관 준비물과 접수표11/2~27 조율 기간 대조.",
+          "verifiedAt": "2026-10-26T07:04:04.416Z",
           "fields": [
             "title",
             "audience",
+            "ageGroups",
             "conditions",
+            "location",
+            "scheduleNote",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd",
+            "feeText"
+          ]
+        },
+        {
+          "url": "https://central.childcare.go.kr/component/file/ND_directDownload.do?fn=img.gif&fp=/upload/images/001898/20261016162430408_OWXFRN61.jpg",
+          "publisher": "아이사랑 · 경상남도육아종합지원센터",
+          "summary": "공식 공지에 연결된 원본 포스터를 직접 열람. 원본 포스터의 경남 운영기관·기관 인증서 신청·부모10~30명·무료2시간 방문·인원 미달 폐강·기관 준비물과 접수표11/2~27 조율 기간 대조.",
+          "verifiedAt": "2026-10-26T07:04:04.416Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "location",
+            "scheduleNote",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd",
+            "feeText"
+          ]
+        }
+      ],
+      "contentHash": "70f2dca92a61c905926a464972046f12d3f75cc637d1b2ac04cc2bb5f27d80d7",
+      "siteUrl": "/tools/local-parenting/#parenting-53162"
+    },
+    {
+      "id": "parenting-53153",
+      "categoryIds": [
+        "local-parenting"
+      ],
+      "title": "광주 · 11월 어린이집으로 찾아가는 부모자녀 체험",
+      "providerId": "childcare-portal",
+      "canonicalUrl": "https://www.childcare.go.kr/?EDCEVENTSEQ=53153&flag=CSl&menuno=328",
+      "region": "광주",
+      "location": "선정된 광산·북·남·서구 어린이집",
+      "audience": "해당 어린이집 영아(24개월~2023년생)와 양육자 · 7~10가족",
+      "ageGroups": [],
+      "applicationStart": "2026-10-20T13:00:00+09:00",
+      "applicationEnd": "2026-11-01",
+      "eventStart": "2026-11-02",
+      "eventEnd": "2026-11-06",
+      "operatingDates": [
+        "2026-11-02",
+        "2026-11-03",
+        "2026-11-04",
+        "2026-11-05",
+        "2026-11-06"
+      ],
+      "scheduleNote": "11/2~6 중 신청한 하루 10:00~11:30 · 기관별 선택 프로그램",
+      "feeStatus": "unknown",
+      "feeText": "참가비 미표기 · 신청 전 운영 센터 확인",
+      "summary": "강사가 어린이집으로 찾아가 부모와 자녀가 함께 놀이하는 체험입니다.",
+      "conditions": [
+        "광산구·북구·남구·서구 어린이집10곳이 기관별 한 과정을 신청하는 안내입니다. 동구는 별도 사업을 확인하세요.",
+        "가족당 양육자1명과 자녀1명,7~10가족(14~20명) 기준입니다.",
+        "중앙e러닝에서 보육교직원용 집합교육·광주 지역 과정을 기관이 신청합니다.10/20 13시 선착순이며 접수표 마감11/1 전 조기 종료될 수 있습니다.",
+        "필요 재료는 지정 기간 센터에서 직접 수령하며 우편 발송은 하지 않습니다. 과정별 색연필·가위·매트 등 준비물을 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T07:04:04.416Z",
+      "evidence": [
+        {
+          "url": "https://www.childcare.go.kr/?EDCEVENTSEQ=53153&flag=CSl&menuno=328",
+          "publisher": "아이사랑 · 광주육아종합지원센터",
+          "summary": "원본 포스터의5개 실제 날짜10~11:30,지역4구·10개 기관·가족7~10팀·1+1·영아24개월~2023년생·10/20 13시·재료 직접수령 대조.",
+          "verifiedAt": "2026-10-26T07:04:04.416Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "location",
+            "scheduleNote",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd",
+            "operatingDates"
+          ]
+        },
+        {
+          "url": "https://central.childcare.go.kr/component/file/ND_directDownload.do?fn=img.gif&fp=/upload/images/001897/20261016134727645_J2M62JW0.jpg",
+          "publisher": "아이사랑 · 광주육아종합지원센터",
+          "summary": "공식 공지에 연결된 원본 포스터를 직접 열람. 원본 포스터의5개 실제 날짜10~11:30,지역4구·10개 기관·가족7~10팀·1+1·영아24개월~2023년생·10/20 13시·재료 직접수령 대조.",
+          "verifiedAt": "2026-10-26T07:04:04.416Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "location",
+            "scheduleNote",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd",
+            "operatingDates"
+          ]
+        }
+      ],
+      "contentHash": "6ab1867d7397af3ee1d0eed7d7d26bbcd0e0d514e38143004fd579c0bb862fa3",
+      "siteUrl": "/tools/local-parenting/#parenting-53153"
+    },
+    {
+      "id": "parenting-53154",
+      "categoryIds": [
+        "local-parenting",
+        "kids-programs"
+      ],
+      "title": "광주 · 고무밴드 기차와 상자자동차 부모자녀 체험",
+      "providerId": "childcare-portal",
+      "canonicalUrl": "https://www.childcare.go.kr/?EDCEVENTSEQ=53154&flag=CSl&menuno=328",
+      "region": "광주",
+      "location": "광주육아종합지원센터 2층 체험활동실 · 광산구 첨단강변로100",
+      "audience": "영아(24개월~2023년생) 또는 유아(2020~2022년생)와 양육자 각7가족",
+      "ageGroups": [
+        "preschool"
+      ],
+      "applicationStart": "2026-10-20T13:00:00+09:00",
+      "applicationEnd": "2026-11-01",
+      "eventStart": "2026-11-07",
+      "eventEnd": "2026-11-07",
+      "scheduleNote": "11/7 영아10:00~11:30 / 유아12:00~13:30",
+      "feeStatus": "unknown",
+      "feeText": "참가비 미표기 · 신청 전 운영 센터 확인",
+      "summary": "연령별 회차에서 양육자와 함께 기차·자동차 놀이를 즐깁니다.",
+      "conditions": [
+        "한 가족은 양육자1명과 자녀1명으로 구성하며 회차별7가족14명입니다.",
+        "광주 긴급아이돌봄센터 홈페이지 로그인 후 부모자녀참여활동에서 신청하는 안내입니다.",
+        "10/20 13시 선착순이며 접수표11/1 전 마감될 수 있습니다. 자녀 생년과 회차를 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T07:04:04.416Z",
+      "evidence": [
+        {
+          "url": "https://www.childcare.go.kr/?EDCEVENTSEQ=53154&flag=CSl&menuno=328",
+          "publisher": "아이사랑 · 광주육아종합지원센터",
+          "summary": "공식 상세·포스터의11/7 실제2회차,영아/유아 생년·각7가족1+1·센터2층·10/20 13시 신청 대조.",
+          "verifiedAt": "2026-10-26T07:04:04.416Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "location",
+            "scheduleNote",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd"
+          ]
+        },
+        {
+          "url": "https://central.childcare.go.kr/component/file/ND_directDownload.do?fn=img.gif&fp=/upload/images/001897/20261016134908373_5RERH8IA.jpg",
+          "publisher": "아이사랑 · 광주육아종합지원센터",
+          "summary": "공식 공지에 연결된 원본 포스터를 직접 열람. 공식 상세·포스터의11/7 실제2회차,영아/유아 생년·각7가족1+1·센터2층·10/20 13시 신청 대조.",
+          "verifiedAt": "2026-10-26T07:04:04.416Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "location",
+            "scheduleNote",
             "applicationStart",
             "applicationEnd",
             "eventStart",
@@ -212,12 +430,879 @@
           ]
         }
       ],
-      "contentHash": "508fd8afe646cfdabd4265b1698082f0bee3a9cc91e8ad80e1254ebbb3bbbc18",
-      "siteUrl": "/tools/local-parenting/#parenting-53022"
+      "contentHash": "5f8d6ab9a62e389caf523617246c94d31a76b8781a551e9b57f460ff0173cfc5",
+      "siteUrl": "/tools/local-parenting/#parenting-53154"
+    },
+    {
+      "id": "parenting-53198",
+      "categoryIds": [
+        "local-parenting",
+        "kids-programs"
+      ],
+      "title": "인천 · 미니김밥 부모자녀 요리체험",
+      "providerId": "childcare-portal",
+      "canonicalUrl": "https://www.childcare.go.kr/?EDCEVENTSEQ=53198&flag=CSl&menuno=328",
+      "region": "인천",
+      "location": "인천광역시육아종합지원센터 소교육장",
+      "audience": "인천 거주 2020~2023년생 영유아와 양육자 · 회차별7가족",
+      "ageGroups": [
+        "preschool"
+      ],
+      "applicationStart": "2026-11-02T10:00:00+09:00",
+      "applicationEnd": "2026-11-10",
+      "eventStart": "2026-11-12",
+      "eventEnd": "2026-11-12",
+      "scheduleNote": "11/12 15:00~16:10 /16:20~17:30 · 2회차",
+      "feeStatus": "unknown",
+      "feeText": "참가비 미표기 · 신청 전 운영 센터 확인",
+      "summary": "부모와 아이가 함께 재료를 다루고 미니김밥을 만드는 요리 체험입니다.",
+      "conditions": [
+        "부모다움 홈페이지에 로그인한 뒤 해당 교육을 신청하세요. 선착순·실제 잔여석은 별도 확인이 필요합니다.",
+        "불참 시 센터에 미리 연락해 주세요. 이수증은 실제 참석자에게 발급하는 안내입니다.",
+        "앞치마를 준비하세요. 쌀·참기름·오이·당근·햄·어묵·김 등 재료의 알레르기를 확인하고 센터와 상담하세요.",
+        "회차별7가족 대상이며11/2 10시부터 선착순으로 신청합니다."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T07:04:04.416Z",
+      "evidence": [
+        {
+          "url": "https://www.childcare.go.kr/?EDCEVENTSEQ=53198&flag=CSl&menuno=328",
+          "publisher": "아이사랑 · 인천광역시육아종합지원센터",
+          "summary": "공식2개 회차와 원본 포스터의11/12 실제시간·인천거주·2020~2023년생·7가족·11/2 10시~11/10·앞치마·알레르기 준비 대조.",
+          "verifiedAt": "2026-10-26T07:04:04.416Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "location",
+            "scheduleNote",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd"
+          ]
+        },
+        {
+          "url": "https://central.childcare.go.kr/component/file/ND_directDownload.do?fn=img.gif&fp=/upload/images/001901/20261021133258484_O1OC2BP3.png",
+          "publisher": "아이사랑 · 인천광역시육아종합지원센터",
+          "summary": "공식 공지에 연결된 원본 포스터를 직접 열람. 공식2개 회차와 원본 포스터의11/12 실제시간·인천거주·2020~2023년생·7가족·11/2 10시~11/10·앞치마·알레르기 준비 대조.",
+          "verifiedAt": "2026-10-26T07:04:04.416Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "location",
+            "scheduleNote",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd"
+          ]
+        },
+        {
+          "url": "https://www.childcare.go.kr/?EDCEVENTSEQ=53197&flag=CSl&menuno=328",
+          "publisher": "아이사랑 · 인천광역시육아종합지원센터",
+          "summary": "동일 프로그램의 추가 회차 상세를 대조. 공식2개 회차와 원본 포스터의11/12 실제시간·인천거주·2020~2023년생·7가족·11/2 10시~11/10·앞치마·알레르기 준비 대조.",
+          "verifiedAt": "2026-10-26T07:04:04.416Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "location",
+            "scheduleNote",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd"
+          ]
+        }
+      ],
+      "contentHash": "412423593078cbd0e81aaa666561a48af88bf327da7d34d93d63647b137476e3",
+      "siteUrl": "/tools/local-parenting/#parenting-53198"
+    },
+    {
+      "id": "parenting-53152",
+      "categoryIds": [
+        "local-parenting"
+      ],
+      "title": "경남 · 양육 스트레스 관리 3회기 부모교육",
+      "providerId": "childcare-portal",
+      "canonicalUrl": "https://www.childcare.go.kr/?EDCEVENTSEQ=53152&flag=CSl&menuno=328",
+      "region": "경남",
+      "location": "선정된 경남도 내 어린이집",
+      "audience": "어린이집 기관 신청 · 양육자8~12명,선정2기관",
+      "ageGroups": [],
+      "applicationStart": "2026-10-20T11:00:00+09:00",
+      "applicationEnd": "2026-10-30",
+      "eventStart": "2026-11-16",
+      "eventEnd": "2026-11-30",
+      "operatingDates": [
+        "2026-11-16",
+        "2026-11-23",
+        "2026-11-30"
+      ],
+      "scheduleNote": "11/16·23·30 각10:00~12:00 · 3회기 모두 참석",
+      "feeStatus": "unknown",
+      "feeText": "참가비 미표기 · 신청 전 운영 센터 확인",
+      "summary": "세 번의 집단 활동으로 양육 스트레스를 살펴보는 기관 신청 교육입니다.",
+      "conditions": [
+        "어린이집 기관 인증서 로그인으로 신청하며 개인 신청이 아닙니다.두 어린이집이 연합해 인원을 구성할 수 있습니다.",
+        "각 회기10~12시 총6시간으로 세 회기 모두 참석해야 합니다.8명 미만이면 폐강될 수 있습니다.",
+        "10/20 11시부터 선착순이며 선정2기관 안내입니다. 실제 선정 여부를 확인하세요.",
+        "기관은 보육실과 분리된 조용한 공간·장비·다과를 준비합니다. 간식 제공을 보장하는 프로그램이 아닙니다."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T07:04:04.416Z",
+      "evidence": [
+        {
+          "url": "https://www.childcare.go.kr/?EDCEVENTSEQ=53152&flag=CSl&menuno=328",
+          "publisher": "아이사랑 · 경상남도육아종합지원센터",
+          "summary": "원본 포스터의11/16·23·30 실제3일·매회2시간·모두참석·8~12명·기관2곳·8명미달 폐강·기관준비 조건 대조.",
+          "verifiedAt": "2026-10-26T07:04:04.416Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "location",
+            "scheduleNote",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd",
+            "operatingDates"
+          ]
+        },
+        {
+          "url": "https://central.childcare.go.kr/component/file/ND_directDownload.do?fn=img.gif&fp=/upload/images/001897/20261016133421578_CAP2QYEI.jpg",
+          "publisher": "아이사랑 · 경상남도육아종합지원센터",
+          "summary": "공식 공지에 연결된 원본 포스터를 직접 열람. 원본 포스터의11/16·23·30 실제3일·매회2시간·모두참석·8~12명·기관2곳·8명미달 폐강·기관준비 조건 대조.",
+          "verifiedAt": "2026-10-26T07:04:04.416Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "location",
+            "scheduleNote",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd",
+            "operatingDates"
+          ]
+        }
+      ],
+      "contentHash": "6abea0da48f906cd1f4e54d059c9f599560a94ff1de2867dec450394f1797816",
+      "siteUrl": "/tools/local-parenting/#parenting-53152"
+    },
+    {
+      "id": "parenting-53171",
+      "categoryIds": [
+        "local-parenting"
+      ],
+      "title": "인천 · 온가족 성장코칭 놀이 부모교육",
+      "providerId": "childcare-portal",
+      "canonicalUrl": "https://www.childcare.go.kr/?EDCEVENTSEQ=53171&flag=CSl&menuno=328",
+      "region": "인천",
+      "location": "실시간 ZOOM",
+      "audience": "인천 거주36개월 이상 미취학 유아의 부모·양육자25명",
+      "ageGroups": [],
+      "applicationStart": "2026-10-23T10:00:00+09:00",
+      "applicationEnd": "2026-11-01",
+      "eventStart": "2026-11-17",
+      "eventEnd": "2026-11-17",
+      "scheduleNote": "11/17 10:00~12:00 · 부모교육",
+      "feeStatus": "unknown",
+      "feeText": "참가비 미표기 · 신청 전 운영 센터 확인",
+      "summary": "유아의 놀이를 지원하는 양육자 대상 성장코칭 교육입니다.",
+      "conditions": [
+        "부모다움 홈페이지에 로그인한 뒤 해당 교육을 신청하세요. 선착순·실제 잔여석은 별도 확인이 필요합니다.",
+        "불참 시 센터에 미리 연락해 주세요. 이수증은 실제 참석자에게 발급하는 안내입니다.",
+        "문자로 전달되는 구글폼에 사전 질문을 제출하는 안내입니다. 자녀와 함께 참여하는 체험 회차가 아닙니다."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T07:04:04.416Z",
+      "evidence": [
+        {
+          "url": "https://www.childcare.go.kr/?EDCEVENTSEQ=53171&flag=CSl&menuno=328",
+          "publisher": "아이사랑 · 인천광역시육아종합지원센터",
+          "summary": "포스터의11/17 10~12시·인천36개월 이상 미취학 자녀 양육자25명·10/23 10시부터 신청·사전질문 제출·ZOOM 확인.",
+          "verifiedAt": "2026-10-26T07:04:04.416Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "location",
+            "scheduleNote",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd"
+          ]
+        },
+        {
+          "url": "https://central.childcare.go.kr/component/file/ND_directDownload.do?fn=img.gif&fp=/upload/images/001899/20261019145604207_FD6YG1O9.jpg",
+          "publisher": "아이사랑 · 인천광역시육아종합지원센터",
+          "summary": "공식 공지에 연결된 원본 포스터를 직접 열람. 포스터의11/17 10~12시·인천36개월 이상 미취학 자녀 양육자25명·10/23 10시부터 신청·사전질문 제출·ZOOM 확인.",
+          "verifiedAt": "2026-10-26T07:04:04.416Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "location",
+            "scheduleNote",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd"
+          ]
+        }
+      ],
+      "contentHash": "354aaa211116c7c1f4ee07fc31c0a9b360782e4a22d06fb216f4cb71a772ed63",
+      "siteUrl": "/tools/local-parenting/#parenting-53171"
+    },
+    {
+      "id": "parenting-53148",
+      "categoryIds": [
+        "local-parenting"
+      ],
+      "title": "인천 · 포일아트 크리스마스 카드 부모자녀 놀이",
+      "providerId": "childcare-portal",
+      "canonicalUrl": "https://www.childcare.go.kr/?EDCEVENTSEQ=53148&flag=CSl&menuno=328",
+      "region": "인천",
+      "location": "인천광역시육아종합지원센터 소교육장",
+      "audience": "인천 거주 유아와 부모 또는 조부모10가족",
+      "ageGroups": [
+        "preschool"
+      ],
+      "applicationStart": "2026-11-10T10:00:00+09:00",
+      "applicationEnd": "2026-11-17",
+      "eventStart": "2026-11-19",
+      "eventEnd": "2026-11-19",
+      "scheduleNote": "11/19 16:20~17:30",
+      "feeStatus": "unknown",
+      "feeText": "참가비 미표기 · 신청 전 운영 센터 확인",
+      "summary": "유아와 양육자가 포일아트로 크리스마스 카드를 만드는 놀이입니다.",
+      "conditions": [
+        "부모다움 홈페이지에 로그인한 뒤 해당 교육을 신청하세요. 선착순·실제 잔여석은 별도 확인이 필요합니다.",
+        "불참 시 센터에 미리 연락해 주세요. 이수증은 실제 참석자에게 발급하는 안내입니다."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T07:04:04.416Z",
+      "evidence": [
+        {
+          "url": "https://www.childcare.go.kr/?EDCEVENTSEQ=53148&flag=CSl&menuno=328",
+          "publisher": "아이사랑 · 인천광역시육아종합지원센터",
+          "summary": "원본 포스터의11/19 16:20~17:30·인천 유아+부모/조부모10가족·11/10 10시~17 신청·소교육장 확인.",
+          "verifiedAt": "2026-10-26T07:04:04.416Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "location",
+            "scheduleNote",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd"
+          ]
+        },
+        {
+          "url": "https://central.childcare.go.kr/component/file/ND_directDownload.do?fn=img.gif&fp=/upload/images/001897/20261015170302610_ZC3LVYMH.jpg",
+          "publisher": "아이사랑 · 인천광역시육아종합지원센터",
+          "summary": "공식 공지에 연결된 원본 포스터를 직접 열람. 원본 포스터의11/19 16:20~17:30·인천 유아+부모/조부모10가족·11/10 10시~17 신청·소교육장 확인.",
+          "verifiedAt": "2026-10-26T07:04:04.416Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "location",
+            "scheduleNote",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd"
+          ]
+        }
+      ],
+      "contentHash": "e6418cdd6d1282a1b5fb300d95d62bb6711123d42c5f79ab87babada09f1d857",
+      "siteUrl": "/tools/local-parenting/#parenting-53148"
+    },
+    {
+      "id": "parenting-53147",
+      "categoryIds": [
+        "local-parenting"
+      ],
+      "title": "인천 · 생일 케이크 놀이 부모자녀 체험",
+      "providerId": "childcare-portal",
+      "canonicalUrl": "https://www.childcare.go.kr/?EDCEVENTSEQ=53147&flag=CSl&menuno=328",
+      "region": "인천",
+      "location": "인천광역시육아종합지원센터 소교육장",
+      "audience": "인천 거주 영아와 부모 또는 조부모10가족",
+      "ageGroups": [],
+      "applicationStart": "2026-11-10T10:00:00+09:00",
+      "applicationEnd": "2026-11-17",
+      "eventStart": "2026-11-19",
+      "eventEnd": "2026-11-19",
+      "scheduleNote": "11/19 15:00~16:10",
+      "feeStatus": "unknown",
+      "feeText": "참가비 미표기 · 신청 전 운영 센터 확인",
+      "summary": "영아와 양육자가 케이크를 만들고 생일을 축하하는 놀이 활동입니다.",
+      "conditions": [
+        "부모다움 홈페이지에 로그인한 뒤 해당 교육을 신청하세요. 선착순·실제 잔여석은 별도 확인이 필요합니다.",
+        "불참 시 센터에 미리 연락해 주세요. 이수증은 실제 참석자에게 발급하는 안내입니다."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T07:04:04.416Z",
+      "evidence": [
+        {
+          "url": "https://www.childcare.go.kr/?EDCEVENTSEQ=53147&flag=CSl&menuno=328",
+          "publisher": "아이사랑 · 인천광역시육아종합지원센터",
+          "summary": "원본 포스터의11/19 15~16:10·인천 영아+부모/조부모10가족·11/10 10시~17 신청 대조. 식품 요리로 추정하지 않음.",
+          "verifiedAt": "2026-10-26T07:04:04.416Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "location",
+            "scheduleNote",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd"
+          ]
+        },
+        {
+          "url": "https://central.childcare.go.kr/component/file/ND_directDownload.do?fn=img.gif&fp=/upload/images/001897/20261015170136156_ANC9I913.jpg",
+          "publisher": "아이사랑 · 인천광역시육아종합지원센터",
+          "summary": "공식 공지에 연결된 원본 포스터를 직접 열람. 원본 포스터의11/19 15~16:10·인천 영아+부모/조부모10가족·11/10 10시~17 신청 대조. 식품 요리로 추정하지 않음.",
+          "verifiedAt": "2026-10-26T07:04:04.416Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "location",
+            "scheduleNote",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd"
+          ]
+        }
+      ],
+      "contentHash": "c8cf6784581f8f19b717ecaf5b9a07470aef33bb0c8194e5f7760fd67f6e7c57",
+      "siteUrl": "/tools/local-parenting/#parenting-53147"
+    },
+    {
+      "id": "parenting-53228",
+      "categoryIds": [
+        "local-parenting",
+        "kids-programs"
+      ],
+      "title": "전남 · 신체 3종 경기 부모자녀 체험",
+      "providerId": "childcare-portal",
+      "canonicalUrl": "https://www.childcare.go.kr/?EDCEVENTSEQ=53228&flag=CSl&menuno=328",
+      "region": "전남",
+      "location": "전남육아종합지원센터 아이꿈터실",
+      "audience": "2020~2022년생 유아1명과 양육자1명 · 회차별8팀",
+      "ageGroups": [
+        "preschool"
+      ],
+      "applicationStart": "2026-11-16T10:00:00+09:00",
+      "applicationEnd": "2026-11-20",
+      "eventStart": "2026-11-21",
+      "eventEnd": "2026-11-21",
+      "scheduleNote": "11/21 A10:00~11:00 /B11:20~12:20",
+      "feeStatus": "free",
+      "feeText": "교육 무료 · 간식·홍보물품 제공 안내",
+      "summary": "양육자와 유아가 신체 놀이 세 종목에 함께 참여하는 체험입니다.",
+      "conditions": [
+        "전남 센터 홈페이지 로그인 후 영유아가정지원·부모교육신청에서 신청합니다.11/16 10시부터 선착순입니다.",
+        "양육자1명+해당 연령 유아1명만 참여하며 초등학생 이상 자녀는 입실이 제한됩니다.",
+        "자녀2명 이상이면 각자 신청하고 비고란에 자녀 이름·생년월일을 적어야 합니다.",
+        "안전사고에 대한 보호자 책임에 동의한 경우 참여할 수 있습니다. 회차별 잔여석을 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T07:04:04.416Z",
+      "evidence": [
+        {
+          "url": "https://www.childcare.go.kr/?EDCEVENTSEQ=53228&flag=CSl&menuno=328",
+          "publisher": "아이사랑 · 전남육아종합지원센터",
+          "summary": "A/B실제2회차 상세·공식포스터의11/21시간·2020~2022생·1+1·각8팀·무료·11/16 10시~20·초등입실제한·개별자녀등록·보호자책임 확인.",
+          "verifiedAt": "2026-10-26T07:04:04.416Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "location",
+            "scheduleNote",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd",
+            "feeText"
+          ]
+        },
+        {
+          "url": "https://central.childcare.go.kr/component/file/ND_directDownload.do?fn=img.gif&fp=/upload/images/001903/20261023140742768_3JZPXGWH.jpg",
+          "publisher": "아이사랑 · 전남육아종합지원센터",
+          "summary": "공식 공지에 연결된 원본 포스터를 직접 열람. A/B실제2회차 상세·공식포스터의11/21시간·2020~2022생·1+1·각8팀·무료·11/16 10시~20·초등입실제한·개별자녀등록·보호자책임 확인.",
+          "verifiedAt": "2026-10-26T07:04:04.416Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "location",
+            "scheduleNote",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd",
+            "feeText"
+          ]
+        },
+        {
+          "url": "https://www.childcare.go.kr/?EDCEVENTSEQ=53229&flag=CSl&menuno=328",
+          "publisher": "아이사랑 · 전남육아종합지원센터",
+          "summary": "동일 프로그램의 추가 회차 상세를 대조. A/B실제2회차 상세·공식포스터의11/21시간·2020~2022생·1+1·각8팀·무료·11/16 10시~20·초등입실제한·개별자녀등록·보호자책임 확인.",
+          "verifiedAt": "2026-10-26T07:04:04.416Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "location",
+            "scheduleNote",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd",
+            "feeText"
+          ]
+        }
+      ],
+      "contentHash": "55469c9bfc6885c216af6fa368608ee9518777405c15c0a77aa0750ab1e33f3a",
+      "siteUrl": "/tools/local-parenting/#parenting-53228"
+    },
+    {
+      "id": "parenting-53200",
+      "categoryIds": [
+        "local-parenting"
+      ],
+      "title": "인천 · 룰루랄라 빵빵 자동차 부모자녀 놀이",
+      "providerId": "childcare-portal",
+      "canonicalUrl": "https://www.childcare.go.kr/?EDCEVENTSEQ=53200&flag=CSl&menuno=328",
+      "region": "인천",
+      "location": "인천광역시육아종합지원센터 소교육장",
+      "audience": "인천 거주2020~2023년생 영유아와 양육자 · 회차별7가족",
+      "ageGroups": [
+        "preschool"
+      ],
+      "applicationStart": "2026-11-02T10:00:00+09:00",
+      "applicationEnd": "2026-11-22",
+      "eventStart": "2026-11-24",
+      "eventEnd": "2026-11-24",
+      "scheduleNote": "11/24 15:00~16:10 /16:20~17:30",
+      "feeStatus": "unknown",
+      "feeText": "참가비 미표기 · 신청 전 운영 센터 확인",
+      "summary": "양육자와 함께 자동차를 만들고 움직이는 놀이 체험입니다.",
+      "conditions": [
+        "부모다움 홈페이지에 로그인한 뒤 해당 교육을 신청하세요. 선착순·실제 잔여석은 별도 확인이 필요합니다.",
+        "불참 시 센터에 미리 연락해 주세요. 이수증은 실제 참석자에게 발급하는 안내입니다.",
+        "11/2 10시 선착순 신청이며 자녀 생년과 회차별 잔여석을 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T07:04:04.416Z",
+      "evidence": [
+        {
+          "url": "https://www.childcare.go.kr/?EDCEVENTSEQ=53200&flag=CSl&menuno=328",
+          "publisher": "아이사랑 · 인천광역시육아종합지원센터",
+          "summary": "공식2개 회차와 원본포스터의11/24시간·인천·2020~2023생·각7가족·11/2 10시~22 접수 확인.",
+          "verifiedAt": "2026-10-26T07:04:04.416Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "location",
+            "scheduleNote",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd"
+          ]
+        },
+        {
+          "url": "https://central.childcare.go.kr/component/file/ND_directDownload.do?fn=img.gif&fp=/upload/images/001901/20261021133512889_2NQ5OOJP.png",
+          "publisher": "아이사랑 · 인천광역시육아종합지원센터",
+          "summary": "공식 공지에 연결된 원본 포스터를 직접 열람. 공식2개 회차와 원본포스터의11/24시간·인천·2020~2023생·각7가족·11/2 10시~22 접수 확인.",
+          "verifiedAt": "2026-10-26T07:04:04.416Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "location",
+            "scheduleNote",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd"
+          ]
+        },
+        {
+          "url": "https://www.childcare.go.kr/?EDCEVENTSEQ=53199&flag=CSl&menuno=328",
+          "publisher": "아이사랑 · 인천광역시육아종합지원센터",
+          "summary": "동일 프로그램의 추가 회차 상세를 대조. 공식2개 회차와 원본포스터의11/24시간·인천·2020~2023생·각7가족·11/2 10시~22 접수 확인.",
+          "verifiedAt": "2026-10-26T07:04:04.416Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "location",
+            "scheduleNote",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd"
+          ]
+        }
+      ],
+      "contentHash": "0f99553001b8a03a9afeb240332fd5ad2597a900569068e9d8f62ffd8d19b570",
+      "siteUrl": "/tools/local-parenting/#parenting-53200"
+    },
+    {
+      "id": "parenting-53144",
+      "categoryIds": [
+        "local-parenting"
+      ],
+      "title": "인천 · 자녀권리존중 영아 발달편 부모교육",
+      "providerId": "childcare-portal",
+      "canonicalUrl": "https://www.childcare.go.kr/?EDCEVENTSEQ=53144&flag=CSl&menuno=328",
+      "region": "인천",
+      "location": "실시간 ZOOM",
+      "audience": "인천 거주0~12개월 영아의 부모·양육자",
+      "ageGroups": [],
+      "applicationStart": "2026-11-05T10:00:00+09:00",
+      "applicationEnd": "2026-11-19",
+      "eventStart": "2026-11-27",
+      "eventEnd": "2026-11-27",
+      "scheduleNote": "11/27 10:00~12:00 · 부모교육",
+      "feeStatus": "unknown",
+      "feeText": "참가비 미표기 · 신청 전 운영 센터 확인",
+      "summary": "영아의 발달을 이해하고 자녀의 권리를 존중하는 양육을 배우는 교육입니다.",
+      "conditions": [
+        "부모다움 홈페이지에 로그인한 뒤 해당 교육을 신청하세요. 선착순·실제 잔여석은 별도 확인이 필요합니다.",
+        "불참 시 센터에 미리 연락해 주세요. 이수증은 실제 참석자에게 발급하는 안내입니다."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T07:04:04.416Z",
+      "evidence": [
+        {
+          "url": "https://www.childcare.go.kr/?EDCEVENTSEQ=53144&flag=CSl&menuno=328",
+          "publisher": "아이사랑 · 인천광역시육아종합지원센터",
+          "summary": "공식포스터의11/27 10~12시·인천거주0~12개월 자녀 부모·11/5 10시~19 접수·ZOOM·로그인·불참연락 대조.",
+          "verifiedAt": "2026-10-26T07:04:04.416Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "location",
+            "scheduleNote",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd"
+          ]
+        },
+        {
+          "url": "https://central.childcare.go.kr/component/file/ND_directDownload.do?fn=img.gif&fp=/upload/images/001897/20261015164706173_ZI3KLKSU.jpg",
+          "publisher": "아이사랑 · 인천광역시육아종합지원센터",
+          "summary": "공식 공지에 연결된 원본 포스터를 직접 열람. 공식포스터의11/27 10~12시·인천거주0~12개월 자녀 부모·11/5 10시~19 접수·ZOOM·로그인·불참연락 대조.",
+          "verifiedAt": "2026-10-26T07:04:04.416Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "location",
+            "scheduleNote",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd"
+          ]
+        }
+      ],
+      "contentHash": "703a204f0068343915c4d5cb360375091eb6fbe83c614bf036996c5f28594072",
+      "siteUrl": "/tools/local-parenting/#parenting-53144"
+    },
+    {
+      "id": "parenting-53016",
+      "categoryIds": [
+        "local-parenting"
+      ],
+      "title": "2026 서울양육포럼 · 우리 아이 친구관계",
+      "providerId": "childcare-portal",
+      "canonicalUrl": "https://www.childcare.go.kr/?EDCEVENTSEQ=53016&flag=CSl&menuno=328",
+      "region": "서울",
+      "location": "서울시육아종합지원센터 강당 · 공항철도·6호선 공덕역 부근",
+      "audience": "아이 친구관계에 관심 있는 양육자 · 선착순 신청자",
+      "ageGroups": [],
+      "applicationStart": "2026-09-28",
+      "applicationEnd": "2026-10-23",
+      "eventStart": "2026-10-30",
+      "eventEnd": "2026-10-30",
+      "scheduleNote": "10/30 10:30~12:30 · 신청 마감,기신청자 일정 확인",
+      "feeStatus": "unknown",
+      "feeText": "참가비 미표기 · 신청 전 운영 센터 확인",
+      "summary": "아이의 친구관계에 관한 전문가 이야기와 현장 질문시간을 진행하는 양육포럼입니다.",
+      "conditions": [
+        "접수는9/28~10/23 선착순으로 안내되어 현재 신청 마감입니다. 추가 접수·현장 입장은 별도 확인이 필요합니다.",
+        "10/30 10:30~12:30 현장 강연이며 온라인 중계는 확정하지 않았습니다.",
+        "사전 신청 여부와 센터의 최종 참석·취소 안내를 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T07:04:04.416Z",
+      "evidence": [
+        {
+          "url": "https://www.childcare.go.kr/?EDCEVENTSEQ=53016&flag=CSl&menuno=328",
+          "publisher": "아이사랑 · 서울시육아종합지원센터",
+          "summary": "2026년 원본포스터와 접수표의10/30 10:30~12:30·강당·9/28~10/23선착순 마감·현장질문 확인. 이미 마감한 상태를 분명히 표시,재모집 추정 안함.",
+          "verifiedAt": "2026-10-26T07:04:04.416Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "location",
+            "scheduleNote",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd"
+          ]
+        },
+        {
+          "url": "https://central.childcare.go.kr/component/file/ND_directDownload.do?fn=img.gif&fp=/upload/images/001885/20260929093332176_XEMDWX9G.png",
+          "publisher": "아이사랑 · 서울시육아종합지원센터",
+          "summary": "공식 공지에 연결된 원본 포스터를 직접 열람. 2026년 원본포스터와 접수표의10/30 10:30~12:30·강당·9/28~10/23선착순 마감·현장질문 확인. 이미 마감한 상태를 분명히 표시,재모집 추정 안함.",
+          "verifiedAt": "2026-10-26T07:04:04.416Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "location",
+            "scheduleNote",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd"
+          ]
+        }
+      ],
+      "contentHash": "08455f707eb250f38b8879da3aa3c5471f1dbfa7b5b5bc6154e2022fb5e51532",
+      "siteUrl": "/tools/local-parenting/#parenting-53016"
+    },
+    {
+      "id": "parenting-52731",
+      "categoryIds": [
+        "local-parenting"
+      ],
+      "title": "인천 · 감정표현·소리 놀잇감 부모자녀 놀이",
+      "providerId": "childcare-portal",
+      "canonicalUrl": "https://www.childcare.go.kr/?EDCEVENTSEQ=52731&flag=CSl&menuno=328",
+      "region": "인천",
+      "location": "인천광역시육아종합지원센터 소교육장",
+      "audience": "인천 거주 영아 또는 유아와 부모·조부모 · 각10가족",
+      "ageGroups": [
+        "preschool"
+      ],
+      "applicationStart": "2026-10-20T10:00:00+09:00",
+      "applicationEnd": "2026-10-27",
+      "eventStart": "2026-10-29",
+      "eventEnd": "2026-10-29",
+      "scheduleNote": "10/29 영아15:00~16:10 /유아16:20~17:30",
+      "feeStatus": "unknown",
+      "feeText": "참가비 미표기 · 신청 전 운영 센터 확인",
+      "summary": "영아는 소리 놀잇감을 끌고, 유아는 다양한 감정을 표현하며 양육자와 놀이합니다.",
+      "conditions": [
+        "부모다움 홈페이지에 로그인한 뒤 해당 교육을 신청하세요. 선착순·실제 잔여석은 별도 확인이 필요합니다.",
+        "불참 시 센터에 미리 연락해 주세요. 이수증은 실제 참석자에게 발급하는 안내입니다."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T07:04:04.416Z",
+      "evidence": [
+        {
+          "url": "https://www.childcare.go.kr/?EDCEVENTSEQ=52731&flag=CSl&menuno=328",
+          "publisher": "아이사랑 · 인천광역시육아종합지원센터",
+          "summary": "두 공식포스터의10/29 영아/유아 실제시간·인천거주·각10가족·10/20 10시~27 신청·소교육장·불참연락·이수증 확인. 동일 날짜 연령별 활동을 한 건으로 통합.",
+          "verifiedAt": "2026-10-26T07:04:04.416Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "location",
+            "scheduleNote",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd"
+          ]
+        },
+        {
+          "url": "https://central.childcare.go.kr/component/file/ND_directDownload.do?fn=img.gif&fp=/upload/images/001868/20260902102744720_9CU2IUIM.jpg",
+          "publisher": "아이사랑 · 인천광역시육아종합지원센터",
+          "summary": "공식 공지에 연결된 원본 포스터를 직접 열람. 두 공식포스터의10/29 영아/유아 실제시간·인천거주·각10가족·10/20 10시~27 신청·소교육장·불참연락·이수증 확인. 동일 날짜 연령별 활동을 한 건으로 통합.",
+          "verifiedAt": "2026-10-26T07:04:04.416Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "location",
+            "scheduleNote",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd"
+          ]
+        },
+        {
+          "url": "https://www.childcare.go.kr/?EDCEVENTSEQ=52730&flag=CSl&menuno=328",
+          "publisher": "아이사랑 · 인천광역시육아종합지원센터",
+          "summary": "동일 프로그램의 추가 회차 상세를 대조. 두 공식포스터의10/29 영아/유아 실제시간·인천거주·각10가족·10/20 10시~27 신청·소교육장·불참연락·이수증 확인. 동일 날짜 연령별 활동을 한 건으로 통합.",
+          "verifiedAt": "2026-10-26T07:04:04.416Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "location",
+            "scheduleNote",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd"
+          ]
+        }
+      ],
+      "contentHash": "8651950d397a590ee10cb0e3a043478cf5836d0e4234f1c2ec82d65fdf269b8f",
+      "siteUrl": "/tools/local-parenting/#parenting-52731"
+    },
+    {
+      "id": "parenting-52958",
+      "categoryIds": [
+        "local-parenting"
+      ],
+      "title": "전남 · 엄마 아빠를 위한 힐링 교육",
+      "providerId": "childcare-portal",
+      "canonicalUrl": "https://www.childcare.go.kr/?EDCEVENTSEQ=52958&flag=CSl&menuno=328",
+      "region": "전남",
+      "location": "전남여성가족재단415호 · 무안군 어진누리길30",
+      "audience": "전남 거주 영유아 가정의 엄마 또는 아빠 · 각10명",
+      "ageGroups": [],
+      "applicationStart": "2026-10-19T10:00:00+09:00",
+      "applicationEnd": "2026-10-28T14:00:00+09:00",
+      "eventStart": "2026-10-30",
+      "eventEnd": "2026-10-31",
+      "operatingDates": [
+        "2026-10-30",
+        "2026-10-31"
+      ],
+      "scheduleNote": "엄마10/30 13:00~15:30 /아빠10/31 10:00~12:30",
+      "feeStatus": "unknown",
+      "feeText": "참가비 미표기 · 신청 전 운영 센터 확인",
+      "summary": "파스타볼 도자기 만들기와 대화로 부모의 마음을 돌보는 힐링 교육입니다.",
+      "conditions": [
+        "전남 센터 홈페이지 부모교육에서10/19 10시~10/28 14시 선착순으로 신청합니다. 각10명 안내입니다.",
+        "영유아 동반 및 중도 입퇴실은 제한됩니다. 자녀 동반 체험으로 신청하지 마세요.",
+        "당일 취소 시 다음 교육 참여가 불가하다는 안내입니다. 변경·불참은 미리 연락하세요.",
+        "도자기는 제작 완료 후 직접 수령하거나 착불 택배로 받습니다. 참가비는 미표기이며 배송비는 별도 확인하세요."
+      ],
+      "publicationStatus": "verified",
+      "verifiedAt": "2026-10-26T07:04:04.416Z",
+      "evidence": [
+        {
+          "url": "https://www.childcare.go.kr/?EDCEVENTSEQ=52958&flag=CSl&menuno=328",
+          "publisher": "아이사랑 · 전남육아종합지원센터",
+          "summary": "원본 통합포스터·2개 상세의전남거주·엄마/아빠각10명·10/30,31시간·10/28 14시접수마감·자녀동반/중도퇴실불가·당일취소제한·도자기착불수령 확인.",
+          "verifiedAt": "2026-10-26T07:04:04.416Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "location",
+            "scheduleNote",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd",
+            "operatingDates"
+          ]
+        },
+        {
+          "url": "https://central.childcare.go.kr/component/file/ND_directDownload.do?fn=img.gif&fp=/upload/images/001883/20260923094842815_ZQ6EZK02.jpg",
+          "publisher": "아이사랑 · 전남육아종합지원센터",
+          "summary": "공식 공지에 연결된 원본 포스터를 직접 열람. 원본 통합포스터·2개 상세의전남거주·엄마/아빠각10명·10/30,31시간·10/28 14시접수마감·자녀동반/중도퇴실불가·당일취소제한·도자기착불수령 확인.",
+          "verifiedAt": "2026-10-26T07:04:04.416Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "location",
+            "scheduleNote",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd",
+            "operatingDates"
+          ]
+        },
+        {
+          "url": "https://www.childcare.go.kr/?EDCEVENTSEQ=52959&flag=CSl&menuno=328",
+          "publisher": "아이사랑 · 전남육아종합지원센터",
+          "summary": "동일 프로그램의 추가 회차 상세를 대조. 원본 통합포스터·2개 상세의전남거주·엄마/아빠각10명·10/30,31시간·10/28 14시접수마감·자녀동반/중도퇴실불가·당일취소제한·도자기착불수령 확인.",
+          "verifiedAt": "2026-10-26T07:04:04.416Z",
+          "fields": [
+            "title",
+            "audience",
+            "ageGroups",
+            "conditions",
+            "location",
+            "scheduleNote",
+            "applicationStart",
+            "applicationEnd",
+            "eventStart",
+            "eventEnd",
+            "operatingDates"
+          ]
+        }
+      ],
+      "contentHash": "dd6c8c80ef749598564cafddd3364a4ca417307d6730410d29578f00fa7dcb39",
+      "siteUrl": "/tools/local-parenting/#parenting-52958"
     }
   ],
-  "siteRevision": "ba7b6fdb48b05b218350a3760e83da828f7fd163",
-  "generatedAt": "2026-10-26T04:05:36.188Z",
+  "siteRevision": "ff3a41b4ed84cbbe9cc1bd83d6a3ebed916a1561",
+  "generatedAt": "2026-10-26T12:06:27.577Z",
   "window": {
     "start": "2026-10-26",
     "end": "2026-12-25"

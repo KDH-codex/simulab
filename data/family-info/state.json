@@ -2,16 +2,22 @@
   "schemaVersion": 1,
   "categories": {
     "kids-programs": {
-      "lastCollectedAt": "2026-10-26",
+      "lastCollectedAt": "2026-10-26T07:09:31.578Z",
       "outcome": "partial-review",
+      "researchRunId": "manual-all-20261026",
       "providers": [
         {
           "providerId": "seoul-reservation",
           "status": "reviewed",
-          "verified": 6
+          "verified": 13
+        },
+        {
+          "providerId": "childcare-portal",
+          "status": "reviewed",
+          "verified": 3
         }
       ],
-      "researchRunId": "baseline-2026-10-26"
+      "note": "상세26건:검증16(기존7·신규독립프로그램6·기존부모자녀프로그램3분류연결)·보류8·탈락2.동일시설단체추가안내1건제외.공개유효16건.서울·인천·광주·전남을 포함,실제회차·참가비/입장권·접수·취소를 대조."
     },
     "camping-booking": {
       "lastCollectedAt": "2026-10-25T23:13:25.712Z",
@@ -42,52 +48,126 @@
       "note": "이번 실행 상세21건(검증15건), 신규11건·재검증4건. 공개유효15건·부족0건. 보류/탈락·첨부 미확인·접근차단은 내부조사에 별도 기록"
     },
     "family-support": {
-      "lastCollectedAt": "2026-10-26",
+      "lastCollectedAt": "2026-10-26T07:15:46.246Z",
       "outcome": "partial-review",
+      "researchRunId": "manual-all-20261026",
       "providers": [
         {
           "providerId": "seoul-umppa",
           "status": "reviewed",
-          "verified": 7
+          "verified": 14
+        },
+        {
+          "providerId": "ehealth",
+          "status": "reviewed",
+          "verified": 1
+        },
+        {
+          "providerId": "korea-policy",
+          "status": "reviewed",
+          "verified": 1
+        },
+        {
+          "providerId": "mohw-family",
+          "status": "reviewed",
+          "verified": 1
         }
       ],
-      "researchRunId": "baseline-2026-10-26"
+      "note": "상세21건:검증17(신규10·기존7)·보류3·탈락1.권역/유형/요약중복4건제외.공개17건.개인별신청기한·지원금/자부담·중복/소득/거주조건을보강하고전국3개사업추가."
     },
     "local-parenting": {
-      "lastCollectedAt": "2026-10-26",
+      "lastCollectedAt": "2026-10-26T07:04:04.416Z",
       "outcome": "partial-review",
-      "researchRunId": "baseline-2026-10-26",
+      "researchRunId": "manual-all-20261026",
       "providers": [
         {
           "providerId": "childcare-portal",
           "status": "reviewed",
-          "verified": 3
+          "verified": 16
         }
-      ]
+      ],
+      "note": "상세27건·신규14·기존재검증2·보류8·탈락3.동일회차/권역6건 제외.공개16건.거주지·생년·기관/개인신청·실제회차·취소를 원본포스터와 대조.기존 조부모교육은접수상충으로 보류 이동."
     },
     "family-culture": {
-      "lastCollectedAt": "2026-10-26",
+      "lastCollectedAt": "2026-10-26T07:25:10.328Z",
       "outcome": "partial-review",
-      "researchRunId": "baseline-2026-10-26",
+      "researchRunId": "manual-all-20261026",
       "providers": [
         {
           "providerId": "seoul-culture",
           "status": "reviewed",
-          "verified": 15
+          "verified": 14
+        },
+        {
+          "providerId": "acc-culture",
+          "status": "reviewed",
+          "verified": 3
         }
-      ]
+      ],
+      "note": "상세19건:기존재검증14·신규3·보류1·종료탈락1.공개17건.박물관접근중단/SNS실패2건은상세조사제외.공연별연령·좌석/티켓·취소·증빙과별도체험비를보강,광주3전시추가."
     },
     "kids-popups": {
-      "lastCollectedAt": "2026-10-26",
+      "lastCollectedAt": "2026-10-26T12:05:49.609Z",
       "outcome": "partial-review",
-      "researchRunId": "baseline-2026-10-26",
+      "researchRunId": "manual-all-20261026",
       "providers": [
+        {
+          "providerId": "hyundai-department",
+          "status": "reviewed",
+          "verified": 3
+        },
+        {
+          "providerId": "legoland",
+          "status": "reviewed",
+          "verified": 1
+        },
+        {
+          "providerId": "stellive",
+          "status": "reviewed",
+          "verified": 1
+        },
         {
           "providerId": "seoul-culture",
           "status": "reviewed",
           "verified": 1
+        },
+        {
+          "providerId": "sangsangmadang",
+          "status": "reviewed",
+          "verified": 1
+        },
+        {
+          "providerId": "hybe-weverse",
+          "status": "reviewed",
+          "verified": 2
+        },
+        {
+          "providerId": "lotte-department",
+          "status": "reviewed",
+          "verified": 1
+        },
+        {
+          "providerId": "shinsegae-department",
+          "status": "reviewed",
+          "verified": 2
+        },
+        {
+          "providerId": "popcondplay",
+          "status": "reviewed",
+          "verified": 3
+        },
+        {
+          "providerId": "kakao-friends",
+          "status": "reviewed",
+          "verified": 1
+        },
+        {
+          "providerId": "pokemon",
+          "status": "failed",
+          "verified": 0
         }
-      ]
+      ],
+      "note": "실제 상세29건:신규15·기존1·보류1·탈락12. 중복1·접근/본문실패4건은 제외. 서울·경남·대전·부산 등 공식 운영사로 확대해 공개유효16건,목표15건 대비 부족0. 일부 접속 실패와 기간미확정 공지는 별도 보류."
     },
     "brand-sales": {
       "lastCollectedAt": "2026-10-26T03:50:41.026Z",
@@ -128,16 +208,27 @@
       "note": "신규10·기존재검증5. 원문 상세25건(검증15·보류2·탈락8), 미완료/목록3·접근실패2 별도. 기존34개 추적 유지,네이버와11번가 추가."
     },
     "family-discounts": {
-      "lastCollectedAt": "2026-10-26",
-      "outcome": "partial-review",
-      "researchRunId": "baseline-2026-10-26",
+      "lastCollectedAt": "2026-10-26T07:29:00.467Z",
+      "outcome": "reviewed",
+      "researchRunId": "manual-all-20261026",
       "providers": [
         {
           "providerId": "seoulland",
           "status": "reviewed",
           "verified": 16
+        },
+        {
+          "providerId": "acc-culture",
+          "status": "reviewed",
+          "verified": 2
+        },
+        {
+          "providerId": "legoland",
+          "status": "reviewed",
+          "verified": 1
         }
-      ]
+      ],
+      "note": "실제상세19건:기존재검증16·신규분류연결3·보류/탈락0.카드별통합보조원문1건제외.공개19건.현금/포인트·연령·보호자별요금·증빙/실적·중복·취소/변경을보강.서울랜드/광주ACC/춘천레고랜드포함."
     },
     "festivals": {
       "lastCollectedAt": "2026-10-26T03:44:36.786Z",
