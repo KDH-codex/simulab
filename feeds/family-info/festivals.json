@@ -2633,11 +2633,11 @@
       "siteUrl": "/tools/kids-outing-calendar/#event-mcst-12641-2026"
     }
   ],
-  "siteRevision": "ff3a41b4ed84cbbe9cc1bd83d6a3ebed916a1561",
-  "generatedAt": "2026-10-26T12:06:27.577Z",
+  "siteRevision": "aa8a3b67e74b86dbeb2ee15a5229fb2e4a4f84fb",
+  "generatedAt": "2026-10-27T05:43:18.352Z",
   "window": {
-    "start": "2026-10-26",
-    "end": "2026-12-25"
+    "start": "2026-10-27",
+    "end": "2026-12-26"
   },
   "deployment": {
     "status": "verify-live-snapshot",

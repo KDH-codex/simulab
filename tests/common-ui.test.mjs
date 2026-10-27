@@ -8,7 +8,7 @@ test('common initialization completes after removing the old blocking consent ga
  const window={location:{pathname:'/'},addEventListener(){},dispatchEvent(){}};
  vm.runInNewContext(await readFile(new URL('../assets/js/core-ui.js',import.meta.url),'utf8'),{document,window,CustomEvent:class{},localStorage:{getItem:()=>null,setItem(){}}});
  assert.doesNotThrow(()=>window.SimuLab.initCommonUI('home'));assert.equal(attrs.get('data-theme'),'light');
- assert.equal(window.SimuLab.SITE_MENU.flatMap(g=>g.items).length,63);
+ assert.equal(window.SimuLab.SITE_MENU.flatMap(g=>g.items).length,29);
  assert.deepEqual(Array.from(window.SimuLab.SITE_MENU.find(g=>g.id==='weekday').items,t=>t.tool),['working-parents-guide','pay-work-guide','living-cost-guide']);
 });
 

@@ -30,6 +30,11 @@ test('admin untrusted IDs and event fields are escaped, and arbitrary labels are
  const rankings=rankingRows({[payload]:3});const events=eventRows([{tool:payload,time:payload,action:payload}]);assert.ok(rankings.includes('&lt;img'));assert.ok(events.includes('&lt;img'));assert.ok(!rankings.includes(payload));assert.ok(!events.includes(payload));
 });
 function trackerContext(allowed=true){const requests=[],listeners={},state={allowed};const window={SIMULAB_SUPABASE_CONFIG:{url:'https://example.invalid',anonKey:'public'},SimuLabPrivacy:{analyticsAllowed:()=>state.allowed},addEventListener:(name,fn)=>{listeners[name]=fn;}};const ctx=vm.createContext({window,location:{pathname:'/tools/area-pyeong-calc/'},sessionStorage:storage(),crypto:{randomUUID:()=> '00000000-0000-4000-8000-000000000002'},fetch:async(...args)=>{requests.push(args);return {ok:true};}});return {ctx,requests,state,listeners};}
+
+test('archived tools stay silent and family editorial reads join the family information aggregate',()=>{
+ const archived=trackerContext();archived.ctx.window.document={body:{dataset:{publicationState:'archived'}}};vm.runInContext(trackerCode,archived.ctx);archived.ctx.window.SimuLabTracker.trackEvent('calculate');assert.equal(archived.requests.length,0);
+ const guide=trackerContext();guide.ctx.location.pathname='/guides/arisu-kids-visit/';vm.runInContext(trackerCode,guide.ctx);assert.equal(JSON.parse(guide.requests[0][1].body).p_tool_id,'family-info-calendar');
+});
 test('tracking remains silent without consent and emits only one pageview after consent',()=>{
  const {ctx,requests,state,listeners}=trackerContext(false);vm.runInContext(trackerCode,ctx);vm.runInContext(trackerCode,ctx);assert.equal(requests.length,0);state.allowed=true;listeners['simulab:privacychange']();listeners['simulab:privacychange']();assert.equal(requests.length,1);assert.ok(requests[0][0].endsWith('/rpc/record_site_activity'));
 });

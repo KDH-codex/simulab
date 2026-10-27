@@ -1,11 +1,11 @@
 {
-  "name": "SimuLab — 스마트 생활 & 금융 계산기",
+  "name": "시뮬랩 — 가족 생활정보와 직장인 계산기",
   "short_name": "SimuLab",
-  "description": "레버리지 ETF 백테스팅, 다이어트 BMR·TDEE, 카페인 꿀잠, 사다리타기, 더치페이 등 100% 브라우저 기반 스마트 계산기 모음",
+  "description": "가족 여행·체험·생활정보와 월급·퇴직금·연차, 생활비·주거비·여행 예산 계산을 함께 제공합니다.",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#2563eb",
+  "theme_color": "#176d53",
   "orientation": "portrait-primary",
   "icons": [
     {

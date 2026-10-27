@@ -187,7 +187,7 @@
 
   function getRootPrefix() {
     const path = window.location.pathname.replace(/\\/g, '/');
-    if (path.includes('/tools/')) {
+    if (path.includes('/tools/') || path.includes('/guides/')) {
       return '../../';
     }
     if (path.includes('/legal/')) {
@@ -226,153 +226,34 @@
         {title:'생활비 절약',sub:'장보기 · 통신·멤버십 · 주거비 비교',href:'tools/living-cost-guide/',tool:'living-cost-guide',hot:true}
       ]}]
     },
-    {
-      id: 'finance',
-      label: '금융·재테크',
-      icon: '💰',
-      hot: true,
-      desc: '급여·퇴직·투자·주거 비용을 가정에 따라 계산하고 비교합니다. 각 도구의 적용 기준과 한계를 확인해 주세요.',
-      subgroups: [
-        {
-          title: '💼 직장인·퇴직',
-          items: [
-            { title: '국민연금 조기수령 시뮬', sub: '60세 조기 vs 65세 정상 역전 나이(BEP)', href: 'tools/national-pension-sim/', tool: 'national-pension-sim', hot: true },
-            { title: '직장인 퇴직금 계산기', sub: '근무 기간 · 평균임금 기준 추정', href: 'tools/severance-pay-calc/', tool: 'severance-pay-calc', hot: true },
-            { title: '월급 공제·실수령액 계산기', sub: '2026년 보험료 · 소득세 직접 입력', href: 'tools/salary-net-calc/', tool: 'salary-net-calc', hot: true },
-            { title: '실업급여 모의계산기', sub: '가입 기간 · 연령별 지급액 추정', href: 'tools/unemployment-benefit-calc/', tool: 'unemployment-benefit-calc', hot: true },
-            { title: '나의 진짜 시급 가치', sub: '내 한 시간의 진짜 시급 값어치', href: 'tools/hourly-labor-value-calc/', tool: 'hourly-labor-value-calc' }
-          ]
-        },
-        {
-          title: '📈 주식·배당',
-          items: [
-            { title: '레버리지 복리·변동성 계산기', sub: '직접 입력한 일별 가정 경로 비교', href: 'tools/leverage-etf-sim/', tool: 'leverage-etf-sim', hot: true },
-            { title: '주식 실질 수익률 계산기', sub: '세금·수수료 반영 실질 수익률', href: 'tools/stock-profit-calc/', tool: 'stock-profit-calc' },
-            { title: '평단가 · 물타기 계산기', sub: '분할 매수 평균 단가', href: 'tools/stock-water-ride-calc/', tool: 'stock-water-ride-calc' },
-            { title: '목표가 · 복리 계산기', sub: '목표 수익률 달성 가격', href: 'tools/stock-target-compound-calc/', tool: 'stock-target-compound-calc' },
-            { title: '배당 복리 & 세금', sub: '재투자(DRIP) · 건보료 · 절세계좌', href: 'tools/dividend-tax-sim/', tool: 'dividend-tax-sim', hot: true },
-            { title: '월 배당 목표 달성 계산기', sub: '목표 월급까지 필요한 투자금', href: 'tools/dividend-goal-calc/', tool: 'dividend-goal-calc' }
-          ]
-        },
-        {
-          title: '🏠 부동산·비즈니스',
-          items: [
-            { title: '그때 그 아파트 샀다면', sub: '마래푸·은마 과거 매수가 vs 현재 실거래가', href: 'tools/past-apt-timemachine/', tool: 'past-apt-timemachine', hot: true },
-            { title: '주택대출 상환·비율 가정 계산기', sub: '고정 금리 상환 · 첫해 납부 비율', href: 'tools/loan-mortgage-calc/', tool: 'loan-mortgage-calc', hot: true },
-            { title: '전세 vs 월세', sub: '전환율 · 주거 기회비용', href: 'tools/jeonse-wolse-sim/', tool: 'jeonse-wolse-sim' },
-            { title: '양도소득세 · 세후 수익', sub: '12억 비과세 · 장특공제', href: 'tools/capital-gains-tax-sim/', tool: 'capital-gains-tax-sim' },
-            { title: '부동산 평수 ㎡ 환산기', sub: '㎡ ↔ 평 · 면적 단위 변환', href: 'tools/area-pyeong-calc/', tool: 'area-pyeong-calc' },
-            { title: '설비 도입 ROI · BEP', sub: '회수 기간 · NPV · 손익분기', href: 'tools/logistics-roi-calc/', tool: 'logistics-roi-calc' }
-          ]
-        }
-      ]
-    },
-    {
-      id: 'life',
-      label: '라이프·건강',
-      icon: '🌿',
-      hot: true,
-      desc: '나이·할인율 같은 생활 계산과 일반적인 건강 참고 계산, 오락용 테마 도구를 제공합니다. 결과의 가정과 적용 범위를 함께 확인해 주세요.',
-      subgroups: [
-        {
-          title: '🌿 일상·생활',
-          items: [
-            { title: '아이와 가볼만한 곳 달력', sub: '공식 공지로 확인한 일정 · 비용 · 예약 안내', href: 'tools/kids-outing-calendar/', tool: 'kids-outing-calendar', hot: true },
-            { title: '브랜드 세일 달력', sub: '라이프·패션·뷰티·키즈·가구 · 세일과 회원 혜택', href: 'tools/parenting-deals/', tool: 'parenting-deals', hot: true },
-            { title: '만나이 띠 계산기', sub: '생일 기준 만나이 · 출생연도 띠 · D-Day', href: 'tools/korean-age-calc/', tool: 'korean-age-calc', hot: true },
-            { title: '퍼센트 할인율 계산기', sub: '쇼핑 세일가 · 인상률 · 비중 계산', href: 'tools/percent-discount-calc/', tool: 'percent-discount-calc', hot: true },
-            { title: '내 인생의 모래시계', sub: '기대수명 대비 생애 진행률 · 잔여 일수', href: 'tools/life-hourglass-sim/', tool: 'life-hourglass-sim' }
-          ]
-        },
-        {
-          title: '🏃 헬스·수면',
-          items: [
-            { title: 'BMR·TDEE 참고 계산기', sub: '성인 휴식대사량 · 활동계수 가정', href: 'tools/diet-bmr-tdee-calc/', tool: 'diet-bmr-tdee-calc' },
-            { title: '카페인 잔여량 가정 계산기', sub: '섭취량 · 반감기 가정별 잔여량', href: 'tools/caffeine-sleep-calc/', tool: 'caffeine-sleep-calc' },
-            { title: '러닝 Zone 2 심박수', sub: '심박수 구간 · 칼로리', href: 'tools/running-zone-calc/', tool: 'running-zone-calc' },
-            { title: '음주 알코올 분해시간', sub: '위드마크 공식 기준 분해 소요시간', href: 'tools/alcohol-widmark-calc/', tool: 'alcohol-widmark-calc' }
-          ]
-        },
-        {
-          title: '🔮 사주·심리',
-          items: [
-            { title: '사주 오행 테마 놀이', sub: '간이 규칙으로 살펴보는 오락용 테마', href: 'tools/saju-wealth-sim/', tool: 'saju-wealth-sim' },
-            { title: '금융 정보 습관 동물 테스트', sub: '8문항 자체 제작 오락 콘텐츠', href: 'tools/invest-animal-mbti/', tool: 'invest-animal-mbti' },
-            { title: '연애 동물 애착 심리테스트', sub: '존 보울비 애착이론 · 연인 궁합', href: 'tools/love-animal-attachment/', tool: 'love-animal-attachment' }
-          ]
-        }
-      ]
-    },
-    {
-      id: 'stats',
-      label: '별별 통계',
-      icon: '📊',
-      hot: true,
-      desc: '수록된 통계를 비교하고 이름 후보를 탐색합니다. 자료의 집계 시점과 추정 범위는 페이지별 안내를 확인해 주세요.',
-      subgroups: [
-        {
-          title: '📊 재미있는 공공 빅데이터',
-          items: [
-            { title: '가구 순자산 정리·평균 비교', sub: '2025년 가구 평균과 입력 금액 비교', href: 'tools/korean-wealth-percentile-calc/', tool: 'korean-wealth-percentile-calc', hot: true },
-            { title: '대한민국 평균 vs 나', sub: '연봉·근무시간·점심값 5각형 레이더 차트', href: 'tools/korean-average-vs-me/', tool: 'korean-average-vs-me', hot: true },
-            { title: '아기이름 후보 찾기', sub: '이름 후보 탐색 · 기기에 찜하기', href: 'tools/korean-baby-name-trend/', tool: 'korean-baby-name-trend', hot: true },
-            { title: '전국 도시별 소득 & 집값', sub: '17개 시도별 소득·아파트값·PIR·1인가구', href: 'tools/korean-city-income-housing/', tool: 'korean-city-income-housing', hot: true },
-            { title: '주요 19개국 소득 순위변화', sub: '1990~2025 세계은행 GNI·Atlas 1인당 소득', href: 'tools/world-gni-ranking-race/', tool: 'world-gni-ranking-race', hot: true },
-            { title: '우리나라 수출입 품목 순위', sub: '2025년 연간·2026년 1~9월 수출입 누계', href: 'tools/korean-trade-ranking/', tool: 'korean-trade-ranking', hot: true },
-            { title: '연도별 출입국 관광객 통계', sub: '2025년 연간·2026년 1~8월 관광 누계', href: 'tools/korean-tourism-travel-stats/', tool: 'korean-tourism-travel-stats', hot: true },
-            { title: '대한민국 연령별 인구와 초등생수', sub: '2026년 9월 인구·2026년 초등학생 통계', href: 'tools/korean-population-pyramid/', tool: 'korean-population-pyramid', hot: true },
-            { title: '주요 29개국 인구 면적 순위', sub: '2026년 인구 전망·2024년 표면적 비교', href: 'tools/world-population-area-rank/', tool: 'world-population-area-rank', hot: true }
-          ]
-        }
-      ]
-    },
-    {
-      id: 'game',
-      label: '오락·미니게임',
-      icon: '🎮',
-      hot: true,
-      desc: '잠시 쉬어가는 힐링 타임! 클래식 레트로 테트리스, 산성비 타자, 벽돌깨기, 닷지 1.9 탄막 회피 등 실시간 랭킹 게임과 인터랙티브 사다리, 로또 1등 무한 시뮬레이터입니다.',
-      subgroups: [
-        {
-          title: '🕹️ 실시간 랭킹 아케이드',
-          items: [
-            { title: '블록 퍼즐 공개 점검 안내', sub: '공개 실행 보류 · 권리 확인 중', href: 'tools/game-tetris/', tool: 'game-tetris', hot: true },
-            { title: '스피드 타자 산성비', sub: '금융 단어 격추 · 타자 전국 실시간 랭킹', href: 'tools/game-typing/', tool: 'game-typing', hot: true },
-            { title: '네온 벽돌 깨기', sub: '공 분열 & 레이저 알카노이드 · 전국 랭킹', href: 'tools/game-brick-breaker/', tool: 'game-brick-breaker', hot: true },
-            { title: '미사일 피하기 닷지', sub: '고전 1.9 탄막 회피 서바이벌 · 전국 랭킹', href: 'tools/game-dodge/', tool: 'game-dodge', hot: true }
-          ]
-        },
-        {
-          title: '🎲 모임 복불복 & 복권',
-          items: [
-            { title: '인터랙티브 사다리타기', sub: '2~12명 · 캔버스 애니메이션 · 복불복', href: 'tools/ladder-draw-game/', tool: 'ladder-draw-game' },
-            { title: '더치페이·정산 계산기', sub: '1/N 절사 · 지각자 벌금 · 카톡 문구 복사', href: 'tools/dutch-pay-roulette/', tool: 'dutch-pay-roulette' },
-            { title: '로또 1등 당첨 시뮬레이터', sub: '실제 확률 체감 · 1초 100회 무한 추첨', href: 'tools/lotto-draw-sim/', tool: 'lotto-draw-sim', hot: true },
-            { title: '로또 세후 수령액 & 이자', sub: '원천징수 가정 · 예금·배당 이자', href: 'tools/lotto-tax-interest-calc/', tool: 'lotto-tax-interest-calc' }
-          ]
-        }
-      ]
-    },
-    {
-      id: 'insight',
-      label: '인사이트',
-      icon: '💡',
-      desc: '일상의 사소한 소비와 매매 결정이 가져오는 나비효과를 숫자로 시각화합니다. 담배값·커피값 S&P500 복리 투자부터 은퇴 자금 조기소진, 화폐가치 인플레이션 분석까지 확인해보세요.',
-      subgroups: [
-        {
-          title: '💡 미래 나비효과 시뮬레이션',
-          items: [
-            { title: '담배값 주식 투자 시뮬', sub: '하루 1갑 금연 후 S&P500 복리 + 건강 영수증', href: 'tools/smoking-wealth-sim/', tool: 'smoking-wealth-sim', hot: true },
-            { title: '소비 vs 투자 기회비용', sub: '신차·명품 대신 S&P500 복리 투자', href: 'tools/opportunity-cost-calc/', tool: 'opportunity-cost-calc', hot: true },
-            { title: '커피값 투자 기회비용', sub: '그 돈을 TQQQ에 넣었다면?', href: 'tools/coffee-opportunity-calc/', tool: 'coffee-opportunity-calc' },
-            { title: '과거 그때 샀더라면', sub: '팔고 나서 얼마나 올랐을까 (매도 후 상승분)', href: 'tools/missed-investment-calc/', tool: 'missed-investment-calc' },
-            { title: '은퇴자금 조기소진 계산기', sub: '현재 자산으로 몇 년을 버틸 수 있을까?', href: 'tools/retirement-survival-sim/', tool: 'retirement-survival-sim' },
-            { title: '물가지수·구매력 계산기', sub: '직접 입력한 지수로 금액 환산', href: 'tools/inflation-purchasing-power-calc/', tool: 'inflation-purchasing-power-calc' }
-          ]
-        }
-      ]
-    }
+    {id:'work',label:'직장인 계산기',icon:'▤',desc:'월급·퇴직금·연차·실업급여를 입력 조건과 공식 기준으로 살펴봅니다.',subgroups:[{title:'월급과 근로생활',items:[
+      {title:'월급 공제·실수령액',sub:'2026 보험료 · 소득세 직접 입력',tool:'salary-net-calc'},
+      {title:'퇴직금 계산기',sub:'실제 3개월 임금 · 세전 퇴직금',tool:'severance-pay-calc'},
+      {title:'연차 발생·잔여일수',sub:'입사일 기준 · 개근·출근율 가정',tool:'annual-leave-calc'},
+      {title:'실업급여 모의계산',sub:'이직일 · 가입기간 · 연령별 가정',tool:'unemployment-benefit-calc'},
+      {title:'출퇴근 포함 시간당 수입',sub:'실수령액 · 직장 지출 · 총 투입시간',tool:'hourly-labor-value-calc'}
+    ]}]},
+    {id:'living',label:'생활정보·계산기',icon:'⌂',desc:'장보기·모임·주거비를 같은 단위와 기간으로 비교합니다.',subgroups:[{title:'가족의 생활비',items:[
+      {title:'브랜드 세일 달력',sub:'일정과 회원·구매 조건 구분',tool:'parenting-deals'},
+
+      {title:'할인율·최종 가격',sub:'연속 할인 · 인상률 · 비중 계산',tool:'percent-discount-calc'},
+      {title:'묶음상품 단가 비교',sub:'용량·개수 · 배송비를 같은 단위로',tool:'unit-price-calc'},
+      {title:'멤버십 비용·혜택 비교',sub:'회비 · 할인 한도 · 배송비 절감',tool:'membership-benefit-calc'},
+      {title:'모임비 균등 정산',sub:'원 단위 분담 · 나머지 인원 배분',tool:'dutch-pay-roulette'},
+      {title:'가구 순자산·평균 비교',sub:'자산−부채 · 2025 가구 평균',tool:'korean-wealth-percentile-calc'},
+      {title:'물가지수·구매력 환산',sub:'동일 기준의 두 지수 직접 입력',tool:'inflation-purchasing-power-calc'}
+    ]},{title:'우리 집 주거비',items:[
+      {title:'주택대출 상환 비교',sub:'고정금리 · 상환 방식별 부담',tool:'loan-mortgage-calc'},
+      {title:'전세·월세 비용 비교',sub:'보증금 대출이자 · 월세 · 기회비용',tool:'jeonse-wolse-sim'},
+      {title:'평수·제곱미터 환산',sub:'전용·공급 구분 · ㎡와 평 변환',tool:'area-pyeong-calc'}
+    ]}]},
+    {id:'travel',label:'가족 여행·나들이',icon:'◷',desc:'가족 일정과 여행 예산, 예약 전 확인할 내용을 준비합니다.',subgroups:[{title:'함께 나갈 날 준비',items:[
+      {title:'아이와 가볼 만한 곳',sub:'공식 운영일 · 비용 · 예약 안내',tool:'kids-outing-calendar'},
+      {title:'가족 여행 예산',sub:'인원·숙박·교통·식비 · 예비비',tool:'travel-budget-calc'},
+      {title:'만나이·기념일 계산',sub:'생일 기준 만나이 · 기준일 차이',tool:'korean-age-calc'}
+    ]}]}
   ];
+  SITE_MENU.forEach(group=>group.subgroups.forEach(sub=>sub.items.forEach(item=>{item.href ||= 'tools/'+item.tool+'/';})));
 
   // 기존 코드 호환성을 위해 각 cat.items 를 subgroups 에서 자동 평탄화하여 채워 넣음
   SITE_MENU.forEach(cat => {
@@ -644,6 +525,10 @@
        240자가 넘는 .page-subtitle 은 2줄로 접어 "자세히 보기"로 펼칩니다. (내용은 삭제하지 않음)
      ------------------------------------------------------------------------ */
   const TOOL_NAMES = {
+    'annual-leave-calc':'연차 발생·잔여일수',
+    'unit-price-calc':'묶음상품 단가 비교',
+    'membership-benefit-calc':'멤버십 비용·혜택 비교',
+    'travel-budget-calc':'가족 여행 예산',
     'working-parents-guide': '육아휴직·복직',
     'pay-work-guide': '월급·퇴직',
     'living-cost-guide': '생활비 절약',
@@ -664,7 +549,7 @@
     'coffee-opportunity-calc': '커피값 투자 기회비용',
     'missed-investment-calc': '과거 그때 샀더라면',
     'retirement-survival-sim': '은퇴자금 조기소진 계산기',
-    'hourly-labor-value-calc': '나의 진짜 시급 가치',
+    'hourly-labor-value-calc': '출퇴근 포함 시간당 수입',
     'inflation-purchasing-power-calc': '물가지수·구매력 계산기',
     'saju-wealth-sim': '사주 오행 테마 놀이',
     'invest-animal-mbti': '금융 정보 습관 동물 테스트',
@@ -674,7 +559,7 @@
     'alcohol-widmark-calc': '음주 알코올 분해시간',
     'love-animal-attachment': '연애 동물 애착 심리테스트',
     'ladder-draw-game': '인터랙티브 사다리타기',
-    'dutch-pay-roulette': '센스있는 더치페이 계산기',
+    'dutch-pay-roulette': '모임비 균등 정산',
     'severance-pay-calc': '직장인 퇴직금 계산기',
     'salary-net-calc': '월급 공제·실수령액 계산기',
     'opportunity-cost-calc': '소비 vs 투자 기회비용',
@@ -768,6 +653,15 @@
     } else if (['korean-average-vs-me','korean-city-income-housing','korean-population-pyramid','korean-tourism-travel-stats','korean-trade-ranking','korean-wealth-percentile-calc','world-gni-ranking-race','world-population-area-rank'].includes(id)) {
       kind = 'statistics'; title = '통계 해석 전 확인';
       message = '통계의 집계 연도·표본·단위·원자료와 추정 범위를 확인해 주세요. 수록 시점의 자료로 현재의 실시간 값이나 개인의 정확한 순위를 보장하지 않습니다.';
+    } else if (id === 'dutch-pay-roulette') {
+      kind = 'general'; title = '균등 분담 기준';
+      message = '실제 결제액과 분담 인원을 확인하고 원 단위 나머지를 참여자끼리 정하세요. 개별 메뉴·선결제 상계는 포함하지 않습니다.';
+    } else if (id === 'annual-leave-calc') {
+      kind = 'employment'; title = '연차 적용 조건 확인';
+      message = '입사일 기준·계속 재직과 출근 요건 충족을 가정합니다. 회계연도·단시간 비례 부여·이월·선사용·수당은 회사 기록과 공식 안내로 확인하세요.';
+    } else if (id === 'jeonse-wolse-sim') {
+      kind = 'financial'; title = '주거비 비교 범위';
+      message = '입력한 대출이자·월세와 기회비용을 비교합니다. 보증금 반환·대출 승인·세액공제와 계약 적법성을 판정하지 않습니다.';
     } else if (/tax|pension|salary|severance|unemployment|loan|mortgage/.test(id)) {
       kind = 'financial'; title = '금액·적용 기준 확인';
       message = '입력 가정과 페이지에 표시된 기준으로 계산한 추정치입니다. 실제 세액·지급액·대출 한도·승인은 개인 조건과 적용 시점에 따라 다릅니다. 신고·신청·계약 전 담당 기관에서 확인해 주세요.';
@@ -869,7 +763,7 @@
         <div class="container footer-inner">
           <div>
             <strong style="color: var(--text-primary);">SimuLab</strong>
-            <p style="margin-top: 0.2rem;">생활에 필요한 계산·통계·나들이 정보를 한곳에.</p>
+            <p style="margin-top: 0.2rem;">가족·여행·생활정보와 일하는 날의 계산을 한곳에.</p>
           </div>
           <ul class="footer-links">
             <li><a href="${prefix}legal/about.html">서비스 소개</a></li>

@@ -4,16 +4,20 @@ import {fileURLToPath} from 'node:url';
 const root=fileURLToPath(new URL('../dist/',import.meta.url)),files=[];
 async function walk(dir){for(const e of await readdir(dir,{withFileTypes:true})){const p=path.join(dir,e.name);if(e.isDirectory())await walk(p);else files.push(p);}}await walk(root);
 const errors=[];let pages=0;
+const {ids:publishedIds}=await (await import('./publication.mjs')).publicationCatalog();
+const sitemap=await readFile(path.join(root,'sitemap.xml'),'utf8');
 for(const file of files.filter(p=>p.endsWith('.html'))){
  const relative=path.relative(root,file).replaceAll('\\','/'),html=await readFile(file,'utf8');pages++;
  if(relative.startsWith('tools/')&&!relative.startsWith('tools/admin-dashboard/')){
+  const id=relative.split('/')[1],active=publishedIds.has(id);
+  if(active===/name="robots" content="noindex,follow"/.test(html))errors.push(relative+': publication index mismatch');
+  if(active!==sitemap.includes('https://simulab.kr/tools/'+id+'/</loc>'))errors.push(relative+': sitemap publication mismatch');
   if((html.match(/<h1\b/gi)||[]).length!==1)errors.push(relative+': H1 count');
   if((html.match(/rel=["']canonical["']/gi)||[]).length!==1)errors.push(relative+': canonical count');
   if(/user-scalable\s*=\s*no|maximum-scale\s*=\s*1(?:\.0)?[",\s]/i.test(html))errors.push(relative+': zoom disabled');
   if((html.match(/id="tool-use-notice"/g)||[]).length!==1)errors.push(relative+': missing or repeated use notice');
   if((html.match(/id="legal-disclaimer"/g)||[]).length!==1||!html.includes('data-notice-version="1"'))errors.push(relative+': missing static disclaimer');
-  const expectedAds=/^tools\/(?:alcohol-widmark-calc|game-tetris)\//.test(relative)?0:1;
-  if((html.match(/data-ad-state="pending"/g)||[]).length!==expectedAds)errors.push(relative+': unexpected pending ad placements');
+  if(/data-ad-state="pending"|광고 게재 준비 중/.test(html))errors.push(relative+': empty ad placeholder');
  }
  if(/data-ad-slot=["']auto["']/.test(html))errors.push(relative+': dummy ad unit ID');
  if(/<script\b[^>]*src=["']https:\/\/pagead2/i.test(html))errors.push(relative+': unexpected automatic ad script');

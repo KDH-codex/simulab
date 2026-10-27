@@ -8,7 +8,6 @@ const check = process.argv.includes('--check');
 const familyCategories=JSON.parse(await readFile(new URL('data/family-info/schedule.json',root),'utf8')).categories;
 const familyPages=['family-info-calendar',...familyCategories.filter(c=>!['brand-sales','festivals'].includes(c.id)).map(c=>c.id)];
 const block = (name, html) => `<!-- GENERATED:${name}:START -->\n${html}\n<!-- GENERATED:${name}:END -->`;
-const advertisement = block('AD-PLACEMENT', '<aside class="ad-placement" aria-label="광고 게재 준비 영역" data-ad-state="pending"><span class="ad-placement-label">광고</span><p>광고 게재 준비 중</p></aside>');
 
 async function update(file, transform) {
   const url = new URL(file, root), current = await readFile(url, 'utf8');
@@ -21,12 +20,9 @@ async function update(file, transform) {
   if (!check && current !== next) await writeFile(url, next);
 }
 
-await update('index.html', html => {
-  if (!html.includes('<section class="weekend-section"')) throw new Error('Missing home ad placement anchor');
-  return html.replace('<section class="weekend-section"', advertisement + '\n<section class="weekend-section"');
-});
+await update('index.html', html => html);
 
-let count = 0, adCount = 1;
+let count = 0;
 for (const entry of await readdir(new URL('tools/', root), {withFileTypes:true})) {
   if (!entry.isDirectory() || entry.name === 'admin-dashboard') continue;
   const name = entry.name;
@@ -55,16 +51,8 @@ for (const entry of await readdir(new URL('tools/', root), {withFileTypes:true})
     }
     const disclaimer = block('DISCLAIMER', '<aside id="legal-disclaimer" class="legal-disclaimer-box" data-notice-version="1" aria-label="이용 범위와 면책고지">' + buildSmartDisclaimerHtml(name, '../../') + '</aside>');
     html = html.replace('</main>', '\n\n  ' + disclaimer + '\n  </main>');
-    if (['alcohol-widmark-calc','game-tetris'].includes(name)) return html;
-    adCount++;
-    if (familyPages.includes(name)) html = html.replace('<section id="official-sources"', advertisement + '\n<section id="official-sources"');
-    else if (name === 'kids-outing-calendar') html = html.replace(/<section\b[^>]*id="source-policy"[^>]*>/, match => advertisement + '\n    ' + match);
-    else if (name === 'parenting-deals') html = html.replace(/([ \t]*)<section id="publishing-policy"/, (_, indent) => indent + advertisement + '\n' + indent + '<section id="publishing-policy"');
-    else if (['working-parents-guide','pay-work-guide','living-cost-guide'].includes(name)) html = html.replace('<section id="guide-source-policy"', advertisement + '\n<section id="guide-source-policy"');
-    else if (/<article\b/.test(html)) html = html.replace(/([ \t]*)<article\b/, (_, indent) => indent + advertisement + '\n' + indent + '<article');
-    else html = html.replace('<!-- GENERATED:DISCLAIMER:START -->', advertisement + '\n    <!-- GENERATED:DISCLAIMER:START -->');
     return html;
   });
   count++;
 }
-console.log(`Publishing UI ${check ? 'checked' : 'built'}: ${count} tool notices, ${adCount} pending ad placements (home included; closed tools excluded). No ad requests enabled.`);
+console.log(`Publishing UI ${check ? 'checked' : 'built'}: ${count} tool notices; empty advertisement placeholders removed.`);

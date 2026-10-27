@@ -19,6 +19,8 @@ test('PostgreSQL enforces the new admin and public-write boundaries',async t=>{
  await db.exec(collectorSql);await db.exec(collectorSql);
  const guideFile=(await readdir(new URL('../supabase/migrations/',import.meta.url))).find(name=>name.endsWith('_add_weekday_guide_analytics.sql'));
  assert.ok(guideFile);const guideSql=await readFile(new URL('../supabase/migrations/'+guideFile,import.meta.url),'utf8');await db.exec(guideSql);await db.exec(guideSql);
+ const focusFile=(await readdir(new URL('../supabase/migrations/',import.meta.url))).find(name=>name.endsWith('_focus_family_work_analytics.sql'));
+ const focusSql=await readFile(new URL('../supabase/migrations/'+focusFile,import.meta.url),'utf8');await db.exec(focusSql);await db.exec(focusSql);
  const admin=randomUUID(),member=randomUUID();
  await db.query('INSERT INTO auth.users(id) VALUES($1),($2)',[admin,member]);await db.query('INSERT INTO simulab_private.admin_users(user_id) VALUES($1)',[admin]);
  async function as(role,uid,fn){assert.ok(['anon','authenticated'].includes(role));await db.exec('SET ROLE '+role);await db.query("SELECT set_config('request.jwt.claim.sub',$1,false)",[uid||'']);try{return await fn();}finally{await db.exec('RESET ROLE');await db.query("SELECT set_config('request.jwt.claim.sub','',false)");}}
@@ -41,6 +43,10 @@ test('PostgreSQL enforces the new admin and public-write boundaries',async t=>{
   const second=await as('anon',null,()=>db.query("SELECT public.record_site_activity($1,'area-pyeong-calc','page_view') AS accepted",[id]));assert.equal(second.rows[0].accepted,false);
   await as('anon',null,()=>assert.rejects(db.query("SELECT public.record_site_activity($1,'area-pyeong-calc','<img>')",[id]),e=>e.code==='22023'));
   await as('anon',null,()=>assert.rejects(db.query("SELECT public.record_site_activity($1,'unknown-tool','page_view')",[id]),e=>e.code==='22023'));
+ });
+ await t.test('focused calculator and family collection preserves write-only boundaries',async()=>{
+  for(const id of ['annual-leave-calc','travel-budget-calc','unit-price-calc','membership-benefit-calc','family-info-calendar','kids-programs']){const result=await as('anon',null,()=>db.query("SELECT public.record_site_activity($1,$2,'page_view') AS accepted",[randomUUID(),id]));assert.equal(result.rows[0].accepted,true);}
+  await as('anon',null,()=>assert.rejects(db.query('SELECT * FROM public.analytics_pageviews'),e=>e.code==='42501'));
  });
  await t.test('score RPC rejects special numbers and stores a server-generated display',async()=>{
   const submitter=randomUUID(),submission=randomUUID();
