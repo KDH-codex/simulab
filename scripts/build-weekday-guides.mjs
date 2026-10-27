@@ -1,4 +1,5 @@
-import {readFile,writeFile,mkdir} from 'node:fs/promises';
+import {readFile,mkdir} from 'node:fs/promises';
+import {writeFile} from './write-public-file.mjs';
 import vm from 'node:vm';
 import {escapeHtml as e,validateCatalog,renderGuideCard} from '../assets/js/weekday-guide-model.js';
 const root=new URL('../',import.meta.url),data=JSON.parse(await readFile(new URL('data/weekday-guides/reviewed.json',root),'utf8'));

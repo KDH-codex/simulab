@@ -1,4 +1,5 @@
-import { readFile, writeFile } from 'node:fs/promises';
+import {readFile} from 'node:fs/promises';
+import {writeFile} from './write-public-file.mjs';
 import { fileURLToPath } from 'node:url';
 import { FESTIVALS, DATA_REVIEWED_AT } from '../tools/kids-outing-calendar/data.js';
 import { validateEvent, escapeHtml as esc, safeUrl } from '../tools/kids-outing-calendar/logic.js';

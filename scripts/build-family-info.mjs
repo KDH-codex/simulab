@@ -1,4 +1,5 @@
-import {mkdir,readFile,writeFile} from 'node:fs/promises';
+import {mkdir,readFile} from 'node:fs/promises';
+import {writeFile} from './write-public-file.mjs';
 import {execFileSync} from 'node:child_process';
 import {loadCatalog} from './family-info/catalog.mjs';
 import {DAY_NAMES,REGION_GROUPS,escapeHtml as e,filterRecords,renderRecord,koreaToday,shiftDate} from '../tools/family-info-calendar/model.js';

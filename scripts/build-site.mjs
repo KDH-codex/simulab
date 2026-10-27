@@ -1,11 +1,12 @@
-import {readdir,readFile,writeFile,cp,mkdir,rm,lstat,stat} from 'node:fs/promises';
+import {readdir,readFile,cp,mkdir,rm,lstat,stat} from 'node:fs/promises';
+import {writeFile} from './write-public-file.mjs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {spawnSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 import {publicationCatalog} from './publication.mjs';
 const root=fileURLToPath(new URL('../',import.meta.url));
-for(const script of ['build-focused-tools.mjs','build-event-data.mjs','build-parenting-deals.mjs','build-family-info.mjs','build-weekday-guides.mjs','build-family-guides.mjs','build-home.mjs','build-legal.mjs','build-core-guides.mjs','normalize-pages.mjs','build-kids-calendar.mjs','build-publishing-ui.mjs']) {
+for(const script of ['build-focused-tools.mjs','build-event-data.mjs','build-parenting-deals.mjs','build-family-info.mjs','build-weekday-guides.mjs','build-family-guides.mjs','build-editorial-guides.mjs','build-home.mjs','build-legal.mjs','build-core-guides.mjs','normalize-pages.mjs','build-kids-calendar.mjs','build-publishing-ui.mjs']) {
  const result=spawnSync(process.execPath,[path.join(root,'scripts',script)],{cwd:root,stdio:'inherit'});if(result.status!==0)process.exit(result.status||1);
 }
 const destination=path.resolve(root,'dist');
@@ -25,7 +26,8 @@ const {ids:publishedIds}=await publicationCatalog();
 for(const entry of await readdir(path.join(root,'tools'),{withFileTypes:true}))if(entry.isDirectory()&&publishedIds.has(entry.name)){
  try{await stat(path.join(root,'tools',entry.name,'index.html'));pages.push('tools/'+entry.name+'/index.html');}catch{}
 }
-for(const entry of await readdir(path.join(root,'guides'),{withFileTypes:true}))if(entry.isDirectory())pages.push('guides/'+entry.name+'/index.html');
+const {editorialGuides}=await import('../data/guides/catalog.mjs'),{familyGuides}=await import('../data/family-guides.mjs');
+pages.push('guides/index.html',...[...editorialGuides,...familyGuides].map(g=>'guides/'+g.slug+'/index.html'));
 for(const file of await readdir(path.join(root,'legal')))if(file.endsWith('.html'))pages.push('legal/'+file);
 const urls=await Promise.all(pages.map(async file=>{
  const location=file==='index.html'?'':/^(tools|guides)\//.test(file)?file.replace(/index\.html$/,''):file;

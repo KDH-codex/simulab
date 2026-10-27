@@ -319,7 +319,7 @@
         </a>
         <nav class="gnb" id="gnb-nav" aria-label="주요 메뉴">
           <div class="gnb-pill-track">
-            <ul class="gnb-list">${groups}</ul>
+            <ul class="gnb-list">${groups}<li class="gnb-item"><a class="gnb-btn" href="${prefix}guides/">상세 가이드</a></li></ul>
           </div>
         </nav>
         <div class="header-actions" style="display: flex; align-items: center; gap: 0.6rem;">
@@ -475,13 +475,13 @@
     function closeAllPanels() {
       items.forEach((li) => {
         li.classList.remove('open');
-        const b = li.querySelector('.gnb-btn');
+        const b = li.querySelector('button.gnb-btn');
         if (b) b.setAttribute('aria-expanded', 'false');
       });
     }
 
     items.forEach((li) => {
-      const btn = li.querySelector('.gnb-btn');
+      const btn = li.querySelector('button.gnb-btn');
       if (!btn) return;
       btn.addEventListener('click', (ev) => {
         ev.stopPropagation();
@@ -767,6 +767,7 @@
           </div>
           <ul class="footer-links">
             <li><a href="${prefix}legal/about.html">서비스 소개</a></li>
+            <li><a href="${prefix}guides/">신청·계산 가이드</a></li>
             <li><a href="${prefix}legal/privacy.html"><strong>개인정보처리방침</strong></a></li>
             <li><a href="${prefix}legal/terms.html">이용약관 및 면책고지</a></li>
             <li><a href="${prefix}legal/editorial.html">출처·정정 기준</a></li>

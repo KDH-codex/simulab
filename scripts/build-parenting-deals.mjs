@@ -1,4 +1,5 @@
-import {readFile,writeFile} from 'node:fs/promises';
+import {readFile} from 'node:fs/promises';
+import {writeFile} from './write-public-file.mjs';
 import {CATEGORIES,validateSource,validateEvent,validateMemberOffer,renderMemberOffer,filterMemberOffers,renderCalendar,renderEvent,renderSourceDirectory,isCalendarEligible,eventState,filterEvents,escapeHtml as esc,koreaToday} from '../tools/parenting-deals/model.js';
 const root=new URL('../',import.meta.url),now=new Date(),today=koreaToday(now),month=today.slice(0,7);
 const {sources}=JSON.parse(await readFile(new URL('data/deals/sources.json',root),'utf8'));

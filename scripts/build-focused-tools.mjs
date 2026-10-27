@@ -1,4 +1,5 @@
-import {mkdir,writeFile} from 'node:fs/promises';
+import {mkdir} from 'node:fs/promises';
+import {writeFile} from './write-public-file.mjs';
 const tools=[
  ['annual-leave-calc','연차 발생·잔여일수 계산기','입사일 기준의 일반적인 연차 발생을 살펴봅니다. 5인 이상 사업장·주 15시간 이상·계속 재직·출근 요건 충족을 전제로 하며, 회계연도·이월·선사용은 제외합니다.',[
  ['hireDate','입사일','2023-07-01','date'],['asOfDate','계속 재직 중인 기준일','2026-10-27','date'],['usedDays','이번 발생 기간에 사용한 연차 (일)',5,'number',0,100,0.5]],

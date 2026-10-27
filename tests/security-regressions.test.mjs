@@ -34,6 +34,7 @@ function trackerContext(allowed=true){const requests=[],listeners={},state={allo
 test('archived tools stay silent and family editorial reads join the family information aggregate',()=>{
  const archived=trackerContext();archived.ctx.window.document={body:{dataset:{publicationState:'archived'}}};vm.runInContext(trackerCode,archived.ctx);archived.ctx.window.SimuLabTracker.trackEvent('calculate');assert.equal(archived.requests.length,0);
  const guide=trackerContext();guide.ctx.location.pathname='/guides/arisu-kids-visit/';vm.runInContext(trackerCode,guide.ctx);assert.equal(JSON.parse(guide.requests[0][1].body).p_tool_id,'family-info-calendar');
+ for(const owner of ['pay-work-guide','living-cost-guide','unknown']){const ctx=trackerContext();ctx.ctx.location.pathname='/guides/test/';ctx.ctx.window.document={body:{dataset:{analyticsTool:owner}}};vm.runInContext(trackerCode,ctx.ctx);assert.equal(JSON.parse(ctx.requests[0][1].body).p_tool_id,owner==='unknown'?'family-info-calendar':owner);}
 });
 test('tracking remains silent without consent and emits only one pageview after consent',()=>{
  const {ctx,requests,state,listeners}=trackerContext(false);vm.runInContext(trackerCode,ctx);vm.runInContext(trackerCode,ctx);assert.equal(requests.length,0);state.allowed=true;listeners['simulab:privacychange']();listeners['simulab:privacychange']();assert.equal(requests.length,1);assert.ok(requests[0][0].endsWith('/rpc/record_site_activity'));

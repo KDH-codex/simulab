@@ -19,6 +19,13 @@ for(const file of files.filter(p=>p.endsWith('.html'))){
   if((html.match(/id="legal-disclaimer"/g)||[]).length!==1||!html.includes('data-notice-version="1"'))errors.push(relative+': missing static disclaimer');
   if(/data-ad-state="pending"|광고 게재 준비 중/.test(html))errors.push(relative+': empty ad placeholder');
  }
+ if(relative.startsWith('guides/')){
+  if((html.match(/<h1\b/gi)||[]).length!==1)errors.push(relative+': guide H1 count');
+  if((html.match(/rel=["']canonical["']/gi)||[]).length!==1)errors.push(relative+': guide canonical count');
+  const canonical=html.match(/rel="canonical" href="([^"]+)"/)?.[1];
+  if(!canonical||!sitemap.includes(canonical+'</loc>'))errors.push(relative+': guide missing from sitemap');
+  if(/noindex|광고 게재 준비 중/.test(html))errors.push(relative+': guide unexpectedly hidden or empty ad');
+ }
  if(/data-ad-slot=["']auto["']/.test(html))errors.push(relative+': dummy ad unit ID');
  if(/<script\b[^>]*src=["']https:\/\/pagead2/i.test(html))errors.push(relative+': unexpected automatic ad script');
  for(const [,raw] of html.matchAll(/\b(?:href|src)=["']([^"']+)["']/gi)){

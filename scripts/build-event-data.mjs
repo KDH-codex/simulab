@@ -1,4 +1,5 @@
-import {readFile,writeFile} from 'node:fs/promises';
+import {readFile} from 'node:fs/promises';
+import {writeFile} from './write-public-file.mjs';
 import {validateEvent,REGIONS,isDate,duplicateRecord,koreaToday} from '../tools/kids-outing-calendar/model.js';
 const root=new URL('../',import.meta.url),today=koreaToday();
 const records=JSON.parse(await readFile(new URL('data/events/reviewed.json',root),'utf8'));

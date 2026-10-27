@@ -1,4 +1,5 @@
-import {readdir, readFile, writeFile} from 'node:fs/promises';
+import {readdir,readFile} from 'node:fs/promises';
+import {writeFile} from './write-public-file.mjs';
 import vm from 'node:vm';
 
 const root = new URL('../', import.meta.url), scope = {};

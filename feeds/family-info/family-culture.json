@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "snapshotId": "c0a044e253b8012893aad804",
+  "snapshotId": "518cff5125c9da7795499e39",
   "timezone": "Asia/Seoul",
   "categories": [
     {
@@ -14,7 +14,7 @@
       "split": "region",
       "href": "/tools/family-culture/",
       "accent": "blue",
-      "categoryRevision": "2eea4ee0862042bf",
+      "categoryRevision": "6e0f36270f9bc566",
       "lastVerifiedAt": "2026-10-26T07:25:10.328Z",
       "lastCollectedAt": "2026-10-26T07:25:10.328Z",
       "lastDeployedAt": null,
@@ -173,7 +173,7 @@
       "canonicalUrl": "https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159948&menuNo=200008",
       "region": "서울",
       "location": "강동아트센터 대극장 한강",
-      "audience": "8세 이상 관람가 (2019년생 이상)",
+      "audience": "8세 이상 관람가 (2019년생 포함 이전 출생자)",
       "ageGroups": [
         "elementary"
       ],
@@ -232,7 +232,7 @@
           ]
         }
       ],
-      "contentHash": "a26474180a9bc6daa2efec1ee50b94c8b0dad711fba2f63941814d31d265be82",
+      "contentHash": "116d39f0db78f02e396c72e5bb872f18f6096efd06ae67994962de232755aa7c",
       "siteUrl": "/tools/family-culture/#culture-159948"
     },
     {
@@ -1247,8 +1247,8 @@
       "siteUrl": "/tools/family-culture/#acc-em-0000009948"
     }
   ],
-  "siteRevision": "aa8a3b67e74b86dbeb2ee15a5229fb2e4a4f84fb",
-  "generatedAt": "2026-10-27T05:43:18.352Z",
+  "siteRevision": "cbf7677e7514e4206690e6e104434bb59b806ba1",
+  "generatedAt": "2026-10-27T06:24:14.710Z",
   "window": {
     "start": "2026-10-27",
     "end": "2026-12-26"

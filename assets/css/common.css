@@ -4016,3 +4016,6 @@ a.gnb-link:hover .gnb-link-title {
 
 /* Focused calculator explanations remain readable in legacy tool layouts. */
 .core-tool-guide{max-width:100%;margin:32px 0;padding:clamp(18px,3vw,32px);border:1px solid var(--border-color,#dce5de);border-radius:16px;background:var(--bg-card,#fff);line-height:1.95;color:var(--text-primary,#203a2b)}.core-tool-guide h2{font-size:clamp(21px,3vw,26px);line-height:1.5;margin:0 0 12px}.core-tool-guide h3{font-size:18px;line-height:1.6;margin:24px 0 8px}.core-tool-guide p{font-size:15px;line-height:1.95;margin:8px 0 20px;overflow-wrap:anywhere}.core-tool-guide a{color:#176d53;text-decoration:underline;text-underline-offset:3px}.core-tool-guide .ref-note{font-size:13px;color:#586d60}
+
+/* Category labels are inert on mobile; the editorial hub remains a real link. */
+.gnb a.gnb-btn{pointer-events:auto;cursor:pointer;text-decoration:none}
