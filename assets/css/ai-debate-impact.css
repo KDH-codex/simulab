@@ -88,3 +88,5 @@ html{scroll-padding-top:var(--topic-offset,120px)}
  .jury-heading h2{font-size:23px;line-height:1.5}
 }
 @media(max-width:355px){.topic-dock-inner{padding:9px 14px}.dock-topic>small{font-size:7px}.dock-topic>strong{font-size:9px}.dock-matchup>span{font-size:12px}.dock-matchup>span small{font-size:7px;margin-right:4px}.closing-section{padding:21px 14px}.closing-words{font-size:17px}.host-punchline small{font-size:7px}}
+
+.criterion{margin:22px 0;border:0;padding:0}.criterion legend{font-size:19px;font-weight:800;color:#27436a}.criterion>p{font-size:12px;color:#8a9bb1;margin:8px 0 14px}.criterion .vote-option{min-width:0}.criterion .vote-option small{display:block}.criterion .vote-option:has(input:checked) .outcome{color:#155be8;font-weight:800}#saved-breakdown{font-size:13px;line-height:1.9}#saved-breakdown p{margin:8px 0}

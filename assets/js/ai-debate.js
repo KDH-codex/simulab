@@ -1,9 +1,11 @@
+import {criteria,models,readBallots,saveBallot,validBallot} from './debate-verdict.js';
+let browserStorage;try{browserStorage=window.localStorage;}catch{browserStorage=null;}
 (() => {
   'use strict';
   const $ = selector => document.querySelector(selector);
   const turns = [...document.querySelectorAll('[data-step]')];
   const total = turns.length;
-  const storageKey = 'simulab-ai-debate-001-local-verdict-v1';
+
   let started = false;
   let mode = 'step';
   let shown = 1;
@@ -42,28 +44,12 @@
   }));
   const comment = $('#verdict-comment');
   comment.addEventListener('input', () => {comment.setCustomValidity(''); $('#comment-count').textContent = `${comment.value.length} / 300`;});
-  function renderSaved() {
-    const valid = saved && ['GPT','Gemini'].includes(saved.model) && typeof saved.comment === 'string' && saved.comment.trim() && saved.comment.length <= 300;
-    $('#saved-verdict').hidden = !valid;
-    $('#verdict-form').hidden = Boolean(valid);
-    if (valid) {$('#saved-model').textContent = `${saved.model}에게 한 표`; $('#saved-comment').textContent = saved.comment;}
-  }
-  try {saved = JSON.parse(localStorage.getItem(storageKey));} catch {saved = null;}
-  renderSaved();
-  $('#verdict-form').addEventListener('submit', event => {
-    event.preventDefault();
-    const selected = document.querySelector('input[name="model"]:checked');
-    if (!selected || !comment.value.trim()) {comment.setCustomValidity('판정 이유를 한 줄 적어주세요.'); comment.reportValidity(); return;}
-    saved = {episodeId:'001',model:selected.value,comment:comment.value.trim(),createdAt:new Date().toISOString()};
-    let stored = true;
-    try {localStorage.setItem(storageKey, JSON.stringify(saved));} catch {stored = false;}
-    renderSaved();
-    $('#form-status').textContent = stored ? '내 시범 판정을 이 브라우저에 저장했습니다. 공개 투표에는 반영되지 않습니다.' : '브라우저 저장이 제한되어 현재 탭에만 임시 표시합니다.';
-  });
-  $('#edit-verdict').addEventListener('click', () => {
-    if (saved) {document.querySelector(`input[name="model"][value="${saved.model}"]`).checked = true; comment.value = saved.comment; $('#comment-count').textContent = `${comment.value.length} / 300`;}
-    $('#saved-verdict').hidden = true; $('#verdict-form').hidden = false; $('#form-status').textContent = ''; comment.focus();
-  });
+  function renderOutcomes(){for(const [id] of criteria){const selected=document.querySelector('input[name="'+id+'"]:checked');document.querySelectorAll('input[name="'+id+'"]').forEach(input=>{input.closest('label').querySelector('.outcome').textContent=selected?(input.checked?'승리':'패배'):'승리로 선택';});}}
+document.querySelectorAll('.criterion input').forEach(input=>input.addEventListener('change',renderOutcomes));
+function renderSaved(){const valid=validBallot(saved);$('#saved-verdict').hidden=!valid;$('#verdict-form').hidden=valid;if(valid){$('#saved-model').textContent='세 가지 판정 완료';$('#saved-breakdown').replaceChildren(...criteria.map(([id,label])=>{const p=document.createElement('p');p.textContent=label+' · '+saved[id]+' 승리 / '+models.find(model=>model!==saved[id])+' 패배';return p;}));$('#saved-comment').textContent=saved.comment;}}
+saved=readBallots(browserStorage).find(b=>b.episodeId==='001')||null;renderSaved();
+$('#verdict-form').addEventListener('submit',event=>{event.preventDefault();const selections=Object.fromEntries(criteria.map(([id])=>[id,document.querySelector('input[name="'+id+'"]:checked')?.value]));saved={episodeId:'001',...selections,comment:comment.value.trim(),createdAt:new Date().toISOString()};if(!validBallot(saved))return;let stored=true;try{saveBallot(browserStorage,saved);}catch{stored=false;}renderSaved();$('#form-status').textContent=stored?'세 항목의 판정을 이 브라우저에 저장했습니다. 대시보드에서 내 전적을 확인하세요.':'브라우저 저장이 제한되어 현재 탭에만 임시 표시합니다.';});
+$('#edit-verdict').addEventListener('click',()=>{if(saved){for(const [id]of criteria)document.querySelector('input[name="'+id+'"][value="'+saved[id]+'"]').checked=true;comment.value=saved.comment;$('#comment-count').textContent=comment.value.length+' / 300';}renderOutcomes();$('#saved-verdict').hidden=true;$('#verdict-form').hidden=false;$('#form-status').textContent='';});
   const dialog = $('#results-dialog');
   $('#results-button').addEventListener('click', () => dialog.showModal());
   $('#close-dialog').addEventListener('click', () => dialog.close());
