@@ -10,6 +10,7 @@ for(const script of ['build-focused-tools.mjs','build-event-data.mjs','build-par
  const result=spawnSync(process.execPath,[path.join(root,'scripts',script)],{cwd:root,stdio:'inherit'});if(result.status!==0)process.exit(result.status||1);
 }
 {const result=spawnSync(process.execPath,[path.join(root,'scripts','build-debate-sharing.mjs')],{cwd:root,stdio:'inherit'});if(result.status!==0)process.exit(result.status||1);}
+{const result=spawnSync(process.execPath,[path.join(root,'scripts','debate-characters.mjs')],{cwd:root,stdio:'inherit'});if(result.status!==0)process.exit(result.status||1);}
 const destination=path.resolve(root,'dist');
 // The only removable tree is exactly this workspace's dist directory.
 if(path.relative(root,destination)!=='dist')throw new Error('Unsafe output path');
