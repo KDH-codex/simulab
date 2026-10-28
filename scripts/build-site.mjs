@@ -9,6 +9,7 @@ const root=fileURLToPath(new URL('../',import.meta.url));
 for(const script of ['build-focused-tools.mjs','build-event-data.mjs','build-parenting-deals.mjs','build-family-info.mjs','build-weekday-guides.mjs','build-family-guides.mjs','build-editorial-guides.mjs','build-library.mjs','build-debate-pages.mjs','build-debate-002.mjs','build-home.mjs','build-legal.mjs','build-core-guides.mjs','normalize-pages.mjs','build-kids-calendar.mjs','build-publishing-ui.mjs']) {
  const result=spawnSync(process.execPath,[path.join(root,'scripts',script)],{cwd:root,stdio:'inherit'});if(result.status!==0)process.exit(result.status||1);
 }
+{const result=spawnSync(process.execPath,[path.join(root,'scripts','build-debate-sharing.mjs')],{cwd:root,stdio:'inherit'});if(result.status!==0)process.exit(result.status||1);}
 const destination=path.resolve(root,'dist');
 // The only removable tree is exactly this workspace's dist directory.
 if(path.relative(root,destination)!=='dist')throw new Error('Unsafe output path');
@@ -20,7 +21,7 @@ for(const folder of publicRoots)await cp(path.join(root,folder),path.join(destin
 const familySchedule=JSON.parse(await readFile(path.join(root,'data/family-info/schedule.json'),'utf8'));
 await mkdir(path.join(destination,'feeds/family-info'),{recursive:true});
 for(const id of ['latest',...familySchedule.categories.map(c=>c.id)])await cp(path.join(root,'feeds/family-info',id+'.json'),path.join(destination,'feeds/family-info',id+'.json'));
-for(const file of await readdir(root))if(/^(index\.html|favicon\.svg|manifest\.json|ads\.txt|robots\.txt|naver[a-f0-9]+\.html|_headers|_redirects)$/.test(file))await cp(path.join(root,file),path.join(destination,file));
+for(const file of await readdir(root))if(/^(index\.html|favicon\.svg|manifest\.json|sw\.js|ads\.txt|robots\.txt|naver[a-f0-9]+\.html|_headers|_redirects)$/.test(file))await cp(path.join(root,file),path.join(destination,file));
 const pages=['index.html','library/index.html','debates/001/index.html','debates/002/index.html'];
 try{for(const entry of await readdir(path.join(root,'debates','generated'),{withFileTypes:true}))if(entry.isDirectory()&&/^\d{3}-m\d{3}$/.test(entry.name)){await stat(path.join(root,'debates','generated',entry.name,'index.html'));pages.push(`debates/generated/${entry.name}/index.html`)}}catch(error){if(error.code!=='ENOENT')throw error}
 const {ids:publishedIds}=await publicationCatalog();
