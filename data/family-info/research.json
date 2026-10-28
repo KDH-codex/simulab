@@ -5339,6 +5339,17 @@
       "outcome": "held",
       "summary": "2026년 리플릿 실제 이미지에서11/6~8·상시체험10~17시·부스 배치·공연 회차 확인. 운영기관 카드10~18시와 전체 종료시각 상충을 분리 표시.",
       "recordId": "festival-mcst-13388-2026"
+    },
+    {
+      "categoryId": "kids-popups",
+      "canonicalUrl": "https://www.popcondplay.com/reserve/view/110",
+      "title": "해리포터 마호도코로 부산 · 개장 초기 예약입장 안내",
+      "reviewedAt": "2026-10-28T23:53:57.562Z",
+      "runId": "blog-thu-20261029-recheck",
+      "detailReviewed": true,
+      "outcome": "held",
+      "summary": "개장 초기 예약운영10/30~11/1과 포스터 전체 팝업10/30~2027/1/7의 범위를 분리. 11/2 이후 입장방식은 미확정으로 보류하고 기존 초기예약 공지 범위를 명확하게 정정.",
+      "recordId": "popup-harrypotter-busan-202610"
     }
   ]
 }
