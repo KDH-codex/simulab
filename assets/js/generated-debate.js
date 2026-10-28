@@ -1,0 +1,4 @@
+import {saveBallot,readBallots} from './debate-verdict.js';
+const form=document.querySelector('#verdict-form'),status=document.querySelector('#vote-status'),id=document.body.dataset.episodeId;
+if(form){const old=readBallots(localStorage).find(v=>v.episodeId===id);if(old)for(const key of ['overall','humor','logic']){const input=form.querySelector(`input[name="${key}"][value="${old[key]}"]`);if(input)input.checked=true}if(old)form.elements.comment.value=old.comment;
+form.addEventListener('submit',e=>{e.preventDefault();const f=new FormData(form);try{saveBallot(localStorage,{episodeId:id,overall:f.get('overall'),humor:f.get('humor'),logic:f.get('logic'),comment:String(f.get('comment')||'').slice(0,300)});status.textContent='내 판정을 이 기기에 저장했습니다.'}catch{status.textContent='세 항목을 모두 선택해 주세요.'}})}

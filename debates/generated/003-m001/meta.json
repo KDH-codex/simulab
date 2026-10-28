@@ -1,0 +1,11 @@
+{
+  "id": "003-m001",
+  "title": "여자친구와 길을 걷는데 지나가는 건달이 여자친구 얼굴에 고의로 침을 뱉었다면?",
+  "date": "2026-10-28",
+  "gptStance": "참는다",
+  "geminiStance": "참지 않는다",
+  "gptModel": "gpt-6.1-terra",
+  "geminiModel": "gemini-3.8-flash",
+  "gptEffort": "high",
+  "geminiEffort": "high"
+}
