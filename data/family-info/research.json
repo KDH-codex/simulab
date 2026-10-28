@@ -5295,6 +5295,39 @@
       "outcome": "verified",
       "summary": "공식 프로모션의 갱신된 시작/종료일을 정정. 요금·자격·결제·중복 제한 유지.",
       "recordId": "seoulland-413-202610"
+    },
+    {
+      "categoryId": "festivals",
+      "canonicalUrl": "https://www.visitjeju.net/kr/festival/view?contentsid=CNTS_300000000014508&menuId=DOM_000001718007000000",
+      "title": "2026 제주올레걷기축제",
+      "reviewedAt": "2026-10-28T23:23:22.445Z",
+      "runId": "blog-thu-20261029-recheck",
+      "detailReviewed": true,
+      "outcome": "held",
+      "summary": "행사기간·현장 접수와 요금은 확인하여 정정. 청소년 할인 출생연도만 공식 본문/첨부 상충으로 보류.",
+      "recordId": "festival-jeju-olle-2026"
+    },
+    {
+      "categoryId": "festivals",
+      "canonicalUrl": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13528",
+      "title": "2026 성북거리문화축제 다다페스타",
+      "reviewedAt": "2026-10-28T23:23:22.445Z",
+      "runId": "blog-thu-20261029-recheck",
+      "detailReviewed": true,
+      "outcome": "verified",
+      "summary": "운영기관 실제 프로그램·회차·행사장 배치도·교통통제·미아 안내를 상세 재검토.",
+      "recordId": "festival-mcst-13528-2026"
+    },
+    {
+      "categoryId": "festivals",
+      "canonicalUrl": "https://www.busan.go.kr/nbtnewsBU/1752768",
+      "title": "제21회 부산불꽃축제",
+      "reviewedAt": "2026-10-28T23:23:22.445Z",
+      "runId": "blog-thu-20261029-recheck",
+      "detailReviewed": true,
+      "outcome": "verified",
+      "summary": "기존 아동포털은 실패. 부산시 공식 상세 보도자료로 개최일·유료석 가격·판매 개시와 공식 예매처 재확인. 잔여석·아동·취소 미확정.",
+      "recordId": "festival-busan-fireworks-2026"
     }
   ]
 }
