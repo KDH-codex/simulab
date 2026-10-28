@@ -5328,6 +5328,17 @@
       "outcome": "verified",
       "summary": "기존 아동포털은 실패. 부산시 공식 상세 보도자료로 개최일·유료석 가격·판매 개시와 공식 예매처 재확인. 잔여석·아동·취소 미확정.",
       "recordId": "festival-busan-fireworks-2026"
+    },
+    {
+      "categoryId": "festivals",
+      "canonicalUrl": "https://ygcf.or.kr/Festival/F60000/F60300/boardView?board_key=15226",
+      "title": "2026 청춘양구 펀치볼 사과시래기축제",
+      "reviewedAt": "2026-10-28T23:31:13.557Z",
+      "runId": "blog-thu-20261029-recheck",
+      "detailReviewed": true,
+      "outcome": "held",
+      "summary": "2026년 리플릿 실제 이미지에서11/6~8·상시체험10~17시·부스 배치·공연 회차 확인. 운영기관 카드10~18시와 전체 종료시각 상충을 분리 표시.",
+      "recordId": "festival-mcst-13388-2026"
     }
   ]
 }

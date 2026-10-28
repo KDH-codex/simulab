@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "snapshotId": "67ce3a582cf208914d09378d",
+  "snapshotId": "da51546a0394633979e94576",
   "timezone": "Asia/Seoul",
   "categories": [
     {
@@ -14,7 +14,7 @@
       "split": "region",
       "href": "/tools/kids-outing-calendar/",
       "accent": "blue",
-      "categoryRevision": "3b87fe8faa3067ea",
+      "categoryRevision": "1ea8bab4113f32d3",
       "lastVerifiedAt": "2026-10-29",
       "lastCollectedAt": "2026-10-26T03:44:36.786Z",
       "lastDeployedAt": null,
@@ -1203,12 +1203,12 @@
       "categoryIds": [
         "festivals"
       ],
-      "title": "2026 청춘양구 펀치볼 시래기사과축제",
+      "title": "2026 청춘양구 펀치볼 사과시래기축제",
       "providerId": "legacy-festivals",
       "canonicalUrl": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13388",
       "region": "강원",
       "location": "양구 펀치볼 힐링하우스 앞 성황지 일원",
-      "audience": "일반 축제도 포함합니다. 어린이 참여 연령, 혼잡도와 개별 체험 조건은 방문 전에 확인하세요.",
+      "audience": "공식 2026 리플릿의 상시체험은10~17시, 운영기관 프로그램 카드에는10~18시가 표기되어 전체 종료시각은 문의 필요. 체험·구매 비용과 참여 조건은 부스별 확인. 교통·화장실은 공식 배치도 참고.",
       "ageGroups": [],
       "applicationStart": null,
       "applicationEnd": null,
@@ -1221,12 +1221,12 @@
       "summary": "지역 농산물 소개·판매와 체험",
       "conditions": [
         "사전예약·현장 접수 여부는 프로그램별 공식 안내 확인 · 잔여석 미조회",
-        "10:00~17:00",
-        "일반 축제도 포함합니다. 어린이 참여 연령, 혼잡도와 개별 체험 조건은 방문 전에 확인하세요."
+        "상시 체험10:00~17:00 · 전체 운영 종료시각은 주최측 확인",
+        "공식 2026 리플릿의 상시체험은10~17시, 운영기관 프로그램 카드에는10~18시가 표기되어 전체 종료시각은 문의 필요. 체험·구매 비용과 참여 조건은 부스별 확인. 교통·화장실은 공식 배치도 참고."
       ],
       "publicationStatus": "verified",
       "lifecycleStatus": null,
-      "verifiedAt": "2026-10-26",
+      "verifiedAt": "2026-10-29",
       "evidence": [
         {
           "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13388",
@@ -1238,10 +1238,21 @@
             "eventStart",
             "eventEnd"
           ]
+        },
+        {
+          "url": "https://ygcf.or.kr/Festival/F60000/F60300/boardView?board_key=15226",
+          "publisher": "양구문화재단 축제공연팀",
+          "summary": "2026 11/6~8 성황지, 실제2026리플릿 앞뒷면·행사장 배치·프로그램 회차 확인. 상시체험10~17시, 별도 운영기관 카드10~18시는 상충하여 전체 종료시각 미확정.",
+          "verifiedAt": "2026-10-29",
+          "fields": [
+            "title",
+            "eventStart",
+            "eventEnd"
+          ]
         }
       ],
       "legacyId": "mcst-13388-2026",
-      "contentHash": "bae4f3e8684f637013906449f106fa89a56e04ab574687b162683f493d87a695",
+      "contentHash": "6a8cac56da5f5a95264a0f0ffc4af8e8e64b1dce1187c30d905f0a3dd282a80d",
       "siteUrl": "/tools/kids-outing-calendar/#event-mcst-13388-2026"
     },
     {
@@ -2655,8 +2666,8 @@
       "siteUrl": "/tools/kids-outing-calendar/#event-mcst-12641-2026"
     }
   ],
-  "siteRevision": "a822c5d5318798419d37034fa85f5406e864de88",
-  "generatedAt": "2026-10-28T23:23:33.184Z",
+  "siteRevision": "96bc8d4e9e928bbb91440c64b939e41edd6c054b",
+  "generatedAt": "2026-10-28T23:31:14.757Z",
   "window": {
     "start": "2026-10-29",
     "end": "2026-12-28"
