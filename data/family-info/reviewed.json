@@ -1948,7 +1948,7 @@
         "두 카드사의 같은 기간·요금 혜택을 한 건으로 안내합니다.다른 쿠폰·제휴 할인과 중복되지 않으며 운영정책에 따라 변경·중단될 수 있습니다."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26T07:29:00.467Z",
+      "verifiedAt": "2026-10-28T23:11:04.615Z",
       "evidence": [
         {
           "url": "https://seoulland.co.kr/?p=40_view&idx=380",
@@ -1977,14 +1977,41 @@
             "feeText"
           ],
           "summary": "비씨카드공식별도원문에서도동일10/1~11/30·본인+동반1인/1일2매·21,900/19,900·직접결제와제외카드를확인.카드별복제하지않고통합."
+        },
+        {
+          "url": "https://seoulland.co.kr/?p=40_view&idx=380",
+          "publisher": "서울랜드 공식 프로모션",
+          "verifiedAt": "2026-10-28T23:06:28.939Z",
+          "fields": [
+            "sectorIds"
+          ],
+          "summary": "목요일 블로그 분리 검토: 실제 공지의 서울랜드·레고랜드 시설 또는 ACC 전시 혜택으로 관광시설 분류. 혜택 기간·요금 재검증과 별도인 분류 근거이며 기존 확인시각은 보존."
+        },
+        {
+          "url": "https://seoulland.co.kr/?p=40_view&idx=380",
+          "publisher": "서울랜드",
+          "verifiedAt": "2026-10-28T23:11:04.615Z",
+          "fields": [
+            "title",
+            "audience",
+            "eventStart",
+            "eventEnd",
+            "feeText",
+            "conditions",
+            "sectorIds"
+          ],
+          "summary": "목요일 발행 전 실제 프로모션 상세의 기간·본인/동반 요금·실적·포인트 차감·현장결제·증빙·중복 제한을 재검증. 기존 핵심 조건 유지. 관광시설 혜택 분류 확인."
         }
+      ],
+      "sectorIds": [
+        "attractions"
       ]
     },
     {
       "applicationStart": null,
       "applicationEnd": null,
-      "eventStart": "2026-09-28",
-      "eventEnd": "2026-10-31",
+      "eventStart": "2026-10-28",
+      "eventEnd": "2026-11-30",
       "ageGroups": [],
       "id": "seoulland-252-202610",
       "categoryIds": [
@@ -2007,7 +2034,7 @@
         "입장·놀이시설용파크이용권이며체험·코인시설·기획전시·유료공연은제외됩니다.다른쿠폰·제휴할인과중복되지않습니다."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26T07:29:00.467Z",
+      "verifiedAt": "2026-10-28T23:11:04.615Z",
       "evidence": [
         {
           "url": "https://seoulland.co.kr/?p=40_view&idx=252",
@@ -2023,7 +2050,34 @@
             "scheduleNote"
           ],
           "summary": "9/28~10/31·6개카드사/실적충족본인·26천/22.5천·제외카드·현장·유료시설제외·중복불가 확인."
+        },
+        {
+          "url": "https://seoulland.co.kr/?p=40_view&idx=252",
+          "publisher": "서울랜드 공식 프로모션",
+          "verifiedAt": "2026-10-28T23:06:28.940Z",
+          "fields": [
+            "sectorIds"
+          ],
+          "summary": "목요일 블로그 분리 검토: 실제 공지의 서울랜드·레고랜드 시설 또는 ACC 전시 혜택으로 관광시설 분류. 혜택 기간·요금 재검증과 별도인 분류 근거이며 기존 확인시각은 보존."
+        },
+        {
+          "url": "https://seoulland.co.kr/?p=40_view&idx=252",
+          "publisher": "서울랜드",
+          "verifiedAt": "2026-10-28T23:11:04.615Z",
+          "fields": [
+            "title",
+            "audience",
+            "eventStart",
+            "eventEnd",
+            "feeText",
+            "conditions",
+            "sectorIds"
+          ],
+          "summary": "목요일 발행 전 실제 프로모션 상세의 기간·본인/동반 요금·실적·포인트 차감·현장결제·증빙·중복 제한을 재검증. 공식 갱신된 기간으로 정정. 관광시설 혜택 분류 확인."
         }
+      ],
+      "sectorIds": [
+        "attractions"
       ]
     },
     {
@@ -2054,7 +2108,7 @@
         "어른야간은18,000원+22,500점,청소년15,600원+19,500점,어린이14,400원+18,000점입니다.다른할인과중복불가·변경/중단가능안내입니다."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26T07:29:00.467Z",
+      "verifiedAt": "2026-10-28T23:11:04.615Z",
       "evidence": [
         {
           "url": "https://seoulland.co.kr/?p=40_view&idx=209",
@@ -2070,14 +2124,41 @@
             "scheduleNote"
           ],
           "summary": "10/1~11/30·현금과M포인트연령별실차감표·현장만/온라인간편결제불가·포인트부족시불가를확인.기존부족시이용가능오류정정."
+        },
+        {
+          "url": "https://seoulland.co.kr/?p=40_view&idx=209",
+          "publisher": "서울랜드 공식 프로모션",
+          "verifiedAt": "2026-10-28T23:06:28.940Z",
+          "fields": [
+            "sectorIds"
+          ],
+          "summary": "목요일 블로그 분리 검토: 실제 공지의 서울랜드·레고랜드 시설 또는 ACC 전시 혜택으로 관광시설 분류. 혜택 기간·요금 재검증과 별도인 분류 근거이며 기존 확인시각은 보존."
+        },
+        {
+          "url": "https://seoulland.co.kr/?p=40_view&idx=209",
+          "publisher": "서울랜드",
+          "verifiedAt": "2026-10-28T23:11:04.615Z",
+          "fields": [
+            "title",
+            "audience",
+            "eventStart",
+            "eventEnd",
+            "feeText",
+            "conditions",
+            "sectorIds"
+          ],
+          "summary": "목요일 발행 전 실제 프로모션 상세의 기간·본인/동반 요금·실적·포인트 차감·현장결제·증빙·중복 제한을 재검증. 기존 핵심 조건 유지. 관광시설 혜택 분류 확인."
         }
+      ],
+      "sectorIds": [
+        "attractions"
       ]
     },
     {
       "applicationStart": null,
       "applicationEnd": null,
-      "eventStart": "2026-10-01",
-      "eventEnd": "2026-10-31",
+      "eventStart": "2026-10-28",
+      "eventEnd": "2026-11-30",
       "ageGroups": [],
       "id": "seoulland-257-202610",
       "categoryIds": [
@@ -2100,7 +2181,7 @@
         "다른쿠폰·제휴할인과중복되지않습니다.방문일운영시간과구입후취소/환불규정은공식구매처에서확인하세요."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26T07:29:00.467Z",
+      "verifiedAt": "2026-10-28T23:11:04.615Z",
       "evidence": [
         {
           "url": "https://seoulland.co.kr/?p=40_view&idx=257",
@@ -2116,7 +2197,34 @@
             "scheduleNote"
           ],
           "summary": "10/1~31·실적무관40·연령별종일/야간표·청소년/어린이본인명의카드조건·현장/중복불가 확인."
+        },
+        {
+          "url": "https://seoulland.co.kr/?p=40_view&idx=257",
+          "publisher": "서울랜드 공식 프로모션",
+          "verifiedAt": "2026-10-28T23:06:28.940Z",
+          "fields": [
+            "sectorIds"
+          ],
+          "summary": "목요일 블로그 분리 검토: 실제 공지의 서울랜드·레고랜드 시설 또는 ACC 전시 혜택으로 관광시설 분류. 혜택 기간·요금 재검증과 별도인 분류 근거이며 기존 확인시각은 보존."
+        },
+        {
+          "url": "https://seoulland.co.kr/?p=40_view&idx=257",
+          "publisher": "서울랜드",
+          "verifiedAt": "2026-10-28T23:11:04.615Z",
+          "fields": [
+            "title",
+            "audience",
+            "eventStart",
+            "eventEnd",
+            "feeText",
+            "conditions",
+            "sectorIds"
+          ],
+          "summary": "목요일 발행 전 실제 프로모션 상세의 기간·본인/동반 요금·실적·포인트 차감·현장결제·증빙·중복 제한을 재검증. 공식 갱신된 기간으로 정정. 관광시설 혜택 분류 확인."
         }
+      ],
+      "sectorIds": [
+        "attractions"
       ]
     },
     {
@@ -2146,7 +2254,7 @@
         "멤버십소유자가직접현장결제해야하며다른할인과중복되지않습니다.야간권은16시이후입장안내입니다."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26T07:29:00.467Z",
+      "verifiedAt": "2026-10-28T23:11:04.615Z",
       "evidence": [
         {
           "url": "https://seoulland.co.kr/?p=40_view&idx=386",
@@ -2162,14 +2270,41 @@
             "scheduleNote"
           ],
           "summary": "10/1~31·KT본인50/동반2인40·연령별가격·캡처불가·현장본인결제·중복불가 확인."
+        },
+        {
+          "url": "https://seoulland.co.kr/?p=40_view&idx=386",
+          "publisher": "서울랜드 공식 프로모션",
+          "verifiedAt": "2026-10-28T23:06:28.940Z",
+          "fields": [
+            "sectorIds"
+          ],
+          "summary": "목요일 블로그 분리 검토: 실제 공지의 서울랜드·레고랜드 시설 또는 ACC 전시 혜택으로 관광시설 분류. 혜택 기간·요금 재검증과 별도인 분류 근거이며 기존 확인시각은 보존."
+        },
+        {
+          "url": "https://seoulland.co.kr/?p=40_view&idx=386",
+          "publisher": "서울랜드",
+          "verifiedAt": "2026-10-28T23:11:04.615Z",
+          "fields": [
+            "title",
+            "audience",
+            "eventStart",
+            "eventEnd",
+            "feeText",
+            "conditions",
+            "sectorIds"
+          ],
+          "summary": "목요일 발행 전 실제 프로모션 상세의 기간·본인/동반 요금·실적·포인트 차감·현장결제·증빙·중복 제한을 재검증. 기존 핵심 조건 유지. 관광시설 혜택 분류 확인."
         }
+      ],
+      "sectorIds": [
+        "attractions"
       ]
     },
     {
       "applicationStart": null,
       "applicationEnd": null,
-      "eventStart": "2026-10-01",
-      "eventEnd": "2026-10-31",
+      "eventStart": "2026-10-28",
+      "eventEnd": "2026-11-30",
       "ageGroups": [],
       "id": "seoulland-260-202610",
       "categoryIds": [
@@ -2193,7 +2328,7 @@
         "MP포인트사용시추가적립은실물결제액기준입니다.다른쿠폰·제휴할인과중복되지않습니다."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26T07:29:00.467Z",
+      "verifiedAt": "2026-10-28T23:11:04.615Z",
       "evidence": [
         {
           "url": "https://seoulland.co.kr/?p=40_view&idx=260",
@@ -2209,14 +2344,41 @@
             "scheduleNote"
           ],
           "summary": "10/1~31·할인형/적립형실결제가차이·본인40/동반1인30·원타임바코드캡처불가·포인트사용후실물기준적립·중복불가 확인."
+        },
+        {
+          "url": "https://seoulland.co.kr/?p=40_view&idx=260",
+          "publisher": "서울랜드 공식 프로모션",
+          "verifiedAt": "2026-10-28T23:06:28.940Z",
+          "fields": [
+            "sectorIds"
+          ],
+          "summary": "목요일 블로그 분리 검토: 실제 공지의 서울랜드·레고랜드 시설 또는 ACC 전시 혜택으로 관광시설 분류. 혜택 기간·요금 재검증과 별도인 분류 근거이며 기존 확인시각은 보존."
+        },
+        {
+          "url": "https://seoulland.co.kr/?p=40_view&idx=260",
+          "publisher": "서울랜드",
+          "verifiedAt": "2026-10-28T23:11:04.615Z",
+          "fields": [
+            "title",
+            "audience",
+            "eventStart",
+            "eventEnd",
+            "feeText",
+            "conditions",
+            "sectorIds"
+          ],
+          "summary": "목요일 발행 전 실제 프로모션 상세의 기간·본인/동반 요금·실적·포인트 차감·현장결제·증빙·중복 제한을 재검증. 공식 갱신된 기간으로 정정. 관광시설 혜택 분류 확인."
         }
+      ],
+      "sectorIds": [
+        "attractions"
       ]
     },
     {
       "applicationStart": null,
       "applicationEnd": null,
-      "eventStart": "2026-09-28",
-      "eventEnd": "2026-10-31",
+      "eventStart": "2026-10-28",
+      "eventEnd": "2026-11-30",
       "ageGroups": [],
       "id": "seoulland-259-202610",
       "categoryIds": [
@@ -2239,7 +2401,7 @@
         "멤버십소유자본인이직접현장결제해야하며다른할인과중복되지않습니다.청소년·어린이가격은별도요금표를확인하세요."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26T07:29:00.467Z",
+      "verifiedAt": "2026-10-28T23:11:04.615Z",
       "evidence": [
         {
           "url": "https://seoulland.co.kr/?p=40_view&idx=259",
@@ -2255,7 +2417,34 @@
             "scheduleNote"
           ],
           "summary": "9/28~10/31·VIP50/일반40/동반1인30·등급/연령별표·멤버십제시/현장본인·중복불가 확인."
+        },
+        {
+          "url": "https://seoulland.co.kr/?p=40_view&idx=259",
+          "publisher": "서울랜드 공식 프로모션",
+          "verifiedAt": "2026-10-28T23:06:28.940Z",
+          "fields": [
+            "sectorIds"
+          ],
+          "summary": "목요일 블로그 분리 검토: 실제 공지의 서울랜드·레고랜드 시설 또는 ACC 전시 혜택으로 관광시설 분류. 혜택 기간·요금 재검증과 별도인 분류 근거이며 기존 확인시각은 보존."
+        },
+        {
+          "url": "https://seoulland.co.kr/?p=40_view&idx=259",
+          "publisher": "서울랜드",
+          "verifiedAt": "2026-10-28T23:11:04.615Z",
+          "fields": [
+            "title",
+            "audience",
+            "eventStart",
+            "eventEnd",
+            "feeText",
+            "conditions",
+            "sectorIds"
+          ],
+          "summary": "목요일 발행 전 실제 프로모션 상세의 기간·본인/동반 요금·실적·포인트 차감·현장결제·증빙·중복 제한을 재검증. 공식 갱신된 기간으로 정정. 관광시설 혜택 분류 확인."
         }
+      ],
+      "sectorIds": [
+        "attractions"
       ]
     },
     {
@@ -2285,7 +2474,7 @@
         "본인+동반1인각각적용,다른할인쿠폰·제휴할인과중복되지않습니다.적용기간은9/30~12/30입니다."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26T07:29:00.467Z",
+      "verifiedAt": "2026-10-28T23:11:04.615Z",
       "evidence": [
         {
           "url": "https://seoulland.co.kr/?p=40_view&idx=243",
@@ -2301,14 +2490,41 @@
             "scheduleNote"
           ],
           "summary": "9/30~12/30·포인트/머니전용/충분한잔액·각26천/22.5천·동반1인·현장만·중복불가 확인."
+        },
+        {
+          "url": "https://seoulland.co.kr/?p=40_view&idx=243",
+          "publisher": "서울랜드 공식 프로모션",
+          "verifiedAt": "2026-10-28T23:06:28.940Z",
+          "fields": [
+            "sectorIds"
+          ],
+          "summary": "목요일 블로그 분리 검토: 실제 공지의 서울랜드·레고랜드 시설 또는 ACC 전시 혜택으로 관광시설 분류. 혜택 기간·요금 재검증과 별도인 분류 근거이며 기존 확인시각은 보존."
+        },
+        {
+          "url": "https://seoulland.co.kr/?p=40_view&idx=243",
+          "publisher": "서울랜드",
+          "verifiedAt": "2026-10-28T23:11:04.615Z",
+          "fields": [
+            "title",
+            "audience",
+            "eventStart",
+            "eventEnd",
+            "feeText",
+            "conditions",
+            "sectorIds"
+          ],
+          "summary": "목요일 발행 전 실제 프로모션 상세의 기간·본인/동반 요금·실적·포인트 차감·현장결제·증빙·중복 제한을 재검증. 기존 핵심 조건 유지. 관광시설 혜택 분류 확인."
         }
+      ],
+      "sectorIds": [
+        "attractions"
       ]
     },
     {
       "applicationStart": null,
       "applicationEnd": null,
-      "eventStart": "2026-10-01",
-      "eventEnd": "2026-10-31",
+      "eventStart": "2026-10-28",
+      "eventEnd": "2026-12-31",
       "ageGroups": [],
       "id": "seoulland-416-202610",
       "categoryIds": [
@@ -2331,7 +2547,7 @@
         "문화누리카드발급자격·충전가능여부와놀이시설외별도유료서비스는공식구매처에서확인하세요."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26T07:29:00.467Z",
+      "verifiedAt": "2026-10-28T23:11:04.615Z",
       "evidence": [
         {
           "url": "https://seoulland.co.kr/?p=40_view&idx=416",
@@ -2347,14 +2563,41 @@
             "scheduleNote"
           ],
           "summary": "10/1~31·문화누리현장결제·본인/동반1인각26천·잔액부족충전·중복불가 확인."
+        },
+        {
+          "url": "https://seoulland.co.kr/?p=40_view&idx=416",
+          "publisher": "서울랜드 공식 프로모션",
+          "verifiedAt": "2026-10-28T23:06:28.940Z",
+          "fields": [
+            "sectorIds"
+          ],
+          "summary": "목요일 블로그 분리 검토: 실제 공지의 서울랜드·레고랜드 시설 또는 ACC 전시 혜택으로 관광시설 분류. 혜택 기간·요금 재검증과 별도인 분류 근거이며 기존 확인시각은 보존."
+        },
+        {
+          "url": "https://seoulland.co.kr/?p=40_view&idx=416",
+          "publisher": "서울랜드",
+          "verifiedAt": "2026-10-28T23:11:04.615Z",
+          "fields": [
+            "title",
+            "audience",
+            "eventStart",
+            "eventEnd",
+            "feeText",
+            "conditions",
+            "sectorIds"
+          ],
+          "summary": "목요일 발행 전 실제 프로모션 상세의 기간·본인/동반 요금·실적·포인트 차감·현장결제·증빙·중복 제한을 재검증. 공식 갱신된 기간으로 정정. 관광시설 혜택 분류 확인."
         }
+      ],
+      "sectorIds": [
+        "attractions"
       ]
     },
     {
       "applicationStart": null,
       "applicationEnd": null,
-      "eventStart": "2026-09-28",
-      "eventEnd": "2026-10-31",
+      "eventStart": "2026-10-28",
+      "eventEnd": "2026-11-30",
       "ageGroups": [],
       "id": "seoulland-288-202610",
       "categoryIds": [
@@ -2377,7 +2620,7 @@
         "동반1인40%할인으로어른종일31,200원·야간27,000원,청소년/어린이는연령별요금표를확인하세요.다른할인과중복되지않습니다."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26T07:29:00.467Z",
+      "verifiedAt": "2026-10-28T23:11:04.615Z",
       "evidence": [
         {
           "url": "https://seoulland.co.kr/?p=40_view&idx=288",
@@ -2393,7 +2636,34 @@
             "scheduleNote"
           ],
           "summary": "9/28~10/31·2만원현금+2만점·월1회·본인포인트/현장·동반1인40·포인트부족불가·중복불가 확인."
+        },
+        {
+          "url": "https://seoulland.co.kr/?p=40_view&idx=288",
+          "publisher": "서울랜드 공식 프로모션",
+          "verifiedAt": "2026-10-28T23:06:28.940Z",
+          "fields": [
+            "sectorIds"
+          ],
+          "summary": "목요일 블로그 분리 검토: 실제 공지의 서울랜드·레고랜드 시설 또는 ACC 전시 혜택으로 관광시설 분류. 혜택 기간·요금 재검증과 별도인 분류 근거이며 기존 확인시각은 보존."
+        },
+        {
+          "url": "https://seoulland.co.kr/?p=40_view&idx=288",
+          "publisher": "서울랜드",
+          "verifiedAt": "2026-10-28T23:11:04.615Z",
+          "fields": [
+            "title",
+            "audience",
+            "eventStart",
+            "eventEnd",
+            "feeText",
+            "conditions",
+            "sectorIds"
+          ],
+          "summary": "목요일 발행 전 실제 프로모션 상세의 기간·본인/동반 요금·실적·포인트 차감·현장결제·증빙·중복 제한을 재검증. 공식 갱신된 기간으로 정정. 관광시설 혜택 분류 확인."
         }
+      ],
+      "sectorIds": [
+        "attractions"
       ]
     },
     {
@@ -2423,7 +2693,7 @@
         "입장시각별요금이다르고다른할인과중복되지않습니다.현장사정으로변경·조기종료될수있습니다."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26T07:29:00.467Z",
+      "verifiedAt": "2026-10-28T23:11:04.615Z",
       "evidence": [
         {
           "url": "https://seoulland.co.kr/?p=40_view&idx=429",
@@ -2439,7 +2709,34 @@
             "scheduleNote"
           ],
           "summary": "9/1~10/31·동물원고객/당일본인사진·설호부재시대체사진·AFTER2/6실요금·타인사진불가·변경/중복불가 확인."
+        },
+        {
+          "url": "https://seoulland.co.kr/?p=40_view&idx=429",
+          "publisher": "서울랜드 공식 프로모션",
+          "verifiedAt": "2026-10-28T23:06:28.940Z",
+          "fields": [
+            "sectorIds"
+          ],
+          "summary": "목요일 블로그 분리 검토: 실제 공지의 서울랜드·레고랜드 시설 또는 ACC 전시 혜택으로 관광시설 분류. 혜택 기간·요금 재검증과 별도인 분류 근거이며 기존 확인시각은 보존."
+        },
+        {
+          "url": "https://seoulland.co.kr/?p=40_view&idx=429",
+          "publisher": "서울랜드",
+          "verifiedAt": "2026-10-28T23:11:04.615Z",
+          "fields": [
+            "title",
+            "audience",
+            "eventStart",
+            "eventEnd",
+            "feeText",
+            "conditions",
+            "sectorIds"
+          ],
+          "summary": "목요일 발행 전 실제 프로모션 상세의 기간·본인/동반 요금·실적·포인트 차감·현장결제·증빙·중복 제한을 재검증. 기존 핵심 조건 유지. 관광시설 혜택 분류 확인."
         }
+      ],
+      "sectorIds": [
+        "attractions"
       ]
     },
     {
@@ -2470,7 +2767,7 @@
         "학생할인은다른쿠폰·제휴할인과중복되지않습니다.추가적립을모든학생의확정할인가로빼지않았습니다."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26T07:29:00.467Z",
+      "verifiedAt": "2026-10-28T23:11:04.615Z",
       "evidence": [
         {
           "url": "https://seoulland.co.kr/?p=40_view&idx=431",
@@ -2486,7 +2783,34 @@
             "scheduleNote"
           ],
           "summary": "9/1~10/31·중고대학생증빙/카카오채널·25천/21.5천·PC첫토스한정적립/취소회수·현장적용불가·중복불가 확인."
+        },
+        {
+          "url": "https://seoulland.co.kr/?p=40_view&idx=431",
+          "publisher": "서울랜드 공식 프로모션",
+          "verifiedAt": "2026-10-28T23:06:28.940Z",
+          "fields": [
+            "sectorIds"
+          ],
+          "summary": "목요일 블로그 분리 검토: 실제 공지의 서울랜드·레고랜드 시설 또는 ACC 전시 혜택으로 관광시설 분류. 혜택 기간·요금 재검증과 별도인 분류 근거이며 기존 확인시각은 보존."
+        },
+        {
+          "url": "https://seoulland.co.kr/?p=40_view&idx=431",
+          "publisher": "서울랜드",
+          "verifiedAt": "2026-10-28T23:11:04.615Z",
+          "fields": [
+            "title",
+            "audience",
+            "eventStart",
+            "eventEnd",
+            "feeText",
+            "conditions",
+            "sectorIds"
+          ],
+          "summary": "목요일 발행 전 실제 프로모션 상세의 기간·본인/동반 요금·실적·포인트 차감·현장결제·증빙·중복 제한을 재검증. 기존 핵심 조건 유지. 관광시설 혜택 분류 확인."
         }
+      ],
+      "sectorIds": [
+        "attractions"
       ]
     },
     {
@@ -2516,7 +2840,7 @@
         "다른쿠폰·제휴할인과중복되지않습니다.입학여부·증빙과방문일운영을확인하세요."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26T07:29:00.467Z",
+      "verifiedAt": "2026-10-28T23:11:04.615Z",
       "evidence": [
         {
           "url": "https://seoulland.co.kr/?p=40_view&idx=430",
@@ -2532,7 +2856,34 @@
             "scheduleNote"
           ],
           "summary": "9/1~10/31·36개월~입학전·평일21,900/18,900주말23,000/20,000·채널추가/연령서류·중복불가 확인."
+        },
+        {
+          "url": "https://seoulland.co.kr/?p=40_view&idx=430",
+          "publisher": "서울랜드 공식 프로모션",
+          "verifiedAt": "2026-10-28T23:06:28.940Z",
+          "fields": [
+            "sectorIds"
+          ],
+          "summary": "목요일 블로그 분리 검토: 실제 공지의 서울랜드·레고랜드 시설 또는 ACC 전시 혜택으로 관광시설 분류. 혜택 기간·요금 재검증과 별도인 분류 근거이며 기존 확인시각은 보존."
+        },
+        {
+          "url": "https://seoulland.co.kr/?p=40_view&idx=430",
+          "publisher": "서울랜드",
+          "verifiedAt": "2026-10-28T23:11:04.615Z",
+          "fields": [
+            "title",
+            "audience",
+            "eventStart",
+            "eventEnd",
+            "feeText",
+            "conditions",
+            "sectorIds"
+          ],
+          "summary": "목요일 발행 전 실제 프로모션 상세의 기간·본인/동반 요금·실적·포인트 차감·현장결제·증빙·중복 제한을 재검증. 기존 핵심 조건 유지. 관광시설 혜택 분류 확인."
         }
+      ],
+      "sectorIds": [
+        "attractions"
       ]
     },
     {
@@ -2562,7 +2913,7 @@
         "다른혜택과중복불가할수있으며현장사정으로조기종료·변경될수있습니다.코스튬할인이귀신동굴등개별시설연령/이용조건을면제하는안내는아닙니다."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26T07:29:00.467Z",
+      "verifiedAt": "2026-10-28T23:11:04.615Z",
       "evidence": [
         {
           "url": "https://seoulland.co.kr/?p=40_view&idx=426",
@@ -2578,14 +2929,41 @@
             "scheduleNote"
           ],
           "summary": "10/1~31·AFTER4/본인15천·귀신분장현장확인·단순소품/사복제외·조기종료조건 확인."
+        },
+        {
+          "url": "https://seoulland.co.kr/?p=40_view&idx=426",
+          "publisher": "서울랜드 공식 프로모션",
+          "verifiedAt": "2026-10-28T23:06:28.940Z",
+          "fields": [
+            "sectorIds"
+          ],
+          "summary": "목요일 블로그 분리 검토: 실제 공지의 서울랜드·레고랜드 시설 또는 ACC 전시 혜택으로 관광시설 분류. 혜택 기간·요금 재검증과 별도인 분류 근거이며 기존 확인시각은 보존."
+        },
+        {
+          "url": "https://seoulland.co.kr/?p=40_view&idx=426",
+          "publisher": "서울랜드",
+          "verifiedAt": "2026-10-28T23:11:04.615Z",
+          "fields": [
+            "title",
+            "audience",
+            "eventStart",
+            "eventEnd",
+            "feeText",
+            "conditions",
+            "sectorIds"
+          ],
+          "summary": "목요일 발행 전 실제 프로모션 상세의 기간·본인/동반 요금·실적·포인트 차감·현장결제·증빙·중복 제한을 재검증. 기존 핵심 조건 유지. 관광시설 혜택 분류 확인."
         }
+      ],
+      "sectorIds": [
+        "attractions"
       ]
     },
     {
       "applicationStart": null,
       "applicationEnd": null,
       "eventStart": "2026-01-01",
-      "eventEnd": "2026-10-31",
+      "eventEnd": "2026-12-31",
       "ageGroups": [],
       "id": "seoulland-383-202610",
       "categoryIds": [
@@ -2608,7 +2986,7 @@
         "야간권은16시이후입장안내이며다른할인과중복되지않습니다.현재게시된혜택기한은10/31입니다."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26T07:29:00.467Z",
+      "verifiedAt": "2026-10-28T23:11:04.615Z",
       "evidence": [
         {
           "url": "https://seoulland.co.kr/?p=40_view&idx=383",
@@ -2624,14 +3002,41 @@
             "scheduleNote"
           ],
           "summary": "1/1~10/31·주민번호생일해당월·생일자직접생년증빙·동반3인같은26천/22.5천·중복불가 확인."
+        },
+        {
+          "url": "https://seoulland.co.kr/?p=40_view&idx=383",
+          "publisher": "서울랜드 공식 프로모션",
+          "verifiedAt": "2026-10-28T23:06:28.940Z",
+          "fields": [
+            "sectorIds"
+          ],
+          "summary": "목요일 블로그 분리 검토: 실제 공지의 서울랜드·레고랜드 시설 또는 ACC 전시 혜택으로 관광시설 분류. 혜택 기간·요금 재검증과 별도인 분류 근거이며 기존 확인시각은 보존."
+        },
+        {
+          "url": "https://seoulland.co.kr/?p=40_view&idx=383",
+          "publisher": "서울랜드",
+          "verifiedAt": "2026-10-28T23:11:04.615Z",
+          "fields": [
+            "title",
+            "audience",
+            "eventStart",
+            "eventEnd",
+            "feeText",
+            "conditions",
+            "sectorIds"
+          ],
+          "summary": "목요일 발행 전 실제 프로모션 상세의 기간·본인/동반 요금·실적·포인트 차감·현장결제·증빙·중복 제한을 재검증. 공식 갱신된 기간으로 정정. 관광시설 혜택 분류 확인."
         }
+      ],
+      "sectorIds": [
+        "attractions"
       ]
     },
     {
       "applicationStart": null,
       "applicationEnd": null,
       "eventStart": "2026-04-01",
-      "eventEnd": "2026-10-31",
+      "eventEnd": "2026-12-31",
       "ageGroups": [],
       "id": "seoulland-413-202610",
       "categoryIds": [
@@ -2654,7 +3059,7 @@
         "다른쿠폰·제휴할인과중복되지않습니다.현장증빙확인과당일정문운영·발권안내를확인하세요."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26T07:29:00.467Z",
+      "verifiedAt": "2026-10-28T23:11:04.615Z",
       "evidence": [
         {
           "url": "https://seoulland.co.kr/?p=40_view&idx=413",
@@ -2670,7 +3075,34 @@
             "scheduleNote"
           ],
           "summary": "4/1~10/31·정문입장객·대공원역역명사진·종일26천·정문제시·중복불가 확인."
+        },
+        {
+          "url": "https://seoulland.co.kr/?p=40_view&idx=413",
+          "publisher": "서울랜드 공식 프로모션",
+          "verifiedAt": "2026-10-28T23:06:28.940Z",
+          "fields": [
+            "sectorIds"
+          ],
+          "summary": "목요일 블로그 분리 검토: 실제 공지의 서울랜드·레고랜드 시설 또는 ACC 전시 혜택으로 관광시설 분류. 혜택 기간·요금 재검증과 별도인 분류 근거이며 기존 확인시각은 보존."
+        },
+        {
+          "url": "https://seoulland.co.kr/?p=40_view&idx=413",
+          "publisher": "서울랜드",
+          "verifiedAt": "2026-10-28T23:11:04.615Z",
+          "fields": [
+            "title",
+            "audience",
+            "eventStart",
+            "eventEnd",
+            "feeText",
+            "conditions",
+            "sectorIds"
+          ],
+          "summary": "목요일 발행 전 실제 프로모션 상세의 기간·본인/동반 요금·실적·포인트 차감·현장결제·증빙·중복 제한을 재검증. 공식 갱신된 기간으로 정정. 관광시설 혜택 분류 확인."
         }
+      ],
+      "sectorIds": [
+        "attractions"
       ]
     },
     {
@@ -3701,7 +4133,19 @@
             "conditions"
           ],
           "summary": "2026년9/11~11/15 공식 시즌 상세와 갱신된10/24브릭 콘테스트 조건, 코스튬 연령·인원·접수·취소·요금·보호자 및 호텔 제한을 대조."
+        },
+        {
+          "url": "https://www.legoland.kr/%ED%8C%8C%ED%81%AC%EC%9D%B4%EB%B2%A4%ED%8A%B8/%EC%9D%B4-%EC%8B%9C%EC%A6%8C-%EC%B6%95%EC%A0%9C%EC%9D%B4%EB%B2%A4%ED%8A%B8/y26-brick-or-treat/",
+          "publisher": "레고랜드 코리아",
+          "verifiedAt": "2026-10-28T23:06:28.940Z",
+          "fields": [
+            "sectorIds"
+          ],
+          "summary": "목요일 블로그 분리 검토: 실제 공지의 서울랜드·레고랜드 시설 또는 ACC 전시 혜택으로 관광시설 분류. 혜택 기간·요금 재검증과 별도인 분류 근거이며 기존 확인시각은 보존."
         }
+      ],
+      "sectorIds": [
+        "attractions"
       ]
     },
     {
@@ -5959,7 +6403,19 @@
             "feeText"
           ],
           "summary": "공식실제상세전체의기간·월휴관/2시간대·입장1시간전·모든연령·13천/10천/36개월미만무료·다자녀/지역증빙·재입장불가·환불/가방·도슨트·별도체험운영공백 확인."
+        },
+        {
+          "url": "https://www.acc.go.kr/main/exhibition.do?PID=0203&action=Read&bnkey=EM_0000009913",
+          "publisher": "국립아시아문화전당 공식 전시 상세",
+          "verifiedAt": "2026-10-28T23:06:28.940Z",
+          "fields": [
+            "sectorIds"
+          ],
+          "summary": "목요일 블로그 분리 검토: 실제 공지의 서울랜드·레고랜드 시설 또는 ACC 전시 혜택으로 관광시설 분류. 혜택 기간·요금 재검증과 별도인 분류 근거이며 기존 확인시각은 보존."
         }
+      ],
+      "sectorIds": [
+        "attractions"
       ]
     },
     {
@@ -6019,7 +6475,19 @@
             "feeText"
           ],
           "summary": "공식실제상세의9/17~12/13·월휴관/10~18/17:30입장·전연령/6세이하무료·정가1만원·각증빙할인·이미끝난사전판매와10/31사용기한·모바일/분실/환불·단체조건 확인."
+        },
+        {
+          "url": "https://www.acc.go.kr/main/exhibition.do?PID=0203&action=Read&bnkey=EM_0000009927",
+          "publisher": "국립아시아문화전당 공식 전시 상세",
+          "verifiedAt": "2026-10-28T23:06:28.940Z",
+          "fields": [
+            "sectorIds"
+          ],
+          "summary": "목요일 블로그 분리 검토: 실제 공지의 서울랜드·레고랜드 시설 또는 ACC 전시 혜택으로 관광시설 분류. 혜택 기간·요금 재검증과 별도인 분류 근거이며 기존 확인시각은 보존."
         }
+      ],
+      "sectorIds": [
+        "attractions"
       ]
     },
     {

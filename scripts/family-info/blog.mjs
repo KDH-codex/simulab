@@ -7,8 +7,11 @@ export function groupPosts(feed,{day,now=new Date(),history=[]}={}){
  const posts=[],held=[],week=weekKey(now);
  for(const category of feed.categories.filter(c=>c.blogDay===day)){
   const valid=filterRecords(feed.records,{category:category.id},now),rows=valid.filter(r=>!isStaleRecord(r,now));
+  const covered=new Map();
+  for(const entry of history)if(entry.key?.startsWith(week+':'+category.id+':')&&['published','publishing','unknown'].includes(entry.status))for(const id of entry.recordIds||[])covered.set(id,entry);
   const groups=new Map();
   for(const r of rows){let values,kind;
+   const prior=covered.get(r.id);if(prior){held.push({categoryId:category.id,recordId:r.id,key:prior.key,url:prior.url||null,reason:prior.status==='published'?'동일 주차 항목 게시 완료 · 개별 글 포함':'동일 주차 항목의 게시 결과 확인 필요'});continue;}
    if(category.split==='sale-sector'){kind='sector';values=(r.sectorIds||[]).filter(id=>id!=='all'&&CATEGORIES[id]).map(id=>({id,label:CATEGORIES[id]}));}
    else if(category.split==='discount-sector'){kind='sector';values=(r.sectorIds||[]).filter(id=>['dining','attractions'].includes(id)).map(id=>({id,label:id==='dining'?'가족 외식':'관광시설'}));}
    else{kind=r.region==='전국'||r.region==='온라인'?'national':'region';const group=REGION_GROUPS.find(g=>g.regions.includes(r.region));values=[{id:group?.label||r.region,label:group?.label||r.region}];}

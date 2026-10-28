@@ -208,27 +208,17 @@
       "note": "신규10·기존재검증5. 원문 상세25건(검증15·보류2·탈락8), 미완료/목록3·접근실패2 별도. 기존34개 추적 유지,네이버와11번가 추가."
     },
     "family-discounts": {
-      "lastCollectedAt": "2026-10-26T07:29:00.467Z",
-      "outcome": "reviewed",
-      "researchRunId": "manual-all-20261026",
+      "lastCollectedAt": "2026-10-28T23:11:04.615Z",
+      "outcome": "partial-review",
+      "researchRunId": "blog-thu-20261029-recheck",
       "providers": [
         {
           "providerId": "seoulland",
           "status": "reviewed",
           "verified": 16
-        },
-        {
-          "providerId": "acc-culture",
-          "status": "reviewed",
-          "verified": 2
-        },
-        {
-          "providerId": "legoland",
-          "status": "reviewed",
-          "verified": 1
         }
       ],
-      "note": "실제상세19건:기존재검증16·신규분류연결3·보류/탈락0.카드별통합보조원문1건제외.공개19건.현금/포인트·연령·보호자별요금·증빙/실적·중복·취소/변경을보강.서울랜드/광주ACC/춘천레고랜드포함."
+      "note": "목요일 블로그 발행 전 서울랜드16건 상세 재검증·기간8건 정정. 기존 관광시설 혜택19건의 블로그 sector 분류를 보강. 새 공지를 만들지 않고 동일 ID 재사용. 다른 공급자 확인시각은 보존."
     },
     "festivals": {
       "lastCollectedAt": "2026-10-26T03:44:36.786Z",

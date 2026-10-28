@@ -75,6 +75,23 @@ test('published and ambiguous posts cannot be duplicated by a different snapshot
  assert.equal(weekKey(new Date('2026-10-24T15:00:00Z')),'2026-10-25');assert.equal(weekKey(new Date('2026-10-28T03:00:00Z')),'2026-10-25');
  assert.equal(publicationKey('2026-10-25','brand-sales','sector','beauty'),'2026-10-25:brand-sales:sector:beauty:weekly');
 });
+
+test('ad hoc weekly posts cannot reappear under a different region or nationwide grouping key',async()=>{
+ const feed=await loadCatalog({now:catalogNow}),clock=new Date('2026-10-29T00:00:00Z'),id='teenieping-hyundai-tour-202610';
+ const prior={key:'2026-10-25:kids-popups:national:teenieping-hyundai-tour:weekly',recordIds:[id],url:'https://blog.naver.com/6a_blog/224455031126'};
+ for(const status of ['published','publishing','unknown']){
+  const queue=groupPosts(feed,{day:4,now:clock,history:[{...prior,status}]});
+  assert.ok(!queue.posts.some(p=>p.categoryId==='kids-popups'&&p.records.some(r=>r.id===id)));
+  assert.ok(queue.posts.some(p=>p.categoryId==='kids-popups'&&p.records.length));
+ }
+ for(const entry of [{...prior,status:'failed'},{...prior,key:prior.key.replace('2026-10-25','2026-10-18'),status:'published'}])assert.ok(groupPosts(feed,{day:4,now:clock,history:[entry]}).posts.some(p=>p.records.some(r=>r.id===id)));
+});
+
+test('reviewed facility benefits form the attractions post instead of being omitted by missing sectors',async()=>{
+ const feed=await loadCatalog({now:catalogNow}),queue=groupPosts(feed,{day:4,now:new Date('2026-10-29T00:00:00Z')});
+ const post=queue.posts.find(p=>p.categoryId==='family-discounts'&&p.splitValue==='attractions');assert.ok(post);
+ assert.equal(post.records.length,19);assert.ok(!queue.held.some(p=>p.categoryId==='family-discounts'&&p.reason==='지역/분야 분리 근거 부족'));
+});
 test('editorial strings are escaped in cards and no unsupported price total is invented',()=>{
  const r={...reviewed.records[0],title:'<script>alert(1)</script>',summary:'A & B'};const html=renderRecord(r,schedule.categories,now);assert.ok(html.includes('&lt;script&gt;'));assert.ok(!html.includes('<script>'));assert.ok(html.includes('A &amp; B'));assert.ok(html.includes('noopener noreferrer'));
 });

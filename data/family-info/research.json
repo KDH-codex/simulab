@@ -5119,6 +5119,182 @@
       "outcome": "verified",
       "summary": "블로그 발행 전 재검증: 공식 예약마감을 확인하여 조기 마감 상태를 반영. 예정 접수 종료일과 이용일은 보존.",
       "recordId": "kids-s261020161116202700"
+    },
+    {
+      "categoryId": "family-discounts",
+      "canonicalUrl": "https://seoulland.co.kr/?p=40_view&idx=380",
+      "title": "서울랜드 · KB국민카드·비씨카드 더블 혜택",
+      "reviewedAt": "2026-10-28T23:11:04.615Z",
+      "runId": "blog-thu-20261029-recheck",
+      "detailReviewed": true,
+      "outcome": "verified",
+      "summary": "공식 상세의 기간·요금·실적/포인트·현장결제·대상·중복 제한을 재검증. 기존 조건 유지.",
+      "recordId": "seoulland-380-202610"
+    },
+    {
+      "categoryId": "family-discounts",
+      "canonicalUrl": "https://seoulland.co.kr/?p=40_view&idx=252",
+      "title": "서울랜드 · 실적 충족 제휴카드 혜택",
+      "reviewedAt": "2026-10-28T23:11:04.615Z",
+      "runId": "blog-thu-20261029-recheck",
+      "detailReviewed": true,
+      "outcome": "verified",
+      "summary": "공식 프로모션의 갱신된 시작/종료일을 정정. 요금·자격·결제·중복 제한 유지.",
+      "recordId": "seoulland-252-202610"
+    },
+    {
+      "categoryId": "family-discounts",
+      "canonicalUrl": "https://seoulland.co.kr/?p=40_view&idx=209",
+      "title": "서울랜드 · 현대카드 M포인트 결제 혜택",
+      "reviewedAt": "2026-10-28T23:11:04.615Z",
+      "runId": "blog-thu-20261029-recheck",
+      "detailReviewed": true,
+      "outcome": "verified",
+      "summary": "공식 상세의 기간·요금·실적/포인트·현장결제·대상·중복 제한을 재검증. 기존 조건 유지.",
+      "recordId": "seoulland-209-202610"
+    },
+    {
+      "categoryId": "family-discounts",
+      "canonicalUrl": "https://seoulland.co.kr/?p=40_view&idx=257",
+      "title": "서울랜드 · 롯데카드 회원 혜택",
+      "reviewedAt": "2026-10-28T23:11:04.615Z",
+      "runId": "blog-thu-20261029-recheck",
+      "detailReviewed": true,
+      "outcome": "verified",
+      "summary": "공식 프로모션의 갱신된 시작/종료일을 정정. 요금·자격·결제·중복 제한 유지.",
+      "recordId": "seoulland-257-202610"
+    },
+    {
+      "categoryId": "family-discounts",
+      "canonicalUrl": "https://seoulland.co.kr/?p=40_view&idx=386",
+      "title": "서울랜드 · KT멤버십 회원 혜택",
+      "reviewedAt": "2026-10-28T23:11:04.615Z",
+      "runId": "blog-thu-20261029-recheck",
+      "detailReviewed": true,
+      "outcome": "verified",
+      "summary": "공식 상세의 기간·요금·실적/포인트·현장결제·대상·중복 제한을 재검증. 기존 조건 유지.",
+      "recordId": "seoulland-386-202610"
+    },
+    {
+      "categoryId": "family-discounts",
+      "canonicalUrl": "https://seoulland.co.kr/?p=40_view&idx=260",
+      "title": "서울랜드 · SKT멤버십 할인·적립",
+      "reviewedAt": "2026-10-28T23:11:04.615Z",
+      "runId": "blog-thu-20261029-recheck",
+      "detailReviewed": true,
+      "outcome": "verified",
+      "summary": "공식 프로모션의 갱신된 시작/종료일을 정정. 요금·자격·결제·중복 제한 유지.",
+      "recordId": "seoulland-260-202610"
+    },
+    {
+      "categoryId": "family-discounts",
+      "canonicalUrl": "https://seoulland.co.kr/?p=40_view&idx=259",
+      "title": "서울랜드 · LGU+멤버십 회원 혜택",
+      "reviewedAt": "2026-10-28T23:11:04.615Z",
+      "runId": "blog-thu-20261029-recheck",
+      "detailReviewed": true,
+      "outcome": "verified",
+      "summary": "공식 프로모션의 갱신된 시작/종료일을 정정. 요금·자격·결제·중복 제한 유지.",
+      "recordId": "seoulland-259-202610"
+    },
+    {
+      "categoryId": "family-discounts",
+      "canonicalUrl": "https://seoulland.co.kr/?p=40_view&idx=243",
+      "title": "서울랜드 · 네이버페이 포인트·머니 혜택",
+      "reviewedAt": "2026-10-28T23:11:04.615Z",
+      "runId": "blog-thu-20261029-recheck",
+      "detailReviewed": true,
+      "outcome": "verified",
+      "summary": "공식 상세의 기간·요금·실적/포인트·현장결제·대상·중복 제한을 재검증. 기존 조건 유지.",
+      "recordId": "seoulland-243-202610"
+    },
+    {
+      "categoryId": "family-discounts",
+      "canonicalUrl": "https://seoulland.co.kr/?p=40_view&idx=416",
+      "title": "서울랜드 · 문화누리카드 혜택",
+      "reviewedAt": "2026-10-28T23:11:04.615Z",
+      "runId": "blog-thu-20261029-recheck",
+      "detailReviewed": true,
+      "outcome": "verified",
+      "summary": "공식 프로모션의 갱신된 시작/종료일을 정정. 요금·자격·결제·중복 제한 유지.",
+      "recordId": "seoulland-416-202610"
+    },
+    {
+      "categoryId": "family-discounts",
+      "canonicalUrl": "https://seoulland.co.kr/?p=40_view&idx=288",
+      "title": "서울랜드 · 블루멤버스 포인트 혜택",
+      "reviewedAt": "2026-10-28T23:11:04.615Z",
+      "runId": "blog-thu-20261029-recheck",
+      "detailReviewed": true,
+      "outcome": "verified",
+      "summary": "공식 프로모션의 갱신된 시작/종료일을 정정. 요금·자격·결제·중복 제한 유지.",
+      "recordId": "seoulland-288-202610"
+    },
+    {
+      "categoryId": "family-discounts",
+      "canonicalUrl": "https://seoulland.co.kr/?p=40_view&idx=429",
+      "title": "서울랜드 · 설호 사진 인증 혜택",
+      "reviewedAt": "2026-10-28T23:11:04.615Z",
+      "runId": "blog-thu-20261029-recheck",
+      "detailReviewed": true,
+      "outcome": "verified",
+      "summary": "공식 상세의 기간·요금·실적/포인트·현장결제·대상·중복 제한을 재검증. 기존 조건 유지.",
+      "recordId": "seoulland-429-202610"
+    },
+    {
+      "categoryId": "family-discounts",
+      "canonicalUrl": "https://seoulland.co.kr/?p=40_view&idx=431",
+      "title": "서울랜드 · 중·고·대학생 혜택",
+      "reviewedAt": "2026-10-28T23:11:04.615Z",
+      "runId": "blog-thu-20261029-recheck",
+      "detailReviewed": true,
+      "outcome": "verified",
+      "summary": "공식 상세의 기간·요금·실적/포인트·현장결제·대상·중복 제한을 재검증. 기존 조건 유지.",
+      "recordId": "seoulland-431-202610"
+    },
+    {
+      "categoryId": "family-discounts",
+      "canonicalUrl": "https://seoulland.co.kr/?p=40_view&idx=430",
+      "title": "서울랜드 · 미취학 어린이 가을 혜택",
+      "reviewedAt": "2026-10-28T23:11:04.615Z",
+      "runId": "blog-thu-20261029-recheck",
+      "detailReviewed": true,
+      "outcome": "verified",
+      "summary": "공식 상세의 기간·요금·실적/포인트·현장결제·대상·중복 제한을 재검증. 기존 조건 유지.",
+      "recordId": "seoulland-430-202610"
+    },
+    {
+      "categoryId": "family-discounts",
+      "canonicalUrl": "https://seoulland.co.kr/?p=40_view&idx=426",
+      "title": "서울랜드 · 귀신 코스튬 AFTER4 혜택",
+      "reviewedAt": "2026-10-28T23:11:04.615Z",
+      "runId": "blog-thu-20261029-recheck",
+      "detailReviewed": true,
+      "outcome": "verified",
+      "summary": "공식 상세의 기간·요금·실적/포인트·현장결제·대상·중복 제한을 재검증. 기존 조건 유지.",
+      "recordId": "seoulland-426-202610"
+    },
+    {
+      "categoryId": "family-discounts",
+      "canonicalUrl": "https://seoulland.co.kr/?p=40_view&idx=383",
+      "title": "서울랜드 · 생일자 동반 혜택",
+      "reviewedAt": "2026-10-28T23:11:04.615Z",
+      "runId": "blog-thu-20261029-recheck",
+      "detailReviewed": true,
+      "outcome": "verified",
+      "summary": "공식 프로모션의 갱신된 시작/종료일을 정정. 요금·자격·결제·중복 제한 유지.",
+      "recordId": "seoulland-383-202610"
+    },
+    {
+      "categoryId": "family-discounts",
+      "canonicalUrl": "https://seoulland.co.kr/?p=40_view&idx=413",
+      "title": "서울랜드 · 대중교통 방문 혜택",
+      "reviewedAt": "2026-10-28T23:11:04.615Z",
+      "runId": "blog-thu-20261029-recheck",
+      "detailReviewed": true,
+      "outcome": "verified",
+      "summary": "공식 프로모션의 갱신된 시작/종료일을 정정. 요금·자격·결제·중복 제한 유지.",
+      "recordId": "seoulland-413-202610"
     }
   ]
 }

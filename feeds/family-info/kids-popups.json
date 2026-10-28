@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "snapshotId": "8e30b3ce091e893bc98ac4f9",
+  "snapshotId": "dad93d8e5aff02999ffd9c38",
   "timezone": "Asia/Seoul",
   "categories": [
     {
@@ -14,7 +14,7 @@
       "split": "region",
       "href": "/tools/kids-popups/",
       "accent": "orange",
-      "categoryRevision": "850d50623ecfad97",
+      "categoryRevision": "9ddc555d876e3a67",
       "lastVerifiedAt": "2026-10-26T12:05:49.609Z",
       "lastCollectedAt": "2026-10-26T12:05:49.609Z",
       "lastDeployedAt": null,
@@ -472,9 +472,21 @@
             "feeText",
             "conditions"
           ]
+        },
+        {
+          "url": "https://www.legoland.kr/%ED%8C%8C%ED%81%AC%EC%9D%B4%EB%B2%A4%ED%8A%B8/%EC%9D%B4-%EC%8B%9C%EC%A6%8C-%EC%B6%95%EC%A0%9C%EC%9D%B4%EB%B2%A4%ED%8A%B8/y26-brick-or-treat/",
+          "publisher": "레고랜드 코리아",
+          "summary": "목요일 블로그 분리 검토: 실제 공지의 서울랜드·레고랜드 시설 또는 ACC 전시 혜택으로 관광시설 분류. 혜택 기간·요금 재검증과 별도인 분류 근거이며 기존 확인시각은 보존.",
+          "verifiedAt": "2026-10-28T23:06:28.940Z",
+          "fields": [
+            "sectorIds"
+          ]
         }
       ],
-      "contentHash": "a22c4da2e49561541083d0ecd7565c2916d9e2ef201d5142b63e378534492a4d",
+      "sectorIds": [
+        "attractions"
+      ],
+      "contentHash": "b92a4e7fcf39d55c1af8897eb92ad6b21cd3b13832c6a76f2120fb4d2fa8ba38",
       "siteUrl": "/tools/kids-popups/#legoland-brick-or-treat-2026"
     },
     {
@@ -1182,11 +1194,11 @@
       "siteUrl": "/tools/kids-popups/#popup-harrypotter-busan-202610"
     }
   ],
-  "siteRevision": "78c206c1e60fde3b24b31ee3f05d7638a7c8be1b",
-  "generatedAt": "2026-10-28T04:25:38.437Z",
+  "siteRevision": "e5c575797ddd6b9760080c5d5a1d630d6fef7756",
+  "generatedAt": "2026-10-28T23:17:38.717Z",
   "window": {
-    "start": "2026-10-28",
-    "end": "2026-12-27"
+    "start": "2026-10-29",
+    "end": "2026-12-28"
   },
   "deployment": {
     "status": "verify-live-snapshot",

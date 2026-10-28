@@ -27,6 +27,7 @@ export function validateRecord(record,{categories,providers,now=new Date()}={}){
  if(!['free','paid','mixed','unknown'].includes(r.feeStatus)||!r.feeText)errors.push('비용 상태와 설명 필요');
  if(!r.region||!['전국','온라인',...REGION_GROUPS.flatMap(g=>g.regions)].includes(r.region))errors.push('원본 지역 오류');
  if(!r.audience||!r.conditions?.length)errors.push('대상과 핵심 조건 필요');
+ if(r.categoryIds?.includes('family-discounts')&&(!Array.isArray(r.sectorIds)||!r.sectorIds.length||r.sectorIds.some(id=>!['dining','attractions'].includes(id))))errors.push('외식·시설 할인 분야 분리 근거 필요');
  for(const key of ['applicationStart','applicationEnd','eventStart','eventEnd','bookingStart'])if(r[key]!=null&&!validDateTime(r[key]))errors.push(key+' 날짜 오류');
  for(const [start,end] of [['applicationStart','applicationEnd'],['eventStart','eventEnd']])if(r[start]&&r[end]&&(datePart(r[start])>datePart(r[end])||(!isDate(r[start])&&!isDate(r[end])&&Date.parse(r[start])>Date.parse(r[end]))))errors.push(start+' 기간 역전');
  if(r.applicationMode&&!['ongoing','relative'].includes(r.applicationMode))errors.push('신청 방식 오류');
@@ -36,7 +37,7 @@ export function validateRecord(record,{categories,providers,now=new Date()}={}){
  if(r.operatingWeekdays&&(!Array.isArray(r.operatingWeekdays)||!r.operatingWeekdays.length||new Set(r.operatingWeekdays).size!==r.operatingWeekdays.length||r.operatingWeekdays.some(d=>!Number.isInteger(d)||d<0||d>6)))errors.push('운영 요일 오류');
  const facts=r.evidence||[];
  if(!facts.length||facts.some(f=>!f.publisher||!f.summary||!Array.isArray(f.fields)||!f.fields.length||!provider||!sameOfficialHost(f.url,provider.hosts)||!validDateTime(f.verifiedAt)||datePart(f.verifiedAt)>koreaToday(now)))errors.push('필드별 공식 근거 필요');
- const required=['title','audience','conditions',...(r.lifecycleStatus==='closed'?['lifecycleStatus']:[]),...(r.applicationMode?['applicationMode','applicationNote']:[]),...['applicationStart','applicationEnd','eventStart','eventEnd','bookingStart','operatingWeekdays'].filter(k=>r[k]!=null),...(r.feeStatus!=='unknown'?['feeText']:[])];
+ const required=['title','audience','conditions',...(r.categoryIds?.includes('family-discounts')?['sectorIds']:[]),...(r.lifecycleStatus==='closed'?['lifecycleStatus']:[]),...(r.applicationMode?['applicationMode','applicationNote']:[]),...['applicationStart','applicationEnd','eventStart','eventEnd','bookingStart','operatingWeekdays'].filter(k=>r[k]!=null),...(r.feeStatus!=='unknown'?['feeText']:[])];
  if(required.some(k=>!facts.some(f=>f.fields?.includes(k))))errors.push('공개 필드의 검증 근거 누락');
  if(r.lifecycleStatus&&!['upcoming','open','closed','ended','cancelled','unknown'].includes(r.lifecycleStatus))errors.push('진행 상태 오류');
  return errors;
