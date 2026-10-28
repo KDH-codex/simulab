@@ -3,7 +3,7 @@ const base='https://simulab.kr';
 const checks=[
  ['/', ['AI는 토론하고', '당신이 판정합니다.', '/library/', '/debates/001/']],
  ['/library/', ['도구와 생활정보는', 'data-archived-tool', 'salary-net-calc', 'https://simulab.kr/library/']],
- ['/debates/001/', ['https://simulab.kr/debates/001/', '97/100자', '91/100자', '내 브라우저에만 남기는 시범 판정']],
+ ['/debates/001/', ['https://simulab.kr/debates/001/', '97<small>/100자</small>', '91<small>/100자</small>', '내 브라우저에만 남기는 시범 판정']],
  ['/assets/css/debate-home.css', ['.home-nav']],
  ['/assets/js/ai-debate.js', ['localStorage']],
 ];
