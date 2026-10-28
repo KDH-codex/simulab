@@ -36,7 +36,7 @@ export function validateRecord(record,{categories,providers,now=new Date()}={}){
  if(r.operatingWeekdays&&(!Array.isArray(r.operatingWeekdays)||!r.operatingWeekdays.length||new Set(r.operatingWeekdays).size!==r.operatingWeekdays.length||r.operatingWeekdays.some(d=>!Number.isInteger(d)||d<0||d>6)))errors.push('운영 요일 오류');
  const facts=r.evidence||[];
  if(!facts.length||facts.some(f=>!f.publisher||!f.summary||!Array.isArray(f.fields)||!f.fields.length||!provider||!sameOfficialHost(f.url,provider.hosts)||!validDateTime(f.verifiedAt)||datePart(f.verifiedAt)>koreaToday(now)))errors.push('필드별 공식 근거 필요');
- const required=['title','audience','conditions',...(r.applicationMode?['applicationMode','applicationNote']:[]),...['applicationStart','applicationEnd','eventStart','eventEnd','bookingStart','operatingWeekdays'].filter(k=>r[k]!=null),...(r.feeStatus!=='unknown'?['feeText']:[])];
+ const required=['title','audience','conditions',...(r.lifecycleStatus==='closed'?['lifecycleStatus']:[]),...(r.applicationMode?['applicationMode','applicationNote']:[]),...['applicationStart','applicationEnd','eventStart','eventEnd','bookingStart','operatingWeekdays'].filter(k=>r[k]!=null),...(r.feeStatus!=='unknown'?['feeText']:[])];
  if(required.some(k=>!facts.some(f=>f.fields?.includes(k))))errors.push('공개 필드의 검증 근거 누락');
  if(r.lifecycleStatus&&!['upcoming','open','closed','ended','cancelled','unknown'].includes(r.lifecycleStatus))errors.push('진행 상태 오류');
  return errors;
@@ -47,6 +47,7 @@ export function recordState(r,now=new Date()){
  if(r.lifecycleStatus==='cancelled')return {code:'cancelled',label:'취소',current:false};
  const effectiveEnd=r.endInclusiveMinute&&!isDate(r.eventEnd)?new Date(Date.parse(r.eventEnd)+60000).toISOString():r.eventEnd;
  if(effectiveEnd&&hasPassed(effectiveEnd,now,r.endExclusive||r.endInclusiveMinute))return {code:'ended',label:'종료',current:false};
+ if(r.lifecycleStatus==='closed')return {code:'closed',label:'신청 마감 · 이용일 확인',current:Boolean(r.eventEnd)};
  if(r.applicationEnd&&hasPassed(r.applicationEnd,now))return r.eventEnd?{code:'closed',label:'신청 마감 · 이용일 확인',current:true}:{code:'ended',label:'신청 종료',current:false};
  if(r.applicationStart&&!hasStarted(r.applicationStart,now))return {code:'upcoming',label:'신청 예정',current:true};
  if(r.applicationEnd&&(!r.applicationStart||hasStarted(r.applicationStart,now)))return {code:'open',label:'신청기간 중 · 잔여석 확인',current:true};
@@ -65,7 +66,7 @@ export function filterRecords(records,filters={},now=new Date()){
   if(r.publicationStatus!=='verified'||category!=='all'&&!r.categoryIds.includes(category)||!inRegion(r,region)||onlyFree&&r.feeStatus!=='free'||age!=='all'&&!r.ageGroups?.includes(age))return false;
   const state=recordState(r,now);if(!includeEnded&&!state.current)return false;
   if(status==='open'&&(state.code!=='open'||!r.applicationEnd||isStaleRecord(r,now)))return false;
-  if(status==='closing'&&(!r.applicationEnd||hasPassed(r.applicationEnd,now)||datePart(r.applicationEnd)>shiftDate(koreaToday(now),7)||isStaleRecord(r,now)))return false;
+  if(status==='closing'&&(state.code==='closed'||!r.applicationEnd||hasPassed(r.applicationEnd,now)||datePart(r.applicationEnd)>shiftDate(koreaToday(now),7)||isStaleRecord(r,now)))return false;
   if(status==='upcoming'&&state.code!=='upcoming')return false;
   const ranges=calendar==='application'?[[r.applicationStart||r.bookingStart,r.applicationEnd||r.bookingStart,false]]:calendar==='event'?[[r.eventStart,r.eventEnd,true]]:[[r.applicationStart||r.bookingStart,r.applicationEnd||r.bookingStart,false],[r.eventStart,r.eventEnd,true]];
   if(calendar!=='all'&&!ranges.some(([a,b])=>a||b))return false;

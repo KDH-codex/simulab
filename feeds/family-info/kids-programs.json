@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "snapshotId": "518cff5125c9da7795499e39",
+  "snapshotId": "8e30b3ce091e893bc98ac4f9",
   "timezone": "Asia/Seoul",
   "categories": [
     {
@@ -14,9 +14,9 @@
       "split": "region",
       "href": "/tools/kids-programs/",
       "accent": "green",
-      "categoryRevision": "c8600962daf3cfa1",
-      "lastVerifiedAt": "2026-10-26T07:09:31.578Z",
-      "lastCollectedAt": "2026-10-26T07:09:31.578Z",
+      "categoryRevision": "d5a3f6fc9a4391dc",
+      "lastVerifiedAt": "2026-10-28T00:01:15.671Z",
+      "lastCollectedAt": "2026-10-28T00:01:15.671Z",
       "lastDeployedAt": null,
       "outcome": "partial-review",
       "verifiedCount": 16,
@@ -117,8 +117,9 @@
       "scheduleNote": "매일 10:00~11:30 / 14:00~15:30 · 날짜별 예약 확인",
       "feeStatus": "free",
       "feeText": "공식 예약 상세에 무료로 안내",
-      "summary": "전기셔틀카와 뗏목 등으로 양재천을 둘러보는 가족 체험입니다.",
+      "summary": "10/28 공식 예약 화면에서 예약마감을 확인했습니다. 전기셔틀카와 뗏목 등으로 양재천을 둘러보는 가족 체험입니다.",
       "conditions": [
+        "2026/10/28 확인 시 공식 예약 화면은 예약마감입니다. 공지의 접수 예정기간과 실제 잔여석은 다르며, 취소석 재개 여부는 공식 예약처에 확인하세요.",
         "선착순 인터넷 예약이며 실제 선택 가능한 회차와 잔여석은 공식 예약 화면에서 확인하세요.",
         "운영기간 중 예약은 2회 이내입니다. 시작 10분 전에 집결해 주세요.",
         "비·기상특보 또는 참여 인원 부족으로 취소될 수 있습니다.",
@@ -126,7 +127,8 @@
         "5명 미달이면 취소되며 불참·취소 미처리 시 향후 예약에 불이익이 있을 수 있습니다.당일 잔여석은 현장 접수 가능 여부를 확인하세요."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26T07:09:31.578Z",
+      "lifecycleStatus": "closed",
+      "verifiedAt": "2026-10-28T00:01:15.671Z",
       "evidence": [
         {
           "url": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S260307155459409616",
@@ -146,9 +148,20 @@
             "eventEnd",
             "feeText"
           ]
+        },
+        {
+          "url": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S260307155459409616",
+          "publisher": "서울특별시 공공서비스예약",
+          "summary": "발행 전 실제 상세의 제목 옆 상태와 예약 버튼이 예약마감으로 표시됨을 대조. 원래 예정 접수 종료일·이용일은 변경하지 않음.",
+          "verifiedAt": "2026-10-28T00:01:15.671Z",
+          "fields": [
+            "lifecycleStatus",
+            "summary",
+            "conditions"
+          ]
         }
       ],
-      "contentHash": "e71303dea72920340985ebea969c04e3b40baf109de9bbe073b5bc75abbfab0a",
+      "contentHash": "9da2b648f4391b161300faa81f6925c745d085e41b7abc1537fbb9a1689f3443",
       "siteUrl": "/tools/kids-programs/#yangjae-slow-tour-2026"
     },
     {
@@ -878,15 +891,17 @@
       "scheduleNote": "워크북수령10:30~12:00 /14:00~15:30 · 월요일·10/6·23·24·29~31 제외",
       "feeStatus": "mixed",
       "feeText": "워크북 프로그램 무료 · 온실·주제원 관람 입장권 별도 구매",
-      "summary": "전시 감상 워크북으로 식물원 작품을 보고 글과 그림으로 표현하는 자율 활동입니다.",
+      "summary": "10/28 공식 예약 화면에서 예약마감을 확인했습니다. 전시 감상 워크북으로 식물원 작품을 보고 글과 그림으로 표현하는 자율 활동입니다.",
       "conditions": [
+        "2026/10/28 확인 시 공식 예약 화면은 예약마감입니다. 공지의 접수 예정기간과 실제 잔여석은 다르며, 취소석 재개 여부는 공식 예약처에 확인하세요.",
         "예약은 보호자를 제외한 어린이 수로 신청하고 보호자 수는 이용정보에 적습니다.회차별워크북10개가 소진되면 조기 마감됩니다.",
         "예약표의10/31까지 범위와 달리10/29~31은 운영 제외입니다.실제 마지막10/28 회차는 전날24시까지 접수하는 규칙을 적용했습니다.",
         "워크북은 신청한 회차의 수령 시간에만 받습니다.개인물·편한신발을 준비하고 불참 시 전날까지 취소·연락하세요.",
         "온라인양도는 인정되지 않으며 온실·주제원 입장권을 별도로 발권해야 합니다."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26T07:09:31.578Z",
+      "lifecycleStatus": "closed",
+      "verifiedAt": "2026-10-28T00:01:15.671Z",
       "evidence": [
         {
           "url": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S260918081141931556",
@@ -947,9 +962,20 @@
             "operatingDates",
             "feeText"
           ]
+        },
+        {
+          "url": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S260918081141931556",
+          "publisher": "서울특별시 공공서비스예약",
+          "summary": "발행 전 실제 상세의 제목 옆 상태와 예약 버튼이 예약마감으로 표시됨을 대조. 원래 예정 접수 종료일·이용일은 변경하지 않음.",
+          "verifiedAt": "2026-10-28T00:01:15.671Z",
+          "fields": [
+            "lifecycleStatus",
+            "summary",
+            "conditions"
+          ]
         }
       ],
-      "contentHash": "7da37c52732482c57f63b2868fcf92566e1eae88dfefcb63758b1fe538ca2de1",
+      "contentHash": "f1c8f270bb771b4774abbfb5a3fb53e89d52be06502c2ffaed8485f7b960761a",
       "siteUrl": "/tools/kids-programs/#kids-s260918081141931556"
     },
     {
@@ -981,8 +1007,9 @@
       "scheduleNote": "11/7·14·21·28 10:00~11:30",
       "feeStatus": "paid",
       "feeText": "팀당10,000원 · 2~4인 가족 기준,주차 별도",
-      "summary": "시클라멘의 특징과 관리법을 배우고 가족의 겨울정원을 만드는 체험입니다.",
+      "summary": "10/28 공식 예약 화면에서 예약마감을 확인했습니다. 시클라멘의 특징과 관리법을 배우고 가족의 겨울정원을 만드는 체험입니다.",
       "conditions": [
+        "2026/10/28 확인 시 공식 예약 화면은 예약마감입니다. 공지의 접수 예정기간과 실제 잔여석은 다르며, 취소석 재개 여부는 공식 예약처에 확인하세요.",
         "서울시 통합회원 로그인 후 선착순 신청합니다.프로그램 시작10분 전 도착하고 마실 물을 준비하세요.",
         "주차비는 지원하지 않습니다.운영 내용·시간은 변경될 수 있으며 취소 안내는 예약한 휴대전화 문자로 전달합니다.",
         "인원50% 미달이면 취소될 수 있습니다.무단불참 시 이후 신청 프로그램에서 제외될 수 있습니다.",
@@ -990,7 +1017,8 @@
         "회차2일 전09시까지 신청하며 실제 잔여팀을 확인하세요.만들기 활동은 변경될 수 있습니다."
       ],
       "publicationStatus": "verified",
-      "verifiedAt": "2026-10-26T07:09:31.578Z",
+      "lifecycleStatus": "closed",
+      "verifiedAt": "2026-10-28T00:01:15.671Z",
       "evidence": [
         {
           "url": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S261020161116202700",
@@ -1031,9 +1059,20 @@
             "operatingDates",
             "feeText"
           ]
+        },
+        {
+          "url": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S261020161116202700",
+          "publisher": "서울특별시 공공서비스예약",
+          "summary": "발행 전 실제 상세의 제목 옆 상태와 예약 버튼이 예약마감으로 표시됨을 대조. 원래 예정 접수 종료일·이용일은 변경하지 않음.",
+          "verifiedAt": "2026-10-28T00:01:15.671Z",
+          "fields": [
+            "lifecycleStatus",
+            "summary",
+            "conditions"
+          ]
         }
       ],
-      "contentHash": "66f861edb894f2eeb474b7c78495a6bb2ec1b881979f3baa8a9cf8eb3632e20c",
+      "contentHash": "07a616359d47ade18eff72abd70b014d8bcef3dcf2ec2dc1c10e2ddc618fd8ea",
       "siteUrl": "/tools/kids-programs/#kids-s261020161116202700"
     },
     {
@@ -1333,11 +1372,11 @@
       "siteUrl": "/tools/kids-programs/#kids-s261024162658645277"
     }
   ],
-  "siteRevision": "cbf7677e7514e4206690e6e104434bb59b806ba1",
-  "generatedAt": "2026-10-27T06:24:14.710Z",
+  "siteRevision": "667cb9b152c827b1fa38029e819710e2e57775cf",
+  "generatedAt": "2026-10-28T00:01:33.479Z",
   "window": {
-    "start": "2026-10-27",
-    "end": "2026-12-26"
+    "start": "2026-10-28",
+    "end": "2026-12-27"
   },
   "deployment": {
     "status": "verify-live-snapshot",

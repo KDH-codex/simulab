@@ -22,6 +22,15 @@ test('application close never becomes event end and KST precise deadlines are re
  assert.equal(recordState({...r,eventEnd:'2026-10-25'},new Date('2026-10-25T14:59:59Z')).current,true);
  assert.equal(recordState({...r,eventEnd:'2026-10-25'},new Date('2026-10-25T15:00:00Z')).code,'ended');
 });
+
+test('official reservation closure overrides a future scheduled deadline while retaining the visit dates',()=>{
+ const clock=new Date('2026-10-28T00:00:00Z'),r={...reviewed.records[0],lifecycleStatus:'closed',verifiedAt:clock.toISOString(),applicationStart:'2026-10-01',applicationEnd:'2026-10-30',eventStart:'2026-10-29',eventEnd:'2026-10-31'};
+ assert.equal(recordState(r,clock).code,'closed');assert.equal(filterRecords([r],{},clock).length,1);
+ assert.equal(filterRecords([r],{status:'open'},clock).length,0);assert.equal(filterRecords([r],{status:'closing'},clock).length,0);
+ assert.equal(recordState(r,new Date('2026-11-01T00:00:00Z')).current,false);
+ const missing={...r,evidence:r.evidence.map(e=>({...e,fields:e.fields.filter(f=>f!=='lifecycleStatus')}))};
+ assert.ok(validateRecord(missing,{...options,now:clock}).includes('공개 필드의 검증 근거 누락'));
+});
 test('unknown fees and audience never pass free or age filters and stale entries cannot claim open applications',()=>{
  const rows=[{...reviewed.records[0],feeStatus:'unknown',ageGroups:[]}];assert.equal(filterRecords(rows,{onlyFree:true},now).length,0);assert.equal(filterRecords(rows,{age:'preschool'},now).length,0);
  const stale={...reviewed.records[0],verifiedAt:'2026-10-01'};assert.equal(isStaleRecord(stale,now),true);assert.equal(filterRecords([stale],{status:'open'},now).length,0);
@@ -39,7 +48,7 @@ test('official closed weekdays are excluded from event calendars and date-range 
  assert.equal(filterRecords([r],{calendar:'event',from:'2026-10-26',to:'2026-10-27'},now).length,1);
 });
 test('personal deadlines require explicit provenance and never invent a fixed calendar date',()=>{
- const r=structuredClone(reviewed.records[0]);r.applicationStart=null;r.applicationEnd=null;r.eventStart=null;r.eventEnd=null;
+ const r=structuredClone(reviewed.records[0]);r.lifecycleStatus=null;r.applicationStart=null;r.applicationEnd=null;r.eventStart=null;r.eventEnd=null;
  assert.ok(validateRecord(r,options).length);r.applicationMode='relative';r.applicationNote='출산 후 6개월 이내';
  assert.ok(validateRecord(r,options).length);r.evidence[0].fields.push('applicationMode','applicationNote');assert.deepEqual(validateRecord(r,options),[]);
  assert.equal(recordState(r,now).code,'unknown');assert.deepEqual(datesForDay(r,'2026-10-26'),[]);

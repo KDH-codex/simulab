@@ -5086,6 +5086,39 @@
       "detailReviewed": false,
       "outcome": "blocked",
       "summary": "운영사 추가 검색 중 공식 페이지 오류 응답으로 실제 행사 상세 확인 실패. 조사 수에서 제외."
+    },
+    {
+      "categoryId": "kids-programs",
+      "canonicalUrl": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S260307155459409616",
+      "title": "양재천 천천투어",
+      "reviewedAt": "2026-10-28T00:01:15.671Z",
+      "runId": "blog-wed-20261028-recheck",
+      "detailReviewed": true,
+      "outcome": "verified",
+      "summary": "블로그 발행 전 재검증: 공식 예약마감을 확인하여 조기 마감 상태를 반영. 예정 접수 종료일과 이용일은 보존.",
+      "recordId": "yangjae-slow-tour-2026"
+    },
+    {
+      "categoryId": "kids-programs",
+      "canonicalUrl": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S260918081141931556",
+      "title": "서울식물원 · 마주 봄 서로 봄 가족 자율감상",
+      "reviewedAt": "2026-10-28T00:01:15.671Z",
+      "runId": "blog-wed-20261028-recheck",
+      "detailReviewed": true,
+      "outcome": "verified",
+      "summary": "블로그 발행 전 재검증: 공식 예약마감을 확인하여 조기 마감 상태를 반영. 예정 접수 종료일과 이용일은 보존.",
+      "recordId": "kids-s260918081141931556"
+    },
+    {
+      "categoryId": "kids-programs",
+      "canonicalUrl": "https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?rsv_svc_id=S261020161116202700",
+      "title": "서울식물원 함께정원 · 크리스마스를 기다리는 겨울정원",
+      "reviewedAt": "2026-10-28T00:01:15.671Z",
+      "runId": "blog-wed-20261028-recheck",
+      "detailReviewed": true,
+      "outcome": "verified",
+      "summary": "블로그 발행 전 재검증: 공식 예약마감을 확인하여 조기 마감 상태를 반영. 예정 접수 종료일과 이용일은 보존.",
+      "recordId": "kids-s261020161116202700"
     }
   ]
 }

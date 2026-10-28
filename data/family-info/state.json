@@ -2,9 +2,9 @@
   "schemaVersion": 1,
   "categories": {
     "kids-programs": {
-      "lastCollectedAt": "2026-10-26T07:09:31.578Z",
+      "lastCollectedAt": "2026-10-28T00:01:15.671Z",
       "outcome": "partial-review",
-      "researchRunId": "manual-all-20261026",
+      "researchRunId": "blog-wed-20261028-recheck",
       "providers": [
         {
           "providerId": "seoul-reservation",
@@ -17,7 +17,7 @@
           "verified": 3
         }
       ],
-      "note": "상세26건:검증16(기존7·신규독립프로그램6·기존부모자녀프로그램3분류연결)·보류8·탈락2.동일시설단체추가안내1건제외.공개유효16건.서울·인천·광주·전남을 포함,실제회차·참가비/입장권·접수·취소를 대조."
+      "note": "수요일 블로그 발행 전 필요한 재검증에서 공식 예약마감3건 확인. 이용일과 예정 접수기간은 유지하고 실제 마감 상태·근거를 정정. 정기 전항목 수집이 아님."
     },
     "camping-booking": {
       "lastCollectedAt": "2026-10-25T23:13:25.712Z",

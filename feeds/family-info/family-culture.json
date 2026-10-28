@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "snapshotId": "518cff5125c9da7795499e39",
+  "snapshotId": "8e30b3ce091e893bc98ac4f9",
   "timezone": "Asia/Seoul",
   "categories": [
     {
@@ -1247,11 +1247,11 @@
       "siteUrl": "/tools/family-culture/#acc-em-0000009948"
     }
   ],
-  "siteRevision": "cbf7677e7514e4206690e6e104434bb59b806ba1",
-  "generatedAt": "2026-10-27T06:24:14.710Z",
+  "siteRevision": "667cb9b152c827b1fa38029e819710e2e57775cf",
+  "generatedAt": "2026-10-28T00:01:33.479Z",
   "window": {
-    "start": "2026-10-27",
-    "end": "2026-12-26"
+    "start": "2026-10-28",
+    "end": "2026-12-27"
   },
   "deployment": {
     "status": "verify-live-snapshot",
