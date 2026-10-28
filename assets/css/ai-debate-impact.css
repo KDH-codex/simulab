@@ -1,3 +1,4 @@
+@import url('./debate-fonts.css');
 /* Presentation v0.3: persistent topic, typographic emphasis, short final appeals. */
 .debate-site-nav{display:flex;align-items:center;gap:20px;font-size:12px;color:#7c8ba1}.debate-site-nav a:first-child{color:#155be8;font-weight:700}.debate-legal{display:flex;gap:15px;flex-wrap:wrap;font-size:9px;color:#8796ac;width:100%;padding-top:10px;border-top:1px solid #e7ebf2}.site-footer:has(.debate-legal){flex-wrap:wrap}@media(max-width:600px){.debate-site-nav{font-size:10px;gap:12px}.site-header .brand-section{display:none}}
 html{scroll-padding-top:var(--topic-offset,120px)}

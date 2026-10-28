@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Hi+Melody&family=Nanum+Pen+Script&display=swap');
+
+@font-face{font-family:'Goseogu';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/2410-1@1.2/Goseogu-Regular.woff2') format('woff2');font-style:normal;font-weight:400;font-display:swap}
+@font-face{font-family:'JMischievous';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2110@1.0/JGaegujaengyi-Medium-KO.woff2') format('woff2');font-style:normal;font-weight:400 700;font-display:swap}
+@font-face{font-family:'DancingPeople';src:url('https://cdn.jsdelivr.net/gh/Project-Noonnu/2610082345@dancingpeoples-dance-vf/dancingpeoples-dance-vf/DancingPeoples-Dance-VF.woff2') format('woff2');font-style:normal;font-weight:400;font-display:swap}
+
+/* Participant typography applies to speech, not navigation or model labels. */
+.turn-card.codex .speech,.closing-card.codex .closing-words,.debate-speech[data-model="GPT"],.turn[data-model="GPT"] p{font-family:'Goseogu','Malgun Gothic',sans-serif}
+.turn-card.gemini .speech,.closing-card.gemini .closing-words,.debate-speech[data-model="Gemini"],.turn[data-model="Gemini"] p{font-family:'Hi Melody','Malgun Gothic',sans-serif}
+.turn-card.claude .speech,.closing-card.claude .closing-words,.debate-speech[data-model="Claude"],.turn[data-model="Claude"] p{font-family:'JMischievous','Malgun Gothic',sans-serif}
+.turn-card .speech,.closing-card .closing-words{font-size:21px;line-height:1.8;letter-spacing:0}
+.speech strong,.closing-words strong,.punch-highlight,.debate-speech strong,.turn p b{font-family:'DancingPeople','Malgun Gothic',sans-serif;font-weight:400}
+.speech .spoken-quote,.closing-words .spoken-quote,.debate-speech .spoken-quote,.turn p .spoken-quote{font-family:'Nanum Pen Script','Malgun Gothic',sans-serif;font-size:1.1em;letter-spacing:0}
+.speech .spoken-quote strong,.closing-words .spoken-quote strong,.debate-speech .spoken-quote strong{font-family:inherit}
+@media(max-width:600px){.turn-card .speech,.closing-card .closing-words{font-size:20px;line-height:1.8}}
