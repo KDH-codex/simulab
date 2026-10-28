@@ -6,6 +6,6 @@
     analyticsEnabled: true, analyticsRetentionDays: 30, databaseRegion: 'ap-south-1',
     rankingRemoteEnabled: false,
     adsEnabled: false, adsenseClient: 'ca-pub-9815778998394475',
-    policyUpdatedAt: '2026-10-24'
+    policyUpdatedAt: '2026-10-28'
   });
 })(typeof window !== 'undefined' ? window : globalThis);

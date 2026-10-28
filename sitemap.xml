@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url><loc>https://simulab.kr/</loc><lastmod>2026-10-28</lastmod></url>
+<url><loc>https://simulab.kr/library/</loc><lastmod>2026-10-28</lastmod></url>
+<url><loc>https://simulab.kr/debates/001/</loc><lastmod>2026-10-28</lastmod></url>
 <url><loc>https://simulab.kr/tools/annual-leave-calc/</loc><lastmod>2026-10-28</lastmod></url>
 <url><loc>https://simulab.kr/tools/area-pyeong-calc/</loc><lastmod>2026-10-28</lastmod></url>
 <url><loc>https://simulab.kr/tools/camping-booking/</loc><lastmod>2026-10-28</lastmod></url>

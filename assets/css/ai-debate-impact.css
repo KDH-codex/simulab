@@ -1,0 +1,90 @@
+/* Presentation v0.3: persistent topic, typographic emphasis, short final appeals. */
+.debate-site-nav{display:flex;align-items:center;gap:20px;font-size:12px;color:#7c8ba1}.debate-site-nav a:first-child{color:#155be8;font-weight:700}.debate-legal{display:flex;gap:15px;flex-wrap:wrap;font-size:9px;color:#8796ac;width:100%;padding-top:10px;border-top:1px solid #e7ebf2}.site-footer:has(.debate-legal){flex-wrap:wrap}@media(max-width:600px){.debate-site-nav{font-size:10px;gap:12px}.site-header .brand-section{display:none}}
+html{scroll-padding-top:var(--topic-offset,120px)}
+.debate-section,.turn-card,.closing-card,.jury-section{scroll-margin-top:12px}
+.topic-dock{position:sticky;top:0;z-index:50;background:#092451;color:#fff;border-bottom:1px solid #3773cc;box-shadow:0 8px 25px -13px #061a4090}
+.topic-dock-inner{max-width:940px;margin:0 auto;padding:13px 32px 12px}
+.dock-topic{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:13px;align-items:center;margin-bottom:9px}
+.dock-topic>span{font-size:9px;font-weight:800;letter-spacing:1px;color:#95c4ff}
+.dock-topic>strong{font-size:13px;line-height:1.5;letter-spacing:-.35px}
+.dock-topic>small{font-size:10px;color:#acc8ef;white-space:nowrap}
+.dock-matchup{display:grid;grid-template-columns:1fr 36px 1fr;align-items:center;gap:5px}
+.dock-matchup>span{font-size:15px;letter-spacing:-.5px;font-weight:800;text-align:center;padding:7px 10px;border-radius:5px;background:#173660}
+.dock-matchup>span small{font-size:9px;letter-spacing:0;margin-right:9px;font-weight:600;color:#b3d9d4}
+.dock-matchup>.dock-gemini small{color:#d4c3ff}
+.dock-matchup>b{text-align:center;font-size:17px;font-style:italic;color:#abecff}
+.intro-copy strong{font-weight:800;color:#334d74}
+.speech strong{font-weight:850;color:#15243e}
+.spoken-quote{font-family:"MaruBuri","Batang","바탕","Georgia",serif;color:#3d4d69;font-size:1.045em;letter-spacing:-.4px}
+.spoken-quote strong{font-family:inherit}
+.punch-highlight{background:linear-gradient(transparent 32%,#efff69 32%,#e7ff52 91%,transparent 91%);color:inherit;padding:0 .12em;font-weight:800;-webkit-box-decoration-break:clone;box-decoration-break:clone;border-radius:2px}
+.speech .punch-highlight{color:#17243b}
+.host-punchline{margin:0 28px 24px;padding:17px 18px;border-left:3px solid #bed72b;background:#f9fbdc;border-radius:0 7px 7px 0}
+.host-punchline>span{display:flex;gap:10px;align-items:center;font-size:9px;font-weight:900;letter-spacing:1.9px;color:#64710a}
+.host-punchline small{font-size:9px;font-weight:500;letter-spacing:0;color:#929860}
+.host-punchline p{font-family:"Batang","바탕",serif;font-size:17px;line-height:1.9;letter-spacing:-.5px;word-break:keep-all;overflow-wrap:anywhere;margin:9px 0 0;color:#33401c}
+.host-punchline .punch-highlight{background:linear-gradient(transparent 25%,#edff68 25%,#e7fc51 92%,transparent 92%)}
+.round-tabs{grid-template-columns:repeat(4,minmax(0,1fr))}
+.round-tabs button{font-size:10px;gap:5px;min-width:0}
+.section-heading h2{max-width:600px;line-height:1.45;word-break:keep-all}
+.closing-section{margin-top:30px;border-radius:14px;overflow:hidden;background:#112b50;padding:28px;color:#fff}
+.closing-intro>span{font-size:10px;letter-spacing:1.4px;font-weight:750;color:#c9ed8c}
+.closing-intro h3{font-size:29px;letter-spacing:-1.1px;line-height:1.45;margin:13px 0 9px}
+.closing-intro>p{font-size:11px;color:#a5bbd9;margin:0 0 24px}
+.closing-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;align-items:stretch}
+.closing-card{border:1px solid #fff4;border-radius:10px;background:#fff;color:#22304a;padding:21px;min-width:0}
+.closing-card:focus{outline:none}
+.closing-card-top{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.closing-count{font-size:22px;font-weight:800;color:#263d61;letter-spacing:-1px}
+.closing-count>small{font-size:10px;color:#9da8b8;letter-spacing:0;font-weight:500;margin-left:3px}
+.closing-status{font-size:8px;color:#927436;background:#fff5dc;padding:5px 6px;border-radius:4px;line-height:1.5}
+.closing-status.ready{color:#3a8067;background:#edf7ef}
+.closing-card h3{font-size:21px;letter-spacing:-.7px;margin:21px 0 13px;color:#7755bd}
+.closing-card.codex h3{color:#15816e}
+.closing-card h3>span{display:block;font-size:10px;letter-spacing:0;font-weight:500;color:#8a96a8;margin-top:5px}
+.closing-words{margin:0;font-family:"Batang","바탕",serif;font-size:18px;line-height:1.95;letter-spacing:-.55px;word-break:keep-all;overflow-wrap:anywhere}
+.closing-words p{margin:0}
+.closing-words strong{font-weight:900}
+.closing-attribution{font-size:9px;line-height:1.8;color:#9ca5b3;border-top:1px solid #edf0f4;margin:20px 0 0;padding-top:12px}
+.vote-call{display:block;margin-top:22px;background:#e7ff79;color:#1b3444;padding:20px 22px;border-radius:8px}
+.vote-call>span{display:block;font-size:9px;font-weight:600;margin-bottom:5px;color:#5b7432}
+.vote-call>strong{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:15px;letter-spacing:-.5px}
+.vote-call b{font-size:24px;line-height:1}
+.vote-call:hover{background:#d7f963}
+.jury-heading strong{font-weight:800;color:#425f82}
+@media(max-width:600px){
+ .topic-dock-inner{padding:10px 20px}
+ .dock-topic{grid-template-columns:auto minmax(0,1fr) auto;gap:8px;margin-bottom:8px}
+ .dock-topic>span{font-size:7px;letter-spacing:.4px}
+ .dock-topic>strong{font-size:10px;line-height:1.55;letter-spacing:-.4px}
+ .dock-topic>small{font-size:8px}
+ .dock-matchup{grid-template-columns:minmax(0,1fr) 28px minmax(0,1fr);gap:4px}
+ .dock-matchup>span{font-size:13px;padding:7px 4px;letter-spacing:-.6px}
+ .dock-matchup>span small{font-size:8px;margin-right:5px}
+ .dock-matchup>b{font-size:15px}
+ .order-label{font-size:7px;max-width:105px;text-align:right;line-height:1.5}
+ .start-meta{font-size:9px}
+ .start-area>p{max-width:295px;margin:0 auto;line-height:1.8}
+ .round-tabs button{font-size:8px;gap:4px;flex-wrap:wrap;padding:9px 1px;line-height:1.5}
+ .round-tabs button span{font-size:9px}
+ .progress-row{font-size:8px}
+ .section-heading h2{font-size:19px;letter-spacing:-.8px}
+ .host-punchline{margin:0 19px 20px;padding:14px}
+ .host-punchline>span{font-size:8px;gap:7px;letter-spacing:1px}
+ .host-punchline small{font-size:8px}
+ .host-punchline p{font-size:16px;line-height:1.9}
+ .closing-section{padding:23px 17px;margin-top:24px;border-radius:11px}
+ .closing-intro>span{font-size:8px}
+ .closing-intro h3{font-size:25px;margin-top:10px}
+ .closing-intro>p{font-size:10px;line-height:1.8}
+ .closing-grid{grid-template-columns:1fr;gap:13px}
+ .closing-card{padding:19px}
+ .closing-card h3{margin:15px 0 12px}
+ .closing-words{font-size:18px;line-height:1.9}
+ .closing-attribution{margin-top:16px}
+ .vote-call{padding:17px 15px}
+ .vote-call>strong{font-size:13px;line-height:1.6}
+ .vote-call>span{font-size:8px}
+ .jury-heading h2{font-size:23px;line-height:1.5}
+}
+@media(max-width:355px){.topic-dock-inner{padding:9px 14px}.dock-topic>small{font-size:7px}.dock-topic>strong{font-size:9px}.dock-matchup>span{font-size:12px}.dock-matchup>span small{font-size:7px;margin-right:4px}.closing-section{padding:21px 14px}.closing-words{font-size:17px}.host-punchline small{font-size:7px}}

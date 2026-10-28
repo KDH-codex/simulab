@@ -1,4 +1,5 @@
-import {readdir,readFile,writeFile} from 'node:fs/promises';
+import {readdir,readFile} from 'node:fs/promises';
+import {writeFile} from './write-public-file.mjs';
 import {publicationCatalog} from './publication.mjs';
 const {ids:publishedIds}=await publicationCatalog();
 const root=new URL('../',import.meta.url);
@@ -15,7 +16,7 @@ for(const {name} of directories){
  html=html.replace(/<body\b/, '<body data-publication-state="'+(active?'published':'archived')+'"');
  if(!active){
   html=html.replace('</head>','<meta name="robots" content="noindex,follow">\n</head>');
-  html=html.replace(/(<main\b[^>]*>)/,'$1<!-- GENERATED:ARCHIVE:START --><aside class="tool-use-notice"><strong>보관 중인 도구</strong><p>현재 주요 서비스는 가족·여행·생활정보와 직장인 계산기에 집중하고 있습니다.</p><a href="/">현재 운영 중인 정보와 계산기 보기</a></aside><!-- GENERATED:ARCHIVE:END -->');
+  html=html.replace(/(<main\b[^>]*>)/,'$1<!-- GENERATED:ARCHIVE:START --><aside class="tool-use-notice"><strong>보관 중인 도구</strong><p>시뮬랩의 이전 도구입니다. 현재 운영 중인 계산기와 생활정보는 도구 모음에서 확인할 수 있습니다.</p><a href="/library/">도구 모음 보기</a> · <a href="/">AI 사망토론 홈</a></aside><!-- GENERATED:ARCHIVE:END -->');
  }
  html=html.replace(/<link\b[^>]*rel=["']canonical["'][^>]*>\s*/gi,'');
  html=html.replace(/<meta\b[^>]*name=["']viewport["'][^>]*>/gi,'<meta name="viewport" content="width=device-width, initial-scale=1">');

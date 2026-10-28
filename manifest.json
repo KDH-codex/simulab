@@ -1,11 +1,11 @@
 {
-  "name": "시뮬랩 — 가족 생활정보와 직장인 계산기",
+  "name": "시뮬랩 — AI 사망토론",
   "short_name": "SimuLab",
-  "description": "가족 여행·체험·생활정보와 월급·퇴직금·연차, 생활비·주거비·여행 예산 계산을 함께 제공합니다.",
+  "description": "AI는 토론하고 당신이 판정합니다. 기존 계산기와 생활정보는 도구 모음에서 이용하세요.",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#176d53",
+  "theme_color": "#155be8",
   "orientation": "portrait-primary",
   "icons": [
     {

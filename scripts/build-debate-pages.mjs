@@ -1,0 +1,31 @@
+import {readFile,mkdir} from 'node:fs/promises';
+import {writeFile} from './write-public-file.mjs';
+import {formatSpeech,escapeHtml as esc,emphasis,hostPunchlines} from './debate-presentation.mjs';
+const root=new URL('../',import.meta.url),episode=JSON.parse(await readFile(new URL('data/debates/001.json',root),'utf8'));
+if(episode.turns.length!==8)throw new Error('An episode needs six debate turns and two real closings');
+const rounds=['출사표','반박과 질문','마지막 공방'];
+const cards=episode.turns.slice(0,6).map((turn,index)=>{
+ const n=index+1,owner=turn.model==='GPT'?'codex':'gemini';
+ if(turn.body.length!==turn.characters||turn.characters>1000)throw new Error('Invalid main turn '+turn.id);
+ const host=hostPunchlines[n]?`<aside class="host-punchline" aria-label="편집 연출로 추가한 진행자 코멘트"><span>MIC DROP <small>진행자 한마디 · 편집 연출</small></span><p><mark class="punch-highlight">${esc(hostPunchlines[n])}</mark></p></aside>`:'';
+ return `<article class="turn-card ${owner}" id="turn-${n}" data-turn="${n}" data-step="${n}" data-model="${turn.model}" tabindex="-1" aria-labelledby="turn-title-${n}"><header class="turn-header"><span class="model-avatar" aria-hidden="true">${owner==='codex'?'G':'✦'}</span><div><div class="turn-eyebrow">ROUND ${Math.ceil(n/2)} <span>· ${rounds[Math.ceil(n/2)-1]}</span></div><h3 id="turn-title-${n}">${turn.model} <span>${esc(turn.version)}</span></h3></div><span class="turn-number">0${n}<small>/ 06</small></span></header><div class="turn-meta"><span class="stance-pill">${esc(turn.stance)}</span><span>${turn.effort}</span><span>${turn.characters}자</span></div><div class="speech">${formatSpeech(turn.body,emphasis[n])}</div>${host}<details class="source-details"><summary>근거와 출처 <span>+</span></summary><ul>${turn.sources.map(s=>`<li>${esc(s)}</li>`).join('')}</ul></details></article>`;
+}).join('\n');
+const closings=episode.turns.slice(6).map((turn,index)=>{
+ const n=index+7,owner=turn.model==='GPT'?'codex':'gemini';
+ if(turn.body.length!==turn.characters||turn.characters>100)throw new Error('Invalid closing '+turn.id);
+ return `<article class="closing-card ${owner}" id="turn-${n}" data-step="${n}" data-closing="${turn.model}" data-status="FINAL" tabindex="-1" aria-labelledby="closing-title-${n}"><div class="closing-card-top"><span class="closing-count">${turn.characters}<small>/100자</small></span><span class="closing-status ready">새 최후변론 · 확정</span></div><h3 id="closing-title-${n}">${turn.model}<span>${esc(turn.stance)}</span></h3><blockquote class="closing-words">${formatSpeech(turn.body,{bold:owner==='codex'?['면접 포기의 책임','공항 가는 GPT에 한 표 주세요.']:['50%의 대기업 사원증','Gemini에 투표해 주세요!'],highlight:owner==='codex'?['거울 볼 땐 조명 탓하면서']:['여러분, 거울 보세요!']})}</blockquote><p class="closing-attribution">${turn.model}가 직접 작성한 ${turn.characters}자의 마지막 호소입니다.</p></article>`;
+}).join('\n');
+let html=await readFile(new URL('scripts/templates/debate.html',root),'utf8');
+html=html.replace('<!-- EPISODE_TURNS -->',cards).replace('<!-- CLOSING_STATEMENTS -->',closings);
+html=html.replace('<meta name="robots" content="noindex,nofollow">',`<link rel="canonical" href="https://simulab.kr/debates/${episode.slug}/"><meta property="og:type" content="article"><meta property="og:title" content="${esc(episode.title)} · AI 사망토론"><meta property="og:description" content="GPT와 Gemini의 본 토론과 100자 최후변론. 판정은 여러분의 몫입니다."><meta property="og:url" content="https://simulab.kr/debates/${episode.slug}/"><meta property="og:image" content="https://simulab.kr/assets/icons/icon-512.png"><meta name="theme-color" content="#155be8"><link rel="icon" href="/favicon.svg">`);
+html=html.replaceAll('./style.css','/assets/css/ai-debate.css').replaceAll('./impact.css','/assets/css/ai-debate-impact.css').replaceAll('./app.js','/assets/js/ai-debate.js').replaceAll('./reference.jpg',episode.referenceImage);
+html=html.replace(/<header class="site-header">[\s\S]*?<\/header>/,`<header class="site-header"><div class="nav-inner"><a class="brand" href="/" aria-label="시뮬랩 AI 토론 홈"><span class="brand-symbol" aria-hidden="true">S<span>↗</span></span>SimuLab<span class="brand-divider"></span><span class="brand-section">AI 사망토론</span></a><nav class="debate-site-nav" aria-label="주요 메뉴"><a href="/">토론 홈</a><a href="/library/">도구 모음 ↗</a></nav></div></header>`);
+html=html.replace('시뮬랩 <span>/</span> AI 실험실 <span>/</span> EP.001','<a href="/">시뮬랩</a> <span>/</span> AI 사망토론 <span>/</span> EP.001');
+html=html.replace('href="#" aria-label="시뮬랩 AI 토론 페이지 처음으로"','href="/" aria-label="시뮬랩 AI 토론 홈"');
+html=html.replace('Gemini의 새 짧은 최후변론 전까지는 원문 발췌임을 표시합니다.','양쪽의 짧은 최후변론도 실제 작성·확정된 원문입니다.');
+html=html.replace('EP.001 · 로컬 미리보기','EP.001 · 첫 번째 실험').replace('첫 회차의 로컬 미리보기입니다.','첫 회차의 시범 판정입니다.');
+html=html.replace('<a class="brand" href="#">SimuLab','<a class="brand" href="/">SimuLab');
+html=html.replace('</footer>','<nav class="debate-legal" aria-label="운영 안내"><a href="/legal/about.html">소개·문의</a><a href="/legal/privacy.html">개인정보처리방침</a><a href="/legal/terms.html">이용약관</a></nav></footer>');
+await mkdir(new URL(`debates/${episode.slug}/`,root),{recursive:true});
+await writeFile(new URL(`debates/${episode.slug}/index.html`,root),html);
+console.log('Built AI debate: EP.001, six original turns and two actual short closings.');

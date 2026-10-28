@@ -187,10 +187,10 @@
 
   function getRootPrefix() {
     const path = window.location.pathname.replace(/\\/g, '/');
-    if (path.includes('/tools/') || path.includes('/guides/')) {
+    if (path.includes('/tools/') || path.includes('/guides/') || path.includes('/debates/')) {
       return '../../';
     }
-    if (path.includes('/legal/')) {
+    if (path.includes('/legal/') || path.includes('/library/')) {
       return '../';
     }
     return './';
@@ -319,7 +319,7 @@
         </a>
         <nav class="gnb" id="gnb-nav" aria-label="주요 메뉴">
           <div class="gnb-pill-track">
-            <ul class="gnb-list">${groups}<li class="gnb-item"><a class="gnb-btn" href="${prefix}guides/">상세 가이드</a></li></ul>
+            <ul class="gnb-list"><li class="gnb-item"><a class="gnb-btn" href="${prefix}">AI 사망토론</a></li><li class="gnb-item"><a class="gnb-btn" href="${prefix}library/">도구 모음</a></li><li class="gnb-item"><a class="gnb-btn" href="${prefix}legal/about.html">시뮬랩 소개</a></li></ul>
           </div>
         </nav>
         <div class="header-actions" style="display: flex; align-items: center; gap: 0.6rem;">
@@ -763,7 +763,7 @@
         <div class="container footer-inner">
           <div>
             <strong style="color: var(--text-primary);">SimuLab</strong>
-            <p style="margin-top: 0.2rem;">가족·여행·생활정보와 일하는 날의 계산을 한곳에.</p>
+            <p style="margin-top: 0.2rem;">AI는 토론하고, 당신이 판정합니다.</p>
           </div>
           <ul class="footer-links">
             <li><a href="${prefix}legal/about.html">서비스 소개</a></li>

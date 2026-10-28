@@ -127,8 +127,8 @@ test('rendered facts and watchlist fields are escaped, with editorial collection
  const generator=await readFile(new URL('../scripts/build-parenting-deals.mjs',import.meta.url),'utf8');assert.match(generator,/'CollectionPage'/);assert.doesNotMatch(generator,/'Product'|'Offer'/);
 });
 
-test('home leads with the expanded calendar and shopping disclosure separates benefits from cash discounts',async()=>{
- const home=await readFile(new URL('../scripts/build-home.mjs',import.meta.url),'utf8');assert.ok(home.indexOf('class="family-first"')<home.indexOf('class="home-hero"'));assert.match(home,/기간 한정 대표 세일/);
+test('legacy library preserves the calendar and shopping disclosures distinguish benefits from cash discounts',async()=>{
+ const home=await readFile(new URL('../scripts/build-library.mjs',import.meta.url),'utf8');assert.ok(home.indexOf('class="family-first"')<home.indexOf('class="home-hero"'));assert.match(home,/기간 한정 대표 세일/);
  const scope={};vm.runInNewContext(await readFile(new URL('../assets/js/core-ui.js',import.meta.url),'utf8'),scope);
  assert.equal(scope.SimuLab.getToolNotice('parenting-deals').kind,'shopping');assert.match(scope.SimuLab.getToolNotice('parenting-deals').message,/적립금과 사은품/);
 });
