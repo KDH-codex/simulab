@@ -6,7 +6,7 @@ import {spawnSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 import {publicationCatalog} from './publication.mjs';
 const root=fileURLToPath(new URL('../',import.meta.url));
-for(const script of ['build-focused-tools.mjs','build-event-data.mjs','build-parenting-deals.mjs','build-family-info.mjs','build-weekday-guides.mjs','build-family-guides.mjs','build-editorial-guides.mjs','build-library.mjs','build-debate-pages.mjs','build-home.mjs','build-legal.mjs','build-core-guides.mjs','normalize-pages.mjs','build-kids-calendar.mjs','build-publishing-ui.mjs']) {
+for(const script of ['build-focused-tools.mjs','build-event-data.mjs','build-parenting-deals.mjs','build-family-info.mjs','build-weekday-guides.mjs','build-family-guides.mjs','build-editorial-guides.mjs','build-library.mjs','build-debate-pages.mjs','build-debate-002.mjs','build-home.mjs','build-legal.mjs','build-core-guides.mjs','normalize-pages.mjs','build-kids-calendar.mjs','build-publishing-ui.mjs']) {
  const result=spawnSync(process.execPath,[path.join(root,'scripts',script)],{cwd:root,stdio:'inherit'});if(result.status!==0)process.exit(result.status||1);
 }
 const destination=path.resolve(root,'dist');
@@ -21,7 +21,7 @@ const familySchedule=JSON.parse(await readFile(path.join(root,'data/family-info/
 await mkdir(path.join(destination,'feeds/family-info'),{recursive:true});
 for(const id of ['latest',...familySchedule.categories.map(c=>c.id)])await cp(path.join(root,'feeds/family-info',id+'.json'),path.join(destination,'feeds/family-info',id+'.json'));
 for(const file of await readdir(root))if(/^(index\.html|favicon\.svg|manifest\.json|ads\.txt|robots\.txt|naver[a-f0-9]+\.html|_headers|_redirects)$/.test(file))await cp(path.join(root,file),path.join(destination,file));
-const pages=['index.html','library/index.html','debates/001/index.html'];
+const pages=['index.html','library/index.html','debates/001/index.html','debates/002/index.html'];
 const {ids:publishedIds}=await publicationCatalog();
 for(const entry of await readdir(path.join(root,'tools'),{withFileTypes:true}))if(entry.isDirectory()&&publishedIds.has(entry.name)){
  try{await stat(path.join(root,'tools',entry.name,'index.html'));pages.push('tools/'+entry.name+'/index.html');}catch{}

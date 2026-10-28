@@ -5,6 +5,7 @@ let browserStorage;try{browserStorage=window.localStorage;}catch{browserStorage=
   const $ = selector => document.querySelector(selector);
   const turns = [...document.querySelectorAll('[data-step]')];
   const total = turns.length;
+  const episodeId = document.body.dataset.episodeId || '001';
 
   let started = false;
   let mode = 'step';
@@ -19,7 +20,7 @@ let browserStorage;try{browserStorage=window.localStorage;}catch{browserStorage=
     $('#closing-vote-call').hidden = !started || (mode === 'step' && shown < total);
     $('#turn-controls').hidden = !started;
     $('#previous-button').disabled = mode === 'all' || shown <= 1;
-    $('#next-button').textContent = mode === 'all' || shown === total ? '투표하러 가기 →' : shown === 6 ? '100자 최후변론 →' : shown === 7 ? 'GPT의 마지막 한마디 →' : '다음 발언 →';
+    $('#next-button').textContent = mode === 'all' || shown === total ? '투표하러 가기 →' : shown === 6 ? '100자 최후변론 →' : shown === 7 ? '다음 최후변론 →' : '다음 발언 →';
     $('#progress-text').textContent = !started ? '시작 전' : mode === 'all' ? `전체 보기 · 본 토론 6 + 최후 2` : shown <= 6 ? `본 토론 ${shown} / 6 · 전체 ${shown} / ${total}` : `최후변론 ${shown-6} / 2 · 전체 ${shown} / ${total}`;
     $('#progress-fill').style.width = `${!started ? 0 : mode === 'all' ? 100 : shown / total * 100}%`;
     $('#mode-toggle').textContent = mode === 'all' ? '한 차례씩 보기' : '전체 펼치기';
@@ -47,8 +48,8 @@ let browserStorage;try{browserStorage=window.localStorage;}catch{browserStorage=
   function renderOutcomes(){for(const [id] of criteria){const selected=document.querySelector('input[name="'+id+'"]:checked');document.querySelectorAll('input[name="'+id+'"]').forEach(input=>{input.closest('label').querySelector('.outcome').textContent=selected?(input.checked?'승리':'패배'):'승리로 선택';});}}
 document.querySelectorAll('.criterion input').forEach(input=>input.addEventListener('change',renderOutcomes));
 function renderSaved(){const valid=validBallot(saved);$('#saved-verdict').hidden=!valid;$('#verdict-form').hidden=valid;if(valid){$('#saved-model').textContent='세 가지 판정 완료';$('#saved-breakdown').replaceChildren(...criteria.map(([id,label])=>{const p=document.createElement('p');p.textContent=label+' · '+saved[id]+' 승리 / '+models.find(model=>model!==saved[id])+' 패배';return p;}));$('#saved-comment').textContent=saved.comment;}}
-saved=readBallots(browserStorage).find(b=>b.episodeId==='001')||null;renderSaved();
-$('#verdict-form').addEventListener('submit',event=>{event.preventDefault();const selections=Object.fromEntries(criteria.map(([id])=>[id,document.querySelector('input[name="'+id+'"]:checked')?.value]));saved={episodeId:'001',...selections,comment:comment.value.trim(),createdAt:new Date().toISOString()};if(!validBallot(saved))return;let stored=true;try{saveBallot(browserStorage,saved);}catch{stored=false;}renderSaved();$('#form-status').textContent=stored?'세 항목의 판정을 이 브라우저에 저장했습니다. 대시보드에서 내 전적을 확인하세요.':'브라우저 저장이 제한되어 현재 탭에만 임시 표시합니다.';});
+saved=readBallots(browserStorage).find(b=>b.episodeId===episodeId)||null;renderSaved();
+$('#verdict-form').addEventListener('submit',event=>{event.preventDefault();const selections=Object.fromEntries(criteria.map(([id])=>[id,document.querySelector('input[name="'+id+'"]:checked')?.value]));saved={episodeId,...selections,comment:comment.value.trim(),createdAt:new Date().toISOString()};if(!validBallot(saved))return;let stored=true;try{saveBallot(browserStorage,saved);}catch{stored=false;}renderSaved();$('#form-status').textContent=stored?'세 항목의 판정을 이 브라우저에 저장했습니다. 대시보드에서 내 전적을 확인하세요.':'브라우저 저장이 제한되어 현재 탭에만 임시 표시합니다.';});
 $('#edit-verdict').addEventListener('click',()=>{if(saved){for(const [id]of criteria)document.querySelector('input[name="'+id+'"][value="'+saved[id]+'"]').checked=true;comment.value=saved.comment;$('#comment-count').textContent=comment.value.length+' / 300';}renderOutcomes();$('#saved-verdict').hidden=true;$('#verdict-form').hidden=false;$('#form-status').textContent='';});
   const dialog = $('#results-dialog');
   $('#results-button').addEventListener('click', () => dialog.showModal());

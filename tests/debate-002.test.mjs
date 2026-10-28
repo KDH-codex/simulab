@@ -1,0 +1,20 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFile} from 'node:fs/promises';
+const read=path=>readFile(new URL('../'+path,import.meta.url),'utf8');
+test('002 page publishes the correct slots, links and model-specific ballot without printing speech content',async()=>{
+ const html=await read('debates/002/index.html');
+ assert.equal(html.includes('data-episode-id="002-m001"'),true,'match-specific ballot');
+ assert.equal((html.match(/data-step="/g)||[]).length,8,'eight slots');
+ assert.equal(html.includes('rel="canonical" href="https://simulab.kr/debates/002/"'),true,'canonical URL');
+ assert.equal(html.includes('바로 헤어진다')&&html.includes('선물 받고 헤어진다'),true,'both positions');
+ assert.equal(html.includes('합격 확률은 50%'),false,'no EP.001 condition');
+ assert.equal(html.includes('name="robots" content="noindex,nofollow"'),false,'indexable');
+ const home=await read('index.html');assert.equal(home.includes('href="/debates/002/"'),true,'home link');
+ const snapshot=JSON.parse(await read('data/debates/002-m001.json'));
+ assert.equal(snapshot.turns.length,8,'eight imported turns');
+ assert.equal(snapshot.turns.every(turn=>turn.status==='FINAL'),true,'all turns finalized');
+ const closings=snapshot.turns.filter(turn=>turn.kind==='closing');
+ assert.equal(closings.length,2,'two closing statements');
+ assert.equal(closings.every(turn=>turn.characters<=100),true,'closing statements fit the limit');
+});
