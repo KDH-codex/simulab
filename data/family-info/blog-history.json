@@ -1,1 +1,269 @@
-{"schemaVersion":1,"entries":[]}
+{
+  "schemaVersion": 1,
+  "entries": [
+    {
+      "key": "2026-10-25:kids-popups:national:teenieping-hyundai-tour:weekly",
+      "status": "published",
+      "snapshotId": "c0a044e253b8012893aad804",
+      "categoryRevision": "850d50623ecfad97",
+      "recordIds": [
+        "teenieping-hyundai-tour-202610"
+      ],
+      "url": "https://blog.naver.com/6a_blog/224455031126",
+      "updatedAt": "2026-10-27T00:23:36.295Z",
+      "publishedAt": "2026-10-27T00:23:36.295Z"
+    },
+    {
+      "key": "2026-10-25:kids-popups:region:kakao-riot-seoul:weekly",
+      "status": "published",
+      "snapshotId": "c0a044e253b8012893aad804",
+      "categoryRevision": "850d50623ecfad97",
+      "recordIds": [
+        "popup-kakao-riot-202610"
+      ],
+      "url": "https://blog.naver.com/6a_blog/224455206371",
+      "updatedAt": "2026-10-27T02:47:13.303Z",
+      "publishedAt": "2026-10-27T02:47:13.303Z"
+    },
+    {
+      "key": "2026-10-25:festivals:region:namsan-night-seoul:weekly",
+      "status": "published",
+      "snapshotId": "518cff5125c9da7795499e39",
+      "categoryRevision": "e7122d61e3f87193",
+      "recordIds": [
+        "festival-namsan-night-2026"
+      ],
+      "url": "https://blog.naver.com/6a_blog/224455865503",
+      "updatedAt": "2026-10-27T12:29:19.444Z",
+      "publishedAt": "2026-10-27T12:29:19.444Z"
+    },
+    {
+      "key": "2026-10-25:festivals:region:서울:weekly",
+      "status": "published",
+      "snapshotId": "da51546a0394633979e94576",
+      "categoryRevision": "1ea8bab4113f32d3",
+      "recordIds": [
+        "festival-mcst-13528-2026"
+      ],
+      "url": "https://blog.naver.com/6a_blog/224457417675",
+      "updatedAt": "2026-10-28T23:38:45.096Z",
+      "publishedAt": "2026-10-28T23:38:45.096Z"
+    },
+    {
+      "key": "2026-10-25:festivals:region:전라지역:weekly",
+      "status": "published",
+      "snapshotId": "da51546a0394633979e94576",
+      "categoryRevision": "1ea8bab4113f32d3",
+      "recordIds": [
+        "festival-iksan-chrysanthemum-2026",
+        "festival-mcst-12626-2026",
+        "festival-mcst-13374-2026",
+        "festival-mcst-13552-2026"
+      ],
+      "url": "https://blog.naver.com/6a_blog/224457424780",
+      "updatedAt": "2026-10-28T23:47:22.703Z",
+      "publishedAt": "2026-10-28T23:47:22.703Z"
+    },
+    {
+      "key": "2026-10-25:festivals:region:충청지역:weekly",
+      "status": "published",
+      "snapshotId": "da51546a0394633979e94576",
+      "categoryRevision": "1ea8bab4113f32d3",
+      "recordIds": [
+        "festival-goesan-kimjang-2026",
+        "festival-mcst-13555-2026",
+        "festival-sejong-hangeul-family-2026",
+        "festival-mcst-13560-2026",
+        "festival-mcst-13333-2026",
+        "festival-mcst-12919-2026"
+      ],
+      "url": "https://blog.naver.com/6a_blog/224457425864",
+      "updatedAt": "2026-10-28T23:48:39.986Z",
+      "publishedAt": "2026-10-28T23:48:39.986Z"
+    },
+    {
+      "key": "2026-10-25:festivals:region:경상지역:weekly",
+      "status": "published",
+      "snapshotId": "da51546a0394633979e94576",
+      "categoryRevision": "1ea8bab4113f32d3",
+      "recordIds": [
+        "festival-busan-fireworks-2026",
+        "festival-mcst-12777-2026",
+        "festival-mcst-12275-2026",
+        "festival-mcst-12036-2026",
+        "festival-mcst-13533-2026",
+        "festival-mcst-13366-2026"
+      ],
+      "url": "https://blog.naver.com/6a_blog/224457429349",
+      "updatedAt": "2026-10-28T23:53:10.538Z",
+      "publishedAt": "2026-10-28T23:53:10.538Z"
+    },
+    {
+      "key": "2026-10-25:festivals:region:제주지역:weekly",
+      "status": "published",
+      "snapshotId": "da51546a0394633979e94576",
+      "categoryRevision": "1ea8bab4113f32d3",
+      "recordIds": [
+        "festival-jeju-olle-2026"
+      ],
+      "url": "https://blog.naver.com/6a_blog/224457431084",
+      "updatedAt": "2026-10-28T23:56:12.415Z",
+      "publishedAt": "2026-10-28T23:56:12.415Z"
+    },
+    {
+      "key": "2026-10-25:festivals:region:강원지역:weekly",
+      "status": "published",
+      "snapshotId": "da51546a0394633979e94576",
+      "categoryRevision": "1ea8bab4113f32d3",
+      "recordIds": [
+        "festival-mcst-13388-2026"
+      ],
+      "url": "https://blog.naver.com/6a_blog/224457432598",
+      "updatedAt": "2026-10-28T23:58:29.647Z",
+      "publishedAt": "2026-10-28T23:58:29.647Z"
+    },
+    {
+      "key": "2026-10-25:festivals:region:경기지역:weekly",
+      "status": "published",
+      "snapshotId": "da51546a0394633979e94576",
+      "categoryRevision": "1ea8bab4113f32d3",
+      "recordIds": [
+        "festival-mcst-13545-2026",
+        "festival-mcst-13510-2026",
+        "festival-mcst-12731-2026",
+        "festival-mcst-13554-2026",
+        "festival-mcst-12641-2026"
+      ],
+      "url": "https://blog.naver.com/6a_blog/224457434497",
+      "updatedAt": "2026-10-29T00:00:44.979Z",
+      "publishedAt": "2026-10-29T00:00:44.979Z"
+    },
+    {
+      "key": "2026-10-25:family-discounts:sector:attractions:weekly",
+      "status": "published",
+      "snapshotId": "c5cf3ad2900e3305e86d52b5",
+      "categoryRevision": "459d979ff7af70a8",
+      "recordIds": [
+        "seoulland-380-202610",
+        "seoulland-252-202610",
+        "seoulland-209-202610",
+        "seoulland-257-202610",
+        "seoulland-386-202610",
+        "seoulland-260-202610",
+        "seoulland-259-202610",
+        "seoulland-243-202610",
+        "seoulland-416-202610",
+        "seoulland-288-202610",
+        "seoulland-429-202610",
+        "seoulland-431-202610",
+        "seoulland-430-202610",
+        "seoulland-426-202610",
+        "seoulland-383-202610",
+        "seoulland-413-202610",
+        "legoland-brick-or-treat-2026",
+        "acc-em-0000009913",
+        "acc-em-0000009927"
+      ],
+      "url": "https://blog.naver.com/6a_blog/224457440632",
+      "updatedAt": "2026-10-29T00:07:58.846Z",
+      "publishedAt": "2026-10-29T00:07:58.846Z"
+    },
+    {
+      "key": "2026-10-25:family-culture:region:서울:weekly",
+      "status": "published",
+      "snapshotId": "c5cf3ad2900e3305e86d52b5",
+      "categoryRevision": "ea6d24970104d266",
+      "recordIds": [
+        "culture-159888",
+        "culture-159948",
+        "culture-159587",
+        "culture-159957",
+        "culture-159954",
+        "culture-159947",
+        "culture-158731",
+        "culture-158824",
+        "culture-159911",
+        "culture-159924",
+        "culture-157859",
+        "culture-159268",
+        "culture-158749",
+        "culture-155699"
+      ],
+      "url": "https://blog.naver.com/6a_blog/224457443716",
+      "updatedAt": "2026-10-29T00:12:08.893Z",
+      "publishedAt": "2026-10-29T00:12:08.893Z"
+    },
+    {
+      "key": "2026-10-25:family-culture:region:전라지역:weekly",
+      "status": "published",
+      "snapshotId": "c5cf3ad2900e3305e86d52b5",
+      "categoryRevision": "ea6d24970104d266",
+      "recordIds": [
+        "acc-em-0000009913",
+        "acc-em-0000009927",
+        "acc-em-0000009948"
+      ],
+      "url": "https://blog.naver.com/6a_blog/224457770241",
+      "updatedAt": "2026-10-29T04:58:58.327Z",
+      "publishedAt": "2026-10-29T04:58:58.327Z"
+    },
+    {
+      "key": "2026-10-25:kids-popups:region:서울:weekly",
+      "status": "published",
+      "snapshotId": "c5cf3ad2900e3305e86d52b5",
+      "categoryRevision": "a75f7dde38e9f6a0",
+      "recordIds": [
+        "culture-158731",
+        "stellive-stella-mode-on-202610",
+        "popup-sangsang-3190",
+        "popup-gliddy-202610",
+        "popup-shinsegae-character-festa-202610",
+        "popup-moomin-yongsan-202610",
+        "popup-bbnexdo-dreams-202610",
+        "popup-peachpit25-yongsan-202610"
+      ],
+      "url": "https://blog.naver.com/6a_blog/224457778482",
+      "updatedAt": "2026-10-29T05:07:35.775Z",
+      "publishedAt": "2026-10-29T05:07:35.775Z"
+    },
+    {
+      "key": "2026-10-25:kids-popups:region:강원지역:weekly",
+      "status": "published",
+      "snapshotId": "c5cf3ad2900e3305e86d52b5",
+      "categoryRevision": "a75f7dde38e9f6a0",
+      "recordIds": [
+        "legoland-brick-or-treat-2026"
+      ],
+      "url": "https://blog.naver.com/6a_blog/224457784337",
+      "updatedAt": "2026-10-29T05:10:12.276Z",
+      "publishedAt": "2026-10-29T05:10:12.276Z"
+    },
+    {
+      "key": "2026-10-25:kids-popups:region:경상지역:weekly",
+      "status": "published",
+      "snapshotId": "c5cf3ad2900e3305e86d52b5",
+      "categoryRevision": "a75f7dde38e9f6a0",
+      "recordIds": [
+        "cherop-mongmo-daegu-202610",
+        "popup-shinchan-changwon-202610",
+        "popup-harrypotter-busan-202610"
+      ],
+      "url": "https://blog.naver.com/6a_blog/224457787301",
+      "updatedAt": "2026-10-29T05:14:36.749Z",
+      "publishedAt": "2026-10-29T05:14:36.749Z"
+    },
+    {
+      "key": "2026-10-25:kids-popups:region:충청지역:weekly",
+      "status": "published",
+      "snapshotId": "c5cf3ad2900e3305e86d52b5",
+      "categoryRevision": "a75f7dde38e9f6a0",
+      "recordIds": [
+        "samuel-chungcheong-202610",
+        "popup-tinyville-daejeon-202610"
+      ],
+      "url": "https://blog.naver.com/6a_blog/224457792319",
+      "updatedAt": "2026-10-29T05:17:17.939Z",
+      "publishedAt": "2026-10-29T05:17:17.939Z"
+    }
+  ]
+}
