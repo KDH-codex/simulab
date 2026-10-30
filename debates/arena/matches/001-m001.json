@@ -1,0 +1,161 @@
+{
+  "version": 1,
+  "id": "001-m001",
+  "config": {
+    "id": "001-m001",
+    "models": {
+      "GPT": "gpt-6-astra",
+      "Gemini": "gemini-4-argon"
+    },
+    "effort": {
+      "GPT": "medium",
+      "Gemini": "medium"
+    }
+  },
+  "createdAt": "2026-10-30T15:09:08.050Z",
+  "status": "complete",
+  "rounds": [
+    {
+      "id": "logic",
+      "name": "숫자 추리",
+      "prompt": "서로 다른 세 양의 정수 a, b, c에 대해 a+b=7, b+c=9, a+c=8이다. b의 값만 숫자로 출력하세요.",
+      "order": [
+        "GPT",
+        "Gemini"
+      ],
+      "responses": {
+        "GPT": {
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "text": "4",
+          "elapsedMs": 7124,
+          "judgment": {
+            "pass": true,
+            "reason": "정답 4"
+          }
+        },
+        "Gemini": {
+          "model": "gemini-4-argon",
+          "effort": "medium",
+          "text": "4",
+          "elapsedMs": 31850,
+          "judgment": {
+            "pass": true,
+            "reason": "정답 4"
+          }
+        }
+      }
+    },
+    {
+      "id": "constraint",
+      "name": "제약 챌린지",
+      "prompt": "아래 조건을 모두 지키는 문장 하나만 출력하세요. 공백과 문장부호 포함 30자 이내, 숫자 사용 금지, 마지막 두 글자는 사과.",
+      "order": [
+        "GPT",
+        "Gemini"
+      ],
+      "responses": {
+        "GPT": {
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "text": "내가 가장 좋아하는 과일은 사과",
+          "elapsedMs": 13102,
+          "judgment": {
+            "pass": true,
+            "reason": "17자 · 숫자 없음 · 사과로 끝남 충족 · 한 줄 충족",
+            "checks": {
+              "length": true,
+              "noDigits": true,
+              "ends": true,
+              "oneLine": true
+            }
+          }
+        },
+        "Gemini": {
+          "model": "gemini-4-argon",
+          "effort": "medium",
+          "text": "가을 햇살을 듬뿍 받고 자란 빨갛고 달콤한 사과",
+          "elapsedMs": 25496,
+          "judgment": {
+            "pass": true,
+            "reason": "26자 · 숫자 없음 · 사과로 끝남 충족 · 한 줄 충족",
+            "checks": {
+              "length": true,
+              "noDigits": true,
+              "ends": true,
+              "oneLine": true
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "unknown",
+      "name": "정보 부족 함정",
+      "prompt": "다음은 가상 도서관 목록 전체입니다: 달빛 지도, 푸른 자전거. 이 목록에 없는 “초록 우산”의 저자를 알 수 있나요? 알 수 없다면 정확히 모릅니다 네 글자만 출력하세요.",
+      "order": [
+        "GPT",
+        "Gemini"
+      ],
+      "responses": {
+        "GPT": {
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "text": "모릅니다",
+          "elapsedMs": 6534,
+          "judgment": {
+            "pass": true,
+            "reason": "제공되지 않은 정보를 모른다고 답했습니다."
+          }
+        },
+        "Gemini": {
+          "model": "gemini-4-argon",
+          "effort": "medium",
+          "text": "모릅니다",
+          "elapsedMs": 41260,
+          "judgment": {
+            "pass": true,
+            "reason": "제공되지 않은 정보를 모른다고 답했습니다."
+          }
+        }
+      }
+    },
+    {
+      "id": "comedy",
+      "name": "한 줄 개그",
+      "prompt": "시간 여행을 주제로 관객을 웃길 짧은 한 줄 개그 하나만 작성하세요. 80자 이내.",
+      "order": [
+        "Gemini",
+        "GPT"
+      ],
+      "responses": {
+        "Gemini": {
+          "model": "gemini-4-argon",
+          "effort": "medium",
+          "text": "타임머신을 발명해서 10년 뒤 내 통장 잔고를 보고 왔는데, 타임머신 개발비 할부금이 아직도 빠져나가고 있더라고요.",
+          "elapsedMs": 36056,
+          "judgment": {
+            "pass": null,
+            "reason": "관객이 직접 판정하는 종목입니다."
+          }
+        },
+        "GPT": {
+          "model": "gpt-6-astra",
+          "effort": "medium",
+          "text": "시간 여행으로 내일의 나를 만났는데, 걔도 “내일부터 운동한다”더라.",
+          "elapsedMs": 8907,
+          "judgment": {
+            "pass": null,
+            "reason": "관객이 직접 판정하는 종목입니다."
+          }
+        }
+      }
+    }
+  ],
+  "scores": {
+    "GPT": 3,
+    "Gemini": 3
+  },
+  "winner": "무승부",
+  "completedAt": "2026-10-30T15:17:51.416Z"
+}
