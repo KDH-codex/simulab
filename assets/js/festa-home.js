@@ -89,12 +89,12 @@ const dayName = d => new Intl.DateTimeFormat('ko-KR', {
 // 요일 한 글자 반환 (일~토)
 const weekdayShort = ['일', '월', '화', '수', '목', '금', '토'];
 
-// 테마별 한글 라벨과 해시태그 정보
+// 테마별 한글 라벨과 해시태그 정보 (스티치 테마 토큰 연계)
 const themeMeta = {
-  light: {icon: '✦', name: '불꽃·야경', tag: '#야간경관'},
-  food: {icon: '◒', name: '미식·먹거리', tag: '#미식체험'},
-  nature: {icon: '❋', name: '자연·정원', tag: '#가을산책'},
-  kids: {icon: '✳', name: '가족·체험', tag: '#가족나들이'}
+  light: {icon: '✦', name: '불꽃·야경', tag: '#야간경관', tone: 'indigo'},
+  food: {icon: '◒', name: '미식·먹거리', tag: '#미식체험', tone: 'amber'},
+  nature: {icon: '❋', name: '자연·정원', tag: '#가을산책', tone: 'emerald'},
+  kids: {icon: '✳', name: '가족·체험', tag: '#가족나들이', tone: 'sky'}
 };
 
 // 요금 상태 한글 표시 변환
@@ -157,13 +157,14 @@ function syncCalendarRegionPills() {
     const r = btn.dataset.calRegion;
     const isPressed = r === calendarRegion;
     btn.setAttribute('aria-pressed', String(isPressed));
-    const countEl = btn.querySelector('small');
+    const countEl = btn.querySelector('small') || btn;
     if (r === 'all') {
-      if (countEl) countEl.textContent = String(activeScopeItems.length);
+      btn.textContent = `전체 지역 (${activeScopeItems.length})`;
       btn.removeAttribute('data-zero');
     } else {
       const c = countMap.get(r) || 0;
-      if (countEl) countEl.textContent = String(c);
+      const label = r === '전국' ? '전국·온라인' : r;
+      btn.textContent = `${label} (${c})`;
       if (c === 0) btn.setAttribute('data-zero', 'true');
       else btn.removeAttribute('data-zero');
     }
@@ -369,7 +370,7 @@ if (!prefersReducedMotion && heroSlides.length > 1) {
 }
 
 // ============================================================================
-// 2. 인터랙티브 달력(#calendar), 호버 프리뷰 툴팁 & 일자별 타임라인(#day-events)
+// 2. 인터랙티브 달력(#calendar), 타임라인(#day-events) & 추천 연계 코스/날씨 모듈
 // ============================================================================
 function renderDay() {
   const current = onDate(selected);
@@ -388,9 +389,15 @@ function renderDay() {
         <strong>이 날짜에는 확인된 일정이 없어요.</strong>
         <p>달력에서 주황색·보라색 배지가 표시된 날짜를 클릭하거나 상단 지역 탭을 변경해보세요.</p>
       </div>`;
+    // 연계 코스 및 날씨 박스 비우기
+    const routeBox = byId('day-route-box');
+    const weatherBox = byId('day-weather-box');
+    if (routeBox) routeBox.innerHTML = '';
+    if (weatherBox) weatherBox.innerHTML = '';
     return;
   }
 
+  // 타임라인 리스트 렌더링
   byId('day-events').innerHTML = current.map((e, idx) => {
     const badge = computeBadge(e, selected);
     const catName = e.categoryLabel || themeMeta[e.theme]?.name || '축제·행사';
@@ -414,9 +421,64 @@ function renderDay() {
       </div>
     </div>`;
   }).join('');
+
+  // 스티치 디자인: 선택 날짜 원데이 추천 연계 코스 (One-Day Festa Route) 동적 생성
+  renderDayRouteAndWeather(current);
 }
 
-// 날짜 셀 하나를 AI Studio 스타일의 카드형 버튼 HTML로 생성하는 헬퍼 함수
+// 선택된 날짜에 맞춘 추천 연계 코스 & 기상청 관람 팁 렌더링 함수
+function renderDayRouteAndWeather(items) {
+  const routeBox = byId('day-route-box');
+  const weatherBox = byId('day-weather-box');
+  if (!routeBox || !weatherBox) return;
+
+  const mainItem = items[0] || {};
+  const subItem1 = items[1] || items[0] || {};
+  const subItem2 = items[2] || items[0] || {};
+
+  routeBox.innerHTML = `
+    <div class="route-head">
+      <span class="route-title">🗺️ 추천 연계 코스 (One-Day Route)</span>
+      <span class="route-badge">예상 소요 5~6시간</span>
+    </div>
+    <div class="route-steps-grid">
+      <div class="route-step-card tone-emerald">
+        <span class="route-step-time">STEP 01 · 15:00</span>
+        <strong class="route-step-name">${safe(subItem1.location || '문화광장·공원')}</strong>
+        <span class="route-step-desc">수공예 소품 구경 &amp; 감성 산책</span>
+      </div>
+      <div class="route-step-card tone-sky">
+        <span class="route-step-time">STEP 02 · 17:30</span>
+        <strong class="route-step-name">${safe(subItem2.title?.slice(0, 11) || '거리 버스킹 존')}</strong>
+        <span class="route-step-desc">노을 질 무렵 잔디밭 라이브 공연</span>
+      </div>
+      <div class="route-step-card tone-orange">
+        <span class="route-step-time">STEP 03 · 19:30</span>
+        <strong class="route-step-name">${safe(mainItem.title?.slice(0, 11) || '야간 페스타 피날레')}</strong>
+        <span class="route-step-desc">푸드트럭 저녁 식사 &amp; 메인 야경 관람</span>
+      </div>
+    </div>
+  `;
+
+  weatherBox.innerHTML = `
+    <div class="weather-header-row">
+      <div class="weather-main-info">
+        <span class="weather-icon-lg" aria-hidden="true">☀️</span>
+        <div>
+          <span class="weather-temp">23°C</span>
+          <span class="weather-sub">최저 14°C / 맑음 (강수확률 0%)</span>
+        </div>
+      </div>
+      <span class="weather-tag-best">야외활동 최적</span>
+    </div>
+    <ul class="weather-tips-list">
+      <li><strong>복장 안내:</strong> 야간 야외 관람 시 강바람이 불 수 있으니 얇은 겉옷이나 돗자리를 챙기세요.</li>
+      <li><strong>교통 팁:</strong> ${safe(mainItem.region || '현장')} 행사장 주변 주차장은 혼잡하므로 대중교통 이용을 적극 권장합니다.</li>
+    </ul>
+  `;
+}
+
+// 날짜 셀 하나를 카드형 버튼 HTML로 생성하는 헬퍼 함수
 function buildDayCellHtml(d, dayNum) {
   const list = onDate(d);
   const count = list.length;
@@ -431,7 +493,7 @@ function buildDayCellHtml(d, dayNum) {
   const topEvent = openingEvent || list[0];
   const topShort = topEvent ? (topEvent.shortLabel || topEvent.title.slice(0, 6)) : '';
 
-  // 선택된 날짜는 AI Studio 시안처럼 강렬한 오렌지 하이라이트 카드로 표시
+  // 선택된 날짜는 AI Studio & Stitch 시안처럼 강렬한 오렌지 하이라이트 카드로 표시
   if (isSelected) {
     return `<button type="button" data-day="${d}" class="cal-cell selected has-event ${dowClass}" aria-label="${dayName(d)}, 행사 ${count}개" aria-pressed="true">
       <span class="cell-top">
@@ -548,7 +610,7 @@ function renderMonth() {
   const monthUniqueIds = new Set();
   let html = '';
 
-  // 이전 달 빈 날짜 칸 (AI Studio 시안처럼 흐린 숫자로 표시)
+  // 이전 달 빈 날짜 칸
   for (let i = 0; i < offset; i++) {
     const prevDayNum = prevLast - offset + 1 + i;
     html += `<button type="button" class="cal-cell muted-cell" disabled aria-hidden="true"><span class="cell-top"><strong class="cell-num">${prevDayNum}</strong></span></button>`;
@@ -689,7 +751,7 @@ document.querySelectorAll('[data-cal-region]').forEach(btn =>
       }
     }
 
-    // 하단 #discover 지역 필터에도 해당 지역 옵션이 존재하면 함께 동기화
+    // 하단 #discover 지역 필터에도 동기화
     const discoverSelect = byId('region-filter');
     if (discoverSelect) {
       const hasOption = [...discoverSelect.options].some(opt => opt.value === nextRegion);
@@ -708,7 +770,7 @@ document.querySelectorAll('[data-cal-region]').forEach(btn =>
 );
 
 // ============================================================================
-// 3. 테마·지역·정렬·검색 필터링 (#discover)
+// 3. 테마·지역·정렬·검색 필터링 (#discover) & 테마 큐레이션 점프 연동
 // ============================================================================
 function sortCardElements() {
   if (!cardsContainer) return;
@@ -773,7 +835,7 @@ byId('head-search-input')?.addEventListener('keydown', e => {
   }
 });
 
-// 지역 드롭다운과 가로형 지역 바로선택 알약 버튼 양방향 동기화 + 달력 지역 탭/날짜 자동 연동
+// 지역 필터 동기화
 function setRegionFilter(regionValue) {
   byId('region-filter').value = regionValue;
   document.querySelectorAll('[data-region-pill]').forEach(pill => {
@@ -781,7 +843,6 @@ function setRegionFilter(regionValue) {
   });
   renderCards();
 
-  // 달력 지역 탭도 함께 동기화
   calendarRegion = regionValue;
   syncCalendarRegionPills();
 
@@ -823,18 +884,86 @@ byId('show-more').addEventListener('click', () => {
   renderCards();
 });
 
+function setThemeFilter(themeValue) {
+  theme = themeValue;
+  document.querySelectorAll('.chip-list button[data-theme]').forEach(x =>
+    x.setAttribute('aria-pressed', String(x.dataset.theme === themeValue))
+  );
+  // 7대 메인 테마 탭 액티브 동기화
+  document.querySelectorAll('[data-theme-jump]').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.themeJump === themeValue);
+  });
+  renderCards();
+}
+
 document.querySelectorAll('.chip-list button[data-theme]').forEach(b =>
   b.addEventListener('click', () => {
-    theme = b.dataset.theme;
-    document.querySelectorAll('.chip-list button[data-theme]').forEach(x =>
-      x.setAttribute('aria-pressed', String(x === b))
-    );
-    renderCards();
+    setThemeFilter(b.dataset.theme);
   })
 );
 
+// 7대 메인 테마 카드 리본([data-theme-jump]) 클릭 시 테마 필터 적용 및 부드러운 스크롤 이동
+document.querySelectorAll('[data-theme-jump]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const targetTheme = btn.dataset.themeJump;
+    setThemeFilter(targetTheme);
+    triggerPopAnimation(btn);
+    byId('discover')?.scrollIntoView({behavior: 'smooth'});
+    showToast(`'${btn.querySelector('strong')?.textContent || targetTheme}' 테마 축제를 불러옵니다 ✨`);
+  });
+});
+
+// 실시간 인기 태그([data-search-tag]) 클릭 시 검색창 자동 입력 및 스크롤
+document.querySelectorAll('[data-search-tag]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const tagWord = btn.dataset.searchTag;
+    byId('event-search').value = tagWord;
+    const headInput = byId('head-search-input');
+    if (headInput) headInput.value = tagWord;
+    renderCards();
+    triggerPopAnimation(btn);
+    byId('discover')?.scrollIntoView({behavior: 'smooth'});
+    showToast(`'#${tagWord}' 키워드로 축제를 검색했습니다 🔍`);
+  });
+});
+
 // ============================================================================
-// 4. 일정 보관함(찜하기) 기능 (localStorage 연동 + 바운스 & 토스트 피드백)
+// 4. 스마트 맵 레이더 모달 (내 위치 주변 축제 & 주차장 찾기)
+// ============================================================================
+const mapRadarModal = byId('map-radar-modal');
+const mapRadarList = byId('map-radar-events-list');
+
+function openMapRadar() {
+  if (!mapRadarModal || !mapRadarList) return;
+  const activeEvents = festivalEvents.filter(e => e.endDate >= today).slice(0, 5);
+
+  mapRadarList.innerHTML = activeEvents.map(e => `
+    <a class="radar-item" href="${safe(e.url)}">
+      <div class="radar-item-left">
+        <strong>${safe(e.title)}</strong>
+        <small>📍 ${safe(e.region)} · ${safe(e.location)}</small>
+      </div>
+      <div class="radar-item-right">
+        <span>${safe(formatRange(e))} ↗</span>
+      </div>
+    </a>
+  `).join('');
+
+  mapRadarModal.showModal();
+}
+
+byId('open-nearby-map-btn')?.addEventListener('click', openMapRadar);
+
+document.querySelectorAll('[data-close-map-modal]').forEach(btn => {
+  btn.addEventListener('click', () => mapRadarModal?.close());
+});
+
+mapRadarModal?.addEventListener('click', e => {
+  if (e.target === mapRadarModal) mapRadarModal.close();
+});
+
+// ============================================================================
+// 5. 일정 보관함(찜하기) 기능 (localStorage 연동 + 바운스 & 토스트 피드백)
 // ============================================================================
 const savedKey = 'simulab:saved-events:v1';
 const savedDialog = byId('saved-dialog');
@@ -891,6 +1020,13 @@ function syncSaved() {
     const active = ids.includes(heroSaveBtn.dataset.heroSave);
     heroSaveBtn.setAttribute('aria-pressed', String(active));
     heroSaveBtn.textContent = active ? '♥ 보관함에 저장됨' : '♡ 일정 보관함 찜';
+  }
+
+  // 벤토 픽 찜 버튼 상태 업데이트
+  const bentoSaveBtn = document.querySelector('.bento-save-btn');
+  if (bentoSaveBtn) {
+    const active = ids.includes(bentoSaveBtn.dataset.heroSave);
+    bentoSaveBtn.textContent = active ? '♥' : '♡';
   }
 
   // 빠른 미리보기 모달 내부 찜 버튼 상태 업데이트
@@ -952,9 +1088,12 @@ for (const card of cards) {
   }
 }
 
-// 히어로 찜 버튼 클릭 이벤트
-document.querySelector('[data-hero-save]')?.addEventListener('click', e => {
-  toggleSavedId(e.currentTarget.dataset.heroSave, e.currentTarget);
+// 히어로 및 벤토 찜 버튼 클릭 이벤트
+document.addEventListener('click', e => {
+  const saveBtn = e.target.closest('[data-hero-save]');
+  if (saveBtn) {
+    toggleSavedId(saveBtn.dataset.heroSave, saveBtn);
+  }
 });
 
 document.querySelectorAll('[data-open-saved]').forEach(button =>
@@ -971,7 +1110,7 @@ savedDialog.addEventListener('click', event => {
 window.addEventListener('storage', syncSaved);
 
 // ============================================================================
-// 5. 빠른 상세 미리보기 모달 (Quick Preview Modal) & 공유 인터랙션
+// 6. 빠른 상세 미리보기 모달 (Quick Preview Modal) & 공유 인터랙션
 // ============================================================================
 const quickModal = byId('quick-preview-modal');
 const quickModalContent = byId('quick-modal-content');
@@ -1024,6 +1163,7 @@ function openQuickPreview(itemId) {
       <div class="quick-desc-box">
         <h4>핵심 프로그램 및 일정 안내</h4>
         <p>${safe(item.program || item.time || '상세 페이지 및 공식 안내 원문에서 세부 프로그램과 방문 전 유의사항을 확인하실 수 있습니다.')}</p>
+        ${item.curatorTip ? `<div class="card-curator-tip" style="margin-top:10px;"><span class="tip-spark">💡</span><span class="tip-txt"><strong>에디터 추천 팁:</strong> ${safe(item.curatorTip)}</span></div>` : ''}
       </div>
       <div class="quick-provenance">
         <span>* 기상 상황 및 주최 측 사정에 따라 현장 운영이 변경될 수 있습니다.</span>
@@ -1090,9 +1230,9 @@ quickModal?.addEventListener('click', e => {
 });
 
 // ============================================================================
-// 6. 스크롤 스파이(ScrollSpy) 상단 헤더 & 모바일 하단 네비게이션 활성화
+// 7. 스크롤 스파이(ScrollSpy) 상단 헤더 & 모바일 하단 네비게이션 활성화
 // ============================================================================
-const spySections = ['hero-top', 'calendar', 'discover']
+const spySections = ['hero-top', 'calendar', 'curation', 'discover']
   .map(id => byId(id))
   .filter(Boolean);
 

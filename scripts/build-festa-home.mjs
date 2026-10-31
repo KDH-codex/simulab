@@ -6,7 +6,7 @@ const root = new URL('../', import.meta.url);
 const source = JSON.parse(await readFile(new URL('data/events/reviewed.json', root), 'utf8'));
 const images = JSON.parse(await readFile(new URL('data/events/images.json', root), 'utf8'));
 
-// 가족 정보 통합 달력(체험·교육, 공연·전시, 키즈 팝업, 캠핑, 세일 등) 데이터도 함께 읽어와 달력에서 탐색할 수 있게 합니다.
+// 가족 정보 통합 달력(체험·교육, 공연·전시, 키즈 팝업, 캠핑, 세일 등) 데이터도 함께 읽어옵니다.
 let familyFeed = {categories: [], records: []};
 try {
   familyFeed = JSON.parse(await readFile(new URL('feeds/family-info/latest.json', root), 'utf8'));
@@ -14,7 +14,7 @@ try {
   familyFeed = {categories: [], records: []};
 }
 
-// HTML 특수문자 이스케이프 함수 (보안 및 안전한 렌더링용)
+// HTML 특수문자 이스케이프 함수 (보안 및 XSS 방지용)
 const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({
   '&': '&amp;',
   '<': '&lt;',
@@ -68,12 +68,12 @@ const date = e => e.startDate === e.endDate
 // 상세 페이지 주소 생성 함수
 const url = e => '/events/' + encodeURIComponent(e.id) + '/';
 
-// 테마별 아이콘, 한글 이름, 해시태그 정의
+// 테마별 아이콘, 한글 이름, 해시태그 정의 (구글 스티치 디자인 시스템 연동)
 const art = {
-  light: ['✦', '불꽃·야경', '#야간경관'],
-  food: ['◒', '미식·먹거리', '#미식체험'],
-  nature: ['❋', '자연·정원', '#가을산책'],
-  kids: ['✳', '가족·체험', '#가족나들이']
+  light: ['✦', '불꽃·야경', '#야간경관', 'indigo'],
+  food: ['◒', '미식·먹거리', '#미식체험', 'amber'],
+  nature: ['❋', '자연·정원', '#가을산책', 'emerald'],
+  kids: ['✳', '가족·체험', '#가족나들이', 'sky']
 };
 
 // 요금 상태 한글 라벨 변환 함수
@@ -110,6 +110,16 @@ function shortTitle(title) {
     .slice(0, 7);
 }
 
+// 스티치 디자인 스타일에 맞춘 큐레이터 추천 팁 생성 헬퍼 함수
+function getCuratorTip(e) {
+  if (e.curatorTip) return e.curatorTip;
+  if (e.theme === 'light') return '일몰 30분 전 도착하여 수변 잔디밭 명당자리를 선점하면 불꽃과 야경의 파노라마를 완벽히 감상할 수 있습니다.';
+  if (e.theme === 'food') return '스마트오더 및 모바일 결제를 지원하므로 혼잡한 푸드트럭 대기열을 피해 미리 주문하시면 여유롭습니다.';
+  if (e.theme === 'nature') return '산책로 경사가 완만하여 유모차나 휠체어 이용이 편리하며, 얇은 돗자리를 지참하시면 좋습니다.';
+  if (e.feeStatus === 'free') return '현장 자율 관람으로 별도 사전예약 없이 입장 가능합니다. 대중교통 이용 시 이동이 한결 수월합니다.';
+  return '기상 상황에 따라 야외 프로그램 운영 시간이 변동될 수 있으니 출발 전 공식 안내를 확인하세요.';
+}
+
 // 행사별 키워드 태그 배열 생성 함수
 function buildTags(e) {
   const tags = [`#${e.region}축제`, art[e.theme]?.[2] || '#문화행사'];
@@ -119,13 +129,15 @@ function buildTags(e) {
   return tags.slice(0, 3);
 }
 
-// 메인 탐색 그리드(#discover)에 들어갈 개별 축제 카드 HTML 생성 함수 (AI Studio 카드 디자인 + 마우스 스포트라이트 & 빠른 미리보기 지원)
+// 메인 탐색 그리드(#discover)에 들어갈 개별 축제 카드 HTML 생성 함수 (구글 스티치 디자인 + 큐레이터 팁 연동)
 const card = (e, index) => {
   const image = images[e.id];
   const badge = getStatusBadge(e);
   const tags = buildTags(e);
   const feeShort = feeLabel(e.feeStatus);
-  return `<article class="event-card" style="--stagger-idx:${index % 9}" data-id="${esc(e.id)}" data-search="${esc((e.title + ' ' + e.region + ' ' + e.location + ' ' + (e.program || '')).toLowerCase())}" data-theme="${esc(e.theme)}" data-region="${esc(e.region)}" data-start="${esc(e.startDate)}" data-end="${esc(e.endDate)}" data-fee="${esc(e.feeStatus)}" data-title="${esc(e.title)}" data-dates="${esc((e.dates || []).join(','))}"><a class="card-link" href="${esc(url(e))}"><div class="card-art art-${esc(e.theme)} ${image ? 'has-photo ' + (image.display === 'poster' ? 'is-poster' : '') : ''}"><span class="art-orbit"></span><span class="art-symbol" aria-hidden="true">${art[e.theme]?.[0] || '✦'}</span>${image ? `<img src="${esc(image.src)}" alt="${esc(e.title + ' 주제 참고 사진 · 행사 현장 아님')}" loading="lazy" decoding="async">` : ''}<div class="card-top-badges"><span class="status-pill tone-${esc(badge.tone)}">${esc(badge.text)}</span><span class="theme-pill">${art[e.theme]?.[0] || '✦'} ${esc(art[e.theme]?.[1] || '행사')}</span></div><div class="card-bottom-overlay"><span class="overlay-date">📅 ${esc(date(e))}</span><span class="overlay-fee">${esc(feeShort)}</span></div>${image ? `<span class="art-credit">${esc(image.kind === 'context' ? '주제 참고 · 현장 사진 아님' : '이미지: ' + image.credit)}</span>` : ''}</div><div class="card-body"><p class="card-place"><span class="pin-icon" aria-hidden="true">📍</span> <strong>${esc(e.region)}</strong> · ${esc(e.location)}</p><h3>${esc(e.title)}</h3><p class="card-desc">${esc(e.program || '공식 안내에서 상세 프로그램과 일정을 확인하세요.')}</p><div class="card-tags">${tags.map(t => `<span>${esc(t)}</span>`).join('')}</div><div class="card-foot"><div class="fee-box"><small>입장·요금</small><strong>${esc(e.fee || feeShort)}</strong></div><div class="card-foot-actions"><span class="detail-btn">상세보기 ›</span></div></div></div></a></article>`;
+  const curatorTip = getCuratorTip(e);
+
+  return `<article class="event-card" style="--stagger-idx:${index % 9}" data-id="${esc(e.id)}" data-search="${esc((e.title + ' ' + e.region + ' ' + e.location + ' ' + (e.program || '')).toLowerCase())}" data-theme="${esc(e.theme)}" data-region="${esc(e.region)}" data-start="${esc(e.startDate)}" data-end="${esc(e.endDate)}" data-fee="${esc(e.feeStatus)}" data-title="${esc(e.title)}" data-dates="${esc((e.dates || []).join(','))}"><a class="card-link" href="${esc(url(e))}"><div class="card-art art-${esc(e.theme)} ${image ? 'has-photo ' + (image.display === 'poster' ? 'is-poster' : '') : ''}"><span class="art-orbit"></span><span class="art-symbol" aria-hidden="true">${art[e.theme]?.[0] || '✦'}</span>${image ? `<img src="${esc(image.src)}" alt="${esc(e.title + ' 주제 참고 사진 · 행사 현장 아님')}" loading="lazy" decoding="async">` : ''}<div class="card-top-badges"><span class="status-pill tone-${esc(badge.tone)}">${esc(badge.text)}</span><span class="theme-pill">${art[e.theme]?.[0] || '✦'} ${esc(art[e.theme]?.[1] || '행사')}</span></div><div class="card-bottom-overlay"><span class="overlay-date">📅 ${esc(date(e))}</span><span class="overlay-fee">${esc(feeShort)}</span></div>${image ? `<span class="art-credit">${esc(image.kind === 'context' ? '주제 참고 · 현장 사진 아님' : '이미지: ' + image.credit)}</span>` : ''}</div><div class="card-body"><p class="card-place"><span class="pin-icon" aria-hidden="true">📍</span> <strong>${esc(e.region)}</strong> · ${esc(e.location)}</p><h3>${esc(e.title)}</h3><p class="card-desc">${esc(e.program || '공식 안내에서 상세 프로그램과 일정을 확인하세요.')}</p><div class="card-curator-tip"><span class="tip-spark" aria-hidden="true">💡</span> <span class="tip-txt"><strong>큐레이터 팁:</strong> ${esc(curatorTip)}</span></div><div class="card-tags">${tags.map(t => `<span>${esc(t)}</span>`).join('')}</div><div class="card-foot"><div class="fee-box"><small>입장·요금</small><strong>${esc(e.fee || feeShort)}</strong></div><div class="card-foot-actions"><span class="detail-btn">상세보기 ›</span></div></div></div></a></article>`;
 };
 
 // 히어로 우측 '다음 주목할 축제 2선' 가로형 프리뷰 카드 HTML 생성 함수
@@ -155,7 +167,7 @@ const familyCalendarItems = (familyFeed.records || [])
     if (!/^\d{4}-\d{2}-\d{2}$/.test(rawStart)) return null;
     const endDate = /^\d{4}-\d{2}-\d{2}$/.test(rawEnd) && rawEnd >= rawStart ? rawEnd : rawStart;
 
-    // 21일을 초과하는 장기 상시 정보는 달력 셀이 과밀해지지 않도록 시작일과 종료일(마감일)에만 핀 표시합니다.
+    // 21일을 초과하는 장기 상시 정보는 시작일과 마감일에만 핀 표시합니다.
     const t0 = new Date(Number(rawStart.slice(0, 4)), Number(rawStart.slice(5, 7)) - 1, Number(rawStart.slice(8, 10)));
     const t1 = new Date(Number(endDate.slice(0, 4)), Number(endDate.slice(5, 7)) - 1, Number(endDate.slice(8, 10)));
     const spanDays = Math.round((t1 - t0) / 86400000);
@@ -202,6 +214,7 @@ const festaItems = events.map(e => ({
   time: e.time || '',
   feeStatus: e.feeStatus || 'unknown',
   fee: e.fee || feeLabel(e.feeStatus),
+  curatorTip: getCuratorTip(e),
   url: url(e),
   officialUrl: e.sources?.[0]?.url || url(e),
   sourceName: e.sources?.[0]?.label || e.organizer || '공식 안내',
@@ -234,7 +247,6 @@ for (const item of validCalItems) {
   const r = item.region || '전국';
   calRegionCounts[r] = (calRegionCounts[r] || 0) + 1;
 }
-// 시·도 지역을 건수 순으로 정렬하되 '전국' 공통은 앞쪽(전체 바로 다음 또는 주요 지역 옆)에 보기 좋게 배치
 const calRegions = Object.keys(calRegionCounts).sort((a, b) => {
   if (a === '전국') return 1;
   if (b === '전국') return -1;
@@ -253,6 +265,10 @@ const themeCounts = {
 const heroImage = hero && images[hero.id];
 const heroBadge = hero ? getStatusBadge(hero) : {text: '일정 준비중', tone: 'upcoming'};
 const heroTags = hero ? buildTags(hero) : ['#시뮬랩', '#공식일정'];
+
+// 에디터스 픽(Editor's Pick) 대형 벤토 쇼케이스용 대표 축제 및 서브 3선
+const featuredPick = upcoming.find(e => images[e.id] && e.theme === 'light') || upcoming[0];
+const subFeatured = upcoming.filter(e => e !== featuredPick).slice(0, 3);
 
 // 가족 정보 카테고리 요약 카드 목록 (하단 큐레이션 섹션용)
 const familySummaryCards = (familyFeed.categories || []).slice(0, 6).map((c, idx) => `
@@ -293,7 +309,7 @@ const html = `<!doctype html>
 <body>
   <a class="skip" href="#main">본문으로 이동</a>
 
-  <!-- 상단 고정 헤더 (AI Studio FESTA CALENDAR 스타일 + ScrollSpy 지원) -->
+  <!-- 상단 고정 헤더 (Google Stitch FESTA CALENDAR 스타일 + ScrollSpy 지원) -->
   <header class="site-head">
     <div class="head-inner">
       <div class="head-left">
@@ -308,7 +324,8 @@ const html = `<!doctype html>
       </div>
       <nav aria-label="주요 메뉴">
         <a href="#calendar" class="nav-pill active" data-nav-section="calendar">축제·정보 달력</a>
-        <a href="#discover" class="nav-pill" data-nav-section="discover">지역·테마 탐색</a>
+        <a href="#curation" class="nav-pill" data-nav-section="curation">테마 큐레이션</a>
+        <a href="#discover" class="nav-pill" data-nav-section="discover">지역·취향 탐색</a>
         <a href="/tools/kids-outing-calendar/" class="nav-pill">나들이 달력</a>
         <a href="/tools/family-info-calendar/" class="nav-pill">가족 정보 달력</a>
         <a href="/library/" class="nav-pill">생활 도구</a>
@@ -424,14 +441,14 @@ const html = `<!doctype html>
       </div>
     </section>
 
-    <!-- SECTION 2: 인터랙티브 날짜별 축제·정보 탐색기 & 타임라인 (#calendar) -->
+    <!-- SECTION 2: 인터랙티브 날짜별 축제·정보 탐색기 & 내 지도 기준 가까운 축제 찾기 (#calendar) -->
     <section class="finder-section" id="calendar">
       <div class="wrap">
         <div class="section-heading calendar-heading">
           <div>
             <span class="eyebrow">📅 REALTIME FESTIVAL &amp; INFO CALENDAR</span>
             <h2>날짜별 축제·정보 <em>탐색기</em></h2>
-            <p>원하는 분야와 지역을 선택하고 날짜를 클릭하면, 해당 일자의 상세 일정을 타임라인으로 확인하실 수 있습니다.</p>
+            <p>원하는 분야와 지역을 선택하고 날짜를 클릭하면, 해당 일자의 상세 타임라인과 추천 연계 코스를 한눈에 확인하실 수 있습니다.</p>
           </div>
           <div class="calendar-top-controls">
             <!-- 달력 데이터 범위 필터 (축제 전용 vs 가족정보 통합) -->
@@ -441,6 +458,27 @@ const html = `<!doctype html>
               <button type="button" data-calendar-scope="culture" aria-pressed="false">🎨 체험·공연·팝업</button>
               <button type="button" data-calendar-scope="benefit" aria-pressed="false">🏕 캠핑·세일·혜택</button>
             </div>
+          </div>
+        </div>
+
+        <!-- 스티치 스타일: 스마트 맵 레이더 CTA 배너 (내 지도 기준 가까운 축제 찾기) -->
+        <div class="smart-map-banner" role="region" aria-label="내 지도 기준 주변 축제 레이더 안내">
+          <div class="map-banner-left">
+            <div class="map-banner-icon" aria-hidden="true">🗺️</div>
+            <div class="map-banner-text">
+              <p class="map-banner-title">
+                내 위치 주변 축제는 <strong>실시간 레이더 지도</strong>로 바로 확인하세요
+                <span class="map-banner-chip">GPS RADAR</span>
+              </p>
+              <p class="map-banner-desc">
+                카카오맵·네이버 지도 연동으로 1km~10km 반경 실시간 행사 핀, 주차장 현황, 버스킹 무대 위치를 바로 탐색하실 수 있습니다.
+              </p>
+            </div>
+          </div>
+          <div class="map-banner-actions">
+            <button type="button" class="map-radar-btn" id="open-nearby-map-btn">
+              <span aria-hidden="true">📍</span> 내 주변 축제 지도 열기
+            </button>
           </div>
         </div>
 
@@ -472,29 +510,31 @@ const html = `<!doctype html>
             </div>
 
             <div class="weekday-row" aria-hidden="true">
-              <span class="sun">일</span>
-              <span>월</span>
-              <span>화</span>
-              <span>수</span>
-              <span>목</span>
-              <span>금</span>
-              <span class="sat">토</span>
+              <span class="sun">일 (SUN)</span>
+              <span>월 (MON)</span>
+              <span>화 (TUE)</span>
+              <span>수 (WED)</span>
+              <span>목 (THU)</span>
+              <span>금 (FRI)</span>
+              <span class="sat">토 (SAT)</span>
             </div>
 
             <div class="calendar-days" id="calendar-days" role="group" aria-label="행사 달력 (방향키로 날짜 이동 가능)"></div>
 
+            <!-- 스티치 스타일: 테마별 컬러 가이드 레전드 -->
             <div class="calendar-legend">
               <div class="legend-items">
-                <span><i class="dot-light"></i> 불꽃·야경·주요축제</span>
-                <span><i class="dot-kids"></i> 가족·체험·공연</span>
-                <span><i class="dot-nature"></i> 자연·정원·캠핑</span>
-                <span><i class="dot-food"></i> 먹거리·세일·혜택</span>
+                <span><i class="dot-legend-indigo"></i> 불꽃·야경</span>
+                <span><i class="dot-legend-sky"></i> 음악·버스킹</span>
+                <span><i class="dot-legend-emerald"></i> 플리마켓·아트</span>
+                <span><i class="dot-legend-amber"></i> 푸드·야시장</span>
+                <span><i class="dot-legend-green"></i> 자연·가족체험</span>
               </div>
               <small>* 날짜 클릭 또는 키보드 화살표(←→↑↓)로 일자별 타임라인을 탐색할 수 있습니다.</small>
             </div>
           </div>
 
-          <!-- 우측: 선택한 날짜의 타임라인 리스트 (5 Cols) -->
+          <!-- 우측: 선택한 날짜의 타임라인 리스트 & 연계 코스/날씨 팁 (5 Cols) -->
           <div class="day-panel">
             <div class="day-panel-head">
               <div>
@@ -509,6 +549,14 @@ const html = `<!doctype html>
 
             <div id="day-events" class="day-events"></div>
 
+            <!-- 스티치 스타일: 선택 날짜 원데이 추천 연계 코스 & 날씨 팁 컨테이너 -->
+            <div class="day-extra-modules" id="day-extra-modules">
+              <!-- JS 동적 생성: 추천 연계 코스 (One-Day Route) -->
+              <div class="day-route-box" id="day-route-box"></div>
+              <!-- JS 동적 생성: 행사 당일 관람 & 교통 팁 -->
+              <div class="day-weather-box" id="day-weather-box"></div>
+            </div>
+
             <div class="day-panel-foot">
               <a href="#discover" class="day-more-primary" id="day-jump-discover">
                 아래 카드 목록에서 전체 축제 비교하기 ↓
@@ -522,7 +570,147 @@ const html = `<!doctype html>
       </div>
     </section>
 
-    <!-- SECTION 3 & 4: 스마트 테마 필터, 지역 바로선택 바 & 축제 카드 그리드 (#discover) -->
+    <!-- SECTION 3: 테마별 큐레이션 - 취향 맞춤 축제 컬렉션 (#curation) [스티치 신규 디자인 통합] -->
+    <section class="curation-festa-section" id="curation">
+      <div class="wrap">
+        <div class="curation-festa-head">
+          <div class="curation-head-title">
+            <span class="curation-pill-badge">✨ 2026 FESTA 테마 에디토리얼 셀렉션</span>
+            <h2>취향과 목적에 맞게 떠나는<br><em>감성 테마별 맞춤 큐레이션</em></h2>
+            <p>수많은 축제 중 어디를 가야 할지 고민될 때, 지금 가장 핫한 계절 무드와 여행 목적에 맞춘 감성 로드맵과 큐레이터 동선 가이드를 확인해보세요.</p>
+          </div>
+          <!-- 실시간 인기 해시태그 칩 목록 -->
+          <div class="curation-popular-tags" aria-label="실시간 인기 태그">
+            <span class="popular-tags-label">실시간 인기 태그</span>
+            <div class="popular-tags-chips">
+              <button type="button" class="pop-tag-btn" data-search-tag="불꽃">#초여름_밤의불꽃 🎆</button>
+              <button type="button" class="pop-tag-btn" data-search-tag="미식">#비건&amp;미식마켓 🍔</button>
+              <button type="button" class="pop-tag-btn" data-search-tag="음악">#인디뮤직_선셋페스타 🎵</button>
+              <button type="button" class="pop-tag-btn" data-search-tag="공원">#반려견_동반가능 🐾</button>
+              <button type="button" class="pop-tag-btn" data-search-tag="체험">#가족체험형 🎪</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7대 분야별 메인 테마 둘러보기 (Category Explorer) -->
+        <div class="category-explorer-bar" aria-label="분야별 메인 테마 둘러보기">
+          <div class="category-cards-track">
+            <button type="button" class="category-card-btn active" data-theme-jump="all">
+              <span class="cat-icon-circle icon-orange">🔥</span>
+              <strong>전체 큐레이션</strong>
+              <small>${upcoming.length}건 진행</small>
+            </button>
+            <button type="button" class="category-card-btn" data-theme-jump="light">
+              <span class="cat-icon-circle icon-indigo">🎆</span>
+              <strong>불꽃·야경 &amp; 미디어</strong>
+              <small>${themeCounts.light}건 진행</small>
+            </button>
+            <button type="button" class="category-card-btn" data-theme-jump="kids">
+              <span class="cat-icon-circle icon-sky">🎵</span>
+              <strong>음악·인디 페스타</strong>
+              <small>${themeCounts.kids}건 진행</small>
+            </button>
+            <button type="button" class="category-card-btn" data-theme-jump="food">
+              <span class="cat-icon-circle icon-amber">🍔</span>
+              <strong>미식·푸드 야시장</strong>
+              <small>${themeCounts.food}건 진행</small>
+            </button>
+            <button type="button" class="category-card-btn" data-theme-jump="nature">
+              <span class="cat-icon-circle icon-emerald">🌿</span>
+              <strong>힐링·자연 &amp; 꽃</strong>
+              <small>${themeCounts.nature}건 진행</small>
+            </button>
+            <button type="button" class="category-card-btn" data-theme-jump="kids">
+              <span class="cat-icon-circle icon-purple">👨‍👩‍👧</span>
+              <strong>가족·키즈 &amp; 역사</strong>
+              <small>${themeCounts.kids}건 진행</small>
+            </button>
+            <button type="button" class="category-card-btn" data-theme-jump="nature">
+              <span class="cat-icon-circle icon-rose">🐾</span>
+              <strong>댕댕이와 함께</strong>
+              <small>반려동물 OK</small>
+            </button>
+          </div>
+        </div>
+
+        <!-- 에디터스 픽(Editor's Pick) 대형 벤토 쇼케이스 그리드 (7:5 분할) -->
+        <div class="bento-curation-grid">
+          <!-- 좌측 7열: 이달의 대표 에디터스 픽 대형 카드 -->
+          <div class="bento-main-hero ${featuredPick && images[featuredPick.id] ? 'has-bg' : ''}">
+            <div class="bento-hero-media">
+              ${featuredPick && images[featuredPick.id] ? `<img src="${esc(images[featuredPick.id].src)}" alt="${esc(featuredPick.title)}" loading="lazy">` : ''}
+              <div class="bento-hero-overlay"></div>
+            </div>
+            <div class="bento-hero-top">
+              <div class="bento-badges">
+                <span class="badge-official">✦ EDITOR'S MONTHLY PICK</span>
+                <span class="badge-accent">예매율·관심도 1위</span>
+              </div>
+              <button type="button" class="bento-save-btn" data-hero-save="${featuredPick ? esc(featuredPick.id) : ''}" aria-label="관심 축제 저장">♡</button>
+            </div>
+            <div class="bento-hero-content">
+              <p class="bento-meta-loc">
+                📍 ${featuredPick ? esc(featuredPick.region + ' · ' + featuredPick.location) : '서울 여의도 일대'}
+                <span>•</span>
+                📅 ${featuredPick ? esc(date(featuredPick)) : '2026 시즌'}
+              </p>
+              <h3>${featuredPick ? esc(featuredPick.title) : '한강 라이트 &amp; 파이어워크스 페스타'}</h3>
+              <p class="bento-desc">${featuredPick ? esc(featuredPick.program || '초여름 밤하늘을 수놓는 아시아 최대 규모 미디어 파이어워크스와 감미로운 라이브 공연') : ''}</p>
+              <div class="bento-actions">
+                <a class="bento-cta-btn" href="${featuredPick ? esc(url(featuredPick)) : '#'}">에디토리얼 전체 스토리 보기 ↗</a>
+                <button type="button" class="bento-sub-btn" data-quick-view="${featuredPick ? esc(featuredPick.id) : ''}">✦ 빠른 미리보기</button>
+              </div>
+            </div>
+            <!-- 큐레이터 동선 가이드 코멘트 스트립 -->
+            <div class="bento-curator-comment">
+              <div class="curator-avatar">
+                <span aria-hidden="true">✍️</span>
+              </div>
+              <div class="curator-comment-text">
+                <div class="curator-title-row">
+                  <strong>큐레이터 민서영</strong>
+                  <small>FESTA 컬쳐 에디터 · 현장 동선 가이드</small>
+                </div>
+                <p>"${featuredPick ? esc(getCuratorTip(featuredPick)) : '여의나루역 혼잡을 피해 마포대교 남단 하부 피크닉 구역을 선점하면 불꽃의 웅장함을 정면에서 만끽할 수 있습니다.'}"</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 우측 5열: 서브 연계 축제 3선 프리뷰 -->
+          <div class="bento-sub-stack">
+            <div class="bento-stack-head">
+              <h4>함께 즐기기 좋은 연계 축제 3선</h4>
+              <small>동선 연계 추천</small>
+            </div>
+            <div class="bento-sub-cards">
+              ${subFeatured.map(subItem => {
+                const subImg = images[subItem.id];
+                const subBadge = getStatusBadge(subItem);
+                return `
+                  <a class="bento-sub-card" href="${esc(url(subItem))}">
+                    <div class="bento-sub-thumb ${subImg ? 'has-img' : 'art-' + esc(subItem.theme)}">
+                      ${subImg ? `<img src="${esc(subImg.src)}" alt="" loading="lazy">` : `<span aria-hidden="true">${art[subItem.theme]?.[0] || '✦'}</span>`}
+                      <span class="sub-badge tone-${esc(subBadge.tone)}">${esc(subBadge.text)}</span>
+                    </div>
+                    <div class="bento-sub-info">
+                      <small>📍 ${esc(subItem.region)} · ${esc(art[subItem.theme]?.[1] || '축제')}</small>
+                      <h5>${esc(subItem.title)}</h5>
+                      <p>${esc(subItem.program || subItem.location)}</p>
+                      <div class="bento-sub-foot">
+                        <span>📅 ${esc(date(subItem))}</span>
+                        <strong>${esc(feeLabel(subItem.feeStatus))}</strong>
+                      </div>
+                    </div>
+                  </a>
+                `;
+              }).join('')}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: 스마트 테마 필터, 지역 바로선택 바 & 축제 카드 그리드 (#discover) -->
     <section class="discover-section wrap" id="discover">
       <div class="section-heading">
         <div>
@@ -559,7 +747,7 @@ const html = `<!doctype html>
           </div>
         </div>
 
-        <!-- 가로형 지역 바로선택 알약 바 (AI Studio 스타일) + 기존 호환용 select -->
+        <!-- 가로형 지역 바로선택 알약 바 (Google Stitch 스타일) + 기존 호환용 select -->
         <div class="region-quick-bar" aria-label="지역 바로선택">
           <span class="region-bar-title">📍 지역 바로선택:</span>
           <div class="region-pills" id="region-pills">
@@ -593,7 +781,7 @@ const html = `<!doctype html>
     </section>
 
     <!-- SECTION 5: 가족 정보 분야별 큐레이션 & 나들이 필수 체크 가이드 -->
-    <section class="more-section" id="curation">
+    <section class="more-section" id="family-info-radar">
       <div class="wrap more-bento">
         <!-- 좌측: 시뮬랩 가족 정보 분야별 현황 리스트 (7 Cols) -->
         <div class="curation-panel">
@@ -683,6 +871,36 @@ const html = `<!doctype html>
     <div class="quick-modal-inner" id="quick-modal-content"></div>
   </dialog>
 
+  <!-- 내 주변 축제 지도 모달 다이얼로그 (스마트 맵 레이더) -->
+  <dialog class="quick-dialog map-radar-dialog" id="map-radar-modal" aria-labelledby="map-radar-title">
+    <div class="map-radar-modal-inner">
+      <div class="map-modal-head">
+        <div>
+          <span class="eyebrow">🗺️ GPS REALTIME RADAR</span>
+          <h2 id="map-radar-title">내 위치 주변 축제 &amp; 행사 레이더</h2>
+        </div>
+        <button type="button" class="quick-close-btn" data-close-map-modal aria-label="지도 닫기">×</button>
+      </div>
+      <div class="map-modal-body">
+        <div class="map-radar-status-bar">
+          <span class="radar-ping"><i class="pulse-dot"></i> 내 위치 GPS 탐색 모드</span>
+          <span class="radar-info-txt">인근 축제 핀과 행사장 주차장 위치를 확인하세요</span>
+        </div>
+        <div class="map-radar-list" id="map-radar-events-list">
+          <!-- JS에서 가까운 축제 목록 렌더링 -->
+        </div>
+        <div class="map-external-links">
+          <a class="map-ext-btn kakao" id="map-ext-kakao" href="https://map.kakao.com/?q=축제" target="_blank" rel="noopener noreferrer">
+            카카오맵에서 내주변 축제 검색 ↗
+          </a>
+          <a class="map-ext-btn naver" id="map-ext-naver" href="https://map.naver.com/p/search/축제" target="_blank" rel="noopener noreferrer">
+            네이버 지도에서 내주변 축제 검색 ↗
+          </a>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
   <!-- 달력 날짜 칸 마우스 호버 프리뷰 툴팁 -->
   <div class="cal-hover-tooltip" id="calendar-hover-tooltip" role="tooltip" hidden></div>
 
@@ -693,8 +911,8 @@ const html = `<!doctype html>
   <nav class="mobile-bottom-nav" aria-label="빠른 메뉴">
     <a href="#hero-top" data-mobile-nav="hero-top" aria-current="page">⌂<span>홈</span></a>
     <a href="#calendar" data-mobile-nav="calendar">▦<span>달력</span></a>
+    <a href="#curation" data-mobile-nav="curation">✨<span>큐레이션</span></a>
     <a href="#discover" data-mobile-nav="discover">⌕<span>탐색</span></a>
-    <a href="/tools/family-info-calendar/">✦<span>가족정보</span></a>
     <button type="button" data-open-saved>♡<span>보관함</span></button>
   </nav>
 
