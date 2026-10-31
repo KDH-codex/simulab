@@ -214,14 +214,32 @@ const festaItems = events.map(e => ({
   }
 }));
 
-const data = JSON.stringify([...festaItems, ...familyCalendarItems]).replace(/</g, '\\u003c');
+const allCalendarData = [...festaItems, ...familyCalendarItems];
+const data = JSON.stringify(allCalendarData).replace(/</g, '\\u003c');
 
-// 지역별 진행 예정 행사 건수 집계
+// 지역별 진행 예정 축제 건수 집계 (#discover 섹션용)
 const regionCounts = {};
 for (const e of upcoming) {
   regionCounts[e.region] = (regionCounts[e.region] || 0) + 1;
 }
 const regions = Object.keys(regionCounts).sort((a, b) => (regionCounts[b] - regionCounts[a]) || a.localeCompare(b));
+
+// 달력(#calendar) 상단 지역별 선택 탭용 전체 일정 지역 집계 (오늘 이후 유효 일정 기준)
+const activeCalendarItems = allCalendarItems =>
+  allCalendarItems.filter(item => item.endDate >= today);
+
+const validCalItems = activeCalendarItems(allCalendarData);
+const calRegionCounts = {};
+for (const item of validCalItems) {
+  const r = item.region || '전국';
+  calRegionCounts[r] = (calRegionCounts[r] || 0) + 1;
+}
+// 시·도 지역을 건수 순으로 정렬하되 '전국' 공통은 앞쪽(전체 바로 다음 또는 주요 지역 옆)에 보기 좋게 배치
+const calRegions = Object.keys(calRegionCounts).sort((a, b) => {
+  if (a === '전국') return 1;
+  if (b === '전국') return -1;
+  return (calRegionCounts[b] - calRegionCounts[a]) || a.localeCompare(b);
+});
 
 // 테마별 진행 예정 행사 건수 집계
 const themeCounts = {
@@ -413,7 +431,7 @@ const html = `<!doctype html>
           <div>
             <span class="eyebrow">📅 REALTIME FESTIVAL &amp; INFO CALENDAR</span>
             <h2>날짜별 축제·정보 <em>탐색기</em></h2>
-            <p>원하는 날짜에 마우스를 올리거나 클릭하면 전국 축제·행사와 가족 체험·공연·혜택 일정을 타임라인으로 확인하실 수 있습니다.</p>
+            <p>원하는 분야와 지역을 선택하고 날짜를 클릭하면, 해당 일자의 상세 일정을 타임라인으로 확인하실 수 있습니다.</p>
           </div>
           <div class="calendar-top-controls">
             <!-- 달력 데이터 범위 필터 (축제 전용 vs 가족정보 통합) -->
@@ -423,6 +441,15 @@ const html = `<!doctype html>
               <button type="button" data-calendar-scope="culture" aria-pressed="false">🎨 체험·공연·팝업</button>
               <button type="button" data-calendar-scope="benefit" aria-pressed="false">🏕 캠핑·세일·혜택</button>
             </div>
+          </div>
+        </div>
+
+        <!-- 달력 전용 지역별 선택 탭 바 -->
+        <div class="calendar-region-bar" aria-label="달력 지역별 선택">
+          <span class="calendar-region-title">📍 지역별 선택:</span>
+          <div class="calendar-region-pills" id="calendar-region-pills" role="group" aria-label="달력 지역 필터">
+            <button type="button" data-cal-region="all" aria-pressed="true">전체 지역 (${validCalItems.length})</button>
+            ${calRegions.map(r => `<button type="button" data-cal-region="${esc(r)}" aria-pressed="false">${esc(r === '전국' ? '전국·온라인' : r)} (${calRegionCounts[r]})</button>`).join('')}
           </div>
         </div>
 

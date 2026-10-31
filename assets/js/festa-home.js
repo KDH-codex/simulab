@@ -34,6 +34,7 @@ let sortMode = 'start';
 let expanded = false;
 let calendarMode = 'month';
 let calendarScope = 'all';
+let calendarRegion = 'all';
 let heroIndex = 0;
 
 const byId = id => document.getElementById(id);
@@ -131,10 +132,42 @@ function computeBadge(e, refDate = today) {
   return {text: '진행중', tone: 'live'};
 }
 
-// 현재 선택된 달력 범위(전체/축제/체험·공연/캠핑·세일)에 맞는 일정 목록 반환
-function getScopedItems() {
+// 현재 선택된 달력 범위(전체/축제/체험·공연/캠핑·세일)에 맞는 일정 목록 반환 (지역 필터 적용 전)
+function getScopeOnlyItems() {
   if (calendarScope === 'all') return allItems;
   return allItems.filter(item => item.scope === calendarScope);
+}
+
+// 현재 선택된 달력 범위 + 달력 지역 탭까지 모두 적용된 일정 목록 반환
+function getScopedItems() {
+  const scoped = getScopeOnlyItems();
+  if (calendarRegion === 'all') return scoped;
+  return scoped.filter(item => item.region === calendarRegion);
+}
+
+// 달력 상단 지역별 선택 탭([data-cal-region])의 건수 배지와 활성 상태를 동기화하는 함수
+function syncCalendarRegionPills() {
+  const activeScopeItems = getScopeOnlyItems().filter(item => item.endDate >= today);
+  const countMap = new Map();
+  for (const item of activeScopeItems) {
+    countMap.set(item.region, (countMap.get(item.region) || 0) + 1);
+  }
+
+  document.querySelectorAll('[data-cal-region]').forEach(btn => {
+    const r = btn.dataset.calRegion;
+    const isPressed = r === calendarRegion;
+    btn.setAttribute('aria-pressed', String(isPressed));
+    const countEl = btn.querySelector('small');
+    if (r === 'all') {
+      if (countEl) countEl.textContent = String(activeScopeItems.length);
+      btn.removeAttribute('data-zero');
+    } else {
+      const c = countMap.get(r) || 0;
+      if (countEl) countEl.textContent = String(c);
+      if (c === 0) btn.setAttribute('data-zero', 'true');
+      else btn.removeAttribute('data-zero');
+    }
+  });
 }
 
 // 특정 날짜(d)에 열리는 일정을 축제 우선 순위로 정렬하여 반환
@@ -340,19 +373,20 @@ if (!prefersReducedMotion && heroSlides.length > 1) {
 // ============================================================================
 function renderDay() {
   const current = onDate(selected);
-  byId('day-title').textContent = `${dayName(selected)} 타임라인`;
+  const regionPrefix = calendarRegion === 'all' ? '' : `[${calendarRegion}] `;
+  byId('day-title').textContent = `${regionPrefix}${dayName(selected)} 타임라인`;
   const countPill = byId('day-count-pill');
   if (countPill) countPill.textContent = `총 ${current.length}건`;
 
   byId('day-subtitle').textContent = current.length
-    ? `선택한 날짜에 확인된 일정 ${current.length}건 · 미리보기 버튼을 눌러 요금과 출처를 바로 확인하세요.`
-    : '선택한 날짜에 등록된 일정이 없습니다. 다른 날짜를 눌러보세요.';
+    ? `${calendarRegion === 'all' ? '선택한 날짜' : `${calendarRegion} 지역`}에 확인된 일정 ${current.length}건 · 미리보기 버튼을 눌러 요금과 출처를 바로 확인하세요.`
+    : `${calendarRegion === 'all' ? '선택한 날짜' : `${calendarRegion} 지역`}에 등록된 일정이 없습니다. 다른 날짜나 지역을 눌러보세요.`;
 
   if (!current.length) {
     byId('day-events').innerHTML = `
       <div class="day-empty">
         <strong>이 날짜에는 확인된 일정이 없어요.</strong>
-        <p>달력에서 주황색·보라색 배지가 표시된 날짜를 클릭하거나 위에서 다른 달을 살펴보세요.</p>
+        <p>달력에서 주황색·보라색 배지가 표시된 날짜를 클릭하거나 상단 지역 탭을 변경해보세요.</p>
       </div>`;
     return;
   }
@@ -480,6 +514,7 @@ function renderMonth() {
   byId('month-today').textContent = calendarMode === 'week' ? '이번 주' : '오늘 (TODAY)';
 
   const monthBadge = byId('month-count-badge');
+  const regionSuffix = calendarRegion === 'all' ? '' : `${calendarRegion} `;
 
   // 주간 뷰 렌더링
   if (calendarMode === 'week') {
@@ -494,7 +529,7 @@ function renderMonth() {
 
     const weekUniqueIds = new Set();
     days.forEach(d => onDate(d).forEach(e => weekUniqueIds.add(e.id)));
-    if (monthBadge) monthBadge.textContent = `이번 주 ${weekUniqueIds.size}개 일정 진행`;
+    if (monthBadge) monthBadge.textContent = `이번 주 ${regionSuffix}${weekUniqueIds.size}개 일정 진행`;
 
     byId('month-label').textContent = `${days[0].replaceAll('-', '.')} — ${days[6].slice(5).replace('-', '.')}`;
     byId('calendar-days').innerHTML = days.map(d => buildDayCellHtml(d, Number(d.slice(-2)))).join('');
@@ -533,7 +568,7 @@ function renderMonth() {
     html += `<button type="button" class="cal-cell muted-cell" disabled aria-hidden="true"><span class="cell-top"><strong class="cell-num">${i}</strong></span></button>`;
   }
 
-  if (monthBadge) monthBadge.textContent = `총 ${monthUniqueIds.size}개 일정 진행`;
+  if (monthBadge) monthBadge.textContent = `${regionSuffix}총 ${monthUniqueIds.size}개 일정 진행`;
   byId('calendar-days').innerHTML = html;
   bindDays();
 }
@@ -629,8 +664,46 @@ document.querySelectorAll('[data-calendar-scope]').forEach(btn =>
     document.querySelectorAll('[data-calendar-scope]').forEach(item =>
       item.setAttribute('aria-pressed', String(item === btn))
     );
+    syncCalendarRegionPills();
     renderMonth();
     renderDay();
+  })
+);
+
+// 달력 상단 지역별 선택 탭([data-cal-region]) 클릭 이벤트 연결
+document.querySelectorAll('[data-cal-region]').forEach(btn =>
+  btn.addEventListener('click', () => {
+    const nextRegion = btn.dataset.calRegion || 'all';
+    calendarRegion = nextRegion;
+    syncCalendarRegionPills();
+
+    // 현재 선택된 날짜에 해당 지역 일정이 0건이면 가장 가까운 예정 운영일로 자동 이동
+    if (calendarRegion !== 'all' && onDate(selected).length === 0) {
+      const candidates = getScopedItems()
+        .filter(nextDateOf)
+        .sort((a, b) => nextDateOf(a).localeCompare(nextDateOf(b)));
+      const targetDate = candidates[0] ? nextDateOf(candidates[0]) : null;
+      if (targetDate) {
+        selected = targetDate;
+        shown = new Date(Number(targetDate.slice(0, 4)), Number(targetDate.slice(5, 7)) - 1, 1);
+      }
+    }
+
+    // 하단 #discover 지역 필터에도 해당 지역 옵션이 존재하면 함께 동기화
+    const discoverSelect = byId('region-filter');
+    if (discoverSelect) {
+      const hasOption = [...discoverSelect.options].some(opt => opt.value === nextRegion);
+      const syncVal = hasOption ? nextRegion : 'all';
+      discoverSelect.value = syncVal;
+      document.querySelectorAll('[data-region-pill]').forEach(pill => {
+        pill.setAttribute('aria-pressed', String(pill.dataset.regionPill === syncVal));
+      });
+      renderCards();
+    }
+
+    renderMonth();
+    renderDay();
+    showToast(calendarRegion === 'all' ? '전국 모든 지역의 달력 일정을 표시합니다 📅' : `📍 ${calendarRegion} 지역 달력 일정을 표시합니다`);
   })
 );
 
@@ -700,7 +773,7 @@ byId('head-search-input')?.addEventListener('keydown', e => {
   }
 });
 
-// 지역 드롭다운과 가로형 지역 바로선택 알약 버튼 양방향 동기화 + 달력 날짜 자동 연동
+// 지역 드롭다운과 가로형 지역 바로선택 알약 버튼 양방향 동기화 + 달력 지역 탭/날짜 자동 연동
 function setRegionFilter(regionValue) {
   byId('region-filter').value = regionValue;
   document.querySelectorAll('[data-region-pill]').forEach(pill => {
@@ -708,16 +781,20 @@ function setRegionFilter(regionValue) {
   });
   renderCards();
 
+  // 달력 지역 탭도 함께 동기화
+  calendarRegion = regionValue;
+  syncCalendarRegionPills();
+
   if (regionValue !== 'all') {
     const regionalNext = availableFestivals.find(e => e.region === regionValue);
     const targetDate = regionalNext ? nextDateOf(regionalNext) : null;
     if (targetDate) {
       selected = targetDate;
       shown = new Date(Number(targetDate.slice(0, 4)), Number(targetDate.slice(5, 7)) - 1, 1);
-      renderMonth();
-      renderDay();
     }
   }
+  renderMonth();
+  renderDay();
 }
 
 byId('region-filter').addEventListener('change', () => {
@@ -1052,6 +1129,7 @@ if ('IntersectionObserver' in window && spySections.length) {
 
 // 초기 화면 렌더링 실행
 syncSpotlight();
+syncCalendarRegionPills();
 renderMonth();
 renderDay();
 renderCards();

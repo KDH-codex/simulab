@@ -35,13 +35,25 @@
 
 html {
   scroll-behavior: smooth;
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 body {
   margin: 0;
+  max-width: 100%;
+  overflow-x: clip;
   background: var(--surface);
   color: var(--ink);
   -webkit-font-smoothing: antialiased;
+}
+
+main,
+.finder-section,
+.more-section,
+.site-foot {
+  max-width: 100%;
+  overflow-x: clip;
 }
 
 button,
@@ -95,6 +107,7 @@ select:focus-visible {
 
 .wrap {
   width: min(1360px, calc(100% - 48px));
+  max-width: 100%;
   margin: auto;
 }
 
@@ -259,6 +272,7 @@ select:focus-visible {
   gap: 6px;
   font-size: 13px;
   font-weight: 700;
+  min-width: 0;
 }
 
 .site-head nav a {
@@ -292,6 +306,7 @@ select:focus-visible {
   box-shadow: 0 4px 16px rgba(255, 90, 31, 0.28);
   transition: transform 0.15s, background 0.2s, box-shadow 0.2s;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .head-cta:hover {
@@ -361,6 +376,7 @@ select:focus-visible {
 /* 좌측 메인 스포트라이트 카드 */
 .hero-main {
   min-height: 520px;
+  min-width: 0;
   position: relative;
   overflow: hidden;
   border-radius: 22px;
@@ -778,6 +794,7 @@ select:focus-visible {
   flex-direction: column;
   justify-content: space-between;
   gap: 14px;
+  min-width: 0;
 }
 
 .side-label {
@@ -807,6 +824,7 @@ select:focus-visible {
   flex-direction: column;
   gap: 14px;
   flex: 1;
+  min-width: 0;
 }
 
 .mini-event {
@@ -820,6 +838,7 @@ select:focus-visible {
   box-shadow: 0 4px 16px rgba(19, 27, 46, 0.04);
   transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
   flex: 1;
+  min-width: 0;
 }
 
 .mini-event:hover {
@@ -984,6 +1003,10 @@ select:focus-visible {
   box-shadow: 0 10px 24px rgba(83, 0, 230, 0.2);
 }
 
+.side-note-text {
+  min-width: 0;
+}
+
 .side-note-text > span {
   display: block;
   font-size: 10px;
@@ -1038,7 +1061,7 @@ select:focus-visible {
   justify-content: space-between;
   align-items: flex-end;
   gap: 24px;
-  margin-bottom: 26px;
+  margin-bottom: 18px;
   flex-wrap: wrap;
 }
 
@@ -1072,6 +1095,7 @@ select:focus-visible {
   align-items: center;
   gap: 10px;
   flex-wrap: wrap;
+  max-width: 100%;
 }
 
 .calendar-scope-switch {
@@ -1083,6 +1107,7 @@ select:focus-visible {
   box-shadow: 0 2px 8px rgba(19, 27, 46, 0.04);
   gap: 4px;
   flex-wrap: wrap;
+  max-width: 100%;
 }
 
 .calendar-scope-switch button {
@@ -1093,6 +1118,7 @@ select:focus-visible {
   font-weight: 800;
   padding: 8px 14px;
   border-radius: 999px;
+  white-space: nowrap;
   transition: background 0.18s, color 0.18s, box-shadow 0.18s, transform 0.15s;
 }
 
@@ -1105,6 +1131,75 @@ select:focus-visible {
   background: var(--violet);
   color: #fff;
   box-shadow: 0 4px 12px rgba(83, 0, 230, 0.24);
+}
+
+/* 달력 전용 지역별 선택 탭 바 */
+.calendar-region-bar {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 10px 16px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 4px 14px rgba(19, 27, 46, 0.03);
+  max-width: 100%;
+  min-width: 0;
+}
+
+.calendar-region-title {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--violet);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.calendar-region-pills {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 2px 0;
+  flex: 1;
+  min-width: 0;
+}
+
+.calendar-region-pills::-webkit-scrollbar {
+  display: none;
+}
+
+.calendar-region-pills button {
+  border: 1px solid transparent;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 13px;
+  border-radius: 999px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 0.15s, color 0.15s, border-color 0.15s, transform 0.15s;
+}
+
+.calendar-region-pills button:hover {
+  background: var(--container);
+  border-color: #cbbeff;
+  transform: translateY(-1px);
+}
+
+.calendar-region-pills button[aria-pressed="true"] {
+  background: var(--orange);
+  border-color: var(--orange);
+  color: #fff;
+  font-weight: 800;
+  box-shadow: 0 4px 12px rgba(255, 90, 31, 0.25);
+}
+
+.calendar-region-pills button[data-zero="true"]:not([aria-pressed="true"]) {
+  opacity: 0.42;
 }
 
 /* 7:5 2단 분할 레이아웃 */
@@ -1122,6 +1217,7 @@ select:focus-visible {
   border-radius: 22px;
   padding: 26px;
   min-width: 0;
+  max-width: 100%;
   box-shadow: 0 8px 24px rgba(19, 27, 46, 0.04);
 }
 
@@ -1177,6 +1273,7 @@ select:focus-visible {
   border-radius: 999px;
   font-size: 12px;
   font-weight: 800;
+  white-space: nowrap;
   transition: background 0.15s, color 0.15s;
 }
 
@@ -1217,12 +1314,13 @@ select:focus-visible {
   border-radius: 999px;
   font-size: 11px;
   padding: 0 12px;
+  white-space: nowrap;
 }
 
-/* 요일 헤더 */
+/* 요일 헤더 (minmax(0, 1fr)로 7열 균등 폭 강제 고정) */
 .weekday-row {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(7, minmax(0, 1fr));
   gap: 6px;
   margin-bottom: 8px;
 }
@@ -1243,10 +1341,10 @@ select:focus-visible {
   color: var(--violet);
 }
 
-/* AI Studio 스타일 카드형 날짜 셀 그리드 */
+/* AI Studio 스타일 카드형 날짜 셀 그리드 (minmax(0, 1fr)로 열 팽창 방지) */
 .calendar-days {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(7, minmax(0, 1fr));
   gap: 6px;
 }
 
@@ -1263,6 +1361,7 @@ select:focus-visible {
   flex-direction: column;
   justify-content: space-between;
   text-align: left;
+  overflow: hidden;
   transition: background 0.18s ease, transform 0.18s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.18s ease, border-color 0.18s ease;
 }
 
@@ -1296,14 +1395,16 @@ select:focus-visible {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 4px;
+  gap: 2px;
   width: 100%;
+  min-width: 0;
 }
 
 .cell-num {
   font-size: 13px;
   font-weight: 800;
   line-height: 1;
+  white-space: nowrap;
 }
 
 .cal-cell.is-sun:not(.selected) .cell-num {
@@ -1322,9 +1423,10 @@ select:focus-visible {
   font-style: normal;
   font-size: 9px;
   font-weight: 800;
-  padding: 2px 5px;
+  padding: 2px 4px;
   border-radius: 4px;
   line-height: 1.1;
+  white-space: nowrap;
 }
 
 .cell-tag.today-tag {
@@ -1342,6 +1444,7 @@ select:focus-visible {
   flex-direction: column;
   gap: 4px;
   width: 100%;
+  min-width: 0;
   margin-top: 6px;
 }
 
@@ -1383,6 +1486,7 @@ select:focus-visible {
   display: flex;
   align-items: center;
   gap: 3px;
+  min-width: 0;
 }
 
 .cell-count-row small {
@@ -1390,6 +1494,7 @@ select:focus-visible {
   font-weight: 700;
   color: var(--muted);
   margin-left: 2px;
+  white-space: nowrap;
 }
 
 .dot-light,
@@ -1400,6 +1505,7 @@ select:focus-visible {
   width: 6px;
   height: 6px;
   border-radius: 50%;
+  flex-shrink: 0;
 }
 
 .dot-light { background: var(--orange); }
@@ -1412,8 +1518,8 @@ select:focus-visible {
   background: linear-gradient(135deg, var(--orange) 0%, #ff4500 100%);
   color: #fff;
   border-color: var(--orange);
-  box-shadow: 0 10px 24px rgba(255, 90, 31, 0.34), 0 0 0 4px rgba(255, 90, 31, 0.2);
-  transform: scale(1.03);
+  box-shadow: 0 10px 24px rgba(255, 90, 31, 0.34), 0 0 0 3px rgba(255, 90, 31, 0.2);
+  transform: scale(1.02);
   z-index: 2;
 }
 
@@ -1434,6 +1540,7 @@ select:focus-visible {
   border-radius: 50%;
   background: #fff;
   display: inline-block;
+  flex-shrink: 0;
 }
 
 .cell-selected-pill {
@@ -1444,8 +1551,11 @@ select:focus-visible {
   color: #fff;
   font-size: 10px;
   font-weight: 800;
-  padding: 4px 4px;
+  padding: 4px 2px;
   border-radius: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* 달력 하단 색상 범례 */
@@ -1623,6 +1733,7 @@ select:focus-visible {
   gap: 10px;
   max-height: 455px;
   overflow-y: auto;
+  overflow-x: hidden;
   padding-right: 2px;
 }
 
@@ -1634,6 +1745,7 @@ select:focus-visible {
   display: flex;
   gap: 12px;
   align-items: flex-start;
+  min-width: 0;
   transition: background 0.16s, border-color 0.16s, transform 0.16s, box-shadow 0.16s;
   animation: cardStaggerIn 0.34s cubic-bezier(0.22, 1, 0.36, 1) backwards;
   animation-delay: calc(var(--stagger-idx, 0) * 40ms);
@@ -1761,6 +1873,7 @@ select:focus-visible {
   font-weight: 800;
   padding: 4px 8px;
   border-radius: 999px;
+  white-space: nowrap;
   transition: background 0.15s, color 0.15s, border-color 0.15s;
 }
 
@@ -1840,6 +1953,7 @@ select:focus-visible {
   display: flex;
   flex-direction: column;
   gap: 14px;
+  max-width: 100%;
 }
 
 .search {
@@ -1867,6 +1981,7 @@ select:focus-visible {
 
 .search input {
   width: 100%;
+  min-width: 0;
   border: 0;
   outline: 0;
   background: transparent;
@@ -1915,6 +2030,7 @@ select:focus-visible {
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-wrap: wrap;
 }
 
 .sort-label {
@@ -1940,6 +2056,7 @@ select:focus-visible {
   font-weight: 800;
   padding: 6px 12px;
   border-radius: 999px;
+  white-space: nowrap;
   transition: background 0.15s, color 0.15s;
 }
 
@@ -1957,6 +2074,8 @@ select:focus-visible {
   display: flex;
   align-items: center;
   gap: 10px;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .region-bar-title {
@@ -1974,6 +2093,8 @@ select:focus-visible {
   overflow-x: auto;
   scrollbar-width: none;
   padding: 2px 0;
+  flex: 1;
+  min-width: 0;
 }
 
 .region-pills::-webkit-scrollbar {
@@ -1989,6 +2110,7 @@ select:focus-visible {
   padding: 6px 13px;
   border-radius: 999px;
   white-space: nowrap;
+  flex-shrink: 0;
   transition: background 0.15s, color 0.15s, transform 0.15s;
 }
 
@@ -2031,6 +2153,7 @@ select:focus-visible {
 
 .event-card {
   position: relative;
+  min-width: 0;
   border: 1px solid var(--line);
   border-radius: 20px;
   overflow: hidden;
@@ -2284,6 +2407,7 @@ select:focus-visible {
 .card-body {
   padding: 20px;
   flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -2354,6 +2478,11 @@ select:focus-visible {
   margin-top: auto;
 }
 
+.fee-box {
+  min-width: 0;
+  flex: 1;
+}
+
 .fee-box small {
   display: block;
   font-size: 10px;
@@ -2367,7 +2496,6 @@ select:focus-visible {
   font-weight: 800;
   color: var(--ink);
   margin-top: 2px;
-  max-width: 190px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -2377,6 +2505,7 @@ select:focus-visible {
   display: flex;
   align-items: center;
   gap: 6px;
+  flex-shrink: 0;
 }
 
 .detail-btn {
@@ -2463,6 +2592,8 @@ select:focus-visible {
   border: 1px solid var(--line);
   border-radius: 22px;
   padding: 28px;
+  min-width: 0;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -2492,6 +2623,7 @@ select:focus-visible {
   padding: 5px 11px;
   border-radius: 999px;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .curation-sub {
@@ -2504,6 +2636,7 @@ select:focus-visible {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  min-width: 0;
 }
 
 .curation-rank-item {
@@ -2514,6 +2647,7 @@ select:focus-visible {
   border-radius: 14px;
   background: var(--surface);
   border: 1px solid transparent;
+  min-width: 0;
   transition: background 0.15s, border-color 0.15s, transform 0.15s;
 }
 
@@ -2580,12 +2714,14 @@ select:focus-visible {
   background: var(--violet-fixed);
   padding: 4px 9px;
   border-radius: 999px;
+  white-space: nowrap;
 }
 
 .rank-meta i {
   font-style: normal;
   color: var(--muted);
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .curation-all-link {
@@ -2608,6 +2744,7 @@ select:focus-visible {
   flex-direction: column;
   justify-content: space-between;
   gap: 16px;
+  min-width: 0;
 }
 
 .guide-tip-card {
@@ -2618,6 +2755,7 @@ select:focus-visible {
   display: flex;
   align-items: flex-start;
   gap: 16px;
+  min-width: 0;
   box-shadow: 0 4px 16px rgba(19, 27, 46, 0.03);
   transition: transform 0.2s, border-color 0.2s;
 }
@@ -2670,6 +2808,7 @@ select:focus-visible {
   color: #fff;
   border-radius: 20px;
   padding: 24px;
+  min-width: 0;
   box-shadow: 0 12px 28px rgba(255, 90, 31, 0.24);
 }
 
@@ -3044,6 +3183,7 @@ select:focus-visible {
   bottom: 28px;
   z-index: 95;
   transform: translate(-50%, 16px);
+  max-width: calc(100vw - 28px);
   background: rgba(19, 27, 46, 0.94);
   backdrop-filter: blur(12px);
   color: #fff;
@@ -3056,6 +3196,9 @@ select:focus-visible {
   opacity: 0;
   transition: opacity 0.22s ease, transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
   pointer-events: none;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
   white-space: nowrap;
 }
 
@@ -3073,7 +3216,7 @@ select:focus-visible {
 }
 
 /* ==========================================================================
-   9. 반응형 미디어 쿼리 (태블릿 & 모바일 최적화)
+   9. 반응형 미디어 쿼리 (태블릿 & 모바일 횡스크롤 원천 차단 최적화)
    ========================================================================== */
 @media (max-width: 1080px) {
   .head-search {
@@ -3082,7 +3225,7 @@ select:focus-visible {
   .hero-grid,
   .calendar-grid,
   .more-bento {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
   .cards {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -3101,18 +3244,23 @@ select:focus-visible {
   }
   .head-inner {
     min-height: 62px;
-    padding: 0 14px;
+    padding: 0 12px;
+    gap: 8px;
   }
   .brand {
-    font-size: 20px;
+    font-size: 19px;
+    gap: 8px;
   }
   .brand-mark {
-    width: 30px;
-    height: 30px;
-    font-size: 18px;
+    width: 28px;
+    height: 28px;
+    font-size: 17px;
   }
   .brand small {
     display: none;
+  }
+  .site-head nav {
+    gap: 4px;
   }
   .site-head nav a:nth-child(3),
   .site-head nav a:nth-child(4),
@@ -3120,16 +3268,16 @@ select:focus-visible {
     display: none;
   }
   .site-head nav a {
-    padding: 6px 10px;
-    font-size: 12px;
+    padding: 6px 9px;
+    font-size: 11px;
   }
   .saved-trigger {
     font-size: 0;
-    padding: 8px 11px;
+    padding: 7px 10px;
   }
   .saved-trigger::before {
     content: '♡';
-    font-size: 16px;
+    font-size: 15px;
   }
   .saved-trigger span {
     font-size: 10px;
@@ -3143,57 +3291,148 @@ select:focus-visible {
     display: none;
   }
   .hero-main {
-    min-height: 460px;
+    min-height: 440px;
   }
   .hero-topbar {
-    padding: 18px 20px 0;
+    padding: 16px 16px 0;
   }
   .hero-dots {
     display: none;
   }
   .hero-copy {
-    padding: 18px 20px 28px;
+    padding: 16px 16px 24px;
   }
   .hero-copy h1 {
-    font-size: 32px;
+    font-size: 30px;
   }
   .hero-event {
     font-size: 18px;
   }
+  .hero-actions .button {
+    padding: 10px 15px;
+    font-size: 12px;
+  }
   .hero-corner {
-    right: 16px;
-    bottom: 12px;
+    right: 14px;
+    bottom: 10px;
     font-size: 8px;
   }
   .mini-date {
-    width: 88px;
-    min-width: 88px;
+    width: 84px;
+    min-width: 84px;
+  }
+  .side-note {
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .finder-section,
   .discover-section,
   .more-section {
-    padding: 46px 0;
+    padding: 42px 0;
   }
+
+  .calendar-top-controls {
+    width: 100%;
+  }
+  .calendar-scope-switch {
+    width: 100%;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .calendar-scope-switch::-webkit-scrollbar {
+    display: none;
+  }
+  .calendar-scope-switch button {
+    padding: 7px 12px;
+    font-size: 11px;
+    flex-shrink: 0;
+  }
+
+  .calendar-region-bar {
+    padding: 8px 12px;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .calendar-region-title {
+    font-size: 11px;
+  }
+  .calendar-region-pills button {
+    padding: 5px 11px;
+    font-size: 11px;
+  }
+
   .calendar-panel,
   .day-panel,
   .curation-panel {
-    padding: 18px;
+    padding: 16px 14px;
+    border-radius: 18px;
+  }
+  .calendar-toolbar {
+    gap: 8px;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+  }
+  .calendar-toolbar h3 {
+    font-size: 20px;
+  }
+  .calendar-view-switch {
+    margin-left: 0;
+  }
+  .weekday-row,
+  .calendar-days {
+    gap: 4px;
   }
   .cal-cell {
-    min-height: 62px;
-    padding: 5px;
-    border-radius: 9px;
+    min-height: 58px;
+    padding: 4px;
+    border-radius: 8px;
+  }
+  .cal-cell.selected {
+    transform: none;
+    box-shadow: 0 4px 12px rgba(255, 90, 31, 0.3);
+  }
+  .cell-num {
+    font-size: 12px;
+  }
+  .cal-cell.selected .cell-num {
+    font-size: 12px;
+  }
+  .cal-cell.selected .cell-num small {
+    font-size: 9px;
+  }
+  .cell-tag {
+    font-size: 8px;
+    padding: 1px 3px;
   }
   .cell-event-chip {
     display: none;
   }
   .cell-selected-pill {
+    font-size: 8px;
+    padding: 2px 1px;
+  }
+  .cell-count-row small {
     font-size: 9px;
-    padding: 2px;
+  }
+
+  .day-event {
+    padding: 11px;
+    gap: 9px;
+  }
+  .timeline-time-box {
+    width: 58px;
+    min-width: 58px;
+    padding: 6px 4px;
+  }
+
+  .filter-box {
+    padding: 14px;
+    border-radius: 18px;
   }
   .cards {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
   .card-quick-btn {
     opacity: 1;
@@ -3202,9 +3441,36 @@ select:focus-visible {
   .region-quick-bar {
     flex-direction: column;
     align-items: flex-start;
+    padding: 10px 12px;
   }
   .region-pills {
     width: 100%;
+  }
+
+  /* 모바일에서 가족·생활 정보 큐레이션 아이템 내부 넘침 방지 */
+  .curation-rank-item {
+    flex-wrap: wrap;
+    gap: 8px 10px;
+    padding: 12px;
+  }
+  .rank-body {
+    flex: 1 1 calc(100% - 42px);
+  }
+  .rank-body small {
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+  }
+  .rank-meta {
+    width: 100%;
+    padding-left: 38px;
+    justify-content: space-between;
+  }
+
+  .guide-tip-card {
+    padding: 18px 16px;
+    gap: 12px;
   }
 
   .quick-meta-grid {
@@ -3218,6 +3484,7 @@ select:focus-visible {
   .festa-toast {
     bottom: 78px;
     font-size: 12px;
+    padding: 10px 16px;
   }
 
   .mobile-bottom-nav {
@@ -3240,7 +3507,7 @@ select:focus-visible {
     display: grid;
     place-items: center;
     gap: 2px;
-    min-width: 58px;
+    min-width: 54px;
     border: 0;
     background: none;
     color: var(--muted);
