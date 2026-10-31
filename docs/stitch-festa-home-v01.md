@@ -18,7 +18,7 @@
 
 ## Stitch / Google AI Studio로 고치는 절차
 
-1. Stitch 프로젝트 소유 계정으로 [프로젝트](https://stitch.withgoogle.com/projects/16870204999804682049)를 연다. 2026-10-31 현재 이 작업 브라우저에서는 “This page doesn't exist or isn't shared with you”가 표시되어 라이브 화면은 볼 수 없었다. 제공 ZIP의 `screen.png`, `code.html`, `DESIGN.md`를 기준으로 구현했다.
+1. Stitch 프로젝트 소유 계정으로 [프로젝트](https://stitch.withgoogle.com/projects/16870204999804682049)를 연다. 로그인 후 프로젝트와 프로토타입 화면을 확인했다. 개별 `/screens/<id>` 주소는 웹 탐색 경로로 열리지 않아 프로젝트 캔버스에서 화면을 선택한다. 제공 ZIP의 `screen.png`, `code.html`, `DESIGN.md`도 참고했다.
 2. 시각 시안만 수정하려면 Stitch의 대화/테마 수정 기능을 사용하고 새 화면을 내보낸다. 내보낸 HTML은 **디자인 참고자료**로 쓰고, 위 세 소스 파일에 선택적으로 반영한다.
 3. Google AI Studio **Build**에서는 입력창의 **+ → Import from GitHub**로 현재 저장소를 가져올 수 있다. 코드 패널에서 직접 수정하거나 대화/주석 모드로 변경을 요청할 수 있고, 설정의 GitHub 탭에서 동기화할 수 있다. 직접 운영 브랜치에 자동 푸시하기 전에 변경 파일과 미리보기를 검토한다. 이 저장소는 정적 사이트 생성 구조라 생성된 `index.html`만 AI Studio에서 고치면 다음 빌드 때 덮어써진다.
 4. 작업 브랜치에서 `node scripts/build-site.mjs`, `node scripts/check-public.mjs`를 실행하고 데스크톱·모바일 미리보기를 확인한 다음 운영 브랜치에 반영한다. 기존 행사 데이터 변경에는 공식 출처 확인이 필요하다.
