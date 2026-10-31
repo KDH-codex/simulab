@@ -323,12 +323,11 @@ const html = `<!doctype html>
         </label>
       </div>
       <nav aria-label="주요 메뉴">
-        <a href="#calendar" class="nav-pill active" data-nav-section="calendar">축제·정보 달력</a>
-        <a href="#curation" class="nav-pill" data-nav-section="curation">테마 큐레이션</a>
-        <a href="#discover" class="nav-pill" data-nav-section="discover">지역·취향 탐색</a>
-        <a href="/tools/kids-outing-calendar/" class="nav-pill">나들이 달력</a>
-        <a href="/tools/family-info-calendar/" class="nav-pill">가족 정보 달력</a>
-        <a href="/library/" class="nav-pill">생활 도구</a>
+        <a href="/calendar/" class="nav-pill">📅 축제·가족달력</a>
+        <a href="/map/" class="nav-pill">🗺️ 내주변 지도</a>
+        <a href="/curation/" class="nav-pill">✨ 테마 큐레이션</a>
+        <a href="#discover" class="nav-pill" data-nav-section="discover">⌕ 지역별 탐색</a>
+        <a href="/library/" class="nav-pill">🛠 생활 도구</a>
       </nav>
       <button type="button" class="head-cta saved-trigger" data-open-saved aria-label="저장한 행사">
         ♡ 저장한 일정 <span data-saved-count>0</span>
@@ -435,9 +434,41 @@ const html = `<!doctype html>
               <strong>축제부터 체험·캠핑·세일까지,<br>한 달력에서 챙기세요.</strong>
               <p>신청 마감일과 실제 나들이 날짜를 놓치지 않도록 공식 공지를 모았습니다.</p>
             </div>
-            <a class="side-note-btn" href="/tools/family-info-calendar/">통합 달력 ↗</a>
+            <a class="side-note-btn" href="/calendar/">통합 달력 ↗</a>
           </div>
         </aside>
+      </div>
+    </section>
+
+    <!-- STITCH DESIGN HUB: 3대 전용 멀티페이지 바로가기 허브 -->
+    <section class="wrap" style="margin-top: 1.5rem; margin-bottom: 2rem;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+        <a href="/calendar/" style="display: flex; align-items: center; gap: 1rem; background: #ffffff; border: 1px solid var(--line); border-radius: 16px; padding: 1.25rem; text-decoration: none; box-shadow: 0 4px 12px rgba(19, 27, 46, 0.04); transition: transform 0.15s ease, border-color 0.15s ease;">
+          <div style="width: 48px; height: 48px; border-radius: 12px; background: #eef2ff; color: #4f46e5; font-size: 1.4rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">📅</div>
+          <div>
+            <span style="font-size: 0.75rem; font-weight: 800; color: #4f46e5; text-transform: uppercase;">WIDE MONTHLY</span>
+            <h4 style="margin: 0.1rem 0 0.2rem; font-size: 1.05rem; font-weight: 800; color: var(--ink);">통합 축제·가족 달력 ↗</h4>
+            <p style="margin: 0; font-size: 0.82rem; color: var(--muted); line-height: 1.35;">월간/주간 캘린더, 당일 타임라인과 1일 추천 코스</p>
+          </div>
+        </a>
+
+        <a href="/map/" style="display: flex; align-items: center; gap: 1rem; background: #0f172a; color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px; padding: 1.25rem; text-decoration: none; box-shadow: 0 4px 14px rgba(15, 23, 42, 0.15); transition: transform 0.15s ease;">
+          <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(56, 189, 248, 0.2); color: #38bdf8; font-size: 1.4rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">🗺️</div>
+          <div>
+            <span style="font-size: 0.75rem; font-weight: 800; color: #38bdf8; text-transform: uppercase;">GPS RADAR</span>
+            <h4 style="margin: 0.1rem 0 0.2rem; font-size: 1.05rem; font-weight: 800; color: #ffffff;">내 주변 레이더 지도 ↗</h4>
+            <p style="margin: 0; font-size: 0.82rem; color: #94a3b8; line-height: 1.35;">1km~10km 반경 실시간 핀, 버스킹, 플리마켓, 주차장</p>
+          </div>
+        </a>
+
+        <a href="/curation/" style="display: flex; align-items: center; gap: 1rem; background: #ffffff; border: 1px solid var(--line); border-radius: 16px; padding: 1.25rem; text-decoration: none; box-shadow: 0 4px 12px rgba(19, 27, 46, 0.04); transition: transform 0.15s ease, border-color 0.15s ease;">
+          <div style="width: 48px; height: 48px; border-radius: 12px; background: #fff4ed; color: #ff5a1f; font-size: 1.4rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">✨</div>
+          <div>
+            <span style="font-size: 0.75rem; font-weight: 800; color: #ff5a1f; text-transform: uppercase;">EDITORIAL BENTO</span>
+            <h4 style="margin: 0.1rem 0 0.2rem; font-size: 1.05rem; font-weight: 800; color: var(--ink);">테마별 맞춤 큐레이션 ↗</h4>
+            <p style="margin: 0; font-size: 0.82rem; color: var(--muted); line-height: 1.35;">7대 감성 리본, 에디터스 픽과 큐레이터 동선 가이드</p>
+          </div>
+        </a>
       </div>
     </section>
 
@@ -476,9 +507,9 @@ const html = `<!doctype html>
             </div>
           </div>
           <div class="map-banner-actions">
-            <button type="button" class="map-radar-btn" id="open-nearby-map-btn">
-              <span aria-hidden="true">📍</span> 내 주변 축제 지도 열기
-            </button>
+            <a class="map-radar-btn" href="/map/" style="display:inline-flex; align-items:center; text-decoration:none;">
+              <span aria-hidden="true">📍</span> 내 주변 축제 지도 열기 ↗
+            </a>
           </div>
         </div>
 
@@ -561,11 +592,16 @@ const html = `<!doctype html>
               <a href="#discover" class="day-more-primary" id="day-jump-discover">
                 아래 카드 목록에서 전체 축제 비교하기 ↓
               </a>
-              <a href="/tools/kids-outing-calendar/" class="day-more">
-                상세 조건·예약 정보 전체 보기 ↗
+              <a href="/calendar/" class="day-more" style="font-weight: 800; color: var(--orange-deep);">
+                📅 대형 와이드 캘린더 &amp; 1일 코스 전체보기 ↗
               </a>
             </div>
           </div>
+        </div>
+        <div style="margin-top: 1.5rem; text-align: center;">
+          <a href="/calendar/" class="bento-cta-btn" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1.75rem; font-size: 0.95rem; border-radius: 12px; background: linear-gradient(135deg, var(--orange) 0%, #ff7a45 100%); color: #fff; font-weight: 800; text-decoration: none; box-shadow: 0 4px 14px rgba(255, 90, 31, 0.35);">
+            <span>📅 와이드 월간 캘린더 &amp; 1일 추천 코스 전용 페이지로 이동 ↗</span>
+          </a>
         </div>
       </div>
     </section>
@@ -706,6 +742,11 @@ const html = `<!doctype html>
               }).join('')}
             </div>
           </div>
+        </div>
+        <div style="margin-top: 1.5rem; text-align: center;">
+          <a href="/curation/" class="bento-cta-btn" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 1.75rem; font-size: 0.95rem; border-radius: 12px; background: linear-gradient(135deg, var(--orange) 0%, #ff7a45 100%); color: #fff; font-weight: 800; text-decoration: none; box-shadow: 0 4px 14px rgba(255, 90, 31, 0.35);">
+            <span>✨ 7대 테마 아카이브 &amp; 벤토 컬렉션 전체보기 ↗</span>
+          </a>
         </div>
       </div>
     </section>

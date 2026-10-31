@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>테마별 큐레이션 - 취향 맞춤 축제 컬렉션 | 시뮬랩 (FESTA CALENDAR)</title>
+  <meta name="description" content="미식로드, 불꽃야경, 정원산책, 인디버스킹, 키즈체험까지! 취향과 동행인에 맞춘 전국 55개 대표 축제 테마 아카이브와 에디터 추천 코스를 만나보세요.">
+  <link rel="canonical" href="https://simulab.kr/curation/">
+  <link rel="icon" href="/favicon.svg">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" href="/assets/icons/icon-192.png">
+  <meta name="theme-color" content="#ff5a1f">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="테마별 큐레이션 - 취향 맞춤 축제 컬렉션 | 시뮬랩">
+  <meta property="og:description" content="7대 대표 테마 리본, 트렌딩 해시태그, 에디터스 픽 벤토 컬렉션">
+  <meta property="og:url" content="https://simulab.kr/curation/">
+  <link rel="stylesheet" href="/assets/css/festa-curation.css">
+  <script type="module" src="/assets/js/festa-curation.js"></script>
+</head>
+<body>
+  <a class="skip" href="#curation-main">본문으로 이동</a>
+
+  <!-- 상단 글로벌 네비게이션 헤더 (Google Stitch 규격) -->
+  <header class="cur-site-head">
+    <div class="cur-head-inner">
+      <div class="cur-head-left">
+        <a class="cur-brand" href="/" aria-label="시뮬랩 홈으로 이동">
+          <div class="cur-brand-icon">
+            <span aria-hidden="true">✳</span>
+          </div>
+          <span class="cur-brand-text">FESTA <strong>CALENDAR</strong></span>
+        </a>
+        <nav class="cur-nav" aria-label="글로벌 메뉴">
+          <a href="/calendar/" class="cur-nav-item">📅 축제달력</a>
+          <a href="/map/" class="cur-nav-item">🗺️ 내주변 지도</a>
+          <a href="/curation/" class="cur-nav-item active" aria-current="page">✨ 테마별 큐레이션</a>
+          <a href="/#discover" class="cur-nav-item">⌕ 지역별 탐색</a>
+          <a href="/library/" class="cur-nav-item">🛠 생활 도구</a>
+        </nav>
+      </div>
+      <div class="cur-head-right">
+        <a href="/calendar/" class="cur-cta-link">
+          통합 달력으로 확인 ↗
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 메인 큐레이션 본문 -->
+  <main id="curation-main" class="cur-main-wrap">
+    
+    <!-- 1. HERO ARCHIVE BANNER -->
+    <section class="cur-hero-banner">
+      <div class="cur-hero-badge">THEME ARCHIVE &amp; EDITORIAL</div>
+      <h1 class="cur-hero-title">
+        당신의 취향을 저격할<br>
+        <strong>이달의 테마별 축제 컬렉션</strong>
+      </h1>
+      <p class="cur-hero-desc">
+        누구와 함께 떠나시나요? 맛있는 미식부터 화려한 불꽃 야경, 한적한 숲속 힐링까지<br>
+        전국 55개 공식 인증 축제 중 지금 가장 뜨거운 테마를 선별했습니다.
+      </p>
+
+      <!-- 트렌딩 해시태그 바 -->
+      <div class="cur-trending-tags" role="toolbar" aria-label="인기 트렌드 태그">
+        <span class="trend-tag-label">🔥 실시간 트렌드</span>
+        <button type="button" class="trend-tag-chip active" data-filter="all">#전체보기</button>
+        <button type="button" class="trend-tag-chip" data-filter="food">#미식페스타</button>
+        <button type="button" class="trend-tag-chip" data-filter="light">#불꽃야간축제</button>
+        <button type="button" class="trend-tag-chip" data-filter="nature">#가을꽃산책</button>
+        <button type="button" class="trend-tag-chip" data-filter="kids">#아이와함께</button>
+        <button type="button" class="trend-tag-chip" data-filter="art">#스트리트버스킹</button>
+        <button type="button" class="trend-tag-chip" data-filter="market">#주말플리마켓</button>
+      </div>
+    </section>
+
+    <!-- 2. 7대 대표 카테고리 리본 카드 그리드 -->
+    <section class="cur-section">
+      <div class="cur-sec-head">
+        <span class="cur-sec-badge">7 CATEGORIES</span>
+        <h2 class="cur-sec-title">취향 맞춤 7대 테마 리본</h2>
+        <p class="cur-sec-desc">카테고리를 클릭하면 해당 테마의 엄선된 축제 목록이 펼쳐집니다.</p>
+      </div>
+
+      <div class="cur-category-ribbon-grid" id="cur-category-ribbon-grid">
+        
+          <div class="cur-ribbon-card theme-amber" data-theme="food">
+            <div class="cur-ribbon-icon">◒</div>
+            <div class="cur-ribbon-body">
+              <span class="cur-ribbon-tag">#미식페스타</span>
+              <h3 class="cur-ribbon-title">미식·푸드로드</h3>
+              <p class="cur-ribbon-desc">유명 셰프 팝업과 지역 특산물 먹거리 장터, 활기 넘치는 푸드트럭 빌리지</p>
+            </div>
+            <div class="cur-ribbon-arrow">→</div>
+          </div>
+        
+          <div class="cur-ribbon-card theme-indigo" data-theme="light">
+            <div class="cur-ribbon-icon">✦</div>
+            <div class="cur-ribbon-body">
+              <span class="cur-ribbon-tag">#불꽃야간축제</span>
+              <h3 class="cur-ribbon-title">불꽃·야경 판타지</h3>
+              <p class="cur-ribbon-desc">강변을 수놓는 화려한 불꽃과 레이저 미디어아트, 1,000대 드론 라이트쇼</p>
+            </div>
+            <div class="cur-ribbon-arrow">→</div>
+          </div>
+        
+          <div class="cur-ribbon-card theme-emerald" data-theme="nature">
+            <div class="cur-ribbon-icon">❋</div>
+            <div class="cur-ribbon-body">
+              <span class="cur-ribbon-tag">#가을꽃산책</span>
+              <h3 class="cur-ribbon-title">자연·힐링 정원</h3>
+              <p class="cur-ribbon-desc">은빛 억새와 국화, 핑크뮬리 물결 속에서 즐기는 가족 숲속 피크닉</p>
+            </div>
+            <div class="cur-ribbon-arrow">→</div>
+          </div>
+        
+          <div class="cur-ribbon-card theme-purple" data-theme="art">
+            <div class="cur-ribbon-icon">◈</div>
+            <div class="cur-ribbon-body">
+              <span class="cur-ribbon-tag">#스트리트아트</span>
+              <h3 class="cur-ribbon-title">문화·예술 거리</h3>
+              <p class="cur-ribbon-desc">도심 속 인디 밴드 버스킹, 현대 미술 야외 전시와 거리 극단 퍼포먼스</p>
+            </div>
+            <div class="cur-ribbon-arrow">→</div>
+          </div>
+        
+          <div class="cur-ribbon-card theme-sky" data-theme="kids">
+            <div class="cur-ribbon-icon">✳</div>
+            <div class="cur-ribbon-body">
+              <span class="cur-ribbon-tag">#아이와함께</span>
+              <h3 class="cur-ribbon-title">가족·어린이 나들이</h3>
+              <p class="cur-ribbon-desc">인기 캐릭터 팝업과 안전한 오감 자극 체험 학습, 키즈 놀이존</p>
+            </div>
+            <div class="cur-ribbon-arrow">→</div>
+          </div>
+        
+          <div class="cur-ribbon-card theme-rose" data-theme="heritage">
+            <div class="cur-ribbon-icon">🏛️</div>
+            <div class="cur-ribbon-body">
+              <span class="cur-ribbon-tag">#성곽달빛야행</span>
+              <h3 class="cur-ribbon-title">전통·역사 기행</h3>
+              <p class="cur-ribbon-desc">유네스코 문화유산과 궁궐 야행, 전통 한복 체험과 달빛 기행</p>
+            </div>
+            <div class="cur-ribbon-arrow">→</div>
+          </div>
+        
+          <div class="cur-ribbon-card theme-teal" data-theme="market">
+            <div class="cur-ribbon-icon">⛺</div>
+            <div class="cur-ribbon-body">
+              <span class="cur-ribbon-tag">#로컬마켓</span>
+              <h3 class="cur-ribbon-title">플리마켓·팝업</h3>
+              <p class="cur-ribbon-desc">전국 핸드메이드 작가들의 유니크한 굿즈와 감성 가득한 주말 플리마켓</p>
+            </div>
+            <div class="cur-ribbon-arrow">→</div>
+          </div>
+        
+      </div>
+    </section>
+
+    <!-- 3. EDITOR'S PICK 벤토 쇼케이스 & 민서영 큐레이터 코멘트 스트립 -->
+    <section class="cur-section cur-bento-section">
+      <div class="cur-sec-head">
+        <span class="cur-sec-badge">CURATOR'S CHOICE</span>
+        <h2 class="cur-sec-title">에디터스 픽 벤토 쇼케이스</h2>
+        <p class="cur-sec-desc">이번 주말 가장 높은 평점과 만족도를 기록한 시뮬랩 추천 컬렉션</p>
+      </div>
+
+      <!-- 민서영 수석 큐레이터 코멘트 스트립 (Stitch 규격) -->
+      <div class="cur-curator-strip">
+        <div class="cur-curator-avatar">민</div>
+        <div class="cur-curator-text">
+          <div class="cur-curator-role"><strong>민서영 수석 큐레이터</strong>의 이번 주 나들이 꿀팁</div>
+          <p class="cur-curator-comment">
+            “주말 축제는 낮 12시부터 오후 3시 사이가 가장 붐빕니다. 오전 10시 30분경 도착해 플리마켓과 푸드존을 미리 즐기시거나, 오후 5시 이후 일몰 노을과 야간 조명을 함께 즐기는 야경 코스를 적극 추천드립니다.”
+          </p>
+        </div>
+      </div>
+
+      <!-- 벤토 그리드 -->
+      <div class="cur-bento-grid" id="cur-bento-grid">
+        <!-- 메인 대형 하이라이트 카드 (Bento Hero) -->
+        <div class="cur-bento-card bento-hero">
+          
+          <div class="bento-hero-content">
+            <span class="bento-badge-gold">👑 이번 주말 최고 추천</span>
+            <h3 class="bento-hero-title">2026 서울 국제 드론 레이싱 월드컵</h3>
+            <p class="bento-hero-desc">드론 경기 관람, 드론 농구·낚시, 조립·코딩 교육</p>
+            <div class="bento-hero-meta">
+              <span>📍 서울 · 광나루 한강 드론공원</span>
+              <span>📅 2026-10-23 ~ 2026-10-24</span>
+            </div>
+            <a class="bento-hero-btn" href="https://mediahub.seoul.go.kr/archives/2019732" target="_blank" rel="noopener">
+              공식 상세정보 확인 ↗
+            </a>
+          </div>
+        </div>
+
+        <!-- 보조 서브 벤토 카드 4종 -->
+        
+          <div class="cur-bento-card bento-sub">
+            <div class="bento-sub-top">
+              <span class="bento-sub-num">02</span>
+              <span class="bento-sub-tag">#추천PICK</span>
+            </div>
+            <h4 class="bento-sub-title">2026 서울 바비큐 페스티벌</h4>
+            <div class="bento-sub-meta">📍 서울 · 난지캠핑장 · 서울 마포구 한강난지로 28</div>
+            <p class="bento-sub-tip">💡 큐레이터 팁: 현장 관람객 인파가 몰리기 전 오전에 방문하시면 여유로운 포토존 촬영과 체험 참여가 가능합니다....</p>
+            <a class="bento-sub-link" href="https://news.seoul.go.kr/culture/archives/534476" target="_blank" rel="noopener">
+              일정 확인하기 →
+            </a>
+          </div>
+        
+          <div class="cur-bento-card bento-sub">
+            <div class="bento-sub-top">
+              <span class="bento-sub-num">03</span>
+              <span class="bento-sub-tag">#추천PICK</span>
+            </div>
+            <h4 class="bento-sub-title">2026 남산 나이트 페스티벌</h4>
+            <div class="bento-sub-meta">📍 서울 · 남산공원 백범광장·예장공원·팔각정</div>
+            <p class="bento-sub-tip">💡 큐레이터 팁: 현장 관람객 인파가 몰리기 전 오전에 방문하시면 여유로운 포토존 촬영과 체험 참여가 가능합니다....</p>
+            <a class="bento-sub-link" href="https://parks.seoul.go.kr/story/news/detailView.do?bIdx=3849&key=2604070028" target="_blank" rel="noopener">
+              일정 확인하기 →
+            </a>
+          </div>
+        
+          <div class="cur-bento-card bento-sub">
+            <div class="bento-sub-top">
+              <span class="bento-sub-num">04</span>
+              <span class="bento-sub-tag">#추천PICK</span>
+            </div>
+            <h4 class="bento-sub-title">한강 포레스트 어드벤처</h4>
+            <div class="bento-sub-meta">📍 서울 · 강서한강공원 어린이놀이터 옆</div>
+            <p class="bento-sub-tip">💡 큐레이터 팁: 현장 관람객 인파가 몰리기 전 오전에 방문하시면 여유로운 포토존 촬영과 체험 참여가 가능합니다....</p>
+            <a class="bento-sub-link" href="https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159789&menuNo=200010" target="_blank" rel="noopener">
+              일정 확인하기 →
+            </a>
+          </div>
+        
+          <div class="cur-bento-card bento-sub">
+            <div class="bento-sub-top">
+              <span class="bento-sub-num">05</span>
+              <span class="bento-sub-tag">#추천PICK</span>
+            </div>
+            <h4 class="bento-sub-title">2026 서울마켓페어</h4>
+            <div class="bento-sub-meta">📍 서울 · 청계광장 일대</div>
+            <p class="bento-sub-tip">💡 큐레이터 팁: 현장 관람객 인파가 몰리기 전 오전에 방문하시면 여유로운 포토존 촬영과 체험 참여가 가능합니다....</p>
+            <a class="bento-sub-link" href="https://news.seoul.go.kr/economy/archives/574867?listPage=1" target="_blank" rel="noopener">
+              일정 확인하기 →
+            </a>
+          </div>
+        
+      </div>
+    </section>
+
+    <!-- 4. 테마별 전체 축제 카드 목록 (필터 연동) -->
+    <section class="cur-section">
+      <div class="cur-sec-head">
+        <span class="cur-sec-badge">FULL ARCHIVE</span>
+        <h2 class="cur-sec-title" id="cur-archive-title">선택된 테마 축제 전체 보기</h2>
+      </div>
+
+      <div class="cur-cards-grid" id="cur-archive-cards">
+        <!-- 자바스크립트로 렌더링 -->
+      </div>
+    </section>
+
+  </main>
+
+  <script type="application/json" id="curation-data">{"themedEvents":[{"key":"food","icon":"◒","title":"미식·푸드로드","tag":"#미식페스타","desc":"유명 셰프 팝업과 지역 특산물 먹거리 장터, 활기 넘치는 푸드트럭 빌리지","color":"amber","count":16,"events":[{"id":"seoul-bbq-2026","title":"2026 서울 바비큐 페스티벌","region":"서울","location":"난지캠핑장 · 서울 마포구 한강난지로 28","startDate":"2026-10-24","endDate":"2026-10-25","fee":"입장 무료 · 바비큐 테이블 1만~2만원, 식재료·음식 별도","url":"/events/seoul-bbq-2026/","officialUrl":"https://news.seoul.go.kr/culture/archives/534476"},{"id":"seoul-market-2026","title":"2026 서울마켓페어","region":"서울","location":"청계광장 일대","startDate":"2026-10-24","endDate":"2026-10-25","fee":"입장·체험 비용 확인 필요","url":"/events/seoul-market-2026/","officialUrl":"https://news.seoul.go.kr/economy/archives/574867?listPage=1"},{"id":"yeoju-ogok-2026","title":"2026 여주오곡나루축제","region":"경기","location":"여주 신륵사관광지 일원","startDate":"2026-10-23","endDate":"2026-10-25","fee":"입장·체험 비용 확인 필요","url":"/events/yeoju-ogok-2026/","officialUrl":"https://www.yjcf.or.kr/brd/board/200/L/menu/341?bbIdx=2505&brdType=R"},{"id":"goesan-kimjang-2026","title":"2026 괴산김장축제","region":"충북","location":"괴산 유기농엑스포광장","startDate":"2026-11-05","endDate":"2026-11-08","fee":"체험 가격·재료비 확인 필요","url":"/events/goesan-kimjang-2026/","officialUrl":"https://www.goesan.go.kr/www/selectBbsNttView.do?bbsNo=213&key=136&nttNo=135306","image":{"src":"/assets/img/festivals/pexels-5338145.jpg","credit":"ROMAN ODINTSOV / Pexels"}},{"id":"mcst-13337-2026","title":"2026 떡볶이 페스티벌","region":"대구","location":"대구iM뱅크PARK","startDate":"2026-10-23","endDate":"2026-10-25","fee":"공지상 입장 무료 · 음식 구매와 유료 체험 여부 별도 확인","url":"/events/mcst-13337-2026/","officialUrl":"https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13337"},{"id":"mcst-12899-2026","title":"2026 원주만두축제","region":"강원","location":"중앙동 전통시장 및 원주천, 문화의거리 일원","startDate":"2026-10-23","endDate":"2026-10-25","fee":"공지상 입장 무료 · 음식 구매 비용 별도","url":"/events/mcst-12899-2026/","officialUrl":"https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=12899"},{"id":"mcst-11752-2026","title":"2026 강릉커피축제","region":"강원","location":"강릉커피거리 및 강릉시일원","startDate":"2026-10-21","endDate":"2026-10-25","fee":"일부 유료 · 프로그램별 요금 확인 필요","url":"/events/mcst-11752-2026/","officialUrl":"https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=11752"},{"id":"mcst-13388-2026","title":"2026 청춘양구 펀치볼 사과시래기축제","region":"강원","location":"양구 펀치볼 힐링하우스 앞 성황지 일원","startDate":"2026-11-06","endDate":"2026-11-08","fee":"입장 무료 · 먹거리와 선택 체험 비용 별도 확인","url":"/events/mcst-13388-2026/","officialUrl":"https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13388","image":{"src":"/assets/img/festivals/pexels-39209387.jpg","credit":"Natalia Sevruk / Pexels"}}]},{"key":"light","icon":"✦","title":"불꽃·야경 판타지","tag":"#불꽃야간축제","desc":"강변을 수놓는 화려한 불꽃과 레이저 미디어아트, 1,000대 드론 라이트쇼","color":"indigo","count":7,"events":[{"id":"namsan-night-2026","title":"2026 남산 나이트 페스티벌","region":"서울","location":"남산공원 백범광장·예장공원·팔각정","startDate":"2026-10-23","endDate":"2026-11-14","fee":"보증금: 캠프닉 팀당 1만원, 산책 1인 5천원, 팔각클럽 5천원","url":"/events/namsan-night-2026/","officialUrl":"https://parks.seoul.go.kr/story/news/detailView.do?bIdx=3849&key=2604070028","image":{"src":"/assets/img/festivals/pexels-31414677.jpg","credit":"Hyeok Jang / Pexels"}},{"id":"busan-fireworks-2026","title":"제21회 부산불꽃축제","region":"부산","location":"광안리해수욕장·해운대·이기대 일원","startDate":"2026-11-07","endDate":"2026-11-07","fee":"유료 관람석 R석 10만원 / S석 7만원 · 구역별 조건 확인","url":"/events/busan-fireworks-2026/","officialUrl":"https://www.busan.go.kr/nbtnewsBU/1752768","image":{"src":"/assets/img/festivals/pexels-18689980.jpg","credit":"선율 김 / Pexels"}},{"id":"mcst-13542-2026","title":"2026 울산 중구 국가유산야행","region":"울산","location":"울산동헌및 내아, 경상좌도 병영성","startDate":"2026-10-23","endDate":"2026-10-25","fee":"관람 무료 · 일부 체험 5천~1만원","url":"/events/mcst-13542-2026/","officialUrl":"https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13542"},{"id":"mcst-13539-2026","title":"2026 국가유산 미디어아트 청주","region":"충북","location":"청주 용두사지 철당간 일원","startDate":"2026-10-03","endDate":"2026-10-24","fee":"입장·기본 관람 무료(공식 공지 기준) · 선택 체험 비용 별도 확인","url":"/events/mcst-13539-2026/","officialUrl":"https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13539"},{"id":"mcst-13374-2026","title":"2026 여수밤바다 불꽃축제","region":"전남","location":"여수세계박람회장 일원","startDate":"2026-10-31","endDate":"2026-10-31","fee":"입장·기본 관람 무료(공식 공지 기준) · 선택 체험 비용 별도 확인","url":"/events/mcst-13374-2026/","officialUrl":"https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13374","image":{"src":"/assets/img/festivals/pexels-18689980.jpg","credit":"선율 김 / Pexels"}},{"id":"mcst-13560-2026","title":"2026 장항 1931 밤의 기행","region":"충남","location":"장항도시탐험역","startDate":"2026-10-10","endDate":"2026-10-31","fee":"입장 무료 · 일부 체험 프로그램 유료","url":"/events/mcst-13560-2026/","officialUrl":"https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13560","image":{"src":"/assets/img/festivals/pexels-34416812.jpg","credit":"Co Hai / Pexels"}},{"id":"mcst-13552-2026","title":"2026 목포 국가유산야행","region":"전남","location":"목포근대역사문화공간 일원","startDate":"2026-10-30","endDate":"2026-11-01","fee":"기본 관람 무료 · 개별 체험·판매 비용 별도 확인","url":"/events/mcst-13552-2026/","officialUrl":"https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13552","image":{"src":"/assets/img/festivals/pexels-36670526.jpg","credit":"Jueon Kim 김주언 / Pexels"}}]},{"key":"nature","icon":"❋","title":"자연·힐링 정원","tag":"#가을꽃산책","desc":"은빛 억새와 국화, 핑크뮬리 물결 속에서 즐기는 가족 숲속 피크닉","color":"emerald","count":10,"events":[{"id":"iksan-chrysanthemum-2026","title":"익산 천만송이 국화축제","region":"전북","location":"익산 중앙체육공원 · 전북 익산시 하나로 322","startDate":"2026-10-23","endDate":"2026-11-01","fee":"입장·체험 비용 확인 필요","url":"/events/iksan-chrysanthemum-2026/","officialUrl":"https://www.iksan.go.kr/gukhwa","image":{"src":"/assets/img/festivals/pexels-32284628.jpg","credit":"Jon Discipulo / Pexels"}},{"id":"jeju-olle-2026","title":"2026 제주올레걷기축제","region":"제주","location":"제주올레 19·20코스 · 날짜별 출발지 다름","startDate":"2026-11-05","endDate":"2026-11-07","fee":"현장 일반35,000원·할인30,000원 / 종료된 사전신청 일반30,000원·할인25,000원","url":"/events/jeju-olle-2026/","officialUrl":"https://www.visitjeju.net/kr/festival/view?contentsid=CNTS_300000000014508&menuId=DOM_000001718007000000","image":{"src":"/assets/img/festivals/pexels-30966644.jpg","credit":"Coman Yu / Pexels"}},{"id":"mcst-12851-2026","title":"2026 드림파크 국화축제","region":"인천","location":"드림파크 야생화단지","startDate":"2026-10-16","endDate":"2026-10-25","fee":"입장·기본 관람 무료(공식 공지 기준) · 선택 체험 비용 별도 확인","url":"/events/mcst-12851-2026/","officialUrl":"https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=12851"},{"id":"mcst-13334-2026","title":"2026 연천 국화축제","region":"경기","location":"연천 전곡리 유적","startDate":"2026-10-16","endDate":"2026-10-25","fee":"유료 안내 · 정확한 금액과 감면 조건 확인 필요","url":"/events/mcst-13334-2026/","officialUrl":"https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13334"},{"id":"mcst-13555-2026","title":"2026 부여국화축제","region":"충남","location":"부여 궁남지 일원","startDate":"2026-10-30","endDate":"2026-11-08","fee":"입장·기본 관람 무료(공식 공지 기준) · 선택 체험 비용 별도 확인","url":"/events/mcst-13555-2026/","officialUrl":"https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13555","image":{"src":"/assets/img/festivals/pexels-14744122.jpg","credit":"Linh Nguyen / Pexels"}},{"id":"mcst-13512-2026","title":"2026 세계문화유산 화순 고인돌 가을꽃 축제","region":"전남","location":"화순 고인돌 유적지","startDate":"2026-10-16","endDate":"2026-10-25","fee":"일반 5,000원(지역상품권 환급 안내) · 미취학아동 등 면제 조건 공식 확인","url":"/events/mcst-13512-2026/","officialUrl":"https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13512"},{"id":"mcst-13422-2026","title":"2026 서울국제정원박람회","region":"서울","location":"서울숲","startDate":"2026-05-01","endDate":"2026-10-27","fee":"입장 무료 · 별도 판매·체험 비용은 확인 필요","url":"/events/mcst-13422-2026/","officialUrl":"https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13422"},{"id":"mcst-13510-2026","title":"2026 세미원 수련문화제","region":"경기","location":"세미원 · 양평군 양서면 양수로93","startDate":"2026-09-01","endDate":"2026-10-31","fee":"유료 · 연령별 입장료·감면 금액은 공식 관람안내 확인","url":"/events/mcst-13510-2026/","officialUrl":"https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13510","image":{"src":"/assets/img/festivals/pexels-14744122.jpg","credit":"Linh Nguyen / Pexels"}}]},{"key":"art","icon":"◈","title":"문화·예술 거리","tag":"#스트리트아트","desc":"도심 속 인디 밴드 버스킹, 현대 미술 야외 전시와 거리 극단 퍼포먼스","color":"purple","count":6,"events":[{"id":"seoul-drone-2026","title":"2026 서울 국제 드론 레이싱 월드컵","region":"서울","location":"광나루 한강 드론공원","startDate":"2026-10-23","endDate":"2026-10-24","fee":"요금 확인 필요","url":"/events/seoul-drone-2026/","officialUrl":"https://mediahub.seoul.go.kr/archives/2019732"},{"id":"seoul-bbq-2026","title":"2026 서울 바비큐 페스티벌","region":"서울","location":"난지캠핑장 · 서울 마포구 한강난지로 28","startDate":"2026-10-24","endDate":"2026-10-25","fee":"입장 무료 · 바비큐 테이블 1만~2만원, 식재료·음식 별도","url":"/events/seoul-bbq-2026/","officialUrl":"https://news.seoul.go.kr/culture/archives/534476"},{"id":"namsan-night-2026","title":"2026 남산 나이트 페스티벌","region":"서울","location":"남산공원 백범광장·예장공원·팔각정","startDate":"2026-10-23","endDate":"2026-11-14","fee":"보증금: 캠프닉 팀당 1만원, 산책 1인 5천원, 팔각클럽 5천원","url":"/events/namsan-night-2026/","officialUrl":"https://parks.seoul.go.kr/story/news/detailView.do?bIdx=3849&key=2604070028","image":{"src":"/assets/img/festivals/pexels-31414677.jpg","credit":"Hyeok Jang / Pexels"}},{"id":"hangang-forest-2026","title":"한강 포레스트 어드벤처","region":"서울","location":"강서한강공원 어린이놀이터 옆","startDate":"2026-10-24","endDate":"2026-10-25","fee":"참가비 무료","url":"/events/hangang-forest-2026/","officialUrl":"https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159789&menuNo=200010"},{"id":"seoul-market-2026","title":"2026 서울마켓페어","region":"서울","location":"청계광장 일대","startDate":"2026-10-24","endDate":"2026-10-25","fee":"입장·체험 비용 확인 필요","url":"/events/seoul-market-2026/","officialUrl":"https://news.seoul.go.kr/economy/archives/574867?listPage=1"},{"id":"yongsan-harvest-2026","title":"용산가족공원 가을걷이 한마당","region":"서울","location":"용산가족공원 제1광장","startDate":"2026-10-24","endDate":"2026-10-24","fee":"체험별 요금 확인 필요","url":"/events/yongsan-harvest-2026/","officialUrl":"https://parks.seoul.go.kr/story/news/detailView.do?bIdx=3846&key=2604070028"}]},{"key":"kids","icon":"✳","title":"가족·어린이 나들이","tag":"#아이와함께","desc":"인기 캐릭터 팝업과 안전한 오감 자극 체험 학습, 키즈 놀이존","color":"sky","count":22,"events":[{"id":"seoul-drone-2026","title":"2026 서울 국제 드론 레이싱 월드컵","region":"서울","location":"광나루 한강 드론공원","startDate":"2026-10-23","endDate":"2026-10-24","fee":"요금 확인 필요","url":"/events/seoul-drone-2026/","officialUrl":"https://mediahub.seoul.go.kr/archives/2019732"},{"id":"hangang-forest-2026","title":"한강 포레스트 어드벤처","region":"서울","location":"강서한강공원 어린이놀이터 옆","startDate":"2026-10-24","endDate":"2026-10-25","fee":"참가비 무료","url":"/events/hangang-forest-2026/","officialUrl":"https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159789&menuNo=200010"},{"id":"yongsan-harvest-2026","title":"용산가족공원 가을걷이 한마당","region":"서울","location":"용산가족공원 제1광장","startDate":"2026-10-24","endDate":"2026-10-24","fee":"체험별 요금 확인 필요","url":"/events/yongsan-harvest-2026/","officialUrl":"https://parks.seoul.go.kr/story/news/detailView.do?bIdx=3846&key=2604070028"},{"id":"botanic-exhibition-2026","title":"서울식물원 다정한 균형 전시해설·감상 워크북","region":"서울","location":"서울식물원","startDate":"2026-10-23","endDate":"2026-10-24","fee":"프로그램 무료 · 서울식물원 입장권 별도 구매","url":"/events/botanic-exhibition-2026/","officialUrl":"https://yeyak.seoul.go.kr/web/reservation/selectReservView.do?reSvc=N&rsv_svc_id=S261008105800938289"},{"id":"seogwipo-chilsimni-2026","title":"제32회 서귀포칠십리축제","region":"제주","location":"서귀포 천지연 주차장 일대","startDate":"2026-10-23","endDate":"2026-10-25","fee":"입장·체험 비용 확인 필요","url":"/events/seogwipo-chilsimni-2026/","officialUrl":"https://www.visitjeju.net/kr/festival/view?contentsid=CNTS_300000000014855"},{"id":"mcst-13344-2026","title":"2026 부산종합민속예술제","region":"부산","location":"부산시민공원 다솜광장","startDate":"2026-10-24","endDate":"2026-10-25","fee":"입장·기본 관람 무료(공식 공지 기준) · 선택 체험 비용 별도 확인","url":"/events/mcst-13344-2026/","officialUrl":"https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13344"},{"id":"mcst-12777-2026","title":"2026 부산글로벌웹툰페스티벌","region":"부산","location":"부산문화콘텐츠콤플렉스","startDate":"2026-10-30","endDate":"2026-11-01","fee":"입장·기본 관람 무료(공식 공지 기준) · 선택 체험 비용 별도 확인","url":"/events/mcst-12777-2026/","officialUrl":"https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=12777","image":{"src":"/assets/img/festivals/pexels-6044249.jpg","credit":"Skylar Kang / Pexels"}},{"id":"mcst-13561-2026","title":"2026 대전 서구 책축제","region":"대전","location":"월평도서관, 갈마문화공원","startDate":"2026-10-24","endDate":"2026-10-24","fee":"입장·기본 관람 무료(공식 공지 기준) · 선택 체험 비용 별도 확인","url":"/events/mcst-13561-2026/","officialUrl":"https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13561"}]},{"key":"heritage","icon":"🏛️","title":"전통·역사 기행","tag":"#성곽달빛야행","desc":"유네스코 문화유산과 궁궐 야행, 전통 한복 체험과 달빛 기행","color":"rose","count":1,"events":[{"id":"iksan-chrysanthemum-2026","title":"익산 천만송이 국화축제","region":"전북","location":"익산 중앙체육공원 · 전북 익산시 하나로 322","startDate":"2026-10-23","endDate":"2026-11-01","fee":"입장·체험 비용 확인 필요","url":"/events/iksan-chrysanthemum-2026/","officialUrl":"https://www.iksan.go.kr/gukhwa","image":{"src":"/assets/img/festivals/pexels-32284628.jpg","credit":"Jon Discipulo / Pexels"}}]},{"key":"market","icon":"⛺","title":"플리마켓·팝업","tag":"#로컬마켓","desc":"전국 핸드메이드 작가들의 유니크한 굿즈와 감성 가득한 주말 플리마켓","color":"teal","count":6,"events":[{"id":"seoul-drone-2026","title":"2026 서울 국제 드론 레이싱 월드컵","region":"서울","location":"광나루 한강 드론공원","startDate":"2026-10-23","endDate":"2026-10-24","fee":"요금 확인 필요","url":"/events/seoul-drone-2026/","officialUrl":"https://mediahub.seoul.go.kr/archives/2019732"},{"id":"seoul-bbq-2026","title":"2026 서울 바비큐 페스티벌","region":"서울","location":"난지캠핑장 · 서울 마포구 한강난지로 28","startDate":"2026-10-24","endDate":"2026-10-25","fee":"입장 무료 · 바비큐 테이블 1만~2만원, 식재료·음식 별도","url":"/events/seoul-bbq-2026/","officialUrl":"https://news.seoul.go.kr/culture/archives/534476"},{"id":"namsan-night-2026","title":"2026 남산 나이트 페스티벌","region":"서울","location":"남산공원 백범광장·예장공원·팔각정","startDate":"2026-10-23","endDate":"2026-11-14","fee":"보증금: 캠프닉 팀당 1만원, 산책 1인 5천원, 팔각클럽 5천원","url":"/events/namsan-night-2026/","officialUrl":"https://parks.seoul.go.kr/story/news/detailView.do?bIdx=3849&key=2604070028","image":{"src":"/assets/img/festivals/pexels-31414677.jpg","credit":"Hyeok Jang / Pexels"}},{"id":"hangang-forest-2026","title":"한강 포레스트 어드벤처","region":"서울","location":"강서한강공원 어린이놀이터 옆","startDate":"2026-10-24","endDate":"2026-10-25","fee":"참가비 무료","url":"/events/hangang-forest-2026/","officialUrl":"https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159789&menuNo=200010"},{"id":"seoul-market-2026","title":"2026 서울마켓페어","region":"서울","location":"청계광장 일대","startDate":"2026-10-24","endDate":"2026-10-25","fee":"입장·체험 비용 확인 필요","url":"/events/seoul-market-2026/","officialUrl":"https://news.seoul.go.kr/economy/archives/574867?listPage=1"},{"id":"yongsan-harvest-2026","title":"용산가족공원 가을걷이 한마당","region":"서울","location":"용산가족공원 제1광장","startDate":"2026-10-24","endDate":"2026-10-24","fee":"체험별 요금 확인 필요","url":"/events/yongsan-harvest-2026/","officialUrl":"https://parks.seoul.go.kr/story/news/detailView.do?bIdx=3846&key=2604070028"}]}],"editorsPicks":[{"id":"seoul-drone-2026","title":"2026 서울 국제 드론 레이싱 월드컵","region":"서울","location":"광나루 한강 드론공원","theme":"kids","startDate":"2026-10-23","endDate":"2026-10-24","curatorTip":"현장 관람객 인파가 몰리기 전 오전에 방문하시면 여유로운 포토존 촬영과 체험 참여가 가능합니다.","program":"드론 경기 관람, 드론 농구·낚시, 조립·코딩 교육","url":"/events/seoul-drone-2026/","officialUrl":"https://mediahub.seoul.go.kr/archives/2019732"},{"id":"seoul-bbq-2026","title":"2026 서울 바비큐 페스티벌","region":"서울","location":"난지캠핑장 · 서울 마포구 한강난지로 28","theme":"food","startDate":"2026-10-24","endDate":"2026-10-25","curatorTip":"현장 관람객 인파가 몰리기 전 오전에 방문하시면 여유로운 포토존 촬영과 체험 참여가 가능합니다.","program":"바비큐 존, 음식 판매, 공연, 서울형 키즈카페","url":"/events/seoul-bbq-2026/","officialUrl":"https://news.seoul.go.kr/culture/archives/534476"},{"id":"namsan-night-2026","title":"2026 남산 나이트 페스티벌","region":"서울","location":"남산공원 백범광장·예장공원·팔각정","theme":"light","startDate":"2026-10-23","endDate":"2026-11-14","curatorTip":"현장 관람객 인파가 몰리기 전 오전에 방문하시면 여유로운 포토존 촬영과 체험 참여가 가능합니다.","program":"캠프닉 10/23~11/7 금·토 / 산책 10/23·24, 11/6·7 / 팔각클럽 11/14","url":"/events/namsan-night-2026/","officialUrl":"https://parks.seoul.go.kr/story/news/detailView.do?bIdx=3849&key=2604070028","image":{"src":"/assets/img/festivals/pexels-31414677.jpg","credit":"Hyeok Jang / Pexels"}},{"id":"hangang-forest-2026","title":"한강 포레스트 어드벤처","region":"서울","location":"강서한강공원 어린이놀이터 옆","theme":"kids","startDate":"2026-10-24","endDate":"2026-10-25","curatorTip":"현장 관람객 인파가 몰리기 전 오전에 방문하시면 여유로운 포토존 촬영과 체험 참여가 가능합니다.","program":"어린이를 위한 숲 놀이와 만들기 체험","url":"/events/hangang-forest-2026/","officialUrl":"https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=159789&menuNo=200010"},{"id":"seoul-market-2026","title":"2026 서울마켓페어","region":"서울","location":"청계광장 일대","theme":"food","startDate":"2026-10-24","endDate":"2026-10-25","curatorTip":"현장 관람객 인파가 몰리기 전 오전에 방문하시면 여유로운 포토존 촬영과 체험 참여가 가능합니다.","program":"전통시장 상품 전시·판매와 체험 이벤트","url":"/events/seoul-market-2026/","officialUrl":"https://news.seoul.go.kr/economy/archives/574867?listPage=1"}]}</script>
+
+  <footer class="cur-footer">
+    <div class="cur-footer-inner">
+      <p>© 2026 FESTA CALENDAR &amp; SIMULAB. All rights reserved. 취향 맞춤 전국 축제 큐레이션 아카이브.</p>
+    </div>
+  </footer>
+</body>
+</html>

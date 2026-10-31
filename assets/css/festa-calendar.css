@@ -1,0 +1,1343 @@
+/* ==========================================================================
+   전국 축제 & 가족 정보 통합 캘린더 스타일시트 (FESTA CALENDAR)
+   - Google Stitch 시안 규격 준수 (와이드 월간 그리드, 당일 타임라인, 1일 추천 코스)
+   - 모바일 반응형 완벽 대응 (횡스크롤 방지, 적응형 카드 레이아웃)
+   ========================================================================== */
+
+:root {
+  --cal-primary: #ff5a1f;
+  --cal-primary-hover: #e04810;
+  --cal-primary-soft: #fff4ed;
+  --cal-navy: #131b2e;
+  --cal-indigo: #4f46e5;
+  --cal-indigo-soft: #eef2ff;
+  --cal-sky: #0284c7;
+  --cal-sky-soft: #f0f9ff;
+  --cal-emerald: #059669;
+  --cal-emerald-soft: #ecfdf5;
+  --cal-amber: #d97706;
+  --cal-amber-soft: #fffbeb;
+  --cal-rose: #e11d48;
+  --cal-rose-soft: #fff1f2;
+  --cal-surface: #ffffff;
+  --cal-bg: #f8fafc;
+  --cal-border: #e2e8f0;
+  --cal-border-subtle: #f1f5f9;
+  --cal-text-main: #0f172a;
+  --cal-text-muted: #64748b;
+  --cal-text-light: #94a3b8;
+  --cal-shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+  --cal-shadow-md: 0 4px 14px rgba(0,0,0,0.07);
+  --cal-shadow-lg: 0 12px 30px rgba(0,0,0,0.1);
+  --cal-radius: 14px;
+}
+
+/* 기본 리셋 및 전역 박스 사이징 */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  background-color: var(--cal-bg);
+  color: var(--cal-text-main);
+  line-height: 1.5;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+}
+
+.skip {
+  position: absolute;
+  top: -9999px;
+  left: 1rem;
+  background: #000;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  z-index: 9999;
+}
+.skip:focus {
+  top: 1rem;
+}
+
+/* 1. 상단 글로벌 네비게이션 헤더 */
+.cal-site-head {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--cal-border);
+}
+
+.cal-head-inner {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 0.85rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.cal-head-left {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.cal-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--cal-navy);
+}
+
+.cal-brand-icon {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, var(--cal-primary) 0%, #ff8a00 100%);
+  color: #fff;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 10px rgba(255, 90, 31, 0.3);
+}
+
+.cal-brand-text strong {
+  color: var(--cal-primary);
+  font-weight: 900;
+}
+
+.cal-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.cal-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.cal-nav-item {
+  padding: 0.45rem 0.85rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--cal-text-muted);
+  border-radius: 8px;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.cal-nav-item:hover {
+  color: var(--cal-primary);
+  background: var(--cal-primary-soft);
+}
+
+.cal-nav-item.active {
+  color: var(--cal-primary);
+  background: var(--cal-primary-soft);
+  font-weight: 700;
+}
+
+.cal-saved-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--cal-navy);
+  background: #f1f5f9;
+  border: 1px solid var(--cal-border);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.cal-saved-btn:hover {
+  background: #e2e8f0;
+}
+
+#saved-badge-count {
+  background: var(--cal-primary);
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  font-weight: 800;
+}
+
+/* 2. 메인 컨테이너 래퍼 */
+.cal-main-wrap {
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 4rem;
+}
+
+/* 3. 스마트 지도 레이더 배너 (상단 콜아웃 배너) */
+.cal-map-cta-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  color: #fff;
+  padding: 1.25rem 1.5rem;
+  border-radius: var(--cal-radius);
+  box-shadow: var(--cal-shadow-md);
+  margin-bottom: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cal-map-cta-left {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.cal-map-cta-icon {
+  font-size: 2.2rem;
+  width: 54px;
+  height: 54px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cal-map-cta-title {
+  margin: 0 0 0.3rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.cal-map-cta-title strong {
+  color: #38bdf8;
+}
+
+.cal-map-cta-desc {
+  margin: 0;
+  font-size: 0.88rem;
+  color: #94a3b8;
+  line-height: 1.4;
+}
+
+.cal-map-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 10px;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.35);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.cal-map-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(2, 132, 199, 0.5);
+}
+
+/* 4. 헤더 타이틀 및 상단 컨트롤 */
+.cal-title-section {
+  margin-bottom: 1.5rem;
+}
+
+.cal-title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.cal-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--cal-primary-soft);
+  color: var(--cal-primary);
+  font-size: 0.78rem;
+  font-weight: 800;
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.cal-main-title {
+  margin: 0 0 0.4rem;
+  font-size: 1.9rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: var(--cal-navy);
+}
+
+.cal-main-subtitle {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--cal-text-muted);
+}
+
+/* 필터 탭 (전체 통합 / 축제·행사 / 체험·공연·팝업 / 캠핑·세일·혜택) */
+.cal-scope-tabs {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #f1f5f9;
+  padding: 0.35rem;
+  border-radius: 12px;
+}
+
+.cal-scope-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border: none;
+  background: transparent;
+  color: var(--cal-text-muted);
+  font-weight: 700;
+  font-size: 0.88rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.cal-scope-btn:hover {
+  color: var(--cal-navy);
+}
+
+.cal-scope-btn.active {
+  background: #fff;
+  color: var(--cal-navy);
+  box-shadow: var(--cal-shadow-sm);
+}
+
+.cal-scope-btn.active[data-scope="festival"] {
+  color: var(--cal-indigo);
+}
+.cal-scope-btn.active[data-scope="culture"] {
+  color: var(--cal-sky);
+}
+.cal-scope-btn.active[data-scope="benefit"] {
+  color: var(--cal-amber);
+}
+
+/* 지역 필터 스크롤 바 */
+.cal-region-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  overflow-x: auto;
+  padding: 0.85rem 0 0.5rem;
+  scrollbar-width: none;
+}
+.cal-region-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.cal-region-chip {
+  padding: 0.4rem 0.85rem;
+  background: #fff;
+  border: 1px solid var(--cal-border);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--cal-text-muted);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.cal-region-chip:hover {
+  border-color: var(--cal-primary);
+  color: var(--cal-primary);
+}
+
+.cal-region-chip.active {
+  background: var(--cal-navy);
+  color: #fff;
+  border-color: var(--cal-navy);
+  font-weight: 700;
+}
+
+/* 5. 캘린더 + 타임라인 메인 2단 그리드 */
+.cal-layout-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(360px, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+/* 왼쪽 캘린더 카드 박스 */
+.cal-card-box {
+  background: var(--cal-surface);
+  border-radius: var(--cal-radius);
+  border: 1px solid var(--cal-border);
+  box-shadow: var(--cal-shadow-sm);
+  padding: 1.5rem;
+}
+
+.cal-grid-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.cal-year-month-group {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.cal-year-month {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: var(--cal-navy);
+}
+
+.cal-month-badge {
+  background: var(--cal-primary-soft);
+  color: var(--cal-primary);
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+}
+
+.cal-month-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.cal-nav-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid var(--cal-border);
+  background: #fff;
+  color: var(--cal-navy);
+  font-size: 0.9rem;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.cal-nav-btn:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+.cal-today-btn {
+  padding: 0 0.85rem;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid var(--cal-border);
+  background: #fff;
+  color: var(--cal-navy);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.cal-today-btn:hover {
+  background: #f1f5f9;
+}
+
+/* 요일 헤더 */
+.cal-weekday-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--cal-border);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--cal-text-muted);
+}
+
+.cal-weekday-row .cal-sun {
+  color: var(--cal-rose);
+}
+.cal-weekday-row .cal-sat {
+  color: var(--cal-sky);
+}
+
+/* 월간 캘린더 일자 그리드 */
+.cal-days-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  padding: 0.5rem 0 0;
+}
+
+.cal-day-cell {
+  min-height: 110px;
+  border-radius: 10px;
+  padding: 0.45rem;
+  background: #fff;
+  border: 1px solid transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.cal-day-cell:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+.cal-day-cell.other-month {
+  opacity: 0.35;
+  background: #fafafa;
+}
+
+.cal-day-cell.is-today {
+  border-color: var(--cal-primary);
+  background: #fffaf8;
+}
+
+.cal-day-cell.is-selected {
+  background: linear-gradient(135deg, #ff5a1f 0%, #ff7a45 100%) !important;
+  color: #fff !important;
+  box-shadow: 0 6px 18px rgba(255, 90, 31, 0.4);
+  border-color: transparent !important;
+}
+
+.cal-day-cell.is-selected .cal-cell-date,
+.cal-day-cell.is-selected .cal-cell-count,
+.cal-day-cell.is-selected .cal-cell-item {
+  color: #fff !important;
+}
+
+.cal-day-cell.is-selected .cal-cell-item {
+  background: rgba(255, 255, 255, 0.22) !important;
+  border-color: rgba(255, 255, 255, 0.35) !important;
+}
+
+.cal-cell-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.35rem;
+}
+
+.cal-cell-date {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--cal-navy);
+}
+
+.cal-day-cell.cal-is-sun .cal-cell-date {
+  color: var(--cal-rose);
+}
+.cal-day-cell.cal-is-sat .cal-cell-date {
+  color: var(--cal-sky);
+}
+
+.cal-cell-count {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--cal-primary);
+}
+
+.cal-cell-items {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  overflow: hidden;
+}
+
+.cal-cell-item {
+  font-size: 0.74rem;
+  font-weight: 600;
+  padding: 2px 5px;
+  border-radius: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.3;
+}
+
+.cal-cell-item.theme-indigo {
+  background: var(--cal-indigo-soft);
+  color: var(--cal-indigo);
+}
+.cal-cell-item.theme-sky {
+  background: var(--cal-sky-soft);
+  color: var(--cal-sky);
+}
+.cal-cell-item.theme-emerald {
+  background: var(--cal-emerald-soft);
+  color: var(--cal-emerald);
+}
+.cal-cell-item.theme-amber {
+  background: var(--cal-amber-soft);
+  color: var(--cal-amber);
+}
+
+.cal-cell-more {
+  font-size: 0.7rem;
+  color: var(--cal-text-muted);
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+/* 캘린더 범례 */
+.cal-legend-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--cal-border);
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.cal-legend-items {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.cal-legend-dot {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--cal-text-muted);
+}
+
+.cal-legend-dot::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+}
+
+.cal-legend-dot.indigo::before { background: var(--cal-indigo); }
+.cal-legend-dot.sky::before { background: var(--cal-sky); }
+.cal-legend-dot.emerald::before { background: var(--cal-emerald); }
+.cal-legend-dot.amber::before { background: var(--cal-amber); }
+
+.cal-legend-tip {
+  font-size: 0.78rem;
+  color: var(--cal-text-light);
+}
+
+/* 6. 오른쪽 타임라인 카드 박스 */
+.cal-timeline-box {
+  background: var(--cal-surface);
+  border-radius: var(--cal-radius);
+  border: 1px solid var(--cal-border);
+  box-shadow: var(--cal-shadow-sm);
+  padding: 1.5rem;
+  position: sticky;
+  top: 5rem;
+  max-height: calc(100vh - 6rem);
+  display: flex;
+  flex-direction: column;
+}
+
+.cal-timeline-head {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--cal-border);
+  margin-bottom: 1rem;
+  flex-shrink: 0;
+}
+
+.cal-timeline-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--cal-primary);
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+}
+
+.cal-timeline-title {
+  margin: 0 0 0.35rem;
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--cal-navy);
+}
+
+.cal-timeline-desc {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--cal-text-muted);
+}
+
+.cal-timeline-count-badge {
+  display: inline-block;
+  background: #f1f5f9;
+  color: var(--cal-navy);
+  font-size: 0.8rem;
+  font-weight: 800;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  margin-left: 0.5rem;
+}
+
+/* 타임라인 스크롤 리스트 */
+.cal-timeline-list {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding-right: 0.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  scrollbar-width: thin;
+}
+.cal-timeline-list::-webkit-scrollbar {
+  width: 5px;
+}
+.cal-timeline-list::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 999px;
+}
+
+/* 타임라인 개별 카드 */
+.cal-timeline-card {
+  padding: 1rem;
+  background: #fff;
+  border: 1px solid var(--cal-border);
+  border-radius: 12px;
+  transition: all 0.15s ease;
+  position: relative;
+}
+
+.cal-timeline-card:hover {
+  border-color: var(--cal-primary);
+  box-shadow: var(--cal-shadow-sm);
+  transform: translateY(-2px);
+}
+
+.cal-tcard-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.cal-tcard-badges {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.cal-tbadge-cat {
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 0.18rem 0.45rem;
+  border-radius: 5px;
+  background: #f1f5f9;
+  color: var(--cal-navy);
+}
+
+.cal-tbadge-cat.culture {
+  background: var(--cal-sky-soft);
+  color: var(--cal-sky);
+}
+.cal-tbadge-cat.benefit {
+  background: var(--cal-amber-soft);
+  color: var(--cal-amber);
+}
+.cal-tbadge-cat.festival {
+  background: var(--cal-indigo-soft);
+  color: var(--cal-indigo);
+}
+
+.cal-tbadge-status {
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 0.18rem 0.45rem;
+  border-radius: 5px;
+  background: var(--cal-primary-soft);
+  color: var(--cal-primary);
+}
+
+.cal-tbadge-status.deadline {
+  background: var(--cal-rose-soft);
+  color: var(--cal-rose);
+}
+
+.cal-tcard-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.cal-tbtn-save {
+  background: transparent;
+  border: none;
+  font-size: 1.1rem;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 0.2rem;
+  line-height: 1;
+  transition: color 0.15s ease;
+}
+
+.cal-tbtn-save:hover, .cal-tbtn-save.saved {
+  color: var(--cal-rose);
+}
+
+.cal-tcard-title {
+  margin: 0 0 0.4rem;
+  font-size: 1.02rem;
+  font-weight: 800;
+  line-height: 1.35;
+  color: var(--cal-navy);
+}
+
+.cal-tcard-title a:hover {
+  color: var(--cal-primary);
+}
+
+.cal-tcard-meta {
+  font-size: 0.82rem;
+  color: var(--cal-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.cal-tcard-desc {
+  margin: 0 0 0.75rem;
+  font-size: 0.84rem;
+  color: #475569;
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cal-tcard-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.65rem;
+  border-top: 1px dashed var(--cal-border);
+  font-size: 0.8rem;
+}
+
+.cal-tcard-fee {
+  font-weight: 700;
+  color: var(--cal-navy);
+}
+
+.cal-tcard-more-btn {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--cal-primary);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.cal-tcard-more-btn:hover {
+  text-decoration: underline;
+}
+
+/* 7. 추천 1일 연계 코스 & 날씨 꿀팁 섹션 (ONE-DAY ROUTE & WEATHER) */
+.cal-extra-section {
+  margin-top: 2.5rem;
+}
+
+.cal-section-header {
+  margin-bottom: 1.25rem;
+}
+
+.cal-sec-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--cal-primary);
+  margin-bottom: 0.35rem;
+}
+
+.cal-sec-title {
+  margin: 0;
+  font-size: 1.45rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: var(--cal-navy);
+}
+
+.cal-route-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.8fr) minmax(320px, 1fr);
+  gap: 1.5rem;
+}
+
+/* 1일 코스 카드 */
+.cal-route-box {
+  background: var(--cal-surface);
+  border-radius: var(--cal-radius);
+  border: 1px solid var(--cal-border);
+  box-shadow: var(--cal-shadow-sm);
+  padding: 1.5rem;
+}
+
+.cal-route-box-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid var(--cal-border);
+  padding-bottom: 0.85rem;
+}
+
+.cal-route-box-title {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--cal-navy);
+}
+
+.cal-route-duration-badge {
+  font-size: 0.8rem;
+  font-weight: 700;
+  background: #f1f5f9;
+  color: var(--cal-navy);
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+}
+
+.cal-route-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  position: relative;
+}
+
+.cal-route-steps::before {
+  content: "";
+  position: absolute;
+  top: 1.2rem;
+  bottom: 1.2rem;
+  left: 17px;
+  width: 2px;
+  background: #e2e8f0;
+  z-index: 0;
+}
+
+.cal-route-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.cal-route-num {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  background: #fff;
+  border: 2px solid var(--cal-primary);
+  color: var(--cal-primary);
+  font-weight: 900;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(255, 90, 31, 0.2);
+}
+
+.cal-route-step-body {
+  flex: 1;
+  background: #f8fafc;
+  border: 1px solid var(--cal-border);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.cal-route-time-tag {
+  display: inline-block;
+  font-size: 0.76rem;
+  font-weight: 800;
+  background: #e2e8f0;
+  color: #334155;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  margin-bottom: 0.4rem;
+}
+
+.cal-route-step-title {
+  margin: 0 0 0.3rem;
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: var(--cal-navy);
+}
+
+.cal-route-step-desc {
+  margin: 0;
+  font-size: 0.84rem;
+  color: var(--cal-text-muted);
+  line-height: 1.45;
+}
+
+/* 실시간 날씨 및 큐레이터 꿀팁 박스 */
+.cal-weather-box {
+  background: var(--cal-surface);
+  border-radius: var(--cal-radius);
+  border: 1px solid var(--cal-border);
+  box-shadow: var(--cal-shadow-sm);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.cal-weather-widget {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  border: 1px solid #bae6fd;
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+.cal-weather-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.cal-weather-loc {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #0369a1;
+}
+
+.cal-weather-temp {
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #0c4a6e;
+}
+
+.cal-weather-detail {
+  font-size: 0.84rem;
+  color: #075985;
+  line-height: 1.5;
+}
+
+.cal-curator-tip-card {
+  background: var(--cal-primary-soft);
+  border: 1px solid #ffd8c7;
+  border-radius: 12px;
+  padding: 1.25rem;
+}
+
+.cal-curator-tip-head {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.cal-curator-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  background: var(--cal-primary);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cal-curator-name {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: var(--cal-navy);
+}
+
+.cal-curator-quote {
+  margin: 0;
+  font-size: 0.86rem;
+  color: #431407;
+  line-height: 1.5;
+}
+
+/* 8. 팝업 상세 모달 */
+.cal-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+}
+
+.cal-modal-backdrop.open {
+  display: flex;
+}
+
+.cal-modal-dialog {
+  background: #fff;
+  border-radius: 16px;
+  max-width: 620px;
+  width: 100%;
+  max-height: 88vh;
+  overflow-y: auto;
+  box-shadow: var(--cal-shadow-lg);
+  padding: 1.75rem;
+  position: relative;
+  animation: calModalFadeIn 0.2s ease-out;
+}
+
+@keyframes calModalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.cal-modal-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  background: #f1f5f9;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--cal-text-muted);
+}
+.cal-modal-close:hover {
+  background: #e2e8f0;
+  color: var(--cal-navy);
+}
+
+.cal-modal-cat-badge {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 800;
+  background: var(--cal-primary-soft);
+  color: var(--cal-primary);
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  margin-bottom: 0.6rem;
+}
+
+.cal-modal-title {
+  margin: 0 0 1rem;
+  font-size: 1.45rem;
+  font-weight: 900;
+  color: var(--cal-navy);
+  line-height: 1.35;
+  padding-right: 2rem;
+}
+
+.cal-modal-info-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.25rem;
+  font-size: 0.9rem;
+}
+
+.cal-modal-info-table th {
+  text-align: left;
+  padding: 0.55rem 0;
+  color: var(--cal-text-muted);
+  width: 90px;
+  vertical-align: top;
+  font-weight: 700;
+}
+
+.cal-modal-info-table td {
+  padding: 0.55rem 0;
+  color: var(--cal-navy);
+  font-weight: 600;
+}
+
+.cal-modal-body-desc {
+  background: #f8fafc;
+  padding: 1rem;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: #334155;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--cal-border);
+}
+
+.cal-modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.cal-modal-primary-btn {
+  flex: 1;
+  text-align: center;
+  background: var(--cal-primary);
+  color: #fff;
+  font-weight: 800;
+  font-size: 0.95rem;
+  padding: 0.8rem 1.25rem;
+  border-radius: 10px;
+  transition: background 0.15s ease;
+}
+
+.cal-modal-primary-btn:hover {
+  background: var(--cal-primary-hover);
+}
+
+.cal-modal-save-btn {
+  background: #f1f5f9;
+  border: 1px solid var(--cal-border);
+  color: var(--cal-navy);
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.8rem 1.25rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* 9. 모바일 반응형 대응 (횡스크롤 제거 및 1열 전환) */
+@media (max-width: 980px) {
+  .cal-layout-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cal-timeline-box {
+    position: static;
+    max-height: none;
+  }
+
+  .cal-route-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cal-map-cta-banner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cal-map-cta-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .cal-main-wrap {
+    padding: 1rem 0.85rem 3rem;
+  }
+
+  .cal-card-box,
+  .cal-timeline-box,
+  .cal-route-box,
+  .cal-weather-box {
+    padding: 1rem;
+  }
+
+  .cal-main-title {
+    font-size: 1.45rem;
+  }
+
+  .cal-day-cell {
+    min-height: 72px;
+    padding: 0.25rem;
+  }
+
+  .cal-cell-date {
+    font-size: 0.78rem;
+  }
+
+  .cal-cell-item {
+    font-size: 0.65rem;
+    padding: 1px 3px;
+  }
+
+  .cal-scope-tabs {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .cal-scope-btn {
+    padding: 0.4rem 0.65rem;
+    font-size: 0.8rem;
+  }
+}

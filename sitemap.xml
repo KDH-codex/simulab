@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url><loc>https://simulab.kr/</loc><lastmod>2026-10-31</lastmod></url>
+<url><loc>https://simulab.kr/calendar/</loc><lastmod>2026-10-31</lastmod></url>
+<url><loc>https://simulab.kr/map/</loc><lastmod>2026-10-31</lastmod></url>
+<url><loc>https://simulab.kr/curation/</loc><lastmod>2026-10-31</lastmod></url>
 <url><loc>https://simulab.kr/library/</loc><lastmod>2026-10-31</lastmod></url>
 <url><loc>https://simulab.kr/debates/001/</loc><lastmod>2026-10-31</lastmod></url>
 <url><loc>https://simulab.kr/debates/002/</loc><lastmod>2026-10-31</lastmod></url>
-<url><loc>https://simulab.kr/debates/arena/</loc><lastmod>2026-10-31</lastmod></url>
+<url><loc>https://simulab.kr/debates/arena/</loc><lastmod>2026-10-30</lastmod></url>
 <url><loc>https://simulab.kr/events/botanic-exhibition-2026/</loc><lastmod>2026-10-31</lastmod></url>
 <url><loc>https://simulab.kr/events/busan-fireworks-2026/</loc><lastmod>2026-10-31</lastmod></url>
 <url><loc>https://simulab.kr/events/goesan-kimjang-2026/</loc><lastmod>2026-10-31</lastmod></url>
@@ -60,10 +63,6 @@
 <url><loc>https://simulab.kr/events/seoul-market-2026/</loc><lastmod>2026-10-31</lastmod></url>
 <url><loc>https://simulab.kr/events/yeoju-ogok-2026/</loc><lastmod>2026-10-31</lastmod></url>
 <url><loc>https://simulab.kr/events/yongsan-harvest-2026/</loc><lastmod>2026-10-31</lastmod></url>
-<url><loc>https://simulab.kr/debates/generated/003-m001/</loc><lastmod>2026-10-31</lastmod></url>
-<url><loc>https://simulab.kr/debates/generated/004-m001/</loc><lastmod>2026-10-31</lastmod></url>
-<url><loc>https://simulab.kr/debates/generated/005-m001/</loc><lastmod>2026-10-31</lastmod></url>
-<url><loc>https://simulab.kr/debates/generated/006-m001/</loc><lastmod>2026-10-31</lastmod></url>
 <url><loc>https://simulab.kr/tools/annual-leave-calc/</loc><lastmod>2026-10-31</lastmod></url>
 <url><loc>https://simulab.kr/tools/area-pyeong-calc/</loc><lastmod>2026-10-31</lastmod></url>
 <url><loc>https://simulab.kr/tools/camping-booking/</loc><lastmod>2026-10-31</lastmod></url>
