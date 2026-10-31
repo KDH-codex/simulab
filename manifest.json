@@ -1,11 +1,11 @@
 {
-  "name": "시뮬랩 — AI 사망토론",
+  "name": "시뮬랩 — 오늘 나갈 이유를 찾다",
   "short_name": "SimuLab",
-  "description": "AI는 토론하고 당신이 판정합니다. 기존 계산기와 생활정보는 도구 모음에서 이용하세요.",
+  "description": "날짜와 지역으로 축제와 행사를 찾아보세요.",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#155be8",
+  "theme_color": "#fb5427",
   "orientation": "portrait-primary",
   "icons": [
     {
