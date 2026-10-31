@@ -3,6 +3,7 @@ import {writeFile} from './write-public-file.mjs';
 
 const root=new URL('../',import.meta.url);
 const all=JSON.parse(await readFile(new URL('data/events/reviewed.json',root),'utf8'));
+const images=JSON.parse(await readFile(new URL('data/events/images.json',root),'utf8'));
 const events=all.filter(e=>e.verificationStatus==='verified'&&/^[a-z0-9-]+$/.test(e.id)&&e.sources?.some(s=>/^https:\/\//.test(s.url)));
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const theme={light:['✦','밤과 빛'],food:['◒','먹거리'],nature:['❋','자연'],kids:['✳','가족·체험']};
@@ -11,6 +12,7 @@ const day=s=>s?.replaceAll('-','.');
 const sourceLink=e=>e.sources.find(s=>/^https:\/\//.test(s.url)).url;
 
 for(const e of events){
+  const image=images[e.id];
   const page=new URL(`events/${e.id}/index.html`,root);
   await mkdir(new URL(`events/${e.id}/`,root),{recursive:true});
   const ended=e.endDate<today;
@@ -28,14 +30,14 @@ for(const e of events){
 <link rel="canonical" href="https://simulab.kr/events/${esc(e.id)}/"><link rel="icon" href="/favicon.svg">
 <link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#fb5427">
 <meta property="og:type" content="article"><meta property="og:title" content="${esc(e.title)}">
-<meta property="og:description" content="${esc(description)}"><meta property="og:url" content="https://simulab.kr/events/${esc(e.id)}/">
+<meta property="og:description" content="${esc(description)}"><meta property="og:url" content="https://simulab.kr/events/${esc(e.id)}/">${image?`<meta property="og:image" content="https://simulab.kr${esc(image.src)}">`:''}
 <link rel="stylesheet" href="/assets/css/festa-home.css"><link rel="stylesheet" href="/assets/css/festa-detail.css">
 <script type="module" src="/assets/js/festa-detail.js"></script></head>
 <body data-event-id="${esc(e.id)}" data-event-title="${esc(e.title)}"><a class="skip" href="#main">본문으로 이동</a>
 <header class="site-head"><div class="head-inner"><a class="brand" href="/"><span class="brand-mark">✳</span><span>simu<span>lab</span><small>오늘의 발견</small></span></a><nav aria-label="주요 메뉴"><a href="/#discover">행사 찾기</a><a href="/#calendar">날짜별 보기</a><a href="/tools/kids-outing-calendar/">나들이 달력</a><a href="/library/">생활 도구</a></nav><a class="head-cta" href="/">다른 행사 보기 ↗</a></div></header>
 <main id="main" class="detail-main wrap">
 <nav class="breadcrumb" aria-label="현재 위치"><a href="/">홈</a><span>›</span><a href="/#discover">축제·행사</a><span>›</span><span>${esc(e.title)}</span></nav>
-<section class="detail-hero theme-${esc(e.theme)}"><div class="detail-hero-art" aria-hidden="true"><span>${theme[e.theme]?.[0]||'✦'}</span></div><div class="detail-hero-copy"><span class="detail-status">${esc(status)}</span><span class="detail-region">${esc(e.region)} · ${theme[e.theme]?.[1]||'행사'}</span><h1>${esc(e.title)}</h1><p>${esc(e.program||'공식 안내에 기록된 행사입니다.')}</p><div class="detail-hero-actions"><a href="${esc(sourceLink(e))}" target="_blank" rel="noopener noreferrer">공식 행사 안내 ↗</a><button type="button" data-save-event aria-pressed="false">♡ 일정 저장</button><button type="button" data-share-event>↗ 공유</button></div><span class="detail-feedback" data-feedback role="status"></span></div></section>
+<section class="detail-hero theme-${esc(e.theme)} ${image?`with-photo ${image.display==='poster'?'with-poster':''}`:''}">${image?`<img class="detail-hero-photo" src="${esc(image.src)}" alt="${esc(e.title+' 주제 참고 사진 · 행사 현장 아님')}" fetchpriority="high" decoding="async">`:`<div class="detail-hero-art" aria-hidden="true"><span>${theme[e.theme]?.[0]||'✦'}</span></div>`}<div class="detail-hero-copy"><span class="detail-status">${esc(status)}</span><span class="detail-region">${esc(e.region)} · ${theme[e.theme]?.[1]||'행사'}</span><h1>${esc(e.title)}</h1><p>${esc(e.program||'공식 안내에 기록된 행사입니다.')}</p><div class="detail-hero-actions"><a href="${esc(sourceLink(e))}" target="_blank" rel="noopener noreferrer">공식 행사 안내 ↗</a><button type="button" data-save-event aria-pressed="false">♡ 일정 저장</button><button type="button" data-share-event>↗ 공유</button></div><span class="detail-feedback" data-feedback role="status"></span></div>${image?`<a class="detail-image-credit" href="${esc(image.creditUrl)}" target="_blank" rel="noopener noreferrer">${esc(image.kind==='context'?'주제 참고 사진 · 행사 현장 아님 · '+image.credit:'이미지: '+image.credit)} ↗</a>`:''}</section>
 <nav class="detail-tabs" aria-label="행사 상세 메뉴"><a href="#overview">핵심 정보</a><a href="#schedule">운영 일정</a><a href="#visit">방문 안내</a><a href="#sources">공식 출처</a></nav>
 <div class="detail-layout"><div class="detail-content">
 <section id="overview" class="detail-block"><span class="eyebrow">AT A GLANCE</span><h2>이 행사의 핵심만.</h2><div class="detail-facts">
