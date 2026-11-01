@@ -71,6 +71,39 @@ for (const e of events) {
   const pageTitle = `${e.title} - ${e.region} 축제 일정·요금·프로그램 | FESTA CALENDAR`;
   const pageDesc = `${e.title} · 기간: ${fullRange} · 장소: ${e.location} · 요금: ${e.fee || '공식 확인'}. ${e.program || '공식 일정과 상세 안내를 확인하세요.'}`.slice(0, 155);
 
+  // Schema.org Event JSON-LD (구글 검색 리치 스니펫 최적화)
+  const jsonLd = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Event',
+    'name': e.title,
+    'startDate': e.startDate,
+    'endDate': e.endDate,
+    'eventAttendanceMode': 'https://schema.org/OfflineEventAttendanceMode',
+    'eventStatus': 'https://schema.org/EventScheduled',
+    'location': {
+      '@type': 'Place',
+      'name': e.location,
+      'address': {
+        '@type': 'PostalAddress',
+        'addressRegion': e.region,
+        'addressCountry': 'KR'
+      }
+    },
+    'image': image ? [`https://simulab.kr${image.src}`] : ['https://simulab.kr/assets/icons/icon-512.png'],
+    'description': e.program || `${e.title} 공식 안내`,
+    'offers': {
+      '@type': 'Offer',
+      'url': `https://simulab.kr/events/${e.id}/`,
+      'price': e.feeStatus === 'free' ? '0' : '10000',
+      'priceCurrency': 'KRW',
+      'availability': 'https://schema.org/InStock'
+    },
+    'organizer': {
+      '@type': 'Organization',
+      'name': e.sources?.[0]?.publisher || '공식 주최·지자체'
+    }
+  });
+
   const html = `<!doctype html>
 <html lang="ko">
 <head>
@@ -82,6 +115,11 @@ for (const e of events) {
   <link rel="icon" href="/favicon.svg">
   <link rel="manifest" href="/manifest.json">
   <meta name="theme-color" content="#ff5a1f">
+
+  <!-- Schema.org Event JSON-LD (Google Rich Snippets) -->
+  <script type="application/ld+json">
+${jsonLd}
+  </script>
 
   <!-- Open Graph -->
   <meta property="og:type" content="article">
