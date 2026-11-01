@@ -98,154 +98,187 @@ const familyCalendarItems = (familyFeed.records || [])
 
     const rawStart = (r.eventStart || r.applicationStart || '').slice(0, 10);
     const rawEnd = (r.eventEnd || r.applicationEnd || rawStart).slice(0, 10);
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(rawStart)) return null;
-    const endDate = /^\d{4}-\d{2}-\d{2}$/.test(rawEnd) && rawEnd >= rawStart ? rawEnd : rawStart;
+    const startDate = rawStart || today;
+    const endDate = rawEnd >= startDate ? rawEnd : startDate;
 
-    const t0 = new Date(Number(rawStart.slice(0, 4)), Number(rawStart.slice(5, 7)) - 1, Number(rawStart.slice(8, 10)));
-    const t1 = new Date(Number(endDate.slice(0, 4)), Number(endDate.slice(5, 7)) - 1, Number(endDate.slice(8, 10)));
-    const spanDays = Math.round((t1 - t0) / 86400000);
-    const dates = spanDays > 21 ? [...new Set([rawStart, endDate])] : [];
+    const sourceUrl = r.sources?.[0]?.url || r.actionUrl || '/library/';
+    const venue = r.place || r.region || '전국 온·오프라인';
+    const region = r.region || (venue.includes('서울') ? '서울' : (venue.includes('경기') ? '경기' : '전국'));
 
     return {
-      id: 'fam-' + r.id,
+      id: r.id,
       title: r.title,
-      shortLabel: shortTitle(r.title),
-      region: r.region || '전국',
-      location: r.location || catLabel,
+      shortTitle: shortTitle(r.title),
+      summary: r.summary || r.targetAudience || '가족과 함께하는 유익한 문화·체험 정보',
+      startDate,
+      endDate,
+      dates: [startDate, endDate].filter((v, i, a) => a.indexOf(v) === i),
+      region,
+      venue,
       theme: themeCode,
       scope,
       categoryLabel: catLabel,
-      startDate: rawStart,
-      endDate,
-      dates,
-      program: r.summary || r.scheduleNote || '',
-      time: r.scheduleNote || '',
-      feeStatus: r.feeStatus || 'unknown',
-      fee: r.feeText || feeLabel(r.feeStatus),
-      audience: r.audience || '전체 가족',
-      conditions: r.conditions || [],
-      applicationStart: (r.applicationStart || '').slice(0, 10),
-      applicationEnd: (r.applicationEnd || '').slice(0, 10),
-      url: r.siteUrl || '/calendar/',
-      officialUrl: r.officialUrl || r.siteUrl || '/calendar/',
-      sourceName: r.organizer || catLabel,
-      checkedAt: (r.verifiedAt || reviewed).slice(0, 10)
+      feeStatus: r.costType === 'free' ? 'free' : (r.costType === 'paid' ? 'paid' : 'mixed'),
+      feeLabel: r.costType === 'free' ? '무료' : (r.costType === 'paid' ? '유료' : '참여혜택'),
+      url: sourceUrl,
+      isExternal: true,
+      imageUrl: r.thumbnailUrl || (scope === 'culture'
+        ? 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=720&q=80'
+        : 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=720&q=80'),
+      programHighlights: [r.targetAudience, r.periodNote].filter(Boolean),
+      curatorTip: r.keyDatesSummary || '선착순 마감될 수 있으니 사전 접수 일정을 꼭 확인하세요.'
     };
-  })
-  .filter(Boolean);
+  });
 
+// 축제 데이터 변환
 const festaItems = events.map(e => ({
   id: e.id,
   title: e.title,
-  shortLabel: shortTitle(e.title),
+  shortTitle: shortTitle(e.title),
+  summary: e.summary,
+  startDate: e.startDate,
+  endDate: e.endDate,
+  dates: e.dates || [e.startDate, e.endDate],
   region: e.region,
-  location: e.location,
+  venue: e.venue,
+  coordinates: e.coordinates || null,
   theme: e.theme,
   scope: 'festival',
   categoryLabel: art[e.theme]?.[1] || '축제·행사',
-  startDate: e.startDate,
-  endDate: e.endDate,
-  dates: e.dates || [],
-  program: e.program || '',
-  time: e.time || '',
-  feeStatus: e.feeStatus || 'unknown',
-  fee: e.fee || feeLabel(e.feeStatus),
-  curatorTip: getCuratorTip(e),
+  feeStatus: e.feeStatus,
+  feeLabel: feeLabel(e.feeStatus),
   url: url(e),
-  officialUrl: e.sources?.[0]?.url || url(e),
-  sourceName: e.sources?.[0]?.label || e.organizer || '공식 안내',
-  checkedAt: e.checkedAt || reviewed,
-  image: images[e.id] && {
-    src: images[e.id].src,
-    credit: images[e.id].credit,
-    creditUrl: images[e.id].creditUrl,
-    kind: images[e.id].kind
-  }
+  isExternal: false,
+  officialUrl: e.sources?.[0]?.url || '',
+  imageUrl: images[e.id]?.url || 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&w=720&q=80',
+  programHighlights: e.programHighlights || [],
+  curatorTip: getCuratorTip(e)
 }));
 
+// 축제와 가족 정보를 통합한 전체 일정 배열
 const allCalendarData = [...festaItems, ...familyCalendarItems];
-const data = JSON.stringify(allCalendarData).replace(/</g, '\\u003c');
+const data = JSON.stringify(allCalendarData);
 
-// 지역별 집계
-const calRegionCounts = {};
-for (const item of allCalendarData.filter(i => i.endDate >= today)) {
-  const r = item.region || '전국';
-  calRegionCounts[r] = (calRegionCounts[r] || 0) + 1;
-}
-const calRegions = Object.keys(calRegionCounts).sort((a, b) => {
-  if (a === '전국') return 1;
-  if (b === '전국') return -1;
-  return (calRegionCounts[b] - calRegionCounts[a]) || a.localeCompare(b);
+// 지역 목록 집계
+const calRegions = Array.from(
+  new Set(allCalendarData.map(e => e.region).filter(Boolean))
+).sort((a, b) => {
+  const priority = ['서울', '경기', '인천', '부산', '대구', '광주', '대전', '울산', '세종', '강원', '충북', '충남', '전북', '전남', '경북', '경남', '제주', '전국'];
+  const ia = priority.indexOf(a);
+  const ib = priority.indexOf(b);
+  if (ia !== -1 && ib !== -1) return ia - ib;
+  if (ia !== -1) return -1;
+  if (ib !== -1) return 1;
+  return a.localeCompare(b);
 });
 
-const html = `<!doctype html>
+const calRegionCounts = Object.fromEntries(
+  calRegions.map(r => [r, allCalendarData.filter(i => i.region === r && i.endDate >= today).length])
+);
+
+// HTML 문서 빌드
+const html = `<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>전국 축제 &amp; 가족 정보 통합 캘린더 | 시뮬랩 (FESTA CALENDAR)</title>
-  <meta name="description" content="전국 17개 시도 축제, 공연, 플리마켓, 가족 체험, 키즈 팝업 및 공공 캠핑장 예약 일정을 대형 와이드 캘린더에서 한눈에 탐색하세요.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>전국 축제 &amp; 가족 정보 통합 캘린더 | FESTA CALENDAR</title>
+  <meta name="description" content="전국 축제, 버스킹, 플리마켓, 야시장, 아이 체험·공연 일정을 와이드 월간 캘린더와 당일 타임라인으로 한눈에 확인하세요.">
   <link rel="canonical" href="https://simulab.kr/calendar/">
-  <link rel="icon" href="/favicon.svg">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="/manifest.json">
   <link rel="apple-touch-icon" href="/assets/icons/icon-192.png">
   <meta name="theme-color" content="#ff5a1f">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="전국 축제 &amp; 가족 정보 통합 캘린더 | 시뮬랩">
-  <meta property="og:description" content="월간/주간 캘린더, 날짜별 타임라인, 추천 연계 코스 및 실시간 날씨 안내">
+  <meta property="og:title" content="전국 축제 &amp; 가족 정보 통합 캘린더 | FESTA CALENDAR">
+  <meta property="og:description" content="와이드 월간 캘린더, 날짜별 타임라인, 당일 1일 추천 코스 및 기상 팁을 제공합니다.">
   <meta property="og:url" content="https://simulab.kr/calendar/">
+
+  <!-- Google Fonts: Plus Jakarta Sans & Material Symbols Outlined (Google AI Studio 테마 규격) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+
   <link rel="stylesheet" href="/assets/css/festa-calendar.css">
   <script type="module" src="/assets/js/festa-calendar.js"></script>
 </head>
 <body>
-  <a class="skip" href="#calendar-main">본문으로 이동</a>
+  <a class="skip" href="#calendar-main">본문으로 바로가기</a>
 
-  <!-- 상단 글로벌 네비게이션 (Google Stitch 규격) -->
+  <!-- 1. 상단 글로벌 네비게이션 (Google AI Studio 규격) -->
   <header class="cal-site-head">
     <div class="cal-head-inner">
       <div class="cal-head-left">
-        <a class="cal-brand" href="/" aria-label="시뮬랩 홈으로 이동">
+        <a class="cal-brand" href="/" aria-label="FESTA CALENDAR 홈으로 이동">
           <div class="cal-brand-icon">
-            <span aria-hidden="true">✳</span>
+            <span class="material-symbols-outlined">celebration</span>
           </div>
           <span class="cal-brand-text">FESTA <strong>CALENDAR</strong></span>
         </a>
+
+        <!-- 네비게이션 탭 -->
         <nav class="cal-nav" aria-label="글로벌 메뉴">
-          <a href="/calendar/" class="cal-nav-item active" aria-current="page">📅 축제달력</a>
-          <a href="/map/" class="cal-nav-item">🗺️ 내주변 지도</a>
-          <a href="/curation/" class="cal-nav-item">✨ 테마별 큐레이션</a>
-          <a href="/#discover" class="cal-nav-item">⌕ 지역별 탐색</a>
-          <a href="/library/" class="cal-nav-item">🛠 생활 도구</a>
+          <a href="/calendar/" class="cal-nav-item active" aria-current="page">
+            <span class="material-symbols-outlined">calendar_month</span> 축제달력
+          </a>
+          <a href="/map/" class="cal-nav-item">
+            <span class="material-symbols-outlined">explore</span> 내주변 지도
+          </a>
+          <a href="/curation/" class="cal-nav-item">
+            <span class="material-symbols-outlined">auto_awesome</span> 테마별 큐레이션
+          </a>
+          <a href="/#discover" class="cal-nav-item">
+            <span class="material-symbols-outlined">travel_explore</span> 지역별 탐색
+          </a>
+          <a href="/library/" class="cal-nav-item">
+            <span class="material-symbols-outlined">apps</span> 생활 도구
+          </a>
         </nav>
       </div>
+
+      <!-- 중앙 실시간 검색바 -->
+      <div class="cal-head-center">
+        <div class="cal-search-box">
+          <span class="material-symbols-outlined search-icon">search</span>
+          <input type="search" id="festa-live-search" placeholder="축제명, 장소, 키워드 검색..." aria-label="축제 및 일정 검색" autocomplete="off">
+          <button type="button" id="clear-search-btn" class="clear-btn" aria-label="검색어 지우기" hidden>×</button>
+        </div>
+      </div>
+
+      <!-- 우측 보관함 및 유저 액션 -->
       <div class="cal-head-right">
         <button type="button" class="cal-saved-btn" id="open-saved-btn" aria-label="저장한 일정 목록 열기">
-          ♡ 일정 보관함 <span id="saved-badge-count">0</span>
+          <span class="material-symbols-outlined heart-icon">favorite</span>
+          <span class="saved-text">일정 보관함</span>
+          <span class="saved-badge" id="saved-badge-count">0</span>
         </button>
       </div>
     </div>
   </header>
 
   <main id="calendar-main" class="cal-main-wrap">
-    <!-- 1. SMART MAP RADAR BANNER (스티치 시안 1 & 2 상단 안내 배너) -->
+    <!-- 2. SMART MAP RADAR BANNER (AI Studio 시안 상단 안내 배너) -->
     <div class="cal-map-cta-banner">
       <div class="cal-map-cta-left">
-        <div class="cal-map-cta-icon" aria-hidden="true">🗺️</div>
+        <div class="cal-map-cta-icon">
+          <span class="material-symbols-outlined">radar</span>
+        </div>
         <div>
           <h2 class="cal-map-cta-title">
             내 위치 주변 축제는 <strong>[내주변 지도]</strong> 탭에서 실시간 레이더로 확인하실 수 있습니다
           </h2>
           <p class="cal-map-cta-desc">
-            GPS 기반 1km~10km 반경 실시간 핀 검색, 주차장 현황, 버스킹 무대 위치를 풀스크린 지도로 바로 탐색해보세요.
+            GPS 기반 1km~10km 반경 실시간 핀 검색, 주차장 현황, 버스킹 무대 위치를 실제 지도 위에서 바로 탐색해보세요.
           </p>
         </div>
       </div>
       <a class="cal-map-cta-btn" href="/map/">
-        <span>explore</span> 내주변 지도 바로가기 ↗
+        <span class="material-symbols-outlined">map</span> 내주변 지도 바로가기 ↗
       </a>
     </div>
 
-    <!-- 2. HEADER TITLE & TOP CONTROLS -->
+    <!-- 3. HEADER TITLE & CONTROLS SECTION -->
     <section class="cal-title-section">
       <div class="cal-title-row">
         <div>
@@ -259,45 +292,56 @@ const html = `<!doctype html>
           </p>
         </div>
 
-        <!-- 보기 모드 전환 & 지역 필터 -->
+        <!-- 보기 모드 전환 & 빠른 액션 -->
         <div class="cal-controls-group">
-          <!-- 뷰 스위처 -->
           <div class="cal-view-toggle" role="group" aria-label="달력 보기 방식">
-            <button type="button" data-view-mode="month" class="active" aria-pressed="true">월간 캘린더</button>
-            <button type="button" data-view-mode="week" aria-pressed="false">주간 타임테이블</button>
+            <button type="button" data-view-mode="month" class="active" aria-pressed="true">
+              <span class="material-symbols-outlined">calendar_view_month</span> 월간 캘린더
+            </button>
+            <button type="button" data-view-mode="week" aria-pressed="false">
+              <span class="material-symbols-outlined">calendar_view_week</span> 주간 타임테이블
+            </button>
           </div>
         </div>
       </div>
 
-      <!-- 3. DETAILED MULTI-CATEGORY SCOPE FILTER CHIPS -->
+      <!-- 4. 카테고리 필터 칩 (AI Studio 스타일 칩 바) -->
       <div class="cal-filter-tray">
         <div class="cal-scope-chips" role="group" aria-label="정보 범위 선택">
-          <span class="cal-filter-label">정보 분류:</span>
           <button type="button" class="cal-chip active" data-cal-scope="all" aria-pressed="true">
-            🔥 전체보기 <span class="chip-count">${allCalendarData.length}</span>
+            <span class="chip-dot dot-all"></span> 전체보기 <span class="chip-count">${allCalendarData.length}</span>
           </button>
-          <button type="button" class="cal-chip tone-indigo" data-cal-scope="festival" aria-pressed="false">
-            🎆 축제·행사 <span class="chip-count">${festaItems.length}</span>
+          <button type="button" class="cal-chip tone-indigo" data-cal-scope="light" aria-pressed="false">
+            <span class="chip-dot dot-indigo"></span> 불꽃·야경 <span class="chip-count">${allCalendarData.filter(i => i.theme === 'light').length}</span>
           </button>
-          <button type="button" class="cal-chip tone-sky" data-cal-scope="culture" aria-pressed="false">
-            🎨 체험·공연·팝업 <span class="chip-count">${familyCalendarItems.filter(i => i.scope === 'culture').length}</span>
+          <button type="button" class="cal-chip tone-sky" data-cal-scope="music" aria-pressed="false">
+            <span class="chip-dot dot-sky"></span> 음악·인디버스킹 <span class="chip-count">${allCalendarData.filter(i => i.theme === 'kids' || i.title.includes('음악') || i.title.includes('버스킹') || i.title.includes('밴드')).length}</span>
           </button>
-          <button type="button" class="cal-chip tone-emerald" data-cal-scope="benefit" aria-pressed="false">
-            🏕 캠핑·세일·혜택 <span class="chip-count">${familyCalendarItems.filter(i => i.scope === 'benefit').length}</span>
+          <button type="button" class="cal-chip tone-amber" data-cal-scope="food" aria-pressed="false">
+            <span class="chip-dot dot-amber"></span> 미식·먹거리 <span class="chip-count">${allCalendarData.filter(i => i.theme === 'food').length}</span>
+          </button>
+          <button type="button" class="cal-chip tone-emerald" data-cal-scope="nature" aria-pressed="false">
+            <span class="chip-dot dot-emerald"></span> 자연·정원 <span class="chip-count">${allCalendarData.filter(i => i.theme === 'nature').length}</span>
+          </button>
+          <button type="button" class="cal-chip tone-violet" data-cal-scope="culture" aria-pressed="false">
+            <span class="chip-dot dot-violet"></span> 가족·체험 <span class="chip-count">${allCalendarData.filter(i => i.scope === 'culture' || i.theme === 'kids').length}</span>
           </button>
         </div>
 
         <!-- 빠른 이동 버튼 -->
         <div class="cal-quick-jumps">
-          <span class="cal-filter-label">빠른 이동:</span>
-          <button type="button" class="quick-jump-btn today-btn" id="jump-today-btn">⚡ 오늘 (TODAY)</button>
-          <button type="button" class="quick-jump-btn" id="jump-weekend-btn">이번 주말</button>
+          <button type="button" class="quick-jump-btn today-btn" id="jump-today-btn">
+            <span class="material-symbols-outlined">today</span> 오늘 (TODAY)
+          </button>
+          <button type="button" class="quick-jump-btn" id="jump-weekend-btn">
+            <span class="material-symbols-outlined">weekend</span> 이번 주말
+          </button>
         </div>
       </div>
 
       <!-- 지역별 필터 알약 바 -->
       <div class="cal-region-bar" aria-label="지역별 필터">
-        <span class="cal-region-label">📍 지역별 선택:</span>
+        <span class="cal-region-label"><span class="material-symbols-outlined">location_on</span> 지역 선택:</span>
         <div class="cal-region-scroll" id="calendar-region-pills">
           <button type="button" class="cal-reg-pill active" data-cal-region="all" aria-pressed="true">
             전체 지역 (${allCalendarData.filter(i => i.endDate >= today).length})
@@ -307,26 +351,34 @@ const html = `<!doctype html>
       </div>
     </section>
 
-    <!-- 4. FULL-WIDTH WIDE LARGE CALENDAR GRID (스티치 시안 2 대형 와이드 캘린더) -->
+    <!-- 5. FULL-WIDTH WIDE LARGE CALENDAR GRID (AI Studio 대형 와이드 캘린더) -->
     <section class="cal-grid-section">
       <!-- 캘린더 상단 툴바 -->
       <div class="cal-toolbar-bar">
         <div class="cal-month-nav">
-          <h2 class="cal-current-month" id="calendar-month-heading">불러오는 중...</h2>
-          <span class="cal-season-tag" id="calendar-season-badge">FESTIVAL SEASON</span>
           <div class="cal-month-arrows">
-            <button type="button" id="prev-month-btn" aria-label="이전 달">‹</button>
-            <button type="button" id="next-month-btn" aria-label="다음 달">›</button>
+            <button type="button" id="prev-month-btn" aria-label="이전 달">
+              <span class="material-symbols-outlined">chevron_left</span>
+            </button>
+          </div>
+          <div class="cal-month-title-wrap">
+            <h2 class="cal-current-month" id="calendar-month-heading">2026년 11월</h2>
+            <span class="cal-season-tag" id="calendar-season-badge">AUTUMN FESTIVAL SEASON</span>
+          </div>
+          <div class="cal-month-arrows">
+            <button type="button" id="next-month-btn" aria-label="다음 달">
+              <span class="material-symbols-outlined">chevron_right</span>
+            </button>
           </div>
         </div>
 
-        <!-- 컬러 범례 가이드 (스티치 테마 토큰) -->
+        <!-- 컬러 범례 가이드 -->
         <div class="cal-color-legend">
           <span><i class="legend-color legend-indigo"></i> 불꽃·야경</span>
           <span><i class="legend-color legend-sky"></i> 음악·버스킹</span>
-          <span><i class="legend-color legend-emerald"></i> 플리마켓·아트</span>
-          <span><i class="legend-color legend-amber"></i> 푸드·야시장</span>
-          <span><i class="legend-color legend-green"></i> 자연·가족체험</span>
+          <span><i class="legend-color legend-amber"></i> 미식·푸드</span>
+          <span><i class="legend-color legend-emerald"></i> 자연·정원</span>
+          <span><i class="legend-color legend-violet"></i> 가족·체험</span>
         </div>
       </div>
 
@@ -341,45 +393,48 @@ const html = `<!doctype html>
         <span class="is-sat">토요일 (SAT)</span>
       </div>
 
-      <!-- 대형 5~6주 그리드 테이블 (min-h: 120px) -->
-      <div class="cal-month-grid" id="calendar-grid-cells" role="group" aria-label="월간 일정 달력 (방향키로 이동 가능)">
-        <!-- JS 동적 렌더링 -->
+      <!-- 대형 5~6주 그리드 테이블 (min-h: 125px) -->
+      <div class="cal-month-grid" id="calendar-grid-cells" role="group" aria-label="월간 일정 달력 (방향키 또는 탭으로 이동 가능)">
+        <!-- 자바스크립트가 동적으로 생성 -->
       </div>
     </section>
 
-    <!-- 5. SELECTED DAY DETAILED FESTIVAL TIMELINE & CURATED CARDS (스티치 시안 2 하단 큐레이션) -->
+    <!-- 6. SELECTED DAY DETAILED FESTIVAL TIMELINE & CURATED CARDS (AI Studio 선택 일자 상세 큐레이션) -->
     <section class="cal-selected-section" id="selected-day-container">
       <div class="cal-selected-header">
         <div class="cal-selected-title-group">
+          <!-- 오렌지 그라디언트 대형 날짜 큐브 -->
           <div class="cal-day-num-box" id="selected-day-num">17</div>
           <div>
             <div class="cal-day-title-row">
-              <h3 class="cal-day-title" id="selected-day-title">5월 17일 (토요일) 축제 타임라인 &amp; 큐레이션</h3>
+              <h3 class="cal-day-title" id="selected-day-title">11월 17일 축제 타임라인 &amp; 큐레이션</h3>
               <span class="cal-day-dday-badge" id="selected-day-badge">D-DAY 4개 축제 진행</span>
             </div>
             <p class="cal-day-subtitle" id="selected-day-subtitle">
-              캘린더에서 선택된 날짜의 카테고리별 주요 축제 정보와 위치를 상세히 확인할 수 있습니다.
+              캘린더에서 선택된 날짜의 테마별 주요 축제 정보와 위치를 한눈에 확인할 수 있습니다.
             </p>
           </div>
         </div>
 
         <a class="cal-view-map-link" id="view-in-map-link" href="/map/">
-          <span>near_me</span> 이 날짜 축제들 내주변 지도에서 한 번에 보기 ↗
+          <span class="material-symbols-outlined">near_me</span> 이 날짜 축제들 내주변 지도에서 보기 ↗
         </a>
       </div>
 
-      <!-- 선택된 날짜의 축제 & 행사 카드 4열 그리드 (불꽃, 음악, 마켓, 푸드) -->
+      <!-- 선택된 날짜의 축제 4열 카드 그리드 -->
       <div class="cal-day-cards-grid" id="selected-day-cards">
-        <!-- JS 동적 렌더링 -->
+        <!-- 자바스크립트가 동적으로 생성 -->
       </div>
 
-      <!-- 원데이 추천 연계 코스 & 기상청 날씨/관람 팁 -->
+      <!-- 추천 연계 코스 & 날씨 팁 2열 그리드 -->
       <div class="cal-route-weather-grid">
         <!-- 좌측: 추천 연계 코스 (One-Day Festa Route) -->
         <div class="cal-route-card-box">
           <div class="cal-route-head">
             <div class="cal-route-title-left">
-              <div class="cal-route-icon" aria-hidden="true">🗺️</div>
+              <div class="cal-route-icon">
+                <span class="material-symbols-outlined">route</span>
+              </div>
               <div>
                 <h4 class="cal-route-h4" id="route-card-title">추천 연계 코스 (One-Day Festa Route)</h4>
                 <p class="cal-route-desc">플리마켓 쇼핑부터 버스킹 감상, 야시장 저녁과 화려한 드론 불꽃쇼까지</p>
@@ -389,41 +444,42 @@ const html = `<!doctype html>
           </div>
 
           <div class="cal-route-steps" id="selected-route-steps">
-            <!-- JS 동적 생성 -->
+            <!-- 자바스크립트가 동적으로 생성 -->
           </div>
         </div>
 
-        <!-- 우측: 당일 날씨 & 관람 팁 -->
+        <!-- 우측: 당일 날씨 & 관람 꿀팁 -->
         <div class="cal-weather-card-box">
           <div class="cal-weather-head">
             <h4 class="cal-weather-h4">
-              <span aria-hidden="true">☀️</span> 행사 당일 날씨 &amp; 관람 꿀팁
+              <span class="material-symbols-outlined weather-icon-head">wb_sunny</span> 행사 당일 날씨 &amp; 관람 꿀팁
             </h4>
             <span class="cal-weather-status-chip">야외활동 최적</span>
           </div>
 
           <div class="cal-weather-banner">
             <div class="cal-weather-temp-row">
-              <span class="cal-weather-icon-sun" aria-hidden="true">☀️</span>
+              <span class="material-symbols-outlined cal-weather-icon-sun">sunny</span>
               <div>
-                <strong class="cal-temp-text">24°C</strong>
-                <p class="cal-temp-sub">최저 14°C / 맑음 (강수확률 0%)</p>
+                <strong class="cal-temp-text">18°C</strong>
+                <p class="cal-temp-sub">최저 8°C / 맑음 (강수확률 0%)</p>
               </div>
             </div>
             <div class="cal-weather-air-col">
-              <p>미세먼지: <strong class="text-green">좋음</strong></p>
-              <p>일몰: <strong>19:38</strong></p>
+              <p>미세먼지: <strong class="text-green">좋음 (18㎍/㎥)</strong></p>
+              <p>일몰 시간: <strong>17:35</strong></p>
             </div>
           </div>
 
-          <ul class="cal-weather-checklist">
-            <li><strong>강바람 대비:</strong> 야간 야외 관람 시 얇은 겉옷이나 돗자리를 챙기세요.</li>
-            <li><strong>교통 팁:</strong> 행사장 인근 주차장이 매우 혼잡하므로 대중교통 이용을 적극 권장합니다.</li>
+          <ul class="cal-weather-checklist" id="weather-tip-list">
+            <li><strong>일교차 대비:</strong> 저녁 야외 관람 시 쌀쌀할 수 있으니 얇은 겉옷이나 무릎담요를 준비하세요.</li>
+            <li><strong>주차 및 대중교통:</strong> 축제 인근 주차장이 조기 만차되므로 지하철/버스 이용을 권장합니다.</li>
+            <li><strong>사전 예약:</strong> 인기 푸드트럭이나 체험 프로그램은 모바일 대기열을 활용하시면 편리합니다.</li>
           </ul>
 
           <div class="cal-weather-foot">
             <span>기상청 공공데이터 연계</span>
-            <a href="/map/" class="cal-weather-map-link">지도에서 주변 주차장 보기 ↗</a>
+            <a href="/map/" class="cal-weather-map-link">지도에서 주변 주차장 확인 ↗</a>
           </div>
         </div>
       </div>
@@ -435,9 +491,11 @@ const html = `<!doctype html>
     <div class="cal-footer-inner">
       <div class="cal-footer-top">
         <div class="cal-footer-brand">
-          <span class="cal-footer-mark">✳</span>
-          <span class="cal-footer-name">FESTA <strong>CALENDAR</strong></span>
-          <p>전국 방방곡곡의 열정 가득한 축제와 라이브 문화 이벤트를 한눈에 탐색하고 일정을 계획하세요.</p>
+          <div class="cal-footer-logo">
+            <span class="material-symbols-outlined">celebration</span>
+            <span class="cal-footer-name">FESTA <strong>CALENDAR</strong></span>
+          </div>
+          <p>전국 방방곡곡의 열정 가득한 축제와 라이브 문화 이벤트를 한눈에 탐색하고 스마트하게 일정을 계획하세요.</p>
         </div>
         <nav class="cal-footer-links" aria-label="하단 네비게이션">
           <div>
@@ -462,28 +520,37 @@ const html = `<!doctype html>
     </div>
   </footer>
 
-  <!-- 빠른 상세 미리보기 모달 다이얼로그 -->
+  <!-- 7. 빠른 상세 미리보기 모달 다이얼로그 (Quick-View Modal) -->
   <dialog class="quick-dialog" id="quick-preview-modal" aria-labelledby="quick-modal-title">
-    <div class="quick-modal-inner" id="quick-modal-content"></div>
+    <div class="quick-modal-inner" id="quick-modal-content">
+      <!-- 자바스크립트가 동적으로 생성 -->
+    </div>
   </dialog>
 
-  <!-- 보관함 다이얼로그 -->
+  <!-- 8. 저장된 일정 보관함 다이얼로그 -->
   <dialog class="saved-dialog" id="saved-dialog" aria-labelledby="saved-title">
     <div class="saved-head">
       <div>
         <span class="eyebrow">MY FESTA &amp; SCHEDULE</span>
-        <h2 id="saved-title">저장한 일정 보관함</h2>
+        <h2 id="saved-title">저장한 축제 &amp; 일정 보관함</h2>
       </div>
-      <button type="button" id="close-saved-btn" aria-label="닫기">×</button>
+      <button type="button" id="close-saved-btn" class="close-dialog-btn" aria-label="닫기">
+        <span class="material-symbols-outlined">close</span>
+      </button>
     </div>
-    <div class="saved-list" id="saved-list"></div>
+    <div class="saved-list" id="saved-list">
+      <!-- 저장된 일정 목록 동적 렌더링 -->
+    </div>
   </dialog>
 
-  <!-- 마우스 호버 툴팁 -->
+  <!-- 9. 마우스 호버 툴팁 -->
   <div class="cal-hover-tooltip" id="calendar-hover-tooltip" role="tooltip" hidden></div>
 
-  <!-- 토스트 알림 -->
-  <div class="festa-toast" id="festa-toast" role="status" aria-live="polite" hidden></div>
+  <!-- 10. AI Studio 플로팅 바운스 토스트 알림 (하단 중앙) -->
+  <div class="festa-toast" id="festa-toast" role="status" aria-live="polite" hidden>
+    <span class="material-symbols-outlined toast-icon">check_circle</span>
+    <span class="toast-message" id="toast-message">일정 보관함에 저장되었습니다.</span>
+  </div>
 
   <!-- JSON 데이터 탑재 -->
   <script id="festa-data" type="application/json">${data}</script>

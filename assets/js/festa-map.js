@@ -1,14 +1,16 @@
 /**
- * 내 주변 축제 지도 인터랙티브 스크립트 (FESTA MAP)
- * - Stitch 3번 시안 기반 레이더 맵 & 반경별 핀 렌더링
- * - 테마 레이어(전체/버스킹/플리마켓/푸드트럭/주차장) 토글
- * - 우측 슬라이드 패널 상세 정보 주입 및 타임테이블 연동
- * - 하단 퀵 캐러셀 동기화
+ * 내 주변 축제 지도 인터랙티브 엔진 (FESTA MAP)
+ * - Leaflet 기반 고화질 실제 인터랙티브 지도 렌더링
+ * - 반경 1km/3km/5km/10km 레이더 원 오버레이
+ * - 축제 마커 핀 클릭 시 우측 상세 패널 연동
+ * - 네이버 지도 / 카카오맵 원클릭 길찾기 연동
+ * - 하단 핫 축제 캐러셀 연동
  */
 
 (function () {
   'use strict';
 
+  // 축제 JSON 데이터 로드
   const dataEl = document.getElementById('map-events-data');
   if (!dataEl) return;
 
@@ -20,18 +22,20 @@
     allFestas = [];
   }
 
-  // 앱 상태
+  // 상태 관리 객체
   const state = {
-    userLat: 37.5283,
+    userLat: 37.5283, // 기본값: 서울 여의도 한강공원
     userLng: 126.9328,
-    radiusKm: 3, // 기본 반경 3km
+    radiusKm: 3, // 기본 반경: 3km
     selectedLayer: 'all', // all | busking | market | foodtruck | parking
     selectedFestaId: allFestas[0]?.id || null,
-    zoomLevel: 1.0
+    map: null,
+    userMarker: null,
+    radarCircle: null,
+    markersGroup: null
   };
 
-  // DOM 캐싱
-  const pinsLayerEl = document.getElementById('map-pins-layer');
+  // DOM 엘리먼트 캐싱
   const panelEl = document.getElementById('map-detail-panel');
   const panelContentEl = document.getElementById('map-panel-content');
   const panelCloseBtn = document.getElementById('map-panel-close-btn');
@@ -48,10 +52,7 @@
   const layerPills = document.querySelectorAll('.layer-pill');
   const relocateBtn = document.getElementById('map-relocate-btn');
 
-  const zoomInBtn = document.getElementById('btn-zoom-in');
-  const zoomOutBtn = document.getElementById('btn-zoom-out');
-
-  // 거리 계산 (Haversine 공식)
+  // Haversine 두 지점 간 거리(km) 계산 공식
   function getDistanceKm(lat1, lon1, lat2, lon2) {
     const R = 6371;
     const dLat = (lat2 - lat1) * Math.PI / 180;
@@ -61,191 +62,300 @@
       Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
       Math.sin(dLon / 2) * Math.sin(dLon / 2);
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    return R * c;
+    return Number((R * c).toFixed(1));
   }
 
-  // 현재 필터에 부합하는 축제 목록
+  // 1. Leaflet 지도 초기화
+  function initLeafletMap() {
+    const mapContainer = document.getElementById('leaflet-map-container');
+    if (!mapContainer || typeof L === 'undefined') return;
+
+    // 실제 Leaflet 맵 객체 생성
+    state.map = L.map('leaflet-map-container', {
+      center: [state.userLat, state.userLng],
+      zoom: 14,
+      zoomControl: false // 커스텀 줌 컨트롤 또는 우측 하단 배치
+    });
+
+    // 줌 컨트롤 우측 하단에 배치
+    L.control.zoom({ position: 'bottomright' }).addTo(state.map);
+
+    // 고화질 CartoDB / OSM 지도 타일 로드 (실제 한국어 지명 및 한강, 도로 표시)
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      subdomains: 'abcd',
+      maxZoom: 19
+    }).addTo(state.map);
+
+    // 마커 그룹 레이어 생성
+    state.markersGroup = L.layerGroup().addTo(state.map);
+
+    // 내 위치 마커 생성 (펄스 애니메이션 파란 점)
+    const userIcon = L.divIcon({
+      className: 'custom-my-location-marker',
+      html: `
+        <div class="my-location-marker-inner">
+          <div class="my-loc-pulse"></div>
+          <div class="my-loc-dot"></div>
+          <span class="my-loc-tooltip">여의도 한강공원 (내 위치)</span>
+        </div>
+      `,
+      iconSize: [24, 24],
+      iconAnchor: [12, 12]
+    });
+
+    state.userMarker = L.marker([state.userLat, state.userLng], {
+      icon: userIcon,
+      zIndexOffset: 1000
+    }).addTo(state.map);
+
+    // 탐색 반경 동심원 (레이더 서클) 그리기
+    updateRadarCircle();
+
+    // 축제 마커 핀 그리기
+    renderMarkers();
+
+    // URL 파라미터로 특정 축제 focus가 넘어온 경우
+    const urlParams = new URLSearchParams(window.location.search);
+    const focusId = urlParams.get('focus');
+    if (focusId) {
+      const target = allFestas.find(f => f.id === focusId);
+      if (target) {
+        selectFesta(target, true);
+      }
+    } else if (allFestas.length > 0) {
+      selectFesta(allFestas[0], false);
+    }
+  }
+
+  // 2. 반경 원 갱신
+  function updateRadarCircle() {
+    if (!state.map) return;
+    if (state.radarCircle) {
+      state.map.removeLayer(state.radarCircle);
+    }
+
+    state.radarCircle = L.circle([state.userLat, state.userLng], {
+      radius: state.radiusKm * 1000,
+      color: '#ff5a1f',
+      weight: 2,
+      opacity: 0.6,
+      dashArray: '6, 6',
+      fillColor: '#ff5a1f',
+      fillOpacity: 0.06
+    }).addTo(state.map);
+
+    // 반경에 맞춰 줌 레벨 조정
+    if (state.radiusKm <= 1) state.map.setZoom(15);
+    else if (state.radiusKm <= 3) state.map.setZoom(14);
+    else if (state.radiusKm <= 5) state.map.setZoom(13);
+    else state.map.setZoom(12);
+  }
+
+  // 3. 필터 조건에 맞는 축제 목록 추출
   function getFilteredFestas() {
     return allFestas.filter(item => {
-      // 거리 필터
+      // 거리 계산
       const dist = getDistanceKm(state.userLat, state.userLng, item.lat, item.lng);
-      if (dist > state.radiusKm * 1.5) return false;
+      item.liveDist = dist;
 
-      // 레이어 필터
+      // 반경 필터 (반경 1.5배까지 유연하게 탐색)
+      if (dist > state.radiusKm * 1.6) return false;
+
+      // 레이어 테마 필터
       if (state.selectedLayer === 'all') return true;
-      if (state.selectedLayer === 'parking') return true;
-      return item.layers && item.layers[state.selectedLayer];
+      if (state.selectedLayer === 'busking') {
+        return item.theme === 'kids' || item.title.includes('음악') || item.title.includes('버스킹') || item.title.includes('밴드');
+      }
+      if (state.selectedLayer === 'market') {
+        return item.theme === 'food' || item.title.includes('마켓') || item.title.includes('플리마켓');
+      }
+      if (state.selectedLayer === 'foodtruck') {
+        return item.theme === 'food';
+      }
+      if (state.selectedLayer === 'parking') {
+        return true;
+      }
+      return true;
     });
   }
 
-  // 레이어 카운트 업데이트
-  function updateLayerCounts() {
-    const radiusFiltered = allFestas.filter(item => {
-      const dist = getDistanceKm(state.userLat, state.userLng, item.lat, item.lng);
-      return dist <= state.radiusKm * 1.5;
-    });
+  // 4. 지도 위의 축제 핀 마커 렌더링
+  function renderMarkers() {
+    if (!state.markersGroup) return;
+    state.markersGroup.clearLayers();
 
-    if (countAllEl) countAllEl.textContent = radiusFiltered.length;
-    if (countBuskingEl) countBuskingEl.textContent = radiusFiltered.filter(i => i.layers?.busking).length;
-    if (countMarketEl) countMarketEl.textContent = radiusFiltered.filter(i => i.layers?.market).length;
-    if (countFoodtruckEl) countFoodtruckEl.textContent = radiusFiltered.filter(i => i.layers?.foodtruck).length;
-  }
+    const filtered = getFilteredFestas();
 
-  // 핀 렌더링
-  function renderPins() {
-    if (!pinsLayerEl) return;
-    pinsLayerEl.innerHTML = '';
+    // 레이어 카운터 숫자 갱신
+    updateLayerCounts();
 
-    const list = getFilteredFestas();
+    filtered.forEach(item => {
+      const isSelected = item.id === state.selectedFestaId;
+      const themeTone = getThemeTone(item.theme);
 
-    list.forEach((item, idx) => {
-      // 중심점 기준 상대 좌표 계산
-      const dLat = (item.lat - state.userLat);
-      const dLng = (item.lng - state.userLng);
-
-      // 화면 배율 스케일링
-      const scale = 2400 / (state.radiusKm * state.zoomLevel);
-      const xPercent = 50 + (dLng * scale);
-      const yPercent = 50 - (dLat * scale);
-
-      // 화면 경계 내에만 렌더링
-      if (xPercent < 2 || xPercent > 98 || yPercent < 2 || yPercent > 98) return;
-
-      const marker = document.createElement('div');
-      marker.className = `festa-pin-marker theme-${item.theme || 'kids'}`;
-      if (item.id === state.selectedFestaId) marker.classList.add('active');
-
-      marker.style.left = `${xPercent}%`;
-      marker.style.top = `${yPercent}%`;
-
-      const themeIcons = { light: '✦', food: '◒', nature: '❋', kids: '✳' };
-      const icon = themeIcons[item.theme] || '★';
-
-      marker.innerHTML = `
-        <div class="festa-pin-bubble">
-          <span>${icon}</span>
-          <span>${item.title.slice(0, 8)}</span>
-        </div>
-        <div class="festa-pin-dot"></div>
-      `;
-
-      marker.addEventListener('click', (e) => {
-        e.stopPropagation();
-        selectFesta(item.id);
+      // 커스텀 SVG 축제 마커 아이콘
+      const pinIcon = L.divIcon({
+        className: 'custom-festa-leaflet-pin',
+        html: `
+          <div class="festa-pin-container ${isSelected ? 'is-active' : ''} tone-${themeTone}">
+            <div class="festa-pin-bubble">
+              <span class="festa-pin-symbol">${getThemeEmoji(item.theme)}</span>
+              <span class="festa-pin-text">${esc(item.title.slice(0, 9))}</span>
+            </div>
+            <div class="festa-pin-point"></div>
+          </div>
+        `,
+        iconSize: [110, 44],
+        iconAnchor: [55, 42]
       });
 
-      pinsLayerEl.appendChild(marker);
+      const marker = L.marker([item.lat, item.lng], { icon: pinIcon });
+      marker.on('click', () => {
+        selectFesta(item, true);
+      });
+      state.markersGroup.addLayer(marker);
     });
 
-    renderCarousel(list);
+    // 하단 캐러셀 갱신
+    renderBottomCarousel(filtered);
   }
 
-  // 하단 캐러셀 렌더링
-  function renderCarousel(list) {
+  function getThemeTone(theme) {
+    if (theme === 'light') return 'indigo';
+    if (theme === 'food') return 'amber';
+    if (theme === 'nature') return 'emerald';
+    if (theme === 'kids') return 'violet';
+    return 'sky';
+  }
+
+  function getThemeEmoji(theme) {
+    if (theme === 'light') return '✦';
+    if (theme === 'food') return '◒';
+    if (theme === 'nature') return '❋';
+    if (theme === 'kids') return '✳';
+    return '★';
+  }
+
+  // 5. 특정 축제 선택 및 우측 상세 패널 열기
+  function selectFesta(item, panToCenter) {
+    if (!item) return;
+    state.selectedFestaId = item.id;
+
+    if (panToCenter && state.map) {
+      state.map.panTo([item.lat, item.lng], { animate: true, duration: 0.5 });
+    }
+
+    // 마커 재렌더링하여 활성 클래스 부여
+    renderMarkers();
+
+    // 우측 패널 내용 채우기
+    if (panelContentEl) {
+      panelContentEl.innerHTML = `
+        <div class="map-panel-hero">
+          <img class="map-panel-img" src="${item.imageUrl}" alt="${esc(item.title)}">
+          <span class="map-panel-badge">${esc(item.region)} · ${item.feeLabel}</span>
+        </div>
+        <div class="map-panel-body">
+          <div class="map-panel-subrow">
+            <span class="map-panel-dist">📍 현재 위치에서 약 ${item.distKm}km</span>
+            <span class="map-panel-fee">${item.feeStatus === 'free' ? '무료관람' : '입장요금 있음'}</span>
+          </div>
+          <h3 class="map-panel-title">${esc(item.title)}</h3>
+          <p class="map-panel-venue">개최 장소: <strong>${esc(item.venue || item.location)}</strong></p>
+          <p class="map-panel-dates">행사 일정: ${item.startDate} ~ ${item.endDate}</p>
+
+          <!-- 오늘의 타임테이블 -->
+          <div class="map-timetable-card">
+            <h4>오늘의 주요 타임테이블</h4>
+            <ul>
+              ${(item.buskingTimes || ['14:00 오프닝', '17:00 라이브 무대', '20:30 야간 불꽃쇼']).map(t => `<li><span class="time-dot"></span>${esc(t)}</li>`).join('')}
+            </ul>
+          </div>
+
+          <!-- 현장 시설 현황 -->
+          <div class="map-facilities-row">
+            <div class="fac-box">
+              <span class="fac-label">푸드트럭</span>
+              <strong class="fac-val">${item.facilities?.foodtrucks || 5}대 운영</strong>
+            </div>
+            <div class="fac-box">
+              <span class="fac-label">주차 현황</span>
+              <strong class="fac-val text-amber">${item.facilities?.parkingStatus || '여유'}</strong>
+            </div>
+            <div class="fac-box">
+              <span class="fac-label">현재 날씨</span>
+              <strong class="fac-val">${item.facilities?.weather || '19°C 맑음'}</strong>
+            </div>
+          </div>
+
+          <!-- 네이버 / 카카오 지도 길찾기 및 공식 링크 버튼 -->
+          <div class="map-panel-actions">
+            <a class="btn-panel-naver" href="https://map.naver.com/v5/search/${encodeURIComponent(item.venue || item.title)}" target="_blank" rel="noopener noreferrer">
+              <span>네이버 지도 길찾기 ↗</span>
+            </a>
+            <a class="btn-panel-kakao" href="https://map.kakao.com/link/search/${encodeURIComponent(item.venue || item.title)}" target="_blank" rel="noopener noreferrer">
+              <span>카카오맵으로 보기 ↗</span>
+            </a>
+          </div>
+
+          <a class="btn-panel-official" href="${item.officialUrl || '/events/' + encodeURIComponent(item.id) + '/'}" target="_blank" rel="noopener noreferrer">
+            축제 공식 사이트 바로가기 ↗
+          </a>
+        </div>
+      `;
+
+      if (panelEl) {
+        panelEl.classList.add('is-open');
+      }
+    }
+  }
+
+  // 6. 하단 퀵 캐러셀 바 렌더링
+  function renderBottomCarousel(list) {
     if (!carouselTrackEl) return;
     carouselTrackEl.innerHTML = '';
 
     if (carouselCountTextEl) {
-      carouselCountTextEl.textContent = `반경 ${state.radiusKm}km 이내 ${list.length}개 행사 진행 중`;
-    }
-
-    if (list.length === 0) {
-      carouselTrackEl.innerHTML = '<div style="color: #94a3b8; font-size: 0.85rem; padding: 0.5rem 0;">선택하신 반경 내에 진행 중인 행사가 없습니다. 반경을 넓혀보세요.</div>';
-      return;
+      carouselCountTextEl.textContent = `반경 ${state.radiusKm}km 내 ${list.length}개 행사 진행 중`;
     }
 
     list.forEach(item => {
+      const isSelected = item.id === state.selectedFestaId;
       const card = document.createElement('div');
-      card.className = 'c-card';
-      if (item.id === state.selectedFestaId) card.classList.add('active');
-
-      const dist = getDistanceKm(state.userLat, state.userLng, item.lat, item.lng).toFixed(1);
-
+      card.className = `c-card ${isSelected ? 'active' : ''}`;
       card.innerHTML = `
-        <h5 class="c-card-title">${item.title}</h5>
-        <div class="c-card-meta">
-          <span>📍 ${item.location.slice(0, 10)}</span>
-          <span>🚶 ${dist}km</span>
+        <img class="c-card-img" src="${item.imageUrl}" alt="${esc(item.title)}" loading="lazy">
+        <div class="c-card-info">
+          <span class="c-card-dist">${item.distKm}km</span>
+          <h4 class="c-card-title">${esc(item.title)}</h4>
+          <p class="c-card-meta">${esc(item.venue)}</p>
         </div>
       `;
 
       card.addEventListener('click', () => {
-        selectFesta(item.id);
+        selectFesta(item, true);
       });
 
       carouselTrackEl.appendChild(card);
     });
   }
 
-  // 축제 선택 및 우측 상세 패널 열기
-  function selectFesta(id) {
-    state.selectedFestaId = id;
-    const festa = allFestas.find(f => f.id === id);
-    if (!festa) return;
+  // 7. 레이어 카운트 업데이트
+  function updateLayerCounts() {
+    const radiusFiltered = allFestas.filter(item => {
+      const dist = getDistanceKm(state.userLat, state.userLng, item.lat, item.lng);
+      return dist <= state.radiusKm * 1.6;
+    });
 
-    // 활성 핀 및 캐러셀 카드 업데이트
-    document.querySelectorAll('.festa-pin-marker.active').forEach(m => m.classList.remove('active'));
-    document.querySelectorAll('.c-card.active').forEach(c => c.classList.remove('active'));
-
-    // 패널 열기
-    if (panelEl) panelEl.classList.remove('closed');
-
-    const dist = getDistanceKm(state.userLat, state.userLng, festa.lat, festa.lng).toFixed(1);
-    const walkMin = Math.round(dist * 14);
-
-    if (panelContentEl) {
-      panelContentEl.innerHTML = `
-        <span class="panel-header-badge">★ 실시간 추천 인기 축제</span>
-        ${festa.image?.src ? `<img class="panel-hero-img" src="${festa.image.src}" alt="${festa.title}">` : ''}
-        <h3 class="panel-title">${festa.title}</h3>
-        <div class="panel-loc-meta">
-          <span>📍 ${festa.region} · ${festa.location}</span>
-          <span>🚶 현재 위치에서 약 ${dist}km (도보 약 ${walkMin}분)</span>
-        </div>
-
-        <div class="panel-status-strip">
-          <div>
-            <span class="status-cell-title">푸드트럭</span>
-            <span class="status-cell-val">운영 중</span>
-          </div>
-          <div>
-            <span class="status-cell-title">주차 여유</span>
-            <span class="status-cell-val">인근 공영</span>
-          </div>
-          <div>
-            <span class="status-cell-title">현재 날씨</span>
-            <span class="status-cell-val">19°C 맑음</span>
-          </div>
-        </div>
-
-        <div class="panel-timetable-box">
-          <h4 class="timetable-title">오늘의 주요 타임테이블</h4>
-          <div class="timetable-item">
-            <span class="tt-time">14:00</span>
-            <span class="tt-desc">인디 버스킹 &amp; 플리마켓 오프닝</span>
-          </div>
-          <div class="timetable-item">
-            <span class="tt-time">17:00</span>
-            <span class="tt-desc">메인 무대 라이브 공연 <span class="tt-live-tag">LIVE</span></span>
-          </div>
-          <div class="timetable-item">
-            <span class="tt-time">20:30</span>
-            <span class="tt-desc">야간 조명 연출 &amp; 수변 산책 피날레</span>
-          </div>
-        </div>
-
-        <p style="margin: 0; font-size: 0.85rem; color: #475569; line-height: 1.5;">
-          ${festa.program}
-        </p>
-
-        <a class="panel-cta-btn" href="${festa.officialUrl}" target="_blank" rel="noopener">
-          축제 공식 사이트 바로가기 ↗
-        </a>
-      `;
-    }
+    if (countAllEl) countAllEl.textContent = radiusFiltered.length;
+    if (countBuskingEl) countBuskingEl.textContent = radiusFiltered.filter(i => i.theme === 'kids' || i.title.includes('음악') || i.title.includes('버스킹')).length;
+    if (countMarketEl) countMarketEl.textContent = radiusFiltered.filter(i => i.theme === 'food' || i.title.includes('마켓')).length;
+    if (countFoodtruckEl) countFoodtruckEl.textContent = radiusFiltered.filter(i => i.theme === 'food').length;
   }
 
-  // 이벤트 리스너 등록
+  // 8. 이벤트 바인딩
+  // 반경 탭 클릭
   radiusTabs.forEach(tab => {
     tab.addEventListener('click', () => {
       radiusTabs.forEach(t => {
@@ -254,68 +364,74 @@
       });
       tab.classList.add('active');
       tab.setAttribute('aria-selected', 'true');
-      state.radiusKm = Number(tab.dataset.radius);
-      updateLayerCounts();
-      renderPins();
+      state.radiusKm = Number(tab.getAttribute('data-radius') || 3);
+      updateRadarCircle();
+      renderMarkers();
     });
   });
 
+  // 레이어 필 클릭
   layerPills.forEach(pill => {
     pill.addEventListener('click', () => {
       layerPills.forEach(p => p.classList.remove('active'));
       pill.classList.add('active');
-      state.selectedLayer = pill.dataset.layer;
-      renderPins();
+      state.selectedLayer = pill.getAttribute('data-layer') || 'all';
+      renderMarkers();
     });
   });
 
-  if (panelCloseBtn) {
+  // 우측 패널 닫기 버튼
+  if (panelCloseBtn && panelEl) {
     panelCloseBtn.addEventListener('click', () => {
-      if (panelEl) panelEl.classList.add('closed');
+      panelEl.classList.remove('is-open');
     });
   }
 
-  if (zoomInBtn) {
-    zoomInBtn.addEventListener('click', () => {
-      state.zoomLevel = Math.min(2.5, state.zoomLevel + 0.25);
-      renderPins();
-    });
-  }
-
-  if (zoomOutBtn) {
-    zoomOutBtn.addEventListener('click', () => {
-      state.zoomLevel = Math.max(0.6, state.zoomLevel - 0.25);
-      renderPins();
-    });
-  }
-
+  // GPS 내 위치 재설정 버튼
   if (relocateBtn) {
     relocateBtn.addEventListener('click', () => {
-      if (navigator.geolocation) {
+      if ('geolocation' in navigator) {
+        relocateBtn.textContent = '위치 확인 중...';
         navigator.geolocation.getCurrentPosition(
           (pos) => {
             state.userLat = pos.coords.latitude;
             state.userLng = pos.coords.longitude;
             const locValEl = document.getElementById('user-location-val');
             if (locValEl) locValEl.textContent = '📍 현재 GPS 감지 위치';
-            updateLayerCounts();
-            renderPins();
+
+            if (state.userMarker) {
+              state.userMarker.setLatLng([state.userLat, state.userLng]);
+            }
+            if (state.map) {
+              state.map.setView([state.userLat, state.userLng], 14);
+            }
+            updateRadarCircle();
+            renderMarkers();
+            relocateBtn.innerHTML = '<span class="material-symbols-outlined">my_location</span> 내 위치';
           },
-          () => {
-            alert('현재 위치 정보를 가져올 수 없어 기본 위치(서울 여의도)로 설정됩니다.');
-          }
+          (err) => {
+            alert('위치 정보를 가져올 수 없습니다. 기본 위치(서울 여의도)로 유지합니다.');
+            relocateBtn.innerHTML = '<span class="material-symbols-outlined">my_location</span> 내 위치';
+          },
+          { timeout: 7000 }
         );
       } else {
-        alert('이 브라우저에서는 위치 서비스를 지원하지 않습니다.');
+        alert('이 브라우저는 위치 정보(GPS)를 지원하지 않습니다.');
       }
     });
   }
 
-  // 초기화
-  updateLayerCounts();
-  renderPins();
-  if (state.selectedFestaId) {
-    selectFesta(state.selectedFestaId);
+  function esc(s) {
+    return String(s || '').replace(/[&<>"']/g, c => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    }[c]));
+  }
+
+  // DOM 로드 완료 시 초기화
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initLeafletMap);
+  } else {
+    initLeafletMap();
   }
 
 })();

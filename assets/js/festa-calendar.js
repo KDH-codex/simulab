@@ -1,489 +1,719 @@
 /**
- * 전국 축제 & 가족 정보 통합 캘린더 인터랙티브 스크립트 (FESTA CALENDAR)
- * - scripts/build-calendar-page.mjs의 DOM ID/클래스와 100% 일치
- * - 대형 7열 와이드 캘린더 렌더링 및 주간/월간 전환
- * - 선택된 날짜의 4열 축제 카드 그리드 및 3단계 추천 연계 코스(One-Day Route) 동적 생성
+ * FESTA CALENDAR - Google AI Studio 스타일 대화형 캘린더 스크립트
+ * 시뮬랩(Simulab) 전국 축제 & 가족 정보 통합 캘린더 인터랙션 엔진
  */
 
-(function () {
-  'use strict';
+// 1. 상태 관리 객체 (State Management)
+const state = {
+  // 축제 및 가족 일정 원본 데이터
+  items: [],
+  // 현재 캘린더에 표시 중인 연도와 월
+  currentYear: 2026,
+  currentMonth: 11, // 1~12월
+  // 현재 선택된 날짜 (YYYY-MM-DD)
+  selectedDate: '',
+  // 오늘 날짜 (YYYY-MM-DD)
+  todayDate: '',
+  // 활성화된 필터 (전체, 불꽃, 음악, 푸드, 자연, 가족체험)
+  activeScope: 'all',
+  // 활성화된 지역 (전체 또는 서울, 경기 등)
+  activeRegion: 'all',
+  // 실시간 검색어
+  searchKeyword: '',
+  // 캘린더 뷰 모드 ('month' 또는 'week')
+  viewMode: 'month',
+  // 저장된 북마크 ID 집합 (Set)
+  savedIds: new Set()
+};
 
-  const dataEl = document.getElementById('festa-data');
-  if (!dataEl) return;
-
-  let allItems = [];
-  try {
-    allItems = JSON.parse(dataEl.textContent || '[]');
-  } catch (err) {
-    console.error('캘린더 데이터 파싱 오류:', err);
-    allItems = [];
+// 2. 초기화 함수 (Initialization)
+document.addEventListener('DOMContentLoaded', () => {
+  // JSON 데이터 로드
+  const dataScript = document.getElementById('festa-data');
+  if (dataScript) {
+    try {
+      state.items = JSON.parse(dataScript.textContent);
+    } catch (e) {
+      console.error('Failed to parse festa-data JSON', e);
+      state.items = [];
+    }
   }
 
-  // 한국 시간 오늘 날짜 (YYYY-MM-DD)
-  const todayStr = new Intl.DateTimeFormat('en-CA', {
-    timeZone: 'Asia/Seoul',
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit'
-  }).format(new Date());
+  // 오늘 날짜 설정 (한국 시간 기준)
+  const now = new Date();
+  const yearStr = now.getFullYear();
+  const monthStr = String(now.getMonth() + 1).padStart(2, '0');
+  const dayStr = String(now.getDate()).padStart(2, '0');
+  state.todayDate = `${yearStr}-${monthStr}-${dayStr}`;
 
-  // 초기 선택 날짜: 오늘 이후 가장 일정이 풍성한 날짜 또는 오늘
-  const [initY, initM] = todayStr.split('-').map(Number);
+  // 현재 표시 연월을 오늘 날짜 기준으로 설정
+  state.currentYear = now.getFullYear();
+  state.currentMonth = now.getMonth() + 1;
+  state.selectedDate = state.todayDate;
 
-  const state = {
-    year: initY,
-    month: initM,
-    selectedDate: todayStr,
-    viewMode: 'month', // 'month' | 'week'
-    scope: 'all',      // 'all' | 'festival' | 'culture' | 'benefit'
-    region: 'all',
-    savedIds: new Set(JSON.parse(localStorage.getItem('simulab_saved_festivals') || '[]'))
-  };
+  // 로컬 스토리지에서 북마크 불러오기
+  loadSavedBookmarks();
 
-  // DOM 요소 참조
-  const monthHeadingEl = document.getElementById('calendar-month-heading');
-  const seasonBadgeEl = document.getElementById('calendar-season-badge');
-  const gridCellsEl = document.getElementById('calendar-grid-cells');
-  const prevMonthBtn = document.getElementById('prev-month-btn');
-  const nextMonthBtn = document.getElementById('next-month-btn');
-  const jumpTodayBtn = document.getElementById('jump-today-btn');
-  const jumpWeekendBtn = document.getElementById('jump-weekend-btn');
+  // 이벤트 리스너 등록
+  setupEventListeners();
 
-  const viewModeBtns = document.querySelectorAll('.cal-view-toggle button[data-view-mode]');
-  const scopeBtns = document.querySelectorAll('.cal-chip[data-cal-scope]');
-  const regionBtns = document.querySelectorAll('.cal-reg-pill[data-cal-region]');
+  // 화면 첫 렌더링
+  renderAll();
+});
 
-  const selDayNumEl = document.getElementById('selected-day-num');
-  const selDayTitleEl = document.getElementById('selected-day-title');
-  const selDayBadgeEl = document.getElementById('selected-day-badge');
-  const selDaySubtitleEl = document.getElementById('selected-day-subtitle');
-  const selDayCardsEl = document.getElementById('selected-day-cards');
-  const routeTitleEl = document.getElementById('route-card-title');
-  const routeStepsEl = document.getElementById('selected-route-steps');
+// 3. 로컬 스토리지 북마크 관리
+function loadSavedBookmarks() {
+  try {
+    const raw = localStorage.getItem('festa_saved_events');
+    if (raw) {
+      const arr = JSON.parse(raw);
+      state.savedIds = new Set(arr);
+    }
+  } catch (e) {
+    state.savedIds = new Set();
+  }
+  updateBookmarkBadge();
+}
 
-  const savedBadgeCountEl = document.getElementById('saved-badge-count');
+function saveBookmarksToStorage() {
+  try {
+    localStorage.setItem('festa_saved_events', JSON.stringify(Array.from(state.savedIds)));
+  } catch (e) {
+    console.error('Failed to save to localStorage', e);
+  }
+  updateBookmarkBadge();
+}
+
+function updateBookmarkBadge() {
+  const badge = document.getElementById('saved-badge-count');
+  if (badge) {
+    badge.textContent = state.savedIds.size;
+  }
+}
+
+// 4. 플로팅 바운스 토스트 알림 (AI Studio 스타일)
+let toastTimer = null;
+function showToast(message) {
+  const toast = document.getElementById('festa-toast');
+  const msgEl = document.getElementById('toast-message');
+  if (!toast) return;
+
+  if (msgEl) msgEl.textContent = message;
+  toast.hidden = false;
+
+  if (toastTimer) clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => {
+    toast.hidden = true;
+  }, 2500);
+}
+
+// 5. 이벤트 리스너 바인딩 (Event Listeners)
+function setupEventListeners() {
+  // 이전달 / 다음달 버튼
+  const prevBtn = document.getElementById('prev-month-btn');
+  const nextBtn = document.getElementById('next-month-btn');
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      if (state.currentMonth === 1) {
+        state.currentMonth = 12;
+        state.currentYear -= 1;
+      } else {
+        state.currentMonth -= 1;
+      }
+      renderCalendarGrid();
+    });
+  }
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      if (state.currentMonth === 12) {
+        state.currentMonth = 1;
+        state.currentYear += 1;
+      } else {
+        state.currentMonth += 1;
+      }
+      renderCalendarGrid();
+    });
+  }
+
+  // 오늘 점프 버튼
+  const todayBtn = document.getElementById('jump-today-btn');
+  if (todayBtn) {
+    todayBtn.addEventListener('click', () => {
+      const now = new Date();
+      state.currentYear = now.getFullYear();
+      state.currentMonth = now.getMonth() + 1;
+      state.selectedDate = state.todayDate;
+      renderAll();
+      scrollToSelectedSection();
+      showToast('오늘 날짜로 이동했습니다.');
+    });
+  }
+
+  // 이번 주말 점프 버튼
+  const weekendBtn = document.getElementById('jump-weekend-btn');
+  if (weekendBtn) {
+    weekendBtn.addEventListener('click', () => {
+      const now = new Date();
+      const day = now.getDay(); // 0(일) ~ 6(토)
+      const diffToSaturday = (6 - day + 7) % 7;
+      const targetSat = new Date(now.getTime() + diffToSaturday * 24 * 60 * 60 * 1000);
+      const y = targetSat.getFullYear();
+      const m = String(targetSat.getMonth() + 1).padStart(2, '0');
+      const d = String(targetSat.getDate()).padStart(2, '0');
+      state.currentYear = y;
+      state.currentMonth = targetSat.getMonth() + 1;
+      state.selectedDate = `${y}-${m}-${d}`;
+      renderAll();
+      scrollToSelectedSection();
+      showToast('이번 주말 일정으로 이동했습니다.');
+    });
+  }
+
+  // 실시간 라이브 검색창
+  const searchInput = document.getElementById('festa-live-search');
+  const clearBtn = document.getElementById('clear-search-btn');
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      state.searchKeyword = e.target.value.trim().toLowerCase();
+      if (clearBtn) clearBtn.hidden = !state.searchKeyword;
+      renderAll();
+    });
+  }
+  if (clearBtn) {
+    clearBtn.addEventListener('click', () => {
+      if (searchInput) searchInput.value = '';
+      state.searchKeyword = '';
+      clearBtn.hidden = true;
+      renderAll();
+    });
+  }
+
+  // 카테고리 필터 칩 클릭
+  const scopeChips = document.querySelectorAll('.cal-chip[data-cal-scope]');
+  scopeChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      scopeChips.forEach(c => {
+        c.classList.remove('active');
+        c.setAttribute('aria-pressed', 'false');
+      });
+      chip.classList.add('active');
+      chip.setAttribute('aria-pressed', 'true');
+      state.activeScope = chip.getAttribute('data-cal-scope') || 'all';
+      renderAll();
+    });
+  });
+
+  // 지역별 알약 버튼 클릭
+  const regionPills = document.querySelectorAll('.cal-reg-pill[data-cal-region]');
+  regionPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      regionPills.forEach(p => {
+        p.classList.remove('active');
+        p.setAttribute('aria-pressed', 'false');
+      });
+      pill.classList.add('active');
+      pill.setAttribute('aria-pressed', 'true');
+      state.activeRegion = pill.getAttribute('data-cal-region') || 'all';
+      renderAll();
+    });
+  });
+
+  // 보기 방식 전환 (월간 / 주간)
+  const viewToggleBtns = document.querySelectorAll('.cal-view-toggle button[data-view-mode]');
+  viewToggleBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      viewToggleBtns.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
+      state.viewMode = btn.getAttribute('data-view-mode') || 'month';
+      renderCalendarGrid();
+    });
+  });
+
+  // 보관함 다이얼로그 열기 및 닫기
   const openSavedBtn = document.getElementById('open-saved-btn');
   const savedDialog = document.getElementById('saved-dialog');
   const closeSavedBtn = document.getElementById('close-saved-btn');
-  const savedListEl = document.getElementById('saved-list');
-
-  const quickModal = document.getElementById('quick-preview-modal');
-  const quickModalContent = document.getElementById('quick-modal-content');
-
-  // 테마별 바 색상 매핑
-  function getBarColorClass(item) {
-    if (item.theme === 'light') return 'bar-indigo';
-    if (item.theme === 'food') return 'bar-amber';
-    if (item.theme === 'nature') return 'bar-emerald';
-    if (item.scope === 'culture') return 'bar-sky';
-    return 'bar-green';
-  }
-
-  // 특정 날짜에 해당 일정이 열리는지 판별
-  function matchesFilterAndDate(item, dateStr) {
-    if (state.scope !== 'all' && item.scope !== state.scope) return false;
-    if (state.region !== 'all' && item.region !== state.region && item.region !== '전국') return false;
-
-    if (item.dates && item.dates.length > 0) {
-      return item.dates.includes(dateStr);
-    }
-    return dateStr >= item.startDate && dateStr <= item.endDate;
-  }
-
-  // 보관함 배지 업데이트
-  function updateSavedCount() {
-    if (savedBadgeCountEl) {
-      savedBadgeCountEl.textContent = String(state.savedIds.size);
-    }
-  }
-
-  function toggleSave(id) {
-    if (state.savedIds.has(id)) {
-      state.savedIds.delete(id);
-    } else {
-      state.savedIds.add(id);
-    }
-    localStorage.setItem('simulab_saved_festivals', JSON.stringify([...state.savedIds]));
-    updateSavedCount();
-    renderSelectedDaySection(state.selectedDate);
-  }
-
-  // 1. 대형 와이드 캘린더 그리드 렌더링
-  function renderCalendarGrid() {
-    if (!gridCellsEl) return;
-    const { year, month, viewMode, selectedDate } = state;
-
-    if (monthHeadingEl) {
-      monthHeadingEl.textContent = `${year}년 ${month}월`;
-    }
-
-    const seasonNames = {
-      1: 'WINTER FESTIVAL', 2: 'WINTER FESTIVAL', 3: 'SPRING BLOSSOM',
-      4: 'SPRING FESTIVAL', 5: 'MAY FESTIVAL SEASON', 6: 'EARLY SUMMER FESTA',
-      7: 'SUMMER VACATION', 8: 'MIDSUMMER NIGHT', 9: 'AUTUMN HARVEST',
-      10: 'AUTUMN FESTA SEASON', 11: 'LATE AUTUMN CULTURE', 12: 'YEAR-END LIGHTS'
-    };
-    if (seasonBadgeEl) {
-      seasonBadgeEl.textContent = seasonNames[month] || 'FESTIVAL SEASON';
-    }
-
-    gridCellsEl.innerHTML = '';
-    gridCellsEl.classList.toggle('week-mode', viewMode === 'week');
-
-    const firstDayOfWeek = new Date(year, month - 1, 1).getDay();
-    const daysInMonth = new Date(year, month, 0).getDate();
-    const prevMonthDays = new Date(year, month - 1, 0).getDate();
-
-    const cellsData = [];
-
-    // 이전 달 날짜 채우기
-    for (let i = firstDayOfWeek - 1; i >= 0; i--) {
-      const d = prevMonthDays - i;
-      const pm = month === 1 ? 12 : month - 1;
-      const py = month === 1 ? year - 1 : year;
-      const dateStr = `${py}-${String(pm).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
-      cellsData.push({ dateStr, dayNum: d, isOtherMonth: true });
-    }
-
-    // 이번 달 날짜 채우기
-    for (let d = 1; d <= daysInMonth; d++) {
-      const dateStr = `${year}-${String(month).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
-      cellsData.push({ dateStr, dayNum: d, isOtherMonth: false });
-    }
-
-    // 다음 달 날짜 채우기 (7배수 맞춤)
-    const remainder = (7 - (cellsData.length % 7)) % 7;
-    for (let d = 1; d <= remainder; d++) {
-      const nm = month === 12 ? 1 : month + 1;
-      const ny = month === 12 ? year + 1 : year;
-      const dateStr = `${ny}-${String(nm).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
-      cellsData.push({ dateStr, dayNum: d, isOtherMonth: true });
-    }
-
-    // 주간 모드일 경우 선택된 날짜가 포함된 주(7일)만 필터링
-    let visibleCells = cellsData;
-    if (viewMode === 'week') {
-      const idx = cellsData.findIndex(c => c.dateStr === selectedDate);
-      if (idx !== -1) {
-        const weekStart = Math.floor(idx / 7) * 7;
-        visibleCells = cellsData.slice(weekStart, weekStart + 7);
-      } else {
-        visibleCells = cellsData.slice(0, 7);
-      }
-    }
-
-    visibleCells.forEach(cellInfo => {
-      const { dateStr, dayNum, isOtherMonth } = cellInfo;
-      const dayOfWeek = new Date(dateStr).getDay();
-      const dayEvents = allItems.filter(item => matchesFilterAndDate(item, dateStr));
-
-      const cellEl = document.createElement('div');
-      cellEl.className = 'cal-cell';
-      if (isOtherMonth) cellEl.classList.add('is-other-month');
-      if (dateStr === todayStr) cellEl.classList.add('is-today');
-      if (dateStr === state.selectedDate) cellEl.classList.add('is-selected');
-      if (dayOfWeek === 0) cellEl.classList.add('is-sun');
-      if (dayOfWeek === 6) cellEl.classList.add('is-sat');
-
-      // 상단 일자 번호 & 건수 배지
-      const headEl = document.createElement('div');
-      headEl.className = 'cal-cell-head';
-
-      const numSpan = document.createElement('span');
-      numSpan.className = 'cal-cell-daynum';
-      numSpan.textContent = String(dayNum);
-      headEl.appendChild(numSpan);
-
-      if (dayEvents.length > 0) {
-        const badgeSpan = document.createElement('span');
-        badgeSpan.className = 'cal-cell-badge';
-        badgeSpan.textContent = `${dayEvents.length}건`;
-        headEl.appendChild(badgeSpan);
-      }
-      cellEl.appendChild(headEl);
-
-      // 이벤트 바 목록 (최대 3개 표시 후 +N 더보기)
-      if (dayEvents.length > 0) {
-        const eventsWrap = document.createElement('div');
-        eventsWrap.className = 'cal-cell-events';
-
-        dayEvents.slice(0, 3).forEach(ev => {
-          const bar = document.createElement('div');
-          bar.className = `cal-event-bar ${getBarColorClass(ev)}`;
-          const prefix = ev.region ? `[${ev.region}] ` : '';
-          bar.textContent = `${prefix}${ev.shortLabel || ev.title}`;
-          eventsWrap.appendChild(bar);
-        });
-
-        if (dayEvents.length > 3) {
-          const more = document.createElement('div');
-          more.className = 'cal-cell-more';
-          more.textContent = `+${dayEvents.length - 3}개 일정 더보기`;
-          eventsWrap.appendChild(more);
-        }
-
-        cellEl.appendChild(eventsWrap);
-      }
-
-      cellEl.addEventListener('click', () => {
-        state.selectedDate = dateStr;
-        const [cy, cm] = dateStr.split('-').map(Number);
-        state.year = cy;
-        state.month = cm;
-        renderCalendarGrid();
-        renderSelectedDaySection(dateStr);
-      });
-
-      gridCellsEl.appendChild(cellEl);
-    });
-  }
-
-  // 2. 선택된 날짜의 하단 축제 타임라인 4열 카드 & 추천 1일 코스 렌더링
-  function renderSelectedDaySection(dateStr) {
-    const [y, m, d] = dateStr.split('-').map(Number);
-    const weekdayNames = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
-    const wk = weekdayNames[new Date(y, m - 1, d).getDay()];
-
-    const dayEvents = allItems.filter(item => matchesFilterAndDate(item, dateStr));
-
-    if (selDayNumEl) selDayNumEl.textContent = String(d);
-    if (selDayTitleEl) selDayTitleEl.textContent = `${m}월 ${d}일 (${wk}) 축제 타임라인 & 큐레이션`;
-    if (selDayBadgeEl) selDayBadgeEl.textContent = `총 ${dayEvents.length}개 일정 진행`;
-    if (selDaySubtitleEl) {
-      selDaySubtitleEl.textContent = dayEvents.length > 0
-        ? `선택하신 ${m}월 ${d}일에 진행되는 전국 공식 축제 및 가족 체험·공연 일정입니다.`
-        : `선택하신 날짜에 조건에 맞는 일정이 없습니다. 다른 날짜나 전체 지역을 선택해 보세요.`;
-    }
-
-    // 4열 카드 그리드 렌더링
-    if (selDayCardsEl) {
-      selDayCardsEl.innerHTML = '';
-
-      if (dayEvents.length === 0) {
-        selDayCardsEl.innerHTML = `
-          <div style="grid-column: 1 / -1; text-align: center; padding: 3rem 1rem; color: #64748b;">
-            <p style="font-size: 1.05rem; font-weight: 800; margin: 0 0 0.4rem;">선택하신 날짜(${m}월 ${d}일)에 해당하는 일정이 없습니다.</p>
-            <p style="font-size: 0.88rem; margin: 0;">상단 필터를 [전체보기] 또는 [전체 지역]으로 변경하거나 다른 날짜를 클릭해 보세요.</p>
-          </div>
-        `;
-      } else {
-        dayEvents.slice(0, 12).forEach(ev => {
-          const isSaved = state.savedIds.has(ev.id);
-          const card = document.createElement('article');
-          card.className = 'cal-festa-card';
-
-          const thumbHtml = ev.image && ev.image.src
-            ? `<img src="${ev.image.src}" alt="${ev.title}" loading="lazy">`
-            : `<span class="cal-card-thumb-fallback">${ev.scope === 'festival' ? '🎆' : '🎨'}</span>`;
-
-          card.innerHTML = `
-            <div class="cal-card-thumb">
-              ${thumbHtml}
-              <div class="cal-card-top-badges">
-                <span class="cal-card-cat-tag">${ev.categoryLabel || '축제·행사'}</span>
-                <button type="button" class="cal-card-save-btn ${isSaved ? 'is-saved' : ''}" data-save-id="${ev.id}" aria-label="일정 보관함 저장">
-                  ${isSaved ? '♥' : '♡'}
-                </button>
-              </div>
-            </div>
-            <div class="cal-card-body">
-              <span class="cal-card-highlight">★ ${ev.region} · ${ev.fee || '무료 관람'}</span>
-              <h4 class="cal-card-title">${ev.title}</h4>
-              <p class="cal-card-loc">📍 ${ev.location}</p>
-              <div class="cal-card-meta-box">
-                <span>🗓 기간: ${ev.startDate.slice(5)} ~ ${ev.endDate.slice(5)}</span>
-                <span>⏰ 안내: ${(ev.program || ev.time || '공식 홈페이지 참조').slice(0, 32)}</span>
-              </div>
-            </div>
-            <div class="cal-card-actions">
-              <a class="cal-card-btn-map" href="/map/">📍 내주변 지도에서 위치보기</a>
-              <button type="button" class="cal-card-btn-detail" data-detail-id="${ev.id}">상세 조건·공식 안내 보기 ↗</button>
-            </div>
-          `;
-
-          const saveBtn = card.querySelector('[data-save-id]');
-          if (saveBtn) {
-            saveBtn.addEventListener('click', (e) => {
-              e.stopPropagation();
-              toggleSave(ev.id);
-            });
-          }
-
-          const detailBtn = card.querySelector('[data-detail-id]');
-          if (detailBtn) {
-            detailBtn.addEventListener('click', () => openQuickModal(ev));
-          }
-
-          selDayCardsEl.appendChild(card);
-        });
-      }
-    }
-
-    // 3단계 추천 연계 코스 (One-Day Festa Route) 렌더링
-    if (routeTitleEl) {
-      routeTitleEl.textContent = `${m}/${d}(${wk.slice(0, 1)}) 추천 연계 코스 (One-Day Festa Route)`;
-    }
-    if (routeStepsEl) {
-      routeStepsEl.innerHTML = '';
-      const picks = dayEvents.slice(0, 3);
-      const stepLabels = ['STEP 01 · 13:00', 'STEP 02 · 16:30', 'STEP 03 · 19:30'];
-      const defaultSteps = [
-        { title: '로컬 플리마켓 & 공원 산책', desc: '오후 햇살 아래 여유롭게 수공예 마켓과 산책로를 둘러보며 기념품을 구경하세요.', foot: '🚶 도보 또는 대중교통 이동 권장' },
-        { title: '야외 버스킹 & 문화 체험', desc: '노을 지는 광장에서 라이브 음악 공연이나 가족 참여형 체험 부스를 즐겨보세요.', foot: '🎵 메인 무대 앞 피크닉존' },
-        { title: '야간 경관 조명 & 미식 투어', desc: '선선한 저녁 바람과 함께 푸드트럭 먹거리와 화려한 야경을 감상하며 마무리하세요.', foot: '✨ 21:30경 행사 종료' }
-      ];
-
-      for (let i = 0; i < 3; i++) {
-        const ev = picks[i];
-        const stepDiv = document.createElement('div');
-        stepDiv.className = 'cal-step-card';
-        stepDiv.innerHTML = `
-          <span class="cal-step-badge">${stepLabels[i]}</span>
-          <h5 class="cal-step-title">${ev ? ev.title : defaultSteps[i].title}</h5>
-          <p class="cal-step-desc">${ev ? (ev.program || ev.curatorTip || defaultSteps[i].desc) : defaultSteps[i].desc}</p>
-          <span class="cal-step-foot">${ev ? `📍 ${ev.region} · ${ev.location}` : defaultSteps[i].foot}</span>
-        `;
-        routeStepsEl.appendChild(stepDiv);
-      }
-    }
-  }
-
-  // 3. 상세 모달 열기
-  function openQuickModal(ev) {
-    if (!quickModal || !quickModalContent) return;
-    quickModalContent.innerHTML = `
-      <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:1rem; margin-bottom:1rem;">
-        <div>
-          <span style="font-size:0.76rem; font-weight:800; color:#ff5a1f; background:#fff4ed; padding:0.2rem 0.55rem; border-radius:6px;">${ev.categoryLabel || '공식 일정'}</span>
-          <h3 id="quick-modal-title" style="margin:0.4rem 0 0; font-size:1.3rem; font-weight:900; color:#0f172a;">${ev.title}</h3>
-        </div>
-        <button type="button" id="close-quick-modal-btn" style="border:none; background:#f1f5f9; width:32px; height:32px; border-radius:999px; font-size:1.1rem;">✕</button>
-      </div>
-      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:1rem; margin-bottom:1rem; font-size:0.88rem; display:flex; flex-direction:column; gap:0.45rem;">
-        <div><strong>📍 장소:</strong> ${ev.region} · ${ev.location}</div>
-        <div><strong>🗓 기간:</strong> ${ev.startDate} ~ ${ev.endDate}</div>
-        <div><strong>💰 요금:</strong> ${ev.fee || '무료 관람'}</div>
-        <div><strong>🏛 출처:</strong> ${ev.sourceName || '공식 주최기관'} (확인일: ${ev.checkedAt || todayStr})</div>
-      </div>
-      <p style="font-size:0.9rem; color:#334155; line-height:1.55; margin:0 0 1.25rem;">
-        ${ev.program || ev.curatorTip || '상세 운영 시간과 예약 조건은 아래 공식 안내 페이지에서 확인하실 수 있습니다.'}
-      </p>
-      <div style="display:flex; gap:0.65rem;">
-        <a href="${ev.officialUrl || ev.url}" target="_blank" rel="noopener noreferrer" style="flex:1; text-align:center; background:#ff5a1f; color:#fff; font-weight:800; padding:0.75rem; border-radius:10px;">
-          공식 안내 원문 바로가기 ↗
-        </a>
-        <a href="${ev.url}" style="flex:1; text-align:center; background:#eef2ff; color:#4f46e5; font-weight:800; padding:0.75rem; border-radius:10px;">
-          시뮬랩 상세 페이지 →
-        </a>
-      </div>
-    `;
-    const closeBtn = document.getElementById('close-quick-modal-btn');
-    if (closeBtn) closeBtn.addEventListener('click', () => quickModal.close());
-    quickModal.showModal();
-  }
-
-  // 4. 이벤트 리스너 연결
-  if (prevMonthBtn) {
-    prevMonthBtn.addEventListener('click', () => {
-      if (state.month === 1) { state.year--; state.month = 12; }
-      else { state.month--; }
-      renderCalendarGrid();
-    });
-  }
-
-  if (nextMonthBtn) {
-    nextMonthBtn.addEventListener('click', () => {
-      if (state.month === 12) { state.year++; state.month = 1; }
-      else { state.month++; }
-      renderCalendarGrid();
-    });
-  }
-
-  if (jumpTodayBtn) {
-    jumpTodayBtn.addEventListener('click', () => {
-      const [ty, tm] = todayStr.split('-').map(Number);
-      state.year = ty;
-      state.month = tm;
-      state.selectedDate = todayStr;
-      renderCalendarGrid();
-      renderSelectedDaySection(todayStr);
-    });
-  }
-
-  if (jumpWeekendBtn) {
-    jumpWeekendBtn.addEventListener('click', () => {
-      const dObj = new Date(todayStr);
-      const day = dObj.getDay();
-      const diffToSat = (6 - day + 7) % 7;
-      dObj.setDate(dObj.getDate() + diffToSat);
-      const satStr = dObj.toISOString().slice(0, 10);
-      const [sy, sm] = satStr.split('-').map(Number);
-      state.year = sy;
-      state.month = sm;
-      state.selectedDate = satStr;
-      renderCalendarGrid();
-      renderSelectedDaySection(satStr);
-    });
-  }
-
-  viewModeBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      viewModeBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
-      btn.classList.add('active');
-      btn.setAttribute('aria-pressed', 'true');
-      state.viewMode = btn.dataset.viewMode || 'month';
-      renderCalendarGrid();
-    });
-  });
-
-  scopeBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      scopeBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
-      btn.classList.add('active');
-      btn.setAttribute('aria-pressed', 'true');
-      state.scope = btn.dataset.calScope || 'all';
-      renderCalendarGrid();
-      renderSelectedDaySection(state.selectedDate);
-    });
-  });
-
-  regionBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      regionBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
-      btn.classList.add('active');
-      btn.setAttribute('aria-pressed', 'true');
-      state.region = btn.dataset.calRegion || 'all';
-      renderCalendarGrid();
-      renderSelectedDaySection(state.selectedDate);
-    });
-  });
-
   if (openSavedBtn && savedDialog) {
     openSavedBtn.addEventListener('click', () => {
-      if (savedListEl) {
-        const savedEvents = allItems.filter(i => state.savedIds.has(i.id));
-        savedListEl.innerHTML = savedEvents.length === 0
-          ? `<p style="color:#64748b; text-align:center; padding:2rem 0;">아직 보관함에 저장한 일정이 없습니다. 카드 우측 상단의 ♡ 버튼을 눌러 저장해 보세요.</p>`
-          : savedEvents.map(ev => `
-              <div style="display:flex; justify-content:space-between; align-items:center; padding:0.75rem 0; border-bottom:1px solid #f1f5f9;">
-                <div>
-                  <strong style="font-size:0.95rem; color:#0f172a;">${ev.title}</strong>
-                  <div style="font-size:0.8rem; color:#64748b;">📍 ${ev.region} · ${ev.startDate} ~ ${ev.endDate}</div>
-                </div>
-                <a href="${ev.officialUrl || ev.url}" target="_blank" rel="noopener" style="font-size:0.82rem; font-weight:800; color:#ff5a1f;">바로가기 ↗</a>
-              </div>
-            `).join('');
-      }
+      renderSavedDialogList();
       savedDialog.showModal();
     });
   }
-
   if (closeSavedBtn && savedDialog) {
-    closeSavedBtn.addEventListener('click', () => savedDialog.close());
+    closeSavedBtn.addEventListener('click', () => {
+      savedDialog.close();
+    });
+  }
+}
+
+// 6. 전체 렌더링 총괄 함수
+function renderAll() {
+  renderCalendarHeader();
+  renderCalendarGrid();
+  renderSelectedDaySection();
+}
+
+// 7. 캘린더 상단 월 헤더 표기
+function renderCalendarHeader() {
+  const monthHeading = document.getElementById('calendar-month-heading');
+  const seasonBadge = document.getElementById('calendar-season-badge');
+  if (monthHeading) {
+    monthHeading.textContent = `${state.currentYear}년 ${state.currentMonth}월`;
+  }
+  if (seasonBadge) {
+    const m = state.currentMonth;
+    if (m >= 3 && m <= 5) seasonBadge.textContent = 'SPRING FESTIVAL SEASON';
+    else if (m >= 6 && m <= 8) seasonBadge.textContent = 'SUMMER FESTIVAL SEASON';
+    else if (m >= 9 && m <= 11) seasonBadge.textContent = 'AUTUMN FESTIVAL SEASON';
+    else seasonBadge.textContent = 'WINTER FESTIVAL SEASON';
+  }
+}
+
+// 8. 필터링된 이벤트 목록 구하기
+function getFilteredItems() {
+  return state.items.filter(item => {
+    // 1) 검색어 필터
+    if (state.searchKeyword) {
+      const targetText = `${item.title} ${item.venue} ${item.summary} ${item.region}`.toLowerCase();
+      if (!targetText.includes(state.searchKeyword)) return false;
+    }
+    // 2) 지역 필터
+    if (state.activeRegion !== 'all') {
+      if (item.region !== state.activeRegion) return false;
+    }
+    // 3) 카테고리/테마 필터
+    if (state.activeScope === 'light') return item.theme === 'light';
+    if (state.activeScope === 'music') {
+      return item.theme === 'kids' || item.title.includes('음악') || item.title.includes('버스킹') || item.title.includes('밴드');
+    }
+    if (state.activeScope === 'food') return item.theme === 'food';
+    if (state.activeScope === 'nature') return item.theme === 'nature';
+    if (state.activeScope === 'culture') return item.scope === 'culture' || item.theme === 'kids';
+    return true;
+  });
+}
+
+// 9. 월간 와이드 캘린더 그리드 렌더링
+function renderCalendarGrid() {
+  const gridEl = document.getElementById('calendar-grid-cells');
+  if (!gridEl) return;
+  gridEl.innerHTML = '';
+
+  const year = state.currentYear;
+  const month = state.currentMonth; // 1~12
+
+  // 이번 달의 첫 날 요일 (0: 일요일 ~ 6: 토요일)
+  const firstDayOfWeek = new Date(year, month - 1, 1).getDay();
+  // 이번 달의 총 일수
+  const daysInMonth = new Date(year, month, 0).getDate();
+  // 지난 달의 총 일수
+  const daysInPrevMonth = new Date(year, month - 1, 0).getDate();
+
+  const filteredEvents = getFilteredItems();
+
+  // 1) 지난 달 말일 패딩 날짜 셀 추가
+  for (let i = firstDayOfWeek - 1; i >= 0; i--) {
+    const dayNum = daysInPrevMonth - i;
+    const prevM = month === 1 ? 12 : month - 1;
+    const prevY = month === 1 ? year - 1 : year;
+    const dateStr = `${prevY}-${String(prevM).padStart(2, '0')}-${String(dayNum).padStart(2, '0')}`;
+    const cell = createCalendarCell(prevY, prevM, dayNum, dateStr, true, filteredEvents);
+    gridEl.appendChild(cell);
   }
 
-  // 초기 실행
-  updateSavedCount();
-  renderCalendarGrid();
-  renderSelectedDaySection(state.selectedDate);
-})();
+  // 2) 이번 달 날짜 셀 추가
+  for (let d = 1; d <= daysInMonth; d++) {
+    const dateStr = `${year}-${String(month).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+    const cell = createCalendarCell(year, month, d, dateStr, false, filteredEvents);
+    gridEl.appendChild(cell);
+  }
+
+  // 3) 다음 달 초일 패딩 날짜 셀 추가 (총 셀 개수를 7의 배수로 맞춤)
+  const totalRendered = firstDayOfWeek + daysInMonth;
+  const remainder = totalRendered % 7;
+  const nextPaddingCount = remainder === 0 ? 0 : 7 - remainder;
+  for (let n = 1; n <= nextPaddingCount; n++) {
+    const nextM = month === 12 ? 1 : month + 1;
+    const nextY = month === 12 ? year + 1 : year;
+    const dateStr = `${nextY}-${String(nextM).padStart(2, '0')}-${String(n).padStart(2, '0')}`;
+    const cell = createCalendarCell(nextY, nextM, n, dateStr, true, filteredEvents);
+    gridEl.appendChild(cell);
+  }
+}
+
+// 개별 날짜 셀 DOM 생성 함수
+function createCalendarCell(y, m, d, dateStr, isOtherMonth, filteredEvents) {
+  const cell = document.createElement('div');
+  cell.className = 'cal-cell';
+  if (isOtherMonth) cell.classList.add('is-other-month');
+
+  // 요일 확인
+  const dayOfWeek = new Date(y, m - 1, d).getDay();
+  if (dayOfWeek === 0) cell.classList.add('is-sun');
+  if (dayOfWeek === 6) cell.classList.add('is-sat');
+
+  // 오늘 날짜 여부
+  if (dateStr === state.todayDate) cell.classList.add('is-today');
+
+  // 현재 선택된 날짜 여부
+  if (dateStr === state.selectedDate) cell.classList.add('is-selected');
+
+  // 셀 헤더 (날짜 숫자 + 개수)
+  const cellHead = document.createElement('div');
+  cellHead.className = 'cal-cell-head';
+
+  const daySpan = document.createElement('span');
+  daySpan.className = 'cal-cell-day';
+  daySpan.textContent = d;
+  cellHead.appendChild(daySpan);
+
+  // 해당 날짜에 진행 중인 축제 탐색
+  const dayEvents = filteredEvents.filter(ev => {
+    return ev.startDate <= dateStr && ev.endDate >= dateStr;
+  });
+
+  if (dayEvents.length > 0) {
+    const countSpan = document.createElement('span');
+    countSpan.className = 'cal-cell-count';
+    countSpan.textContent = `${dayEvents.length}건`;
+    cellHead.appendChild(countSpan);
+  }
+  cell.appendChild(cellHead);
+
+  // 일정 바 컨테이너
+  const eventsWrap = document.createElement('div');
+  eventsWrap.className = 'cal-cell-events';
+
+  const maxVisible = 3;
+  dayEvents.slice(0, maxVisible).forEach(ev => {
+    const bar = document.createElement('div');
+    bar.className = `cal-event-bar bar-${getThemeToneClass(ev.theme)}`;
+    bar.textContent = ev.shortTitle || ev.title;
+    bar.title = `${ev.title} (${ev.venue})`;
+    bar.addEventListener('click', (e) => {
+      e.stopPropagation();
+      openQuickPreviewModal(ev);
+    });
+    eventsWrap.appendChild(bar);
+  });
+
+  if (dayEvents.length > maxVisible) {
+    const moreChip = document.createElement('div');
+    moreChip.className = 'cal-more-chip';
+    moreChip.textContent = `+${dayEvents.length - maxVisible}개 더보기`;
+    eventsWrap.appendChild(moreChip);
+  }
+
+  cell.appendChild(eventsWrap);
+
+  // 셀 클릭 시 해당 날짜 선택
+  cell.addEventListener('click', () => {
+    state.selectedDate = dateStr;
+    document.querySelectorAll('.cal-cell').forEach(c => c.classList.remove('is-selected'));
+    cell.classList.add('is-selected');
+    renderSelectedDaySection();
+    scrollToSelectedSection();
+  });
+
+  return cell;
+}
+
+function getThemeToneClass(theme) {
+  if (theme === 'light') return 'indigo';
+  if (theme === 'food') return 'amber';
+  if (theme === 'nature') return 'emerald';
+  if (theme === 'kids') return 'violet';
+  return 'sky';
+}
+
+function scrollToSelectedSection() {
+  const target = document.getElementById('selected-day-container');
+  if (target) {
+    target.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+}
+
+// 10. 선택 일자 상세 큐레이션 섹션 렌더링
+function renderSelectedDaySection() {
+  if (!state.selectedDate) return;
+
+  const parts = state.selectedDate.split('-');
+  const y = parseInt(parts[0], 10);
+  const m = parseInt(parts[1], 10);
+  const d = parseInt(parts[2], 10);
+
+  const dayOfWeekNames = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
+  const dayName = dayOfWeekNames[new Date(y, m - 1, d).getDay()];
+
+  // 대형 날짜 큐브
+  const dayNumBox = document.getElementById('selected-day-num');
+  if (dayNumBox) dayNumBox.textContent = d;
+
+  // 타이틀
+  const titleEl = document.getElementById('selected-day-title');
+  if (titleEl) {
+    titleEl.textContent = `${m}월 ${d}일 (${dayName}) 축제 타임라인 & 큐레이션`;
+  }
+
+  // 해당 일자 축제 목록 구하기
+  const dayEvents = state.items.filter(ev => {
+    return ev.startDate <= state.selectedDate && ev.endDate >= state.selectedDate;
+  });
+
+  // 만약 해당 날짜에 축제가 없다면 인근 추천 축제 4건을 보여줌
+  let displayList = dayEvents;
+  let isNearFallback = false;
+  if (displayList.length === 0) {
+    isNearFallback = true;
+    displayList = state.items.slice(0, 4);
+  }
+
+  // D-DAY 뱃지
+  const badgeEl = document.getElementById('selected-day-badge');
+  if (badgeEl) {
+    badgeEl.textContent = isNearFallback
+      ? `추천 축제 4개 안내`
+      : `D-DAY ${displayList.length}개 축제 진행`;
+  }
+
+  // 4열 카드 그리드 렌더링
+  const cardsGrid = document.getElementById('selected-day-cards');
+  if (cardsGrid) {
+    cardsGrid.innerHTML = '';
+    displayList.slice(0, 4).forEach(ev => {
+      const card = createCuratedCard(ev);
+      cardsGrid.appendChild(card);
+    });
+  }
+
+  // 추천 1일 연계 코스 갱신
+  renderOneDayRoute(displayList);
+}
+
+// 11. 개별 축제 카드 DOM 생성 (AI Studio 규격)
+function createCuratedCard(ev) {
+  const card = document.createElement('article');
+  card.className = 'festa-curated-card';
+
+  const isSaved = state.savedIds.has(ev.id);
+
+  card.innerHTML = `
+    <div class="festa-card-thumb-wrap">
+      <img class="festa-card-thumb" src="${ev.imageUrl}" alt="${ev.title}" loading="lazy">
+      <span class="festa-card-tag">${ev.categoryLabel || '문화축제'}</span>
+      <button type="button" class="festa-card-bookmark-btn ${isSaved ? 'is-saved' : ''}" aria-label="일정 저장하기" data-festa-id="${ev.id}">
+        <span class="material-symbols-outlined">favorite</span>
+      </button>
+    </div>
+    <div class="festa-card-body">
+      <div class="festa-card-meta-row">
+        <span class="festa-card-fee-badge fee-${ev.feeStatus || 'free'}">${ev.feeLabel || '무료'}</span>
+        <span class="festa-card-date-badge">${ev.startDate.slice(5)} ~ ${ev.endDate.slice(5)}</span>
+      </div>
+      <h4 class="festa-card-title">${ev.title}</h4>
+      <p class="festa-card-venue">
+        <span class="material-symbols-outlined">location_on</span>
+        <span>${ev.venue || ev.region}</span>
+      </p>
+      <div class="festa-card-tip">
+        💡 ${ev.curatorTip || '현장 자율 관람 가능하며 편안한 복장을 추천합니다.'}
+      </div>
+      <div class="festa-card-actions">
+        <a class="btn-card-map" href="/map/?focus=${encodeURIComponent(ev.id)}">
+          <span class="material-symbols-outlined">explore</span> 지도보기
+        </a>
+        <button type="button" class="btn-card-detail" data-open-detail="${ev.id}">
+          <span class="material-symbols-outlined">info</span> 상세보기
+        </button>
+      </div>
+    </div>
+  `;
+
+  // 북마크 하트 버튼 클릭
+  const bookmarkBtn = card.querySelector('.festa-card-bookmark-btn');
+  if (bookmarkBtn) {
+    bookmarkBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleBookmark(ev.id, ev.title, bookmarkBtn);
+    });
+  }
+
+  // 상세보기 버튼 클릭
+  const detailBtn = card.querySelector('[data-open-detail]');
+  if (detailBtn) {
+    detailBtn.addEventListener('click', () => {
+      openQuickPreviewModal(ev);
+    });
+  }
+
+  return card;
+}
+
+// 북마크 토글 함수
+function toggleBookmark(id, title, btnEl) {
+  if (state.savedIds.has(id)) {
+    state.savedIds.delete(id);
+    if (btnEl) btnEl.classList.remove('is-saved');
+    showToast(`'${title}' 보관함에서 삭제되었습니다.`);
+  } else {
+    state.savedIds.add(id);
+    if (btnEl) btnEl.classList.add('is-saved');
+    showToast(`'${title}' 보관함에 저장되었습니다!`);
+  }
+  saveBookmarksToStorage();
+}
+
+// 12. 추천 1일 연계 코스 생성
+function renderOneDayRoute(eventsList) {
+  const stepsContainer = document.getElementById('selected-route-steps');
+  if (!stepsContainer) return;
+  stepsContainer.innerHTML = '';
+
+  const defaultSteps = [
+    {
+      step: 'STEP 01',
+      time: '13:00',
+      title: '로컬 플리마켓 & 감성 푸드트럭',
+      desc: '행사장 주변 수공예품 부스 및 다양한 길거리 먹거리 체험'
+    },
+    {
+      step: 'STEP 02',
+      time: '16:30',
+      title: '선셋 야외 버스킹 & 어쿠스틱 라이브',
+      desc: '노을 지는 강변 무대에서 즐기는 감성 인디 밴드 라이브 공연'
+    },
+    {
+      step: 'STEP 03',
+      time: '19:30',
+      title: '메인 축제 불꽃쇼 & 야간 조명 연출',
+      desc: '화려한 드론 라이트쇼와 야간 경관 조명 감상으로 피날레'
+    }
+  ];
+
+  // 만약 선택된 이벤트가 있으면 해당 축제 정보로 스텝 보강
+  if (eventsList.length > 0) {
+    defaultSteps[2].title = `${eventsList[0].shortTitle || eventsList[0].title} 메인 관람`;
+    defaultSteps[2].desc = `${eventsList[0].venue} 특설 무대 및 야간 축제 프로그램 참여`;
+  }
+
+  defaultSteps.forEach(s => {
+    const stepEl = document.createElement('div');
+    stepEl.className = 'cal-route-step-item';
+    stepEl.innerHTML = `
+      <span class="step-badge">${s.step}</span>
+      <div>
+        <p class="step-time">${s.time}</p>
+        <h5 class="step-title">${s.title}</h5>
+        <p class="step-desc">${s.desc}</p>
+      </div>
+    `;
+    stepsContainer.appendChild(stepEl);
+  });
+}
+
+// 13. 빠른 상세 미리보기 모달 팝업
+function openQuickPreviewModal(ev) {
+  const modal = document.getElementById('quick-preview-modal');
+  const content = document.getElementById('quick-modal-content');
+  if (!modal || !content) return;
+
+  const isSaved = state.savedIds.has(ev.id);
+
+  content.innerHTML = `
+    <div class="quick-modal-hero">
+      <img class="quick-modal-img" src="${ev.imageUrl}" alt="${ev.title}">
+      <button type="button" class="quick-modal-close-btn" id="modal-close-btn" aria-label="닫기">×</button>
+    </div>
+    <div class="quick-modal-body">
+      <div class="quick-modal-tags">
+        <span class="festa-card-tag">${ev.categoryLabel || '문화축제'}</span>
+        <span class="festa-card-fee-badge fee-${ev.feeStatus || 'free'}">${ev.feeLabel || '무료'}</span>
+      </div>
+      <h3 class="quick-modal-title">${ev.title}</h3>
+      <p class="quick-modal-desc">${ev.summary || '전국 각지의 생생한 문화와 열정을 느낄 수 있는 대표 축제 행사입니다.'}</p>
+      
+      <div class="quick-modal-meta-grid">
+        <div class="quick-meta-item">
+          <span class="material-symbols-outlined">calendar_today</span>
+          <div>
+            <strong>행사 기간</strong>
+            <span>${ev.startDate} ~ ${ev.endDate}</span>
+          </div>
+        </div>
+        <div class="quick-meta-item">
+          <span class="material-symbols-outlined">pin_drop</span>
+          <div>
+            <strong>개최 장소</strong>
+            <span>${ev.venue || ev.region}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="quick-modal-footer">
+        <a class="btn-modal-map" href="/map/?focus=${encodeURIComponent(ev.id)}">
+          <span class="material-symbols-outlined">map</span> 내주변 지도에서 위치보기
+        </a>
+        <a class="btn-modal-link" href="${ev.officialUrl || ev.url}" target="_blank" rel="noopener noreferrer">
+          <span class="material-symbols-outlined">open_in_new</span> 공식 사이트 바로가기
+        </a>
+      </div>
+    </div>
+  `;
+
+  modal.showModal();
+
+  const closeBtn = document.getElementById('modal-close-btn');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => modal.close());
+  }
+}
+
+// 14. 보관함 다이얼로그 목록 렌더링
+function renderSavedDialogList() {
+  const listEl = document.getElementById('saved-list');
+  if (!listEl) return;
+  listEl.innerHTML = '';
+
+  const savedList = state.items.filter(item => state.savedIds.has(item.id));
+
+  if (savedList.length === 0) {
+    listEl.innerHTML = `
+      <div style="text-align: center; padding: 40px 20px; color: #8a92a6;">
+        <span class="material-symbols-outlined" style="font-size: 40px; margin-bottom: 8px;">favorite_border</span>
+        <p>아직 저장한 일정이 없습니다.<br>축제 카드의 하트(♡)를 눌러 관심 일정을 모아보세요!</p>
+      </div>
+    `;
+    return;
+  }
+
+  savedList.forEach(item => {
+    const row = document.createElement('div');
+    row.className = 'saved-item-row';
+    row.innerHTML = `
+      <div>
+        <h4 class="saved-item-title">${item.title}</h4>
+        <p class="saved-item-sub">📍 ${item.venue || item.region} · 📅 ${item.startDate}</p>
+      </div>
+      <button type="button" class="saved-del-btn" aria-label="삭제" data-del-id="${item.id}">
+        <span class="material-symbols-outlined">delete</span>
+      </button>
+    `;
+
+    const delBtn = row.querySelector('[data-del-id]');
+    if (delBtn) {
+      delBtn.addEventListener('click', () => {
+        state.savedIds.delete(item.id);
+        saveBookmarksToStorage();
+        renderSavedDialogList();
+        renderAll();
+        showToast('일정이 보관함에서 삭제되었습니다.');
+      });
+    }
+
+    listEl.appendChild(row);
+  });
+}

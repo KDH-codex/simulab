@@ -1,3 +1,0 @@
-import {calculate} from './logic.js';
-import {boot,value,money,details} from '../../assets/js/reference-ui.js';
-boot(f=>({separationDate:f.elements.separationDate.value,wageTotal:value(f,'wageTotal'),wageDays:value(f,'wageDays'),age:value(f,'age'),insuranceYears:value(f,'insuranceYears'),dailyWorkHours:value(f,'dailyWorkHours'),isDisabled:f.elements.isDisabled.checked}),calculate,(r,el)=>{el.innerHTML='<h2>지급 조건 가정의 총액</h2><p class="ref-value">'+money(r.totalBenefit)+'</p><p class="ref-note">수급 자격과 개인 지급액은 고용센터에서 확인하세요.</p>'+details([['적용 이직 연도',r.year+'년'],['일 평균임금',money(r.dailyWage)],['가정 일 지급액',money(r.finalDailyBenefit)],['입력 시간의 일 하한',money(r.minAmount)],['일 상한',money(r.maxAmount)],['가정 지급일수',r.benefitDays+'일']]);});
