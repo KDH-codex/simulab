@@ -1,0 +1,11 @@
+{
+  "id": "006-m001",
+  "title": "지금의 AI 성능 그대로 10년 전으로 돌아갈 수 있다면?",
+  "date": "2026-10-29",
+  "gptStance": "이대로 산다",
+  "geminiStance": "돌아간다",
+  "gptModel": "gpt-6-astra",
+  "geminiModel": "gemini-4-argon",
+  "gptEffort": "medium",
+  "geminiEffort": "medium"
+}

@@ -1,0 +1,180 @@
+[
+  {
+    "region": "서울",
+    "searchQuery": "서울 축제 행사 가족 어린이 공식",
+    "sources": [
+      {
+        "publisher": "문화체육관광부·한국관광공사",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalList.jsp?pSido=01"
+      }
+    ]
+  },
+  {
+    "region": "경기",
+    "searchQuery": "경기 축제 행사 가족 어린이 공식",
+    "sources": [
+      {
+        "publisher": "문화체육관광부·한국관광공사",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalList.jsp?pSido=10"
+      }
+    ]
+  },
+  {
+    "region": "인천",
+    "searchQuery": "인천 축제 행사 가족 어린이 공식",
+    "sources": [
+      {
+        "publisher": "문화체육관광부·한국관광공사",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalList.jsp?pSido=04"
+      }
+    ]
+  },
+  {
+    "region": "강원",
+    "searchQuery": "강원 축제 행사 가족 어린이 공식",
+    "sources": [
+      {
+        "publisher": "문화체육관광부·한국관광공사",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalList.jsp?pSido=11"
+      }
+    ]
+  },
+  {
+    "region": "대전",
+    "searchQuery": "대전 축제 행사 가족 어린이 공식",
+    "sources": [
+      {
+        "publisher": "문화체육관광부·한국관광공사",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalList.jsp?pSido=06"
+      }
+    ]
+  },
+  {
+    "region": "세종",
+    "searchQuery": "세종 축제 행사 가족 어린이 공식",
+    "sources": [
+      {
+        "publisher": "문화체육관광부·한국관광공사",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalList.jsp?pSido=08"
+      },
+      {
+        "publisher": "세종시문화관광재단",
+        "url": "https://www.sjcf.or.kr/index.do"
+      }
+    ]
+  },
+  {
+    "region": "충북",
+    "searchQuery": "충북 축제 행사 가족 어린이 공식",
+    "sources": [
+      {
+        "publisher": "문화체육관광부·한국관광공사",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalList.jsp?pSido=12"
+      }
+    ]
+  },
+  {
+    "region": "충남",
+    "searchQuery": "충남 축제 행사 가족 어린이 공식",
+    "sources": [
+      {
+        "publisher": "문화체육관광부·한국관광공사",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalList.jsp?pSido=13"
+      }
+    ]
+  },
+  {
+    "region": "광주",
+    "searchQuery": "광주 축제 행사 가족 어린이 공식",
+    "sources": [
+      {
+        "publisher": "문화체육관광부·한국관광공사",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalList.jsp?pSido=15"
+      },
+      {
+        "publisher": "김대중컨벤션센터",
+        "url": "https://kdjcenter.gjto.or.kr/events/gallery"
+      }
+    ]
+  },
+  {
+    "region": "전북",
+    "searchQuery": "전북 축제 행사 가족 어린이 공식",
+    "sources": [
+      {
+        "publisher": "문화체육관광부·한국관광공사",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalList.jsp?pSido=14"
+      }
+    ]
+  },
+  {
+    "region": "전남",
+    "searchQuery": "전남 축제 행사 가족 어린이 공식",
+    "sources": [
+      {
+        "publisher": "문화체육관광부·한국관광공사",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalList.jsp?pSido=15"
+      }
+    ]
+  },
+  {
+    "region": "대구",
+    "searchQuery": "대구 축제 행사 가족 어린이 공식",
+    "sources": [
+      {
+        "publisher": "문화체육관광부·한국관광공사",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalList.jsp?pSido=03"
+      }
+    ]
+  },
+  {
+    "region": "부산",
+    "searchQuery": "부산 축제 행사 가족 어린이 공식",
+    "sources": [
+      {
+        "publisher": "문화체육관광부·한국관광공사",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalList.jsp?pSido=02"
+      }
+    ]
+  },
+  {
+    "region": "울산",
+    "searchQuery": "울산 축제 행사 가족 어린이 공식",
+    "sources": [
+      {
+        "publisher": "문화체육관광부·한국관광공사",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalList.jsp?pSido=07"
+      }
+    ]
+  },
+  {
+    "region": "경북",
+    "searchQuery": "경북 축제 행사 가족 어린이 공식",
+    "sources": [
+      {
+        "publisher": "문화체육관광부·한국관광공사",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalList.jsp?pSido=16"
+      }
+    ]
+  },
+  {
+    "region": "경남",
+    "searchQuery": "경남 축제 행사 가족 어린이 공식",
+    "sources": [
+      {
+        "publisher": "문화체육관광부·한국관광공사",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalList.jsp?pSido=17"
+      }
+    ]
+  },
+  {
+    "region": "제주",
+    "searchQuery": "제주 축제 행사 가족 어린이 공식",
+    "sources": [
+      {
+        "publisher": "문화체육관광부·한국관광공사",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalList.jsp?pSido=18"
+      }
+    ]
+  }
+]

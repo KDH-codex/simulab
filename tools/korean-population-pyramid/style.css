@@ -1,0 +1,660 @@
+/* ==========================================================================
+   대한민국 연령별 인구와 초등생수 시뮬레이터 스타일시트 (style.css)
+   ========================================================================== */
+
+/* ---------- 메인 레이아웃 ---------- */
+.tool-main-container {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3.5rem;
+}
+
+/* ---------- 도구 헤더 카드 ---------- */
+.tool-hero-card {
+  background: linear-gradient(135deg, #1e1b4b 0%, #312e81 50%, #4338ca 100%);
+  color: #ffffff;
+  border-radius: 1.25rem;
+  padding: 2.2rem 2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 10px 25px -5px rgba(30, 27, 75, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+.tool-hero-card::after {
+  content: "👥";
+  position: absolute;
+  right: -10px;
+  bottom: -20px;
+  font-size: 8rem;
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.tool-badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+}
+.tool-badge {
+  font-size: 0.78rem;
+  font-weight: 750;
+  padding: 0.28rem 0.65rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.badge-official {
+  background: rgba(59, 130, 246, 0.25);
+  color: #93c5fd;
+}
+.badge-timeseries {
+  background: rgba(16, 185, 129, 0.25);
+  color: #a7f3d0;
+}
+.badge-live {
+  background: rgba(245, 158, 11, 0.25);
+  color: #fde68a;
+}
+
+.tool-title {
+  font-size: 1.85rem;
+  font-weight: 850;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.65rem;
+  line-height: 1.25;
+}
+.tool-desc {
+  font-size: 0.95rem;
+  color: #e0e7ff;
+  line-height: 1.55;
+  margin: 0;
+  max-width: 780px;
+}
+
+/* ---------- 탭 네비게이션 ---------- */
+.tool-tab-nav {
+  display: flex;
+  gap: 0.5rem;
+  background: #f1f5f9;
+  padding: 0.35rem;
+  border-radius: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+.tool-tab-btn {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: none;
+  background: transparent;
+  color: #475569;
+  font-size: 0.94rem;
+  font-weight: 750;
+  border-radius: 0.7rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  transition: all 0.2s ease;
+}
+.tool-tab-btn:hover {
+  color: #0f172a;
+  background: rgba(255, 255, 255, 0.6);
+}
+.tool-tab-btn.is-active {
+  background: #ffffff;
+  color: #4338ca;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+}
+
+.tab-panel {
+  display: none;
+}
+.tab-panel.is-active {
+  display: block;
+}
+
+/* ---------- 탭 1: 컨트롤 바 & 지표 바 ---------- */
+.pop-control-panel {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+.timeline-row {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+.btn-play {
+  flex-shrink: 0;
+  padding: 0.65rem 1.15rem;
+  background: linear-gradient(135deg, #4f46e5, #4338ca);
+  color: #ffffff;
+  border: none;
+  border-radius: 0.65rem;
+  font-size: 0.92rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  box-shadow: 0 3px 8px rgba(79, 70, 229, 0.3);
+  transition: all 0.2s;
+}
+.btn-play:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+.btn-play.is-playing {
+  background: #dc2626;
+  box-shadow: 0 3px 8px rgba(220, 38, 38, 0.3);
+}
+
+.slider-wrapper {
+  flex: 1;
+}
+.slider-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.45rem;
+}
+.slider-title {
+  font-size: 0.92rem;
+  color: #334155;
+}
+.highlight-year {
+  font-size: 1.15rem;
+  font-weight: 850;
+  color: #4338ca;
+}
+.slider-milestone {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #4338ca;
+  background: #e0e7ff;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+}
+
+#pop-year-slider {
+  width: 100%;
+  accent-color: #4338ca;
+  cursor: pointer;
+}
+.slider-ticks {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  color: #64748b;
+  font-weight: 600;
+  margin-top: 0.2rem;
+}
+
+/* 핵심 지표 요약 바 */
+.pop-stat-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+.stat-box {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.85rem;
+  padding: 0.85rem 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.s-label {
+  font-size: 0.78rem;
+  color: #64748b;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+.s-val {
+  font-size: 1.35rem;
+  font-weight: 850;
+  color: #0f172a;
+}
+
+/* 인구 피라미드 차트 카드 */
+.pyramid-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+.pyramid-header-row {
+  display: grid;
+  grid-template-columns: 1fr 90px 1fr;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1.5px solid #f1f5f9;
+}
+.pyramid-legend {
+  font-size: 0.85rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.male-leg {
+  justify-content: flex-end;
+  color: #2563eb;
+}
+.female-leg {
+  justify-content: flex-start;
+  color: #e11d48;
+}
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.dot-male { background: #2563eb; }
+.dot-female { background: #e11d48; }
+
+.pyramid-age-center-title {
+  text-align: center;
+  font-size: 0.82rem;
+  font-weight: 850;
+  color: #475569;
+}
+
+/* 피라미드 행 */
+.pyramid-rows-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.pyramid-row {
+  display: grid;
+  grid-template-columns: 1fr 90px 1fr;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* 좌측 남성 바 (우측 정렬) */
+.bar-side-male {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.45rem;
+}
+.val-label-male {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #2563eb;
+  font-variant-numeric: tabular-nums;
+}
+.track-male {
+  flex: 1;
+  max-width: 280px;
+  height: 20px;
+  background: #f1f5f9;
+  border-radius: 4px 0 0 4px;
+  display: flex;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+.fill-male {
+  height: 100%;
+  background: linear-gradient(270deg, #2563eb, #60a5fa);
+  border-radius: 4px 0 0 4px;
+  transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 중앙 연령대 라벨 */
+.age-label-center {
+  text-align: center;
+  font-size: 0.82rem;
+  font-weight: 850;
+  color: #334155;
+  background: #f8fafc;
+  padding: 0.2rem 0.3rem;
+  border-radius: 4px;
+}
+
+/* 우측 여성 바 (좌측 정렬) */
+.bar-side-female {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.45rem;
+}
+.track-female {
+  flex: 1;
+  max-width: 280px;
+  height: 20px;
+  background: #f1f5f9;
+  border-radius: 0 4px 4px 0;
+  overflow: hidden;
+}
+.fill-female {
+  height: 100%;
+  background: linear-gradient(90deg, #e11d48, #fb7185);
+  border-radius: 0 4px 4px 0;
+  transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.val-label-female {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #e11d48;
+  font-variant-numeric: tabular-nums;
+}
+
+.pyramid-insight-footer {
+  margin-top: 1.25rem;
+  padding: 1rem 1.25rem;
+  background: #f8fafc;
+  border-left: 4px solid #4338ca;
+  border-radius: 0.4rem;
+  font-size: 0.92rem;
+  color: #334155;
+  line-height: 1.6;
+}
+
+/* ---------- 탭 2: 초등학생 수 변천사 ---------- */
+.school-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+.school-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.25rem 1.5rem;
+}
+.school-card.card-danger {
+  border-color: #fecaca;
+  background: #fffafa;
+}
+.card-badge {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #64748b;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+.card-num {
+  font-size: 1.85rem;
+  font-weight: 900;
+  color: #0f172a;
+  margin-bottom: 0.25rem;
+}
+.card-sub {
+  font-size: 0.85rem;
+  color: #475569;
+}
+
+.line-chart-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.line-chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.line-chart-title {
+  font-size: 1.05rem;
+  font-weight: 850;
+  color: #0f172a;
+  margin: 0;
+}
+.chart-unit-tag {
+  font-size: 0.8rem;
+  color: #64748b;
+  font-weight: 700;
+}
+.canvas-wrapper {
+  position: relative;
+  width: 100%;
+}
+#school-canvas {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 시도별 테이블 */
+.regional-table-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+.table-card-title {
+  font-size: 1.05rem;
+  font-weight: 850;
+  color: #0f172a;
+  margin: 0 0 1rem;
+}
+.table-responsive {
+  overflow-x: auto;
+}
+.regional-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  text-align: left;
+}
+.regional-table th {
+  background: #f8fafc;
+  color: #475569;
+  font-weight: 750;
+  padding: 0.75rem 0.85rem;
+  border-bottom: 1.5px solid #e2e8f0;
+  white-space: nowrap;
+}
+.regional-table td {
+  padding: 0.75rem 0.85rem;
+  border-bottom: 1px solid #f1f5f9;
+  color: #334155;
+  white-space: nowrap;
+}
+
+/* ---------- 탭 3: 세대별 교실 대조기 ---------- */
+.myage-input-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 850;
+  color: #0f172a;
+  margin: 0 0 0.35rem;
+}
+.card-desc {
+  font-size: 0.88rem;
+  color: #64748b;
+  margin: 0 0 1.25rem;
+}
+
+.myage-input-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.myage-label {
+  font-size: 0.9rem;
+  font-weight: 750;
+  color: #334155;
+}
+.input-with-unit {
+  position: relative;
+  max-width: 260px;
+}
+.custom-input {
+  width: 100%;
+  padding: 0.65rem 3.5rem 0.65rem 0.85rem;
+  font-size: 1.25rem;
+  font-weight: 850;
+  color: #0f172a;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 0.65rem;
+}
+.custom-input:focus {
+  outline: none;
+  border-color: #4338ca;
+  box-shadow: 0 0 0 3px rgba(67, 56, 202, 0.15);
+}
+.unit-text {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.95rem;
+  font-weight: 750;
+  color: #64748b;
+}
+
+.quick-birth-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.45rem;
+}
+.tag-btn {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  color: #475569;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.tag-btn:hover { background: #e2e8f0; }
+.tag-btn.is-active {
+  background: #e0e7ff;
+  border-color: #a5b4fc;
+  color: #4338ca;
+}
+
+.myage-result-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1.25rem;
+  padding: 1.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+.era-badge {
+  display: inline-block;
+  padding: 0.45rem 0.9rem;
+  font-size: 0.88rem;
+  font-weight: 850;
+  color: #ffffff;
+  border-radius: 999px;
+  margin-bottom: 1.25rem;
+}
+.contrast-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+.contrast-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.25rem;
+}
+.contrast-box.current-box {
+  background: #fffafa;
+  border-color: #fecaca;
+}
+.contrast-header {
+  font-size: 0.88rem;
+  font-weight: 850;
+  color: #475569;
+  margin-bottom: 0.5rem;
+}
+.contrast-main-num {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #0f172a;
+  margin-bottom: 0.35rem;
+}
+.contrast-sub {
+  font-size: 0.82rem;
+  color: #64748b;
+  line-height: 1.45;
+}
+
+.contrast-story-box {
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+  border-radius: 0.75rem;
+  padding: 1.1rem 1.25rem;
+  color: #1e1b4b;
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+/* ---------- 공식 출처 카드 ---------- */
+.data-source-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
+.source-header {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 0.85rem;
+}
+.source-icon { font-size: 1.25rem; }
+.source-title {
+  font-size: 0.96rem;
+  font-weight: 850;
+  color: #1e293b;
+  margin: 0;
+}
+.source-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  color: #475569;
+  font-size: 0.84rem;
+  line-height: 1.7;
+}
+
+/* ---------- 반응형 ---------- */
+@media (max-width: 768px) {
+  .tool-main-container { padding: 1rem 0.75rem 2.5rem; }
+  .tool-hero-card { padding: 1.5rem 1.25rem; }
+  .tool-title { font-size: 1.5rem; }
+  .timeline-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .btn-play { justify-content: center; }
+  .pop-stat-bar { grid-template-columns: 1fr 1fr; }
+  .school-hero-grid { grid-template-columns: 1fr; }
+  .contrast-grid { grid-template-columns: 1fr; }
+  .pyramid-row {
+    grid-template-columns: 1fr 65px 1fr;
+    font-size: 0.75rem;
+  }
+}

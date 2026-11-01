@@ -1,0 +1,577 @@
+{
+  "schemaVersion": 1,
+  "providers": [
+    {
+      "id": "seoul-reservation",
+      "name": "서울 공공서비스예약",
+      "url": "https://yeyak.seoul.go.kr/",
+      "hosts": [
+        "yeyak.seoul.go.kr"
+      ],
+      "categoryIds": [
+        "kids-programs",
+        "family-culture"
+      ],
+      "regions": [
+        "서울"
+      ],
+      "method": "official-detail-review",
+      "authentication": "공개 공지 열람, 신청은 별도 로그인",
+      "lastSuccessAt": "2026-10-26T07:09:31.578Z"
+    },
+    {
+      "id": "gyeonggi-share",
+      "name": "경기공유서비스",
+      "url": "https://share.gg.go.kr/",
+      "hosts": [
+        "share.gg.go.kr"
+      ],
+      "categoryIds": [
+        "kids-programs",
+        "camping-booking"
+      ],
+      "regions": [
+        "경기"
+      ],
+      "method": "official-detail-review",
+      "authentication": "공개 공지 열람, 예약은 별도 로그인",
+      "lastSuccessAt": null
+    },
+    {
+      "id": "gwacheon-science",
+      "name": "국립과천과학관",
+      "url": "https://www.sciencecenter.go.kr/",
+      "hosts": [
+        "www.sciencecenter.go.kr",
+        "sciencecenter.go.kr"
+      ],
+      "categoryIds": [
+        "kids-programs",
+        "family-culture"
+      ],
+      "regions": [
+        "경기"
+      ],
+      "method": "official-detail-review",
+      "authentication": "공개 공지 열람",
+      "lastSuccessAt": null
+    },
+    {
+      "id": "seoul-library",
+      "name": "서울도서관",
+      "url": "https://lib.seoul.go.kr/",
+      "hosts": [
+        "lib.seoul.go.kr"
+      ],
+      "categoryIds": [
+        "local-parenting"
+      ],
+      "regions": [
+        "서울"
+      ],
+      "method": "official-detail-review",
+      "authentication": "공개 공지 열람",
+      "lastSuccessAt": null
+    },
+    {
+      "id": "seoul-childcare",
+      "name": "서울시육아종합지원센터",
+      "url": "https://seoul.childcare.go.kr/",
+      "hosts": [
+        "seoul.childcare.go.kr"
+      ],
+      "categoryIds": [
+        "local-parenting"
+      ],
+      "regions": [
+        "서울"
+      ],
+      "method": "official-detail-review",
+      "authentication": "공개 공지 열람, 신청 자격 별도 확인",
+      "lastSuccessAt": null
+    },
+    {
+      "id": "foresttrip",
+      "name": "숲나들e",
+      "url": "https://www.foresttrip.go.kr/",
+      "hosts": [
+        "www.foresttrip.go.kr",
+        "foresttrip.go.kr"
+      ],
+      "categoryIds": [
+        "camping-booking"
+      ],
+      "regions": [
+        "전국"
+      ],
+      "method": "official-detail-review",
+      "authentication": "공개 공지 열람, 예약은 별도 로그인",
+      "lastSuccessAt": "2026-10-25T23:13:25.712Z"
+    },
+    {
+      "id": "culture-portal",
+      "name": "문화포털",
+      "url": "https://www.culture.go.kr/",
+      "hosts": [
+        "www.culture.go.kr"
+      ],
+      "categoryIds": [
+        "family-culture"
+      ],
+      "regions": [
+        "전국"
+      ],
+      "method": "official-detail-review",
+      "authentication": "공개 공지 열람",
+      "lastSuccessAt": null
+    },
+    {
+      "id": "seoul-culture",
+      "name": "서울문화포털",
+      "url": "https://culture.seoul.go.kr/",
+      "hosts": [
+        "culture.seoul.go.kr",
+        "www.lotteconcerthall.com",
+        "www.gdfac.or.kr",
+        "www.seochocf.or.kr",
+        "www.seoulphil.or.kr",
+        "reservation.assembly.go.kr",
+        "finecharacter.kr",
+        "museum.seoul.go.kr",
+        "www.sejongpac.or.kr",
+        "artbookbogo.kr",
+        "www.jfac.or.kr",
+        "www.swu.ac.kr"
+      ],
+      "categoryIds": [
+        "family-culture",
+        "kids-popups"
+      ],
+      "regions": [
+        "서울"
+      ],
+      "method": "official-detail-review",
+      "authentication": "공개 공지 열람",
+      "lastSuccessAt": "2026-10-26T07:25:10.328Z"
+    },
+    {
+      "id": "bokjiro",
+      "name": "복지로",
+      "url": "https://www.bokjiro.go.kr/",
+      "hosts": [
+        "www.bokjiro.go.kr"
+      ],
+      "categoryIds": [
+        "family-support"
+      ],
+      "regions": [
+        "전국"
+      ],
+      "method": "official-detail-review",
+      "authentication": "공개 공지 열람, 신청은 별도 인증",
+      "lastSuccessAt": null
+    },
+    {
+      "id": "seoul-news",
+      "name": "서울시 분야별 소식",
+      "url": "https://news.seoul.go.kr/",
+      "hosts": [
+        "news.seoul.go.kr",
+        "mediahub.seoul.go.kr"
+      ],
+      "categoryIds": [
+        "family-support",
+        "local-parenting",
+        "kids-programs"
+      ],
+      "regions": [
+        "서울"
+      ],
+      "method": "official-detail-review",
+      "authentication": "공개 공지 열람",
+      "lastSuccessAt": null
+    },
+    {
+      "id": "lotteworld",
+      "name": "롯데월드 어드벤처",
+      "url": "https://adventure.lotteworld.com/",
+      "hosts": [
+        "adventure.lotteworld.com"
+      ],
+      "categoryIds": [
+        "family-discounts"
+      ],
+      "regions": [
+        "서울"
+      ],
+      "method": "official-detail-review",
+      "authentication": "공개 혜택 안내, 예매는 별도 절차",
+      "lastSuccessAt": null
+    },
+    {
+      "id": "everland",
+      "name": "에버랜드",
+      "url": "https://www.everland.com/",
+      "hosts": [
+        "www.everland.com"
+      ],
+      "categoryIds": [
+        "family-discounts",
+        "kids-popups"
+      ],
+      "regions": [
+        "경기"
+      ],
+      "method": "official-detail-review",
+      "authentication": "공개 행사 안내, 예매는 별도 절차",
+      "lastSuccessAt": null
+    },
+    {
+      "id": "lotte-shopping",
+      "name": "롯데백화점",
+      "url": "https://www.lotteshopping.com/",
+      "hosts": [
+        "www.lotteshopping.com"
+      ],
+      "categoryIds": [
+        "kids-popups"
+      ],
+      "regions": [
+        "전국"
+      ],
+      "method": "official-detail-review",
+      "authentication": "공개 지점별 공지",
+      "lastSuccessAt": null
+    },
+    {
+      "id": "hyundai-department",
+      "name": "현대백화점",
+      "url": "https://www.ehyundai.com/",
+      "hosts": [
+        "www.ehyundai.com"
+      ],
+      "categoryIds": [
+        "kids-popups"
+      ],
+      "regions": [
+        "전국"
+      ],
+      "method": "official-detail-review",
+      "authentication": "공개 지점별 공지",
+      "lastSuccessAt": "2026-10-26T04:20:37.942Z"
+    },
+    {
+      "id": "childcare-portal",
+      "name": "임신육아종합포털 아이사랑",
+      "url": "https://www.childcare.go.kr/",
+      "hosts": [
+        "www.childcare.go.kr",
+        "central.childcare.go.kr"
+      ],
+      "categoryIds": [
+        "local-parenting",
+        "kids-programs"
+      ],
+      "regions": [
+        "전국"
+      ],
+      "method": "official-detail-review",
+      "authentication": "공개 상세 공지 열람, 신청·결제는 공식 사이트",
+      "lastSuccessAt": "2026-10-26T07:04:04.416Z"
+    },
+    {
+      "id": "seoul-umppa",
+      "name": "서울시 탄생육아 몽땅정보통",
+      "url": "https://umppa.seoul.go.kr/",
+      "hosts": [
+        "umppa.seoul.go.kr"
+      ],
+      "categoryIds": [
+        "family-support"
+      ],
+      "regions": [
+        "서울"
+      ],
+      "method": "official-detail-review",
+      "authentication": "공개 상세 공지 열람, 신청·결제는 공식 사이트",
+      "lastSuccessAt": "2026-10-26T07:15:46.246Z"
+    },
+    {
+      "id": "seoulland",
+      "name": "서울랜드",
+      "url": "https://seoulland.co.kr/",
+      "hosts": [
+        "seoulland.co.kr"
+      ],
+      "categoryIds": [
+        "family-discounts"
+      ],
+      "regions": [
+        "경기"
+      ],
+      "method": "official-detail-review",
+      "authentication": "공개 상세 공지 열람, 신청·결제는 공식 사이트",
+      "lastSuccessAt": "2026-10-26T07:29:00.467Z"
+    },
+    {
+      "id": "cheongju-camp",
+      "name": "청주시 오창미래지 캠핑장",
+      "url": "https://munam.cheongju.go.kr/ochang/",
+      "hosts": [
+        "munam.cheongju.go.kr"
+      ],
+      "categoryIds": [
+        "camping-booking"
+      ],
+      "regions": [
+        "충북"
+      ],
+      "method": "official-detail-review",
+      "authentication": "공개 상세 공지 열람, 신청·결제는 공식 사이트",
+      "lastSuccessAt": "2026-10-25T23:13:25.712Z"
+    },
+    {
+      "id": "seoul-camping",
+      "name": "서울시 공공서비스예약 · 지역 캠핑장",
+      "url": "https://yeyak.seoul.go.kr/",
+      "hosts": [
+        "yeyak.seoul.go.kr"
+      ],
+      "categoryIds": [
+        "camping-booking"
+      ],
+      "regions": [
+        "전국"
+      ],
+      "method": "official-detail-review",
+      "authentication": "공개 상세 공지 열람 · 신청은 공식 회원/본인인증·증빙 절차",
+      "lastSuccessAt": "2026-10-25T23:13:25.712Z"
+    },
+    {
+      "id": "hwaseong-ecofarm",
+      "name": "화성에코팜테마파크",
+      "url": "https://hsecofarm.hscity.go.kr/reservation/",
+      "hosts": [
+        "hsecofarm.hscity.go.kr"
+      ],
+      "categoryIds": [
+        "camping-booking"
+      ],
+      "regions": [
+        "경기"
+      ],
+      "method": "official-detail-review",
+      "authentication": "공개 상세 공지 열람 · 신청은 공식 회원/본인인증·증빙 절차",
+      "lastSuccessAt": "2026-10-25T23:13:25.712Z"
+    },
+    {
+      "id": "legoland",
+      "name": "레고랜드 코리아",
+      "url": "https://www.legoland.kr/",
+      "hosts": [
+        "www.legoland.kr"
+      ],
+      "regions": [
+        "강원"
+      ],
+      "categoryIds": [
+        "kids-popups",
+        "family-discounts"
+      ],
+      "method": "official-detail-review",
+      "authentication": "공개 행사 공지 · 예약·입장은 공식 절차",
+      "lastSuccessAt": "2026-10-26T04:20:37.942Z"
+    },
+    {
+      "id": "stellive",
+      "name": "스텔라이브 공식 공지",
+      "url": "https://stellive.me",
+      "hosts": [
+        "stellive.me"
+      ],
+      "regions": [
+        "서울"
+      ],
+      "categoryIds": [
+        "kids-popups"
+      ],
+      "method": "official-detail-review",
+      "authentication": "공개 행사 공지 · 예약·입장은 공식 절차",
+      "lastSuccessAt": "2026-10-26T04:20:37.942Z"
+    },
+    {
+      "id": "ehealth",
+      "name": "공공보건포털 e보건소",
+      "url": "https://www.e-health.go.kr/",
+      "hosts": [
+        "www.e-health.go.kr"
+      ],
+      "categoryIds": [
+        "family-support"
+      ],
+      "regions": [
+        "전국"
+      ],
+      "method": "official-detail-review",
+      "authentication": "공개 정책 상세 · 신청은 공식 인증 절차",
+      "lastSuccessAt": "2026-10-26T07:15:46.246Z"
+    },
+    {
+      "id": "korea-policy",
+      "name": "대한민국 정책브리핑 · 보건복지부",
+      "url": "https://m.korea.kr/",
+      "hosts": [
+        "m.korea.kr",
+        "www.korea.kr"
+      ],
+      "categoryIds": [
+        "family-support"
+      ],
+      "regions": [
+        "전국"
+      ],
+      "method": "official-detail-review",
+      "authentication": "공개 정책 상세 · 신청은 공식 인증 절차",
+      "lastSuccessAt": "2026-10-26T07:15:46.246Z"
+    },
+    {
+      "id": "mohw-family",
+      "name": "보건복지부 출산정책",
+      "url": "https://www.mohw.go.kr/",
+      "hosts": [
+        "www.mohw.go.kr",
+        "www.easylaw.go.kr"
+      ],
+      "categoryIds": [
+        "family-support"
+      ],
+      "regions": [
+        "전국"
+      ],
+      "method": "official-detail-review",
+      "authentication": "공개 정책 상세 · 신청은 공식 인증 절차",
+      "lastSuccessAt": "2026-10-26T07:15:46.246Z"
+    },
+    {
+      "id": "acc-culture",
+      "name": "국립아시아문화전당",
+      "url": "https://www.acc.go.kr/",
+      "hosts": [
+        "www.acc.go.kr"
+      ],
+      "categoryIds": [
+        "family-culture",
+        "family-discounts"
+      ],
+      "regions": [
+        "광주"
+      ],
+      "method": "official-detail-review",
+      "authentication": "공개 전시 상세 · 예매는 공식 절차",
+      "lastSuccessAt": "2026-10-26T07:25:10.328Z"
+    },
+    {
+      "id": "sangsangmadang",
+      "name": "KT&G 상상마당",
+      "url": "https://www.sangsangmadang.com/",
+      "hosts": [
+        "www.sangsangmadang.com"
+      ],
+      "regions": [
+        "서울"
+      ],
+      "categoryIds": [
+        "kids-popups"
+      ],
+      "method": "official-detail-review",
+      "authentication": "공개 상세 공지 · 예약과 입장은 운영사 절차",
+      "lastSuccessAt": "2026-10-26T12:05:49.609Z"
+    },
+    {
+      "id": "hybe-weverse",
+      "name": "HYBE · Weverse 공식 팝업 공지",
+      "url": "https://weverse.io/",
+      "hosts": [
+        "weverse.io"
+      ],
+      "regions": [
+        "서울"
+      ],
+      "categoryIds": [
+        "kids-popups"
+      ],
+      "method": "official-detail-review",
+      "authentication": "공개 상세 공지 · 예약과 입장은 운영사 절차",
+      "lastSuccessAt": "2026-10-26T12:05:49.609Z"
+    },
+    {
+      "id": "lotte-department",
+      "name": "롯데백화점",
+      "url": "https://www.lotteshopping.com/",
+      "hosts": [
+        "www.lotteshopping.com"
+      ],
+      "regions": [
+        "전국"
+      ],
+      "categoryIds": [
+        "kids-popups"
+      ],
+      "method": "official-detail-review",
+      "authentication": "공개 상세 공지 · 예약과 입장은 운영사 절차",
+      "lastSuccessAt": "2026-10-26T12:05:49.609Z"
+    },
+    {
+      "id": "shinsegae-department",
+      "name": "신세계백화점 · 그룹 뉴스룸",
+      "url": "https://www.shinsegae.com/",
+      "hosts": [
+        "www.shinsegae.com",
+        "www.shinsegaegroupnewsroom.com"
+      ],
+      "regions": [
+        "전국"
+      ],
+      "categoryIds": [
+        "kids-popups"
+      ],
+      "method": "official-detail-review",
+      "authentication": "공개 상세 공지 · 예약과 입장은 운영사 절차",
+      "lastSuccessAt": "2026-10-26T12:05:49.609Z"
+    },
+    {
+      "id": "popcondplay",
+      "name": "팝콘D플레이 · 대원뮤지엄·캐릭터 공식 공지",
+      "url": "https://www.popcondplay.com/",
+      "hosts": [
+        "www.popcondplay.com"
+      ],
+      "regions": [
+        "전국"
+      ],
+      "categoryIds": [
+        "kids-popups"
+      ],
+      "method": "official-detail-review",
+      "authentication": "공개 상세 공지 · 예약과 입장은 운영사 절차",
+      "lastSuccessAt": "2026-10-26T12:05:49.609Z"
+    },
+    {
+      "id": "kakao-friends",
+      "name": "카카오 · 카카오프렌즈 공식 보도자료",
+      "url": "https://www.kakaocorp.com/",
+      "hosts": [
+        "www.kakaocorp.com"
+      ],
+      "regions": [
+        "서울"
+      ],
+      "categoryIds": [
+        "kids-popups"
+      ],
+      "method": "official-detail-review",
+      "authentication": "공개 상세 공지 · 예약과 입장은 운영사 절차",
+      "lastSuccessAt": "2026-10-26T12:05:49.609Z"
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+import {calculate} from './logic.js';
+import {boot,value,money,details} from '../../assets/js/reference-ui.js';
+boot(f=>({monthlyNetSalary:value(f,'monthlyNetSalary'),workHours:value(f,'workHours'),commuteHours:value(f,'commuteHours'),workExpenses:value(f,'workExpenses'),targetPrice:value(f,'targetPrice')}),calculate,(r,el)=>{el.innerHTML='<h2>시간과 비용을 함께 본 결과</h2><p class="ref-value">시간당 '+money(r.hourly)+'</p>'+details([['비용 차감 후 수입',money(r.available)],['근무·통근시간 합계',r.totalHours+'시간'],['구매 금액에 해당하는 시간',r.targetHours===null?'양의 수입이 없어 환산 불가':r.targetHours.toFixed(1)+'시간']])+'<p>식비·교통비는 출근 때문에 추가로 든 부분을 넣으세요. 휴게시간·재택근무·초과근무를 월별 기록과 맞추면 비교가 쉬워집니다.</p>';});

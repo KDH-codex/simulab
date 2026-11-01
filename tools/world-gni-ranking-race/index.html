@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>주요 19개국 소득 순위변화 | World Bank 공공 빅데이터 시뮬레이터</title>
+  <meta name="description" content="세계은행 1990~2025년 GNI를 주요 19개국 안에서 비교합니다. 총 GNI는 명목 달러, 1인당 GNI는 Atlas 방식이며 2026년 연간 실적은 포함하지 않습니다.">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="주요 19개국 소득 순위변화 (1990~2025) | SimuLab">
+  <meta property="og:description" content="세계은행 1990~2025년 GNI를 주요 19개국 안에서 비교합니다. 총 GNI는 명목 달러, 1인당 GNI는 Atlas 방식이며 2026년 연간 실적은 포함하지 않습니다.">
+  <meta property="og:url" content="https://simulab.co.kr/tools/world-gni-ranking-race/index.html">
+
+  <!-- Style Sheets -->
+  <link rel="stylesheet" href="../../assets/css/common.css?v=20261023_overhaul1">
+  <link rel="stylesheet" href="./style.css?v=20261023_overhaul1">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "주요 19개국 소득 순위변화 시뮬레이터",
+    "description": "세계은행 1990~2025년 GNI를 주요 19개국 안에서 비교합니다. 총 GNI는 명목 달러, 1인당 GNI는 Atlas 방식이며 2026년 연간 실적은 포함하지 않습니다.",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "All"
+  }
+  </script>
+<meta name="google-adsense-account" content="ca-pub-9815778998394475">
+<link rel="stylesheet" href="../../assets/css/statistics-data.css?v=20261023_overhaul1">
+<meta name="robots" content="noindex,follow">
+<link rel="canonical" href="https://simulab.kr/tools/world-gni-ranking-race/">
+</head>
+<body data-publication-state="archived" class="tool-page">
+  <!-- 상단 공통 헤더 -->
+  <header id="site-header"></header>
+
+  <main class="tool-main-container"><!-- GENERATED:ARCHIVE:START --><aside class="tool-use-notice"><strong>보관 중인 도구</strong><p>시뮬랩의 이전 도구입니다. 현재 운영 중인 계산기와 생활정보는 도구 모음에서 확인할 수 있습니다.</p><a href="/library/">도구 모음 보기</a> · <a href="/">AI 사망토론 홈</a></aside><!-- GENERATED:ARCHIVE:END --><!-- 도구 헤더 카드 -->
+    <header class="tool-hero-card">
+      <div class="tool-badge-row">
+        <span class="tool-badge badge-official">🏛️ World Bank · IMF 공식 통계</span>
+        <span class="tool-badge badge-timeseries">📈 35년 시계열 (1990~2025)</span>
+        <span class="tool-badge badge-live">✨ 인터랙티브 랭킹 레이스</span>
+      </div>
+      <h1 class="tool-title">주요 19개국 소득 순위변화</h1>
+      <p class="tool-desc">세계은행의 1990~2025년 국민총소득(GNI)을 수록 국가 안에서 비교합니다. 국가별 순위 변화와 한국과의 차이를 차트로 확인해 보세요.</p>
+    <!-- GENERATED:USE-NOTICE:START -->
+<aside id="tool-use-notice" class="tool-use-notice" data-notice-kind="statistics" aria-labelledby="tool-use-notice-title"><strong id="tool-use-notice-title">통계 해석 전 확인</strong><p>통계의 집계 연도·표본·단위·원자료와 추정 범위를 확인해 주세요. 수록 시점의 자료로 현재의 실시간 값이나 개인의 정확한 순위를 보장하지 않습니다.</p><a href="#legal-disclaimer">이용 범위와 면책고지 보기 ↓</a></aside>
+<!-- GENERATED:USE-NOTICE:END -->
+
+<aside class="statistics-update" aria-label="자료 기준과 업데이트"><h2>GNI 연간 자료를 2025년까지 갱신했습니다</h2><p><strong>1990~2025년 연간 실적 · 주요 19개국 비교</strong></p><p>총 GNI는 명목 달러, 1인당 GNI는 Atlas 방식입니다. 2026년 연간 실적은 아직 수록하지 않았습니다. 자료가 없는 국가는 0으로 처리하지 않습니다.</p><p class="statistics-period">자료 확인: 2026-10-26 · <a href="https://data.worldbank.org/indicator/NY.GNP.PCAP.CD" target="_blank" rel="noopener noreferrer">세계은행 원자료</a></p></aside>
+
+    </header>
+
+    <!-- 탭 네비게이션 -->
+    <nav class="tool-tab-nav" aria-label="도구 모드 선택">
+      <button type="button" class="tool-tab-btn is-active" data-tab="race">
+        <span class="tab-icon">🏁</span> 35년 수록 연도 비교
+      </button>
+      <button type="button" class="tool-tab-btn" data-tab="compare">
+        <span class="tab-icon">⚔️</span> 한국 vs 1:1 맞대결
+      </button>
+      <button type="button" class="tool-tab-btn" data-tab="salary">
+        <span class="tab-icon">💵</span> 내 연봉·국가 평균 비교
+      </button>
+    </nav>
+
+    <!-- ===================================================================
+         탭 1: 🏁 35년 수록 연도 비교 (타임슬라이더 + 재생 + 바 차트 애니메이션)
+         =================================================================== -->
+    <section id="tab-panel-race" class="tab-panel is-active">
+      <!-- 컨트롤 바 -->
+      <div class="race-control-panel">
+        <div class="metric-toggle-group">
+          <label class="toggle-label">지표 선택:</label>
+          <div class="toggle-buttons">
+            <button type="button" class="metric-btn is-active" data-metric="gniTotal">
+              🏢 명목 총 GNI (경제규모)
+            </button>
+            <button type="button" class="metric-btn" data-metric="gniPerCapita">
+              👤 1인당 GNI (Atlas 방식)
+            </button>
+          </div>
+        </div>
+
+        <div class="timeline-slider-row">
+          <button type="button" id="btn-play-pause" class="btn-play" aria-label="연도별 자동 재생">
+            <span id="play-icon">▶</span> <span id="play-text">자동 재생</span>
+          </button>
+          <div class="slider-wrapper">
+            <div class="slider-header">
+              <span class="slider-title">기준 연도: <strong id="display-year" class="highlight-year">2025년</strong></span>
+              <span class="slider-milestone" id="display-milestone">최신 지표 (한국 선진국 안착)</span>
+            </div>
+            <input type="range" id="year-slider" min="0" max="9" step="1" value="9" aria-label="기준 연도 선택 슬라이더">
+            <div class="slider-ticks" id="slider-ticks">
+              <!-- JS로 1990, 1995, 2000 ... 2024 렌더링 -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 랭킹 막대 차트 컨테이너 -->
+      <div class="race-chart-card">
+        <div class="chart-header-row">
+          <div class="chart-title-area">
+            <h2 class="chart-main-title" id="chart-main-title">2025년 주요 19개국 명목 총 GNI 순위</h2>
+            <p class="chart-sub-title" id="chart-sub-title">단위: 10억 달러 (Billion USD) · 세계은행 명목 달러</p>
+          </div>
+          <div class="korea-rank-badge" id="korea-rank-badge">
+            <span class="badge-label">대한민국</span>
+            <span class="badge-value" id="korea-rank-text">세계 12위 (1,870B$)</span>
+          </div>
+        </div>
+
+        <!-- 19개국 막대 바 목록 (CSS Transitions 실시간 위치 전환) -->
+        <div class="race-bars-container" id="race-bars-container">
+          <!-- JS 렌더링 -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         탭 2: ⚔️ 한국 vs 1:1 맞대결 (골든크로스 시계열 꺾은선 차트)
+         =================================================================== -->
+    <section id="tab-panel-compare" class="tab-panel">
+      <div class="compare-control-card">
+        <div class="compare-selector-row">
+          <div class="selector-col">
+            <label for="compare-country-select" class="selector-label">비교 대상 국가 선택:</label>
+            <select id="compare-country-select" class="custom-select">
+              <option value="JPN" selected>🇯🇵 일본 (30년 라이벌 · 소득 역전)</option>
+              <option value="USA">🇺🇸 미국 (글로벌 1위 패권국)</option>
+              <option value="CHN">🇨🇳 중국 (G2 급성장 경제대국)</option>
+              <option value="DEU">🇩🇪 독일 (유럽 최대 제조업 강국)</option>
+              <option value="GBR">🇬🇧 영국 (유럽 금융·서비스 중심지)</option>
+              <option value="FRA">🇫🇷 프랑스 (유럽 주요 선진국)</option>
+              <option value="ITA">🇮🇹 이탈리아 (남유럽 대표 경제국)</option>
+              <option value="ESP">🇪🇸 스페인 (유럽 주요국)</option>
+              <option value="AUS">🇦🇺 호주 (자원·선진 복지국)</option>
+              <option value="CHE">🇨🇭 스위스 (세계 최상위 소득국)</option>
+            </select>
+          </div>
+          <div class="selector-col">
+            <label class="selector-label">비교 지표:</label>
+            <div class="toggle-buttons">
+              <button type="button" class="compare-metric-btn is-active" data-metric="gniPerCapita">
+                👤 1인당 소득 (달러)
+              </button>
+              <button type="button" class="compare-metric-btn" data-metric="gniTotal">
+                🏢 총 GNI (10억$)
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1:1 비교 요약 카드 -->
+      <div class="compare-summary-grid">
+        <div class="summary-box kor-box">
+          <div class="summary-flag">🇰🇷</div>
+          <div class="summary-country">대한민국</div>
+          <div class="summary-stat-val" id="summary-kor-val">36,200 $</div>
+          <div class="summary-growth" id="summary-kor-growth">1990년 대비 +5.5배 성장</div>
+        </div>
+
+        <div class="summary-vs-badge" id="summary-vs-text">
+          <span>VS</span>
+        </div>
+
+        <div class="summary-box target-box">
+          <div class="summary-flag" id="summary-target-flag">🇯🇵</div>
+          <div class="summary-country" id="summary-target-name">일본</div>
+          <div class="summary-stat-val" id="summary-target-val">33,500 $</div>
+          <div class="summary-growth" id="summary-target-growth">1990년 대비 +1.2배 성장</div>
+        </div>
+      </div>
+
+      <!-- 골든크로스 / 격차 인사이트 박스 -->
+      <div class="insight-box" id="compare-insight-box">
+        <!-- JS 렌더링 -->
+      </div>
+
+      <!-- 35년 시계열 꺾은선 차트 (Canvas) -->
+      <div class="line-chart-card">
+        <div class="line-chart-header">
+          <h3 class="line-chart-title" id="line-chart-title">1990~2025 시계열 추이 비교</h3>
+          <div class="chart-legend">
+            <span class="legend-item"><span class="legend-dot kor-dot"></span> 대한민국</span>
+            <span class="legend-item"><span class="legend-dot target-dot" id="legend-target-dot"></span> <span id="legend-target-name">비교국</span></span>
+          </div>
+        </div>
+        <div class="canvas-wrapper">
+          <canvas id="compare-line-canvas" width="800" height="380"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         탭 3: 💵 내 연봉·국가 평균 비교 (달러 환산 & 글로벌 벤치마킹)
+         =================================================================== -->
+    <section id="tab-panel-salary" class="tab-panel">
+      <div class="salary-input-card">
+        <h2 class="salary-card-title">내 연봉을 주요 19개국 국민소득과 대조해 보세요</h2>
+        <p class="salary-card-desc">나의 세전 연봉을 글로벌 기준(달러)으로 환산하여 세계 어느 나라 국민소득 수준에 해당하는지 즉시 확인합니다.</p>
+
+        <div class="salary-input-box">
+          <label for="input-my-salary" class="salary-label">나의 세전 연봉 (원화)</label>
+          <div class="input-with-unit">
+            <input type="number" id="input-my-salary" class="custom-input" value="5000" min="1000" max="50000" step="100">
+            <span class="unit-text">만원</span>
+          </div>
+          <div class="quick-salary-tags">
+            <button type="button" class="tag-btn" data-val="3500">3,500만 (사회초년생)</button>
+            <button type="button" class="tag-btn is-active" data-val="5000">5,000만 (중간값)</button>
+            <button type="button" class="tag-btn" data-val="7000">7,000만 (과장급)</button>
+            <button type="button" class="tag-btn" data-val="10000">1억 (억대연봉)</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 내 글로벌 소득 결과 리포트 -->
+      <div class="salary-result-card" id="salary-result-card">
+        <!-- JS 렌더링 -->
+      </div>
+    </section>
+
+    <!-- 공공데이터 공식 출처 & 법적 고지 배너 -->
+    <aside class="data-source-card">
+      <div class="source-header">
+        <span class="source-icon">📚</span>
+        <h3 class="source-title">공공 빅데이터 공식 출처 및 기준 안내</h3>
+      </div>
+      <div class="source-body">
+        <ul class="source-list"><li><a href="https://data.worldbank.org/indicator/NY.GNP.MKTP.CD" target="_blank" rel="noopener noreferrer">세계은행 WDI: 총 GNI, 명목 US$</a> · 단위 10억 달러.</li><li><a href="https://data.worldbank.org/indicator/NY.GNP.PCAP.CD" target="_blank" rel="noopener noreferrer">세계은행 WDI: 1인당 GNI, Atlas 방식 US$</a> · 총 GNI를 인구로 단순히 나눈 시장환율 지표와 다릅니다.</li><li>1990~2025년 수록 연도 · WDI 원자료 갱신 2026-10-08 · 2026년 연간 GNI 미수록.</li><li>대만은 이 원자료에 없어 제외했습니다. 러시아의 1990년 1인당 값은 결측으로, 해당 순위와 비교 차트에서 제외합니다.</li><li>순위는 수록 19개국 안의 비교이며 세계 전체 순위가 아닙니다.</li></ul>
+      </div>
+    </aside>
+
+    <!-- 법적 면책 조항 컨테이너 -->
+
+  <!-- GENERATED:DISCLAIMER:START -->
+<aside id="legal-disclaimer" class="legal-disclaimer-box" data-notice-version="1" aria-label="이용 범위와 면책고지"><strong>이용 범위와 면책고지</strong><p>통계의 집계 연도·표본·단위·원자료와 추정 범위를 확인해 주세요. 수록 시점의 자료로 현재의 실시간 값이나 개인의 정확한 순위를 보장하지 않습니다.</p><p class="disclaimer-responsibility">운영자의 고의·중과실 등 관계 법령상 제한할 수 없는 책임은 이 안내로 배제하지 않습니다.</p><div class="disclaimer-links"><a href="../../legal/terms.html">이용약관·면책고지</a><a href="../../legal/editorial.html">출처·정정 기준</a></div></aside>
+<!-- GENERATED:DISCLAIMER:END -->
+  </main>
+
+  <!-- 하단 공통 푸터 -->
+  <footer id="site-footer"></footer>
+
+  <!-- Scripts -->
+  <script src="../../assets/js/core-ui.js?v=20261023_overhaul1"></script>
+  <script type="module" src="./app.js?v=20261023_overhaul1"></script>
+</body>
+</html>

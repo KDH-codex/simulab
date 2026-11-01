@@ -1,0 +1,897 @@
+<!doctype html>
+<!--
+  ==========================================================================
+  [디자인 시안 2차] SimuLab Analytics Portal - 뒷단 연동형 인터랙티브 워크스테이션
+  --------------------------------------------------------------------------
+  - 사용자 제공 시안(정밀 시뮬레이션 포털 — 디자인 시안.html)의 미학적 요소 100% 반영
+  - 각 도구 뒷단의 실제 수식·데이터(KPI 2개 + 60fps 동적 미니 차트 애니메이션) 탑재
+  - 실제 7대 도구(tools/*)와 1:1 완벽한 하이퍼링크 연결
+  - 제도판 코너 십자선(.cx), 마우스 추적 글로우, 스크롤 진입 숫자 카운트업 내장
+  - 이모티콘 100% 배제, 클래식 세리프 + 모노스페이스 프리미엄 에디토리얼
+  ==========================================================================
+-->
+<html lang="ko" data-default-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SimuLab Analytics Portal — 정밀 시뮬레이션 포털</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@700&display=swap">
+<style>
+:root {
+  --bg: #f3f5f9;
+  --sf: #ffffff;
+  --ink: #0b1220;
+  --mu: #5d6779;
+  --ln: #e1e5ed;
+  --hero: #0a1020;
+  --eq: #2f6bff;
+  --re: #0d9488;
+  --co: #d97706;
+  --sp: #16a34a;
+  --sh: 0 1px 0 rgba(11,18,32,.04), 0 10px 26px -14px rgba(11,18,32,.18);
+  color-scheme: light;
+  box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #070b13;
+    --sf: #0e1522;
+    --ink: #e8edf6;
+    --mu: #8e99ad;
+    --ln: #1d2738;
+    --hero: #04070d;
+    --sh: 0 1px 0 rgba(255,255,255,.03), 0 10px 26px -14px rgba(0,0,0,.7);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #070b13;
+  --sf: #0e1522;
+  --ink: #e8edf6;
+  --mu: #8e99ad;
+  --ln: #1d2738;
+  --hero: #04070d;
+  --sh: 0 1px 0 rgba(255,255,255,.03), 0 10px 26px -14px rgba(0,0,0,.7);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Noto Sans KR', system-ui, -apple-system, sans-serif;
+  letter-spacing: -.01em;
+  -webkit-font-smoothing: antialiased;
+}
+
+.mono {
+  font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;
+}
+
+/* 상단 알림 배너 */
+.notice-strip {
+  background: #1e293b;
+  color: #cbd5e1;
+  font-size: 12px;
+  padding: 8px 16px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+.notice-strip b { color: #38bdf8; }
+.theme-toggle-btn {
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.2);
+  color: #fff;
+  font-size: 11px;
+  padding: 3px 9px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.theme-toggle-btn:hover {
+  background: rgba(255,255,255,.2);
+}
+
+/* Hero Section (건축 제도판 그리드 + 딥 다크 네이비 블루) */
+.hero {
+  color: #fff;
+  text-align: center;
+  padding: 56px 20px 0;
+  background: radial-gradient(60% 90% at 50% 0%, rgba(47,107,255,.25), transparent 70%),
+              linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px) 0 0/48px 48px,
+              linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px) 0 0/48px 48px,
+              var(--hero);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  letter-spacing: .2em;
+  color: #9fb4d9;
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 99px;
+  padding: 6px 14px;
+}
+.eyebrow i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #34d399;
+  box-shadow: 0 0 0 3px rgba(52,211,153,.2);
+}
+
+h1 {
+  font-family: 'Noto Serif KR', 'Nanum Myeongjo', serif;
+  font-size: clamp(30px, 4.8vw, 48px);
+  margin: 22px 0 12px;
+  letter-spacing: -.03em;
+  line-height: 1.2;
+}
+
+.sub {
+  color: #a9b6cf;
+  font-size: 15px;
+  line-height: 1.7;
+  max-width: 580px;
+  margin: 0 auto 28px;
+}
+
+.search {
+  position: relative;
+  max-width: 520px;
+  margin: 0 auto 18px;
+}
+.search input {
+  width: 100%;
+  height: 48px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(255,255,255,.06);
+  color: #fff;
+  font: inherit;
+  font-size: 14px;
+  padding: 0 70px 0 16px;
+  outline: 0;
+  transition: border-color .2s, box-shadow .2s;
+}
+.search input::placeholder { color: #8091b0; }
+.search input:focus {
+  border-color: #5b8cff;
+  box-shadow: 0 0 0 4px rgba(91,140,255,.18);
+}
+.search kbd {
+  position: absolute;
+  right: 12px;
+  top: 13px;
+  font-size: 11px;
+  color: #9fb4d9;
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 6px;
+  padding: 2px 7px;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 34px;
+}
+.tabs button {
+  font-size: 11px;
+  letter-spacing: .06em;
+  color: #cbd5e6;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  transition: .2s;
+  font-family: inherit;
+}
+.tabs button:hover { border-color: rgba(255,255,255,.4); }
+.tabs button.on {
+  background: #fff;
+  color: #0a1020;
+  border-color: #fff;
+  font-weight: 700;
+}
+.tabs i {
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
+  background: var(--c, #9fb4d9);
+}
+
+.strip {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 26px;
+  border-top: 1px solid rgba(255,255,255,.1);
+  padding: 16px 20px;
+  font-size: 11px;
+  letter-spacing: .14em;
+  color: #8091b0;
+  margin: 0 -20px;
+}
+.strip b {
+  color: #dbe5f7;
+  font-weight: 600;
+}
+
+/* 메인 12열 그리드 */
+main {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 36px 20px 48px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+}
+
+/* 개별 카드 */
+.card {
+  position: relative;
+  grid-column: span 4;
+  background: var(--sf);
+  border: 1px solid var(--ln);
+  border-radius: 14px;
+  padding: 22px;
+  box-shadow: var(--sh);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  isolation: isolate;
+  overflow: hidden;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  transition: transform .25s ease, border-color .25s ease;
+}
+.card.a { grid-column: span 7; }
+.card.b { grid-column: span 5; }
+.grid.f .card { grid-column: span 6; }
+
+/* 카드 상단 테마 컬러 바 */
+.card::before {
+  content: "";
+  position: absolute;
+  left: 22px;
+  top: 0;
+  height: 2px;
+  width: 36px;
+  background: var(--c);
+  transition: width .4s ease;
+}
+
+/* 마우스 트래킹 광택 글로우 */
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity .3s ease;
+  background: radial-gradient(340px circle at var(--mx, 50%) var(--my, 0%), color-mix(in srgb, var(--c) 12%, transparent), transparent 70%);
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--c) 45%, var(--ln));
+}
+.card:hover::before { width: calc(100% - 44px); }
+.card:hover::after { opacity: 1; }
+.card:focus-visible {
+  outline: 2px solid var(--c);
+  outline-offset: 2px;
+}
+
+/* 제도판 코너 십자선 마크 (.cx) */
+.cx {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  opacity: .35;
+  background: linear-gradient(var(--mu), var(--mu)) center/100% 1px no-repeat,
+              linear-gradient(var(--mu), var(--mu)) center/1px 100% no-repeat;
+}
+.cx.tl { left: 7px; top: 7px; }
+.cx.tr { right: 7px; top: 7px; }
+.cx.bl { left: 7px; bottom: 7px; }
+.cx.br { right: 7px; bottom: 7px; }
+
+/* 카드 내부 구성 요소 */
+.hd {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  letter-spacing: .1em;
+  color: var(--mu);
+}
+.chip {
+  color: var(--c);
+  border: 1px solid color-mix(in srgb, var(--c) 40%, var(--ln));
+  background: color-mix(in srgb, var(--c) 8%, transparent);
+  border-radius: 6px;
+  padding: 3px 8px;
+  font-weight: 700;
+}
+
+h3 {
+  margin: 2px 0 0;
+  font-size: 17px;
+  line-height: 1.4;
+  letter-spacing: -.025em;
+  font-weight: 700;
+  color: var(--ink);
+  transition: color 0.15s ease;
+}
+.card:hover h3 { color: var(--c); }
+.a h3, .b h3 { font-size: 19px; }
+
+.en {
+  font-size: 11px;
+  color: var(--mu);
+  letter-spacing: .02em;
+  margin-top: 2px;
+}
+
+.q {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--mu);
+  background: color-mix(in srgb, var(--c) 5%, transparent);
+  border-left: 2px solid var(--c);
+  border-radius: 0 8px 8px 0;
+  padding: 10px 12px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* 뒷단 연동 KPI & 미니 차트 레이아웃 */
+.row {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding: 4px 0;
+}
+.kps {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 104px;
+}
+.kp small {
+  display: block;
+  font-size: 10px;
+  letter-spacing: .08em;
+  color: var(--mu);
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+.kp b {
+  font-family: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;
+  font-weight: 600;
+  font-size: 24px;
+  letter-spacing: -.03em;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+.kp b em {
+  font-style: normal;
+  font-size: 12px;
+  color: var(--mu);
+  margin-left: 3px;
+  letter-spacing: 0;
+}
+
+/* SVG 미니 인터랙티브 차트 */
+.ch {
+  flex: 1;
+  min-width: 0;
+}
+.ch svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.ln {
+  fill: none;
+  stroke: var(--c);
+  stroke-width: 1.8;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 1.4s cubic-bezier(.3, .7, .2, 1);
+}
+.ln.b {
+  stroke: var(--mu);
+  stroke-width: 1.2;
+  opacity: .5;
+}
+.ar {
+  fill: color-mix(in srgb, var(--c) 12%, transparent);
+  opacity: 0;
+  transition: opacity 1s .5s ease;
+}
+.zl {
+  stroke: var(--ln);
+  stroke-dasharray: 3 3;
+}
+.dot {
+  fill: var(--c);
+  opacity: 0;
+  transition: opacity .4s 1.2s ease;
+}
+.bar {
+  fill: color-mix(in srgb, var(--c) 25%, transparent);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transform-box: fill-box;
+  transition: transform .7s cubic-bezier(.3, .7, .2, 1);
+  transition-delay: calc(var(--i) * 45ms);
+}
+.bar.h { fill: var(--c); }
+
+/* IntersectionObserver 화면 진입 시 차트/숫자 트리거 */
+.in .ln { stroke-dashoffset: 0; }
+.in .ar, .in .dot { opacity: 1; }
+.in .bar { transform: scaleY(1); }
+
+/* 하단 태그 및 액션 풋터 */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.tags span {
+  font-size: 11px;
+  color: var(--mu);
+  border: 1px solid var(--ln);
+  border-radius: 6px;
+  padding: 3px 8px;
+}
+
+.ft {
+  margin-top: auto;
+  border-top: 1px solid var(--ln);
+  padding-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  letter-spacing: .06em;
+  color: var(--mu);
+}
+.go {
+  color: var(--ink);
+  font-weight: 600;
+  letter-spacing: .08em;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.go i {
+  display: inline-block;
+  font-style: normal;
+  transition: transform .25s ease;
+}
+.card:hover .go i { transform: translateX(5px); }
+
+/* 빈 검색 결과 */
+.empty {
+  display: none;
+  text-align: center;
+  color: var(--mu);
+  padding: 60px 0;
+  font-size: 14px;
+}
+
+footer {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 8px 20px 48px;
+  font-size: 11px;
+  line-height: 1.7;
+  color: var(--mu);
+  letter-spacing: .02em;
+}
+
+@media (max-width: 860px) {
+  .card, .card.a, .card.b, .grid.f .card { grid-column: span 12; }
+  .row { flex-wrap: wrap; }
+  .kps { flex-direction: row; gap: 24px; }
+  .ch { flex-basis: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card, .ln, .bar, .ar, .dot { transition: none !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- 상단 시안 검토 툴바 -->
+<div class="notice-strip">
+  <span><b>[디자인 시안 2차 검토용]</b> 뒷단 계산기 수식·지표(KPI) 및 60fps 미니 차트 라이브 연동형</span>
+  <button type="button" class="theme-toggle-btn" id="btn-theme-toggle">다크 / 라이트 모드 전환</button>
+</div>
+
+<header class="hero">
+  <span class="eyebrow mono"><i></i>QUANTITATIVE SIMULATION WORKSTATION</span>
+  <h1>정밀 시뮬레이션 포털</h1>
+  <p class="sub">주식 퀀트, 배당 복리, 부동산 금융, 기업 ROI를 정밀 수식과 60fps 차트로 시뮬레이션합니다. 원하는 분석 도구를 선택해 즉시 모의 계산을 시작하세요.</p>
+  <div class="search">
+    <input id="q" type="search" placeholder="시뮬레이터 검색 (예: 레버리지, 배당, 주담대, 전세, 양도세, ROI…)" autocomplete="off">
+    <kbd class="mono">⌘K</kbd>
+  </div>
+  <nav class="tabs mono" id="tabs"></nav>
+  <div class="strip mono">
+    <span><b>7</b> TOOLS</span>
+    <span><b>60</b> FPS CANVAS</span>
+    <span>LIVE <b>FX</b> API</span>
+    <span><b>2026</b> TAX CODE</span>
+    <span>UPDATED <b>2026.10</b></span>
+  </div>
+</header>
+
+<main>
+  <div class="grid" id="grid"></div>
+  <div class="empty" id="empty">검색 결과가 없습니다. 다른 키워드로 시도해 보세요.</div>
+</main>
+
+<footer>
+  ※ 각 카드를 클릭하시면 실제 해당 시뮬레이터(실시간 환율, 60종 자산 백테스팅, 2026 개정 세법, DSR 40% 한도 엔진) 화면으로 즉시 이동합니다.<br />
+  본 서비스는 자본시장법 및 세법상 투자·세무 자문이 아닌 모의 계산 도구이며, 실제 의사결정 전 금융 전문가와의 상담을 권장합니다.
+</footer>
+
+<script>
+// 테마 토글 (라이트 / 다크)
+const themeBtn = document.getElementById('btn-theme-toggle');
+themeBtn.addEventListener('click', () => {
+  const current = document.documentElement.getAttribute('data-theme') || 'light';
+  const next = current === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  try { localStorage.setItem('simulab_theme_home', next); } catch (e) {}
+});
+
+const COL = {
+  eq: 'var(--eq)',
+  re: 'var(--re)',
+  co: 'var(--co)',
+  sp: 'var(--sp)'
+};
+
+// 미니 차트 생성용 시드 난수 발생기
+const seed = s => () => (s = s * 16807 % 2147483647) / 2147483647;
+
+// SVG 선 차트 생성 함수 (점진적 드로잉 애니메이션 적용)
+function line(arrs, zero) {
+  const W = 240, H = 84, p = 6, fl = arrs.flat(), mn = Math.min(...fl), mx = Math.max(...fl);
+  const X = (i, n) => p + i * (W - 2 * p) / (n - 1);
+  const Y = v => H - p - (v - mn) / ((mx - mn) || 1) * (H - 2 * p);
+  let o = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-hidden="true">`;
+  if (zero) o += `<line class="zl" x1="${p}" x2="${W - p}" y1="${Y(0)}" y2="${Y(0)}"/>`;
+  arrs.forEach((a, k) => {
+    const n = a.length;
+    const d = a.map((v, i) => (i ? 'L' : 'M') + X(i, n).toFixed(1) + ' ' + Y(v).toFixed(1)).join(' ');
+    if (!k) o += `<path class="ar" d="${d} L${X(n - 1, n)} ${H - p} L${p} ${H - p}Z"/>`;
+    o += `<path class="ln${k ? ' b' : ''}" pathLength="1" d="${d}"/>`;
+    if (!k) o += `<circle class="dot" cx="${X(n - 1, n)}" cy="${Y(a[n - 1])}" r="3.2"/>`;
+  });
+  return o + '</svg>';
+}
+
+// SVG 막대 차트 생성 함수 (계단식 바 애니메이션)
+function bars(v, hi) {
+  const W = 240, H = 84, n = v.length, g = 6, bw = (W - g * (n - 1)) / n, mx = Math.max(...v);
+  return `<svg viewBox="0 0 ${W} ${H}" aria-hidden="true">` +
+    v.map((x, i) => {
+      const h = x / mx * (H - 4);
+      return `<rect class="bar${i == hi || (hi < 0 && i == n - 1) ? ' h' : ''}" style="--i:${i}" x="${i * (bw + g)}" y="${H - h}" width="${bw}" height="${h}" rx="2"/>`;
+    }).join('') +
+    '</svg>';
+}
+
+const N = (n, f) => Array.from({ length: n }, (_, i) => f(i, n));
+const r1 = seed(7), r2 = seed(11);
+let e = 100, b = 100;
+const eq = [
+  N(60, () => e *= 1 + (r1() - .46) * .09 + .012),
+  N(60, () => b *= 1 + (r2() - .46) * .04 + .006)
+];
+
+// 7대 도구별 특화 미니 차트 매핑
+const CH = {
+  eq: () => line(eq), // 레버리지 3X(파랑) vs 1X 기초지수(회색) 복리 궤적
+  div: () => bars(N(14, i => 10 * Math.pow(1.17, i)), -1), // 배당 재투자(DRIP) 지수함수적 배당금 스노우볼 바
+  loan: () => line([N(40, (i, n) => 1 - Math.pow(i / (n - 1), 1.6)), N(40, (i, n) => 1 - i / (n - 1))]), // 원리금 vs 원금균등 잔당 잔액 상환선
+  lease: () => line([N(20, i => 70 * Math.pow(1.08, i)), N(20, i => 100 + i * 2.2)]), // 전세 보증금 vs 월세 투자 순자산 역전선
+  tax: () => bars([100, 76, 58], -1), // 일반 과세 vs 1세대 1주택 비과세 vs 공동명의 절세 바
+  roi: () => line([N(24, i => -100 + i * 7.4)], 1), // CAPEX 투자금 회수 및 손익분기점(BEP 0점) 돌파선
+  hr: () => bars([18, 64, 40, 22, 8], 1) // Zone 1~5 심박수 분포 (Zone 2 하이라이트)
+};
+
+// 7대 도구 실제 메타데이터 & 실제 링크 연결
+const D = [
+  {
+    c: 'eq',
+    s: 'a', // 7열 넓은 카드
+    no: '01',
+    tag: 'EQUITY & QUANT',
+    t: '레버리지 ETF 10종 기간별 백테스팅 & 기술적 차트 분석',
+    en: 'Leverage ETF Historical Backtest & Quantitative Engine',
+    url: './tools/leverage-etf-sim/index.html',
+    q: '“TQQQ, SOXL, NVDL 등 고변동 자산을 특정 하락·상승장에 분할 적립했다면 결과는? 200일선·RSI·볼린저밴드 기준 현재 위치의 통계적 리스크는?”',
+    k: [
+      ['최대 낙폭 (MDD)', -42.3, '%', 1],
+      ['연평균 복리 (CAGR)', 18.4, '%', 1]
+    ],
+    ch: 'eq',
+    tg: ['2015~2026.10 실제 수익률', '200일 이동평균선 법칙', '5대 퀀트 알고리즘', 'MDD 수중 낙폭'],
+    m: '60 ASSETS · 60FPS CANVAS'
+  },
+  {
+    c: 'eq',
+    s: 'b', // 5열 카드
+    no: '02',
+    tag: 'EQUITY & DIVIDEND',
+    t: '배당성장주 복리 재투자 & 금융소득종합과세·건보료',
+    en: 'Dividend Growth Compounding & Tax Bracket Simulator',
+    url: './tools/dividend-tax-sim/index.html',
+    q: '“SCHD, JEPI 등으로 매월 적립식 투자 시 월 배당금은 얼마가 되며, 연 2,000만원 초과 과세 및 건보료 부과 시점은 언제일까?”',
+    k: [
+      ['5년 후 월 배당', 184, '만원', 0],
+      ['과세 진입 시점', 6.8, '년', 1]
+    ],
+    ch: 'div',
+    tg: ['SCHD·JEPI·JEPQ 5년치', 'DRIP 복리 스노우볼', '연 2,000만원 한도', '절세계좌 과세이연'],
+    m: 'LIVE FX API · 40YR MODEL'
+  },
+  {
+    c: 're',
+    no: '03',
+    tag: 'REAL ESTATE & LOAN',
+    t: '주택담보대출 상환 스케줄 & LTV·스트레스 DSR 한도',
+    en: 'Mortgage Amortization & Regulatory Debt Capacity',
+    url: './tools/loan-mortgage-calc/index.html',
+    q: '“내 소득과 주택 가격 기준 법적 최대 대출 한도(LTV·스트레스 DSR 40%)는? 원리금균등과 원금균등 중 이자 비용을 가장 아끼는 방식은?”',
+    k: [
+      ['스트레스 DSR', 38.2, '%', 1],
+      ['총 부담 이자', 1.86, '억원', 2]
+    ],
+    ch: 'loan',
+    tg: ['원리금·원금균등 비교', '규제지역 LTV 70%', '스트레스 DSR 2단계', '월별 상환 스케줄'],
+    m: 'LEGAL DSR 40% · AMORTIZATION'
+  },
+  {
+    c: 're',
+    no: '04',
+    tag: 'REAL ESTATE & LEASE',
+    t: '전세 vs 월세 전환율 & 주거 기회비용·순자산 비교',
+    en: 'Jeonse vs Monthly Rent Opportunity Cost Engine',
+    url: './tools/jeonse-wolse-sim/index.html',
+    q: '“전세대출 이자를 부담하는 전세와, 보증금을 굴리고 세액공제를 받는 월세 중 4년 후 내 순자산은 어느 쪽이 더 유리할까?”',
+    k: [
+      ['4년 후 자산 격차', 3420, '만원', 0, '+'],
+      ['전월세 전환율', 5.1, '%', 1]
+    ],
+    ch: 'lease',
+    tg: ['시장 전월세전환율', '보증금 기회비용 시뮬레이션', '월세 세액공제 17%', '순자산 골든크로스'],
+    m: 'NET WEALTH TRAJECTORY · 10YR'
+  },
+  {
+    c: 're',
+    no: '05',
+    tag: 'REAL ESTATE & TAX',
+    t: '부동산 양도소득세 & 세후 매도 순수익 계산기',
+    en: 'Capital Gains Tax & Net Proceeds Calculator',
+    url: './tools/capital-gains-tax-sim/index.html',
+    q: '“1세대 1주택 12억 비과세와 장기보유특별공제(최대 80%), 부부 공동명의를 적용했을 때 손에 쥐는 세후 실질 순수익은?”',
+    k: [
+      ['세후 순수익', 9.6, '억원', 1],
+      ['절세 효과', 2.7, '억원', 1]
+    ],
+    ch: 'tax',
+    tg: ['1세대 1주택 12억 안분', '장특공제 최대 80%', '단독 vs 공동명의 절세', '필요경비 공제'],
+    m: 'TAX CODE 2026 · NET REVENUE'
+  },
+  {
+    c: 'co',
+    no: '06',
+    tag: 'CORPORATE & ROI',
+    t: 'B2B 설비 도입 ROI 및 손익분기점(BEP) 회수기간',
+    en: 'Automation CapEx Payback & Net Operating Margin',
+    url: './tools/logistics-roi-calc/index.html',
+    q: '“포장·키오스크·자동화 로봇 도입 시 초기 투자비(CAPEX)를 인건비 절감액으로 정확히 몇 개월 만에 전액 회수할 수 있을까?”',
+    k: [
+      ['손익분기점 (BEP)', 14, '개월', 0],
+      ['5년 누적 순수익', 3.2, '억원', 1]
+    ],
+    ch: 'roi',
+    tg: ['BEP 회수 개월 계산', '초기 투자비 vs 월간 절감', 'OPEX 유지보수비 반영', '5개년 현금흐름'],
+    m: 'CAPEX/OPEX PAYBACK · 60 MONTHS'
+  },
+  {
+    c: 'sp',
+    no: '07',
+    tag: 'SPORTS & BIOLOGY',
+    t: '심박수 Zone 2 & 목표 러닝 페이스·칼로리 시뮬레이터',
+    en: 'Heart Rate Zone & Pace Calorie Simulator',
+    url: './tools/running-zone-calc/index.html',
+    q: '“내 최대심박 기준 Zone 2 구간은 어디이며, 목표 페이스로 달릴 때 체지방 연소 효율과 소모 칼로리는 얼마일까?”',
+    k: [
+      ['Zone 2 목표 심박', 128, 'bpm', 0],
+      ['목표 러닝 페이스', '6:10', '/km']
+    ],
+    ch: 'hr',
+    tg: ['카르보넨 여유심박 공식', 'Zone 1~5 심박수 분포', '페이스(min/km) 환산', '체지방 칼로리'],
+    m: 'HR ZONES · KCAL MODEL'
+  }
+];
+
+const T = [
+  ['all', '전체', 7, null],
+  ['eq', 'EQUITY · QUANT', 2, 'eq'],
+  ['re', 'REAL ESTATE · TAX', 3, 're'],
+  ['co', 'CORPORATE · ROI', 1, 'co'],
+  ['sp', 'SPORTS · BIOLOGY', 1, 'sp']
+];
+
+const fmt = (v, d, p) => (v < 0 ? '−' : (p || '')) + Math.abs(v).toLocaleString('ko-KR', { minimumFractionDigits: d, maximumFractionDigits: d });
+
+// 그리드 렌더링
+const grid = document.getElementById('grid');
+grid.innerHTML = D.map(d => `
+  <a href="${d.url}" class="card ${d.s || ''}" data-c="${d.c}" tabindex="0" style="--c:${COL[d.c]}">
+    <!-- 코너 십자선 마크 4개 (.cx) -->
+    <i class="cx tl"></i>
+    <i class="cx tr"></i>
+    <i class="cx bl"></i>
+    <i class="cx br"></i>
+
+    <div class="hd mono">
+      <span>NO. ${d.no}</span>
+      <span class="chip">${d.tag}</span>
+    </div>
+
+    <div>
+      <h3>${d.t}</h3>
+      <div class="en mono">${d.en}</div>
+    </div>
+
+    <p class="q">${d.q}</p>
+
+    <!-- 뒷단 연동 KPI 2종 & 미니 60fps 차트 -->
+    <div class="row">
+      <div class="kps">
+        ${d.k.map(k => `
+          <div class="kp">
+            <small class="mono">${k[0]}</small>
+            <b ${typeof k[1] == 'number' ? `data-v="${k[1]}" data-d="${k[3]}" data-p="${k[4] || ''}"` : ''}>
+              ${typeof k[1] == 'number' ? fmt(k[1], k[3], k[4]) : k[1]}<em>${k[2]}</em>
+            </b>
+          </div>
+        `).join('')}
+      </div>
+      <div class="ch">
+        ${CH[d.ch]()}
+      </div>
+    </div>
+
+    <div class="tags">
+      ${d.tg.map(t => `<span>${t}</span>`).join('')}
+    </div>
+
+    <div class="ft mono">
+      <span>${d.m}</span>
+      <span class="go">OPEN WORKSTATION <i>→</i></span>
+    </div>
+  </a>
+`).join('') + `
+  <div class="card mono" id="ph" style="grid-column: span 4; border: 1px dashed var(--ln); background: transparent; align-items: center; justify-content: center; min-height: 220px; color: var(--mu); text-align: center; gap: 8px;">
+    <span style="font-size: 13px; font-weight: 700; letter-spacing: 0.1em;">NO. 08</span>
+    <span style="font-size: 12px; letter-spacing: 0.08em;">NEW WORKSTATION · COMING SOON</span>
+  </div>
+`;
+
+// 마우스 추적 래디얼 글로우 바인딩
+document.querySelectorAll('.card').forEach(c => {
+  c.addEventListener('pointermove', ev => {
+    const r = c.getBoundingClientRect();
+    c.style.setProperty('--mx', (ev.clientX - r.left) + 'px');
+    c.style.setProperty('--my', (ev.clientY - r.top) + 'px');
+  });
+});
+
+// 카테고리 탭 렌더링 및 필터링
+const tabs = document.getElementById('tabs');
+let cat = 'all';
+tabs.innerHTML = T.map(t => `
+  <button data-k="${t[0]}" class="${t[0] == 'all' ? 'on' : ''}" ${t[3] ? `style="--c:${COL[t[3]]}"` : ''}>
+    ${t[3] ? '<i></i>' : ''}${t[1]} (${t[2]})
+  </button>
+`).join('');
+
+const q = document.getElementById('q');
+function filter() {
+  const s = q.value.trim().toLowerCase();
+  let n = 0;
+  document.querySelectorAll('.card:not(#ph)').forEach(c => {
+    const ok = (cat == 'all' || c.dataset.c == cat) && (!s || c.textContent.toLowerCase().includes(s));
+    c.style.display = ok ? '' : 'none';
+    if (ok) n++;
+  });
+  const f = cat != 'all' || s;
+  grid.classList.toggle('f', !!f);
+  document.getElementById('ph').style.display = f ? 'none' : 'flex';
+  document.getElementById('empty').style.display = n ? 'none' : 'block';
+}
+
+tabs.addEventListener('click', ev => {
+  const b = ev.target.closest('button');
+  if (!b) return;
+  cat = b.dataset.k;
+  tabs.querySelectorAll('button').forEach(x => x.classList.toggle('on', x == b));
+  filter();
+});
+
+q.addEventListener('input', filter);
+
+// ⌘K 또는 Ctrl+K 단축키 포커스
+addEventListener('keydown', ev => {
+  if ((ev.metaKey || ev.ctrlKey) && ev.key.toLowerCase() == 'k') {
+    ev.preventDefault();
+    q.focus();
+  }
+});
+
+// 스크롤 진입 시 숫자 부드러운 카운트업 (0 -> 목표 수치)
+function count(c) {
+  c.querySelectorAll('[data-v]').forEach(el => {
+    const v = +el.dataset.v, d = +el.dataset.d, p = el.dataset.p, u = el.querySelector('em'), t0 = performance.now();
+    (function f(t) {
+      const k = Math.min(1, (t - t0) / 1000);
+      const x = v * (1 - Math.pow(1 - k, 3));
+      el.firstChild.nodeValue = fmt(x, d, p);
+      if (k < 1) requestAnimationFrame(f);
+    })(t0);
+  });
+}
+
+// IntersectionObserver로 뷰포트 진입 감지하여 차트 애니메이션 및 숫자 카운트업 실행
+const io = new IntersectionObserver(es => {
+  es.forEach(x => {
+    if (x.isIntersecting) {
+      x.target.classList.add('in');
+      count(x.target);
+      io.unobserve(x.target);
+    }
+  });
+}, { threshold: .2 });
+
+document.querySelectorAll('.card').forEach(c => io.observe(c));
+</script>
+</body>
+</html>

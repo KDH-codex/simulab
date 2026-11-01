@@ -1,0 +1,466 @@
+/* ==========================================================================
+   대한민국 연도별 출입국 관광객 통계 스타일시트 (style.css)
+   ========================================================================== */
+
+/* ---------- 메인 레이아웃 ---------- */
+.tool-main-container {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3.5rem;
+}
+
+/* ---------- 도구 헤더 카드 ---------- */
+.tool-hero-card {
+  background: linear-gradient(135deg, #064e3b 0%, #065f46 50%, #047857 100%);
+  color: #ffffff;
+  border-radius: 1.25rem;
+  padding: 2.2rem 2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 10px 25px -5px rgba(6, 78, 59, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+.tool-hero-card::after {
+  content: "✈️";
+  position: absolute;
+  right: -10px;
+  bottom: -20px;
+  font-size: 8rem;
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.tool-badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+}
+.tool-badge {
+  font-size: 0.78rem;
+  font-weight: 750;
+  padding: 0.28rem 0.65rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.badge-official {
+  background: rgba(59, 130, 246, 0.25);
+  color: #93c5fd;
+}
+.badge-timeseries {
+  background: rgba(16, 185, 129, 0.25);
+  color: #a7f3d0;
+}
+.badge-live {
+  background: rgba(245, 158, 11, 0.25);
+  color: #fde68a;
+}
+
+.tool-title {
+  font-size: 1.85rem;
+  font-weight: 850;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.65rem;
+  line-height: 1.25;
+}
+.tool-desc {
+  font-size: 0.95rem;
+  color: #d1fae5;
+  line-height: 1.55;
+  margin: 0;
+  max-width: 780px;
+}
+
+/* ---------- 탭 네비게이션 ---------- */
+.tool-tab-nav {
+  display: flex;
+  gap: 0.5rem;
+  background: #f1f5f9;
+  padding: 0.35rem;
+  border-radius: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+.tool-tab-btn {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: none;
+  background: transparent;
+  color: #475569;
+  font-size: 0.94rem;
+  font-weight: 750;
+  border-radius: 0.7rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  transition: all 0.2s ease;
+}
+.tool-tab-btn:hover {
+  color: #0f172a;
+  background: rgba(255, 255, 255, 0.6);
+}
+.tool-tab-btn.is-active {
+  background: #ffffff;
+  color: #065f46;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+}
+
+.tab-panel {
+  display: none;
+}
+.tab-panel.is-active {
+  display: block;
+}
+
+/* ---------- 탭 1: 요약 히어로 카드 그리드 ---------- */
+.tourism-hero-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+.hero-stat-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.25rem 1.4rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+}
+.card-outbound {
+  border-top: 4px solid #2563eb;
+}
+.card-inbound {
+  border-top: 4px solid #059669;
+}
+.card-ratio {
+  border-top: 4px solid #f59e0b;
+}
+
+.stat-type-tag {
+  font-size: 0.8rem;
+  font-weight: 750;
+  color: #64748b;
+  margin-bottom: 0.35rem;
+}
+.stat-main-num {
+  font-size: 1.85rem;
+  font-weight: 900;
+  color: #0f172a;
+  margin-bottom: 0.25rem;
+  letter-spacing: -0.02em;
+}
+.card-outbound .stat-main-num { color: #1e40af; }
+.card-inbound .stat-main-num { color: #065f46; }
+.card-ratio .stat-main-num { color: #b45309; }
+
+.stat-sub-text {
+  font-size: 0.82rem;
+  color: #475569;
+  font-weight: 600;
+}
+
+/* 캔버스 차트 카드 */
+.tourism-chart-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+.chart-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+.chart-main-title {
+  font-size: 1.15rem;
+  font-weight: 850;
+  color: #0f172a;
+  margin: 0 0 0.25rem;
+}
+.chart-sub-title {
+  font-size: 0.82rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.chart-legend-box {
+  display: flex;
+  gap: 0.75rem;
+}
+.legend-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.82rem;
+  font-weight: 750;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+}
+.dot-outbound {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #2563eb;
+}
+.dot-inbound {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #059669;
+}
+
+.canvas-wrapper {
+  position: relative;
+  width: 100%;
+}
+#tourism-line-canvas {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* 주요 변곡점 타임라인 */
+.milestone-timeline-box {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px dashed #e2e8f0;
+}
+.milestone-item {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.m-year {
+  font-size: 0.95rem;
+  font-weight: 850;
+  color: #1e293b;
+  margin-bottom: 0.2rem;
+}
+.m-desc {
+  font-size: 0.78rem;
+  color: #64748b;
+  line-height: 1.45;
+}
+.milestone-item.m-danger {
+  background: #fef2f2;
+  border-color: #fecaca;
+}
+.milestone-item.m-danger .m-year { color: #dc2626; }
+.milestone-item.m-success {
+  background: #ecfdf5;
+  border-color: #a7f3d0;
+}
+.milestone-item.m-success .m-year { color: #059669; }
+
+/* ---------- 탭 2: 관광수지 적자 역사 ---------- */
+.balance-explainer-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+.card-title {
+  font-size: 1.18rem;
+  font-weight: 850;
+  color: #0f172a;
+  margin: 0 0 0.35rem;
+}
+.card-desc {
+  font-size: 0.88rem;
+  color: #64748b;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.balance-history-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+.table-responsive {
+  overflow-x: auto;
+}
+.balance-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  text-align: left;
+}
+.balance-table th {
+  background: #f8fafc;
+  color: #475569;
+  font-weight: 750;
+  padding: 0.75rem 0.85rem;
+  border-bottom: 1.5px solid #e2e8f0;
+  white-space: nowrap;
+}
+.balance-table td {
+  padding: 0.85rem;
+  border-bottom: 1px solid #f1f5f9;
+  color: #334155;
+  white-space: nowrap;
+}
+.tag-deficit {
+  background: #fef2f2;
+  color: #991b1b;
+  font-weight: 850;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #fecaca;
+}
+
+/* ---------- 탭 3: 인기 여행지 vs 방한 외국인 ---------- */
+.match-grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+.match-col {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+.col-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+.col-icon {
+  font-size: 1.8rem;
+}
+.col-title {
+  font-size: 1.05rem;
+  font-weight: 850;
+  color: #0f172a;
+  margin: 0;
+}
+.col-sub {
+  font-size: 0.78rem;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.destination-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+.dest-item-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.85rem;
+  padding: 0.95rem 1.15rem;
+}
+.dest-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.35rem;
+}
+.dest-rank-country {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 1rem;
+  font-weight: 850;
+  color: #0f172a;
+}
+.dest-rank-tag {
+  font-size: 0.75rem;
+  font-weight: 900;
+  padding: 0.15rem 0.45rem;
+  border-radius: 6px;
+  background: #e2e8f0;
+  color: #334155;
+}
+.dest-rank-1 { background: #fef3c7; color: #b45309; }
+.dest-rank-2 { background: #e0f2fe; color: #0369a1; }
+.dest-rank-3 { background: #ecfdf5; color: #047857; }
+
+.dest-visitors {
+  font-size: 1.05rem;
+  font-weight: 900;
+  color: #1e3a8a;
+}
+.dest-comment {
+  font-size: 0.8rem;
+  color: #64748b;
+  line-height: 1.45;
+}
+
+/* ---------- 공식 출처 카드 ---------- */
+.data-source-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
+.source-header {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 0.85rem;
+}
+.source-icon {
+  font-size: 1.25rem;
+}
+.source-title {
+  font-size: 0.96rem;
+  font-weight: 850;
+  color: #1e293b;
+  margin: 0;
+}
+.source-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  color: #475569;
+  font-size: 0.84rem;
+  line-height: 1.7;
+}
+
+/* ---------- 반응형 ---------- */
+@media (max-width: 768px) {
+  .tool-main-container {
+    padding: 1rem 0.75rem 2.5rem;
+  }
+  .tool-hero-card {
+    padding: 1.5rem 1.25rem;
+  }
+  .tool-title {
+    font-size: 1.5rem;
+  }
+  .tourism-hero-grid {
+    grid-template-columns: 1fr;
+  }
+  .match-grid-container {
+    grid-template-columns: 1fr;
+  }
+  .milestone-timeline-box {
+    grid-template-columns: 1fr;
+  }
+}

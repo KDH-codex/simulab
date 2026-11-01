@@ -1,0 +1,14 @@
+# Git 제외 파일 목록
+backup_v1_dark/
+backup_v2_step2/
+scratch/
+node_modules/
+supabase/.temp/
+dist/
+.codex-remote-attachments/
+.env
+.env.*
+!.env.example
+*.backup.*
+*.backup.html
+*.log

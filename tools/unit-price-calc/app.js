@@ -1,0 +1,3 @@
+import {calculate} from './logic.js';
+import {boot,value,money,details} from '../../assets/js/reference-ui.js';
+boot(f=>({unit:f.elements.namedItem('unit').value,priceA:value(f,'priceA'),shippingA:value(f,'shippingA'),countA:value(f,'countA'),sizeA:value(f,'sizeA'),priceB:value(f,'priceB'),shippingB:value(f,'shippingB'),countB:value(f,'countB'),sizeB:value(f,'sizeB')}),calculate,(r,el)=>{el.innerHTML='<h2>배송비 포함 단가</h2><p class="ref-value">'+r.winner+(r.winner==='동일'?'':'이 더 저렴')+'</p>'+details([['비교 단위',r.scale+r.unit+'당'],['A 단가',money(r.a)],['B 단가',money(r.b)],['단위당 차이',money(r.saving)]])+'<p>표시 금액은 원 단위 반올림이며 비교는 반올림 전 값으로 합니다. ml와 g는 서로 바꾸지 않습니다. 개수 비교는 한 개의 규격·품질이 같은 상품에 사용하세요.</p>';});

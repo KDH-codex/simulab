@@ -1,0 +1,653 @@
+/* ==========================================================================
+   우리나라 수출입 품목 순위 시뮬레이터 스타일시트 (style.css)
+   ========================================================================== */
+
+/* ---------- 메인 레이아웃 ---------- */
+.tool-main-container {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3.5rem;
+}
+
+/* ---------- 도구 헤더 카드 ---------- */
+.tool-hero-card {
+  background: linear-gradient(135deg, #091e3a 0%, #17325c 50%, #1e3a8a 100%);
+  color: #ffffff;
+  border-radius: 1.25rem;
+  padding: 2.2rem 2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 10px 25px -5px rgba(15, 30, 58, 0.25);
+  position: relative;
+  overflow: hidden;
+}
+.tool-hero-card::after {
+  content: "🚢";
+  position: absolute;
+  right: -10px;
+  bottom: -20px;
+  font-size: 8rem;
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.tool-badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+}
+.tool-badge {
+  font-size: 0.78rem;
+  font-weight: 750;
+  padding: 0.28rem 0.65rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.badge-official {
+  background: rgba(59, 130, 246, 0.25);
+  color: #93c5fd;
+}
+.badge-timeseries {
+  background: rgba(16, 185, 129, 0.25);
+  color: #a7f3d0;
+}
+.badge-live {
+  background: rgba(245, 158, 11, 0.25);
+  color: #fde68a;
+}
+
+.tool-title {
+  font-size: 1.85rem;
+  font-weight: 850;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.65rem;
+  line-height: 1.25;
+}
+.tool-desc {
+  font-size: 0.95rem;
+  color: #cbd5e1;
+  line-height: 1.55;
+  margin: 0;
+  max-width: 780px;
+}
+
+/* ---------- 탭 네비게이션 ---------- */
+.tool-tab-nav {
+  display: flex;
+  gap: 0.5rem;
+  background: #f1f5f9;
+  padding: 0.35rem;
+  border-radius: 0.9rem;
+  margin-bottom: 1.5rem;
+}
+.tool-tab-btn {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: none;
+  background: transparent;
+  color: #475569;
+  font-size: 0.94rem;
+  font-weight: 750;
+  border-radius: 0.7rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  transition: all 0.2s ease;
+}
+.tool-tab-btn:hover {
+  color: #0f172a;
+  background: rgba(255, 255, 255, 0.6);
+}
+.tool-tab-btn.is-active {
+  background: #ffffff;
+  color: #1e40af;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+}
+
+.tab-panel {
+  display: none;
+}
+.tab-panel.is-active {
+  display: block;
+}
+
+/* ---------- 탭 1: 컨트롤 바 & 요약 바 ---------- */
+.trade-control-panel {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+.timeline-row {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+.btn-play {
+  flex-shrink: 0;
+  padding: 0.65rem 1.15rem;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #ffffff;
+  border: none;
+  border-radius: 0.65rem;
+  font-size: 0.92rem;
+  font-weight: 800;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  box-shadow: 0 3px 8px rgba(37, 99, 235, 0.3);
+  transition: all 0.2s;
+}
+.btn-play:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+.btn-play.is-playing {
+  background: #dc2626;
+  box-shadow: 0 3px 8px rgba(220, 38, 38, 0.3);
+}
+
+.slider-wrapper {
+  flex: 1;
+}
+.slider-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.45rem;
+}
+.slider-title {
+  font-size: 0.92rem;
+  color: #334155;
+}
+.highlight-year {
+  font-size: 1.15rem;
+  font-weight: 850;
+  color: #1e40af;
+}
+.slider-milestone {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #0284c7;
+  background: #e0f2fe;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+}
+
+#trade-year-slider {
+  width: 100%;
+  accent-color: #1e40af;
+  cursor: pointer;
+}
+.slider-ticks {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  color: #64748b;
+  font-weight: 600;
+  margin-top: 0.2rem;
+}
+
+/* 무역 요약 바 */
+.trade-summary-bar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+.stat-pill {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.85rem;
+  padding: 0.85rem 1.15rem;
+  display: flex;
+  flex-direction: column;
+}
+.pill-label {
+  font-size: 0.78rem;
+  color: #64748b;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+.pill-val {
+  font-size: 1.25rem;
+  font-weight: 850;
+  color: #0f172a;
+}
+.stat-pill.is-surplus .pill-val {
+  color: #059669;
+}
+.stat-pill.is-deficit .pill-val {
+  color: #dc2626;
+}
+
+/* 차트 카드 */
+.trade-chart-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1.25rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+.chart-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+.chart-main-title {
+  font-size: 1.15rem;
+  font-weight: 850;
+  color: #0f172a;
+  margin: 0 0 0.25rem;
+}
+.chart-sub-title {
+  font-size: 0.82rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.top1-share-badge {
+  background: #eff6ff;
+  border: 1.5px solid #93c5fd;
+  border-radius: 0.75rem;
+  padding: 0.4rem 0.85rem;
+  text-align: right;
+}
+.top1-share-badge .badge-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #1e40af;
+}
+.top1-share-badge .badge-value {
+  font-size: 0.95rem;
+  font-weight: 850;
+  color: #1e3a8a;
+}
+
+/* 10대 품목 막대 바 */
+.trade-bars-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.trade-bar-row {
+  display: grid;
+  grid-template-columns: 32px 140px 1fr 140px;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: 0.6rem;
+  transition: all 0.25s;
+}
+.trade-bar-row:hover {
+  background: #f8fafc;
+}
+.trade-bar-row.is-semi {
+  background: #eff6ff;
+  border: 1.5px solid #bfdbfe;
+}
+.trade-bar-row.is-auto {
+  background: #f0fdf4;
+  border: 1.5px solid #bbf7d0;
+}
+
+.trade-rank-num {
+  font-size: 0.9rem;
+  font-weight: 850;
+  color: #64748b;
+  text-align: center;
+}
+.trade-rank-top1 { color: #d97706 !important; font-weight: 900; }
+.trade-rank-top2 { color: #059669 !important; font-weight: 900; }
+.trade-rank-top3 { color: #2563eb !important; font-weight: 900; }
+
+.trade-product-info {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #1e293b;
+  white-space: nowrap;
+}
+.trade-icon {
+  font-size: 1.15rem;
+}
+
+.trade-bar-track {
+  width: 100%;
+  height: 22px;
+  background: #f1f5f9;
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+}
+.trade-bar-fill {
+  height: 100%;
+  border-radius: 6px;
+  background: #94a3b8;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.trade-bar-fill.fill-semi {
+  background: linear-gradient(90deg, #2563eb, #3b82f6);
+}
+.trade-bar-fill.fill-auto {
+  background: linear-gradient(90deg, #059669, #10b981);
+}
+.trade-bar-fill.fill-ship {
+  background: linear-gradient(90deg, #0284c7, #38bdf8);
+}
+.trade-bar-fill.fill-oil {
+  background: linear-gradient(90deg, #d97706, #f59e0b);
+}
+
+.trade-val-col {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.trade-amount-text {
+  font-size: 0.88rem;
+  font-weight: 850;
+  color: #0f172a;
+}
+.trade-share-text {
+  font-size: 0.75rem;
+  color: #64748b;
+  margin-left: 0.3rem;
+}
+
+/* ---------- 탭 2: 6대 주력산업 성장사 ---------- */
+.growth-control-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.selector-label {
+  font-size: 0.92rem;
+  font-weight: 750;
+  color: #334155;
+}
+.custom-select {
+  padding: 0.55rem 0.95rem;
+  font-size: 0.95rem;
+  font-weight: 750;
+  border-radius: 0.55rem;
+  border: 1.5px solid #cbd5e1;
+  background: #ffffff;
+  color: #0f172a;
+}
+.custom-select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.product-growth-hero {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+.growth-stat-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+.growth-stat-item {
+  text-align: center;
+}
+.stat-lbl {
+  font-size: 0.78rem;
+  color: #64748b;
+  font-weight: 700;
+  display: block;
+}
+.stat-num {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: #1e40af;
+}
+.product-desc-box {
+  background: #f8fafc;
+  border-left: 4px solid #2563eb;
+  padding: 0.85rem 1.15rem;
+  font-size: 0.92rem;
+  color: #334155;
+  line-height: 1.55;
+  border-radius: 0.4rem;
+}
+
+.line-chart-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+.line-chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.line-chart-title {
+  font-size: 1.05rem;
+  font-weight: 850;
+  color: #0f172a;
+  margin: 0;
+}
+.chart-unit-tag {
+  font-size: 0.8rem;
+  color: #64748b;
+  font-weight: 700;
+}
+.canvas-wrapper {
+  position: relative;
+  width: 100%;
+}
+#product-growth-canvas {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ---------- 탭 3: 수입 품목 & 무역수지 ---------- */
+.card-title {
+  font-size: 1.18rem;
+  font-weight: 850;
+  color: #0f172a;
+  margin: 0 0 0.35rem;
+}
+.card-desc {
+  font-size: 0.88rem;
+  color: #64748b;
+  margin: 0 0 1.25rem;
+}
+
+.import-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.import-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.85rem;
+}
+.import-item-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.8rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.import-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.4rem;
+}
+.import-rank {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #2563eb;
+  background: #dbeafe;
+  padding: 0.15rem 0.45rem;
+  border-radius: 999px;
+}
+.import-icon {
+  font-size: 1.4rem;
+}
+.import-name {
+  font-size: 0.95rem;
+  font-weight: 850;
+  color: #0f172a;
+  margin-bottom: 0.25rem;
+}
+.import-amt {
+  font-size: 1.15rem;
+  font-weight: 900;
+  color: #1e3a8a;
+}
+.import-share {
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+/* 무역수지 테이블 */
+.balance-history-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+.table-responsive {
+  overflow-x: auto;
+}
+.balance-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  text-align: left;
+}
+.balance-table th {
+  background: #f8fafc;
+  color: #475569;
+  font-weight: 750;
+  padding: 0.75rem 0.85rem;
+  border-bottom: 1.5px solid #e2e8f0;
+  white-space: nowrap;
+}
+.balance-table td {
+  padding: 0.85rem;
+  border-bottom: 1px solid #f1f5f9;
+  color: #334155;
+  white-space: nowrap;
+}
+.tag-surplus {
+  background: #ecfdf5;
+  color: #065f46;
+  font-weight: 850;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #a7f3d0;
+}
+.tag-deficit {
+  background: #fef2f2;
+  color: #991b1b;
+  font-weight: 850;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #fecaca;
+}
+
+/* ---------- 공식 출처 카드 ---------- */
+.data-source-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
+.source-header {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 0.85rem;
+}
+.source-icon {
+  font-size: 1.25rem;
+}
+.source-title {
+  font-size: 0.96rem;
+  font-weight: 850;
+  color: #1e293b;
+  margin: 0;
+}
+.source-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  color: #475569;
+  font-size: 0.84rem;
+  line-height: 1.7;
+}
+
+/* ---------- 모바일 반응형 ---------- */
+@media (max-width: 768px) {
+  .tool-main-container {
+    padding: 1rem 0.75rem 2.5rem;
+  }
+  .tool-hero-card {
+    padding: 1.5rem 1.25rem;
+  }
+  .tool-title {
+    font-size: 1.5rem;
+  }
+  .timeline-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .btn-play {
+    justify-content: center;
+  }
+  .trade-summary-bar {
+    grid-template-columns: 1fr;
+  }
+  .trade-bar-row {
+    grid-template-columns: 24px 110px 1fr 100px;
+    gap: 0.4rem;
+    font-size: 0.82rem;
+  }
+  .growth-control-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .growth-stat-row {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+}

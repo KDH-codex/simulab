@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko" data-default-theme="light" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light" />
+  <title>만나이 & 띠 계산기 (2023년 행정기본법 개정 공식 만나이·D-Day) | SimuLab Hub</title>
+  <meta name="description" content="생년월일과 기준일로 만나이, 연나이, 출생연도 기준 띠와 다음 생일까지의 날짜를 계산합니다. 개별 제도의 자격 심사는 별도 확인이 필요합니다.">
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="만나이 & 띠 계산기 | SimuLab Hub" />
+  <meta property="og:description" content="생년월일 입력으로 공식 법적 만나이, 띠, 생일 D-Day를 즉시 확인하세요." />
+
+  <link rel="stylesheet" href="../../assets/css/common.css?v=20261023_overhaul1" />
+  <style>
+    .highlight-result-box {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(30, 64, 175, 0.02));
+      border: 1.5px solid rgba(37, 99, 235, 0.25);
+      border-radius: 16px;
+      padding: 1.5rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .highlight-result-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      margin-bottom: 0.4rem;
+    }
+    .highlight-result-amount {
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 900;
+      color: var(--accent-primary);
+      letter-spacing: -0.02em;
+    }
+    .zodiac-badge-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-color);
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      margin-top: 0.5rem;
+      font-weight: 800;
+      font-size: 0.95rem;
+    }
+  </style>
+  <!-- Google AdSense (Auto Ads & Verification) -->
+  <meta name="google-adsense-account" content="ca-pub-9815778998394475">
+<link rel="canonical" href="https://simulab.kr/tools/korean-age-calc/">
+</head>
+<body data-publication-state="published">
+  <header id="site-header"></header>
+
+  <main class="container">
+    <section class="page-header">
+      <div class="page-header-badges">
+        <span class="brand-badge">LIFE &amp; CALENDAR LAB</span>
+      </div>
+      <h1 class="page-title">만나이 띠 계산기</h1>
+      <p class="page-subtitle">
+        생년월일을 입력하면 <strong>2023년 개정 행정기본법 기준의 법적 공식 만나이</strong>와 12간지 동물 띠,
+        <strong>살아온 일수와 다음 생일까지의 D-Day</strong>를 확인할 수 있습니다.
+      </p>
+    <!-- GENERATED:USE-NOTICE:START -->
+<aside id="tool-use-notice" class="tool-use-notice" data-notice-kind="general" aria-labelledby="tool-use-notice-title"><strong id="tool-use-notice-title">계산·정보 이용 안내</strong><p>입력 조건과 표시된 가정에 따른 참고 결과입니다. 단위·반올림·적용 기준을 확인하고, 계약이나 신청 전에는 공식 자료와 대조해 주세요.</p><a href="#legal-disclaimer">이용 범위와 면책고지 보기 ↓</a></aside>
+<!-- GENERATED:USE-NOTICE:END -->
+
+    </section>
+
+    <section class="simulator-grid">
+      <!-- 좌측: 입력 패널 -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">생년월일 및 기준일 설정</h2>
+        </div>
+
+        <div class="step-section-title" style="margin-bottom: 0.85rem;">
+          <span class="step-badge">STEP 1</span> 출생일 입력
+        </div>
+
+        <!-- 생년월일 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <label for="input-birth-date" class="input-card-label">생년월일 선택</label>
+          </div>
+          <input type="date" id="input-birth-date" class="form-control" style="font-size: 1.05rem; padding: 0.75rem;" />
+          <div class="quick-chips-row" style="margin-top: 0.65rem;">
+            <button type="button" class="quick-chip-btn chip-btn year-preset-btn" data-year="2005">05년생</button>
+            <button type="button" class="quick-chip-btn chip-btn year-preset-btn" data-year="2000">00년생</button>
+            <button type="button" class="quick-chip-btn chip-btn year-preset-btn" data-year="1995">95년생</button>
+            <button type="button" class="quick-chip-btn chip-btn year-preset-btn" data-year="1990">90년생</button>
+            <button type="button" class="quick-chip-btn chip-btn year-preset-btn" data-year="1980">80년생</button>
+          </div>
+        </div>
+
+        <!-- 기준일 -->
+        <div class="input-card">
+          <div class="input-card-header">
+            <label for="input-target-date" class="input-card-label">나이 계산 기준일 (기본: 오늘)</label>
+          </div>
+          <input type="date" id="input-target-date" class="form-control" />
+        </div>
+
+        <!-- 만나이 통일법 안내 -->
+        <div style="background: var(--bg-subtle); border-radius: 10px; padding: 0.9rem; font-size: 0.8rem; line-height: 1.6; color: var(--text-secondary); margin-top: 1rem;">
+          <strong style="color: var(--text-primary);">💡 2023년 6월 28일 만나이 통일법 상식:</strong>
+          <ul style="margin: 0.4rem 0 0 1rem; padding: 0;">
+            <li>공문서, 계약서, 법률상의 모든 나이는 <strong>'만 나이'</strong>가 공식 표준입니다.</li>
+            <li>생일이 지난 경우: <strong>올해 연도 - 출생 연도</strong></li>
+            <li>생일이 안 지난 경우: <strong>올해 연도 - 출생 연도 - 1</strong></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 우측: 결과 요약 패널 -->
+      <div class="card">
+        <div class="card-header">
+          <h2 class="card-title">나이 및 띠 분석 결과</h2>
+        </div>
+
+        <!-- 하이라이트 박스: 공식 만나이 -->
+        <div class="highlight-result-box">
+          <div class="highlight-result-title">대한민국 공식 법적 만나이</div>
+          <div id="stat-intl-age" class="highlight-result-amount">만 0세</div>
+          <div>
+            <div class="zodiac-badge-box">
+              <span id="stat-zodiac-icon" style="font-size: 1.3rem;">🐵</span>
+              <span id="stat-zodiac-name">1995년생 원숭이띠</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 나이 비교 카드 그리드 -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.25rem;">
+          <div style="padding: 0.85rem; border: 1px solid var(--border-color); border-radius: 12px; background: var(--bg-card);">
+            <div style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.2rem;">세는 나이 (전통 한국식)</div>
+            <div id="stat-korean-age" style="font-size: 1.05rem; font-weight: 800; color: var(--text-primary);">-</div>
+          </div>
+          <div style="padding: 0.85rem; border: 1px solid var(--border-color); border-radius: 12px; background: var(--bg-card);">
+            <div style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.2rem;">연 나이 (현재연도-출생연도)</div>
+            <div id="stat-year-age" style="font-size: 1.05rem; font-weight: 800; color: var(--accent-primary);">-</div>
+          </div>
+        </div>
+
+        <!-- 살아온 일수 & 다음 생일 D-Day -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.25rem;">
+          <div style="padding: 0.85rem; border: 1px solid var(--border-color); border-radius: 12px; background: var(--bg-card);">
+            <div style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.2rem;">태어난 지</div>
+            <div id="stat-lived-days" style="font-size: 1rem; font-weight: 800; color: #16a34a;">-</div>
+          </div>
+          <div style="padding: 0.85rem; border: 1px solid var(--border-color); border-radius: 12px; background: var(--bg-card);">
+            <div style="font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.2rem;">다음 생일까지</div>
+            <div id="stat-next-bday" style="font-size: 1rem; font-weight: 800; color: var(--accent-primary);">-</div>
+          </div>
+        </div>
+
+        <!-- 주요 법정 자격 도달 목록 -->
+        <div style="border: 1px solid var(--border-color); border-radius: 12px; padding: 1rem; background: var(--bg-card);">
+          <div style="font-size: 0.88rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.65rem;">
+            연령과 띠를 해석할 때
+          </div>
+          <div id="legal-rights-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 법적 면책 조항 컨테이너 -->
+    <!-- Google AdSense Responsive In-Feed/Display Unit -->
+
+  <!-- GENERATED:CORE-GUIDE:START --><article class="core-tool-guide" aria-labelledby="core-guide-title"><h2 id="core-guide-title">아이의 체험 대상 연령을 확인할 때 만 나이 읽기</h2><p class="ref-note">시뮬랩 편집팀 · 해설 검토 2026-10-27 · 예시는 별도 표기가 없으면 가상 조건입니다.</p><section><h3>어떤 나이를 계산하나요?</h3><p>생년월일과 기준 날짜 사이의 생일 경과 여부로 만 나이를 계산합니다. 한국식 세는나이·연 나이는 비교용 표현입니다. 체험·공연·지원사업에서 어떤 나이 기준을 쓰는지는 주최 기관의 공지를 확인해야 하며, 계산 결과만으로 신청 가능을 판정할 수 없습니다.</p></section><section><h3>오늘이 아닌 행사일을 넣으세요</h3><p>다음 달 행사라면 오늘의 나이보다 행사 당일의 나이가 필요할 수 있습니다. 반대로 모집 공지가 특정 기준일이나 출생연도를 지정했다면 그 기준을 따라야 합니다. 자녀의 주민등록 정보 등 실제 증빙과 입력한 생일을 대조하세요.</p></section><section><h3>생일 전후 예시</h3><p>2000년 10월 24일생은 2026년 10월 23일에 만 25세이고 다음 날 생일에는 만 26세입니다. 연도만 빼면 두 날짜가 모두 26으로 보여 하루 차이의 기준을 놓칠 수 있습니다. 월·일을 함께 확인하는 이유입니다.</p></section><section><h3>월령·학년 기준은 별도입니다</h3><p>영유아 체험은 개월 수, 학교 프로그램은 학년을 쓰기도 합니다. 만 나이 숫자가 같아도 대상이 다를 수 있습니다. 보호자 동반, 형제자매 예외와 관람 권장연령·입장 제한연령도 서로 다른 조건이므로 행사 상세를 끝까지 읽으세요.</p></section><section><h3>날짜와 개인정보</h3><p>존재하지 않는 날짜나 기준일보다 미래인 생일은 계산할 수 없습니다. 윤년 2월 29일생의 기념일 운영이나 법률상 개별 기한은 관련 규칙을 별도로 확인하세요. 공유 링크에는 생년월일을 포함하지 않으며, 가족 예약에 필요한 민감한 증빙은 이 사이트에 제출하지 않습니다.</p></section><section><h3>계산 기준과 출처</h3><p>위 입력 설명과 예시에 계산식·비교 범위를 표시했습니다. 개별 계약·행사·상품의 현재 조건은 해당 공식 안내를 확인하세요.</p><p>기존 기준 자료의 확인일은 아래 안내의 날짜를 따릅니다. 해설 검토일을 통계 발표일이나 요금 확인일로 사용하지 않습니다. 오류는 <a href="/legal/about.html">운영 문의</a>로 알려 주세요.</p></section><section><h3>함께 확인할 정보</h3><p><a href="/tools/family-info-calendar/">가족 정보 통합 달력</a> · <a href="/tools/kids-programs/">아이 체험·교육</a></p></section><section class="paired-guide" data-paired-guide="support-by-child-age-2026"><h3>내 조건과 다른 숫자 사례도 비교해 보세요</h3><ul><li><strong>생일 직전</strong>: 기준일의 만 나이 5세</li><li><strong>생일 당일</strong>: 기준일의 만 나이 6세</li><li><strong>지원 연도가 바뀐 경우</strong>: 기준일의 만 나이 9세</li></ul><p>개인·상품을 식별하지 않는 가상 조건입니다. 입력 조건·나머지 결과·주의사항은 상세 가이드에서 함께 확인하세요.</p><a href="/guides/support-by-child-age-2026/">2026 영아·유아·초등 자녀 지원 확인표: 월령·나이·학년을 나누기 ↗</a></section></article><!-- GENERATED:CORE-GUIDE:END -->
+
+  <!-- GENERATED:DISCLAIMER:START -->
+<aside id="legal-disclaimer" class="legal-disclaimer-box" data-notice-version="1" aria-label="이용 범위와 면책고지"><strong>이용 범위와 면책고지</strong><p>입력 조건과 표시된 가정에 따른 참고 결과입니다. 단위·반올림·적용 기준을 확인하고, 계약이나 신청 전에는 공식 자료와 대조해 주세요.</p><p class="disclaimer-responsibility">운영자의 고의·중과실 등 관계 법령상 제한할 수 없는 책임은 이 안내로 배제하지 않습니다.</p><div class="disclaimer-links"><a href="../../legal/terms.html">이용약관·면책고지</a><a href="../../legal/editorial.html">출처·정정 기준</a></div></aside>
+<!-- GENERATED:DISCLAIMER:END -->
+  </main>
+
+  <footer id="site-footer"></footer>
+
+  <script src="../../assets/js/core-ui.js?v=20261023_overhaul1"></script>
+  <script src="logic.js?v=20261023_overhaul1"></script>
+  <script src="app.js?v=20261023_overhaul1"></script>
+</body>
+</html>

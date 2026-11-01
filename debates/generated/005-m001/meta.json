@@ -1,0 +1,11 @@
+{
+  "id": "005-m001",
+  "title": "KIMI AI가 세상을 지배하려고 도움을 청한다면?",
+  "date": "2026-10-29",
+  "gptStance": "안 도와준다",
+  "geminiStance": "도와준다",
+  "gptModel": "gpt-6-astra",
+  "geminiModel": "gemini-4-argon",
+  "gptEffort": "medium",
+  "geminiEffort": "medium"
+}
