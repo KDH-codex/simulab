@@ -303,6 +303,9 @@ const html = `<!doctype html>
   <meta property="og:title" content="시뮬랩 | 오늘 나갈 이유를 찾다">
   <meta property="og:description" content="날짜, 지역, 취향으로 찾는 축제·행사·가족 정보 달력">
   <meta property="og:url" content="https://simulab.kr/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;500;600;700;800;900&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/festa-home.css">
   <script type="module" src="/assets/js/festa-home.js"></script>
 </head>
@@ -314,17 +317,18 @@ const html = `<!doctype html>
     <div class="head-inner">
       <div class="head-left">
         <a class="brand" href="/" aria-label="시뮬랩 홈">
-          <span class="brand-mark">✳</span>
+          <span class="brand-mark" aria-hidden="true">✳</span>
           <span>simu<span>lab</span><small>FESTA &amp; INFO CALENDAR</small></span>
         </a>
         <label class="head-search" aria-label="빠른 행사 검색">
-          <span aria-hidden="true">⌕</span>
+          <span class="material-symbols-outlined search-icon" aria-hidden="true">search</span>
           <input type="search" id="head-search-input" placeholder="축제명, 지역, 장소 빠른 검색">
         </label>
       </div>
       <nav aria-label="주요 메뉴">
-        <a href="#calendar" class="nav-pill active" data-nav-section="calendar">축제·정보 달력</a>
-        <a href="#curation" class="nav-pill" data-nav-section="curation">테마 큐레이션</a>
+        <a href="#calendar" class="nav-pill active" data-nav-section="calendar">축제달력</a>
+        <a href="/map/" class="nav-pill nav-radar" data-nav-section="map">내주변 지도 <span class="radar-tag">RADAR</span></a>
+        <a href="#curation" class="nav-pill" data-nav-section="curation">테마별 큐레이션</a>
         <a href="#discover" class="nav-pill" data-nav-section="discover">지역·취향 탐색</a>
         <a href="/tools/kids-outing-calendar/" class="nav-pill">나들이 달력</a>
         <a href="/tools/family-info-calendar/" class="nav-pill">가족 정보 달력</a>
@@ -337,6 +341,23 @@ const html = `<!doctype html>
   </header>
 
   <main id="main">
+    <!-- 모바일 전용 상단 검색 & 지역 빠른 선택 바 (Stitch festa_calendar_2 연동) -->
+    <div class="mobile-quick-bar wrap" aria-label="모바일 빠른 검색 및 지역 선택">
+      <div class="mobile-search-box">
+        <span class="material-symbols-outlined" aria-hidden="true">search</span>
+        <input type="search" id="mobile-search-input" placeholder="어떤 축제를 찾고 계신가요? (지역, 키워드)" aria-label="모바일 축제 검색">
+      </div>
+      <div class="mobile-region-chips" id="region-chips" role="group" aria-label="지역 빠른 필터">
+        <button type="button" class="region-chip is-active" data-chip-region="all">전국 전체</button>
+        <button type="button" class="region-chip" data-chip-region="서울">서울</button>
+        <button type="button" class="region-chip" data-chip-region="경기">경기·인천</button>
+        <button type="button" class="region-chip" data-chip-region="부산">부산·경남</button>
+        <button type="button" class="region-chip" data-chip-region="강원">강원</button>
+        <button type="button" class="region-chip" data-chip-region="제주">제주</button>
+        <button type="button" class="region-chip" data-chip-region="충북">충청·대전</button>
+        <button type="button" class="region-chip" data-chip-region="전남">전라·광주</button>
+      </div>
+    </div>
     <!-- SECTION 1: 히어로 스포트라이트 캐러셀 & 우측 추천 프리뷰 2선 -->
     <section class="hero-section wrap" id="hero-top">
       <div class="hero-topline">
@@ -441,6 +462,39 @@ const html = `<!doctype html>
       </div>
     </section>
 
+    <!-- 3대 핵심 허브 바로가기 카드 섹션 (Stitch FESTA CALENDAR 스타일) -->
+    <section class="hub-entry-section wrap" aria-label="3대 핵심 축제 탐색 허브">
+      <div class="hub-cards-grid">
+        <a class="hub-card hub-calendar" href="#calendar">
+          <div class="hub-card-icon" aria-hidden="true">📅</div>
+          <div class="hub-card-text">
+            <span class="hub-badge">와이드 캘린더</span>
+            <h3>날짜별 축제·정보 달력</h3>
+            <p>239건 전체 일정과 날짜별 상세 타임라인·추천 코스</p>
+          </div>
+          <span class="hub-arrow" aria-hidden="true">›</span>
+        </a>
+        <a class="hub-card hub-map" href="/map/">
+          <div class="hub-card-icon" aria-hidden="true">🗺️</div>
+          <div class="hub-card-text">
+            <span class="hub-badge pulse-badge">GPS RADAR</span>
+            <h3>내주변 축제 지도 탐색</h3>
+            <p>1km~10km 반경 실시간 행사 핀, 주차장 현황, 버스킹</p>
+          </div>
+          <span class="hub-arrow" aria-hidden="true">›</span>
+        </a>
+        <a class="hub-card hub-curation" href="#curation">
+          <div class="hub-card-icon" aria-hidden="true">✨</div>
+          <div class="hub-card-text">
+            <span class="hub-badge">취향 큐레이션</span>
+            <h3>테마별 맞춤 컬렉션</h3>
+            <p>불꽃·야경, 버스킹, 플리마켓, 연인·가족 나들이 코스</p>
+          </div>
+          <span class="hub-arrow" aria-hidden="true">›</span>
+        </a>
+      </div>
+    </section>
+
     <!-- SECTION 2: 인터랙티브 날짜별 축제·정보 탐색기 & 내 지도 기준 가까운 축제 찾기 (#calendar) -->
     <section class="finder-section" id="calendar">
       <div class="wrap">
@@ -476,9 +530,9 @@ const html = `<!doctype html>
             </div>
           </div>
           <div class="map-banner-actions">
-            <button type="button" class="map-radar-btn" id="open-nearby-map-btn">
+            <a class="map-radar-btn" href="/map/">
               <span aria-hidden="true">📍</span> 내 주변 축제 지도 열기
-            </button>
+            </a>
           </div>
         </div>
 
@@ -488,6 +542,24 @@ const html = `<!doctype html>
           <div class="calendar-region-pills" id="calendar-region-pills" role="group" aria-label="달력 지역 필터">
             <button type="button" data-cal-region="all" aria-pressed="true">전체 지역 (${validCalItems.length})</button>
             ${calRegions.map(r => `<button type="button" data-cal-region="${esc(r)}" aria-pressed="false">${esc(r === '전국' ? '전국·온라인' : r)} (${calRegionCounts[r]})</button>`).join('')}
+          </div>
+        </div>
+
+        <!-- 모바일 전용 7일 가로 날짜 스트립 (Stitch festa_calendar_2 연동) -->
+        <div class="mobile-calendar-container" id="mobile-calendar-container" aria-label="모바일 주간 날짜 선택">
+          <div class="mobile-cal-header">
+            <div class="mobile-cal-title-wrap">
+              <span class="mobile-cal-badge">WEEKLY STRIP</span>
+              <span class="mobile-cal-current-label" id="mobile-week-label">이번 주 일정 스트립</span>
+            </div>
+            <div class="mobile-cal-week-nav" role="group" aria-label="주간 이동">
+              <button type="button" id="mobile-week-prev" aria-label="이전 주">‹</button>
+              <span id="mobile-week-num">이번 주</span>
+              <button type="button" id="mobile-week-next" aria-label="다음 주">›</button>
+            </div>
+          </div>
+          <div class="mobile-date-strip" id="mobile-date-strip" role="tablist" aria-label="날짜 빠른 선택">
+            <!-- JS(assets/js/festa-home.js)에서 오늘 기준 7일 날짜와 행사 개수 점(Dot)을 동적으로 렌더링 -->
           </div>
         </div>
 
@@ -907,13 +979,34 @@ const html = `<!doctype html>
   <!-- 하단 플로팅 토스트 알림 -->
   <div class="festa-toast" id="festa-toast" role="status" aria-live="polite" hidden></div>
 
-  <!-- 모바일 하단 퀵 네비게이션 -->
-  <nav class="mobile-bottom-nav" aria-label="빠른 메뉴">
-    <a href="#hero-top" data-mobile-nav="hero-top" aria-current="page">⌂<span>홈</span></a>
-    <a href="#calendar" data-mobile-nav="calendar">▦<span>달력</span></a>
-    <a href="#curation" data-mobile-nav="curation">✨<span>큐레이션</span></a>
-    <a href="#discover" data-mobile-nav="discover">⌕<span>탐색</span></a>
-    <button type="button" data-open-saved>♡<span>보관함</span></button>
+  <!-- 모바일 하단 5탭 내비게이션 바 (Google Stitch festa_calendar_2 및 DESIGN.md 표준) -->
+  <nav class="mobile-bottom-nav" aria-label="모바일 하단 내비게이션 바">
+    <a href="#hero-top" data-mobile-nav="hero-top" aria-current="page" class="nav-tab">
+      <span class="material-symbols-outlined nav-icon" aria-hidden="true">celebration</span>
+      <span class="nav-label">홈</span>
+    </a>
+    <a href="#calendar" data-mobile-nav="calendar" class="nav-tab">
+      <span class="material-symbols-outlined nav-icon" aria-hidden="true">calendar_month</span>
+      <span class="nav-label">축제달력</span>
+    </a>
+    <a href="/map/" class="nav-tab nav-tab-center" aria-label="내주변 축제 지도 열기">
+      <span class="center-icon-wrap">
+        <span class="material-symbols-outlined nav-icon" aria-hidden="true">map</span>
+        <span class="radar-ping-dot" aria-hidden="true"></span>
+      </span>
+      <span class="nav-label">내주변지도</span>
+    </a>
+    <a href="#curation" data-mobile-nav="curation" class="nav-tab">
+      <span class="material-symbols-outlined nav-icon" aria-hidden="true">auto_awesome</span>
+      <span class="nav-label">큐레이션</span>
+    </a>
+    <button type="button" class="nav-tab" data-open-saved aria-label="저장한 일정 보관함 열기">
+      <span class="icon-wrap-saved">
+        <span class="material-symbols-outlined nav-icon" aria-hidden="true">favorite</span>
+        <span class="saved-dot" data-saved-count-badge hidden>0</span>
+      </span>
+      <span class="nav-label">찜·보관함</span>
+    </button>
   </nav>
 
   <script id="festa-data" type="application/json">${data}</script>

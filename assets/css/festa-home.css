@@ -132,12 +132,37 @@ select:focus-visible {
 
 @keyframes heroSlideFade {
   from {
-    opacity: 0.35;
-    transform: translateY(8px);
+    opacity: 0.25;
+    transform: translateY(10px) scale(0.99);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes heroPhotoFade {
+  0% {
+    opacity: 0.3;
+    filter: blur(3px);
+    transform: scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: scale(1.045);
+  }
+}
+
+@keyframes buttonPulseRing {
+  0% {
+    box-shadow: 0 0 0 0 rgba(108, 56, 255, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(108, 56, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(108, 56, 255, 0);
   }
 }
 
@@ -292,6 +317,34 @@ select:focus-visible {
   background: var(--violet);
   color: #fff;
   box-shadow: 0 4px 12px rgba(83, 0, 230, 0.22);
+}
+
+.site-head nav a.nav-radar {
+  color: var(--violet);
+  background: var(--violet-fixed);
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.site-head nav a.nav-radar:hover {
+  background: var(--violet-mid);
+  color: #fff;
+}
+
+.radar-tag {
+  display: inline-block;
+  padding: 2px 7px;
+  font-size: 10px;
+  font-weight: 800;
+  border-radius: 999px;
+  background: var(--violet);
+  color: #fff;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  box-shadow: 0 0 0 2px rgba(108, 56, 255, 0.25);
+  animation: pulseGlow 2s infinite ease-in-out;
 }
 
 .head-cta {
@@ -535,32 +588,36 @@ select:focus-visible {
   border: 0;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.38);
-  transition: width 0.25s ease, background 0.25s ease;
+  cursor: pointer;
+  transition: width 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
 }
 
 .hero-dot:hover {
   background: rgba(255, 255, 255, 0.72);
+  transform: scale(1.15);
 }
 
 .hero-dot.is-active {
-  width: 22px;
+  width: 26px;
   background: var(--orange);
+  box-shadow: 0 0 12px rgba(255, 90, 31, 0.65);
 }
 
 .hero-carousel-controls {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  background: rgba(19, 27, 46, 0.62);
-  backdrop-filter: blur(10px);
+  background: rgba(19, 27, 46, 0.72);
+  backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   padding: 4px;
   border-radius: 999px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
 }
 
 .hero-carousel-controls button {
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   border: 0;
   background: transparent;
@@ -569,19 +626,34 @@ select:focus-visible {
   font-weight: 800;
   display: grid;
   place-items: center;
-  transition: background 0.15s, transform 0.15s;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.2s, transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.2s ease;
 }
 
-.hero-carousel-controls button:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: scale(1.06);
+.hero-carousel-controls button:hover,
+.hero-carousel-controls button:focus-visible {
+  background: rgba(255, 255, 255, 0.22);
+  transform: scale(1.1);
+  box-shadow: 0 0 0 2px #6c38ff, 0 0 12px rgba(108, 56, 255, 0.6);
+  outline: none;
+}
+
+.hero-carousel-controls button:active {
+  transform: scale(0.92);
+  box-shadow: 0 0 0 3px #5300e6, 0 0 16px rgba(83, 0, 230, 0.8);
 }
 
 .hero-carousel-controls span {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 800;
-  padding: 0 6px;
+  padding: 0 8px;
   color: #eef0ff;
+  letter-spacing: 0.04em;
+}
+
+.hero-photo.is-switching {
+  animation: heroPhotoFade 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* 히어로 본문 영역 */
@@ -594,7 +666,7 @@ select:focus-visible {
 }
 
 .hero-copy.is-switching {
-  animation: heroSlideFade 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+  animation: heroSlideFade 0.42s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .hero-meta-line {
@@ -1044,6 +1116,369 @@ select:focus-visible {
 .side-note-btn:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+}
+
+/* ==========================================================================
+   4-1. 모바일 상단 빠른 검색 & 가로 스크롤 지역 칩 바 (Stitch festa_calendar_2 연동)
+   ========================================================================== */
+.mobile-quick-bar {
+  display: none;
+  padding-top: 14px;
+  padding-bottom: 8px;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mobile-search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 10px 16px;
+  box-shadow: 0 2px 8px rgba(19, 27, 46, 0.04);
+}
+
+.mobile-search-box .material-symbols-outlined {
+  color: var(--muted);
+  font-size: 20px;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
+.mobile-search-box input {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  width: 100%;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.mobile-search-box input::placeholder {
+  color: var(--outline);
+}
+
+.mobile-region-chips {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 4px 2px 8px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.mobile-region-chips::-webkit-scrollbar {
+  display: none;
+}
+
+.region-chip {
+  flex-shrink: 0;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.region-chip:hover {
+  background: var(--container);
+  color: var(--ink);
+}
+
+.region-chip.is-active {
+  background: var(--orange);
+  color: #fff;
+  border-color: var(--orange);
+  box-shadow: 0 4px 12px rgba(255, 90, 31, 0.28);
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   4-2. 3대 핵심 축제 탐색 허브 바로가기 배너 카드 (Stitch FESTA CALENDAR 스타일)
+   ========================================================================== */
+.hub-entry-section {
+  padding-top: 8px;
+  padding-bottom: 40px;
+}
+
+.hub-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.hub-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 22px 24px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 4px 16px rgba(19, 27, 46, 0.04);
+  transition: transform 0.22s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.22s, border-color 0.22s;
+  position: relative;
+  overflow: hidden;
+}
+
+.hub-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px rgba(19, 27, 46, 0.08);
+}
+
+.hub-card-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  font-size: 26px;
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
+.hub-card:hover .hub-card-icon {
+  transform: scale(1.1);
+}
+
+.hub-calendar .hub-card-icon {
+  background: rgba(255, 90, 31, 0.12);
+  color: var(--orange);
+}
+
+.hub-card.hub-calendar:hover {
+  border-color: rgba(255, 90, 31, 0.35);
+}
+
+.hub-map .hub-card-icon {
+  background: rgba(108, 56, 255, 0.12);
+  color: var(--violet);
+}
+
+.hub-card.hub-map:hover {
+  border-color: rgba(108, 56, 255, 0.35);
+}
+
+.hub-curation .hub-card-icon {
+  background: rgba(255, 83, 117, 0.12);
+  color: var(--coral);
+}
+
+.hub-card.hub-curation:hover {
+  border-color: rgba(255, 83, 117, 0.35);
+}
+
+.hub-card-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.hub-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  background: var(--wash);
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.hub-badge.pulse-badge {
+  background: var(--violet-fixed);
+  color: var(--violet);
+}
+
+.hub-card-text h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 900;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+
+.hub-card-text p {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.45;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hub-arrow {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--line);
+  transition: color 0.2s, transform 0.2s;
+  flex-shrink: 0;
+}
+
+.hub-card:hover .hub-arrow {
+  color: var(--orange);
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   4-3. 모바일 전용 7일 가로 날짜 스트립 (Stitch festa_calendar_2 연동)
+   ========================================================================== */
+.mobile-calendar-container {
+  display: none;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px;
+  margin-bottom: 18px;
+  box-shadow: 0 4px 14px rgba(19, 27, 46, 0.04);
+}
+
+.mobile-cal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.mobile-cal-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mobile-cal-badge {
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: rgba(255, 90, 31, 0.12);
+  color: var(--orange-deep);
+}
+
+.mobile-cal-current-label {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.mobile-cal-week-nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--wash);
+  border-radius: 999px;
+  padding: 3px 8px;
+}
+
+.mobile-cal-week-nav button {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-size: 16px;
+  font-weight: 800;
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.mobile-cal-week-nav button:hover {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.mobile-cal-week-nav span {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--orange-deep);
+  padding: 0 4px;
+}
+
+.mobile-date-strip {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 6px;
+  user-select: none;
+}
+
+.mobile-date-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 4px;
+  border-radius: 12px;
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  text-align: center;
+}
+
+.mobile-date-cell:hover {
+  background: var(--wash);
+}
+
+.mobile-date-cell .cell-day {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted);
+  line-height: 1;
+}
+
+.mobile-date-cell.is-sun .cell-day {
+  color: var(--coral);
+}
+
+.mobile-date-cell .cell-num {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--ink);
+  margin-top: 4px;
+  line-height: 1.1;
+}
+
+.mobile-date-cell .cell-dots {
+  display: flex;
+  gap: 3px;
+  margin-top: 6px;
+  height: 5px;
+  align-items: center;
+}
+
+.mobile-date-cell .cell-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--outline);
+}
+
+.mobile-date-cell.is-selected {
+  background: var(--orange) !important;
+  color: #fff !important;
+  box-shadow: 0 6px 18px rgba(255, 90, 31, 0.35);
+  transform: scale(1.05);
+}
+
+.mobile-date-cell.is-selected .cell-day,
+.mobile-date-cell.is-selected .cell-num {
+  color: #fff !important;
+}
+
+.mobile-date-cell.is-selected .cell-dot {
+  background: #fff !important;
 }
 
 /* ==========================================================================
@@ -3481,12 +3916,31 @@ select:focus-visible {
     margin-left: 0;
   }
 
+  /* 모바일에서 빠른 바, 3대 허브 카드, 7일 날짜 스트립 활성화 */
+  .mobile-quick-bar {
+    display: flex;
+  }
+  .hub-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .hub-card {
+    padding: 16px 18px;
+  }
+  .mobile-calendar-container {
+    display: block;
+  }
+  .calendar-panel {
+    display: none; /* 모바일에서는 가로 7일 스트립과 아래 타임라인으로 쾌적하게 대체 */
+  }
+
   .festa-toast {
     bottom: 78px;
     font-size: 12px;
     padding: 10px 16px;
   }
 
+  /* 모바일 하단 5탭 바 고도화 (Google Stitch festa_calendar_2 및 DESIGN.md 표준) */
   .mobile-bottom-nav {
     position: fixed;
     z-index: 50;
@@ -3499,27 +3953,114 @@ select:focus-visible {
     height: 64px;
     background: rgba(255, 255, 255, 0.94);
     border-top: 1px solid var(--line);
-    backdrop-filter: blur(16px);
-    padding-bottom: env(safe-area-inset-bottom);
+    box-shadow: 0 -4px 20px rgba(19, 27, 46, 0.06);
+    backdrop-filter: blur(18px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
   }
-  .mobile-bottom-nav a,
-  .mobile-bottom-nav button {
-    display: grid;
-    place-items: center;
-    gap: 2px;
+
+  .mobile-bottom-nav .nav-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     min-width: 54px;
+    min-height: 48px;
     border: 0;
     background: none;
     color: var(--muted);
-    font-size: 19px;
-    line-height: 1;
+    text-decoration: none;
+    padding: 2px 6px;
+    cursor: pointer;
+    transition: color 0.15s, transform 0.15s;
+    user-select: none;
   }
-  .mobile-bottom-nav span {
-    font-size: 10px;
+
+  .mobile-bottom-nav .nav-icon {
+    font-size: 24px;
+    line-height: 1;
+    font-variation-settings: 'FILL' 0;
+    transition: transform 0.15s;
+  }
+
+  .mobile-bottom-nav .nav-label {
+    font-size: 11px;
+    font-weight: 700;
+    margin-top: 3px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .mobile-bottom-nav .nav-tab:hover,
+  .mobile-bottom-nav .nav-tab[aria-current="page"] {
+    color: var(--orange);
+  }
+
+  .mobile-bottom-nav .nav-tab[aria-current="page"] .nav-icon {
+    font-variation-settings: 'FILL' 1;
+    transform: scale(1.08);
+  }
+
+  .mobile-bottom-nav .nav-tab[aria-current="page"] .nav-label {
     font-weight: 800;
   }
-  .mobile-bottom-nav [aria-current] {
-    color: var(--orange);
+
+  /* 중앙 내주변 지도 탭 특별 강조 스타일 */
+  .mobile-bottom-nav .nav-tab-center {
+    position: relative;
+    color: var(--violet);
+  }
+
+  .mobile-bottom-nav .center-icon-wrap {
+    position: relative;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--violet-fixed);
+    display: grid;
+    place-items: center;
+    margin-top: -8px;
+    box-shadow: 0 4px 12px rgba(83, 0, 230, 0.22);
+    transition: transform 0.2s, background 0.2s;
+  }
+
+  .mobile-bottom-nav .center-icon-wrap .nav-icon {
+    font-size: 20px;
+    color: var(--violet);
+  }
+
+  .mobile-bottom-nav .radar-ping-dot {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--orange);
+    box-shadow: 0 0 0 2px #fff;
+    animation: pulseGlow 1.8s infinite ease-in-out;
+  }
+
+  .mobile-bottom-nav .icon-wrap-saved {
+    position: relative;
+    display: grid;
+    place-items: center;
+  }
+
+  .mobile-bottom-nav .saved-dot {
+    position: absolute;
+    top: -2px;
+    right: -8px;
+    background: var(--coral);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 800;
+    min-width: 16px;
+    height: 16px;
+    border-radius: 999px;
+    padding: 0 4px;
+    display: grid;
+    place-items: center;
+    line-height: 1;
   }
 }
 

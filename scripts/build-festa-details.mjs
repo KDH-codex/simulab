@@ -1,62 +1,485 @@
-import {mkdir,readFile} from 'node:fs/promises';
-import {writeFile} from './write-public-file.mjs';
+import { mkdir, readFile } from 'node:fs/promises';
+import { writeFile } from './write-public-file.mjs';
 
-const root=new URL('../',import.meta.url);
-const all=JSON.parse(await readFile(new URL('data/events/reviewed.json',root),'utf8'));
-const images=JSON.parse(await readFile(new URL('data/events/images.json',root),'utf8'));
-const events=all.filter(e=>e.verificationStatus==='verified'&&/^[a-z0-9-]+$/.test(e.id)&&e.sources?.some(s=>/^https:\/\//.test(s.url)));
-const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const theme={light:['✦','밤과 빛'],food:['◒','먹거리'],nature:['❋','자연'],kids:['✳','가족·체험']};
-const today=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
-const day=s=>s?.replaceAll('-','.');
-const sourceLink=e=>e.sources.find(s=>/^https:\/\//.test(s.url)).url;
+const root = new URL('../', import.meta.url);
+const all = JSON.parse(await readFile(new URL('data/events/reviewed.json', root), 'utf8'));
+const images = JSON.parse(await readFile(new URL('data/events/images.json', root), 'utf8'));
 
-for(const e of events){
-  const image=images[e.id];
-  const page=new URL(`events/${e.id}/index.html`,root);
-  await mkdir(new URL(`events/${e.id}/`,root),{recursive:true});
-  const ended=e.endDate<today;
-  const fullRange=e.startDate===e.endDate?day(e.startDate):`${day(e.startDate)} — ${day(e.endDate)}`;
-  const operation=e.dates?.length
-    ? `<p class="detail-subtext">기간 중 아래 날짜에 운영합니다. 회차별 프로그램은 공식 공지를 확인하세요.</p><div class="date-pills">${e.dates.map(d=>`<time datetime="${esc(d)}">${esc(day(d))}</time>`).join('')}</div>`
-    : `<p class="detail-subtext">공식 안내에 기록된 행사 기간</p><strong class="schedule-range">${esc(fullRange)}</strong>`;
-  const sources=e.sources.filter(s=>/^https:\/\//.test(s.url)).map(s=>`<li><a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer"><span>${esc(s.publisher||'공식 출처')}</span><strong>${esc(s.title||'행사 안내')} ↗</strong></a><small>확인 ${esc(s.checkedAt||e.checkedAt||'')}</small></li>`).join('');
-  const status=ended?'종료된 행사 · 기록 보관':'일정 확인된 행사';
-  const title=`${e.title} | 시뮬랩 축제 달력`;
-  const description=`${e.title} · ${fullRange} · ${e.location}. ${e.program||'공식 일정과 방문 조건을 확인하세요.'}`.slice(0,155);
-  const html=`<!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>${esc(title)}</title><meta name="description" content="${esc(description)}">
-<link rel="canonical" href="https://simulab.kr/events/${esc(e.id)}/"><link rel="icon" href="/favicon.svg">
-<link rel="manifest" href="/manifest.json"><meta name="theme-color" content="#fb5427">
-<meta property="og:type" content="article"><meta property="og:title" content="${esc(e.title)}">
-<meta property="og:description" content="${esc(description)}"><meta property="og:url" content="https://simulab.kr/events/${esc(e.id)}/">${image?`<meta property="og:image" content="https://simulab.kr${esc(image.src)}">`:''}
-<link rel="stylesheet" href="/assets/css/festa-home.css"><link rel="stylesheet" href="/assets/css/festa-detail.css">
-<script type="module" src="/assets/js/festa-detail.js"></script></head>
-<body data-event-id="${esc(e.id)}" data-event-title="${esc(e.title)}"><a class="skip" href="#main">본문으로 이동</a>
-<header class="site-head"><div class="head-inner"><a class="brand" href="/"><span class="brand-mark">✳</span><span>simu<span>lab</span><small>오늘의 발견</small></span></a><nav aria-label="주요 메뉴"><a href="/#discover">행사 찾기</a><a href="/#calendar">날짜별 보기</a><a href="/tools/kids-outing-calendar/">나들이 달력</a><a href="/library/">생활 도구</a></nav><a class="head-cta" href="/">다른 행사 보기 ↗</a></div></header>
-<main id="main" class="detail-main wrap">
-<nav class="breadcrumb" aria-label="현재 위치"><a href="/">홈</a><span>›</span><a href="/#discover">축제·행사</a><span>›</span><span>${esc(e.title)}</span></nav>
-<section class="detail-hero theme-${esc(e.theme)} ${image?`with-photo ${image.display==='poster'?'with-poster':''}`:''}">${image?`<img class="detail-hero-photo" src="${esc(image.src)}" alt="${esc(e.title+' 주제 참고 사진 · 행사 현장 아님')}" fetchpriority="high" decoding="async">`:`<div class="detail-hero-art" aria-hidden="true"><span>${theme[e.theme]?.[0]||'✦'}</span></div>`}<div class="detail-hero-copy"><span class="detail-status">${esc(status)}</span><span class="detail-region">${esc(e.region)} · ${theme[e.theme]?.[1]||'행사'}</span><h1>${esc(e.title)}</h1><p>${esc(e.program||'공식 안내에 기록된 행사입니다.')}</p><div class="detail-hero-actions"><a href="${esc(sourceLink(e))}" target="_blank" rel="noopener noreferrer">공식 행사 안내 ↗</a><button type="button" data-save-event aria-pressed="false">♡ 일정 저장</button><button type="button" data-share-event>↗ 공유</button></div><span class="detail-feedback" data-feedback role="status"></span></div>${image?`<a class="detail-image-credit" href="${esc(image.creditUrl)}" target="_blank" rel="noopener noreferrer">${esc(image.kind==='context'?'주제 참고 사진 · 행사 현장 아님 · '+image.credit:'이미지: '+image.credit)} ↗</a>`:''}</section>
-<nav class="detail-tabs" aria-label="행사 상세 메뉴"><a href="#overview">핵심 정보</a><a href="#schedule">운영 일정</a><a href="#visit">방문 안내</a><a href="#sources">공식 출처</a></nav>
-<div class="detail-layout"><div class="detail-content">
-<section id="overview" class="detail-block"><span class="eyebrow">AT A GLANCE</span><h2>이 행사의 핵심만.</h2><div class="detail-facts">
-<div><span>언제</span><strong>${esc(fullRange)}</strong></div><div><span>어디서</span><strong>${esc(e.location)}</strong></div>
-<div><span>입장·요금</span><strong>${esc(e.fee||'공식 안내 확인')}</strong></div><div><span>프로그램</span><strong>${esc(e.program||'공식 안내 확인')}</strong></div></div></section>
-<section id="schedule" class="detail-block"><span class="eyebrow">WHEN TO GO</span><h2>가는 날부터 고르세요.</h2>${operation}
-<div class="info-note"><span>운영 시간</span><p>${esc(e.time||'날짜별 운영 시간은 공식 안내에서 확인해 주세요.')}</p></div>
-${e.scheduleNote?`<p class="detail-caution">${esc(e.scheduleNote)}</p>`:''}</section>
-<section id="visit" class="detail-block"><span class="eyebrow">BEFORE YOU GO</span><h2>출발 전 확인할 것.</h2>
-<div class="visit-grid"><div><span>장소</span><strong>${esc(e.location)}</strong></div><div><span>예약·접수</span><strong>${esc(e.booking||'공식 안내 확인')}</strong></div></div>
-${e.familyNote?`<div class="editor-note"><strong>시뮬랩 체크 포인트</strong><p>${esc(e.familyNote)}</p></div>`:''}
-<p class="detail-caution">행사 일정·요금·현장 운영은 변경될 수 있습니다. 방문 전 주최 측의 최신 공지를 확인하세요.</p>
-<a class="official-link" href="${esc(sourceLink(e))}" target="_blank" rel="noopener noreferrer">주최 측 공식 안내에서 다시 확인 ↗</a></section>
-<section id="sources" class="detail-block"><span class="eyebrow">SOURCE CHECK</span><h2>정보는 여기서 확인했습니다.</h2><p class="detail-subtext">자료 최종 확인: <time datetime="${esc(e.checkedAt||'')}">${esc(e.checkedAt||'확인일 미기록')}</time></p><ul class="source-list">${sources}</ul></section>
-</div><aside class="detail-aside"><div class="sticky-info"><span class="eyebrow">YOUR FESTA NOTE</span><h2>${esc(e.title)}</h2><p>${esc(fullRange)}<br>${esc(e.region)}</p><a href="${esc(sourceLink(e))}" target="_blank" rel="noopener noreferrer">공식 행사 안내 ↗</a><small>예매·신청은 공식 페이지의 실제 안내를 따릅니다.</small></div></aside></div>
-<div class="back-home"><a href="/#discover">← 다른 행사 둘러보기</a></div></main>
-<div class="mobile-detail-bar"><button type="button" data-save-event aria-pressed="false">♡ 저장</button><a href="${esc(sourceLink(e))}" target="_blank" rel="noopener noreferrer">공식 행사 안내 ↗</a></div>
-<footer class="site-foot"><div class="wrap"><div><a class="brand" href="/"><span class="brand-mark">✳</span><span>simu<span>lab</span></span></a><p>오늘을 좀 더 재밌게 고르는 곳.</p></div><nav aria-label="하단 메뉴"><a href="/">홈</a><a href="/library/">도구 모음</a><a href="/legal/about.html">소개·문의</a><a href="/legal/privacy.html">개인정보처리방침</a></nav></div></footer>
-</body></html>`;
-  await writeFile(page,html);
+// 검증 완료된 축제 필터링
+const events = all.filter(e => e.verificationStatus === 'verified' && /^[a-z0-9-]+$/.test(e.id) && e.sources?.some(s => /^https:\/\//.test(s.url)));
+
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+const themeMap = {
+  light: { icon: 'brightness_6', label: '밤과 빛', color: '#ff5a1f' },
+  food: { icon: 'restaurant', label: '먹거리', color: '#ae3200' },
+  nature: { icon: 'nature_people', label: '자연·생태', color: '#0d7a6f' },
+  kids: { icon: 'family_restroom', label: '가족·체험', color: '#5300e6' }
+};
+
+// 한국 표준시(KST) 오늘 날짜 구하기
+const todayStr = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
+
+const formatDotDate = s => s?.replaceAll('-', '.');
+
+// D-Day 계산 함수
+function getDDay(startDate, endDate) {
+  if (endDate < todayStr) return { text: '종료된 축제', isEnded: true, isLive: false, dday: 'ENDED' };
+  if (startDate <= todayStr && todayStr <= endDate) return { text: '진행중 · LIVE', isEnded: false, isLive: true, dday: 'LIVE' };
+  
+  const tTime = new Date(`${todayStr}T00:00:00+09:00`).getTime();
+  const sTime = new Date(`${startDate}T00:00:00+09:00`).getTime();
+  const diffDays = Math.ceil((sTime - tTime) / (1000 * 60 * 60 * 24));
+  return { text: `D-${diffDays}`, isEnded: false, isLive: false, dday: `D-${diffDays}` };
 }
-console.log(`Built ${events.length} verified festival detail pages.`);
+
+// 공식 링크 가져오기
+function getSourceLink(e) {
+  const valid = e.sources.find(s => /^https:\/\//.test(s.url));
+  return valid ? valid.url : 'https://simulab.kr/';
+}
+
+// 55개 축제 상세 페이지 빌드 루프
+for (const e of events) {
+  const image = images[e.id];
+  const ddayInfo = getDDay(e.startDate, e.endDate);
+  const themeObj = themeMap[e.theme] || { icon: 'celebration', label: '지역 축제', color: '#ff5a1f' };
+  const fullRange = e.startDate === e.endDate ? formatDotDate(e.startDate) : `${formatDotDate(e.startDate)} — ${formatDotDate(e.endDate)}`;
+  const sourceUrl = getSourceLink(e);
+  
+  // 카카오맵 및 네이버 지도 링크
+  const kakaoMapUrl = `https://map.kakao.com/link/search/${encodeURIComponent(e.location || e.title)}`;
+  const naverMapUrl = `https://map.naver.com/v5/search/${encodeURIComponent(e.location || e.title)}`;
+
+  // 날짜 알약 태그
+  const datesPills = e.dates?.length
+    ? `<div class="schedule-dates-pills">${e.dates.map(d => `<span class="schedule-date-pill"><time datetime="${esc(d)}">${esc(formatDotDate(d))}</time></span>`).join('')}</div>`
+    : `<div class="schedule-dates-pills"><span class="schedule-date-pill">${esc(fullRange)} (상시 운영)</span></div>`;
+
+  // 공식 출처 리스트
+  const sourcesHtml = e.sources.filter(s => /^https:\/\//.test(s.url)).map(s => `
+    <a href="${esc(s.url)}" class="source-item" target="_blank" rel="noopener noreferrer">
+      <div class="source-item-info">
+        <span>${esc(s.publisher || '공식 주최·주관')}</span>
+        <strong>${esc(s.title || '행사 공지 및 안내')}</strong>
+        <small>확인일자: ${esc(s.checkedAt || e.checkedAt || '최근 확인')}</small>
+      </div>
+      <span class="source-arrow">↗</span>
+    </a>
+  `).join('');
+
+  const pageTitle = `${e.title} - ${e.region} 축제 일정·요금·프로그램 | FESTA CALENDAR`;
+  const pageDesc = `${e.title} · 기간: ${fullRange} · 장소: ${e.location} · 요금: ${e.fee || '공식 확인'}. ${e.program || '공식 일정과 상세 안내를 확인하세요.'}`.slice(0, 155);
+
+  const html = `<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>${esc(pageTitle)}</title>
+  <meta name="description" content="${esc(pageDesc)}">
+  <link rel="canonical" href="https://simulab.kr/events/${esc(e.id)}/">
+  <link rel="icon" href="/favicon.svg">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#ff5a1f">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="${esc(e.title)} | FESTA CALENDAR">
+  <meta property="og:description" content="${esc(pageDesc)}">
+  <meta property="og:url" content="https://simulab.kr/events/${esc(e.id)}/">
+  ${image ? `<meta property="og:image" content="https://simulab.kr${esc(image.src)}">` : ''}
+
+  <!-- Fonts & Icons (Google Stitch FESTA 표준) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
+  <!-- Style Sheets -->
+  <link rel="stylesheet" href="/assets/css/festa-home.css">
+  <link rel="stylesheet" href="/assets/css/festa-detail.css">
+
+  <!-- Detail Scripts -->
+  <script type="module" src="/assets/js/festa-detail.js"></script>
+</head>
+
+<body data-event-id="${esc(e.id)}" data-event-title="${esc(e.title)}" data-event-start="${esc(e.startDate)}" data-event-end="${esc(e.endDate)}" data-event-location="${esc(e.location)}">
+  <a class="skip" href="#main">본문으로 바로가기</a>
+
+  <!-- 상단 글로벌 헤더 -->
+  <header class="festa-header">
+    <div class="festa-header-inner wrap">
+      <a class="festa-brand" href="/">
+        <div class="brand-sparkle-box">
+          <span class="material-symbols-outlined">celebration</span>
+        </div>
+        <span class="brand-title">FESTA <strong>CALENDAR</strong></span>
+      </a>
+
+      <nav class="festa-nav" aria-label="주요 내비게이션">
+        <a href="/calendar/" class="festa-nav-link">축제달력</a>
+        <a href="/curation/#region" class="festa-nav-link">지역별 축제</a>
+        <a href="/curation/" class="festa-nav-link">테마별 큐레이션</a>
+        <a href="/map/" class="festa-nav-link pulse-link">
+          <span class="pulse-radar-dot"></span>
+          <span>내주변 지도</span>
+        </a>
+      </nav>
+
+      <div class="festa-header-actions">
+        <a href="/calendar/" class="festa-cta-btn">
+          <span class="material-symbols-outlined">search</span>
+          <span>축제 검색</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="detail-main wrap">
+    <!-- 브레드크럼 (현재 위치 경로) -->
+    <nav class="breadcrumb" aria-label="현재 위치 경로">
+      <a href="/">
+        <span class="material-symbols-outlined" style="font-size:16px;">home</span>
+        <span>홈</span>
+      </a>
+      <span class="chevron">›</span>
+      <a href="/calendar/">축제 탐색</a>
+      <span class="chevron">›</span>
+      <a href="/curation/#region">${esc(e.region)}</a>
+      <span class="chevron">›</span>
+      <span class="current" title="${esc(e.title)}">${esc(e.title)}</span>
+    </nav>
+
+    <!-- 히어로 헤더 섹션 (Ambient Photo Hero) -->
+    <section class="detail-hero theme-${esc(e.theme)}">
+      ${image ? `<img class="detail-hero-photo" src="${esc(image.src)}" alt="${esc(e.title + ' 참고 사진')}" fetchpriority="high" decoding="async">` : ''}
+      <div class="detail-hero-overlay"></div>
+
+      <div class="detail-hero-inner">
+        <!-- 뱃지 라인 -->
+        <div class="detail-badge-row">
+          <span class="detail-badge dday ${ddayInfo.isLive ? 'live-badge' : ''}">${esc(ddayInfo.text)}</span>
+          <span class="detail-badge glass">${esc(e.region)}</span>
+          <span class="detail-badge glass">
+            <span class="material-symbols-outlined" style="font-size:14px;">${esc(themeObj.icon)}</span>
+            <span>${esc(themeObj.label)}</span>
+          </span>
+          <span class="detail-badge verified">
+            <span class="material-symbols-outlined" style="font-size:14px;">verified</span>
+            <span>공식 검증</span>
+          </span>
+        </div>
+
+        <!-- 타이틀 & 부제 -->
+        <div class="detail-hero-title-group">
+          <h1>${esc(e.title)}</h1>
+          <p class="detail-hero-sub">${esc(e.program || '주최 측의 공식 운영 일정과 세부 정보를 확인하고 나들이를 준비해 보세요.')}</p>
+        </div>
+
+        <!-- 히어로 퀵 액션 바 -->
+        <div class="detail-quick-actions">
+          <a href="${esc(sourceUrl)}" class="action-btn primary" target="_blank" rel="noopener noreferrer">
+            <span class="material-symbols-outlined">open_in_new</span>
+            <span>공식 안내 바로가기</span>
+          </a>
+          <button type="button" class="action-btn" data-save-event aria-pressed="false">
+            <span class="material-symbols-outlined">favorite_border</span>
+            <span class="save-label">일정 저장</span>
+          </button>
+          <button type="button" class="action-btn" data-download-ics>
+            <span class="material-symbols-outlined">event</span>
+            <span>캘린더 등록 (.ics)</span>
+          </button>
+          <button type="button" class="action-btn" data-share-event>
+            <span class="material-symbols-outlined">share</span>
+            <span>공유하기</span>
+          </button>
+        </div>
+      </div>
+
+      ${image ? `
+      <a class="detail-credit-tag" href="${esc(image.creditUrl)}" target="_blank" rel="noopener noreferrer">
+        ${esc(image.kind === 'context' ? '주제 참고 사진 · 현장 아님 · ' + image.credit : '사진: ' + image.credit)} ↗
+      </a>` : ''}
+    </section>
+
+    <!-- 스티키 서브 내비게이션 탭 (ScrollSpy 연동) -->
+    <nav class="detail-tabs" aria-label="축제 상세 섹션 메뉴">
+      <a href="#overview" class="active" aria-selected="true">
+        <span class="material-symbols-outlined" style="font-size:16px;">info</span>
+        <span>핵심 정보</span>
+      </a>
+      <a href="#schedule" aria-selected="false">
+        <span class="material-symbols-outlined" style="font-size:16px;">calendar_month</span>
+        <span>운영 일정</span>
+      </a>
+      <a href="#visit" aria-selected="false">
+        <span class="material-symbols-outlined" style="font-size:16px;">directions</span>
+        <span>오시는 길 & 팁</span>
+      </a>
+      <a href="#checklist" aria-selected="false">
+        <span class="material-symbols-outlined" style="font-size:16px;">checklist</span>
+        <span>준비물 체크</span>
+      </a>
+      <a href="#sources" aria-selected="false">
+        <span class="material-symbols-outlined" style="font-size:16px;">fact_check</span>
+        <span>공식 검증 출처</span>
+      </a>
+    </nav>
+
+    <!-- 2열 메인 레이아웃 (좌측 68% 본문 + 우측 32% 스티키) -->
+    <div class="detail-layout">
+      <!-- 좌측 콘텐츠 블록 영역 -->
+      <div class="detail-content">
+        <!-- 1. 핵심 요약 (Overview) -->
+        <section id="overview" class="detail-block">
+          <div class="detail-block-head">
+            <div>
+              <span class="eyebrow">AT A GLANCE</span>
+              <h2>축제 핵심 요약</h2>
+            </div>
+            <span class="material-symbols-outlined" style="color:var(--orange); font-size:26px;">stars</span>
+          </div>
+
+          <div class="detail-facts-grid">
+            <div class="fact-card">
+              <span><span class="material-symbols-outlined" style="font-size:14px;">calendar_today</span>언제</span>
+              <strong>${esc(fullRange)}</strong>
+            </div>
+            <div class="fact-card">
+              <span><span class="material-symbols-outlined" style="font-size:14px;">location_on</span>어디서</span>
+              <strong>${esc(e.location)}</strong>
+            </div>
+            <div class="fact-card">
+              <span><span class="material-symbols-outlined" style="font-size:14px;">payments</span>입장·요금</span>
+              <strong>${esc(e.fee || '공식 안내 페이지 확인')}</strong>
+            </div>
+            <div class="fact-card">
+              <span><span class="material-symbols-outlined" style="font-size:14px;">confirmation_number</span>예약·접수</span>
+              <strong>${esc(e.booking || '현장 입장 또는 사전 접수')}</strong>
+            </div>
+          </div>
+
+          ${e.familyNote ? `
+          <div class="curator-tip-box">
+            <span class="material-symbols-outlined tip-icon">lightbulb</span>
+            <div>
+              <strong>에디터 추천 관람 포인트</strong>
+              <p>${esc(e.familyNote)}</p>
+            </div>
+          </div>` : `
+          <div class="curator-tip-box">
+            <span class="material-symbols-outlined tip-icon">recommend</span>
+            <div>
+              <strong>에디터의 한 줄 가이드</strong>
+              <p>${esc(e.title)}은(는) ${esc(e.region)}의 대표 문화 행사입니다. 방문 전 공식 안내를 통해 회차별 운영 시간과 체험 예약 여부를 미리 확인하세요.</p>
+            </div>
+          </div>`}
+        </section>
+
+        <!-- 2. 운영 일정 (Schedule) -->
+        <section id="schedule" class="detail-block">
+          <div class="detail-block-head">
+            <div>
+              <span class="eyebrow">WHEN TO GO</span>
+              <h2>일정 및 운영 시간</h2>
+            </div>
+            <span class="material-symbols-outlined" style="color:var(--violet); font-size:26px;">schedule</span>
+          </div>
+
+          <p style="font-size:14px; color:var(--muted); margin-bottom:12px;">공식 안내에 등록된 축제 운영 일자입니다.</p>
+          ${datesPills}
+
+          <div class="schedule-note-box">
+            <div style="font-weight:800; color:var(--ink); margin-bottom:4px; display:flex; align-items:center; gap:6px;">
+              <span class="material-symbols-outlined" style="font-size:16px; color:var(--orange);">alarm</span>
+              <span>운영 시간</span>
+            </div>
+            <p style="margin:0;">${esc(e.time || '일자별·행사장별 운영 시간은 주최 측 사정에 따라 유동적일 수 있습니다.')}</p>
+          </div>
+
+          ${e.scheduleNote ? `
+          <div class="schedule-note-box" style="margin-top:12px; background:rgba(255,181,158,0.18);">
+            <div style="font-weight:800; color:var(--orange-deep); margin-bottom:4px;">참고 사항</div>
+            <p style="margin:0;">${esc(e.scheduleNote)}</p>
+          </div>` : ''}
+        </section>
+
+        <!-- 3. 방문 전 안내 (Visit) -->
+        <section id="visit" class="detail-block">
+          <div class="detail-block-head">
+            <div>
+              <span class="eyebrow">BEFORE YOU GO</span>
+              <h2>오시는 길 & 사전 준비</h2>
+            </div>
+            <span class="material-symbols-outlined" style="color:var(--teal); font-size:26px;">explore</span>
+          </div>
+
+          <div style="margin-bottom:18px;">
+            <div style="font-size:13px; font-weight:800; color:var(--muted); margin-bottom:6px;">상세 위치</div>
+            <div style="font-size:16px; font-weight:800; color:var(--ink);">${esc(e.location)}</div>
+          </div>
+
+          <!-- 길찾기 지도 버튼 바로가기 -->
+          <div style="display:flex; gap:10px; margin-bottom:24px; flex-wrap:wrap;">
+            <a href="${kakaoMapUrl}" target="_blank" rel="noopener noreferrer" class="btn-map-link kakao" style="flex:1; min-width:140px;">
+              <span class="material-symbols-outlined" style="font-size:16px;">map</span>
+              <span>카카오맵 길찾기</span>
+            </a>
+            <a href="${naverMapUrl}" target="_blank" rel="noopener noreferrer" class="btn-map-link naver" style="flex:1; min-width:140px;">
+              <span class="material-symbols-outlined" style="font-size:16px;">pin_drop</span>
+              <span>네이버 지도 길찾기</span>
+            </a>
+          </div>
+
+          <div class="schedule-note-box">
+            <div style="font-weight:800; color:var(--ink); margin-bottom:4px;">방문자 유의사항</div>
+            <p style="margin:0; font-size:13px; line-height:1.6; color:var(--muted);">
+              행사 현장 주변은 주말 및 공휴일에 혼잡할 수 있으므로 가급적 대중교통 이용을 권장합니다.
+              우천 등 기상 변화에 따른 야외 행사 취소 또는 장소 변경은 공식 주최 측 안내를 통해 공지됩니다.
+            </p>
+          </div>
+        </section>
+
+        <!-- 4. 준비물 체크리스트 (Interactive Checklist) -->
+        <section id="checklist" class="detail-block">
+          <div class="detail-block-head">
+            <div>
+              <span class="eyebrow">SMART PACKING</span>
+              <h2>나들이 준비물 체크리스트</h2>
+            </div>
+            <span id="checklist-count-badge" class="checklist-count-badge">0/4 완료</span>
+          </div>
+
+          <div class="checklist-container">
+            <div class="checklist-item">
+              <input type="checkbox" id="chk-shoes">
+              <label for="chk-shoes">편안한 운동화 및 걷기 좋은 복장 (야외 도보 이동 대비)</label>
+            </div>
+            <div class="checklist-item">
+              <input type="checkbox" id="chk-battery">
+              <label for="chk-battery">스마트폰 보조 배터리 & 카메라 (인생샷 촬영 필수)</label>
+            </div>
+            <div class="checklist-item">
+              <input type="checkbox" id="chk-mat">
+              <label for="chk-mat">물티슈 및 미니 돗자리 / 휴대용 방석 (휴식 공간 대비)</label>
+            </div>
+            <div class="checklist-item">
+              <input type="checkbox" id="chk-weather">
+              <label for="chk-weather">일교차 대비 겉옷 또는 자외선 차단 모자·선글라스</label>
+            </div>
+          </div>
+        </section>
+
+        <!-- 5. 공식 출처 검증 (Sources) -->
+        <section id="sources" class="detail-block">
+          <div class="detail-block-head">
+            <div>
+              <span class="eyebrow">TRUSTED SOURCES</span>
+              <h2>공식 검증 출처</h2>
+            </div>
+            <span class="material-symbols-outlined" style="color:var(--violet); font-size:26px;">verified_user</span>
+          </div>
+
+          <p style="font-size:13px; color:var(--muted); margin-bottom:16px;">
+            FESTA CALENDAR의 모든 축제 정보는 주최·지자체의 공식 안내 페이지를 직접 확인하여 등록됩니다.
+          </p>
+
+          <div class="source-list">
+            ${sourcesHtml}
+          </div>
+        </section>
+
+        <!-- 하단 탐색 링크 -->
+        <div style="text-align:center; padding:20px 0;">
+          <a href="/calendar/" class="action-btn" style="background:var(--paper); color:var(--ink); border:1px solid var(--line);">
+            <span class="material-symbols-outlined">arrow_back</span>
+            <span>축제 탐색기로 돌아가기</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 우측 스티키 예매·일정 사이드바 (데스크톱) -->
+      <aside class="sticky-aside">
+        <div class="sticky-booking-panel">
+          <div class="panel-head">
+            <span class="panel-badge">FESTA TICKET & INFO</span>
+            <h3>${esc(e.title)}</h3>
+          </div>
+
+          <div class="panel-price-row">
+            <span>입장 요금</span>
+            <strong>${esc(e.fee || '공식 확인')}</strong>
+          </div>
+
+          <div class="panel-actions">
+            <a href="${esc(sourceUrl)}" class="btn-primary-action" target="_blank" rel="noopener noreferrer">
+              <span class="material-symbols-outlined">confirmation_number</span>
+              <span>공식 행사 상세 보기 ↗</span>
+            </a>
+
+            <button type="button" class="btn-secondary-action" data-download-ics>
+              <span class="material-symbols-outlined">event_available</span>
+              <span>캘린더에 일정 등록</span>
+            </button>
+
+            <button type="button" class="btn-secondary-action" data-save-event aria-pressed="false">
+              <span class="material-symbols-outlined">favorite_border</span>
+              <span class="save-label">일정 보관함에 저장</span>
+            </button>
+          </div>
+
+          <div class="panel-map-links">
+            <a href="${kakaoMapUrl}" target="_blank" rel="noopener noreferrer" class="btn-map-link kakao">
+              <span>카카오맵 길찾기</span>
+            </a>
+            <a href="${naverMapUrl}" target="_blank" rel="noopener noreferrer" class="btn-map-link naver">
+              <span>네이버 길찾기</span>
+            </a>
+          </div>
+
+          <p class="panel-footer-note">
+            행사 프로그램 및 예약 일정은 주최 측 사정에 따라 변경될 수 있습니다.
+          </p>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- 모바일 하단 플로팅 액션 바 (화면 폭 768px 이하 고정) -->
+  <div class="mobile-sticky-action-bar">
+    <button type="button" class="mobile-bar-like-btn" data-save-event aria-pressed="false" aria-label="일정 저장">
+      <span class="material-symbols-outlined">favorite_border</span>
+    </button>
+    <a href="${kakaoMapUrl}" target="_blank" rel="noopener noreferrer" class="mobile-bar-like-btn" aria-label="길찾기" style="color:var(--ink);">
+      <span class="material-symbols-outlined">near_me</span>
+    </a>
+    <a href="${esc(sourceUrl)}" class="mobile-bar-cta-btn" target="_blank" rel="noopener noreferrer" style="flex:1; display:flex; align-items:center; justify-content:center; gap:6px; background:var(--orange); color:#fff; height:48px; border-radius:14px; font-weight:800; font-size:14px; text-decoration:none; box-shadow:0 4px 14px rgba(255,90,31,0.35);">
+      <span>공식 안내 보기</span>
+      <span class="material-symbols-outlined" style="font-size:18px;">arrow_forward</span>
+    </a>
+  </div>
+
+  <!-- 푸터 -->
+  <footer class="festa-footer">
+    <div class="wrap">
+      <div class="footer-bottom">
+        <p>© 2025 FESTA CALENDAR · 전국 축제 탐색 포털 (Simulab)</p>
+        <div class="footer-links">
+          <a href="/legal/privacy.html">개인정보처리방침</a>
+          <a href="/legal/about.html">서비스 소개</a>
+          <a href="/">홈으로</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>`;
+
+  const pagePath = new URL(`events/${e.id}/index.html`, root);
+  await mkdir(new URL(`events/${e.id}/`, root), { recursive: true });
+  await writeFile(pagePath, html);
+}
+
+console.log(`Successfully built ${events.length} festival detail pages with Stitch 2025_2/2025_1 specs.`);

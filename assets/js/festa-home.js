@@ -220,6 +220,11 @@ function syncSpotlight(animateCopy = false) {
     copyBox.classList.remove('is-switching');
     void copyBox.offsetWidth;
     copyBox.classList.add('is-switching');
+    if (photo) {
+      photo.classList.remove('is-switching');
+      void photo.offsetWidth;
+      photo.classList.add('is-switching');
+    }
   }
 
   if (indexEl) {
@@ -1006,6 +1011,12 @@ function syncSaved() {
     el.textContent = String(ids.length);
   });
 
+  // 모바일 하단 탭 바 찜 배지 동기화
+  document.querySelectorAll('[data-saved-count-badge]').forEach(el => {
+    el.textContent = String(ids.length);
+    el.hidden = ids.length === 0;
+  });
+
   // 카드 우측 상단 찜 버튼 상태 업데이트
   document.querySelectorAll('[data-save-card]').forEach(button => {
     const active = ids.includes(button.dataset.saveCard);
@@ -1267,10 +1278,137 @@ if ('IntersectionObserver' in window && spySections.length) {
   spySections.forEach(sec => spyObserver.observe(sec));
 }
 
+// ============================================================================
+// 8. 모바일 전용 UI & 인터랙션 (Stitch festa_calendar_2 연동)
+// ============================================================================
+let mobileWeekOffset = 0; // 0: 이번 주, -1: 지난 주, +1: 다음 주
+
+// 모바일 7일 가로 날짜 스트립 렌더링 함수
+function renderMobileDateStrip() {
+  const stripEl = byId('mobile-date-strip');
+  const weekLabelEl = byId('mobile-week-label');
+  const weekNumEl = byId('mobile-week-num');
+  if (!stripEl) return;
+
+  // 기준 날짜(오늘 + mobileWeekOffset * 7일)
+  const baseDate = new Date(Number(today.slice(0, 4)), Number(today.slice(5, 7)) - 1, Number(today.slice(8, 10)));
+  baseDate.setDate(baseDate.getDate() + (mobileWeekOffset * 7));
+
+  // 해당 주차의 일요일(시작일) 계산 (0: 일요일 ~ 6: 토요일)
+  const dayOfWeek = baseDate.getDay();
+  const sunday = new Date(baseDate);
+  sunday.setDate(baseDate.getDate() - dayOfWeek);
+
+  // 주차 라벨 표시 갱신
+  if (weekNumEl) {
+    weekNumEl.textContent = mobileWeekOffset === 0 ? '이번 주' : (mobileWeekOffset > 0 ? `+${mobileWeekOffset}주` : `${mobileWeekOffset}주`);
+  }
+  if (weekLabelEl) {
+    const endSat = new Date(sunday);
+    endSat.setDate(sunday.getDate() + 6);
+    weekLabelEl.textContent = `${sunday.getMonth() + 1}.${sunday.getDate()} ~ ${endSat.getMonth() + 1}.${endSat.getDate()} 일정`;
+  }
+
+  // 일요일부터 토요일까지 7일 날짜 생성
+  const daysHtml = [];
+  const dayNames = ['일', '월', '화', '수', '목', '금', '토'];
+
+  for (let i = 0; i < 7; i++) {
+    const cur = new Date(sunday);
+    cur.setDate(sunday.getDate() + i);
+
+    const y = cur.getFullYear();
+    const m = String(cur.getMonth() + 1).padStart(2, '0');
+    const d = String(cur.getDate()).padStart(2, '0');
+    const dateStr = `${y}-${m}-${d}`;
+
+    const isSelected = (dateStr === selected);
+    const isToday = (dateStr === today);
+    const isSun = (i === 0);
+
+    // 해당 날짜에 운영되는 축제·행사 개수 집계
+    const count = allItems.filter(item => {
+      if (calendarScope !== 'all' && item.scope !== calendarScope) return false;
+      if (calendarRegion !== 'all' && item.region !== calendarRegion) return false;
+      return isOn(item, dateStr);
+    }).length;
+
+    // 일정 점(Dot) 최대 3개 생성
+    const dotCount = Math.min(3, count);
+    let dotsHtml = '';
+    for (let dot = 0; dot < dotCount; dot++) {
+      dotsHtml += `<span class="cell-dot"></span>`;
+    }
+
+    daysHtml.push(`
+      <div class="mobile-date-cell ${isSelected ? 'is-selected' : ''} ${isSun ? 'is-sun' : ''} ${isToday ? 'is-today' : ''}" data-mobile-date="${dateStr}" role="tab" aria-selected="${isSelected ? 'true' : 'false'}">
+        <span class="cell-day">${dayNames[i]}</span>
+        <span class="cell-num">${cur.getDate()}</span>
+        <div class="cell-dots" aria-hidden="true">${dotsHtml}</div>
+      </div>
+    `);
+  }
+
+  stripEl.innerHTML = daysHtml.join('');
+
+  // 7일 스트립 날짜 클릭 이벤트 리스너 연결
+  stripEl.querySelectorAll('[data-mobile-date]').forEach(cell => {
+    cell.addEventListener('click', () => {
+      const targetDate = cell.dataset.mobileDate;
+      selected = targetDate;
+      renderDay();
+      renderMobileDateStrip();
+      // 날짜 선택 시 상세 타임라인 영역으로 부드럽게 스크롤 이동
+      byId('day-detail-box')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  });
+}
+
+// 모바일 주간 이전/다음 버튼 이벤트
+byId('mobile-week-prev')?.addEventListener('click', () => {
+  mobileWeekOffset--;
+  renderMobileDateStrip();
+});
+byId('mobile-week-next')?.addEventListener('click', () => {
+  mobileWeekOffset++;
+  renderMobileDateStrip();
+});
+
+// 모바일 상단 검색창 입력 연동
+byId('mobile-search-input')?.addEventListener('input', e => {
+  const query = e.target.value.trim().toLowerCase();
+  const searchFilter = byId('filter-search');
+  if (searchFilter) {
+    searchFilter.value = query;
+    searchFilter.dispatchEvent(new Event('input'));
+  }
+});
+
+// 모바일 지역 칩 가로 스크롤 버튼 클릭 이벤트 연동
+document.querySelectorAll('#region-chips .region-chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('#region-chips .region-chip').forEach(c => c.classList.remove('is-active'));
+    chip.classList.add('is-active');
+
+    const reg = chip.dataset.chipRegion;
+    calendarRegion = reg;
+
+    // 달력 상단 필터 및 카드 피드 동시 동기화
+    syncCalendarRegionPills();
+    renderMonth();
+    renderDay();
+    renderMobileDateStrip();
+    renderCards();
+
+    showToast(`${reg === 'all' ? '전국 전체' : reg} 축제 일정으로 필터링되었습니다.`);
+  });
+});
+
 // 초기 화면 렌더링 실행
 syncSpotlight();
 syncCalendarRegionPills();
 renderMonth();
 renderDay();
+renderMobileDateStrip();
 renderCards();
 syncSaved();
