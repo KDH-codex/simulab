@@ -108,31 +108,26 @@ for (const e of events) {
   <a class="skip" href="#main">본문으로 바로가기</a>
 
   <!-- 상단 글로벌 헤더 -->
-  <header class="festa-header">
-    <div class="festa-header-inner wrap">
-      <a class="festa-brand" href="/">
-        <div class="brand-sparkle-box">
-          <span class="material-symbols-outlined">celebration</span>
-        </div>
-        <span class="brand-title">FESTA <strong>CALENDAR</strong></span>
-      </a>
-
-      <nav class="festa-nav" aria-label="주요 내비게이션">
-        <a href="/calendar/" class="festa-nav-link">축제달력</a>
-        <a href="/curation/#region" class="festa-nav-link">지역별 축제</a>
-        <a href="/curation/" class="festa-nav-link">테마별 큐레이션</a>
-        <a href="/map/" class="festa-nav-link pulse-link">
-          <span class="pulse-radar-dot"></span>
-          <span>내주변 지도</span>
-        </a>
-      </nav>
-
-      <div class="festa-header-actions">
-        <a href="/calendar/" class="festa-cta-btn">
-          <span class="material-symbols-outlined">search</span>
-          <span>축제 검색</span>
+  <header class="site-head">
+    <div class="head-inner wrap">
+      <div class="head-brand-group">
+        <a class="brand" href="/">
+          <span class="brand-mark">✳</span>
+          <span>simu<span>lab</span><small>축제 상세</small></span>
         </a>
       </div>
+
+      <nav aria-label="주요 메뉴">
+        <a href="/calendar/" class="nav-pill">축제달력</a>
+        <a href="/map/" class="nav-pill nav-radar">내주변 지도 <span class="radar-tag">RADAR</span></a>
+        <a href="/curation/" class="nav-pill">테마별 큐레이션</a>
+        <a href="/#discover" class="nav-pill">지역·취향 탐색</a>
+        <a href="/library/" class="nav-pill">생활 도구</a>
+      </nav>
+
+      <a href="/calendar/#saved" class="head-cta saved-trigger" aria-label="저장한 행사">
+        ♡ 저장한 일정 <span data-saved-count>0</span>
+      </a>
     </div>
   </header>
 

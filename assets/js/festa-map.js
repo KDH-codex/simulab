@@ -137,6 +137,17 @@
     } else if (allFestas.length > 0) {
       selectFesta(allFestas[0], false);
     }
+
+    // Leaflet 캔버스 크기 즉시 갱신 (화이트아웃 방지)
+    setTimeout(() => {
+      if (state.map) {
+        state.map.invalidateSize();
+      }
+    }, 150);
+
+    window.addEventListener('resize', () => {
+      if (state.map) state.map.invalidateSize();
+    });
   }
 
   // 2. 반경 원 갱신

@@ -31,35 +31,30 @@
   <script type="module" src="/assets/js/festa-map.js"></script>
 </head>
 
-<body class="map-page-body">
+<body class="festa-map-body">
   <a class="skip" href="#map-main">지도 본문으로 바로가기</a>
 
   <!-- 상단 글로벌 네비게이션 헤더 -->
-  <header class="festa-header">
-    <div class="festa-header-inner wrap">
-      <a class="festa-brand" href="/">
-        <div class="brand-sparkle-box">
-          <span class="material-symbols-outlined">celebration</span>
-        </div>
-        <span class="brand-title">FESTA <strong>CALENDAR</strong></span>
-      </a>
-
-      <nav class="festa-nav" aria-label="주요 내비게이션">
-        <a href="/calendar/" class="festa-nav-link">축제달력</a>
-        <a href="/curation/#region" class="festa-nav-link">지역별 축제</a>
-        <a href="/curation/" class="festa-nav-link">테마별 큐레이션</a>
-        <a href="/map/" class="festa-nav-link active pulse-link">
-          <span class="pulse-radar-dot"></span>
-          <span>내주변 지도</span>
+  <header class="site-head">
+    <div class="head-inner wrap">
+      <div class="head-brand-group">
+        <a class="brand" href="/">
+          <span class="brand-mark">✳</span>
+          <span>simu<span>lab</span><small>지도 레이더</small></span>
         </a>
+      </div>
+
+      <nav aria-label="주요 메뉴">
+        <a href="/calendar/" class="nav-pill">축제달력</a>
+        <a href="/map/" class="nav-pill nav-radar active">내주변 지도 <span class="radar-tag">LIVE</span></a>
+        <a href="/curation/" class="nav-pill">테마별 큐레이션</a>
+        <a href="/#discover" class="nav-pill">지역·취향 탐색</a>
+        <a href="/library/" class="nav-pill">생활 도구</a>
       </nav>
 
-      <div class="festa-header-actions">
-        <div class="map-live-status-pill" style="display:inline-flex; align-items:center; gap:6px; padding:6px 14px; border-radius:999px; background:var(--container); font-size:12px; font-weight:700; color:var(--violet);">
-          <span class="live-dot" style="width:8px; height:8px; border-radius:50%; background:#22c55e; box-shadow:0 0 8px #22c55e;"></span>
-          <span>실시간 전국 <strong>55개</strong> 축제 연동</span>
-        </div>
-      </div>
+      <a href="/calendar/#saved" class="head-cta saved-trigger" aria-label="저장한 행사">
+        ♡ 저장한 일정 <span data-saved-count>0</span>
+      </a>
     </div>
   </header>
 
