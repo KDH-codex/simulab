@@ -20,7 +20,7 @@
       "lastDeployedAt": null,
       "outcome": "partial-review",
       "verifiedCount": 16,
-      "currentCount": 15,
+      "currentCount": 14,
       "failures": []
     }
   ],
@@ -1372,11 +1372,11 @@
       "siteUrl": "/tools/kids-programs/#kids-s261024162658645277"
     }
   ],
-  "siteRevision": "417b416bcfd186a67a6a4849e2aabd4e7badb583",
-  "generatedAt": "2026-10-28T23:54:01.698Z",
+  "siteRevision": "08bb461d90859b670aeda5df1712335e530fee66",
+  "generatedAt": "2026-11-04T09:56:31.059Z",
   "window": {
-    "start": "2026-10-29",
-    "end": "2026-12-28"
+    "start": "2026-11-04",
+    "end": "2027-01-03"
   },
   "deployment": {
     "status": "verify-live-snapshot",

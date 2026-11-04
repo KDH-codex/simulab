@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
   "timezone": "Asia/Seoul",
-  "updatedAt": "2026-10-26T12:11:26.530Z",
+  "updatedAt": "2026-11-04T09:51:08.313Z",
   "execution": "local-codex-official-source-review",
   "siteAutomations": [
     {
       "categoryId": "kids-programs",
       "automationId": "simulab",
-      "status": "ACTIVE",
+      "status": "PAUSED",
       "name": "SimuLab · 일요일 오전 · 아이 체험·교육",
       "rrule": "DTSTART;TZID=Asia/Seoul:20261101T080000\nRRULE:FREQ=WEEKLY;BYDAY=SU;BYHOUR=8;BYMINUTE=0;BYSECOND=0",
       "firstScheduledDate": "2026-11-01"
@@ -15,7 +15,7 @@
     {
       "categoryId": "local-parenting",
       "automationId": "simulab-2",
-      "status": "ACTIVE",
+      "status": "PAUSED",
       "name": "SimuLab · 일요일 오후 · 도서관·육아지원센터",
       "rrule": "DTSTART;TZID=Asia/Seoul:20261101T150000\nRRULE:FREQ=WEEKLY;BYDAY=SU;BYHOUR=15;BYMINUTE=0;BYSECOND=0",
       "firstScheduledDate": "2026-11-01"
@@ -23,7 +23,7 @@
     {
       "categoryId": "family-support",
       "automationId": "simulab-3",
-      "status": "ACTIVE",
+      "status": "PAUSED",
       "name": "SimuLab · 일요일 저녁 · 육아·가족 지원사업",
       "rrule": "DTSTART;TZID=Asia/Seoul:20261101T190000\nRRULE:FREQ=WEEKLY;BYDAY=SU;BYHOUR=19;BYMINUTE=0;BYSECOND=0",
       "firstScheduledDate": "2026-11-01"
@@ -31,7 +31,7 @@
     {
       "categoryId": "camping-booking",
       "automationId": "simulab-4",
-      "status": "ACTIVE",
+      "status": "PAUSED",
       "name": "SimuLab · 월요일 오전 · 공공 캠핑장·휴양림",
       "rrule": "DTSTART;TZID=Asia/Seoul:20261102T080000\nRRULE:FREQ=WEEKLY;BYDAY=MO;BYHOUR=8;BYMINUTE=0;BYSECOND=0",
       "firstScheduledDate": "2026-11-02"
@@ -39,7 +39,7 @@
     {
       "categoryId": "family-culture",
       "automationId": "simulab-5",
-      "status": "ACTIVE",
+      "status": "PAUSED",
       "name": "SimuLab · 월요일 오후 · 어린이 공연·전시",
       "rrule": "DTSTART;TZID=Asia/Seoul:20261102T150000\nRRULE:FREQ=WEEKLY;BYDAY=MO;BYHOUR=15;BYMINUTE=0;BYSECOND=0",
       "firstScheduledDate": "2026-11-02"
@@ -47,7 +47,7 @@
     {
       "categoryId": "kids-popups",
       "automationId": "simulab-6",
-      "status": "ACTIVE",
+      "status": "PAUSED",
       "name": "SimuLab · 월요일 저녁 · 키즈 팝업·캐릭터 행사",
       "rrule": "DTSTART;TZID=Asia/Seoul:20261102T190000\nRRULE:FREQ=WEEKLY;BYDAY=MO;BYHOUR=19;BYMINUTE=0;BYSECOND=0",
       "firstScheduledDate": "2026-11-02"
@@ -55,7 +55,7 @@
     {
       "categoryId": "brand-sales",
       "automationId": "simulab-7",
-      "status": "ACTIVE",
+      "status": "PAUSED",
       "name": "SimuLab · 화요일 오전 · 브랜드 세일",
       "rrule": "DTSTART;TZID=Asia/Seoul:20261103T080000\nRRULE:FREQ=WEEKLY;BYDAY=TU;BYHOUR=8;BYMINUTE=0;BYSECOND=0",
       "firstScheduledDate": "2026-11-03"
@@ -63,7 +63,7 @@
     {
       "categoryId": "family-discounts",
       "automationId": "simulab-8",
-      "status": "ACTIVE",
+      "status": "PAUSED",
       "name": "SimuLab · 화요일 오후 · 가족 외식·시설 할인",
       "rrule": "DTSTART;TZID=Asia/Seoul:20261103T150000\nRRULE:FREQ=WEEKLY;BYDAY=TU;BYHOUR=15;BYMINUTE=0;BYSECOND=0",
       "firstScheduledDate": "2026-11-03"
@@ -73,7 +73,7 @@
       "automationId": "automation",
       "status": "ACTIVE",
       "replacedSchedule": "월·목 오전 9시 축제·세일 통합 검토",
-      "name": "SimuLab · 화요일 저녁 · 축제·지역 행사",
+      "name": "이번주축제 · 화요일 저녁 · 축제·행사 갱신",
       "rrule": "DTSTART;TZID=Asia/Seoul:20261103T190000\nRRULE:FREQ=WEEKLY;BYDAY=TU;BYHOUR=19;BYMINUTE=0;BYSECOND=0",
       "firstScheduledDate": "2026-11-03"
     }
@@ -86,21 +86,15 @@
       "TH"
     ],
     "hour": 8,
-    "name": "SimuLab · 수·목 지역·분야별 블로그",
+    "name": "이번주축제 · 수·목 검토 원고 · 최대 2편",
     "rrule": "FREQ=WEEKLY;BYDAY=WE,TH;BYHOUR=8;BYMINUTE=0;BYSECOND=0",
     "wednesdayCategories": [
-      "kids-programs",
-      "local-parenting",
-      "family-support",
-      "camping-booking",
-      "brand-sales"
+      "festivals"
     ],
     "thursdayCategories": [
-      "family-culture",
-      "kids-popups",
-      "family-discounts",
       "festivals"
-    ]
+    ],
+    "publishing": "disabled-review-drafts-only"
   },
   "cutover": {
     "oldId": "automation",
@@ -834,5 +828,15 @@
       "pagesVerified": 8
     },
     "proof": "scratch/today-update/family-info-production.png"
+  },
+  "currentScope": {
+    "updatedAt": "2026-11-04T09:51:08.313Z",
+    "structureFirst": true,
+    "activeSiteCategories": [
+      "festivals"
+    ],
+    "pausedCategories": 8,
+    "policyDocument": "docs/festival-platform-maintenance.md",
+    "canonicalRecordsChanged": false
   }
 }

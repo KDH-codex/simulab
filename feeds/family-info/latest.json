@@ -20,7 +20,7 @@
       "lastDeployedAt": null,
       "outcome": "partial-review",
       "verifiedCount": 16,
-      "currentCount": 15,
+      "currentCount": 14,
       "failures": []
     },
     {
@@ -40,7 +40,7 @@
       "lastDeployedAt": null,
       "outcome": "partial-review",
       "verifiedCount": 16,
-      "currentCount": 16,
+      "currentCount": 13,
       "failures": []
     },
     {
@@ -100,7 +100,7 @@
       "lastDeployedAt": null,
       "outcome": "partial-review",
       "verifiedCount": 17,
-      "currentCount": 17,
+      "currentCount": 15,
       "failures": []
     },
     {
@@ -120,7 +120,7 @@
       "lastDeployedAt": null,
       "outcome": "partial-review",
       "verifiedCount": 16,
-      "currentCount": 16,
+      "currentCount": 7,
       "failures": [
         {
           "providerId": "pokemon",
@@ -145,7 +145,7 @@
       "lastDeployedAt": null,
       "outcome": "partial-review",
       "verifiedCount": 20,
-      "currentCount": 14,
+      "currentCount": 4,
       "failures": [
         {
           "providerId": "gmarket",
@@ -174,7 +174,7 @@
       "lastDeployedAt": null,
       "outcome": "partial-review",
       "verifiedCount": 19,
-      "currentCount": 19,
+      "currentCount": 14,
       "failures": []
     },
     {
@@ -194,7 +194,7 @@
       "lastDeployedAt": null,
       "outcome": "partial-review",
       "verifiedCount": 55,
-      "currentCount": 25,
+      "currentCount": 8,
       "failures": [
         {
           "providerId": "busan",
@@ -11584,11 +11584,11 @@
       "siteUrl": "/tools/parenting-deals/#sale-amoremall-15089-202610"
     }
   ],
-  "siteRevision": "417b416bcfd186a67a6a4849e2aabd4e7badb583",
-  "generatedAt": "2026-10-28T23:54:01.698Z",
+  "siteRevision": "08bb461d90859b670aeda5df1712335e530fee66",
+  "generatedAt": "2026-11-04T09:56:31.059Z",
   "window": {
-    "start": "2026-10-29",
-    "end": "2026-12-28"
+    "start": "2026-11-04",
+    "end": "2027-01-03"
   },
   "deployment": {
     "status": "verify-live-snapshot",

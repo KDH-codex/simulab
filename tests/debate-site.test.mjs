@@ -18,9 +18,9 @@ test('public episode has actual six main turns and two short model closings',asy
  assert.doesNotMatch(JSON.stringify(episode),/claimToken|C:\\|\.codex-remote-attachments|API_TOKEN/);
 });
 
-test('new front door separates debates from the complete existing directory',async()=>{
+test('festival front door keeps the complete legacy directory accessible',async()=>{
  const home=await read('index.html'),library=await read('library/index.html'),{ids}=await publicationCatalog();
- assert.match(home,/<h1[^>]*>AI 사망토론/);assert.match(home,/href="\/debates\/001\/"/);assert.match(home,/href="\/library\/"/);
+ assert.match(home,/<title>이번주축제/);assert.match(home,/href="\/calendar\/"/);assert.match(home,/href="\/map\/"/);assert.match(home,/href="\/library\/"/);
  assert.doesNotMatch(home,/class="family-first"|id="tool-directory"/);
  for(const id of ids)assert.ok(library.includes('data-tool="'+id+'"'),id);
  assert.match(library,/href="\/guides\/"/);assert.match(library,/id="archived-tools"/);

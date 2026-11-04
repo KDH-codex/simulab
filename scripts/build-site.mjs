@@ -6,11 +6,14 @@ import {spawnSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 import {publicationCatalog} from './publication.mjs';
 const root=fileURLToPath(new URL('../',import.meta.url));
-for(const script of ['build-focused-tools.mjs','build-event-data.mjs','build-parenting-deals.mjs','build-family-info.mjs','build-weekday-guides.mjs','build-family-guides.mjs','build-editorial-guides.mjs','build-library.mjs','build-debate-pages.mjs','build-debate-002.mjs','build-home.mjs','build-calendar-page.mjs','build-map-page.mjs','build-curation-page.mjs','build-festa-details.mjs','build-legal.mjs','build-core-guides.mjs','normalize-pages.mjs','build-kids-calendar.mjs','build-publishing-ui.mjs']) {
+const maintenanceSchedule=JSON.parse(await readFile(path.join(root,'data/family-info/schedule.json'),'utf8'));
+const festivalOnly=maintenanceSchedule.maintenanceMode?.activeSiteCategories?.length===1&&maintenanceSchedule.maintenanceMode.activeSiteCategories[0]==='festivals';
+const siteScripts=festivalOnly?['build-event-data.mjs','build-family-info.mjs','build-home.mjs','build-calendar-page.mjs','build-map-page.mjs','build-curation-page.mjs','build-festa-details.mjs','build-legal.mjs','build-kids-calendar.mjs','build-publishing-ui.mjs']:['build-focused-tools.mjs','build-event-data.mjs','build-parenting-deals.mjs','build-family-info.mjs','build-weekday-guides.mjs','build-family-guides.mjs','build-editorial-guides.mjs','build-library.mjs','build-debate-pages.mjs','build-debate-002.mjs','build-home.mjs','build-calendar-page.mjs','build-map-page.mjs','build-curation-page.mjs','build-festa-details.mjs','build-legal.mjs','build-core-guides.mjs','normalize-pages.mjs','build-kids-calendar.mjs','build-publishing-ui.mjs'];
+for(const script of siteScripts) {
  const result=spawnSync(process.execPath,[path.join(root,'scripts',script)],{cwd:root,stdio:'inherit'});if(result.status!==0)process.exit(result.status||1);
 }
-{const result=spawnSync(process.execPath,[path.join(root,'scripts','build-debate-sharing.mjs')],{cwd:root,stdio:'inherit'});if(result.status!==0)process.exit(result.status||1);}
-{const result=spawnSync(process.execPath,[path.join(root,'scripts','debate-characters.mjs')],{cwd:root,stdio:'inherit'});if(result.status!==0)process.exit(result.status||1);}
+if(!festivalOnly){const result=spawnSync(process.execPath,[path.join(root,'scripts','build-debate-sharing.mjs')],{cwd:root,stdio:'inherit'});if(result.status!==0)process.exit(result.status||1);}
+if(!festivalOnly){const result=spawnSync(process.execPath,[path.join(root,'scripts','debate-characters.mjs')],{cwd:root,stdio:'inherit'});if(result.status!==0)process.exit(result.status||1);}
 const destination=path.resolve(root,'dist');
 // The only removable tree is exactly this workspace's dist directory.
 if(path.relative(root,destination)!=='dist')throw new Error('Unsafe output path');

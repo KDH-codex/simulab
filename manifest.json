@@ -1,24 +1,24 @@
 {
-  "name": "시뮬랩 — 오늘 나갈 이유를 찾다",
-  "short_name": "SimuLab",
-  "description": "날짜와 지역으로 축제와 행사를 찾아보세요.",
-  "start_url": "./index.html",
+  "name": "이번주축제 — 전국 축제·행사 달력",
+  "short_name": "이번주축제",
+  "description": "이번 주말 가볼만한 곳, 지역과 날짜로 찾는 전국 축제·행사.",
+  "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#fb5427",
+  "background_color": "#faf9ff",
+  "theme_color": "#f97316",
   "orientation": "portrait-primary",
   "icons": [
     {
       "src": "./assets/icons/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
       "src": "./assets/icons/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     }
   ]
 }
