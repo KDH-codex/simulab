@@ -11584,11 +11584,11 @@
       "siteUrl": "/tools/parenting-deals/#sale-amoremall-15089-202610"
     }
   ],
-  "siteRevision": "1b2b0876cfdb100f526a7672e64f35788024484f",
-  "generatedAt": "2026-11-04T23:11:19.647Z",
+  "siteRevision": "d8791d6237fec91a14e01963ead28756ecb70127",
+  "generatedAt": "2026-11-04T14:21:44.624Z",
   "window": {
-    "start": "2026-11-05",
-    "end": "2027-01-04"
+    "start": "2026-11-04",
+    "end": "2027-01-03"
   },
   "deployment": {
     "status": "verify-live-snapshot",

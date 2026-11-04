@@ -6,7 +6,7 @@
 2. `festival-platform-maintenance.md`: 현재 화면 구조·정본·후속 축제 수집과 배포 정책.
 3. `antigravity-review-request.md`: 독립 교차검토 범위와 결과 형식.
 
-기준 배포 커밋은 `1b2b0876cfdb100f526a7672e64f35788024484f`다. 이번 폴더 정리는 그 위의 로컬 변경이며 아직 커밋·배포하지 않았다.
+현재 수정 기준은 이 작업 폴더의 **Git HEAD**다. 초기 구조 배포는 `1b2b0876cfdb100f526a7672e64f35788024484f`, 교차검토 후 UI 구현은 `f516788f3a23150a8ba13dd107e4e729215e6302`와 후속 수정에 기록했다. 실제 운영 버전은 공개 피드의 `siteRevision`으로 별도 확인한다. 최신 구현·검증 내용은 `festival-ui-implementation-20261105.md`를 읽는다.
 
 ## 폴더 역할
 

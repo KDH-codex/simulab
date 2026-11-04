@@ -282,7 +282,7 @@ function navigateCalendar(step) {
     const d=new Date(shown+'T00:00:00Z');d.setUTCMonth(d.getUTCMonth()+step);
     shown=d.toISOString().slice(0,10);selected=null;selectedWeek=null;
   }
-  state.period='month';renderCalendar();
+  state.period='month';updateURL();renderCalendar();
 }
 function reset() {
   Object.assign(state,{region:'all',theme:'all',keyword:'',free:false,saved:false,period:page==='calendar'?'month':page==='weekend'?'weekend':'upcoming',sort:'start',limit:9});
@@ -300,6 +300,7 @@ let heroVisible=true;
 let heroHover=false;
 let heroFocus=false;
 let heroAnimations=[];
+let heroTransition=0;
 function syncHeroTimer() {
   clearTimeout(heroTimer);
   const button=$('hero-pause');
@@ -312,6 +313,7 @@ function setHero(index,direction=1) {
   const nextIndex=(index+heroes.length)%heroes.length;
   if(nextIndex===heroIndex){syncHeroTimer();return;}
   const previous=heroes[heroIndex];heroIndex=nextIndex;
+  const transition=++heroTransition;
   const e=heroes[heroIndex],container=document.querySelector('[data-hero-image]');if(!container)return;
   heroAnimations.forEach(a=>a.cancel());heroAnimations=[];
   container.innerHTML='<div class="hero-frame hero-frame-old">'+imageMarkup(previous,true)+'</div><div class="hero-frame hero-frame-new">'+imageMarkup(e,true)+'</div>';
@@ -326,9 +328,11 @@ function setHero(index,direction=1) {
   const old=container.querySelector('.hero-frame-old'),fresh=container.querySelector('.hero-frame-new');
   if(!reducedMotion.matches&&fresh.animate){
     heroAnimations.push(old.animate([{opacity:1},{opacity:0}],{duration:650,fill:'forwards'}));
-    heroAnimations.push(fresh.animate([{opacity:0,transform:'translateX('+(direction<0?-24:24)+'px) scale(1.035)'},{opacity:1,transform:'translateX(0) scale(1)'}],{duration:550,easing:'cubic-bezier(.2,.7,.2,1)',fill:'forwards'}));
-    heroAnimations.push(document.querySelector('.hero-copy').animate([{opacity:0,transform:'translateY(15px)'},{opacity:1,transform:'translateY(0)'}],{duration:550,easing:'cubic-bezier(.2,.7,.2,1)'}));
-  }else old.remove();
+    const entering=fresh.animate([{opacity:0,transform:'translateX('+(direction<0?-24:24)+'px) scale(1.035)'},{opacity:1,transform:'translateX(0) scale(1)'}],{duration:550,easing:'cubic-bezier(.2,.7,.2,1)',fill:'forwards'});
+    heroAnimations.push(entering);
+    heroAnimations.push(document.querySelector('.hero-event-details').animate([{opacity:0,transform:'translateY(15px)'},{opacity:1,transform:'translateY(0)'}],{duration:450,easing:'cubic-bezier(.2,.7,.2,1)'}));
+    entering.onfinish=()=>{if(transition===heroTransition){heroAnimations.forEach(animation=>animation.cancel());heroAnimations=[];container.innerHTML=imageMarkup(e,true);}};
+  }else container.innerHTML=imageMarkup(e,true);
   syncKeywordButtons();syncHeroTimer();
 }
 const heroElement=$('hero-main');
@@ -340,7 +344,7 @@ if(heroElement){
   heroElement.addEventListener('focusout',event=>{if(!heroElement.contains(event.relatedTarget)){heroFocus=false;syncHeroTimer();}});
   if('IntersectionObserver' in window)new IntersectionObserver(entries=>{heroVisible=entries[0].isIntersecting;syncHeroTimer();},{threshold:.15}).observe(heroElement);
   document.addEventListener('visibilitychange',syncHeroTimer);
-  reducedMotion.addEventListener('change',()=>{if(reducedMotion.matches)heroAnimations.forEach(a=>a.cancel());syncHeroTimer();});
+  reducedMotion.addEventListener('change',()=>{if(reducedMotion.matches){heroTransition++;heroAnimations.forEach(a=>a.cancel());heroAnimations=[];document.querySelector('[data-hero-image]').innerHTML=imageMarkup(heroes[heroIndex],true);}syncHeroTimer();});
   syncHeroTimer();
 }
 
@@ -427,7 +431,7 @@ document.addEventListener('click',async event=>{
   if(b.id==='saved-only'){state.saved=!state.saved;state.limit=9;updateURL();render();return;}
   if(b.id==='reset-filters'||b.hasAttribute('data-reset-empty')){reset();return;}
   if(b.id==='month-prev'||b.id==='month-next'){navigateCalendar(b.id==='month-next'?1:-1);return;}
-  if(b.id==='calendar-today'){shown=today.slice(0,7)+'-01';activeWeek=weekRangeFor(today).start;selected={start:today,end:today};selectedWeek=calendarView==='week'?activeWeek:null;state.period='today';renderCalendar();return;}
+  if(b.id==='calendar-today'){shown=today.slice(0,7)+'-01';activeWeek=weekRangeFor(today).start;selected={start:today,end:today};selectedWeek=calendarView==='week'?activeWeek:null;state.period='today';updateURL();renderCalendar();return;}
   if(b.id==='clear-calendar-selection'){
     if(calendarView==='week'&&selected?.start!==selected?.end){setCalendarView('month');document.querySelector('[data-calendar-view="month"]')?.focus();return;}
     selected=calendarView==='week'?{start:activeWeek,end:shiftDate(activeWeek,6)}:null;selectedWeek=calendarView==='week'?activeWeek:null;state.period='month';updateURL();renderCalendar();
@@ -442,3 +446,5 @@ if(page==='calendar'){if(state.period!=='month')selected=periodRange();loadWeath
 syncSaved();revealCards();
 $('weather-location')?.addEventListener('change',event=>loadWeather(event.target.value));
 document.addEventListener('keydown',event=>{const button=event.target.closest?.('[data-calendar-view]');if(!button||!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;event.preventDefault();const view=event.key==='Home'?'month':event.key==='End'?'week':button.dataset.calendarView==='month'?'week':'month';setCalendarView(view);document.querySelector('[data-calendar-view="'+view+'"]').focus();});
+function syncDetailLocation(){if(page!=='detail')return;document.querySelectorAll('.detail-tabs a').forEach(link=>{if(location.hash&&link.hash===location.hash)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current');});}
+window.addEventListener('hashchange',syncDetailLocation);syncDetailLocation();

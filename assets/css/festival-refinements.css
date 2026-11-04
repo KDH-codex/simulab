@@ -112,10 +112,12 @@ button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible{ou
 .sources-list span,.sources-list small{font-size:12px;line-height:1.8}
 .sources-list b{font-size:14px;line-height:1.7}
 .detail-tabs a{font-size:12px;min-height:38px}
+.detail-tabs a[aria-current=location]{background:var(--orange);color:#fff}
+.detail-tabs a>span{margin-left:4px;font-size:.85em;opacity:.7}
 .detail-mobile-media{display:none}
 .aside-note p,.aside-note small{font-size:12px;line-height:1.85}
 .festival-dialog{width:min(1020px,calc(100% - 64px));max-height:90dvh;padding:0;overflow:hidden;border:1px solid #f3eaf8;border-radius:25px;background:#fff}
-#dialog-content{display:flex;flex-direction:column;max-height:90dvh;min-height:0}
+#dialog-content{display:flex;flex-direction:column;max-height:calc(90dvh - 2px);min-height:0}
 .dialog-close-layer{position:relative;z-index:20;height:0;flex-shrink:0}
 .dialog-close{top:14px;right:14px;width:44px;height:44px;display:grid;place-items:center;line-height:1;background:#ffffffed;border:1px solid #ebe2f1;box-shadow:0 2px 12px #39294d14}
 .modal-scroll-area{overflow-y:auto;overscroll-behavior:contain;min-height:0;scrollbar-width:thin;scrollbar-color:#d7cdea transparent}
@@ -204,7 +206,7 @@ button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible{ou
   .detail-intro{font-size:14px}.detail-section>p,.notice-box{font-size:14px}.fact-grid dd{font-size:12px}.fact-grid dt{font-size:11px}
   .detail-tabs{gap:5px;overflow-x:auto}.detail-tabs a{font-size:11px;white-space:nowrap}
   .festival-dialog{width:100%;max-width:100%;max-height:92dvh;border-radius:24px 24px 0 0;margin:auto 0 0;bottom:0;border-bottom:0}
-  #dialog-content{max-height:92dvh}.modal-cover{height:175px}.dialog-close{top:12px;right:12px;width:42px;height:42px}
+  #dialog-content{max-height:calc(92dvh - 1px)}.modal-cover{height:175px}.dialog-close{top:12px;right:12px;width:42px;height:42px}
   .modal-image-attribution{padding:9px 22px 0;font-size:10px}.modal-heading{padding:20px 22px 0}
   .modal-heading h2{font-size:25px}.modal-heading>p:not(.eyebrow){font-size:13px}.modal-heading .eyebrow{font-size:11px}
   .festival-dialog .fact-grid{margin:20px 22px;gap:8px}.festival-dialog .fact-grid dd{font-size:12px}.festival-dialog .fact-grid dt{font-size:11px}
