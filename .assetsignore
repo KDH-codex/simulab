@@ -1,5 +1,6 @@
 # Cloudflare Workers Static Assets uses .assetsignore (not .wranglerignore).
 docs/
+archive/
 data/
 dist/
 scripts/

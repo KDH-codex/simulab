@@ -1,0 +1,88 @@
+<div id="festival-identity" aria-label="축제 검색 서비스 아이콘 비교">
+  <style>
+    #festival-identity { color-scheme:light dark; font-family:Arial,"Noto Sans KR",sans-serif; --brand-purple:#6a27ef; --brand-orange:#ff6426; }
+    #festival-identity [hidden] { display:none !important; }
+    #festival-identity .identity-stage { box-sizing:border-box; min-height:300px; padding:22px 18px 28px; display:grid; place-items:center; }
+    #festival-identity .identity-surface { box-sizing:border-box; width:min(100%,560px); padding:25px 24px; border-radius:22px; background:light-dark(#fff,#201d2b); color:light-dark(#1b1730,#f2eefb); }
+    #festival-identity .identity-header { display:flex; gap:12px; align-items:center; }
+    #festival-identity .identity-wordmark { font-size:27px; line-height:1.2; font-weight:750; letter-spacing:-1px; }
+    #festival-identity .identity-tagline { font-size:12px; line-height:1.6; color:light-dark(#6a637b,#b9b1cd); margin-top:4px; }
+    #festival-identity .identity-mark { display:grid; place-items:center; flex-shrink:0; width:44px; height:44px; border-radius:13px; background:var(--brand-purple); color:#fff; position:relative; }
+    #festival-identity .identity-mark .lucide { width:27px !important; height:27px !important; stroke-width:2; }
+    #festival-identity .identity-examples { display:flex; align-items:flex-end; justify-content:center; gap:44px; margin-top:30px; }
+    #festival-identity .identity-example { display:flex; flex-direction:column; align-items:center; gap:10px; }
+    #festival-identity .identity-app { width:94px; height:94px; border-radius:25px; }
+    #festival-identity .identity-app .lucide { width:57px !important; height:57px !important; stroke-width:1.9; }
+    #festival-identity .identity-favicon { width:24px; height:24px; border-radius:6px; }
+    #festival-identity .identity-favicon .lucide { width:17px !important; height:17px !important; stroke-width:2.3; }
+    #festival-identity .identity-caption { font-size:11px; color:light-dark(#6a637b,#b9b1cd); }
+    #festival-identity .identity-dot { position:absolute; width:12px; height:12px; background:var(--brand-orange); border:3px solid var(--brand-purple); border-radius:50%; right:9px; bottom:13px; }
+    #festival-identity .identity-orange { background:var(--brand-orange); }
+    #festival-identity .identity-ticket .lucide { transform:rotate(-12deg); }
+    #festival-identity .identity-logo-only { margin-top:32px; display:flex; justify-content:center; align-items:center; gap:28px; }
+    #festival-identity .identity-purple-pin { color:var(--brand-purple); }
+    #festival-identity .identity-purple-pin .lucide { width:58px !important; height:58px !important; stroke-width:2; }
+    @media(max-width:420px) {
+      #festival-identity .identity-stage { min-height:300px; padding:18px 10px 24px; }
+      #festival-identity .identity-surface { padding:24px 18px; }
+      #festival-identity .identity-wordmark { font-size:24px; }
+      #festival-identity .identity-examples { gap:32px; }
+    }
+  </style>
+  <div class="viz-carousel viz-dotted-background" aria-label="달력 지도 티켓 아이콘 방향" data-previous-label="이전 아이콘" data-next-label="다음 아이콘">
+    <section class="identity-stage" data-variant="달력형" aria-label="날짜 중심의 달력 아이콘">
+      <div class="identity-surface">
+        <div class="identity-header">
+          <span class="identity-mark"><i data-lucide="calendar-days" aria-hidden="true"></i></span>
+          <div><div class="identity-wordmark" data-brand-name>이번주어디</div><div class="identity-tagline">이번 주말, 가까운 축제부터.</div></div>
+        </div>
+        <div class="identity-examples">
+          <div class="identity-example"><span class="identity-mark identity-app"><i data-lucide="calendar-days" aria-hidden="true"></i><span class="identity-dot"></span></span><span class="identity-caption">앱 아이콘</span></div>
+          <div class="identity-example"><span class="identity-mark identity-favicon"><i data-lucide="calendar-days" aria-hidden="true"></i></span><span class="identity-caption">브라우저 탭</span></div>
+        </div>
+      </div>
+    </section>
+    <section class="identity-stage" data-variant="지도형" aria-label="내 주변 검색을 담은 지도핀 아이콘" hidden>
+      <div class="identity-surface">
+        <div class="identity-header">
+          <span class="identity-purple-pin"><i data-lucide="map-pin" aria-hidden="true"></i></span>
+          <div><div class="identity-wordmark" data-brand-name>이번주어디</div><div class="identity-tagline">내 주변에서 찾는 즐거운 하루.</div></div>
+        </div>
+        <div class="identity-examples">
+          <div class="identity-example"><span class="identity-mark identity-app identity-orange"><i data-lucide="map-pin" aria-hidden="true"></i></span><span class="identity-caption">앱 아이콘</span></div>
+          <div class="identity-example"><span class="identity-mark identity-favicon identity-orange"><i data-lucide="map-pin" aria-hidden="true"></i></span><span class="identity-caption">브라우저 탭</span></div>
+        </div>
+      </div>
+    </section>
+    <section class="identity-stage" data-variant="티켓형" aria-label="축제와 공연을 담은 티켓 아이콘" hidden>
+      <div class="identity-surface">
+        <div class="identity-header">
+          <span class="identity-mark identity-ticket"><i data-lucide="ticket" aria-hidden="true"></i></span>
+          <div><div class="identity-wordmark" data-brand-name>이번주어디</div><div class="identity-tagline">이번 주의 축제·공연·놀거리.</div></div>
+        </div>
+        <div class="identity-examples">
+          <div class="identity-example"><span class="identity-mark identity-app identity-ticket"><i data-lucide="ticket" aria-hidden="true"></i><span class="identity-dot"></span></span><span class="identity-caption">앱 아이콘</span></div>
+          <div class="identity-example"><span class="identity-mark identity-favicon identity-ticket"><i data-lucide="ticket" aria-hidden="true"></i></span><span class="identity-caption">브라우저 탭</span></div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+    (() => {
+      const root=document.getElementById('festival-identity');
+      const brands=['이번주어디','주말콕','놀러달력','페스타맵'];
+      const saved=window.openai?.widgetState?.modelContent;
+      const state={brand:brands.includes(saved?.brand)?saved.brand:'이번주어디',accent:/^#[0-9a-f]{6}$/i.test(saved?.accent||'')?saved.accent:'#6a27ef'};
+      function render() {
+        root.querySelectorAll('[data-brand-name]').forEach(el=>{el.textContent=state.brand;});
+        root.style.setProperty('--brand-purple',state.accent);
+      }
+      render();
+      if(globalThis.Tweak) {
+        const tweak=new Tweak({container:root,onChange:()=>{render();window.openai?.setWidgetState({modelContent:{brand:state.brand,accent:state.accent}})?.catch(()=>{});}});
+        tweak.addSelect(state,'brand',{label:'브랜드명',options:brands});
+        tweak.addColorPicker(state,'accent',{label:'메인 색상',reference:'--brand-purple'});
+      }
+    })();
+  </script>
+</div>

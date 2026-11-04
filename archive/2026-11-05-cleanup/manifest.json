@@ -1,0 +1,380 @@
+{
+  "organizedAt": "2026-11-05T01:53:28.5821757+09:00",
+  "baselineCommit": "1b2b0876cfdb100f526a7672e64f35788024484f",
+  "fileCount": 62,
+  "deletedFiles": 0,
+  "files": [
+    {
+      "originalPath": "festival-platform/assets/js/festa-home.js",
+      "archivedPath": "assets/js/festa-home.js",
+      "sha256": "1005a6b969ac893159d839465e75fdd60d0266ade77b315258a63c76a59fd52b",
+      "reason": "Superseded festa bundle; no active runtime/build/test references"
+    },
+    {
+      "originalPath": "festival-platform/assets/js/festa-calendar.js",
+      "archivedPath": "assets/js/festa-calendar.js",
+      "sha256": "fc78c4bc9b0b4a0c1bea9976d69deb1cc9145ac89f9b0d560e96394610f5733e",
+      "reason": "Superseded festa bundle; no active runtime/build/test references"
+    },
+    {
+      "originalPath": "festival-platform/assets/js/festa-map.js",
+      "archivedPath": "assets/js/festa-map.js",
+      "sha256": "639f6e7cdea0c93883e67ea72366cef10f74ca6e775dae07f48045110bfa1753",
+      "reason": "Superseded festa bundle; no active runtime/build/test references"
+    },
+    {
+      "originalPath": "festival-platform/assets/js/festa-curation.js",
+      "archivedPath": "assets/js/festa-curation.js",
+      "sha256": "ab712f2777b060602d863a9176183a90ab7b58cf12d21581e47b25ec70bce82d",
+      "reason": "Superseded festa bundle; no active runtime/build/test references"
+    },
+    {
+      "originalPath": "festival-platform/assets/js/festa-detail.js",
+      "archivedPath": "assets/js/festa-detail.js",
+      "sha256": "77526f83530445af7d81c55ecc36917430bcaf2fa97cb58c092de83f83c6d05e",
+      "reason": "Superseded festa bundle; no active runtime/build/test references"
+    },
+    {
+      "originalPath": "festival-platform/assets/css/festa-home.css",
+      "archivedPath": "assets/css/festa-home.css",
+      "sha256": "1b459a9ed3d4a15edfbcb616dfe99d53d71d0b9590892213f3077f44a73b3b3e",
+      "reason": "Superseded festa bundle; no active runtime/build/test references"
+    },
+    {
+      "originalPath": "festival-platform/assets/css/festa-calendar.css",
+      "archivedPath": "assets/css/festa-calendar.css",
+      "sha256": "19d5820b34bf1e805d5f1b3279d9fb0e57b39efc59eb05def36585b7824cdeec",
+      "reason": "Superseded festa bundle; no active runtime/build/test references"
+    },
+    {
+      "originalPath": "festival-platform/assets/css/festa-map.css",
+      "archivedPath": "assets/css/festa-map.css",
+      "sha256": "87929251631b5e767cc1c806591e341d2c00b950f4fecd813d96f896acb57be0",
+      "reason": "Superseded festa bundle; no active runtime/build/test references"
+    },
+    {
+      "originalPath": "festival-platform/assets/css/festa-curation.css",
+      "archivedPath": "assets/css/festa-curation.css",
+      "sha256": "fec366941b446456445e5640ec03ff0c11c352bc07c8c761eedd25bd71e4a6d3",
+      "reason": "Superseded festa bundle; no active runtime/build/test references"
+    },
+    {
+      "originalPath": "festival-platform/assets/css/festa-detail.css",
+      "archivedPath": "assets/css/festa-detail.css",
+      "sha256": "ba79ebd1b92c66d6a8c0b3671c6c4385456c5ab194dafce763150de126939c8e",
+      "reason": "Superseded festa bundle; no active runtime/build/test references"
+    },
+    {
+      "originalPath": "festival-platform/animal_preview.png",
+      "archivedPath": "animal_preview.png",
+      "sha256": "34e95246020b511a2dd1c689c4cc6b49f95d1e79184c5a0751b83fda6d2596fe",
+      "reason": "Previous SimuLab planning or preview artifact; not loaded by current build"
+    },
+    {
+      "originalPath": "festival-platform/dutch_preview.png",
+      "archivedPath": "dutch_preview.png",
+      "sha256": "c95676ce18c9e8d36f7b36239143ffb5fb87297d04a7864f9f8d9fa056db9044",
+      "reason": "Previous SimuLab planning or preview artifact; not loaded by current build"
+    },
+    {
+      "originalPath": "festival-platform/dutch_refined.png",
+      "archivedPath": "dutch_refined.png",
+      "sha256": "c907ec4fa8dacae583d92d1b35e286fa713d961a668334aea180ee7caf4cbfd1",
+      "reason": "Previous SimuLab planning or preview artifact; not loaded by current build"
+    },
+    {
+      "originalPath": "festival-platform/ladder_preview.png",
+      "archivedPath": "ladder_preview.png",
+      "sha256": "9e171baff604a7014cf47bf1f210e246fedbeec5645233212beaf16f8ab82782",
+      "reason": "Previous SimuLab planning or preview artifact; not loaded by current build"
+    },
+    {
+      "originalPath": "festival-platform/ladder_refined.png",
+      "archivedPath": "ladder_refined.png",
+      "sha256": "455290f01cb8f19790791b35810911e3c34b42b0c4b082d123b3cea848f837f7",
+      "reason": "Previous SimuLab planning or preview artifact; not loaded by current build"
+    },
+    {
+      "originalPath": "festival-platform/love_preview.png",
+      "archivedPath": "love_preview.png",
+      "sha256": "e69435c1d6e02f09e56c7f27062d400a47f42aae1f65cf887b05c7dd431b5da5",
+      "reason": "Previous SimuLab planning or preview artifact; not loaded by current build"
+    },
+    {
+      "originalPath": "festival-platform/portal_desktop.png",
+      "archivedPath": "portal_desktop.png",
+      "sha256": "8c06eef25b9919da6ac1e80e58fe725dd0b2a0d70961bc3a6711ec06e20472af",
+      "reason": "Previous SimuLab planning or preview artifact; not loaded by current build"
+    },
+    {
+      "originalPath": "festival-platform/portal_mobile_preview.png",
+      "archivedPath": "portal_mobile_preview.png",
+      "sha256": "a40b9095136e410453f97263227fe43ae46447ee979d9dd6d99bff33f9d65c4d",
+      "reason": "Previous SimuLab planning or preview artifact; not loaded by current build"
+    },
+    {
+      "originalPath": "festival-platform/portal_mobile.png",
+      "archivedPath": "portal_mobile.png",
+      "sha256": "2d8fb174a914c799acf40fb581c921426ebec4e719f344bb6aa7e84ec33b02d6",
+      "reason": "Previous SimuLab planning or preview artifact; not loaded by current build"
+    },
+    {
+      "originalPath": "festival-platform/portal_preview.png",
+      "archivedPath": "portal_preview.png",
+      "sha256": "88701611c80401b0b55fe5eba486b02812237153c4d0167fe0ab03a5f899cda3",
+      "reason": "Previous SimuLab planning or preview artifact; not loaded by current build"
+    },
+    {
+      "originalPath": "festival-platform/saju_preview.png",
+      "archivedPath": "saju_preview.png",
+      "sha256": "91eea45e52753f7d030ade3c72b73921e628d8cbd02a03bade3477c889df24f4",
+      "reason": "Previous SimuLab planning or preview artifact; not loaded by current build"
+    },
+    {
+      "originalPath": "festival-platform/preview-sketch-home.html",
+      "archivedPath": "preview-sketch-home.html",
+      "sha256": "63b2b62daf6ae3c5e22a445a9d4e742999b39f4dd9cd75e72a394a93331bdcb1",
+      "reason": "Previous SimuLab planning or preview artifact; not loaded by current build"
+    },
+    {
+      "originalPath": "festival-platform/01_PRD.md",
+      "archivedPath": "01_PRD.md",
+      "sha256": "8551780faeaa8feda68b257ea85a210c833690b5b0ef37ecbff7b7cf09c56d4c",
+      "reason": "Previous SimuLab planning or preview artifact; not loaded by current build"
+    },
+    {
+      "originalPath": "festival-platform/02_Architecture.md",
+      "archivedPath": "02_Architecture.md",
+      "sha256": "5971bd52f8255598ebbcf1537c92387595196e5941d24a83eecc0bf3750abfe4",
+      "reason": "Previous SimuLab planning or preview artifact; not loaded by current build"
+    },
+    {
+      "originalPath": "festival-platform/03_Guidelines.md",
+      "archivedPath": "03_Guidelines.md",
+      "sha256": "3d1e4ff11d7b3fe57b236e86b033ea8f57ff2be160e3c75794cf3a809cccd5dc",
+      "reason": "Previous SimuLab planning or preview artifact; not loaded by current build"
+    },
+    {
+      "originalPath": "festival-platform/4. 법적·규제적 준수 체크리스트.txt",
+      "archivedPath": "4. 법적·규제적 준수 체크리스트.txt",
+      "sha256": "a83e8303c31fa25c0293d17088836ff5b89f374e1dd9ccca0694fdac64fe47c1",
+      "reason": "Previous SimuLab planning or preview artifact; not loaded by current build"
+    },
+    {
+      "originalPath": "festival-platform/문제점진단.txt",
+      "archivedPath": "문제점진단.txt",
+      "sha256": "0b03f195af3302283ed3df393b4f9bbd4b01f34af70a4a98dcd8efdc56a0e49f",
+      "reason": "Previous SimuLab planning or preview artifact; not loaded by current build"
+    },
+    {
+      "originalPath": "festival-platform/Data Schema.txt",
+      "archivedPath": "Data Schema.txt",
+      "sha256": "27428a6739900201fd0af75d3adc3d429f70e9aad13e9ac07e38613747713b93",
+      "reason": "Previous SimuLab planning or preview artifact; not loaded by current build"
+    },
+    {
+      "originalPath": "festival-platform/docs/stitch-festa-home-v01.md",
+      "archivedPath": "docs/stitch-festa-home-v01.md",
+      "sha256": "a5bd515f78abf44b1143b63a4b8500abbfcf91e260220786c9c408d0e6ba5c1d",
+      "reason": "Superseded instructions for earlier Stitch project and bundles"
+    },
+    {
+      "originalPath": "festival-platform/docs/stitch-festa-interactions-v02.md",
+      "archivedPath": "docs/stitch-festa-interactions-v02.md",
+      "sha256": "8040aa520dc89fb1537083429f0ba284f80dcb982a76a4d33ce1a58d6d759552",
+      "reason": "Superseded instructions for earlier Stitch project and bundles"
+    },
+    {
+      "originalPath": "festival-platform/docs/festa-platform-execution-report.md",
+      "archivedPath": "docs/festa-platform-execution-report.md",
+      "sha256": "f320a596a8d000fdf034d9e8d4c1b831deed067d7cc4c2cc70d9c99d645b370b",
+      "reason": "Superseded instructions for earlier Stitch project and bundles"
+    },
+    {
+      "originalPath": "festival-identity-preview.html",
+      "archivedPath": "design-history/festival-identity-preview.html",
+      "sha256": "66bc43c2774a4827aca6611067120c35eabc3c631ab3dc500a97797feda7e551",
+      "reason": "Previous brand exploration; active brand assets already in festival-platform/assets"
+    },
+    {
+      "originalPath": "festival-identity.html",
+      "archivedPath": "design-history/festival-identity.html",
+      "sha256": "554d5173d50eb5cc91dce680d1382a1dea282b2eb1048e7961be70a9b187c4d6",
+      "reason": "Previous brand exploration; active brand assets already in festival-platform/assets"
+    },
+    {
+      "originalPath": "this-week-festival-fireworks-prompt.txt",
+      "archivedPath": "design-history/this-week-festival-fireworks-prompt.txt",
+      "sha256": "e7a380aca30c4319339a27c1bd9ff9135df7505bffff5c5ae0cdef2fede3c5b9",
+      "reason": "Previous brand exploration; active brand assets already in festival-platform/assets"
+    },
+    {
+      "originalPath": "this-week-festival-fireworks.png",
+      "archivedPath": "design-history/this-week-festival-fireworks.png",
+      "sha256": "4a70f16d873d9b32aded8c522d39efd96ad372f444794eda1bc2924c25d2513b",
+      "reason": "Previous brand exploration; active brand assets already in festival-platform/assets"
+    },
+    {
+      "originalPath": "this-week-festival-logo-preview.html",
+      "archivedPath": "design-history/this-week-festival-logo-preview.html",
+      "sha256": "5511cff34b84f82622fe9c86c70c4d3ba0d5386db6f653e7ba980df89dd95bb0",
+      "reason": "Previous brand exploration; active brand assets already in festival-platform/assets"
+    },
+    {
+      "originalPath": "this-week-festival-logo.html",
+      "archivedPath": "design-history/this-week-festival-logo.html",
+      "sha256": "98b9f387c36047ce889a78d1f9f047e21df00eef10e2252f819ad02a7def1896",
+      "reason": "Previous brand exploration; active brand assets already in festival-platform/assets"
+    },
+    {
+      "originalPath": "festival-platform/assets/img/festivals/busan-fireworks-2026.jpg",
+      "archivedPath": "assets/img/festivals/busan-fireworks-2026.jpg",
+      "sha256": "454d499ebbd431ddd7578094abacca500ce951852c5cc75171c53dd7272c87ce",
+      "reason": "Unmapped image candidate; no references in active source or generated pages; source and reuse rights require verification before use"
+    },
+    {
+      "originalPath": "festival-platform/assets/img/festivals/goesan-kimjang-2026.jpg",
+      "archivedPath": "assets/img/festivals/goesan-kimjang-2026.jpg",
+      "sha256": "a9071281b4e3ae1aaa13acf384a24e9d2a610e8b95e8744f935c1dfc8f4e3908",
+      "reason": "Unmapped image candidate; no references in active source or generated pages; source and reuse rights require verification before use"
+    },
+    {
+      "originalPath": "festival-platform/assets/img/festivals/iksan-chrysanthemum-2026.jpg",
+      "archivedPath": "assets/img/festivals/iksan-chrysanthemum-2026.jpg",
+      "sha256": "4804224d4ceb0906e2a57e139397551e0ea0aad8d657e6378e10b8933055bce3",
+      "reason": "Unmapped image candidate; no references in active source or generated pages; source and reuse rights require verification before use"
+    },
+    {
+      "originalPath": "festival-platform/assets/img/festivals/jeju-olle-2026.jpg",
+      "archivedPath": "assets/img/festivals/jeju-olle-2026.jpg",
+      "sha256": "2ef944e53786e457287f06dd798eaa87d2546c44e12f4e600a6dab8878fa4f29",
+      "reason": "Unmapped image candidate; no references in active source or generated pages; source and reuse rights require verification before use"
+    },
+    {
+      "originalPath": "festival-platform/assets/img/festivals/mcst-12036-2026.jpg",
+      "archivedPath": "assets/img/festivals/mcst-12036-2026.jpg",
+      "sha256": "55bae1a9334659628b2d79660e3220e7fed6620f7686cc4248aa1c1b587ac28f",
+      "reason": "Unmapped image candidate; no references in active source or generated pages; source and reuse rights require verification before use"
+    },
+    {
+      "originalPath": "festival-platform/assets/img/festivals/mcst-12275-2026.jpg",
+      "archivedPath": "assets/img/festivals/mcst-12275-2026.jpg",
+      "sha256": "f2bd9e97642d9f56449ab4a4c4a4edccf4bb75a74f14f28f369239b949aeb9c8",
+      "reason": "Unmapped image candidate; no references in active source or generated pages; source and reuse rights require verification before use"
+    },
+    {
+      "originalPath": "festival-platform/assets/img/festivals/mcst-12626-2026.png",
+      "archivedPath": "assets/img/festivals/mcst-12626-2026.png",
+      "sha256": "f84845048049ba174c569cf90b50f8cfed7391300a036676d34f029328847238",
+      "reason": "Unmapped image candidate; no references in active source or generated pages; source and reuse rights require verification before use"
+    },
+    {
+      "originalPath": "festival-platform/assets/img/festivals/mcst-12641-2026.jpg",
+      "archivedPath": "assets/img/festivals/mcst-12641-2026.jpg",
+      "sha256": "74abb22d832c00d7244afdb1bde6bee411ad1a298cf826079d98a0bde8074f6a",
+      "reason": "Unmapped image candidate; no references in active source or generated pages; source and reuse rights require verification before use"
+    },
+    {
+      "originalPath": "festival-platform/assets/img/festivals/mcst-12731-2026.jpg",
+      "archivedPath": "assets/img/festivals/mcst-12731-2026.jpg",
+      "sha256": "1f49d4eb013e06966733f48ea8ff5c9b61cc1d59f38032f3ab2c217d3789e892",
+      "reason": "Unmapped image candidate; no references in active source or generated pages; source and reuse rights require verification before use"
+    },
+    {
+      "originalPath": "festival-platform/assets/img/festivals/mcst-12777-2026.jpg",
+      "archivedPath": "assets/img/festivals/mcst-12777-2026.jpg",
+      "sha256": "00275a3503a44067c3f5eef184a0f3d76f6594b013eba1c8c6a242d680a1fee3",
+      "reason": "Unmapped image candidate; no references in active source or generated pages; source and reuse rights require verification before use"
+    },
+    {
+      "originalPath": "festival-platform/assets/img/festivals/mcst-12919-2026.jpg",
+      "archivedPath": "assets/img/festivals/mcst-12919-2026.jpg",
+      "sha256": "33fb4e046633956ee834f6f939165ac5ee53ac0a82080278e4d426c8168da96b",
+      "reason": "Unmapped image candidate; no references in active source or generated pages; source and reuse rights require verification before use"
+    },
+    {
+      "originalPath": "festival-platform/assets/img/festivals/mcst-13333-2026.jpg",
+      "archivedPath": "assets/img/festivals/mcst-13333-2026.jpg",
+      "sha256": "bc728c189c1ab670051e9047e891c068b0bcfda80ba2700e63fb9888736b65ca",
+      "reason": "Unmapped image candidate; no references in active source or generated pages; source and reuse rights require verification before use"
+    },
+    {
+      "originalPath": "festival-platform/assets/img/festivals/mcst-13366-2026.jpg",
+      "archivedPath": "assets/img/festivals/mcst-13366-2026.jpg",
+      "sha256": "6813d5f4f24f7856dda98aa84a2aefb63e3ee69cf672703ae6193d64f81dc7d2",
+      "reason": "Unmapped image candidate; no references in active source or generated pages; source and reuse rights require verification before use"
+    },
+    {
+      "originalPath": "festival-platform/assets/img/festivals/mcst-13374-2026.jpg",
+      "archivedPath": "assets/img/festivals/mcst-13374-2026.jpg",
+      "sha256": "ea0ed5d23f72c2359d3e5fb8e64c3fb479ae04e793839188fe92101c99f38e72",
+      "reason": "Unmapped image candidate; no references in active source or generated pages; source and reuse rights require verification before use"
+    },
+    {
+      "originalPath": "festival-platform/assets/img/festivals/mcst-13388-2026.jpg",
+      "archivedPath": "assets/img/festivals/mcst-13388-2026.jpg",
+      "sha256": "5585d025723e5a015ee3555e388293d955bcd3d264001afdf5e7108f1c5d789d",
+      "reason": "Unmapped image candidate; no references in active source or generated pages; source and reuse rights require verification before use"
+    },
+    {
+      "originalPath": "festival-platform/assets/img/festivals/mcst-13510-2026.jpg",
+      "archivedPath": "assets/img/festivals/mcst-13510-2026.jpg",
+      "sha256": "0a30a8be24ec05de22617b7eaa66635eed0792cbdc773f10b7e1c18a87aa7ebe",
+      "reason": "Unmapped image candidate; no references in active source or generated pages; source and reuse rights require verification before use"
+    },
+    {
+      "originalPath": "festival-platform/assets/img/festivals/mcst-13528-2026.jpg",
+      "archivedPath": "assets/img/festivals/mcst-13528-2026.jpg",
+      "sha256": "8f2c09377be93bbcb5492c503d02e646e7eea582f3704ef2f0a67786a56699f4",
+      "reason": "Unmapped image candidate; no references in active source or generated pages; source and reuse rights require verification before use"
+    },
+    {
+      "originalPath": "festival-platform/assets/img/festivals/mcst-13533-2026.jpg",
+      "archivedPath": "assets/img/festivals/mcst-13533-2026.jpg",
+      "sha256": "1c84207eac5870ffd2679da9bdce17f053594f1c47759bfb5118f345e18db597",
+      "reason": "Unmapped image candidate; no references in active source or generated pages; source and reuse rights require verification before use"
+    },
+    {
+      "originalPath": "festival-platform/assets/img/festivals/mcst-13545-2026.jpg",
+      "archivedPath": "assets/img/festivals/mcst-13545-2026.jpg",
+      "sha256": "a5a36fdad0cc069d91419287083829a9bf89ede5b4da3e09450e4d678966bd41",
+      "reason": "Unmapped image candidate; no references in active source or generated pages; source and reuse rights require verification before use"
+    },
+    {
+      "originalPath": "festival-platform/assets/img/festivals/mcst-13552-2026.jpg",
+      "archivedPath": "assets/img/festivals/mcst-13552-2026.jpg",
+      "sha256": "d676ae7b034a82b53cf08f36f835f5fd1a6d94aeacca60de695db85bd5b8d944",
+      "reason": "Unmapped image candidate; no references in active source or generated pages; source and reuse rights require verification before use"
+    },
+    {
+      "originalPath": "festival-platform/assets/img/festivals/mcst-13554-2026.jpg",
+      "archivedPath": "assets/img/festivals/mcst-13554-2026.jpg",
+      "sha256": "12ea76a0d33e8fd562978ba2f36c14f25fe75b914c90a34f67dec86e106005e9",
+      "reason": "Unmapped image candidate; no references in active source or generated pages; source and reuse rights require verification before use"
+    },
+    {
+      "originalPath": "festival-platform/assets/img/festivals/mcst-13555-2026.jpg",
+      "archivedPath": "assets/img/festivals/mcst-13555-2026.jpg",
+      "sha256": "b83ea5e3a356983c547ca88ab9886a5d6c1f3e69565f569f5e9c84743f7740b0",
+      "reason": "Unmapped image candidate; no references in active source or generated pages; source and reuse rights require verification before use"
+    },
+    {
+      "originalPath": "festival-platform/assets/img/festivals/mcst-13560-2026.jpg",
+      "archivedPath": "assets/img/festivals/mcst-13560-2026.jpg",
+      "sha256": "206358180418938fbf68cddf5f0503edba634e6ddac2a0701beb0fea38496e95",
+      "reason": "Unmapped image candidate; no references in active source or generated pages; source and reuse rights require verification before use"
+    },
+    {
+      "originalPath": "festival-platform/assets/img/festivals/namsan-night-2026.jpg",
+      "archivedPath": "assets/img/festivals/namsan-night-2026.jpg",
+      "sha256": "0840328bf6079e1fe3c27c22f4aa7394964a36cdbe4f8a83bbec3290acf06945",
+      "reason": "Unmapped image candidate; no references in active source or generated pages; source and reuse rights require verification before use"
+    },
+    {
+      "originalPath": "festival-platform/assets/img/festivals/sejong-hangeul-family-2026.png",
+      "archivedPath": "assets/img/festivals/sejong-hangeul-family-2026.png",
+      "sha256": "de4f450b06900b1ae22f4803c36cc0f0592b72fee387b3639cf676a901d386d1",
+      "reason": "Unmapped image candidate; no references in active source or generated pages; source and reuse rights require verification before use"
+    }
+  ]
+}

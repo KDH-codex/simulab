@@ -1,5 +1,7 @@
-import {eventTags,matchesKeyword,weekRangeFor,weekDays,weeklyEvents,eventsForDay,dayMilestone} from './festival-ui-model.js';
+import {eventTags,matchesKeyword,weekRangeFor,weekDays,weeklyEvents,eventsForDay,dayMilestone,toggleDaySelection} from './festival-ui-model.js';
 import {WEATHER_STATIONS} from './festival-weather-model.js';
+import {modalMarkup,modalTabIds} from './festival-modal.js';
+import {eventImage,activeConditions,detailTagDestination} from './festival-presentation.js';
 import {koreaToday, shiftDate, weekendRange, overlaps, occursOn, nextDate, eventStatus, escapeHtml as esc, isStale} from '/tools/kids-outing-calendar/model.js';
 
 const data=JSON.parse(document.getElementById('festival-data')?.textContent || '[]');
@@ -11,7 +13,9 @@ const params=new URL(location.href).searchParams;
 const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
 const labels={light:'✦ 불꽃·야경',food:'◒ 먹거리·수확',nature:'❋ 꽃·자연',kids:'✳ 체험·문화'};
 const regionNames=['서울','경기지역','강원지역','충청지역','전라지역','경상지역','제주지역'];
-const state={region:regionNames.includes(params.get('region'))?params.get('region'):'all',theme:Object.hasOwn(labels,params.get('theme'))?params.get('theme'):'all',period:page==='calendar'?'month':page==='weekend'?'weekend':'upcoming',keyword:(params.get('tag')||'').slice(0,40),free:false,saved:params.get('saved')==='1',sort:'start',limit:9};
+const defaultPeriod=page==='calendar'?'month':page==='weekend'?'weekend':'upcoming';
+const allowedPeriods=page==='calendar'?['month','weekend','today']:['upcoming','weekend','today'];
+const state={region:regionNames.includes(params.get('region'))?params.get('region'):'all',theme:Object.hasOwn(labels,params.get('theme'))?params.get('theme'):'all',period:allowedPeriods.includes(params.get('period'))?params.get('period'):defaultPeriod,keyword:(params.get('tag')||'').slice(0,40),free:params.get('free')==='1',saved:params.get('saved')==='1',sort:'start',limit:9};
 const storageKey='thisweekfestival.saved.v1';
 let saved=[];
 try {const parsed=JSON.parse(localStorage.getItem(storageKey)||'[]');if(Array.isArray(parsed))saved=[...new Set(parsed.filter(id=>typeof id==='string'&&byId.has(id)))];} catch {}
@@ -25,8 +29,7 @@ function status(e) {
   return 'D-'+Math.round((new Date(e.startDate+'T00:00:00Z')-new Date(today+'T00:00:00Z'))/86400000);
 }
 function imageMarkup(e,hero=false) {
-  const im=e.image;
-  return im?'<img src="'+esc(im.src)+'" alt="'+esc(im.kind==='context'?'주제 참고 사진 · 행사 현장 사진 아님':e.title)+'" '+(hero?'':'loading="lazy"')+' decoding="async"><span class="image-credit">'+esc(im.kind==='context'?'주제 참고 · 현장 사진 아님':'이미지: '+im.credit)+'</span>':'<span class="art-firework" aria-hidden="true">✳</span><span class="illustration-label">축제 테마 일러스트</span>';
+  return eventImage(e,e.image,{hero});
 }
 function card(e) {
   return '<article class="festival-card" data-card-id="'+esc(e.id)+'"><div class="card-visual theme-'+esc(e.theme)+'"><a href="'+esc(e.url)+'" data-preview="'+esc(e.id)+'" aria-label="'+esc(e.title)+' 상세안내">'+imageMarkup(e)+'<span class="status-badge">'+esc(status(e))+'</span><span class="picture-date">▦ '+esc(range(e))+'</span></a><button class="save-button" data-save="'+esc(e.id)+'" aria-label="'+esc(e.title)+' 보관" aria-pressed="false">♡</button></div><div class="card-content"><p class="place-label">⌖ '+esc(e.region)+' · '+esc(e.location)+'</p><h3><a href="'+esc(e.url)+'" data-preview="'+esc(e.id)+'">'+esc(e.title)+'</a></h3><p class="card-description">'+esc(e.program)+'</p>'+keywordTags(e)+(e.scheduleType==='period'?'<p class="card-schedule-note">기간 내 운영일 확인</p>':'')+'<div class="card-bottom"><div><small>입장·참여 비용</small><strong>'+esc(fee(e))+'</strong></div><a href="'+esc(e.url)+'" class="detail-button" data-preview="'+esc(e.id)+'">상세보기 ↗</a></div></div></article>';
@@ -38,6 +41,19 @@ function syncKeywordButtons() {
   document.querySelectorAll('[data-keyword]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.keyword===state.keyword)));
   const el=$('keyword-selection');
   if(el){el.hidden=!state.keyword;el.innerHTML=state.keyword?'<span>선택한 키워드</span><button data-clear-keyword>'+esc(state.keyword)+' <span aria-hidden="true">×</span></button>':'';}
+}
+function syncConditions() {
+  const container=$('dock-active-conditions');if(!container)return;
+  const rows=activeConditions(state,defaultPeriod);
+  container.hidden=!rows.length;
+  container.innerHTML=rows.map(row=>row.removable?'<button data-remove-condition="'+row.key+'" aria-label="'+esc(row.label)+' 조건 해제">'+esc(row.label)+' <span aria-hidden="true">×</span></button>':'<span>'+esc(row.label)+'</span>').join('');
+}
+const regionAnimations=new WeakMap();
+function animateRegion(element) {
+  if(!element||reducedMotion.matches||!element.animate)return;
+  regionAnimations.get(element)?.cancel();
+  const animation=element.animate([{opacity:.35,transform:'translateY(5px)'},{opacity:1,transform:'translateY(0)'}],{duration:180,easing:'ease-out'});
+  regionAnimations.set(element,animation);
 }
 let revealObserver;
 function revealCards() {
@@ -56,21 +72,23 @@ function revealCards() {
 function setupFilterDock() {
   const filter=document.querySelector('.filter-panel'),dock=$('sticky-filterbar'),header=document.querySelector('.site-header'),inner=document.querySelector('.header-inner');
   if(!filter||!dock)return;
-  dock.innerHTML='<div class="sticky-filter-inner"><a class="dock-brand" href="/" aria-label="이번주 축제 홈"><img src="/assets/img/brand/festival-fireworks.png" width="31" height="31" alt=""></a><div class="dock-rows"><div class="dock-pills" role="group" aria-label="고정 지역 필터"><button data-region="all" aria-pressed="true">전국</button>'+regionNames.map(name=>'<button data-region="'+name+'" aria-pressed="false">'+name+'</button>').join('')+'</div><div class="dock-pills dock-themes" role="group" aria-label="고정 테마 필터"><button data-theme="all" aria-pressed="true">전체 테마</button>'+Object.entries(labels).map(([id,label])=>'<button data-theme="'+id+'" aria-pressed="false">'+esc(label)+'</button>').join('')+'</div></div><button class="dock-all-filters" data-scroll-to-filters>전체 조건 ↗</button></div>';
+  dock.innerHTML='<div class="sticky-filter-inner"><a class="dock-brand" href="/" aria-label="이번주 축제 홈"><img src="/assets/img/brand/festival-fireworks.png" width="31" height="31" alt=""></a><div class="dock-rows"><div class="dock-pills" role="group" aria-label="고정 지역 필터"><button data-region="all" aria-pressed="true">전국</button>'+regionNames.map(name=>'<button data-region="'+name+'" aria-pressed="false">'+name+'</button>').join('')+'</div><div class="dock-pills dock-themes" role="group" aria-label="고정 테마 필터"><button data-theme="all" aria-pressed="true">전체 테마</button>'+Object.entries(labels).map(([id,label])=>'<button data-theme="'+id+'" aria-pressed="false">'+esc(label)+'</button>').join('')+'</div><div id="dock-active-conditions" class="dock-conditions" role="group" aria-label="활성 추가 조건" hidden></div></div><button class="dock-all-filters" data-scroll-to-filters>전체 조건 ↑</button></div>';
   let queued=false,active=false;
   function update() {
     queued=false;
     const height=inner.getBoundingClientRect().height;
-    document.documentElement.style.setProperty('--site-header-height',height+'px');
     const bottom=filter.getBoundingClientRect().bottom;
     const next=bottom<=height+(active?24:0);
-    if(next===active)return;
-    active=next;header.classList.toggle('filters-docked',active);dock.hidden=!active;
-    inner.inert=active;inner.setAttribute('aria-hidden',String(active));
+    if(next!==active){
+      active=next;header.classList.toggle('filters-docked',active);dock.hidden=!active;
+      inner.inert=active;inner.setAttribute('aria-hidden',String(active));
+    }
+    document.documentElement.style.setProperty('--site-header-height',(active?dock.getBoundingClientRect().height:height)+'px');
   }
   const queue=()=>{if(!queued){queued=true;requestAnimationFrame(update);}};
   window.addEventListener('scroll',queue,{passive:true});window.addEventListener('resize',queue);
-  if('ResizeObserver' in window)new ResizeObserver(queue).observe(filter);
+  if('ResizeObserver' in window){const observer=new ResizeObserver(queue);observer.observe(filter);observer.observe(dock);}
+  syncConditions();
   update();
 }
 
@@ -108,6 +126,7 @@ function syncPills(pool) {
   if($('only-free'))$('only-free').checked=state.free;
   $('saved-only')?.setAttribute('aria-pressed',String(state.saved));
   syncKeywordButtons();
+  syncConditions();
 }
 function renderGrid() {
   const r=periodRange();
@@ -123,7 +142,7 @@ function renderGrid() {
 }
 function updateURL() {
   const url=new URL(location.href);
-  for(const [key,val,empty] of [['region',state.region,'all'],['theme',state.theme,'all'],['saved',state.saved?'1':'',''],['tag',state.keyword,'']]){if(val!==empty)url.searchParams.set(key,val);else url.searchParams.delete(key);}
+  for(const [key,val,empty] of [['region',state.region,'all'],['theme',state.theme,'all'],['saved',state.saved?'1':'',''],['free',state.free?'1':'',''],['period',state.period,defaultPeriod],['tag',state.keyword,'']]){if(val!==empty)url.searchParams.set(key,val);else url.searchParams.delete(key);}
   history.replaceState(null,'',url);
 }
 let shown=today.slice(0,7)+'-01';
@@ -193,9 +212,10 @@ function setCalendarView(view,{start}={}) {
   }else{
     selectedWeek=null;selected=null;
   }
-  state.period='month';renderCalendar();
+  state.period='month';updateURL();renderCalendar();animateRegion($(calendarView==='week'?'week-view':'month-view'));
 }
 function renderCalendar() {
+  const weekScroll=$('weekly-timetable').scrollLeft;
   const r=monthBounds();
   const monthPool=data.filter(e=>overlaps(e,r.start,r.end));
   const pool=calendarView==='week'?weeklyEvents(data,activeWeek):monthPool;
@@ -233,6 +253,7 @@ function renderCalendar() {
         return '<button class="week-event '+tone+'" data-preview="'+esc(e.id)+'"><span class="week-event-label">'+esc(milestone)+'</span><b>'+esc(e.title.replace(/^\d{4}\s*/,''))+'</b><span>⌖ '+esc(e.region)+'</span><small>'+esc(e.time||'시간 확인 필요')+'</small></button>';
       }).join(''):'<p class="week-no-events">수록 일정 없음</p>')+'</div></section>';
     }).join('');
+    $('weekly-timetable').scrollLeft=weekScroll;
   }
   const chosen=selected||(calendarView==='week'?{start:activeWeek,end:shiftDate(activeWeek,6)}:r);
   const results=list.filter(e=>overlaps(e,chosen.start,chosen.end)).sort((a,b)=>nextDate(a,chosen.start).localeCompare(nextDate(b,chosen.start)));
@@ -243,11 +264,14 @@ function renderCalendar() {
   $('calendar-results').setAttribute('aria-label','선택 일정 카드 목록');
   $('week-feed-controls').hidden=calendarView!=='week'||results.length<2;
   $('calendar-results').innerHTML=results.length?results.map(card).join(''):'<div class="empty-state"><h3>이 조건에서 수록된 일정이 없어요</h3><p>다른 날짜나 지역을 선택해 보세요. 공식 공지를 검토한 자료부터 수록합니다.</p></div>';
+  const singleDay=selected?.start===selected?.end;
+  $('clear-calendar-selection').hidden=calendarView==='month'&&!selected;
+  $('clear-calendar-selection').textContent=calendarView==='week'?(singleDay?'이 주 전체 보기':'선택한 달 보기'):'이 달 전체 보기';
   $('theme-feeds').innerHTML=Object.entries(labels).map(([id,label])=>{
     const rows=list.filter(e=>e.theme===id);
-    return rows.length?'<section class="theme-feed"><h3>'+esc(label)+' <small>'+rows.length+'건</small></h3><div class="horizontal-feed">'+rows.map(card).join('')+'</div></section>':'';
+    return rows.length?'<section class="theme-feed"><div class="theme-feed-heading"><h3>'+esc(label)+' <small>'+rows.length+'건</small></h3>'+(rows.length>1?'<div class="feed-controls"><button data-scroll-feed="prev" data-feed-target="theme-feed-'+id+'" aria-label="'+esc(label)+' 이전 카드">‹</button><button data-scroll-feed="next" data-feed-target="theme-feed-'+id+'" aria-label="'+esc(label)+' 다음 카드">›</button></div>':'')+'</div><div class="horizontal-feed" id="theme-feed-'+id+'">'+rows.map(card).join('')+'</div></section>':'';
   }).join('');
-  syncPills(pool);syncSaved();syncWeather();revealCards();
+  syncPills(pool);syncSaved();syncWeather();revealCards();animateRegion($('calendar-results'));
 }
 function navigateCalendar(step) {
   if(calendarView==='week'){
@@ -283,9 +307,11 @@ function syncHeroTimer() {
   if(!$('hero-main')||heroes.length<2||heroPaused||!heroVisible||heroHover||heroFocus||document.hidden||$('festival-dialog')?.open)return;
   heroTimer=setTimeout(()=>{setHero(heroIndex+1);},3000);
 }
-function setHero(index) {
+function setHero(index,direction=1) {
   if(!heroes.length)return;
-  const previous=heroes[heroIndex];heroIndex=(index+heroes.length)%heroes.length;
+  const nextIndex=(index+heroes.length)%heroes.length;
+  if(nextIndex===heroIndex){syncHeroTimer();return;}
+  const previous=heroes[heroIndex];heroIndex=nextIndex;
   const e=heroes[heroIndex],container=document.querySelector('[data-hero-image]');if(!container)return;
   heroAnimations.forEach(a=>a.cancel());heroAnimations=[];
   container.innerHTML='<div class="hero-frame hero-frame-old">'+imageMarkup(previous,true)+'</div><div class="hero-frame hero-frame-new">'+imageMarkup(e,true)+'</div>';
@@ -293,13 +319,14 @@ function setHero(index) {
   document.querySelector('[data-hero-meta]').textContent='▦ '+range(e)+'　⌖ '+e.region;
   document.querySelector('[data-hero-description]').textContent=e.program;
   document.querySelector('[data-hero-tags]').innerHTML=keywordTags(e,'hero-tags');
+  document.querySelector('[data-hero-credit]').textContent=e.image?(e.image.kind==='context'?'주제 참고 · 현장 사진 아님':'이미지: '+e.image.credit):'테마 일러스트';
   const link=document.querySelector('[data-hero-detail]');link.href=e.url;link.dataset.preview=e.id;
   $('hero-position').textContent=String(heroIndex+1).padStart(2,'0')+' / '+String(heroes.length).padStart(2,'0');
   document.querySelectorAll('[data-hero-slide]').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.heroSlide)===heroIndex)));
   const old=container.querySelector('.hero-frame-old'),fresh=container.querySelector('.hero-frame-new');
   if(!reducedMotion.matches&&fresh.animate){
     heroAnimations.push(old.animate([{opacity:1},{opacity:0}],{duration:650,fill:'forwards'}));
-    heroAnimations.push(fresh.animate([{opacity:0,transform:'translateX(24px) scale(1.045)'},{opacity:1,transform:'translateX(0) scale(1)'}],{duration:650,easing:'cubic-bezier(.2,.7,.2,1)',fill:'forwards'}));
+    heroAnimations.push(fresh.animate([{opacity:0,transform:'translateX('+(direction<0?-24:24)+'px) scale(1.035)'},{opacity:1,transform:'translateX(0) scale(1)'}],{duration:550,easing:'cubic-bezier(.2,.7,.2,1)',fill:'forwards'}));
     heroAnimations.push(document.querySelector('.hero-copy').animate([{opacity:0,transform:'translateY(15px)'},{opacity:1,transform:'translateY(0)'}],{duration:550,easing:'cubic-bezier(.2,.7,.2,1)'}));
   }else old.remove();
   syncKeywordButtons();syncHeroTimer();
@@ -323,22 +350,22 @@ let dialogOpener=null;
 function openPreview(e,opener) {
   if(!dialog?.showModal){location.href=e.url;return;}
   dialogOpener=opener;
-  const im=e.image;
-  const fields=[['▦','기간',e.startDate.replaceAll('-','.')+' — '+fmt(e.endDate)],['◷','시간',e.time||'공식 안내 확인'],['◈','비용',e.fee||fee(e)],['⌖','장소',e.location]];
-  $('dialog-content').innerHTML='<div class="modal-heading"><p class="eyebrow">'+esc(e.region)+' · '+esc(labels[e.theme])+'</p><h2 id="dialog-title">'+esc(e.title)+'</h2><p>'+esc(e.program)+'</p><span class="verified-label">공식 출처 확인 '+esc(e.checkedAt)+'</span></div><dl class="fact-grid">'+fields.map(([ic,label,val])=>'<div><dt><span aria-hidden="true">'+ic+'</span>'+label+'</dt><dd>'+esc(val)+'</dd></div>').join('')+'</dl><div class="modal-tabs" role="tablist" aria-label="상세안내"><button role="tab" id="modal-tab-schedule" aria-controls="modal-panel-schedule" aria-selected="true" data-modal-tab="schedule">일정·프로그램</button><button role="tab" id="modal-tab-booking" aria-controls="modal-panel-booking" aria-selected="false" tabindex="-1" data-modal-tab="booking">예약·비용</button><button role="tab" id="modal-tab-sources" aria-controls="modal-panel-sources" aria-selected="false" tabindex="-1" data-modal-tab="sources">공식 출처</button></div><section class="modal-panel" role="tabpanel" id="modal-panel-schedule" aria-labelledby="modal-tab-schedule"><div class="modal-program"><div><h3>실제 운영일을 확인하세요</h3>'+(e.dates?'<div class="date-pills">'+e.dates.map(d=>'<span>'+d.replaceAll('-','.')+'</span>').join(''):'<p class="notice-box">'+esc(e.scheduleType==='period'?'개최기간 중 · 운영일 확인':'공식 공지의 개최 기간입니다.')+'</p>')+'<p>'+esc(e.scheduleNote||'날짜별 운영과 프로그램은 공식 공지에서 확인하세요.')+'</p><p>'+esc(e.familyNote||'참여 조건은 공식 안내를 확인하세요.')+'</p><p class="microcopy">상태: '+esc(status(e))+(isStale(e.checkedAt,today)?' · 확인 후 7일이 지나 변경 여부 재확인이 필요합니다.':'')+'</p></div><figure><div class="modal-image theme-'+esc(e.theme)+'">'+imageMarkup(e)+'</div>'+(im?'<figcaption>이미지: <a target="_blank" rel="noopener noreferrer" href="'+esc(im.creditUrl)+'">'+esc(im.credit)+'</a> · <a target="_blank" rel="noopener noreferrer" href="'+esc(im.licenseUrl)+'">이용 조건</a></figcaption>':'')+'</figure></div></section><section class="modal-panel" role="tabpanel" id="modal-panel-booking" aria-labelledby="modal-tab-booking" hidden><h3>예약과 참여 조건</h3><p class="notice-box">'+esc(e.fee||fee(e))+'</p><p>'+esc(e.booking||'예약 방법 확인 필요')+'</p><p>'+esc(e.familyNote)+'</p><p class="microcopy">예약 가능 여부·마감·취소는 실시간 정보가 아닙니다. 공식 운영처에서 최종 확인하세요.</p></section><section class="modal-panel" role="tabpanel" id="modal-panel-sources" aria-labelledby="modal-tab-sources" hidden><h3>확인한 공식 안내</h3><div class="sources-list">'+e.sources.map(s=>'<a target="_blank" rel="noopener noreferrer" href="'+esc(s.url)+'"><span>'+esc(s.publisher)+' · 확인 '+esc(s.checkedAt)+'</span><b>'+esc(s.title)+' ↗</b><small>'+esc(s.facts)+'</small></a>').join('')+'</div></section><div class="modal-bottom"><a class="button primary" target="_blank" rel="noopener noreferrer" href="'+esc(e.sources[0].url)+'">공식 안내 확인 ↗</a><a class="button secondary" href="'+esc(e.url)+'">전체 상세보기</a><button class="button secondary" data-save="'+esc(e.id)+'" aria-pressed="false">♡ 일정 보관</button><button class="share-button" data-share="'+esc(e.id)+'" aria-label="이 축제 공유">↗</button></div><p class="microcopy modal-disclaimer">이 사이트는 축제 주최·예약 대행사가 아닙니다. 정보 변경 가능성이 있으므로 출발 전 공식 안내를 확인하세요.</p>';
+  $('dialog-content').innerHTML=modalMarkup(e,{keyword:state.keyword,feeLabel:fee(e),statusLabel:status(e),stale:isStale(e.checkedAt,today)});
   syncSaved();dialog.showModal();document.body.classList.add('modal-open');syncHeroTimer();
+  if(!reducedMotion.matches&&dialog.animate)dialog.animate([{opacity:0,transform:innerWidth<=640?'translateY(24px)':'translateY(8px) scale(.985)'},{opacity:1,transform:'none'}],{duration:220,easing:'cubic-bezier(.2,.7,.2,1)'});
 }
 function closePreview(){dialog.close();}
 dialog?.addEventListener('close',()=>{document.body.classList.remove('modal-open');dialogOpener?.focus();syncHeroTimer();});
 dialog?.addEventListener('click',event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)closePreview();}});
 function selectModalTab(id,focus=false) {
   document.querySelectorAll('[data-modal-tab]').forEach(b=>{const on=b.dataset.modalTab===id;b.setAttribute('aria-selected',String(on));b.tabIndex=on?0:-1;if(on&&focus)b.focus();});
-  ['schedule','booking','sources'].forEach(key=>{$('modal-panel-'+key).hidden=key!==id;});
+  modalTabIds.forEach(key=>{$('modal-panel-'+key).hidden=key!==id;});
+  animateRegion($('modal-panel-'+id));
 }
 document.addEventListener('keydown',event=>{
   const b=event.target.closest?.('[data-modal-tab]');if(!b)return;
-  const keys=['schedule','booking','sources'];let i=keys.indexOf(b.dataset.modalTab);
-  if(event.key==='ArrowRight')i=(i+1)%3;else if(event.key==='ArrowLeft')i=(i+2)%3;else if(event.key==='Home')i=0;else if(event.key==='End')i=2;else return;
+  const keys=modalTabIds;let i=keys.indexOf(b.dataset.modalTab);
+  if(event.key==='ArrowRight')i=(i+1)%keys.length;else if(event.key==='ArrowLeft')i=(i+keys.length-1)%keys.length;else if(event.key==='Home')i=0;else if(event.key==='End')i=keys.length-1;else return;
   event.preventDefault();selectModalTab(keys[i],true);
 });
 document.addEventListener('click',async event=>{
@@ -348,6 +375,7 @@ document.addEventListener('click',async event=>{
     saved=saved.includes(id)?saved.filter(x=>x!==id):[...saved,id];
     let persisted=true;try{localStorage.setItem(storageKey,JSON.stringify(saved));}catch{persisted=false;}
     syncSaved();if(state.saved&&!dialog?.open)render();
+    if(!reducedMotion.matches&&b.isConnected&&b.animate)b.animate([{transform:'scale(.9)'},{transform:'scale(1.1)'},{transform:'scale(1)'}],{duration:260,easing:'ease-out'});
     toast(persisted?(saved.includes(id)?'이 기기의 보관함에 저장했어요.':'보관함에서 꺼냈어요.'):'이 화면에서만 보관됩니다. 브라우저 저장 공간을 사용할 수 없어요.');return;
   }
   if(b.dataset.preview && !event.ctrlKey && !event.metaKey && !event.shiftKey && event.button===0){const e=byId.get(b.dataset.preview);if(e){event.preventDefault();openPreview(e,b);}return;}
@@ -358,11 +386,25 @@ document.addEventListener('click',async event=>{
     const url=new URL(e.url,location.origin).href;
     try{if(navigator.share){await navigator.share({title:e.title,url});}else{await navigator.clipboard.writeText(url);toast('축제 링크를 복사했어요.');}}catch(error){if(error.name!=='AbortError')toast('공유하지 못했어요. 상세 페이지 주소를 복사해 주세요.');}return;
   }
-  if(b.hasAttribute('data-keyword')){state.keyword=state.keyword===b.dataset.keyword?'':b.dataset.keyword;state.limit=9;updateURL();render();if(page==='home')$('discover')?.scrollIntoView({behavior:reducedMotion.matches?'instant':'smooth',block:'start'});return;}
+  if(b.hasAttribute('data-keyword')){
+    const destination=detailTagDestination(page,b.dataset.keyword);
+    if(destination){location.assign(destination);return;}
+    if(dialog?.open)closePreview();
+    state.keyword=state.keyword===b.dataset.keyword?'':b.dataset.keyword;state.limit=9;updateURL();render();
+    const target=page==='calendar'?$('selected-day-section'):$('discover');
+    target?.scrollIntoView({behavior:reducedMotion.matches?'instant':'smooth',block:'start'});return;
+  }
+  if(b.hasAttribute('data-remove-condition')){
+    const key=b.dataset.removeCondition;
+    if(key==='keyword')state.keyword='';else if(key==='free')state.free=false;else if(key==='saved')state.saved=false;else if(key==='period'){
+      state.period=defaultPeriod;if(page==='calendar'){selected=calendarView==='week'?{start:activeWeek,end:shiftDate(activeWeek,6)}:null;}
+    }else return;
+    state.limit=9;updateURL();render();document.querySelector('[data-scroll-to-filters]')?.focus({preventScroll:true});return;
+  }
   if(b.hasAttribute('data-clear-keyword')){state.keyword='';updateURL();render();return;}
   if(b.hasAttribute('data-scroll-to-filters')){document.querySelector('.filter-panel').scrollIntoView({behavior:reducedMotion.matches?'instant':'smooth',block:'start'});return;}
   if(b.hasAttribute('data-calendar-view')){setCalendarView(b.dataset.calendarView);return;}
-  if(b.hasAttribute('data-scroll-feed')){$('calendar-results').scrollBy({left:Math.max(280,$('calendar-results').clientWidth*.8)*(b.dataset.scrollFeed==='next'?1:-1),behavior:reducedMotion.matches?'instant':'smooth'});return;}
+  if(b.hasAttribute('data-scroll-feed')){const feed=$(b.dataset.feedTarget||'calendar-results');feed?.scrollBy({left:Math.max(280,feed.clientWidth*.8)*(b.dataset.scrollFeed==='next'?1:-1),behavior:reducedMotion.matches?'instant':'smooth'});return;}
   if(b.id==='hero-pause'){heroPaused=!heroPaused;syncHeroTimer();return;}
   if(b.hasAttribute('data-region')){state.region=b.dataset.region;state.limit=9;updateURL();render();weatherForRegion();return;}
   if(b.hasAttribute('data-theme')){state.theme=b.dataset.theme;state.limit=9;updateURL();render();return;}
@@ -370,25 +412,33 @@ document.addEventListener('click',async event=>{
   if(b.hasAttribute('data-period')){
     state.period=b.dataset.period;state.limit=9;
     if(page==='calendar'){const r=periodRange();shown=today.slice(0,7)+'-01';selected=['upcoming','month'].includes(state.period)?null:r;selectedWeek=null;calendarView='month';}
-    render();return;
+    updateURL();render();return;
   }
-  if(b.hasAttribute('data-day')){selected={start:b.dataset.day,end:b.dataset.day};selectedWeek=null;state.period='month';renderCalendar();return;}
+  if(b.hasAttribute('data-day')){
+    const date=b.dataset.day;
+    selected=toggleDaySelection(selected,date,{view:calendarView,weekStart:activeWeek});selectedWeek=calendarView==='week'?activeWeek:null;state.period='month';updateURL();renderCalendar();
+    document.querySelector((calendarView==='week'?'#weekly-timetable':'#calendar-grid')+' [data-day="'+date+'"]')?.focus({preventScroll:true});return;
+  }
   if(b.hasAttribute('data-week-start')){setCalendarView('week',{start:b.dataset.weekStart});return;}
-  if(b.hasAttribute('data-hero-slide')){setHero(Number(b.dataset.heroSlide));return;}
-  if(b.id==='hero-prev'){setHero(heroIndex-1);return;}
+  if(b.hasAttribute('data-hero-slide')){const index=Number(b.dataset.heroSlide);setHero(index,index<heroIndex?-1:1);return;}
+  if(b.id==='hero-prev'){setHero(heroIndex-1,-1);return;}
   if(b.id==='hero-next'){setHero(heroIndex+1);return;}
   if(b.id==='load-more'){state.limit+=9;render();return;}
   if(b.id==='saved-only'){state.saved=!state.saved;state.limit=9;updateURL();render();return;}
   if(b.id==='reset-filters'||b.hasAttribute('data-reset-empty')){reset();return;}
   if(b.id==='month-prev'||b.id==='month-next'){navigateCalendar(b.id==='month-next'?1:-1);return;}
   if(b.id==='calendar-today'){shown=today.slice(0,7)+'-01';activeWeek=weekRangeFor(today).start;selected={start:today,end:today};selectedWeek=calendarView==='week'?activeWeek:null;state.period='today';renderCalendar();return;}
-  if(b.id==='clear-calendar-selection'){if(calendarView==='week'){selected={start:activeWeek,end:shiftDate(activeWeek,6)};}else selected=null;selectedWeek=calendarView==='week'?activeWeek:null;state.period='month';renderCalendar();}
+  if(b.id==='clear-calendar-selection'){
+    if(calendarView==='week'&&selected?.start!==selected?.end){setCalendarView('month');document.querySelector('[data-calendar-view="month"]')?.focus();return;}
+    selected=calendarView==='week'?{start:activeWeek,end:shiftDate(activeWeek,6)}:null;selectedWeek=calendarView==='week'?activeWeek:null;state.period='month';updateURL();renderCalendar();
+    document.querySelector('[data-calendar-view="'+calendarView+'"]')?.focus({preventScroll:true});
+  }
 
 });
-$('only-free')?.addEventListener('change',e=>{state.free=e.target.checked;state.limit=9;render();});
+$('only-free')?.addEventListener('change',e=>{state.free=e.target.checked;state.limit=9;updateURL();render();});
 window.addEventListener('storage',e=>{if(e.key!==storageKey)return;try{const v=JSON.parse(e.newValue||'[]');saved=Array.isArray(v)?[...new Set(v.filter(id=>byId.has(id)))]:[];}catch{saved=[];}syncSaved();if(state.saved)render();});
 setupFilterDock();
-if(page==='calendar')loadWeather();else if($('event-cards'))renderGrid();
+if(page==='calendar'){if(state.period!=='month')selected=periodRange();loadWeather();}else if($('event-cards'))renderGrid();
 syncSaved();revealCards();
 $('weather-location')?.addEventListener('change',event=>loadWeather(event.target.value));
 document.addEventListener('keydown',event=>{const button=event.target.closest?.('[data-calendar-view]');if(!button||!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;event.preventDefault();const view=event.key==='Home'?'month':event.key==='End'?'week':button.dataset.calendarView==='month'?'week':'month';setCalendarView(view);document.querySelector('[data-calendar-view="'+view+'"]').focus();});

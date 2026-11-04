@@ -1,0 +1,220 @@
+:root{--reading-muted:#786985;--ease-festival:cubic-bezier(.2,.7,.2,1)}
+body{font-size:15px}
+button,a{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #f97316;outline-offset:4px}
+.hero-main{min-height:650px}
+.hero-copy h1{font-size:clamp(44px,4.7vw,72px);line-height:1.22;letter-spacing:-.045em}
+.hero-event{font-size:29px;line-height:1.5;max-width:700px}
+.hero-description{font-size:14px;line-height:1.85;max-width:620px}
+.hero-meta{font-size:13px;line-height:1.8}
+.hero-controls{gap:5px;padding:5px 9px}
+.hero-controls button{width:40px;height:40px;min-width:40px;min-height:40px}
+.hero-controls #hero-pause{font-size:14px}
+.hero-controls button:hover{background:#ffffff26;border-radius:50%}
+.hero-controls #hero-position{font-size:13px;min-width:65px;text-align:center}
+.hero-top{gap:12px}
+.hero-tags button{font-size:12px;min-height:34px}
+.hero-calendar-link{font-size:13px}
+.mini-event{transition:transform .22s var(--ease-festival),box-shadow .22s,border-color .22s}
+.mini-event:hover,.mini-event:focus-visible{transform:translateY(-3px);box-shadow:0 12px 30px #49396a12;border-color:#f5b58c}
+.mini-copy small{font-size:11px;line-height:1.6}
+.mini-copy h3{line-height:1.5}
+.mini-copy p{font-size:13px;line-height:1.75;color:var(--reading-muted)}
+.mini-copy strong{font-size:12px}
+.mini-badge{font-size:10px;padding:4px 8px;max-width:calc(100% - 14px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.festival-card{transition:transform .22s var(--ease-festival),box-shadow .22s,border-color .22s}
+.festival-card:hover{box-shadow:0 14px 32px #49396a12}
+.card-visual{aspect-ratio:1.65}
+.card-visual img{transition:transform .6s var(--ease-festival)}
+.festival-card:hover .card-visual img{transform:scale(1.035)}
+.card-content{padding:24px}
+.card-content h3{font-size:21px;line-height:1.5}
+.card-description{font-size:14px;line-height:1.8;color:var(--reading-muted)}
+.place-label{font-size:12px;line-height:1.7;color:var(--reading-muted)}
+.card-bottom small{font-size:11px;color:var(--reading-muted)}
+.card-bottom strong{font-size:14px;line-height:1.6}
+.detail-button{font-size:12px;min-height:36px;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+.keyword-tags button{font-size:11px;min-height:32px;padding:5px 11px}
+.keyword-tags button:active{transform:scale(.96)}
+.card-schedule-note{font-size:11px;color:var(--reading-muted)}
+.picture-date{bottom:37px;font-size:12px}
+.image-credit{inset:auto 0 0;width:auto;padding:6px 12px;font-size:10px;line-height:1.5;background:#261d37bb;color:#fff;text-align:left;white-space:normal;z-index:2;backdrop-filter:blur(6px)}
+.hero-image .image-credit{display:none}
+.hero-picture-note{position:absolute;bottom:17px;right:20px;z-index:3;max-width:65%;padding:4px 9px;border-radius:5px;font-size:11px;line-height:1.5;background:#20182da6;color:#fff}
+.mini-image .image-credit{inset:auto 0 0;padding:4px 6px;font-size:10px;text-align:center}
+.detail-image .image-credit,.modal-cover .image-credit{padding:8px 14px;font-size:11px}
+.festival-artwork{position:absolute;inset:0;overflow:hidden;background:linear-gradient(135deg,#eee5ff,#d4cdfb);color:#7651c9;text-align:left}
+.artwork-nature{background:linear-gradient(135deg,#f3f5de,#e1edd3);color:#70894e}
+.artwork-food{background:linear-gradient(135deg,#fff0dc,#ffdabd);color:#c4763d}
+.artwork-light{background:linear-gradient(135deg,#e7ddff,#d5cafa);color:#8562cc}
+.festival-artwork svg{position:absolute;width:59%;height:77%;top:2%;right:0;opacity:.85}
+.artwork-orbit{position:absolute;width:180px;height:180px;border:1px solid currentColor;border-radius:50%;opacity:.14;top:-78px;left:-25px}
+.artwork-orbit.second{width:240px;height:240px;left:auto;top:auto;right:-90px;bottom:-110px}
+.artwork-copy{position:absolute;bottom:64px;left:22px;max-width:80%;font-family:"Festival Paperlogy",sans-serif;font-size:17px;font-weight:700;line-height:1.6}
+.artwork-place{position:absolute;left:22px;top:56px;font-size:11px;letter-spacing:.04em}
+.illustration-label{font-size:10px;right:12px;bottom:10px;z-index:2;color:inherit;background:#ffffff90;border-radius:4px;padding:2px 7px}
+.mini-image .artwork-copy,.mini-image .artwork-place,.mini-image .illustration-label{display:none}
+.mini-image .festival-artwork svg{inset:5% 5%;width:90%;height:90%}
+.hero-image .artwork-copy{display:none}
+.section-title p:not(.eyebrow),.page-intro>p:last-child{font-size:15px;line-height:1.8;color:var(--reading-muted)}
+.filter-panel>.microcopy,.calendar-footnote{font-size:12px;color:var(--reading-muted);line-height:1.85}
+.filter-row>b,.check-label{font-size:12px}
+.pills button{min-height:36px}
+.filter-bottom .quiet-button,.reset-button{font-size:12px;min-height:36px}
+.result-heading p{font-size:12px;line-height:1.8;color:var(--reading-muted)}
+.sticky-filterbar{animation:filter-dock-enter .18s var(--ease-festival)}
+@keyframes filter-dock-enter{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+.dock-pills{padding-right:20px;mask-image:linear-gradient(to right,#000 calc(100% - 14px),transparent)}
+.dock-pills button{min-height:34px;font-size:12px}
+.dock-themes button{font-size:11px}
+.dock-all-filters{font-size:12px;min-height:40px}
+.dock-conditions{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;max-width:100%}
+.dock-conditions button,.dock-conditions>span{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;font-size:11px;background:#fff0e4;border:1px solid #f6d6bd;color:#a25326;border-radius:20px;padding:4px 10px;min-height:30px;flex-shrink:0}
+.dock-conditions button:hover{background:#ffe4cf}
+.calendar-view-switch button{font-size:13px;min-height:40px;padding:8px 18px;transition:background .18s,box-shadow .18s,color .18s}
+.calendar-toolbar{flex-wrap:wrap;gap:16px}
+.weather-toolbar label,.weather-toolbar select{font-size:12px}
+#weather-status{font-size:11px;color:var(--reading-muted)}
+#weather-status[data-status=loading]::before{content:"";display:inline-block;width:6px;height:6px;margin-right:7px;background:var(--orange);border-radius:50%;animation:forecast-pulse 1.2s ease-in-out infinite}
+@keyframes forecast-pulse{50%{opacity:.25}}
+.weather-attribution{font-size:11px;color:var(--reading-muted)}
+.week-sidebar>p,.week-sidebar button small{font-size:11px}
+.week-sidebar button{min-height:58px}
+.weekdays{font-size:11px}
+.day-number{font-size:13px}
+.day-number small{font-size:10px}
+.week-results-link{display:inline-block;font-size:12px;color:var(--orange-deep);margin-top:8px;text-underline-offset:4px}
+.week-view-heading p{font-size:12px;color:var(--reading-muted);line-height:1.8}
+.week-legend{font-size:11px}
+.weekly-timetable{scroll-snap-type:x proximity}
+.week-day-column{scroll-snap-align:start;padding:14px 10px}
+.week-day-head{min-height:55px}
+.week-day-head time{font-size:12px}
+.week-day-counts span{font-size:10px}
+.week-event{padding:12px 10px;gap:8px;transition:border-color .18s,box-shadow .18s}
+.week-event b{font-size:13px}
+.week-event>span:not(.week-event-label),.week-event>small{font-size:11px;color:var(--reading-muted)}
+.week-event-label{font-size:10px}
+.week-no-events{font-size:12px}
+.theme-feed-heading,.weekend-feed-actions{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.theme-feed-heading{margin-bottom:18px}
+.theme-feed-heading h3{margin:0}
+.feed-controls button{width:38px;height:38px;flex-shrink:0;transition:background .18s,transform .18s}
+.feed-controls button:hover{background:#ded5fc;transform:translateY(-1px)}
+.feed-empty{font-size:14px;padding:35px;background:#f5f1fb;border-radius:18px;color:var(--reading-muted)}
+.horizontal-feed{scroll-snap-type:x proximity}
+.horizontal-feed>.festival-card{scroll-snap-align:start}
+.detail-intro{font-size:15px;line-height:1.9;color:var(--reading-muted)}
+.fact-grid dt{font-size:12px}
+.fact-grid dd{font-size:14px;line-height:1.8}
+.detail-section>p,.notice-box{font-size:15px;line-height:1.9}
+.detail-section .microcopy,.image-attribution{font-size:12px;line-height:1.85;color:var(--reading-muted)}
+.sources-list span,.sources-list small{font-size:12px;line-height:1.8}
+.sources-list b{font-size:14px;line-height:1.7}
+.detail-tabs a{font-size:12px;min-height:38px}
+.detail-mobile-media{display:none}
+.aside-note p,.aside-note small{font-size:12px;line-height:1.85}
+.festival-dialog{width:min(1020px,calc(100% - 64px));max-height:90dvh;padding:0;overflow:hidden;border:1px solid #f3eaf8;border-radius:25px;background:#fff}
+#dialog-content{display:flex;flex-direction:column;max-height:90dvh;min-height:0}
+.dialog-close-layer{position:relative;z-index:20;height:0;flex-shrink:0}
+.dialog-close{top:14px;right:14px;width:44px;height:44px;display:grid;place-items:center;line-height:1;background:#ffffffed;border:1px solid #ebe2f1;box-shadow:0 2px 12px #39294d14}
+.modal-scroll-area{overflow-y:auto;overscroll-behavior:contain;min-height:0;scrollbar-width:thin;scrollbar-color:#d7cdea transparent}
+.modal-cover{height:210px;position:relative;overflow:hidden;background:#f0e8fc}
+.modal-cover>img{width:100%;height:100%;object-fit:cover}
+.modal-cover .festival-artwork svg{height:100%;right:20%;width:45%}
+.modal-cover .artwork-copy{left:35px;bottom:45px}
+.modal-image-attribution{font-size:11px;line-height:1.8;padding:9px 32px 0;color:var(--reading-muted)}
+.modal-image-attribution a,.image-attribution a{text-decoration:underline;text-underline-offset:3px}
+.modal-heading{padding:24px 36px 0}
+.modal-heading h2{font-size:32px;line-height:1.5;max-width:850px}
+.modal-heading>p:not(.eyebrow){font-size:14px;line-height:1.85;color:var(--reading-muted)}
+.modal-heading .eyebrow{font-size:12px}
+.modal-heading .verified-label{font-size:11px}
+.festival-dialog .fact-grid{margin:24px 36px;gap:12px}
+.modal-tabs{padding:0 36px 18px;gap:8px;overflow-x:auto}
+.modal-tabs button{font-size:12px;min-height:40px;white-space:nowrap;flex-shrink:0}
+.modal-panel{padding:24px 36px;min-height:210px}
+.modal-panel h3{font-size:23px}
+.modal-panel p{font-size:14px;line-height:1.9}
+.modal-panel .microcopy{font-size:12px;color:var(--reading-muted)}
+.modal-disclaimer{padding:4px 36px 22px;font-size:11px;line-height:1.8;color:var(--reading-muted)}
+.modal-bottom{padding:16px 28px;gap:9px;border-top:1px solid #ede5f6;background:#fff;flex-shrink:0;box-shadow:0 -4px 20px #46335106;display:flex;align-items:center;flex-wrap:wrap}
+.modal-bottom .button{font-size:12px;min-height:42px;padding:10px 16px}
+.modal-bottom .share-button{height:42px;width:42px}
+.festival-dialog::backdrop{background:#24173580;backdrop-filter:blur(5px)}
+.region-point{font-size:12px;min-height:38px;box-shadow:0 3px 12px #55426b13;transition:background .18s,transform .18s,box-shadow .18s}
+.region-point:hover{transform:translateY(-2px);box-shadow:0 7px 20px #55426b1c}
+.region-point[aria-pressed=true]{background:var(--orange);color:#fff;border-color:var(--orange)}
+.region-map-panel>.microcopy,.map-info p{font-size:12px;line-height:1.8;color:var(--reading-muted)}
+@media(max-width:1150px){.hero-copy h1{font-size:58px}.hero-event{font-size:25px}.hero-main{min-height:640px}.hero-controls button{min-width:34px;width:34px;height:36px;min-height:36px}.hero-controls #hero-position{min-width:52px;font-size:11px}.hero-description{font-size:13px}.mini-copy p{font-size:12px}}
+@media(max-width:850px){.weekend-feed-actions{align-items:end;flex-direction:column}.card-content h3{font-size:20px}.hero-main{min-height:620px}.sticky-filter-inner{gap:12px}.dock-all-filters{align-self:start}.modal-heading h2{font-size:28px}}
+@media(max-width:640px){
+  .hero-main{min-height:610px;border-radius:22px}
+  .hero-top{padding:19px 18px;align-items:start;flex-wrap:wrap;gap:10px}
+  .hero-controls{margin-left:auto}
+  .hero-controls button{min-width:36px;width:36px;min-height:40px;height:40px}
+  .hero-controls #hero-position{font-size:11px;min-width:52px}
+  .hero-copy{padding:100px 24px 80px}
+  .hero-copy h1{font-size:49px;line-height:1.25}
+  .hero-event{font-size:23px;margin-top:20px}
+  .hero-description{font-size:13px;line-height:1.8}
+  .hero-meta{font-size:12px}
+  .hero-tags button{font-size:11px;min-height:34px}
+  .hero-actions{gap:13px;flex-wrap:wrap}
+  .hero-actions .button{font-size:13px;min-height:46px;padding:11px 19px}
+  .hero-calendar-link{font-size:12px}
+  .hero-picture-note{right:15px;bottom:12px;font-size:10px;max-width:65%}
+  .orange-badge{font-size:11px;padding:7px 10px}
+  .mini-copy h3{font-size:17px}.mini-copy p{font-size:12px}.mini-copy small{font-size:11px}
+  .mini-image .image-credit{font-size:9px}
+  .card-content{padding:22px}.card-description{font-size:14px}.place-label{font-size:12px}
+  .section-title h2{font-size:24px}.section-title p:not(.eyebrow),.page-intro>p:last-child{font-size:13px}
+  .pills button{font-size:12px;min-height:38px;padding:7px 12px}
+  .filter-row>b,.check-label{font-size:12px}.filter-panel>.microcopy{font-size:11px}
+  .filter-bottom{gap:10px}.filter-bottom .quiet-button,.reset-button{font-size:11px}
+  .keyword-tags button{font-size:11px;min-height:34px}
+  .sticky-filter-inner{width:calc(100% - 24px);gap:9px;align-items:start}
+  .dock-brand{display:none}.dock-rows{min-width:0;gap:7px}
+  .dock-pills button{font-size:11px;min-height:36px;padding:6px 11px}
+  .dock-themes button{font-size:10px;min-height:34px}
+  .dock-all-filters{width:auto;white-space:nowrap;min-height:40px;font-size:11px;padding:7px 10px;line-height:1.6}
+  .dock-conditions button,.dock-conditions>span{font-size:10px;min-height:32px}
+  .calendar-panel{padding:18px 10px}.calendar-toolbar{gap:14px}
+  .calendar-toolbar-actions{width:100%;flex-direction:row;justify-content:space-between;align-items:center;gap:6px}
+  .calendar-view-switch button{font-size:11px;min-height:36px;padding:6px 12px}
+  .calendar-nav button{min-height:36px;min-width:29px;font-size:11px}
+  .weather-toolbar{padding:11px;gap:9px}.weather-toolbar label,.weather-toolbar select{font-size:11px}
+  #weather-status{font-size:10px}.weather-attribution,.calendar-footnote{font-size:10px}
+  .calendar-day{height:91px;padding:6px 3px}.day-number{font-size:12px;gap:3px}
+  .day-number small{font-size:0;width:5px;height:5px;padding:0;border-radius:50%;background:var(--orange);display:inline-block}
+  .day-weather{font-size:9px;gap:1px}.day-weather i{font-size:10px}.no-weather{font-size:9px}
+  .mobile-day-count{font-size:9px;padding:2px 3px}.weekdays span{font-size:8px}
+  .week-view-heading{gap:8px}.week-view-heading p{font-size:11px}.week-view-heading h3{font-size:17px}
+  .week-legend{font-size:10px;flex-direction:column;gap:4px}.week-results-link{font-size:11px}
+  .weekly-timetable{grid-template-columns:repeat(7,minmax(155px,1fr))}.week-event b{font-size:13px}
+  .week-sidebar button small{font-size:10px}.week-sidebar button{min-height:54px}
+  .selected-day-section .section-title{gap:10px}.selected-day-section .section-title h2{font-size:20px}
+  .selected-day-section .quiet-button{font-size:11px;max-width:110px;min-height:38px}
+  .theme-feed-heading{gap:10px}.theme-feed-heading h3{font-size:19px}.feed-controls button{width:36px;height:36px}
+  .weekend-section .section-title{flex-wrap:wrap}.weekend-feed-actions{flex-direction:row;align-items:center;flex-wrap:wrap;gap:12px}
+  .weekend-section .text-link{font-size:11px;margin:0;min-width:0;text-align:left}
+  .detail-mobile-media{display:block;margin:22px 0}.detail-mobile-media>div{position:relative;overflow:hidden;aspect-ratio:1.65;border-radius:14px;background:#f0e8fc}
+  .detail-mobile-media img{width:100%;height:100%;object-fit:cover}.detail-mobile-media figcaption{font-size:11px;color:var(--reading-muted);line-height:1.8;margin-top:8px}
+  .detail-aside .detail-image,.detail-aside>.image-attribution{display:none}
+  .detail-intro{font-size:14px}.detail-section>p,.notice-box{font-size:14px}.fact-grid dd{font-size:12px}.fact-grid dt{font-size:11px}
+  .detail-tabs{gap:5px;overflow-x:auto}.detail-tabs a{font-size:11px;white-space:nowrap}
+  .festival-dialog{width:100%;max-width:100%;max-height:92dvh;border-radius:24px 24px 0 0;margin:auto 0 0;bottom:0;border-bottom:0}
+  #dialog-content{max-height:92dvh}.modal-cover{height:175px}.dialog-close{top:12px;right:12px;width:42px;height:42px}
+  .modal-image-attribution{padding:9px 22px 0;font-size:10px}.modal-heading{padding:20px 22px 0}
+  .modal-heading h2{font-size:25px}.modal-heading>p:not(.eyebrow){font-size:13px}.modal-heading .eyebrow{font-size:11px}
+  .festival-dialog .fact-grid{margin:20px 22px;gap:8px}.festival-dialog .fact-grid dd{font-size:12px}.festival-dialog .fact-grid dt{font-size:11px}
+  .modal-tabs{padding:0 22px 15px;gap:5px}.modal-tabs button{font-size:11px;min-height:38px;padding:7px 11px}
+  .modal-panel{padding:22px;min-height:190px}.modal-panel h3{font-size:21px}.modal-panel p{font-size:13px}.modal-panel .microcopy{font-size:11px}
+  .modal-disclaimer{padding:0 22px 20px;font-size:11px}
+  .modal-bottom{padding:13px 16px calc(13px + env(safe-area-inset-bottom));gap:7px;display:grid;grid-template-columns:1fr 1fr 42px}
+  .modal-bottom .button{font-size:11px;min-height:41px;padding:9px 10px;text-align:center}.modal-bottom>.primary{grid-column:1/-1;font-size:13px;min-height:44px}
+  .modal-bottom .share-button{width:42px;height:41px}.region-point{font-size:11px;min-height:36px;padding:7px 10px}
+  .region-map-panel>.microcopy,.map-info p{font-size:11px}.trust-strip p,.footer-grid p,.footer-note p{font-size:11px;line-height:1.85}
+}
+@media(max-width:360px){.hero-copy{padding-left:20px;padding-right:20px}.hero-copy h1{font-size:44px}.hero-event{font-size:21px}.hero-main{min-height:630px}.hero-top{padding:17px 16px}.hero-controls{gap:1px;padding:3px}.hero-controls button{min-width:34px;width:34px}.hero-controls #hero-position{min-width:48px}.day-weather i{display:none}.weekdays span{font-size:7px}.card-bottom{gap:10px}.card-bottom strong{font-size:13px}.detail-button{font-size:11px;min-width:80px}.modal-tabs{padding-left:18px;padding-right:18px}.modal-tabs button{font-size:10px;padding:7px 9px}}
+@media(prefers-reduced-motion:reduce){.sticky-filterbar,#weather-status[data-status=loading]::before{animation:none}.festival-card,.card-visual img,.mini-event,.keyword-tags button,.region-point,.feed-controls button{transition:none}.festival-card:hover,.festival-card:hover .card-visual img,.mini-event:hover,.feed-controls button:hover,.region-point:hover{transform:none}html{scroll-behavior:auto}}

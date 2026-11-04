@@ -27,3 +27,7 @@ export function dayMilestone(event,date) {
   if(event.endDate===date)return '종료';
   return event.scheduleType==='period'?'운영일 확인':'운영일';
 }
+export function toggleDaySelection(current,date,{view='month',weekStart}={}) {
+  return view==='week'&&current?.start===date&&current?.end===date
+    ?{start:weekStart,end:shiftDate(weekStart,6)}:{start:date,end:date};
+}

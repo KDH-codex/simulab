@@ -1,4 +1,5 @@
 # Cloudflare Pages 배포 및 Git 제외 파일 목록
+archive/
 backup_v1_dark/
 backup_v2_step2/
 scratch/
