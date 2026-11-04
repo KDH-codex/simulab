@@ -5,7 +5,7 @@
 ## 적용 내용
 
 1. 표기: 이번주 축제. 제목·메뉴·푸터·상세·매니페스트·공유 이미지에 같은 표기를 사용한다.
-2. 브랜드·메인 문구: 샌드박스 어그로체 Bold. 제목: 페이퍼로지 Bold/ExtraBold. 일반 글씨: 부산단디명조 Medium/Bold. 지정한 눈누 738/1456/1990의 원본 웹폰트를 수정 없이 자체 제공한다.
+2. 브랜드·메인 문구: 샌드박스 어그로체 Bold. 제목: 페이퍼로지 Bold/ExtraBold. 일반 글씨: 프리텐다드 Variable. 사용자의 후속 요청에 따라 눈누 1990에서 694로 교체했다. 지정한 눈누 738/1456/694의 원본 웹폰트를 수정 없이 자체 제공한다.
 3. 카드 피드: IntersectionObserver로 보이는 카드부터 65ms 간격, 최대 390ms 지연의 순차 등장 효과를 적용한다. 모션 줄이기 환경에서는 이동 효과 없이 내용을 표시한다.
 4. 대표 카드: 3초 자동 전환과 이전·다음·도트에 같은 전환 함수를 사용한다. 일시정지 버튼을 제공하고 포인터·키보드로 읽는 중, 상세 모달·다른 탭·화면 밖에서는 타이머를 멈춘다. 모션 줄이기는 전환 이동 효과를 생략한다.
 5. 태그: 확인된 행사명·프로그램·지역·테마에서 추출한다. 비용·주차·연령 등의 새로운 사실을 추정하지 않는다. 클릭하면 해당 단어로 현재 목록을 필터링하며 해제·조건 초기화를 제공한다.
@@ -29,7 +29,7 @@
 - 어그로체: https://noonnu.cc/font_page/738 · https://sandbox.co.kr/company-ci
 - 페이퍼로지: https://noonnu.cc/font_page/1456 · https://freesentation.blog/paperlogyfont
 - 원본 OFL: https://www.designptn.com/wp-content/uploads/2024/08/OFL-license.txt
-- 부산단디명조: https://noonnu.cc/font_page/1990 · https://www.busan.go.kr/bhbusan
+- 프리텐다드: https://noonnu.cc/font_page/694 · https://github.com/orioncactus/pretendard
 - 공개 서체 출처와 원본 OFL: /legal/fonts.html
 - MET 문서: https://api.met.no/weatherapi/locationforecast/2.0/documentation
 - MET 이용 조건: https://api.met.no/doc/TermsOfService
