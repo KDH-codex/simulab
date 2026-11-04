@@ -1,0 +1,182 @@
+:root{font-family:"Festival Dandi","Batang",serif;font-weight:500;letter-spacing:-.015em}
+h1,h2,h3,.hero-event,.week-event b{font-family:"Festival Paperlogy","Malgun Gothic",sans-serif;font-weight:800}
+.brand b,.hero-copy h1{font-family:"Festival Aggro","Malgun Gothic",sans-serif;font-weight:700;letter-spacing:-.04em}
+.brand b{font-size:24px}
+.hero-copy h1{line-height:1.25}
+.hero-event{font-weight:800}
+.main-nav a{font-size:14px;font-weight:700}
+.pills button{font-size:12px}
+.card-description{font-size:12px;line-height:1.85}
+.place-label{font-size:11px}
+.card-bottom small{font-size:10px}
+.card-bottom strong{font-size:13px}
+.mini-copy p{font-size:12px}
+.section-title p:not(.eyebrow),.page-intro>p:last-child{font-size:14px}
+.keyword-tags{gap:6px}
+.keyword-tags button{border-radius:22px;background:#f0edfc;border:1px solid #e7e1f6;padding:4px 10px;font-size:10px;line-height:1.5;color:#6d5c86;transition:background .18s,color .18s,transform .18s}
+.keyword-tags button:hover{background:#e6ddfb;transform:translateY(-1px)}
+.keyword-tags button[aria-pressed=true]{background:var(--purple);color:white;border-color:var(--purple)}
+.hero-tags{margin-top:18px;gap:7px}
+.hero-tags button{background:#ffffff24;border-color:#ffffff25;color:#fff;padding:5px 13px;font-size:11px;backdrop-filter:blur(8px)}
+.hero-tags button:hover,.hero-tags button[aria-pressed=true]{background:var(--orange);border-color:var(--orange);color:#fff}
+.hero-frame{position:absolute;inset:0;will-change:opacity,transform}
+.hero-frame-old{z-index:0}
+.hero-frame-new{z-index:1}
+.hero-frame-old .image-credit{display:none}
+.hero-controls #hero-pause{font-size:12px}
+.hero-copy{padding-top:20px}
+.hero-controls button{flex-shrink:0}
+.reveal-pending:not(.is-revealed){opacity:0;transform:translateY(22px)}
+.is-revealed{animation:festival-card-reveal .55s cubic-bezier(.2,.7,.2,1) both;animation-delay:var(--reveal-delay,0ms)}
+.reveal-complete{animation:none}
+@keyframes festival-card-reveal{from{opacity:0;transform:translateY(22px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+.keyword-selection{display:flex;align-items:center;gap:10px;margin:3px 0 9px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.keyword-selection>span{font-size:10px;color:#927ea6}
+.keyword-selection>button{border-radius:24px;padding:5px 12px;background:var(--purple);color:#fff;font-size:11px}
+.keyword-selection>button span{margin-left:8px}
+.sticky-filterbar{position:absolute;inset:0 0 auto;background:#faf9fffa;border-bottom:1px solid #e9e2f4;box-shadow:0 6px 22px #33214a09;backdrop-filter:blur(18px);padding:12px 0;pointer-events:auto}
+.sticky-filter-inner{width:min(1440px,calc(100% - 80px));margin:auto;display:flex;align-items:center;gap:20px;min-width:0}
+.dock-brand{flex:0 0 34px}
+.dock-brand img{background:white;border-radius:10px;padding:2px}
+.dock-rows{flex:1;display:grid;gap:6px;min-width:0}
+.dock-pills{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.dock-pills::-webkit-scrollbar{display:none}
+.dock-pills button{flex-shrink:0;white-space:nowrap;padding:5px 13px;border-radius:22px;background:#f0edfb;color:#665476;font-size:11px;line-height:1.6;border:1px solid #e9e2f5}
+.dock-pills button[aria-pressed=true]{background:var(--purple);border-color:var(--purple);color:white}
+.dock-themes button{padding:4px 11px;font-size:10px}
+.dock-themes button[aria-pressed=true]{background:var(--orange);border-color:var(--orange);color:white}
+.dock-all-filters{flex-shrink:0;font-size:11px;white-space:nowrap;color:var(--orange-deep);padding:7px 12px;border-radius:25px;background:#fff0df}
+.site-header.filters-docked{background:transparent;border-color:transparent;backdrop-filter:none;pointer-events:none}
+.filters-docked .header-inner{visibility:hidden;pointer-events:none}
+html{scroll-padding-top:calc(var(--site-header-height,100px) + 18px)}
+.calendar-toolbar-actions{display:flex;align-items:center;gap:15px;flex-wrap:wrap;justify-content:end}
+.calendar-view-switch{display:flex;background:#efecfb;border:1px solid #e4def4;padding:4px;border-radius:30px;gap:3px}
+.calendar-view-switch button{border-radius:25px;padding:7px 19px;min-height:34px;font-size:12px;color:#8d789a;white-space:nowrap}
+.calendar-view-switch button[aria-selected=true]{background:white;box-shadow:0 2px 7px #52397014;color:var(--purple);font-weight:700}
+.weather-toolbar{display:flex;align-items:center;justify-content:space-between;gap:15px;background:#f8f6fd;border:1px solid #eee7f4;border-radius:12px;padding:11px 15px;margin:0 0 22px;flex-wrap:wrap}
+.weather-toolbar>div{display:flex;gap:9px;align-items:center;flex-shrink:0}
+.weather-toolbar label{font-size:11px;color:#897293}
+.weather-toolbar select{font:inherit;font-size:11px;padding:5px 25px 5px 10px;border:1px solid #e1d8ed;border-radius:18px;background:white;color:#6c4d86;max-width:180px}
+#weather-status{font-size:10px;color:#96829f;line-height:1.7}
+#weather-status[data-status=failed]{color:#a65e3a}
+.weather-attribution{font-size:9px;line-height:1.8;color:#9b8ba7;margin-top:10px;padding:0 3px}
+.weather-attribution a{text-decoration:underline;color:#806194}
+.calendar-day{height:140px}
+.day-weather{display:inline-flex;align-items:center;gap:4px;font-family:"Festival Paperlogy",sans-serif;font-weight:700;font-size:10px;color:#8b728e;margin-top:5px;line-height:1.5}
+.day-weather i{font-style:normal;color:#e29d3e;font-size:12px}
+.no-weather{color:#d0c7da;font-size:9px}
+.calendar-view-area{min-width:0}
+.week-view-heading{display:flex;gap:15px;align-items:center;justify-content:space-between;margin:3px 0 19px}
+.week-view-heading h3{font-size:18px}
+.week-view-heading p{font-size:10px;color:#9b88a5;margin-top:5px}
+.week-legend{display:flex;gap:9px;white-space:nowrap;font-size:9px;color:var(--orange-deep)}
+.week-legend>span:last-child{color:var(--indigo)}
+.weekly-timetable{display:grid;grid-template-columns:repeat(7,minmax(120px,1fr));gap:7px;overflow-x:auto;padding-bottom:12px;align-items:stretch;scrollbar-width:thin;scrollbar-color:#d7cdea transparent}
+.week-day-column{background:#f8f5fd;border:1px solid #ede5f6;border-radius:13px;min-width:0;padding:11px 8px;min-height:260px}
+.week-day-column.is-today{border-color:#faad7d;background:#fff6ee}
+.week-day-column.is-selected{box-shadow:inset 0 0 0 2px var(--orange)}
+.week-day-head{padding:0 0 8px;width:100%;display:flex;flex-direction:column;align-items:start;border-bottom:1px solid #e7deef;gap:3px}
+.week-day-head time{font-family:"Festival Paperlogy",sans-serif;font-size:11px;font-weight:700}
+.week-day-head .day-weather{font-size:10px;margin-top:0}
+.week-day-counts{display:flex;gap:4px;flex-wrap:wrap;margin:9px 0 12px}
+.week-day-counts span{font-size:8px;padding:2px 5px;border-radius:5px;background:#fce8d5;color:#a5672b}
+.week-day-counts span:last-child{background:#e9e4ff;color:#7a64b1}
+.week-day-events{display:grid;gap:8px}
+.week-event{padding:10px 8px;border:1px solid #e9e2f3;background:white;text-align:left;border-radius:8px;min-width:0;display:flex;flex-direction:column;gap:6px}
+.week-event:hover{box-shadow:0 3px 10px #4d34771a}
+.week-event b{font-size:11px;line-height:1.6;overflow-wrap:anywhere}
+.week-event>span:not(.week-event-label){font-size:9px;color:#a08aaa}
+.week-event>small{font-size:9px;color:#9b89a4;line-height:1.75;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.week-event.opening{border-left:3px solid var(--orange);background:#fff5e9}
+.week-event.closing{border-left:3px solid var(--indigo);background:#efedff}
+.week-event-label{font-size:8px;color:#a07ca9;border-radius:5px;line-height:1.5}
+.opening .week-event-label{color:#c16820}
+.closing .week-event-label{color:#7260bb}
+.week-no-events{font-size:10px;color:#b9aaca;text-align:center;padding:30px 3px}
+.calendar-result-actions{display:flex;align-items:center;gap:10px}
+.feed-controls{display:flex;gap:6px}
+.feed-controls button{width:30px;height:30px;font-size:20px;line-height:1;border-radius:50%;background:#eee9fe;color:var(--purple)}
+.event-grid.is-week-feed{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin;padding:4px 3px 15px;gap:20px}
+.is-week-feed>.festival-card{flex:0 0 310px;scroll-snap-align:start}
+.is-week-feed>.empty-state{width:100%}
+.document-page pre{font-family:ui-monospace,monospace;font-size:11px;white-space:pre-wrap;line-height:1.8;color:#8b7993;background:#f8f5fc;padding:20px;border-radius:12px}
+@media(max-width:1150px){
+  .sticky-filter-inner{width:calc(100% - 48px);gap:15px}
+  .calendar-toolbar-actions{gap:9px}
+  .calendar-view-switch button{font-size:11px;padding:6px 15px}
+  .weekly-timetable{grid-template-columns:repeat(7,minmax(125px,1fr))}
+  .card-description{font-size:12px}
+}
+@media(max-width:850px){
+  .brand b{font-size:22px}
+  .calendar-toolbar-actions{gap:8px}
+  .calendar-view-switch button{padding:6px 13px}
+  .weather-toolbar{gap:8px}
+  .dock-pills button{font-size:10px;padding:4px 10px}
+  .dock-themes button{font-size:9px;padding:4px 9px}
+  .dock-all-filters{font-size:10px;padding:7px 10px}
+}
+@media(max-width:560px){
+  .brand b{font-size:20px}
+  .main-nav a{font-size:11px}
+  .hero-copy{padding-top:20px}
+  .hero-copy h1{font-size:47px;line-height:1.3}
+  .hero-event{font-size:21px}
+  .hero-controls{gap:2px}
+  .hero-controls button{width:23px}
+  .hero-tags{gap:5px;margin-top:15px}
+  .hero-tags button{font-size:9px;padding:5px 10px}
+  .hero-description{font-size:11px}
+  .hero-main{min-height:530px}
+  .mini-copy h3{font-size:16px}
+  .mini-copy p{font-size:11px}
+  .keyword-tags button{font-size:10px;padding:4px 10px}
+  .pills button{font-size:11px}
+  .card-description{font-size:12px}
+  .card-content h3{font-size:20px}
+  .place-label{font-size:11px}
+  .section-title p:not(.eyebrow),.page-intro>p:last-child{font-size:12px}
+  .sticky-filterbar{padding:10px 0}
+  .sticky-filter-inner{width:calc(100% - 28px);gap:9px}
+  .dock-brand{flex-basis:25px}
+  .dock-brand img{width:25px;height:29px}
+  .dock-rows{gap:6px}
+  .dock-pills{gap:5px}
+  .dock-pills button{padding:5px 10px;font-size:10px}
+  .dock-themes button{font-size:9px;padding:5px 9px}
+  .dock-all-filters{width:42px;padding:5px;font-size:9px;white-space:normal;line-height:1.65}
+  .calendar-toolbar{align-items:start;gap:10px}
+  .calendar-toolbar h2{font-size:23px;margin-top:5px}
+  .calendar-toolbar-actions{flex-direction:column;gap:7px;align-items:end}
+  .calendar-view-switch{padding:3px}
+  .calendar-view-switch button{padding:5px 11px;min-height:29px;font-size:10px}
+  .weather-toolbar{padding:10px 11px;margin-bottom:17px;gap:9px}
+  .weather-toolbar label{font-size:10px}
+  .weather-toolbar select{font-size:10px;max-width:158px}
+  #weather-status{font-size:9px}
+  .calendar-day{height:86px}
+  .day-weather{font-size:8px;gap:2px;margin-top:3px}
+  .day-weather i{font-size:9px}
+  .no-weather{font-size:8px}
+  .weather-attribution{font-size:8px}
+  .week-view-heading{align-items:start;gap:10px;margin-bottom:15px}
+  .week-view-heading h3{font-size:16px}
+  .week-view-heading p{font-size:9px;max-width:200px}
+  .week-legend{gap:5px;font-size:8px}
+  .weekly-timetable{grid-template-columns:repeat(7,minmax(148px,1fr));gap:8px}
+  .week-day-column{padding:12px 10px}
+  .week-day-head time{font-size:12px}
+  .week-event b{font-size:12px}
+  .week-event>small{font-size:10px}
+  .calendar-result-actions{flex-direction:column;align-items:end;gap:8px;flex-shrink:0}
+  .selected-day-section .section-title h2{font-size:19px}
+  .is-week-feed>.festival-card{flex-basis:85%;max-width:330px}
+  .feed-controls button{width:27px;height:27px}
+}
+@media(prefers-reduced-motion:reduce){
+  .reveal-pending:not(.is-revealed){opacity:1;transform:none}
+  .is-revealed{animation:none}
+  .hero-frame{will-change:auto}
+}
+.card-schedule-note{font-size:9px;color:#a18aa7;margin-top:8px;line-height:1.6}
+main{overflow-anchor:none}.weekly-timetable{max-height:640px;overflow:auto;scrollbar-gutter:stable}.week-day-head{position:sticky;top:0;z-index:2;background:#f8f5fd;padding-top:4px}.week-day-column.is-today .week-day-head{background:#fff6ee}

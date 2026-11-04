@@ -1,6 +1,6 @@
 {
-  "name": "이번주축제 — 전국 축제·행사 달력",
-  "short_name": "이번주축제",
+  "name": "이번주 축제 — 전국 축제·행사 달력",
+  "short_name": "이번주 축제",
   "description": "이번 주말 가볼만한 곳, 지역과 날짜로 찾는 전국 축제·행사.",
   "start_url": "/",
   "display": "standalone",

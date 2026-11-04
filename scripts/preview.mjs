@@ -1,3 +1,4 @@
+import {weatherResponse} from '../worker/weather.mjs';
 // Preview the built public output. All Supabase traffic is routed to a local rejection endpoint.
 import http from 'node:http';
 import {readFile} from 'node:fs/promises';
@@ -7,8 +8,11 @@ const root=fileURLToPath(new URL('../dist/',import.meta.url));
 const port=Number(process.argv.find(arg=>arg.startsWith('--port='))?.split('=')[1]||4180);
 if(!Number.isInteger(port)||port<1024||port>65535)throw new Error('Invalid preview port');
 const types={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.svg':'image/svg+xml','.png':'image/png','.json':'application/json','.xml':'application/xml','.txt':'text/plain; charset=utf-8'};
+const weatherCache=new Map();
+const previewCache={async match(request){const v=weatherCache.get(request.url);if(v&&v.expires>Date.now())return v.response.clone();weatherCache.delete(request.url);},async put(request,response){const ttl=Number(response.headers.get('Cache-Control')?.match(/max-age=(\d+)/)?.[1]||3600);weatherCache.set(request.url,{response,expires:Date.now()+ttl*1000});}};
 http.createServer(async(req,res)=>{
  const url=new URL(req.url,'http://localhost');let pathname;try{pathname=decodeURIComponent(url.pathname);}catch{res.writeHead(400);res.end();return;}
+ if(pathname==='/api/weather'){const response=await weatherResponse(new Request(url,{method:req.method}),{cache:previewCache});res.writeHead(response.status,Object.fromEntries(response.headers));res.end(Buffer.from(await response.arrayBuffer()));return;}
  if(pathname.startsWith('/__offline')){res.writeHead(503,{'Content-Type':'application/json'});res.end('{"message":"External data is disabled in local preview"}');return;}
  if(pathname==='/__mobile'){
   const target=url.searchParams.get('path')||'/';const width=Number(url.searchParams.get('width')||360);

@@ -20,7 +20,7 @@ test('public episode has actual six main turns and two short model closings',asy
 
 test('festival front door keeps the complete legacy directory accessible',async()=>{
  const home=await read('index.html'),library=await read('library/index.html'),{ids}=await publicationCatalog();
- assert.match(home,/<title>이번주축제/);assert.match(home,/href="\/calendar\/"/);assert.match(home,/href="\/map\/"/);assert.match(home,/href="\/library\/"/);
+ assert.match(home,/<title>이번주 축제/);assert.match(home,/href="\/calendar\/"/);assert.match(home,/href="\/map\/"/);assert.match(home,/href="\/library\/"/);
  assert.doesNotMatch(home,/class="family-first"|id="tool-directory"/);
  for(const id of ids)assert.ok(library.includes('data-tool="'+id+'"'),id);
  assert.match(library,/href="\/guides\/"/);assert.match(library,/id="archived-tools"/);
