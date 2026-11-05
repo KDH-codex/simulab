@@ -34,18 +34,16 @@ button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible{ou
 .hero-copy h1 .split-line{display:block;color:inherit;white-space:pre}
 .hero-copy h1 .split-char{display:inline-block;color:inherit;transform-origin:50% 100%}
 .hero-copy h1 .heading-accent,.page-intro .heading-accent{color:var(--orange)}
-.split-playing .split-char{animation:festival-split-text 600ms var(--ease-festival) both;animation-delay:calc(var(--split-index)*45ms)}
+.split-playing .split-char{animation:festival-split-text var(--split-duration) var(--ease-festival) both;animation-delay:var(--split-delay)}
 @keyframes festival-split-text{from{opacity:0;transform:translateY(24px) rotate(10deg)}to{opacity:1;transform:translateY(0) rotate(0)}}
 .motion-sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip-path:inset(50%)!important;white-space:nowrap!important;border:0!important}
-.page-intro .typewriter-shell,.page-intro .typewriter-reserve,.page-intro .typewriter-output,.page-intro .typewriter-output>span{color:inherit}
-.typewriter-shell{position:relative;display:inline-block;max-width:100%;vertical-align:top}
-.typewriter-reserve{display:block}
-.is-typing .typewriter-reserve{visibility:hidden}
-.typewriter-output{position:absolute;inset:0;text-align:inherit}
-.typewriter-output[hidden]{display:none}
-.page-intro .typewriter-output>.heading-accent{color:var(--orange)}
-.typewriter-cursor{display:inline-block;font-weight:400;margin-left:2px}
-.typing-finished{animation:festival-cursor-blink .7s step-end 3 forwards}
+.page-intro .typewriter-shell{display:block;color:inherit}
+.typewriter-line{display:block;padding-inline-end:.34em}
+.typewriter-line+.typewriter-line{margin-block-start:.08em}
+.typewriter-char{position:relative;display:inline-block;white-space:pre}
+.is-typing .typewriter-char:not(.is-typed){opacity:0}
+.typewriter-char.has-cursor::after{content:"|";position:absolute;inset-inline-start:100%;inset-block-start:0;font-weight:400;pointer-events:none}
+.motion-complete .typewriter-char.has-cursor::after{animation:festival-cursor-blink .7s step-end 2 forwards}
 @keyframes festival-cursor-blink{0%,45%{opacity:1}46%,100%{opacity:0}}
 .card-content{padding:24px}
 .card-content h3{font-size:21px;line-height:1.5}
@@ -77,6 +75,8 @@ button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible{ou
 .mini-image .festival-artwork svg{inset:5% 5%;width:90%;height:90%}
 .hero-image .artwork-copy{display:none}
 .section-title p:not(.eyebrow),.page-intro>p:last-child{font-size:15px;line-height:1.8;color:var(--reading-muted)}
+.page-intro h1{line-height:1.22}
+.page-intro>p:last-child{margin-top:clamp(16px,2vw,22px)}
 .filter-panel>.microcopy,.calendar-footnote{font-size:12px;color:var(--reading-muted);line-height:1.85}
 .filter-row>b,.check-label{font-size:12px}
 .pills button{min-height:36px}
@@ -240,4 +240,5 @@ button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible{ou
   .region-map-panel>.microcopy,.map-info p{font-size:11px}.trust-strip p,.footer-grid p,.footer-note p{font-size:11px;line-height:1.85}
 }
 @media(max-width:360px){.hero-copy{padding-left:20px;padding-right:20px}.hero-copy h1{font-size:44px}.hero-event{font-size:21px}.hero-main{min-height:630px}.hero-top{padding:17px 16px}.hero-controls{gap:1px;padding:3px}.hero-controls button{min-width:34px;width:34px}.hero-controls #hero-position{min-width:48px}.day-weather i{display:none}.weekdays span{font-size:7px}.card-bottom{gap:10px}.card-bottom strong{font-size:13px}.detail-button{font-size:11px;min-width:80px}.modal-tabs{padding-left:18px;padding-right:18px}.modal-tabs button{font-size:10px;padding:7px 9px}}
-@media(prefers-reduced-motion:reduce){.sticky-filterbar,#weather-status[data-status=loading]::before,.split-playing .split-char,.typing-finished{animation:none}.festival-card,.card-visual img,.mini-image img,.mini-event,.keyword-tags button,.region-point,.feed-controls button{transition:none}.festival-card:hover,.festival-card:hover .card-visual img,.mini-event:hover,.mini-event:hover .mini-image img,.feed-controls button:hover,.region-point:hover{transform:none}.is-typing .typewriter-reserve{visibility:visible}.typewriter-output{display:none}html{scroll-behavior:auto}}
+@media(max-width:640px){[data-festival-page="weekend"] .page-intro h1{font-size:clamp(24px,8vw,31px)}}
+@media(prefers-reduced-motion:reduce){.sticky-filterbar,#weather-status[data-status=loading]::before,.split-playing .split-char{animation:none}.festival-card,.card-visual img,.mini-image img,.mini-event,.keyword-tags button,.region-point,.feed-controls button{transition:none}.festival-card:hover,.festival-card:hover .card-visual img,.mini-event:hover,.mini-event:hover .mini-image img,.feed-controls button:hover,.region-point:hover{transform:none}.is-typing .typewriter-char:not(.is-typed){opacity:1}.typewriter-char.has-cursor::after{content:none}html{scroll-behavior:auto}}

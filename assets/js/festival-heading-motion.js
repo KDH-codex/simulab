@@ -1,47 +1,73 @@
 const escapeText=value=>String(value).replace(/[&<>"']/g,char=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+const segmenter=typeof Intl.Segmenter==='function'?new Intl.Segmenter('ko',{granularity:'grapheme'}):null;
+const characters=text=>segmenter?Array.from(segmenter.segment(text),part=>part.segment):Array.from(text.normalize('NFC'));
+const splitDelay=125;
+const splitDuration=600;
 
 // Static, complete headings remain readable without JavaScript or motion.
 export function splitHeading(lines) {
   let index=0;
-  return '<h1 class="split-heading" data-split-heading aria-label="'+escapeText(lines.join(' '))+'">'+lines.map(line=>'<span class="split-line" aria-hidden="true">'+Array.from(line).map(char=>'<span class="split-char'+(char==='?'?' heading-accent':'')+'" style="--split-index:'+index+++'">'+escapeText(char)+'</span>').join('')+'</span>').join('')+'</h1>';
+  const rows=lines.map(line=>{
+    const letters=characters(line).map(char=>{
+      if(/^\s$/u.test(char))return escapeText(char);
+      return '<span class="split-char'+(char==='?'?' heading-accent':'')+'" style="--split-delay:'+index++*splitDelay+'ms">'+escapeText(char)+'</span>';
+    }).join('');
+    return '<span class="split-line" aria-hidden="true">'+letters+'</span>';
+  });
+  return '<h1 class="split-heading" data-split-heading style="--split-duration:'+splitDuration+'ms" aria-label="'+escapeText(lines.join(' '))+'">'+rows.join('')+'</h1>';
 }
 
-export function typewriterText(text) {
-  const safe=escapeText(text),visual=safe.replace(/\?$/,'<span class="heading-accent">?</span>');
-  return '<span class="typewriter-shell" data-typewriter-text="'+safe+'"><span class="motion-sr-only">'+safe+'</span><span class="typewriter-reserve" aria-hidden="true">'+visual+'</span><span class="typewriter-output" aria-hidden="true" hidden></span></span>';
+export function typewriterText(textOrLines) {
+  const lines=typeof textOrLines==='string'?[[{text:textOrLines}]]:textOrLines;
+  const label=lines.map(line=>line.map(part=>part.text).join('')).join(' ');
+  // The same glyphs reserve the layout and animate. Opacity changes never add a second line box.
+  const rows=lines.map(line=>{
+    const letters=line.map(({text,accent})=>characters(text).map(char=>
+      '<span class="typewriter-char'+(accent?' heading-accent':'')+'">'+escapeText(char)+'</span>'
+    ).join('')).join('');
+    return '<span class="typewriter-line" aria-hidden="true">'+letters+'</span>';
+  });
+  return '<span class="typewriter-shell" data-typewriter><span class="motion-sr-only">'+escapeText(label)+'</span>'+rows.join('')+'</span>';
 }
 
 export function setupHeadingMotion({reducedMotion,root=document}={}) {
   const splits=[...root.querySelectorAll('[data-split-heading]')];
-  const typing=[...root.querySelectorAll('[data-typewriter-text]')];
+  const typing=[...root.querySelectorAll('[data-typewriter]')];
   const timers=new Set();
   const later=(callback,delay)=>{const id=setTimeout(()=>{timers.delete(id);callback();},delay);timers.add(id);};
   const finish=()=>{
     timers.forEach(clearTimeout);timers.clear();
     splits.forEach(el=>{el.classList.remove('split-playing');el.classList.add('motion-complete');});
-    typing.forEach(el=>{el.classList.remove('is-typing');el.classList.add('motion-complete');el.querySelector('.typewriter-output').hidden=true;});
+    typing.forEach(el=>{
+      el.classList.remove('is-typing');
+      el.classList.add('motion-complete');
+      el.querySelector('.has-cursor')?.classList.remove('has-cursor');
+    });
   };
   const reveal=el=>{
     if(el.classList.contains('motion-complete')||reducedMotion.matches)return;
     if(el.hasAttribute('data-split-heading')){
       el.classList.add('split-playing');
-      later(()=>{el.classList.remove('split-playing');el.classList.add('motion-complete');},600+Math.max(0,el.querySelectorAll('.split-char').length-1)*45);
+      const duration=splitDuration+Math.max(0,el.querySelectorAll('.split-char').length-1)*splitDelay;
+      later(()=>{el.classList.remove('split-playing');el.classList.add('motion-complete');},duration);
       return;
     }
-    const chars=Array.from(el.dataset.typewriterText),output=el.querySelector('.typewriter-output');
-    const cursor=document.createElement('span');cursor.className='typewriter-cursor';cursor.textContent='|';
-    output.replaceChildren(cursor);output.hidden=false;el.classList.add('is-typing');
+    const letters=[...el.querySelectorAll('.typewriter-char')];
+    if(!letters.length)return;
+    el.classList.add('is-typing');
     let index=0;
     const tick=()=>{
       if(!el.isConnected||reducedMotion.matches)return;
-      const char=chars[index++];
-      const letter=document.createElement('span');letter.textContent=char;
-      if(char==='?')letter.className='heading-accent';
-      output.insertBefore(letter,cursor);
-      if(index<chars.length)later(tick,60);
-      else{el.classList.add('motion-complete');cursor.classList.add('typing-finished');}
+      letters[index-1]?.classList.remove('has-cursor');
+      letters[index++].classList.add('is-typed','has-cursor');
+      if(index<letters.length)later(tick,60);
+      else{
+        el.classList.remove('is-typing');
+        el.classList.add('motion-complete');
+        later(()=>letters[index-1].classList.remove('has-cursor'),1400);
+      }
     };
-    if(chars.length)later(tick,60);
+    later(tick,60);
   };
   if(reducedMotion.matches){finish();return finish;}
   let observer;
