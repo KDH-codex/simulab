@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {FESTIVALS} from '../tools/kids-outing-calendar/data.js';
-import {coverageForRange,eventStatus,filterEvents,selectAcrossRegions,validateEvent} from '../tools/kids-outing-calendar/model.js';
+import {coverageForRange,eventStatus,filterEvents,selectAcrossRegions,shiftDate,validateEvent} from '../tools/kids-outing-calendar/model.js';
 import {fromTourAPI,fromStandard,parseCSV,prepareCandidates,normalizeRegion} from '../scripts/events/candidates.mjs';
 import {collectTourAPI} from '../scripts/events/tourapi.mjs';
 const window={start:'2026-10-23',end:'2026-12-22'},stamp='2026-10-23T00:00:00Z';
@@ -9,7 +9,8 @@ test('all 17 search regions have actual reviewed records, and missing regions ar
  const coverage=coverageForRange(FESTIVALS,window.start,window.end,'2026-10-26',{includeEnded:true});
  assert.equal(coverage.length,17);assert.ok(coverage.every(row=>row.count>0));
  const empty=coverageForRange([],window.start,window.end,window.start);assert.ok(empty.every(row=>row.count===0&&row.upcomingCount===0&&row.nextDate===null));
- const historical=coverageForRange(FESTIVALS,'2026-10-24','2026-10-25','2027-01-01',{includeEnded:true});
+ const lastEndDate=FESTIVALS.map(event=>event.endDate).sort().at(-1);
+ const historical=coverageForRange(FESTIVALS,'2026-10-24','2026-10-25',shiftDate(lastEndDate,1),{includeEnded:true});
  assert.ok(historical.some(row=>row.count>0));assert.ok(historical.every(row=>row.upcomingCount===0));
 });
 test('cancelled events are hidden and period notices do not promise daily operation',()=>{

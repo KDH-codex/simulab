@@ -2339,5 +2339,1608 @@
         "checkedAt": "2026-11-05"
       }
     ]
+  },
+  {
+    "id": "beautysum-suwon-2026",
+    "title": "2026 뷰티썸 수원",
+    "region": "경기",
+    "theme": "kids",
+    "startDate": "2026-11-05",
+    "endDate": "2026-11-07",
+    "location": "수원컨벤션센터 1층 전시홀 · 경기도 수원시 영통구 광교중앙로 140 (하동)",
+    "time": "10:00~17:00",
+    "program": "화장품·뷰티 브랜드 전시와 제품 및 제조 기술 소개",
+    "feeStatus": "paid",
+    "fee": "현장 등록 10,000원 · 무료 사전등록은 마감 일정 확인",
+    "booking": "현장 등록 또는 주최 측 등록 안내 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "공식 안내",
+        "title": "2026 뷰티썸 수원 공지·예약 안내",
+        "url": "https://beautysumkorea.com/exhibitor/information-back/",
+        "facts": "행사 공식 일정 또는 관람 안내.",
+        "checkedAt": "2026-11-05"
+      },
+      {
+        "publisher": "대한민국 구석구석",
+        "title": "2026 뷰티썸 수원 상세",
+        "url": "https://korean.visitkorea.or.kr/detail/fes_detail.do?cotid=78c39d44-43bc-4d15-b48a-6fbc7b621d2e",
+        "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ]
+  },
+  {
+    "id": "andong-independence-fair-2026",
+    "title": "6.10만세운동 100주년 기념 독립페어",
+    "region": "경북",
+    "theme": "kids",
+    "startDate": "2026-11-04",
+    "endDate": "2026-11-06",
+    "location": "안동국제컨벤션센터 · 경상북도 안동시 도산면 월천길 301",
+    "time": "10:00~16:00",
+    "program": "6·10만세운동 100주년을 주제로 한 전시, 강연과 역사 체험",
+    "feeStatus": "free",
+    "fee": "무료",
+    "booking": "세부 프로그램별 참여·신청 조건은 공식 안내 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "대한민국 구석구석",
+        "title": "6.10만세운동 100주년 기념 독립페어 상세",
+        "url": "https://korean.visitkorea.or.kr/detail/fes_detail.do?cotid=4818775c-f7f9-4552-9216-4d42df393e6c",
+        "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ]
+  },
+  {
+    "id": "busan-traditional-markets-2026",
+    "title": "2026 영호남 전통시장 박람회",
+    "region": "부산",
+    "theme": "food",
+    "startDate": "2026-11-06",
+    "endDate": "2026-11-08",
+    "location": "부산시민공원 내 다솜광장 · 부산광역시 부산진구 시민공원로 73 (범전동)",
+    "time": "10:00~18:00",
+    "program": "영남·호남 전통시장 상품 전시와 지역 음식 체험, 문화공연",
+    "feeStatus": "free",
+    "fee": "무료",
+    "booking": "세부 프로그램별 참여·신청 조건은 공식 안내 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "대한민국 구석구석",
+        "title": "2026 영호남 전통시장 박람회 상세",
+        "url": "https://korean.visitkorea.or.kr/detail/fes_detail.do?cotid=29711701-9e1e-44ef-9b64-606fe865037a",
+        "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ]
+  },
+  {
+    "id": "jeju-pet-fair-2026",
+    "title": "제주 반려동물 문화산업 한마당",
+    "region": "제주",
+    "theme": "kids",
+    "startDate": "2026-11-06",
+    "endDate": "2026-11-08",
+    "location": "한라체육관 일원 · 제주특별자치도 제주시 서광로2길 24 (오라일동)",
+    "time": "10:00~18:00",
+    "program": "반려동물 문화 체험과 펫페어, 반려동물 돌봄 프로그램",
+    "feeStatus": "free",
+    "fee": "무료",
+    "booking": "반려동물 동반 규정과 체험별 참가 방식 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "대한민국 구석구석",
+        "title": "제주 반려동물 문화산업 한마당 상세",
+        "url": "https://korean.visitkorea.or.kr/detail/fes_detail.do?cotid=6cd029b9-1640-4181-a73d-7c2c02f80566",
+        "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ]
+  },
+  {
+    "id": "tongyeong-port-village-2026",
+    "title": "어부장터X포트빌리지 통영",
+    "region": "경남",
+    "theme": "food",
+    "startDate": "2026-11-06",
+    "endDate": "2026-11-08",
+    "location": "트라이애슬론 광장 · 경상남도 통영시 도남동",
+    "time": "10:00~21:00 (라스트오더 20:00)",
+    "program": "통영 굴·장어 등 지역 수산물을 활용한 미식 부스와 수산식품 판매",
+    "feeStatus": "mixed",
+    "fee": "입장 무료 · 음식과 상품 구매 별도",
+    "booking": "세부 프로그램별 참여·신청 조건은 공식 안내 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "공식 안내",
+        "title": "어부장터X포트빌리지 통영 공지·예약 안내",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13536",
+        "facts": "행사 공식 일정 또는 관람 안내.",
+        "checkedAt": "2026-11-05"
+      },
+      {
+        "publisher": "대한민국 구석구석",
+        "title": "어부장터X포트빌리지 통영 상세",
+        "url": "https://korean.visitkorea.or.kr/detail/fes_detail.do?cotid=447e07a8-aac6-4f9b-b8a7-af4dace40cd4",
+        "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ]
+  },
+  {
+    "id": "busan-illustration-fair-2026",
+    "title": "부산일러스트레이션페어V.7",
+    "region": "부산",
+    "theme": "kids",
+    "startDate": "2026-11-06",
+    "endDate": "2026-11-08",
+    "location": "벡스코 제2전시장 4홀 · 부산광역시 해운대구 APEC로 55 (우동)",
+    "time": "[11월6일~7일] · - 10:00~18:00 · - 입장 마감 17:30 · [11월8일] · - 10:00~17:00 · - 입장 마감 16:30",
+    "program": "일러스트레이션 창작자 부스, 특별전과 관람객 체험",
+    "feeStatus": "paid",
+    "fee": "일반 성인·청소년 11,000원 · 할인 및 무료 대상은 공식 안내",
+    "booking": "관람권과 할인 증빙 조건은 주최 측 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "공식 안내",
+        "title": "부산일러스트레이션페어V.7 공지·예약 안내",
+        "url": "https://busanillustrationfair.co.kr/",
+        "facts": "행사 공식 일정 또는 관람 안내.",
+        "checkedAt": "2026-11-05"
+      },
+      {
+        "publisher": "대한민국 구석구석",
+        "title": "부산일러스트레이션페어V.7 상세",
+        "url": "https://korean.visitkorea.or.kr/detail/fes_detail.do?cotid=3d700c01-0ab0-450f-9f0a-170a889655e8",
+        "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ]
+  },
+  {
+    "id": "gongju-hasuk-festival-2026",
+    "title": "하숙동 1번지",
+    "region": "충남",
+    "theme": "kids",
+    "startDate": "2026-11-06",
+    "endDate": "2026-11-08",
+    "location": "공주 하숙마을 · 충청남도 공주시 당간지주길 21 (반죽동)",
+    "time": "14:00~20:00",
+    "program": "옛 하숙문화를 주제로 한 골목 공연과 만들기 체험",
+    "feeStatus": "mixed",
+    "fee": "무료 (일부 체험비 별도)",
+    "booking": "세부 프로그램별 참여·신청 조건은 공식 안내 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "대한민국 구석구석",
+        "title": "하숙동 1번지 상세",
+        "url": "https://korean.visitkorea.or.kr/detail/fes_detail.do?cotid=2c19fb23-8e62-47a9-ac97-002759ecbbd6",
+        "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ]
+  },
+  {
+    "id": "jinju-agrex-experience-2026",
+    "title": "2026 진주국제농식품박람회 농업체험관",
+    "region": "경남",
+    "theme": "kids",
+    "startDate": "2026-11-04",
+    "endDate": "2026-11-08",
+    "location": "진주종합경기장 일원 · 경상남도 진주시 동진로 415 (충무공동)",
+    "time": "10:00~18:00",
+    "program": "원예·공예, 농업 및 낙농 체험을 운영하는 박람회 농업체험관",
+    "feeStatus": "paid",
+    "fee": "관광공사 안내상 농업체험관 체험비 1,000원",
+    "booking": "체험별 신청과 요금 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "공식 안내",
+        "title": "2026 진주국제농식품박람회 농업체험관 공지·예약 안내",
+        "url": "https://www.jinju.go.kr/agrex/kor/",
+        "facts": "행사 공식 일정 또는 관람 안내.",
+        "checkedAt": "2026-11-05"
+      },
+      {
+        "publisher": "대한민국 구석구석",
+        "title": "2026 진주국제농식품박람회 농업체험관 상세",
+        "url": "https://korean.visitkorea.or.kr/detail/fes_detail.do?cotid=2f5f0351-6dd6-4ca6-8cac-20027bea822e",
+        "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ]
+  },
+  {
+    "id": "busan-burak-festa-2026",
+    "title": "부락페스타",
+    "region": "부산",
+    "theme": "kids",
+    "startDate": "2026-11-06",
+    "endDate": "2026-11-08",
+    "location": "부산대역 1번출구 앞 차없는거리 일원 · 부산광역시 금정구 장전로12번길 55 (장전동)",
+    "time": "15:00 ~ 21:00 (금 17:00 ~ 21:00)",
+    "program": "부산대 앞 골목에서 레트로 공연, 댄스와 상권 연계 먹거리",
+    "feeStatus": "free",
+    "fee": "무료",
+    "booking": "세부 프로그램별 참여·신청 조건은 공식 안내 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "대한민국 구석구석",
+        "title": "부락페스타 상세",
+        "url": "https://korean.visitkorea.or.kr/detail/fes_detail.do?cotid=8600f9cf-7aa1-4e85-bd5d-d0880fa12611",
+        "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ]
+  },
+  {
+    "id": "jeongdok-family-book-festival-2026",
+    "title": "온 가족 책 잔치",
+    "region": "서울",
+    "theme": "kids",
+    "startDate": "2026-11-07",
+    "endDate": "2026-11-07",
+    "location": "서울특별시교육청정독도서관 야외정원 · 서울특별시 종로구 북촌로5길 48 (화동)",
+    "time": "11:00~17:00",
+    "program": "야외 독서 공간, 도서 나눔 장터와 가족 독서 체험",
+    "feeStatus": "free",
+    "fee": "무료",
+    "booking": "체험별 운영 및 신청 조건은 도서관 공지 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "공식 안내",
+        "title": "온 가족 책 잔치 공지·예약 안내",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=12664",
+        "facts": "행사 공식 일정 또는 관람 안내.",
+        "checkedAt": "2026-11-05"
+      },
+      {
+        "publisher": "대한민국 구석구석",
+        "title": "온 가족 책 잔치 상세",
+        "url": "https://korean.visitkorea.or.kr/detail/fes_detail.do?cotid=578996ff-b883-4ea5-bb9d-d813521eaf51",
+        "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ]
+  },
+  {
+    "id": "anseong-toktok-festival-2026",
+    "title": "2026 안성맞춤 상설공연 “톡톡달콤 페스티벌”",
+    "region": "경기",
+    "theme": "kids",
+    "startDate": "2026-11-07",
+    "endDate": "2026-11-07",
+    "location": "용설아트스페이스(죽산공연장) · 경기도 안성시 죽산면 용설호수길 101",
+    "time": "11:00~16:00",
+    "program": "실내 공연과 야외 버스킹, 버블쇼와 놀이 체험",
+    "feeStatus": "mixed",
+    "fee": "무료(일부 프로그램 유료)",
+    "booking": "세부 프로그램별 참여·신청 조건은 공식 안내 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "대한민국 구석구석",
+        "title": "2026 안성맞춤 상설공연 “톡톡달콤 페스티벌” 상세",
+        "url": "https://korean.visitkorea.or.kr/detail/fes_detail.do?cotid=40525539-a4d4-4bfd-9db4-01a324cb0026",
+        "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ]
+  },
+  {
+    "id": "gimpo-marines-festival-2026",
+    "title": "김포 해병대 문화축제 in 대명항",
+    "region": "경기",
+    "theme": "kids",
+    "startDate": "2026-11-07",
+    "endDate": "2026-11-07",
+    "location": "김포함상공원 및 대명항 일원 · 경기도 김포시 대곶면 대명항1로 110-36",
+    "time": "11:00~19:00",
+    "program": "해병대 장비 전시, 군악·의장대 공연과 참여 체험",
+    "feeStatus": "free",
+    "fee": "무료",
+    "booking": "세부 프로그램별 참여·신청 조건은 공식 안내 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "공식 안내",
+        "title": "김포 해병대 문화축제 in 대명항 공지·예약 안내",
+        "url": "https://www.gimpo.go.kr/u/53850",
+        "facts": "행사 공식 일정 또는 관람 안내.",
+        "checkedAt": "2026-11-05"
+      },
+      {
+        "publisher": "대한민국 구석구석",
+        "title": "김포 해병대 문화축제 in 대명항 상세",
+        "url": "https://korean.visitkorea.or.kr/detail/fes_detail.do?cotid=ec9611c7-83c2-48dc-8ead-9094df5e0253",
+        "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ]
+  },
+  {
+    "id": "gyeongju-peace-ondam-2026",
+    "title": "평화온담",
+    "region": "경북",
+    "theme": "kids",
+    "startDate": "2026-11-07",
+    "endDate": "2026-11-07",
+    "location": "첨성대 옆 잔디광장 · 경상북도 경주시 황남동 104-1",
+    "time": "11:00~17:00",
+    "program": "평화와 통일을 주제로 한 공연 및 어린이 체험",
+    "feeStatus": "free",
+    "fee": "무료",
+    "booking": "세부 프로그램별 참여·신청 조건은 공식 안내 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "공식 안내",
+        "title": "평화온담 공지·예약 안내",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13449",
+        "facts": "행사 공식 일정 또는 관람 안내.",
+        "checkedAt": "2026-11-05"
+      },
+      {
+        "publisher": "대한민국 구석구석",
+        "title": "평화온담 상세",
+        "url": "https://korean.visitkorea.or.kr/detail/fes_detail.do?cotid=92ea2e7d-8973-46ef-8ae1-38aaf990e86f",
+        "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ],
+    "familyNote": "행사 위치는 경주 첨성대 옆 잔디광장입니다."
+  },
+  {
+    "id": "ansan-science-festival-2026",
+    "title": "안산사이언스밸리(ASV) 과학축제",
+    "region": "경기",
+    "theme": "kids",
+    "startDate": "2026-11-07",
+    "endDate": "2026-11-08",
+    "location": "한양대학교 ERICA 캠퍼스 · 경기도 안산시 상록구 한양대학로 55 (사동)",
+    "time": "10:00~16:00",
+    "program": "AI와 로봇 등 과학기술 체험, 토크와 로봇 공연",
+    "feeStatus": "free",
+    "fee": "무료",
+    "booking": "체험별 예약 및 현장 접수 안내 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "공식 안내",
+        "title": "안산사이언스밸리(ASV) 과학축제 공지·예약 안내",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13385",
+        "facts": "행사 공식 일정 또는 관람 안내.",
+        "checkedAt": "2026-11-05"
+      },
+      {
+        "publisher": "대한민국 구석구석",
+        "title": "안산사이언스밸리(ASV) 과학축제 상세",
+        "url": "https://korean.visitkorea.or.kr/detail/fes_detail.do?cotid=939aeeab-f156-45f9-bdce-8c8f44981785",
+        "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ]
+  },
+  {
+    "id": "masan-outdoor-library-2026",
+    "title": "마산야외도서관 [오롯이 마도로]",
+    "region": "경남",
+    "theme": "kids",
+    "startDate": "2026-11-07",
+    "endDate": "2026-11-08",
+    "location": "마산도서관 앞 야외주차장 · 경상남도 창원시 마산합포구 용마산길 12 (산호동)",
+    "time": "10:00~17:00",
+    "program": "야외 독서 공간과 그림책 낭독, 가족 영화",
+    "feeStatus": "free",
+    "fee": "무료",
+    "booking": "세부 프로그램별 참여·신청 조건은 공식 안내 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "대한민국 구석구석",
+        "title": "마산야외도서관 [오롯이 마도로] 상세",
+        "url": "https://korean.visitkorea.or.kr/detail/fes_detail.do?cotid=b4206858-dc31-449c-b0c6-aa9e504eeb83",
+        "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ]
+  },
+  {
+    "id": "seoul-materialism-exhibition-2026",
+    "title": "MATERIALISM｜비야케 잉겔스 그룹 기획 전시",
+    "region": "서울",
+    "theme": "kids",
+    "startDate": "2026-11-07",
+    "endDate": "2027-02-28",
+    "location": "서울도시건축전시관 · 서울특별시 중구 세종대로 119 (태평로1가)",
+    "time": "10:00~18:00",
+    "program": "건축 재료를 중심으로 BIG의 건축 작업을 소개하는 전시",
+    "feeStatus": "free",
+    "fee": "무료",
+    "booking": "전시 운영일과 관람 조건 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "대한민국 구석구석",
+        "title": "MATERIALISM｜비야케 잉겔스 그룹 기획 전시 상세",
+        "url": "https://korean.visitkorea.or.kr/detail/fes_detail.do?cotid=391d3fb6-2a69-4055-a122-835485238cff",
+        "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ],
+    "scheduleType": "period",
+    "scheduleNote": "기간 중 실제 운영일과 회차는 공식 공지에서 확인하세요."
+  },
+  {
+    "id": "gwangju-yangdong-hongtak-2026",
+    "title": "양동 백투더 장(BACK TO THE 장) 홍탁페스타",
+    "region": "광주",
+    "theme": "food",
+    "startDate": "2026-11-12",
+    "endDate": "2026-11-14",
+    "location": "광주 양동시장 · 전남광주통합특별시 서구 천변좌로 238 (양동)",
+    "time": "14:00~21:00",
+    "program": "양동시장을 무대로 홍어와 지역 먹거리, 공연을 소개하는 행사",
+    "feeStatus": "mixed",
+    "fee": "입장 무료 · 음식 구매 별도",
+    "booking": "세부 프로그램별 참여·신청 조건은 공식 안내 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "대한민국 구석구석",
+        "title": "양동 백투더 장(BACK TO THE 장) 홍탁페스타 상세",
+        "url": "https://korean.visitkorea.or.kr/detail/fes_detail.do?cotid=d2e10cea-6d1e-4a45-867f-ea90b67daf36",
+        "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ]
+  },
+  {
+    "id": "seoul-k-sool-festival-2026",
+    "title": "2026 대한민국 우리술 대축제",
+    "region": "서울",
+    "theme": "food",
+    "startDate": "2026-11-13",
+    "endDate": "2026-11-15",
+    "location": "aT센터 제1전시장 · 서울특별시 서초구 강남대로 27 (양재동)",
+    "time": "13:00~20:00 · ※ 행사 마지막 날 19:00 종료",
+    "program": "전국 양조장의 전통주 전시, 시음 및 판매",
+    "feeStatus": "paid",
+    "fee": "입장료 15,000원",
+    "booking": "입장권 구매와 시음 연령 조건은 공식 안내 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "대한민국 구석구석",
+        "title": "2026 대한민국 우리술 대축제 상세",
+        "url": "https://korean.visitkorea.or.kr/detail/fes_detail.do?cotid=4cf5a815-ab48-4257-b505-8c15bd28f7d2",
+        "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ],
+    "familyNote": "미성년자는 보호자와 동반할 때 입장 가능합니다. 주류 시음 조건은 현장에서 확인하세요."
+  },
+  {
+    "id": "yeongju-apple-seoul-2026",
+    "title": "영주 사과축제",
+    "region": "서울",
+    "theme": "food",
+    "startDate": "2026-11-13",
+    "endDate": "2026-11-15",
+    "location": "서울시 청계광장 · 서울 중구 태평로1가 1",
+    "time": "10:00~19:00",
+    "program": "영주 사과 전시·직거래, 시식과 체험을 진행하는 서울 회차",
+    "feeStatus": "mixed",
+    "fee": "무료(일부 체험프로그램 유료)",
+    "booking": "세부 프로그램별 참여·신청 조건은 공식 안내 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "공식 안내",
+        "title": "영주 사과축제 공지·예약 안내",
+        "url": "https://yctf.or.kr/aspf/",
+        "facts": "행사 공식 일정 또는 관람 안내.",
+        "checkedAt": "2026-11-05"
+      },
+      {
+        "publisher": "대한민국 구석구석",
+        "title": "영주 사과축제 상세",
+        "url": "https://korean.visitkorea.or.kr/detail/fes_detail.do?cotid=3ed5809a-d2da-487b-9f18-a88373d9a783",
+        "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ]
+  },
+  {
+    "id": "pocheon-petstar-2026",
+    "title": "포천펫스타",
+    "region": "경기",
+    "theme": "kids",
+    "startDate": "2026-11-14",
+    "endDate": "2026-11-14",
+    "location": "포천 아트밸리 · 경기도 포천시 신북면 아트밸리로 234",
+    "time": "10:00~ 18:00",
+    "program": "반려견과 함께 하는 야외 체험, 산책과 전문가 토크",
+    "feeStatus": "paid",
+    "fee": "포천아트밸리 입장료 적용",
+    "booking": "반려동물 동반 및 체험별 등록 안내 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "공식 안내",
+        "title": "포천펫스타 공지·예약 안내",
+        "url": "https://p-petstar.imweb.me/",
+        "facts": "행사 공식 일정 또는 관람 안내.",
+        "checkedAt": "2026-11-05"
+      },
+      {
+        "publisher": "대한민국 구석구석",
+        "title": "포천펫스타 상세",
+        "url": "https://korean.visitkorea.or.kr/detail/fes_detail.do?cotid=445e541a-a345-4af4-a817-0a9e16c3d4de",
+        "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ]
+  },
+  {
+    "id": "busan-run-festival-2026",
+    "title": "달려라부산 러닝페스티벌",
+    "region": "부산",
+    "theme": "kids",
+    "startDate": "2026-11-14",
+    "endDate": "2026-11-14",
+    "location": "부산항북항 친수공원 · 부산광역시 동구 이순신대로 164 (초량동)",
+    "time": "12:00~19:00",
+    "program": "북항 러닝, 시민 체력 프로그램과 러닝 콘서트",
+    "feeStatus": "free",
+    "fee": "무료",
+    "booking": "참가 신청과 종목별 정원은 부산시 공지 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "공식 안내",
+        "title": "달려라부산 러닝페스티벌 공지·예약 안내",
+        "url": "https://www.busan.go.kr/depart/culture0101/1761485",
+        "facts": "행사 공식 일정 또는 관람 안내.",
+        "checkedAt": "2026-11-05"
+      },
+      {
+        "publisher": "대한민국 구석구석",
+        "title": "달려라부산 러닝페스티벌 상세",
+        "url": "https://korean.visitkorea.or.kr/detail/fes_detail.do?cotid=6422c7d7-e367-4992-a9f6-9c1a5e13a89f",
+        "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ]
+  },
+  {
+    "id": "sejong-mind-walk-2026",
+    "title": "2026 국민건강 리부트 마음건강 걷기대회",
+    "region": "세종",
+    "theme": "kids",
+    "startDate": "2026-11-14",
+    "endDate": "2026-11-14",
+    "location": "세종중앙공원 도시축제마당 · 세종특별자치시 중앙공원로 60 (세종동)",
+    "time": "09:00~13:00",
+    "program": "세종중앙공원 걷기와 건강 캠페인, 공연 및 체험",
+    "feeStatus": "free",
+    "fee": "무료",
+    "booking": "걷기 참여와 부대 프로그램의 접수 조건 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "대한민국 구석구석",
+        "title": "2026 국민건강 리부트 마음건강 걷기대회 상세",
+        "url": "https://korean.visitkorea.or.kr/detail/fes_detail.do?cotid=17426fc4-b0a8-4182-b16c-0a139768644a",
+        "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ]
+  },
+  {
+    "id": "asan-ginkgo-art-street-2026",
+    "title": "2026 은행나무길 거리예술제 〈아트 스트리트：Art Street〉",
+    "region": "충남",
+    "theme": "kids",
+    "startDate": "2026-11-14",
+    "endDate": "2026-11-15",
+    "location": "아산 은행나무길 (아산시이순신관광체험센터 앞) · 충청남도 아산시 염치읍 은행나무길 293",
+    "time": "13:00~17:00",
+    "program": "은행나무길 서커스와 거리공연, 퍼레이드와 아트마켓",
+    "feeStatus": "free",
+    "fee": "무료",
+    "booking": "세부 프로그램별 참여·신청 조건은 공식 안내 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "공식 안내",
+        "title": "2026 은행나무길 거리예술제  〈아트 스트리트：Art Street〉 공지·예약 안내",
+        "url": "https://culture.asan.go.kr/_culture/new/developer/m_board/m_board.asp?tb_nm=tbl_business_culture_art&m_mode=view&idx=399&genre=01",
+        "facts": "행사 공식 일정 또는 관람 안내.",
+        "checkedAt": "2026-11-05"
+      },
+      {
+        "publisher": "대한민국 구석구석",
+        "title": "2026 은행나무길 거리예술제  〈아트 스트리트：Art Street〉 상세",
+        "url": "https://korean.visitkorea.or.kr/detail/fes_detail.do?cotid=865f8abb-d516-4e33-8058-9df5bf20c717",
+        "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ]
+  },
+  {
+    "id": "changwon-dotseom-picnic-2026",
+    "title": "2026 렉키의 수상한 피크닉",
+    "region": "경남",
+    "theme": "kids",
+    "startDate": "2026-11-14",
+    "endDate": "2026-11-15",
+    "location": "창원 돝섬 · 경상남도 창원시 마산합포구 돝섬1길 275 (월영동)",
+    "time": "11:00~17:00",
+    "program": "돝섬 피크닉, 가족 놀이와 미션 투어 및 요트 체험",
+    "feeStatus": "mixed",
+    "fee": "행사장 무료 · 도선료 9,000원 · 미션 투어와 요트 체험 별도",
+    "booking": "승선과 유료 체험 이용 조건 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "대한민국 구석구석",
+        "title": "2026 렉키의 수상한 피크닉 상세",
+        "url": "https://korean.visitkorea.or.kr/detail/fes_detail.do?cotid=21309bf7-c62c-4f57-9e65-2c3526510d8d",
+        "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ]
+  },
+  {
+    "id": "seoul-quad-flames-2026",
+    "title": "쿼드, 연극의 질문들：〈화염〉",
+    "region": "서울",
+    "theme": "kids",
+    "startDate": "2026-11-14",
+    "endDate": "2026-12-06",
+    "location": "대학로극장 쿼드 · 서울특별시 종로구 동숭길 122 (동숭동)",
+    "time": "- 평일 19:30 · - 주말 15:00 · - 11/14(토) 18:00 · ※ 월요일 공연 없음",
+    "program": "대학로극장 쿼드의 연극 〈화염〉",
+    "feeStatus": "paid",
+    "fee": "전석 50,000원 · 할인은 공연장 안내 확인",
+    "booking": "공식 공연 페이지에서 회차를 선택해 예매",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "공식 안내",
+        "title": "쿼드, 연극의 질문들：〈화염〉 공지·예약 안내",
+        "url": "https://www.quad.or.kr/product/performance/1278",
+        "facts": "행사 공식 일정 또는 관람 안내.",
+        "checkedAt": "2026-11-05"
+      },
+      {
+        "publisher": "대한민국 구석구석",
+        "title": "쿼드, 연극의 질문들：〈화염〉 상세",
+        "url": "https://korean.visitkorea.or.kr/detail/fes_detail.do?cotid=8fa56f70-c072-478b-9c52-6ae363441f46",
+        "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ],
+    "scheduleType": "period",
+    "scheduleNote": "기간 중 실제 운영일과 회차는 공식 공지에서 확인하세요.",
+    "familyNote": "공연 관람은 만 16세 이상입니다. 월요일 공연 없음. 예매 페이지에서 실제 회차를 확인하세요."
+  },
+  {
+    "id": "busan-folk-arts-festival-2026",
+    "title": "부산종합민속예술제",
+    "region": "부산",
+    "theme": "kids",
+    "startDate": "2026-11-15",
+    "endDate": "2026-11-15",
+    "location": "부산 부산진구 부산시민공원 하야리아잔디광장",
+    "time": "11:00~17:00",
+    "program": "부산의 무형유산 공연과 전통문화 체험",
+    "feeStatus": "free",
+    "fee": "무료",
+    "booking": "프로그램별 체험 참여 방식 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "공식 안내",
+        "title": "부산종합민속예술제 공지·예약 안내",
+        "url": "https://www.busanfolkartfestival.com/",
+        "facts": "10월 23일 변경 공지로 11월 15일과 하야리아잔디광장 확인.",
+        "checkedAt": "2026-11-05"
+      },
+      {
+        "publisher": "대한민국 구석구석",
+        "title": "부산종합민속예술제 상세",
+        "url": "https://korean.visitkorea.or.kr/detail/fes_detail.do?cotid=128588ed-e4b6-45b5-9ba2-c469642df02a",
+        "facts": "최신 일정 필드와 무료 관람 확인. 본문 구일정은 주최 측 변경 공지로 정정.",
+        "checkedAt": "2026-11-05"
+      }
+    ],
+    "familyNote": "주최 측 변경 공지에 따라 11월 15일에 열립니다."
+  },
+  {
+    "id": "daejeon-energy-walk-2026",
+    "title": "2026 대전 세계태양광총회 개최 기념 온시민에너지걷기한마당",
+    "region": "대전",
+    "theme": "kids",
+    "startDate": "2026-11-15",
+    "endDate": "2026-11-15",
+    "location": "대전엑스포시민광장 · 대전광역시 서구 둔산대로 169 (만년동)",
+    "time": "13:30~17:00",
+    "program": "한밭수목원 주변 에너지 스탬프 걷기와 환경 퀴즈",
+    "feeStatus": "free",
+    "fee": "무료",
+    "booking": "걷기와 퀴즈의 참가 조건 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "대한민국 구석구석",
+        "title": "2026 대전 세계태양광총회 개최 기념 온시민에너지걷기한마당 상세",
+        "url": "https://korean.visitkorea.or.kr/detail/fes_detail.do?cotid=b3041fb6-0c21-41ff-ac2c-df1d0433a771",
+        "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ]
+  },
+  {
+    "id": "busan-game-culture-festival-2026",
+    "title": "게임문화축제",
+    "region": "부산",
+    "theme": "kids",
+    "startDate": "2026-11-19",
+    "endDate": "2026-11-22",
+    "location": "부산 벡스코(BEXCO) 제2전시장 / T1 베이스캠프 해운대점 · 부산광역시 해운대구 APEC로 30 (우동)",
+    "time": "10:00~18:00",
+    "program": "게임 체험 전시, 게임 음악 공연과 이스포츠 프로그램",
+    "feeStatus": "free",
+    "fee": "무료",
+    "booking": "벡스코 전시장 입장과 프로그램별 참여 조건 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "공식 안내",
+        "title": "게임문화축제 공지·예약 안내",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=12727",
+        "facts": "행사 공식 일정 또는 관람 안내.",
+        "checkedAt": "2026-11-05"
+      },
+      {
+        "publisher": "대한민국 구석구석",
+        "title": "게임문화축제 상세",
+        "url": "https://korean.visitkorea.or.kr/detail/fes_detail.do?cotid=7f6fc4bc-832c-4e50-ab50-dfed53b8aa10",
+        "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ]
+  },
+  {
+    "id": "incheon-design-fair-2026",
+    "title": "2026 인천국제디자인페어(INDEF)",
+    "region": "인천",
+    "theme": "kids",
+    "startDate": "2026-11-20",
+    "endDate": "2026-11-22",
+    "location": "인천종합문화예술회관 · 인천광역시 남동구 예술로 149 (구월동)",
+    "time": "10:00~17:00",
+    "program": "인천과 국내외 디자이너의 작품 전시, 디자인 공연",
+    "feeStatus": "free",
+    "fee": "무료",
+    "booking": "세부 프로그램별 참여·신청 조건은 공식 안내 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "공식 안내",
+        "title": "2026 인천국제디자인페어(INDEF) 공지·예약 안내",
+        "url": "https://indef.kr/",
+        "facts": "행사 공식 일정 또는 관람 안내.",
+        "checkedAt": "2026-11-05"
+      },
+      {
+        "publisher": "대한민국 구석구석",
+        "title": "2026 인천국제디자인페어(INDEF) 상세",
+        "url": "https://korean.visitkorea.or.kr/detail/fes_detail.do?cotid=344a543f-4cab-41ff-a57d-dc555f70c3de",
+        "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ]
+  },
+  {
+    "id": "muan-yd-festival-2026",
+    "title": "무안 YD 페스티벌",
+    "region": "전남",
+    "theme": "kids",
+    "startDate": "2026-11-20",
+    "endDate": "2026-11-22",
+    "location": "남악중앙공원 · 전남광주통합특별시 무안군 삼향읍 대죽서로16번길 16",
+    "time": "09:00~22:00",
+    "program": "청년 문화 공연과 거리 농구, 드론·게임 체험",
+    "feeStatus": "mixed",
+    "fee": "무료(일부 프로그램 유료)",
+    "booking": "프로그램별 현장 접수와 유료 조건 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "공식 안내",
+        "title": "무안 YD 페스티벌 공지·예약 안내",
+        "url": "https://tour.muan.go.kr/tour/festival/yd_festival/introduce",
+        "facts": "행사 공식 일정 또는 관람 안내.",
+        "checkedAt": "2026-11-05"
+      },
+      {
+        "publisher": "대한민국 구석구석",
+        "title": "무안 YD 페스티벌 상세",
+        "url": "https://korean.visitkorea.or.kr/detail/fes_detail.do?cotid=9661a40e-6f59-4362-8a47-da85f707e8fe",
+        "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ]
+  },
+  {
+    "id": "namhae-runtrip-2026",
+    "title": "2026 런트립 남해! FALL & FUN",
+    "region": "경남",
+    "theme": "kids",
+    "startDate": "2026-11-21",
+    "endDate": "2026-11-21",
+    "location": "삼동공설운동장 · 경상남도 남해군 삼동면 독일로 182",
+    "time": "12:00~17:00",
+    "program": "내산 단풍길 10km 비경쟁 달리기와 지역 체험",
+    "feeStatus": "paid",
+    "fee": "러닝 참가비 40,000원",
+    "booking": "참가 신청과 집결 안내는 주최 측 공지 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "대한민국 구석구석",
+        "title": "2026 런트립 남해! FALL & FUN 상세",
+        "url": "https://korean.visitkorea.or.kr/detail/fes_detail.do?cotid=02a8bacc-9f9d-49f2-a249-43abffa52d4e",
+        "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ]
+  },
+  {
+    "id": "seoul-boardgame-festa-2026",
+    "title": "2026 보드게임페스타(시즌2)",
+    "region": "서울",
+    "theme": "kids",
+    "startDate": "2026-11-21",
+    "endDate": "2026-11-22",
+    "location": "세텍 1, 2 전시실 · 서울특별시 강남구 남부순환로 3104 (대치동)",
+    "time": "- 1일차 10:00~18:00 · - 2일차 10:00~17:00",
+    "program": "세텍 보드게임 체험, 신작 전시와 대회",
+    "feeStatus": "paid",
+    "fee": "현장 입장 5,000원 · 사전예매 4,500원",
+    "booking": "입장권과 대회 접수 조건은 행사 안내 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "대한민국 구석구석",
+        "title": "2026 보드게임페스타(시즌2) 상세",
+        "url": "https://korean.visitkorea.or.kr/detail/fes_detail.do?cotid=aec4d5e4-cbfe-42b2-98bf-31f9b5118c26",
+        "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ]
+  },
+  {
+    "id": "suwon-rice-dessert-festa-2026",
+    "title": "경기미 디저트 페스타",
+    "region": "경기",
+    "theme": "food",
+    "startDate": "2026-11-21",
+    "endDate": "2026-11-22",
+    "location": "수원 메쎄 제1전시장 · 경기도 수원시 권선구 세화로134번길 37 (서둔동)",
+    "time": "11:00~17:00",
+    "program": "경기미로 만든 쌀 베이커리와 떡볶이 경연, 판매와 체험",
+    "feeStatus": "free",
+    "fee": "무료",
+    "booking": "세부 프로그램별 참여·신청 조건은 공식 안내 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "공식 안내",
+        "title": "경기미 디저트 페스타 공지·예약 안내",
+        "url": "https://www.ricedessertfesta.com/",
+        "facts": "행사 공식 일정 또는 관람 안내.",
+        "checkedAt": "2026-11-05"
+      },
+      {
+        "publisher": "대한민국 구석구석",
+        "title": "경기미 디저트 페스타 상세",
+        "url": "https://korean.visitkorea.or.kr/detail/fes_detail.do?cotid=3f06b725-bf6e-4df7-b7bd-e74fc897216d",
+        "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ]
+  },
+  {
+    "id": "gangneung-dandan-festival-2026",
+    "title": "2026 단단단페스티벌",
+    "region": "강원",
+    "theme": "kids",
+    "startDate": "2026-11-26",
+    "endDate": "2026-11-28",
+    "location": "강릉단오제전수교육관 일원 · 강원특별자치도 강릉시 단오장길 1 (노암동)",
+    "time": "10:30~19:30",
+    "program": "강원 지역 전통 연희와 초청 공연",
+    "feeStatus": "free",
+    "fee": "무료",
+    "booking": "공연마다 시작 시각과 관람 방식 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "공식 안내",
+        "title": "2026 단단단페스티벌 공지·예약 안내",
+        "url": "https://www.danojefestival.or.kr/kor/dandan/dandan.html",
+        "facts": "행사 공식 일정 또는 관람 안내.",
+        "checkedAt": "2026-11-05"
+      },
+      {
+        "publisher": "대한민국 구석구석",
+        "title": "2026 단단단페스티벌 상세",
+        "url": "https://korean.visitkorea.or.kr/detail/fes_detail.do?cotid=e63c94d2-ed99-4e70-8ae7-5d82f12ecca1",
+        "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ]
+  },
+  {
+    "id": "ulsan-culture-expo-2026",
+    "title": "울산문화박람회",
+    "region": "울산",
+    "theme": "kids",
+    "startDate": "2026-11-26",
+    "endDate": "2026-11-29",
+    "location": "유에코(UECO) · 울산광역시 울주군 삼남읍 울산역로 255",
+    "time": "10:00~18:00",
+    "program": "울산 지역 문화 전시, 시민 체험과 공연",
+    "feeStatus": "mixed",
+    "fee": "무료(일부 유료)",
+    "booking": "공식 사전등록 페이지에서 관람 등록 가능",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "공식 안내",
+        "title": "울산문화박람회 공지·예약 안내",
+        "url": "https://www.uce.or.kr/",
+        "facts": "행사 공식 일정 또는 관람 안내.",
+        "checkedAt": "2026-11-05"
+      },
+      {
+        "publisher": "대한민국 구석구석",
+        "title": "울산문화박람회 상세",
+        "url": "https://korean.visitkorea.or.kr/detail/fes_detail.do?cotid=72bba9f6-1f87-4a36-adda-186291b5d8ff",
+        "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ]
+  },
+  {
+    "id": "busan-christmas-village-2026",
+    "title": "크리스마스 빌리지 부산 2026",
+    "region": "부산",
+    "theme": "light",
+    "startDate": "2026-11-26",
+    "endDate": "2026-12-25",
+    "location": "영화의전당 · 부산광역시 해운대구 수영강변대로 120 (우동)",
+    "time": "- 평일 16:00~22:00 · - 주말/크리스마스시즌 11:00~22:00",
+    "program": "부산 영화의전당 야외 크리스마스 마켓과 공연",
+    "feeStatus": "paid",
+    "fee": "유료 · 방문 날짜와 시간대에 따라 요금 상이",
+    "booking": "11/2부터 지정 예매처에서 운영일과 권종을 선택해 예매",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "공식 안내",
+        "title": "크리스마스 빌리지 부산 2026 공지·예약 안내",
+        "url": "https://ticket.yes24.com/perf/60679",
+        "facts": "행사 공식 일정 또는 관람 안내.",
+        "checkedAt": "2026-11-05"
+      },
+      {
+        "publisher": "대한민국 구석구석",
+        "title": "크리스마스 빌리지 부산 2026 상세",
+        "url": "https://korean.visitkorea.or.kr/detail/fes_detail.do?cotid=148d5b55-a264-48b1-a041-33481f84418a",
+        "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
+        "checkedAt": "2026-11-05"
+      },
+      {
+        "publisher": "예스24 티켓",
+        "title": "운영일 및 예매 공지",
+        "url": "https://m.ticket.yes24.com/Notice/Detail.aspx?bid=18725",
+        "facts": "목~일 및 12/21~25에만 운영하며 본판매는 11월 2일 시작.",
+        "checkedAt": "2026-11-05"
+      }
+    ],
+    "dates": [
+      "2026-11-26",
+      "2026-11-27",
+      "2026-11-28",
+      "2026-11-29",
+      "2026-12-03",
+      "2026-12-04",
+      "2026-12-05",
+      "2026-12-06",
+      "2026-12-10",
+      "2026-12-11",
+      "2026-12-12",
+      "2026-12-13",
+      "2026-12-17",
+      "2026-12-18",
+      "2026-12-19",
+      "2026-12-20",
+      "2026-12-21",
+      "2026-12-22",
+      "2026-12-23",
+      "2026-12-24",
+      "2026-12-25"
+    ],
+    "scheduleType": "dates",
+    "scheduleNote": "매주 목~일과 12/21~25 운영 · 지정일 예매"
+  },
+  {
+    "id": "yeosu-jinnamgwan-media-2026",
+    "title": "국가유산 미디어아트 여수 진남관",
+    "region": "전남",
+    "theme": "light",
+    "startDate": "2026-10-09",
+    "endDate": "2026-11-08",
+    "location": "여수 진남관·고소대·이순신광장 일대",
+    "time": "19:30~21:30",
+    "program": "여수의 국가유산을 배경으로 펼쳐지는 야간 영상과 빛 전시",
+    "feeStatus": "free",
+    "fee": "관람 무료",
+    "booking": "장소별 상영 일정 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "문화체육관광부",
+        "title": "국가유산 미디어아트 여수 진남관 안내",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13534",
+        "facts": "2026년 행사 날짜와 장소, 프로그램 및 공개 관람 안내를 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ],
+    "scheduleType": "period",
+    "scheduleNote": "기간 중 실제 운영일과 회차는 공식 공지에서 확인하세요."
+  },
+  {
+    "id": "yangjae-picturebook-2026",
+    "title": "양재천을 품은 양재도서관 · 물길 따라 그림책 여행",
+    "region": "서울",
+    "theme": "kids",
+    "startDate": "2026-10-10",
+    "endDate": "2026-11-08",
+    "location": "서울 서초구 양재오솔숲도서관",
+    "time": "주말 운영 · 프로그램별 시간 확인",
+    "program": "양재천 인근에서 즐기는 그림책 전시와 가족 독서 체험",
+    "feeStatus": "free",
+    "fee": "무료",
+    "booking": "회차별 체험 신청은 도서관 공지 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "서초구립양재도서관",
+        "title": "양재천을 품은 양재도서관 · 물길 따라 그림책 여행 안내",
+        "url": "https://yangjae.seocholib.or.kr/NoticeInfoDetail/26288",
+        "facts": "2026년 행사 날짜와 장소, 프로그램 및 공개 관람 안내를 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ],
+    "dates": [
+      "2026-10-10",
+      "2026-10-11",
+      "2026-10-17",
+      "2026-10-18",
+      "2026-10-24",
+      "2026-10-25",
+      "2026-10-31",
+      "2026-11-01",
+      "2026-11-07",
+      "2026-11-08"
+    ],
+    "scheduleType": "dates",
+    "scheduleNote": "주말에만 운영"
+  },
+  {
+    "id": "cheonan-maple-healing-2026",
+    "title": "독립기념관 단풍나무숲길 힐링축제",
+    "region": "충남",
+    "theme": "nature",
+    "startDate": "2026-10-16",
+    "endDate": "2026-11-15",
+    "location": "충남 천안시 독립기념관 단풍나무숲길·겨레의집 일원",
+    "time": "금·토·일 · 세부 프로그램 시간 확인",
+    "program": "가을 단풍 산책, 공연과 체험",
+    "feeStatus": "free",
+    "fee": "기본 관람 무료",
+    "booking": "체험은 보훈문화포털의 신청 안내 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "국가보훈부 보훈문화포털",
+        "title": "독립기념관 단풍나무숲길 힐링축제 안내",
+        "url": "https://culture.mpva.go.kr/actv/cult/185",
+        "facts": "2026년 행사 날짜와 장소, 프로그램 및 공개 관람 안내를 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ],
+    "dates": [
+      "2026-10-16",
+      "2026-10-17",
+      "2026-10-18",
+      "2026-10-23",
+      "2026-10-24",
+      "2026-10-25",
+      "2026-10-30",
+      "2026-10-31",
+      "2026-11-01",
+      "2026-11-06",
+      "2026-11-07",
+      "2026-11-08",
+      "2026-11-13",
+      "2026-11-14",
+      "2026-11-15"
+    ],
+    "scheduleType": "dates",
+    "scheduleNote": "매주 금·토·일에 축제 프로그램 운영"
+  },
+  {
+    "id": "hongseong-namdang-shrimp-2026",
+    "title": "홍성남당항 대하축제",
+    "region": "충남",
+    "theme": "food",
+    "startDate": "2026-09-04",
+    "endDate": "2026-11-08",
+    "location": "충남 홍성군 남당항 일원",
+    "time": "프로그램·상점별 상이",
+    "program": "남당항 대하와 지역 먹거리",
+    "feeStatus": "mixed",
+    "fee": "입장 무료 · 먹거리 및 일부 체험 유료",
+    "booking": "세부 운영 일정과 체험 여부는 주최 측 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "문화체육관광부",
+        "title": "홍성남당항 대하축제 안내",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=12604",
+        "facts": "2026년 행사 날짜와 장소, 프로그램 및 공개 관람 안내를 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ],
+    "scheduleType": "period",
+    "scheduleNote": "기간 중 실제 운영일과 회차는 공식 공지에서 확인하세요."
+  },
+  {
+    "id": "hwasun-unju-festival-2026",
+    "title": "화순운주문화축제",
+    "region": "전남",
+    "theme": "kids",
+    "startDate": "2026-11-07",
+    "endDate": "2026-11-08",
+    "location": "화순군 도암면 운주사 일원",
+    "time": "10:00~17:00",
+    "program": "운주사와 지역 문화를 주제로 한 공연, 전시와 참여 행사",
+    "feeStatus": "free",
+    "fee": "기본 관람 무료",
+    "booking": "프로그램별 참여 방식 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "문화체육관광부",
+        "title": "화순운주문화축제 안내",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=12909",
+        "facts": "2026년 행사 날짜와 장소, 프로그램 및 공개 관람 안내를 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ]
+  },
+  {
+    "id": "yesan-good-brothers-2026",
+    "title": "의좋은 형제 축제",
+    "region": "충남",
+    "theme": "kids",
+    "startDate": "2026-11-07",
+    "endDate": "2026-11-08",
+    "location": "충남 예산군 대흥면 의좋은형제공원",
+    "time": "11/7 10:00~20:00 · 11/8 10:00~19:00",
+    "program": "의좋은 형제 설화를 주제로 한 공연과 전통 체험",
+    "feeStatus": "free",
+    "fee": "기본 관람 무료",
+    "booking": "체험별 참가 방식 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "문화체육관광부",
+        "title": "의좋은 형제 축제 안내",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=11895",
+        "facts": "2026년 행사 날짜와 장소, 프로그램 및 공개 관람 안내를 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ]
+  },
+  {
+    "id": "yeongam-wolchulsan-chrysanthemum-2026",
+    "title": "월출산 국화축제",
+    "region": "전남",
+    "theme": "nature",
+    "startDate": "2026-10-30",
+    "endDate": "2026-11-15",
+    "location": "영암군 월출산 기찬랜드",
+    "time": "10:00~18:00",
+    "program": "국화 분재와 꽃 조형물 전시",
+    "feeStatus": "free",
+    "fee": "기본 관람 무료",
+    "booking": "세부 체험 및 주차 안내 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "문화체육관광부",
+        "title": "월출산 국화축제 안내",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=11974",
+        "facts": "2026년 행사 날짜와 장소, 프로그램 및 공개 관람 안내를 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ]
+  },
+  {
+    "id": "pohang-marines-festival-2026",
+    "title": "포항 해병대문화 축제",
+    "region": "경북",
+    "theme": "kids",
+    "startDate": "2026-11-14",
+    "endDate": "2026-11-15",
+    "location": "경북 포항시 해병의거리 서문사거리와 해병대 제1사단 일원",
+    "time": "10:00~17:00",
+    "program": "해병대 문화 소개와 시민 체험 프로그램",
+    "feeStatus": "free",
+    "fee": "기본 관람 무료",
+    "booking": "구역별 입장과 체험 조건 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "문화체육관광부",
+        "title": "포항 해병대문화 축제 안내",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13567",
+        "facts": "2026년 행사 날짜와 장소, 프로그램 및 공개 관람 안내를 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ]
+  },
+  {
+    "id": "jeju-moseulpo-yellowtail-2026",
+    "title": "제26회 최남단방어축제",
+    "region": "제주",
+    "theme": "food",
+    "startDate": "2026-11-19",
+    "endDate": "2026-11-22",
+    "location": "제주 서귀포시 대정읍 모슬포항 일원",
+    "time": "프로그램별 운영시간 확인",
+    "program": "제철 방어 먹거리와 방어잡기 등 해양 체험, 공연",
+    "feeStatus": "mixed",
+    "fee": "기본 관람 무료 · 음식 구매와 체험 비용 별도 확인",
+    "booking": "체험별 참여 조건은 축제 공지 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "비짓제주",
+        "title": "제26회 최남단방어축제 안내",
+        "url": "https://www.visitjeju.net/kr/festival/view?contentsid=CNTS_300000000015191",
+        "facts": "2026년 행사 날짜와 장소, 프로그램 및 공개 관람 안내를 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ]
+  },
+  {
+    "id": "jinan-kimchi-bossam-2026",
+    "title": "제8회 진안고원 김치보쌈축제",
+    "region": "전북",
+    "theme": "food",
+    "startDate": "2026-11-14",
+    "endDate": "2026-11-15",
+    "location": "전북 진안군 진안홍삼한방센터 일원",
+    "time": "회차별 운영시간 확인",
+    "program": "진안고원 김장 담그기와 지역 먹거리 체험",
+    "feeStatus": "mixed",
+    "fee": "김장 등 체험 요금은 프로그램별 공식 안내",
+    "booking": "김장 참가 희망자는 축제 홈페이지에서 예약 조건 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "진안고원 김치보쌈축제",
+        "title": "제8회 진안고원 김치보쌈축제 안내",
+        "url": "https://jinankimchi.kr/page/festival01/festival02.jsp",
+        "facts": "2026년 행사 날짜와 장소, 프로그램 및 공개 관람 안내를 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ]
+  },
+  {
+    "id": "paju-jangdan-bean-2026",
+    "title": "2026 파주장단콩축제",
+    "region": "경기",
+    "theme": "food",
+    "startDate": "2026-11-27",
+    "endDate": "2026-11-29",
+    "location": "경기 파주시 임진각 광장",
+    "time": "11/27 개막식 14:00 · 체험별 시간표 확인",
+    "program": "파주 장단콩과 농산물 판매, 먹거리와 체험",
+    "feeStatus": "unknown",
+    "fee": "먹거리·체험 비용은 현장 안내 확인",
+    "booking": "체험별 신청 여부는 공식 시간표 참고",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "파주시",
+        "title": "2026 파주장단콩축제 안내",
+        "url": "https://tour.paju.go.kr/tour/festival/festival02/festival02_2/festival02_2_01/festival02_2_01_01.jsp",
+        "facts": "2026년 행사 날짜와 장소, 프로그램 및 공개 관람 안내를 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ]
+  },
+  {
+    "id": "goyang-k-rice-festa-2026",
+    "title": "2026 우리쌀·우리술 K-라이스페스타",
+    "region": "경기",
+    "theme": "food",
+    "startDate": "2026-11-27",
+    "endDate": "2026-11-29",
+    "location": "경기 고양시 킨텍스 제1전시장 2홀",
+    "time": "11/27~28 10:00~18:00 · 11/29 10:00~17:00",
+    "program": "국산 쌀 가공식품과 우리술 전시, 시식과 판매",
+    "feeStatus": "unknown",
+    "fee": "입장권과 시음 조건은 공식 관람안내 확인",
+    "booking": "사전등록 안내는 주최 측 공지 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "K-라이스페스타 사무국",
+        "title": "2026 우리쌀·우리술 K-라이스페스타 안내",
+        "url": "https://k-ricefesta.co.kr/59/?bmode=view&idx=172110637",
+        "facts": "2026년 행사 날짜와 장소, 프로그램 및 공개 관람 안내를 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ]
+  },
+  {
+    "id": "seoul-design-festival-2026",
+    "title": "제25회 서울디자인페스티벌",
+    "region": "서울",
+    "theme": "kids",
+    "startDate": "2026-11-26",
+    "endDate": "2026-11-29",
+    "location": "서울 강남구 코엑스 1층 A홀",
+    "time": "관람시간과 입장 마감은 주최 측 확인",
+    "program": "디자인 브랜드와 디자이너 작업 전시",
+    "feeStatus": "paid",
+    "fee": "관람권 가격은 공식 예매 안내 확인",
+    "booking": "주최 측 관람 및 티켓 안내에서 예매 조건 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "서울디자인페스티벌",
+        "title": "제25회 서울디자인페스티벌 안내",
+        "url": "https://seoul.designfestival.co.kr/sdf/overview/",
+        "facts": "2026년 행사 날짜와 장소, 프로그램 및 공개 관람 안내를 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ]
+  },
+  {
+    "id": "incheon-robotex-2026",
+    "title": "2026 로보텍스 인터내셔널 세계대회",
+    "region": "인천",
+    "theme": "kids",
+    "startDate": "2026-11-28",
+    "endDate": "2026-11-29",
+    "location": "인천 연수구 송도컨벤시아 3·4홀",
+    "time": "경기별 운영시간 확인",
+    "program": "국제 로봇 경기와 로봇 교육 행사",
+    "feeStatus": "unknown",
+    "fee": "일반 관람 요금은 공식 안내 확인",
+    "booking": "대회 참가와 일반 관람 조건을 구분해 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "송도컨벤시아",
+        "title": "2026 로보텍스 인터내셔널 세계대회 안내",
+        "url": "https://songdoconvensia.visitincheon.or.kr/page/schedule.do?ac=view&addNo=ADD00016482&eventCd=E202611011",
+        "facts": "2026년 행사 날짜와 장소, 프로그램 및 공개 관람 안내를 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ]
+  },
+  {
+    "id": "dangjin-chrysanthemum-2026",
+    "title": "제17회 당진국화전시회",
+    "region": "충남",
+    "theme": "nature",
+    "startDate": "2026-10-30",
+    "endDate": "2026-11-08",
+    "location": "충남 당진시 합덕농촌테마공원",
+    "time": "10:00~17:00 · 11/8은 16:00까지",
+    "program": "국화 분재와 조형물 전시, 주말 원예·농촌 체험",
+    "feeStatus": "free",
+    "fee": "기본 관람 무료",
+    "booking": "주말 프로그램별 체험 접수 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "당진시 농업기술센터",
+        "title": "제17회 당진국화전시회 안내",
+        "url": "https://www.dangjin.go.kr/cop/bbs/BBSMSTR_000000000066/selectBoardArticle.do?nttId=1135513",
+        "facts": "2026년 행사 날짜와 장소, 프로그램 및 공개 관람 안내를 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ]
+  },
+  {
+    "id": "gyeonggi-dmz-open-2026",
+    "title": "2026 DMZ OPEN 페스티벌",
+    "region": "경기",
+    "theme": "kids",
+    "startDate": "2026-10-12",
+    "endDate": "2026-11-29",
+    "location": "경기 파주 임진각 평화누리 및 고양시 일원",
+    "time": "전시·공연별 시간과 장소가 다름",
+    "program": "DMZ를 주제로 한 전시, 포럼과 음악회",
+    "feeStatus": "unknown",
+    "fee": "프로그램별 요금 확인",
+    "booking": "공연과 참여 프로그램별 신청 안내 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "경기도",
+        "title": "2026 DMZ OPEN 페스티벌 안내",
+        "url": "https://dmz.gg.go.kr/dmz/bbs/boardView.do?bIdx=112896&bsIdx=3&menuId=54",
+        "facts": "2026년 행사 날짜와 장소, 프로그램 및 공개 관람 안내를 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ],
+    "scheduleType": "period",
+    "scheduleNote": "기간 중 실제 운영일과 회차는 공식 공지에서 확인하세요."
+  },
+  {
+    "id": "jeonju-jeolla-governor-2026",
+    "title": "전라감영 역사테마파크 · 전라관찰사의 탄생",
+    "region": "전북",
+    "theme": "kids",
+    "startDate": "2026-10-18",
+    "endDate": "2026-11-29",
+    "location": "전북 전주시 전라감영 일원",
+    "time": "회차별 운영일과 시간 확인",
+    "program": "전라감영의 역사를 소재로 한 관찰사 체험 프로그램",
+    "feeStatus": "unknown",
+    "fee": "요금 확인 필요",
+    "booking": "체험 회차와 접수 조건은 전주시 안내 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "전주시 전주다움",
+        "title": "전라감영 역사테마파크 · 전라관찰사의 탄생 안내",
+        "url": "https://daum.jeonju.go.kr/main/idx",
+        "facts": "2026년 행사 날짜와 장소, 프로그램 및 공개 관람 안내를 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ],
+    "scheduleType": "period",
+    "scheduleNote": "기간 중 실제 운영일과 회차는 공식 공지에서 확인하세요."
+  },
+  {
+    "id": "incheon-jemulpo-wave-market-2026",
+    "title": "제물포웨이브 마켓 4회차",
+    "region": "인천",
+    "theme": "kids",
+    "startDate": "2026-11-21",
+    "endDate": "2026-11-22",
+    "location": "인천 상상플랫폼 웨이브홀",
+    "time": "11:00~18:00",
+    "program": "상상플랫폼 실내에서 열리는 지역 상품과 공예 마켓",
+    "feeStatus": "unknown",
+    "fee": "구매 및 체험 비용은 프로그램별 확인",
+    "booking": "프로그램별 현장 안내 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "인천투어",
+        "title": "제물포웨이브 마켓 4회차 안내",
+        "url": "https://itour.incheon.go.kr/tourinfo/ntbd/detail.do?bbsNo=56350",
+        "facts": "2026년 행사 날짜와 장소, 프로그램 및 공개 관람 안내를 확인.",
+        "checkedAt": "2026-11-05"
+      }
+    ]
+  },
+  {
+    "id": "gyeongbuk-apple-promotion-seoul-2026",
+    "title": "2026 경북사과홍보행사",
+    "region": "서울",
+    "theme": "food",
+    "startDate": "2026-11-02",
+    "endDate": "2026-11-04",
+    "location": "서울 중구 서울광장",
+    "time": "관광공사 기본 시간 10:00~17:00 · 프로그램별 상이",
+    "program": "경북 사과 전시·판매와 시식, 문화공연",
+    "feeStatus": "free",
+    "fee": "관람 무료 · 상품 구매 별도",
+    "booking": "행사 종료",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-05",
+    "sources": [
+      {
+        "publisher": "대한민국 구석구석",
+        "title": "2026 경북사과홍보행사 상세",
+        "url": "https://korean.visitkorea.or.kr/detail/fes_detail.do?cotid=fd66cf07-0c80-4c53-b28d-4deb8a6e0e53",
+        "facts": "11월 2~4일 서울광장 개최, 무료 관람. 월간 기록으로 수록.",
+        "checkedAt": "2026-11-05"
+      }
+    ]
   }
 ]
