@@ -1,5 +1,23 @@
 :root{--reading-muted:#786985;--ease-festival:cubic-bezier(.2,.7,.2,1)}
 body{font-size:15px}
+.festival-header-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.header-install{display:inline-flex;align-items:center;gap:5px;min-height:40px;padding:0 12px;border:1px solid #f7d6bd;border-radius:30px;background:#fff3e9;color:#9c3a10;font-size:13px;font-weight:750;white-space:nowrap}
+.header-install:hover{background:#ffe8d6}
+.header-install[hidden]{display:none}
+.header-install svg{width:16px;height:16px;flex:none}
+.install-guide{width:min(420px,calc(100% - 32px));margin:auto;padding:24px;border:1px solid #eee7f5;border-radius:20px;color:var(--ink);background:white}
+.install-guide::backdrop{background:#171c3066}
+.install-guide h2{font-size:22px}
+.install-guide p{margin:12px 0;line-height:1.7}
+.install-guide form{display:flex;justify-content:flex-end;margin-top:18px}
+@media(max-width:850px){.festival-header-actions{order:1}}
+@media(max-width:560px){.festival-header-actions{gap:5px}.header-install{padding:0 8px;font-size:12px;min-height:36px}.header-install svg{width:13px;height:13px}}
+@media(max-width:360px){
+  .site-header .header-inner{column-gap:7px}
+  .site-header .brand{gap:7px}
+  .site-header .brand b{font-size:18px}
+  .site-header .header-saved{padding-inline:7px}
+}
 button,a{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #f97316;outline-offset:4px}
 .hero-main{min-height:650px}
