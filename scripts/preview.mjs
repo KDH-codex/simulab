@@ -19,7 +19,7 @@ http.createServer(async(req,res)=>{
   if(!target.startsWith('/')||target.startsWith('//')||/[<>"']/.test(target)||!Number.isInteger(width)||width<320||width>600){res.writeHead(400);res.end();return;}
   res.setHeader('Content-Type','text/html; charset=utf-8');res.end('<title>SimuLab mobile preview</title><body style="margin:16px;background:#e8eee8"><iframe title="Mobile preview" style="width:'+width+'px;height:1000px;border:1px solid #cbd8ce" src="'+target+'"></iframe>');return;
  }
- const filename=path.resolve(root,'.'+pathname+(pathname.endsWith('/')?'index.html':''));
+ const filename=path.resolve(root,'.'+pathname+(pathname.endsWith('/')?'index.html':path.extname(pathname)?'':'.html'));
  if(path.relative(root,filename).startsWith('..')||path.isAbsolute(path.relative(root,filename))){res.writeHead(403);res.end();return;}
  try{let body=await readFile(filename);if(path.extname(filename)==='.html')body=body.toString().replace('<head>','<head><script>window.SIMULAB_PREVIEW=true;window.SIMULAB_SUPABASE_CONFIG={url:location.origin+"/__offline",anonKey:"preview"};</script>');
  res.setHeader('Content-Type',types[path.extname(filename)]||'application/octet-stream');res.setHeader('Cache-Control','no-store');res.end(body);

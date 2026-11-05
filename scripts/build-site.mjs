@@ -36,11 +36,15 @@ for(const entry of await readdir(path.join(root,'tools'),{withFileTypes:true}))i
 const {editorialGuides}=await import('../data/guides/catalog.mjs'),{familyGuides}=await import('../data/family-guides.mjs');
 pages.push('guides/index.html',...[...editorialGuides,...familyGuides].map(g=>'guides/'+g.slug+'/index.html'));
 for(const file of await readdir(path.join(root,'legal')))if(file.endsWith('.html'))pages.push('legal/'+file);
-const urls=await Promise.all(pages.map(async file=>{
- const location=file==='index.html'?'':/^(tools|guides|debates|library|events|calendar|map|curation)\//.test(file)?file.replace(/index\.html$/,''):file;
- const modified=(await stat(path.join(root,file))).mtime.toISOString().slice(0,10);
- return '<url><loc>https://simulab.kr/'+location+'</loc><lastmod>'+modified+'</lastmod></url>';
-}));
+const urls=(await Promise.all(pages.map(async file=>{
+ const html=await readFile(path.join(destination,file),'utf8');
+ if(/<meta\b[^>]*\bname=["']robots["'][^>]*\bcontent=["'][^"']*\bnoindex\b/i.test(html))return null;
+ // Match Cloudflare's default HTML routing. Build time is not the content modification date.
+ const location=path.posix.basename(file)==='index.html'?file.slice(0,-10):file.replace(/\.html$/,'');
+ const canonical='https://simulab.kr/'+location;
+ if(!html.includes('rel="canonical" href="'+canonical+'"'))throw new Error('Sitemap canonical mismatch: '+file);
+ return '<url><loc>'+canonical+'</loc></url>';
+}))).filter(Boolean);
 const sitemap='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+urls.join('\n')+'\n</urlset>\n';
 await writeFile(path.join(root,'sitemap.xml'),sitemap);await writeFile(path.join(destination,'sitemap.xml'),sitemap);
 const files=[];async function walk(folder){for(const entry of await readdir(folder,{withFileTypes:true})){const file=path.join(folder,entry.name);if(entry.isDirectory())await walk(file);else files.push(file);}}await walk(destination);
@@ -58,4 +62,4 @@ for(const file of files.filter(file=>/\.(?:html|js|css)$/.test(file))) {
 }
 const manifest=files.map(file=>path.relative(destination,file).replaceAll('\\','/'));
 await mkdir(path.join(root,'scratch'),{recursive:true});await writeFile(path.join(root,'scratch','build-manifest.json'),JSON.stringify(manifest,null,2));
-console.log('Built dist: '+files.length+' public files; '+pages.length+' sitemap URLs; revision '+revision+'. Internal reports and SQL excluded.');
+console.log('Built dist: '+files.length+' public files; '+urls.length+' sitemap URLs; revision '+revision+'. Internal reports and SQL excluded.');

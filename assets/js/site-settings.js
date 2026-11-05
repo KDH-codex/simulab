@@ -5,6 +5,7 @@
     contactEmail: 'simulcalcall@gmail.com', operatorName: 'SimuLab 운영팀',
     analyticsEnabled: true, analyticsRetentionDays: 30, databaseRegion: 'ap-south-1',
     rankingRemoteEnabled: false,
+    // Enable after the AdSense site is Ready and the advertising consent settings are published.
     adsEnabled: false, adsenseClient: 'ca-pub-9815778998394475',
     policyUpdatedAt: '2026-10-28'
   });

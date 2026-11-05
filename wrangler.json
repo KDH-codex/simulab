@@ -8,7 +8,8 @@
     "directory": "./dist",
     "binding": "ASSETS",
     "run_worker_first": [
-      "/api/*"
+      "/api/*",
+      "/naver600f1685b4bb1a22e32ec0f968c5989b.html"
     ]
   },
   "main": "./worker/index.mjs"
