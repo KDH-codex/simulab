@@ -198,5 +198,170 @@
     "kind": "context",
     "sourceImage": "https://images.pexels.com/photos/33034614/pexels-photo-33034614.jpeg",
     "licenseUrl": "https://www.pexels.com/license/"
+  },
+  "incheon-sky-festival-2026": {
+    "src": "/assets/img/festivals/incheon-sky-festival-2026-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "보라색과 청록색 조명 아래 응원봉이 보이는 실내 공연장",
+    "officialPosterUrl": "https://nol.yanolja.com/ticket/products/26013822"
+  },
+  "pyeongchang-kimjang-2026": {
+    "src": "/assets/img/festivals/pyeongchang-kimjang-2026-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "절임배추에 붉은 양념을 바르는 김장 작업"
+  },
+  "daejeon-wine-expo-2026": {
+    "src": "/assets/img/festivals/daejeon-wine-expo-2026-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "전시 부스를 배경으로 놓인 세 종류의 와인 잔"
+  },
+  "iksan-treasure-2026": {
+    "src": "/assets/img/festivals/iksan-treasure-2026-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "벽돌 골목에서 스마트폰으로 보물찾기 단서를 보는 가족"
+  },
+  "cheongsong-apple-2026": {
+    "src": "/assets/img/festivals/cheongsong-apple-2026-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "가을 과수원의 나뭇가지와 빨갛게 익은 사과"
+  },
+  "hampyeong-chrysanthemum-2026": {
+    "src": "/assets/img/festivals/hampyeong-chrysanthemum-2026-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "노란 국화 분재와 흰 국화가 놓인 꽃 전시",
+    "officialPosterUrl": "https://korean.visitkorea.or.kr/kfes/detail/fstvlDetail.do?cmsCntntsId=638576"
+  },
+  "masan-chrysanthemum-2026": {
+    "src": "/assets/img/festivals/masan-chrysanthemum-2026-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "바닷가 산책로를 따라 펼쳐진 분홍색과 흰색 국화",
+    "officialPosterUrl": "https://traveli.visitkorea.or.kr/kfes/detail/fstvlDetail.do?fstvlCntntsId=f82af127-89d0-4e8a-8d40-61490ee5553f"
+  },
+  "jeju-garden-expo-2026": {
+    "src": "/assets/img/festivals/jeju-garden-expo-2026-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "현무암 돌담과 은빛 억새가 어우러진 가을 정원",
+    "officialPosterUrl": "https://visitjeju.net/kr/festival/view?contentsid=CNTS_300000000014600"
+  },
+  "yeoju-sanbuk-kimjang-2026": {
+    "src": "/assets/img/festivals/yeoju-sanbuk-kimjang-2026-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "긴 작업대 위에 절임배추와 양념을 놓고 김장하는 모습"
+  },
+  "goheung-yuja-2026": {
+    "src": "/assets/img/festivals/goheung-yuja-2026-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "나무 상자 위에 놓인 노란 유자와 잘라 놓은 유자 단면"
+  },
+  "daejeon-noodle-2026": {
+    "src": "/assets/img/festivals/daejeon-noodle-2026-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "대파와 김을 곁들인 따뜻한 칼국수 한 그릇",
+    "officialPosterUrl": "https://korean.visitkorea.or.kr/kfes/detail/fstvlDetail.do?fstvlCntntsId=a8033994-bf08-4795-8ffb-a3bf947547c8"
+  },
+  "sunchang-tteokbokki-2026": {
+    "src": "/assets/img/festivals/sunchang-tteokbokki-2026-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "넓은 팬에서 김이 오르는 고추장 떡볶이",
+    "officialPosterUrl": "https://kq.visitkorea.or.kr/kfes/detail/fstvlDetail.do?fstvlCntntsId=870226d8-7912-4405-b4f6-8fadba5ddff0"
+  },
+  "incheon-art-show-2026": {
+    "src": "/assets/img/festivals/incheon-art-show-2026-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "흰 전시장에 놓인 추상 도자 조형물과 그림"
+  },
+  "ulsan-startup-festa-2026": {
+    "src": "/assets/img/festivals/ulsan-startup-festa-2026-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "기술 전시 부스에 놓인 소형 산업용 로봇 팔"
+  },
+  "gwangju-biennale-2026": {
+    "src": "/assets/img/festivals/gwangju-biennale-2026-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "현대미술 전시장 천장에 걸린 추상 조형물"
+  },
+  "seoul-souvenir-fair-2026": {
+    "src": "/assets/img/festivals/seoul-souvenir-fair-2026-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "천 주머니와 도자기 등 한국 공예 기념품"
+  },
+  "suseong-biennale-2026": {
+    "src": "/assets/img/festivals/suseong-biennale-2026-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "가을 호숫가에 놓인 목재 건축 파빌리온"
+  },
+  "uljin-jukbyeon-seafood-2026": {
+    "src": "/assets/img/festivals/uljin-jukbyeon-seafood-2026-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "항구 시장의 얼음 위에 놓인 오징어와 생선",
+    "officialPosterUrl": "https://kq.visitkorea.or.kr/kfes/detail/fstvlDetail.do?fstvlCntntsId=a22acbfe-72fa-40d3-8e30-d4de62ffaa6b"
+  },
+  "gimhae-buncheong-2026": {
+    "src": "/assets/img/festivals/gimhae-buncheong-2026-reference.jpg",
+    "kind": "context",
+    "credit": "국립중앙박물관 · 분청사기 분장 무늬 사발",
+    "creditUrl": "https://www.museum.go.kr/MUSEUM/contents/M0502000000.do?relicId=1275&schM=view&searchId=search",
+    "licenseUrl": "https://www.mcst.go.kr/site/s_open/kogl/koglType.jsp?pTab=03",
+    "licenseLabel": "공공누리 제1유형",
+    "alt": "국립중앙박물관 소장 분청사기 분장 무늬 사발",
+    "caption": "분청사기 소장품 사진 · 축제 현장 아님",
+    "sourceImage": "https://www.museum.go.kr/relic_image/PS01001001/duk000/2021/0127092712783/duk003542-000-90000.jpg",
+    "changes": "웹 표시용 크기·압축 조정 및 화면 비율에 따라 가장자리 일부 가림",
+    "officialPosterUrl": "https://korean.visitkorea.or.kr/kfes/detail/fstvlDetail.do?fstvlCntntsId=db96012b-93e4-4c99-8795-54a2c64a0037"
+  },
+  "nowon-moonlight-2026": {
+    "src": "/assets/img/festivals/nowon-moonlight-2026-reference.jpg",
+    "kind": "context",
+    "credit": "Ox1997cow / Wikimedia Commons",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Danghyeoncheon_and_Inje_University_Sanggye_Paik_Hospital.jpg",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "licenseLabel": "CC BY-SA 3.0",
+    "alt": "서울 노원구 당현천과 인제대학교 상계백병원",
+    "caption": "당현천 2021년 · 장소 참고 사진",
+    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Danghyeoncheon_and_Inje_University_Sanggye_Paik_Hospital.jpg",
+    "changes": "웹 표시용 크기·압축 조정 및 화면 비율에 따라 가장자리 일부 가림",
+    "officialPosterUrl": "https://festival.seoul.go.kr/festival/main/festivalView.do?festacode=535"
+  },
+  "unjeong-light-garden-2026": {
+    "src": "/assets/img/festivals/unjeong-light-garden-2026-reference.jpg",
+    "kind": "context",
+    "credit": "Shene81 / Wikimedia Commons",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Unjeong_Lake_Park.jpg",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+    "licenseLabel": "CC BY 3.0",
+    "alt": "2014년 파주 운정호수공원의 호수와 주변 풍경",
+    "caption": "운정호수공원 2014년 · 장소 참고 사진",
+    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Unjeong_Lake_Park.jpg",
+    "changes": "웹 표시용 크기·압축 조정 및 화면 비율에 따라 가장자리 일부 가림"
+  },
+  "pohang-fire-light-2026": {
+    "src": "/assets/img/festivals/pohang-fire-light-2026-reference.jpg",
+    "kind": "context",
+    "credit": "Md Reyazul Islam / Wikimedia Commons",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Pohang_International_Fireworks_Festival.jpg",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "licenseLabel": "CC BY-SA 3.0",
+    "alt": "2016년 포항국제불빛축제 밤하늘의 불꽃",
+    "caption": "2016년 포항국제불빛축제 기록 사진",
+    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Pohang_International_Fireworks_Festival.jpg",
+    "changes": "웹 표시용 크기·압축 조정 및 화면 비율에 따라 가장자리 일부 가림"
   }
 }

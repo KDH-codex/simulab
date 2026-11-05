@@ -1,7 +1,7 @@
 import {eventTags,matchesKeyword,weekRangeFor,weekDays,weeklyEvents,eventsForDay,dayMilestone,toggleDaySelection} from './festival-ui-model.js';
 import {WEATHER_STATIONS} from './festival-weather-model.js';
 import {modalMarkup,modalTabIds} from './festival-modal.js';
-import {eventImage,activeConditions,detailTagDestination} from './festival-presentation.js';
+import {eventImage,imageCaption,activeConditions,detailTagDestination} from './festival-presentation.js';
 import {setupHeadingMotion} from './festival-heading-motion.js';
 import {koreaToday, shiftDate, weekendRange, overlaps, occursOn, nextDate, eventStatus, escapeHtml as esc, isStale} from '/tools/kids-outing-calendar/model.js';
 
@@ -335,7 +335,7 @@ function setHero(index) {
   document.querySelector('[data-hero-meta]').textContent='▦ '+range(e)+'　⌖ '+e.region;
   document.querySelector('[data-hero-description]').textContent=e.program;
   document.querySelector('[data-hero-tags]').innerHTML=keywordTags(e,'hero-tags');
-  document.querySelector('[data-hero-credit]').textContent=e.image?(e.image.kind==='context'?'주제 참고 · 현장 사진 아님':'이미지: '+e.image.credit):'테마 일러스트';
+  document.querySelector('[data-hero-credit]').textContent=imageCaption(e.image);
   const link=document.querySelector('[data-hero-detail]');link.href=e.url;link.dataset.preview=e.id;
   $('hero-position').textContent=String(heroIndex+1).padStart(2,'0')+' / '+String(heroes.length).padStart(2,'0');
   document.querySelectorAll('[data-hero-slide]').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.heroSlide)===heroIndex)));

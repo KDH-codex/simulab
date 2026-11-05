@@ -11,11 +11,27 @@ export function themeArtwork(event) {
   const theme=Object.hasOwn(themes,event.theme)?event.theme:'kids';
   return '<div class="festival-artwork artwork-'+theme+'" aria-hidden="true"><span class="artwork-orbit"></span><span class="artwork-orbit second"></span><svg viewBox="0 0 240 180" focusable="false">'+drawings[theme]+'</svg><span class="artwork-copy">'+themes[theme]+'</span><span class="artwork-place">'+esc(event.region)+' · '+esc(event.startDate.slice(5).replace('-','.'))+'</span></div><span class="illustration-label">테마 일러스트</span>';
 }
+export function imageCaption(image,{compact=false}={}) {
+  if(!image)return '테마 일러스트';
+  if(image.kind==='generated')return compact?'AI 생성 이미지':'AI 생성 이미지 · 현장 사진 아님';
+  if(image.caption)return image.caption;
+  if(image.kind==='context')return compact?'현장 사진 아님':'주제 참고 · 현장 사진 아님';
+  if(image.kind==='poster')return '공식 포스터 · '+image.credit;
+  return '이미지: '+image.credit;
+}
+
+export function imageAttribution(image) {
+  if(!image)return '';
+  const posterLink=image.officialPosterUrl?' · <a href="'+esc(image.officialPosterUrl)+'" target="_blank" rel="noopener noreferrer">공식 포스터 원문 ↗</a>':'';
+  if(image.kind==='generated')return '행사 주제를 바탕으로 만든 AI 참고 이미지입니다. 실제 행사나 장소를 촬영한 사진이 아닙니다.'+posterLink;
+  return '이미지: <a href="'+esc(image.creditUrl)+'" target="_blank" rel="noopener noreferrer">'+esc(image.credit)+'</a> · <a href="'+esc(image.licenseUrl)+'" target="_blank" rel="noopener noreferrer">'+esc(image.licenseLabel||'이용 조건')+'</a>'+(image.changes?' · '+esc(image.changes):'')+posterLink;
+}
+
 export function eventImage(event,image,{hero=false,compact=false}={}) {
   if(!image)return themeArtwork(event);
-  const context=image.kind==='context';
-  const caption=context?(compact?'현장 사진 아님':'주제 참고 · 현장 사진 아님'):'이미지: '+image.credit;
-  return '<img src="'+esc(image.src)+'" alt="'+esc(context?'주제 참고 사진 · 행사 현장 사진 아님':event.title)+'" '+(hero?'fetchpriority="high"':'loading="lazy"')+' decoding="async"><span class="image-credit'+(compact?' compact-credit':'')+'"'+(context?' title="주제 참고 사진 · 행사 현장 사진 아님"':'')+'>'+esc(caption)+'</span>';
+  const fullCaption=imageCaption(image);
+  const descriptiveAlt=image.alt?image.alt+' · '+fullCaption:image.kind==='context'?'주제 참고 사진 · 행사 현장 사진 아님':image.kind==='generated'?fullCaption:event.title;
+  return '<img src="'+esc(image.src)+'" alt="'+esc(descriptiveAlt)+'" '+(hero?'fetchpriority="high"':'loading="lazy"')+' decoding="async"><span class="image-credit'+(compact?' compact-credit':'')+'" title="'+esc(fullCaption)+'">'+esc(imageCaption(image,{compact}))+'</span>';
 }
 export function activeConditions(state,defaultPeriod='upcoming') {
   const rows=[];

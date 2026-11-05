@@ -1,13 +1,13 @@
 import {escapeHtml as esc} from '../../tools/kids-outing-calendar/model.js';
 import {eventTags} from './festival-ui-model.js';
-import {eventImage} from './festival-presentation.js';
+import {eventImage,imageAttribution} from './festival-presentation.js';
 
 const themes={light:'불꽃·야경',food:'먹거리·수확',nature:'꽃·자연',kids:'체험·문화'};
 const tabs=[['schedule','일정·프로그램'],['booking','예약·비용'],['location','장소'],['sources','공식 출처']];
 export const modalTabIds=tabs.map(([id])=>id);
 export function modalMarkup(e,{keyword='',feeLabel='',statusLabel='',stale=false}={}) {
   const fields=[['▦','기간',e.startDate.replaceAll('-','.')+' — '+e.endDate.slice(5).replace('-','.')],['◷','시간',e.time||'공식 안내 확인'],['◈','비용',e.fee||feeLabel],['⌖','장소',e.location]];
-  const attribution=e.image?'<p class="modal-image-attribution">이미지: <a target="_blank" rel="noopener noreferrer" href="'+esc(e.image.creditUrl)+'">'+esc(e.image.credit)+'</a> · <a target="_blank" rel="noopener noreferrer" href="'+esc(e.image.licenseUrl)+'">이용 조건</a></p>':'';
+  const attribution=e.image?'<p class="modal-image-attribution">'+imageAttribution(e.image)+'</p>':'';
   return '<div class="modal-scroll-area"><div class="modal-cover theme-'+esc(e.theme)+'">'+eventImage(e,e.image)+'</div>'+attribution+
     '<div class="modal-heading"><p class="eyebrow">'+esc(e.region)+' · '+esc(themes[e.theme])+'</p><h2 id="dialog-title">'+esc(e.title)+'</h2><p>'+esc(e.program)+'</p><div class="tag-row keyword-tags">'+eventTags(e).map(word=>'<button data-keyword="'+esc(word)+'" aria-pressed="'+(word===keyword)+'">#'+esc(word)+'</button>').join('')+'</div><span class="verified-label">공식 출처 확인 '+esc(e.checkedAt)+'</span></div>'+
     '<dl class="fact-grid">'+fields.map(([icon,label,value])=>'<div><dt><span aria-hidden="true">'+icon+'</span>'+label+'</dt><dd>'+esc(value)+'</dd></div>').join('')+'</dl>'+

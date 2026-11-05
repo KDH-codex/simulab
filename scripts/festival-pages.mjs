@@ -1,6 +1,7 @@
 import {mkdir} from 'node:fs/promises';
 import {splitHeading,typewriterText} from '../assets/js/festival-heading-motion.js';
 import {writeFile} from './write-public-file.mjs';
+import {imageCaption} from '../assets/js/festival-presentation.js';
 import {weekendRange, overlaps, shiftDate} from '../tools/kids-outing-calendar/model.js';
 import {root, esc, shell, active, events, images, today, reviewed, groups, themes, card, filters, grid, imageMarkup, shortRange, range, badge, eventUrl, detailBody, keywordTags} from './festival-platform.mjs';
 
@@ -15,7 +16,7 @@ export async function buildHome() {
   const picks=[...active.filter(e=>e.theme==='light' && images[e.id]),...active].filter((e,i,a)=>a.indexOf(e)===i).slice(0,3);
   const hero=picks[0];
   const heroImage=hero&&images[hero.id];
-  const heroCredit=heroImage?(heroImage.kind==='context'?'주제 참고 · 현장 사진 아님':'이미지: '+heroImage.credit):'테마 일러스트';
+  const heroCredit=imageCaption(heroImage);
   const spot=active.filter(e=>e!==hero).slice(0,2);
   const heroHTML=hero?'<section class="hero-layout" aria-label="다가오는 축제"><div class="hero-main theme-'+esc(hero.theme)+'" id="hero-main">'+
     '<div class="hero-image" data-hero-image>'+imageMarkup(hero,{hero:true})+'</div><div class="hero-shade"></div><p class="hero-picture-note" data-hero-credit>'+esc(heroCredit)+'</p><div class="hero-top"><span class="orange-badge">● 이번 주의 발견</span><div class="hero-controls"><button id="hero-prev" aria-label="이전 추천">‹</button><button id="hero-pause" aria-label="자동 전환 일시정지" aria-pressed="false">Ⅱ</button><span id="hero-position">01 / '+String(picks.length).padStart(2,'0')+'</span><button id="hero-next" aria-label="다음 추천">›</button></div></div><div class="hero-copy"><p class="hero-kicker">일상에 설렘을 더하는 축제 한 조각</p>'+splitHeading(['이번 주','어디 갈까?'])+'<div class="hero-event-details"><p class="hero-event" data-hero-title>'+esc(hero.title)+'</p><p class="hero-meta" data-hero-meta>▦ '+esc(shortRange(hero))+'　⌖ '+esc(hero.region)+'</p><p class="hero-description" data-hero-description>'+esc(hero.program)+'</p><div data-hero-tags>'+keywordTags(hero,'hero-tags')+'</div><div class="hero-actions"><a href="'+eventUrl(hero)+'" data-preview="'+esc(hero.id)+'" data-hero-detail class="button primary">축제 자세히 보기 ↗</a><a class="hero-calendar-link" href="/calendar/">달력으로 찾아보기 →</a></div></div></div><div class="hero-dots">'+picks.map((e,i)=>'<button data-hero-slide="'+i+'" aria-label="추천 '+(i+1)+' · '+esc(e.title)+'" aria-pressed="'+(i===0)+'"></button>').join('')+'</div></div><aside class="hero-side"><div class="section-title small"><h2>✦ 다가오는 축제</h2><span>FESTIVAL PICKS</span></div>'+spot.map(mini).join('')+'<a class="weekend-banner" href="/curation/"><span class="banner-symbol" aria-hidden="true">✳</span><span><b>이번 주말, 같이 떠나요</b><small>'+weekend.start.slice(5).replace('-','.')+' — '+weekend.end.slice(5).replace('-','.')+' · 수록 일정 '+weekendEvents.length+'건</small></span><span aria-hidden="true">↗</span></a></aside></section>':'';
