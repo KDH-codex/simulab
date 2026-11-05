@@ -16,17 +16,37 @@ button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible{ou
 .hero-tags button{font-size:12px;min-height:34px}
 .hero-calendar-link{font-size:13px}
 .mini-event{transition:transform .22s var(--ease-festival),box-shadow .22s,border-color .22s}
-.mini-event:hover,.mini-event:focus-visible{transform:translateY(-3px);box-shadow:0 12px 30px #49396a12;border-color:#f5b58c}
+.mini-event:focus-visible{box-shadow:0 0 25px #7c3aed36;border-color:#f5b58c}
 .mini-copy small{font-size:11px;line-height:1.6}
 .mini-copy h3{line-height:1.5}
 .mini-copy p{font-size:13px;line-height:1.75;color:var(--reading-muted)}
 .mini-copy strong{font-size:12px}
 .mini-badge{font-size:10px;padding:4px 8px;max-width:calc(100% - 14px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .festival-card{transition:transform .22s var(--ease-festival),box-shadow .22s,border-color .22s}
-.festival-card:hover{box-shadow:0 14px 32px #49396a12}
+.festival-card:hover{transform:none;box-shadow:none}
 .card-visual{aspect-ratio:1.65}
-.card-visual img{transition:transform .6s var(--ease-festival)}
-.festival-card:hover .card-visual img{transform:scale(1.035)}
+.card-visual img,.mini-image img{transition:transform .45s var(--ease-festival)}
+.festival-card:hover .card-visual img{transform:none}
+@media(hover:hover) and (pointer:fine){
+  .festival-card:hover,.mini-event:hover{transform:translateY(-8px);box-shadow:0 0 25px #7c3aed3b;border-color:#bba4ef}
+  .festival-card:hover .card-visual img,.mini-event:hover .mini-image img{transform:scale(1.04)}
+}
+.hero-copy h1 .split-line{display:block;color:inherit;white-space:pre}
+.hero-copy h1 .split-char{display:inline-block;color:inherit;transform-origin:50% 100%}
+.hero-copy h1 .heading-accent,.page-intro .heading-accent{color:var(--orange)}
+.split-playing .split-char{animation:festival-split-text 600ms var(--ease-festival) both;animation-delay:calc(var(--split-index)*45ms)}
+@keyframes festival-split-text{from{opacity:0;transform:translateY(24px) rotate(10deg)}to{opacity:1;transform:translateY(0) rotate(0)}}
+.motion-sr-only{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip-path:inset(50%)!important;white-space:nowrap!important;border:0!important}
+.page-intro .typewriter-shell,.page-intro .typewriter-reserve,.page-intro .typewriter-output,.page-intro .typewriter-output>span{color:inherit}
+.typewriter-shell{position:relative;display:inline-block;max-width:100%;vertical-align:top}
+.typewriter-reserve{display:block}
+.is-typing .typewriter-reserve{visibility:hidden}
+.typewriter-output{position:absolute;inset:0;text-align:inherit}
+.typewriter-output[hidden]{display:none}
+.page-intro .typewriter-output>.heading-accent{color:var(--orange)}
+.typewriter-cursor{display:inline-block;font-weight:400;margin-left:2px}
+.typing-finished{animation:festival-cursor-blink .7s step-end 3 forwards}
+@keyframes festival-cursor-blink{0%,45%{opacity:1}46%,100%{opacity:0}}
 .card-content{padding:24px}
 .card-content h3{font-size:21px;line-height:1.5}
 .card-description{font-size:14px;line-height:1.8;color:var(--reading-muted)}
@@ -103,6 +123,7 @@ button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible{ou
 .feed-controls button:hover{background:#ded5fc;transform:translateY(-1px)}
 .feed-empty{font-size:14px;padding:35px;background:#f5f1fb;border-radius:18px;color:var(--reading-muted)}
 .horizontal-feed{scroll-snap-type:x proximity}
+.horizontal-feed,.event-grid.is-week-feed{padding:14px 4px 28px;scroll-padding-inline:4px}
 .horizontal-feed>.festival-card{scroll-snap-align:start}
 .detail-intro{font-size:15px;line-height:1.9;color:var(--reading-muted)}
 .fact-grid dt{font-size:12px}
@@ -219,4 +240,4 @@ button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible{ou
   .region-map-panel>.microcopy,.map-info p{font-size:11px}.trust-strip p,.footer-grid p,.footer-note p{font-size:11px;line-height:1.85}
 }
 @media(max-width:360px){.hero-copy{padding-left:20px;padding-right:20px}.hero-copy h1{font-size:44px}.hero-event{font-size:21px}.hero-main{min-height:630px}.hero-top{padding:17px 16px}.hero-controls{gap:1px;padding:3px}.hero-controls button{min-width:34px;width:34px}.hero-controls #hero-position{min-width:48px}.day-weather i{display:none}.weekdays span{font-size:7px}.card-bottom{gap:10px}.card-bottom strong{font-size:13px}.detail-button{font-size:11px;min-width:80px}.modal-tabs{padding-left:18px;padding-right:18px}.modal-tabs button{font-size:10px;padding:7px 9px}}
-@media(prefers-reduced-motion:reduce){.sticky-filterbar,#weather-status[data-status=loading]::before{animation:none}.festival-card,.card-visual img,.mini-event,.keyword-tags button,.region-point,.feed-controls button{transition:none}.festival-card:hover,.festival-card:hover .card-visual img,.mini-event:hover,.feed-controls button:hover,.region-point:hover{transform:none}html{scroll-behavior:auto}}
+@media(prefers-reduced-motion:reduce){.sticky-filterbar,#weather-status[data-status=loading]::before,.split-playing .split-char,.typing-finished{animation:none}.festival-card,.card-visual img,.mini-image img,.mini-event,.keyword-tags button,.region-point,.feed-controls button{transition:none}.festival-card:hover,.festival-card:hover .card-visual img,.mini-event:hover,.mini-event:hover .mini-image img,.feed-controls button:hover,.region-point:hover{transform:none}.is-typing .typewriter-reserve{visibility:visible}.typewriter-output{display:none}html{scroll-behavior:auto}}

@@ -2,6 +2,7 @@ import {eventTags,matchesKeyword,weekRangeFor,weekDays,weeklyEvents,eventsForDay
 import {WEATHER_STATIONS} from './festival-weather-model.js';
 import {modalMarkup,modalTabIds} from './festival-modal.js';
 import {eventImage,activeConditions,detailTagDestination} from './festival-presentation.js';
+import {setupHeadingMotion} from './festival-heading-motion.js';
 import {koreaToday, shiftDate, weekendRange, overlaps, occursOn, nextDate, eventStatus, escapeHtml as esc, isStale} from '/tools/kids-outing-calendar/model.js';
 
 const data=JSON.parse(document.getElementById('festival-data')?.textContent || '[]');
@@ -57,18 +58,31 @@ function animateRegion(element) {
 }
 let revealObserver;
 function revealCards() {
+  revealObserver?.disconnect();
+  const cards=[...document.querySelectorAll('.festival-card,.mini-event')];
   if(!('IntersectionObserver' in window)||reducedMotion.matches){
-    document.querySelectorAll('.festival-card').forEach(el=>el.classList.remove('reveal-pending'));return;
+    cards.forEach(el=>{el.classList.remove('reveal-pending');el.classList.add('reveal-complete');});return;
   }
-  revealObserver||=new IntersectionObserver(entries=>entries.forEach(entry=>{
-    if(entry.isIntersecting){entry.target.classList.add('is-revealed');entry.target.addEventListener('animationend',event=>{if(event.target===entry.target)entry.target.classList.add('reveal-complete');},{once:true});revealObserver.unobserve(entry.target);}
-  }),{threshold:.08});
-  document.querySelectorAll('.festival-card:not(.reveal-pending)').forEach(el=>{
-    const siblings=[...el.parentElement.children].filter(n=>n.classList.contains('festival-card'));
-    el.style.setProperty('--reveal-delay',Math.min(siblings.indexOf(el),6)*65+'ms');
+  revealObserver||=new IntersectionObserver(entries=>{
+    const groups=new Map();
+    entries.filter(entry=>entry.isIntersecting&&entry.target.isConnected).forEach(({target})=>{
+      const group=groups.get(target.parentElement)||[];group.push(target);groups.set(target.parentElement,group);
+    });
+    for(const [parent,group] of groups){
+      const order=[...parent.children];
+      group.sort((a,b)=>order.indexOf(a)-order.indexOf(b)).forEach((el,index)=>{
+        el.style.setProperty('--reveal-delay',index*100+'ms');
+        el.classList.add('is-revealed');
+        const complete=event=>{if(event.target===el&&event.animationName==='festival-card-reveal'){el.classList.add('reveal-complete');el.removeEventListener('animationend',complete);}};
+        el.addEventListener('animationend',complete);revealObserver.unobserve(el);
+      });
+    }
+  },{threshold:.08});
+  cards.filter(el=>!el.classList.contains('is-revealed')&&!el.classList.contains('reveal-complete')).forEach(el=>{
     el.classList.add('reveal-pending');revealObserver.observe(el);
   });
 }
+reducedMotion.addEventListener('change',revealCards);
 function setupFilterDock() {
   const filter=document.querySelector('.filter-panel'),dock=$('sticky-filterbar'),header=document.querySelector('.site-header'),inner=document.querySelector('.header-inner');
   if(!filter||!dock)return;
@@ -271,7 +285,7 @@ function renderCalendar() {
     const rows=list.filter(e=>e.theme===id);
     return rows.length?'<section class="theme-feed"><div class="theme-feed-heading"><h3>'+esc(label)+' <small>'+rows.length+'건</small></h3>'+(rows.length>1?'<div class="feed-controls"><button data-scroll-feed="prev" data-feed-target="theme-feed-'+id+'" aria-label="'+esc(label)+' 이전 카드">‹</button><button data-scroll-feed="next" data-feed-target="theme-feed-'+id+'" aria-label="'+esc(label)+' 다음 카드">›</button></div>':'')+'</div><div class="horizontal-feed" id="theme-feed-'+id+'">'+rows.map(card).join('')+'</div></section>':'';
   }).join('');
-  syncPills(pool);syncSaved();syncWeather();revealCards();animateRegion($('calendar-results'));
+  syncPills(pool);syncSaved();syncWeather();revealCards();
 }
 function navigateCalendar(step) {
   if(calendarView==='week'){
@@ -308,7 +322,7 @@ function syncHeroTimer() {
   if(!$('hero-main')||heroes.length<2||heroPaused||!heroVisible||heroHover||heroFocus||document.hidden||$('festival-dialog')?.open)return;
   heroTimer=setTimeout(()=>{setHero(heroIndex+1);},3000);
 }
-function setHero(index,direction=1) {
+function setHero(index) {
   if(!heroes.length)return;
   const nextIndex=(index+heroes.length)%heroes.length;
   if(nextIndex===heroIndex){syncHeroTimer();return;}
@@ -325,12 +339,12 @@ function setHero(index,direction=1) {
   const link=document.querySelector('[data-hero-detail]');link.href=e.url;link.dataset.preview=e.id;
   $('hero-position').textContent=String(heroIndex+1).padStart(2,'0')+' / '+String(heroes.length).padStart(2,'0');
   document.querySelectorAll('[data-hero-slide]').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.heroSlide)===heroIndex)));
-  const old=container.querySelector('.hero-frame-old'),fresh=container.querySelector('.hero-frame-new');
+  const fresh=container.querySelector('.hero-frame-new');
   if(!reducedMotion.matches&&fresh.animate){
-    heroAnimations.push(old.animate([{opacity:1},{opacity:0}],{duration:650,fill:'forwards'}));
-    const entering=fresh.animate([{opacity:0,transform:'translateX('+(direction<0?-24:24)+'px) scale(1.035)'},{opacity:1,transform:'translateX(0) scale(1)'}],{duration:550,easing:'cubic-bezier(.2,.7,.2,1)',fill:'forwards'});
+    // Keep the previous image opaque underneath, avoiding a dark flash mid-fade.
+    const entering=fresh.animate([{opacity:0},{opacity:1}],{duration:800,easing:'ease-in-out',fill:'forwards'});
     heroAnimations.push(entering);
-    heroAnimations.push(document.querySelector('.hero-event-details').animate([{opacity:0,transform:'translateY(15px)'},{opacity:1,transform:'translateY(0)'}],{duration:450,easing:'cubic-bezier(.2,.7,.2,1)'}));
+    heroAnimations.push(document.querySelector('.hero-event-details').animate([{opacity:0},{opacity:1}],{duration:450,easing:'ease-in-out'}));
     entering.onfinish=()=>{if(transition===heroTransition){heroAnimations.forEach(animation=>animation.cancel());heroAnimations=[];container.innerHTML=imageMarkup(e,true);}};
   }else container.innerHTML=imageMarkup(e,true);
   syncKeywordButtons();syncHeroTimer();
@@ -424,8 +438,8 @@ document.addEventListener('click',async event=>{
     document.querySelector((calendarView==='week'?'#weekly-timetable':'#calendar-grid')+' [data-day="'+date+'"]')?.focus({preventScroll:true});return;
   }
   if(b.hasAttribute('data-week-start')){setCalendarView('week',{start:b.dataset.weekStart});return;}
-  if(b.hasAttribute('data-hero-slide')){const index=Number(b.dataset.heroSlide);setHero(index,index<heroIndex?-1:1);return;}
-  if(b.id==='hero-prev'){setHero(heroIndex-1,-1);return;}
+  if(b.hasAttribute('data-hero-slide')){setHero(Number(b.dataset.heroSlide));return;}
+  if(b.id==='hero-prev'){setHero(heroIndex-1);return;}
   if(b.id==='hero-next'){setHero(heroIndex+1);return;}
   if(b.id==='load-more'){state.limit+=9;render();return;}
   if(b.id==='saved-only'){state.saved=!state.saved;state.limit=9;updateURL();render();return;}
@@ -443,7 +457,7 @@ $('only-free')?.addEventListener('change',e=>{state.free=e.target.checked;state.
 window.addEventListener('storage',e=>{if(e.key!==storageKey)return;try{const v=JSON.parse(e.newValue||'[]');saved=Array.isArray(v)?[...new Set(v.filter(id=>byId.has(id)))]:[];}catch{saved=[];}syncSaved();if(state.saved)render();});
 setupFilterDock();
 if(page==='calendar'){if(state.period!=='month')selected=periodRange();loadWeather();}else if($('event-cards'))renderGrid();
-syncSaved();revealCards();
+syncSaved();revealCards();setupHeadingMotion({reducedMotion});
 $('weather-location')?.addEventListener('change',event=>loadWeather(event.target.value));
 document.addEventListener('keydown',event=>{const button=event.target.closest?.('[data-calendar-view]');if(!button||!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;event.preventDefault();const view=event.key==='Home'?'month':event.key==='End'?'week':button.dataset.calendarView==='month'?'week':'month';setCalendarView(view);document.querySelector('[data-calendar-view="'+view+'"]').focus();});
 function syncDetailLocation(){if(page!=='detail')return;document.querySelectorAll('.detail-tabs a').forEach(link=>{if(location.hash&&link.hash===location.hash)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current');});}
