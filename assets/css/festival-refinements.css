@@ -1,5 +1,22 @@
 :root{--reading-muted:#786985;--ease-festival:cubic-bezier(.2,.7,.2,1)}
 body{font-size:15px}
+body[data-festival-page="home"] {
+  background:
+    radial-gradient(ellipse 54% 550px at 0% 245px, #ffe3cf 0%, transparent 100%),
+    radial-gradient(ellipse 56% 520px at 100% 430px, #e8ddff 0%, transparent 100%),
+    linear-gradient(180deg, #fbf3f5 0, #f6f0fc 750px, var(--canvas) 1350px);
+}
+body[data-festival-page="home"] .hero-main {
+  box-shadow:0 18px 46px #3927591a;
+}
+@media(max-width:850px){
+  body[data-festival-page="home"] {
+    background:
+      radial-gradient(ellipse 95% 350px at 0% 170px, #ffe3cf 0%, transparent 100%),
+      radial-gradient(ellipse 95% 440px at 100% 680px, #e8ddff 0%, transparent 100%),
+      linear-gradient(180deg, #fbf3f5 0, #f6f0fc 850px, var(--canvas) 1450px);
+  }
+}
 .festival-header-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}
 .header-install{display:inline-flex;align-items:center;gap:5px;min-height:40px;padding:0 12px;border:1px solid #f7d6bd;border-radius:30px;background:#fff3e9;color:#9c3a10;font-size:13px;font-weight:750;white-space:nowrap}
 .header-install:hover{background:#ffe8d6}
