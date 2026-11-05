@@ -363,5 +363,353 @@
     "caption": "2016년 포항국제불빛축제 기록 사진",
     "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Pohang_International_Fireworks_Festival.jpg",
     "changes": "웹 표시용 크기·압축 조정 및 화면 비율에 따라 가장자리 일부 가림"
+  },
+  "beautysum-suwon-2026": {
+    "src": "/assets/img/festivals/nov-beauty-close-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "실내 전시장에 진열된 화장품 병과 크림 용기"
+  },
+  "andong-independence-fair-2026": {
+    "src": "/assets/img/festivals/nov-history-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "역사 전시 공간에 놓인 오래된 책자와 붓"
+  },
+  "busan-traditional-markets-2026": {
+    "src": "/assets/img/festivals/nov-market-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "농산물과 간식이 진열된 한국 전통시장 통로"
+  },
+  "jeju-pet-fair-2026": {
+    "src": "/assets/img/festivals/nov-pet-close-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "잔디 위 체험용 콘 곁에 있는 반려견 두 마리"
+  },
+  "tongyeong-port-village-2026": {
+    "src": "/assets/img/festivals/uljin-jukbyeon-seafood-2026-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "항구 시장의 얼음 위에 놓인 오징어와 생선"
+  },
+  "busan-illustration-fair-2026": {
+    "src": "/assets/img/festivals/nov-illustration-close-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "창작 일러스트 엽서와 그림이 진열된 실내 부스"
+  },
+  "gongju-hasuk-festival-2026": {
+    "src": "/assets/img/festivals/nov-hanok-close-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "목제 창호 앞 작업대에 놓인 짚 공예품"
+  },
+  "jinju-agrex-experience-2026": {
+    "src": "/assets/img/festivals/nov-agriculture-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "모종을 작은 화분에 옮겨 심는 원예 체험"
+  },
+  "busan-burak-festa-2026": {
+    "src": "/assets/img/festivals/nov-stage-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "야외 무대 조명과 공연을 보는 관객들의 뒷모습"
+  },
+  "jeongdok-family-book-festival-2026": {
+    "src": "/assets/img/festivals/nov-reading-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "그림책과 빈백이 놓인 공원 야외 독서 공간"
+  },
+  "anseong-toktok-festival-2026": {
+    "src": "/assets/img/festivals/nov-stage-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "야외 무대 조명과 공연을 보는 관객들의 뒷모습"
+  },
+  "gimpo-marines-festival-2026": {
+    "src": "/assets/img/festivals/nov-marines-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "야외 군 장비 전시 구역에 놓인 올리브색 차량"
+  },
+  "gyeongju-peace-ondam-2026": {
+    "src": "/assets/img/festivals/nov-stage-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "야외 무대 조명과 공연을 보는 관객들의 뒷모습"
+  },
+  "ansan-science-festival-2026": {
+    "src": "/assets/img/festivals/nov-robot-close-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "경기용 매트 위에 놓인 바퀴 달린 소형 로봇"
+  },
+  "masan-outdoor-library-2026": {
+    "src": "/assets/img/festivals/nov-reading-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "그림책과 빈백이 놓인 공원 야외 독서 공간"
+  },
+  "seoul-materialism-exhibition-2026": {
+    "src": "/assets/img/festivals/nov-architecture-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "전시장에 놓인 목재와 콘크리트 견본, 건축 모형"
+  },
+  "gwangju-yangdong-hongtak-2026": {
+    "src": "/assets/img/festivals/nov-market-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "농산물과 간식이 진열된 한국 전통시장 통로"
+  },
+  "seoul-k-sool-festival-2026": {
+    "src": "/assets/img/festivals/nov-rice-drink-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "쌀과 함께 진열된 전통주 시음 잔과 술병"
+  },
+  "yeongju-apple-seoul-2026": {
+    "src": "/assets/img/festivals/cheongsong-apple-2026-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "가을 과수원의 나뭇가지와 빨갛게 익은 사과"
+  },
+  "pocheon-petstar-2026": {
+    "src": "/assets/img/festivals/nov-pet-close-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "잔디 위 체험용 콘 곁에 있는 반려견 두 마리"
+  },
+  "busan-run-festival-2026": {
+    "src": "/assets/img/festivals/nov-running-close-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "낙엽이 깔린 길을 달리는 사람들의 발걸음"
+  },
+  "sejong-mind-walk-2026": {
+    "src": "/assets/img/festivals/nov-walk-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "단풍이 물든 공원 산책로를 걷는 사람들"
+  },
+  "asan-ginkgo-art-street-2026": {
+    "src": "/assets/img/festivals/nov-street-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "은행나무 아래에서 펼쳐지는 거리 저글링"
+  },
+  "changwon-dotseom-picnic-2026": {
+    "src": "/assets/img/festivals/nov-picnic-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "물가의 잔디밭에 펼쳐진 피크닉 매트와 바구니"
+  },
+  "seoul-quad-flames-2026": {
+    "src": "/assets/img/festivals/nov-theatre-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "검은 소극장 무대에 조명을 받는 빈 나무 의자"
+  },
+  "busan-folk-arts-festival-2026": {
+    "src": "/assets/img/festivals/nov-folk-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "장구와 북으로 장단을 맞추는 전통 풍물 연주"
+  },
+  "daejeon-energy-walk-2026": {
+    "src": "/assets/img/festivals/nov-walk-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "단풍이 물든 공원 산책로를 걷는 사람들"
+  },
+  "busan-game-culture-festival-2026": {
+    "src": "/assets/img/festivals/nov-controller-close-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "실내 게임 체험석에서 컨트롤러를 사용하는 모습"
+  },
+  "incheon-design-fair-2026": {
+    "src": "/assets/img/festivals/nov-architecture-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "전시장에 놓인 목재와 콘크리트 견본, 건축 모형"
+  },
+  "muan-yd-festival-2026": {
+    "src": "/assets/img/festivals/nov-controller-close-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "실내 게임 체험석에서 컨트롤러를 사용하는 모습"
+  },
+  "namhae-runtrip-2026": {
+    "src": "/assets/img/festivals/nov-running-close-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "낙엽이 깔린 길을 달리는 사람들의 발걸음"
+  },
+  "seoul-boardgame-festa-2026": {
+    "src": "/assets/img/festivals/nov-boardgame-close-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "보드게임 판에 놓인 나무 말과 주사위"
+  },
+  "suwon-rice-dessert-festa-2026": {
+    "src": "/assets/img/festivals/nov-rice-dessert-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "쌀로 만든 구움과자와 케이크가 놓인 접시"
+  },
+  "gangneung-dandan-festival-2026": {
+    "src": "/assets/img/festivals/nov-folk-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "장구와 북으로 장단을 맞추는 전통 풍물 연주"
+  },
+  "ulsan-culture-expo-2026": {
+    "src": "/assets/img/festivals/nov-culture-expo-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "지역 공예품과 만들기 체험 작업대가 있는 실내 전시"
+  },
+  "busan-christmas-village-2026": {
+    "src": "/assets/img/festivals/nov-christmas-close-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "크리스마스트리와 따뜻한 조명으로 꾸민 마켓"
+  },
+  "yeosu-jinnamgwan-media-2026": {
+    "src": "/assets/img/festivals/nov-yeosu-jinnamgwan-reference.jpg",
+    "kind": "context",
+    "credit": "S Shamima Nasrin / Wikimedia Commons",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Yeosu_Jinnamgwan_Hall.jpg",
+    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/a/a0/Yeosu_Jinnamgwan_Hall.jpg",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "licenseLabel": "CC BY-SA 4.0",
+    "alt": "여수 진남관",
+    "caption": "2015년 여수 진남관 장소 참고 사진 · 행사 현장 사진 아님",
+    "changes": "웹용 크기 조정 및 압축 · 카드 비율에 따라 가장자리가 가려질 수 있음"
+  },
+  "yangjae-picturebook-2026": {
+    "src": "/assets/img/festivals/nov-reading-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "그림책과 빈백이 놓인 공원 야외 독서 공간"
+  },
+  "cheonan-maple-healing-2026": {
+    "src": "/assets/img/festivals/nov-walk-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "단풍이 물든 공원 산책로를 걷는 사람들"
+  },
+  "hongseong-namdang-shrimp-2026": {
+    "src": "/assets/img/festivals/nov-prawns-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "금속 접시에 담긴 껍질째 대하"
+  },
+  "hwasun-unju-festival-2026": {
+    "src": "/assets/img/festivals/nov-hwasun-unjusa-reference.jpg",
+    "kind": "context",
+    "credit": "Steve46814 / Wikimedia Commons",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Korea-Unjusa_4557-07_Dacheung_Seoktap.JPG",
+    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/4/42/Korea-Unjusa_4557-07_Dacheung_Seoktap.JPG",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/",
+    "licenseLabel": "CC BY-SA 3.0",
+    "alt": "화순 운주사의 다층석탑",
+    "caption": "2007년 화순 운주사 장소 참고 사진 · 행사 현장 사진 아님",
+    "changes": "웹용 크기 조정 및 압축 · 카드 비율에 따라 가장자리가 가려질 수 있음"
+  },
+  "yesan-good-brothers-2026": {
+    "src": "/assets/img/festivals/nov-hanok-close-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "목제 창호 앞 작업대에 놓인 짚 공예품"
+  },
+  "yeongam-wolchulsan-chrysanthemum-2026": {
+    "src": "/assets/img/festivals/hampyeong-chrysanthemum-2026-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "노란 국화 분재와 흰 국화가 놓인 꽃 전시"
+  },
+  "pohang-marines-festival-2026": {
+    "src": "/assets/img/festivals/nov-marines-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "야외 군 장비 전시 구역에 놓인 올리브색 차량"
+  },
+  "jeju-moseulpo-yellowtail-2026": {
+    "src": "/assets/img/festivals/nov-yellowtail-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "항구 음식점 분위기에서 차려진 방어회 접시"
+  },
+  "jinan-kimchi-bossam-2026": {
+    "src": "/assets/img/festivals/pyeongchang-kimjang-2026-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "절임배추에 붉은 양념을 바르는 김장 작업"
+  },
+  "paju-jangdan-bean-2026": {
+    "src": "/assets/img/festivals/nov-beans-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "나무 판매대의 그릇에 담긴 흰콩과 검은콩"
+  },
+  "goyang-k-rice-festa-2026": {
+    "src": "/assets/img/festivals/nov-rice-drink-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "쌀과 함께 진열된 전통주 시음 잔과 술병"
+  },
+  "seoul-design-festival-2026": {
+    "src": "/assets/img/festivals/nov-architecture-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "전시장에 놓인 목재와 콘크리트 견본, 건축 모형"
+  },
+  "incheon-robotex-2026": {
+    "src": "/assets/img/festivals/nov-robot-close-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "경기용 매트 위에 놓인 바퀴 달린 소형 로봇"
+  },
+  "dangjin-chrysanthemum-2026": {
+    "src": "/assets/img/festivals/hampyeong-chrysanthemum-2026-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "노란 국화 분재와 흰 국화가 놓인 꽃 전시"
+  },
+  "gyeonggi-dmz-open-2026": {
+    "src": "/assets/img/festivals/nov-dmz-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "평화를 주제로 한 전시 공간과 반투명 전시 패널"
+  },
+  "jeonju-jeolla-governor-2026": {
+    "src": "/assets/img/festivals/nov-jeonju-gamyeong-reference.jpg",
+    "kind": "context",
+    "credit": "Motoko C. K. / Wikimedia Commons",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:%EC%A0%84%EB%9D%BC%EA%B0%90%EC%98%81_%EC%84%A0%ED%99%94%EB%8B%B9_20240727.jpg",
+    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/e/ec/%EC%A0%84%EB%9D%BC%EA%B0%90%EC%98%81_%EC%84%A0%ED%99%94%EB%8B%B9_20240727.jpg",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "licenseLabel": "CC BY 4.0",
+    "alt": "전주 전라감영 선화당",
+    "caption": "2024년 전라감영 선화당 장소 참고 사진 · 행사 현장 사진 아님",
+    "changes": "웹용 크기 조정 및 압축 · 카드 비율에 따라 가장자리가 가려질 수 있음"
+  },
+  "incheon-jemulpo-wave-market-2026": {
+    "src": "/assets/img/festivals/seoul-souvenir-fair-2026-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "천 주머니와 도자기 등 한국 공예 기념품"
+  },
+  "gyeongbuk-apple-promotion-seoul-2026": {
+    "src": "/assets/img/festivals/cheongsong-apple-2026-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "가을 과수원의 나뭇가지와 빨갛게 익은 사과"
   }
 }
