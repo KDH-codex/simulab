@@ -3942,5 +3942,624 @@
         "checkedAt": "2026-11-05"
       }
     ]
+  },
+  {
+    "id": "gwanak-sinwon-night-market-2026",
+    "title": "관악 신원시장 야시장",
+    "region": "서울",
+    "theme": "food",
+    "startDate": "2026-11-13",
+    "endDate": "2026-11-14",
+    "location": "관악구 신원시장",
+    "time": "세부 운영 시간은 서울시·시장 공지 확인",
+    "program": "전통시장 먹거리와 점포별 특별 메뉴, 지역 예술인 공연, 캘리그래피 체험",
+    "feeStatus": "unknown",
+    "fee": "입장료 미표기 · 음식과 상품은 별도 구매",
+    "booking": "체험·구매 환급 행사는 현장 조건과 조기 소진 여부 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-07",
+    "sources": [
+      {
+        "publisher": "서울특별시",
+        "title": "11월 둘째 주 전통시장 야간음식문화 축제 일정",
+        "url": "https://news.seoul.go.kr/economy/archives/574793?listPage=1",
+        "checkedAt": "2026-11-07",
+        "facts": "개최일과 장소를 확인. 세부 운영 시간은 서울시·시장 공지 확인. 전통시장 먹거리와 점포별 특별 메뉴, 지역 예술인 공연, 캘리그래피 체험."
+      },
+      {
+        "publisher": "서울특별시",
+        "title": "전통시장 가을 야간 미식·문화축제",
+        "url": "https://mediahub.seoul.go.kr/archives/2019520",
+        "facts": "신원시장 11월 13~14일 행사와 구매 환급 조건을 확인.",
+        "checkedAt": "2026-11-07"
+      }
+    ]
+  },
+  {
+    "id": "yeongdeungpo-dungdung-2026",
+    "title": "2026 창의예술주간 둥둥제",
+    "region": "서울",
+    "theme": "kids",
+    "startDate": "2026-11-13",
+    "endDate": "2026-11-28",
+    "location": "영등포구 YDP창의예술교육센터",
+    "time": "화~금 10:30~20:00 · 토 10:30~19:00",
+    "program": "꿈과 상상의 섬을 주제로 한 참여형 전시, 연극놀이와 감각 체험",
+    "feeStatus": "free",
+    "fee": "참가비·재료비 대신 꿈 이야기 나눔",
+    "booking": "교육·체험은 11월 3~12일 재단 페이지에서 대상과 회차를 확인한 뒤 신청",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-07",
+    "sources": [
+      {
+        "publisher": "영등포문화재단",
+        "title": "2026 창의예술주간 둥둥제 프로그램·신청",
+        "url": "https://www.ydpcf.or.kr/training/view.do?id=67",
+        "checkedAt": "2026-11-07",
+        "facts": "개최일과 장소를 확인. 화~금 10:30~20:00 · 토 10:30~19:00. 꿈과 상상의 섬을 주제로 한 참여형 전시, 연극놀이와 감각 체험."
+      }
+    ],
+    "scheduleType": "dates",
+    "dates": [
+      "2026-11-13",
+      "2026-11-14",
+      "2026-11-17",
+      "2026-11-18",
+      "2026-11-19",
+      "2026-11-20",
+      "2026-11-21",
+      "2026-11-24",
+      "2026-11-25",
+      "2026-11-26",
+      "2026-11-27",
+      "2026-11-28"
+    ]
+  },
+  {
+    "id": "maeheon-garden-concert-2026",
+    "title": "가을엔, 매헌 정원음악회",
+    "region": "서울",
+    "theme": "nature",
+    "startDate": "2026-11-07",
+    "endDate": "2026-11-08",
+    "location": "서초구 매헌시민의숲 · 야외예식장 맞은편 숲속 무대",
+    "time": "음악회 14:00~16:00 · 정원문화 체험 13:00~17:00",
+    "program": "가을 숲에서 열리는 팝·클래식·어쿠스틱 공연과 정원문화 체험",
+    "feeStatus": "unknown",
+    "fee": "별도 요금 표기 확인 필요",
+    "booking": "정원문화 체험은 현장에서 참여",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-07",
+    "sources": [
+      {
+        "publisher": "서울특별시",
+        "title": "11월 주말 행사 안내 · 매헌 정원음악회",
+        "url": "https://mediahub.seoul.go.kr/archives/2019942",
+        "checkedAt": "2026-11-07",
+        "facts": "개최일과 장소를 확인. 음악회 14:00~16:00 · 정원문화 체험 13:00~17:00. 가을 숲에서 열리는 팝·클래식·어쿠스틱 공연과 정원문화 체험."
+      }
+    ]
+  },
+  {
+    "id": "yeouido-autumn-river-concert-2026",
+    "title": "가을밤 한강, 음악에 물들다",
+    "region": "서울",
+    "theme": "kids",
+    "startDate": "2026-11-07",
+    "endDate": "2026-11-07",
+    "location": "영등포구 여의도한강공원 물빛무대",
+    "time": "17:00 시작 · 약 2시간",
+    "program": "여의도 물빛무대에서 네 팀의 어쿠스틱·앙상블 공연",
+    "feeStatus": "free",
+    "fee": "무료 공연",
+    "booking": "서울시 안내상 시민 누구나 관람",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-07",
+    "sources": [
+      {
+        "publisher": "서울특별시",
+        "title": "여의도한강공원 물빛무대 무료 공연 안내",
+        "url": "https://mediahub.seoul.go.kr/archives/2019942",
+        "checkedAt": "2026-11-07",
+        "facts": "개최일과 장소를 확인. 17:00 시작 · 약 2시간. 여의도 물빛무대에서 네 팀의 어쿠스틱·앙상블 공연."
+      }
+    ]
+  },
+  {
+    "id": "seoul-cafe-show-2026",
+    "title": "제25회 서울카페쇼 · 일반 관람일",
+    "region": "서울",
+    "theme": "food",
+    "startDate": "2026-11-13",
+    "endDate": "2026-11-14",
+    "location": "강남구 코엑스",
+    "time": "13일 10:00~18:00(입장마감 17:30) · 14일 10:00~16:00(입장마감 15:30)",
+    "program": "커피·차·베이커리 브랜드 전시, 카페 장비와 디저트 소개",
+    "feeStatus": "paid",
+    "fee": "1일권 11월 1~8일 사전예매 22,000원 · 현장 25,000원",
+    "booking": "11월 8일까지 사전예매. 공식 안내의 티켓 링크에서 구매. 11월 11~12일은 업계 대상",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-07",
+    "sources": [
+      {
+        "publisher": "서울카페쇼",
+        "title": "2026 서울카페쇼 참관 일정·입장 안내",
+        "url": "https://eng.cafeshow.com/kor/visitor/visitor_info.asp",
+        "checkedAt": "2026-11-07",
+        "facts": "개최일과 장소를 확인. 13일 10:00~18:00(입장마감 17:30) · 14일 10:00~16:00(입장마감 15:30). 커피·차·베이커리 브랜드 전시, 카페 장비와 디저트 소개."
+      },
+      {
+        "publisher": "서울카페쇼 공식 예매처",
+        "title": "2026 서울카페쇼 입장권 예매",
+        "url": "https://tickets.interpark.com/goods/26010190",
+        "facts": "주최 측 참관 안내에서 연결하는 2026 회차 입장권.",
+        "checkedAt": "2026-11-07"
+      }
+    ]
+  },
+  {
+    "id": "seoul-independent-film-festival-2026",
+    "title": "제52회 서울독립영화제 〈디깅〉",
+    "region": "서울",
+    "theme": "kids",
+    "startDate": "2026-11-25",
+    "endDate": "2026-12-04",
+    "location": "강남구 CGV 압구정·CGV 청담씨네시티",
+    "time": "상영작 및 극장별 시간표 확인",
+    "program": "국내 독립영화 장·단편 경쟁작과 초청작 상영",
+    "feeStatus": "unknown",
+    "fee": "상영별 관람료는 영화제 공지 확인",
+    "booking": "상영 시간표와 예매 안내는 영화제 공식 홈페이지 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-07",
+    "sources": [
+      {
+        "publisher": "서울독립영화제",
+        "title": "제52회 서울독립영화제 개최 개요",
+        "url": "https://siff.kr/%EA%B0%9C%EC%B5%9C-%EA%B0%9C%EC%9A%94/",
+        "checkedAt": "2026-11-07",
+        "facts": "개최일과 장소를 확인. 상영작 및 극장별 시간표 확인. 국내 독립영화 장·단편 경쟁작과 초청작 상영."
+      }
+    ],
+    "scheduleType": "period",
+    "scheduleNote": "개최 기간 중 상영작과 극장별 회차를 확인하세요."
+  },
+  {
+    "id": "yangpyeong-migam-market-2026",
+    "title": "경기 생활문화 축제 양평미감 · 수제 플리마켓",
+    "region": "경기",
+    "theme": "kids",
+    "startDate": "2026-11-07",
+    "endDate": "2026-11-07",
+    "location": "양평군 양평생활문화센터 일원",
+    "time": "13:00~20:00",
+    "program": "지역 생활문화 프로그램과 수공예품을 둘러보는 수제 플리마켓",
+    "feeStatus": "unknown",
+    "fee": "관람료 미표기 · 상품은 별도 구매",
+    "booking": "공개된 셀러 모집은 판매자용. 관람·체험 조건은 현장 안내 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-07",
+    "sources": [
+      {
+        "publisher": "경기문화재단",
+        "title": "2026 경기 생활문화 축제 양평미감",
+        "url": "https://ggc.ggcf.kr/cultureEvents/view/6ad57ce9d179b47f6621735c",
+        "checkedAt": "2026-11-07",
+        "facts": "개최일과 장소를 확인. 13:00~20:00. 지역 생활문화 프로그램과 수공예품을 둘러보는 수제 플리마켓."
+      },
+      {
+        "publisher": "김포문화재단",
+        "title": "양평문화재단 행사 및 수제 플리마켓 공지",
+        "url": "https://www.gcf.or.kr/main/pst/view.do?pst_id=culture&pst_sn=5477",
+        "facts": "11월 7일 13~20시, 양평생활문화센터, 수제 플리마켓 개최를 확인.",
+        "checkedAt": "2026-11-07"
+      }
+    ]
+  },
+  {
+    "id": "gwacheon-grandpark-autumn-2026",
+    "title": "서울대공원 가을축제 · 예술로 물드는 숲",
+    "region": "경기",
+    "theme": "nature",
+    "startDate": "2026-11-07",
+    "endDate": "2026-11-08",
+    "location": "과천시 서울대공원 만남의 광장 일대",
+    "time": "가을 쉼터 11:00~18:00 · 8일 공연 14:00~17:00",
+    "program": "그림책 작가 초청 야외 전시와 거리공연, 친환경 공방·목공 체험",
+    "feeStatus": "unknown",
+    "fee": "프로그램별 비용은 공식 안내 확인",
+    "booking": "체험별 모집·현장 참여 조건은 서울대공원 공지 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-07",
+    "sources": [
+      {
+        "publisher": "서울대공원",
+        "title": "2026 서울대공원 가을축제 공식 일정",
+        "url": "https://grandpark.seoul.go.kr/munhwa/munhwaView/ko/S001005001004.do?mh_no=46153&pageIndex=1",
+        "checkedAt": "2026-11-07",
+        "facts": "개최일과 장소를 확인. 가을 쉼터 11:00~18:00 · 8일 공연 14:00~17:00. 그림책 작가 초청 야외 전시와 거리공연, 친환경 공방·목공 체험."
+      },
+      {
+        "publisher": "서울특별시",
+        "title": "11월 주말 행사 안내",
+        "url": "https://mediahub.seoul.go.kr/archives/2019942",
+        "facts": "축제와 야외 전시 기간, 가을 쉼터·공연 시간을 구분해 확인.",
+        "checkedAt": "2026-11-07"
+      }
+    ],
+    "familyNote": "축제 공연·체험은 11월 7~8일입니다. 작가 초청 야외 특별전은 11월 29일까지 이어집니다."
+  },
+  {
+    "id": "anyang-apap8-2026",
+    "title": "제8회 안양공공예술프로젝트 APAP8",
+    "region": "경기",
+    "theme": "kids",
+    "startDate": "2026-09-30",
+    "endDate": "2026-11-29",
+    "location": "안양예술공원·안양파빌리온·학운공원 오픈스쿨",
+    "time": "전시·공연별 운영 시간 확인",
+    "program": "야외 조각과 미디어아트 전시, 시민 예술 체험과 도원 릴레이 프로그램",
+    "feeStatus": "unknown",
+    "fee": "전시·참여 프로그램별 공식 안내 확인",
+    "booking": "워크숍·공연·벼룩시장 운영일과 신청 조건은 프로그램별 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-07",
+    "sources": [
+      {
+        "publisher": "안양문화예술재단",
+        "title": "제8회 안양공공예술프로젝트 개최 일정 및 프로그램",
+        "url": "https://ayac.or.kr/base/board/read?boardManagementNo=8&boardNo=6182&menuLevel=2&menuNo=20&page=1",
+        "checkedAt": "2026-11-07",
+        "facts": "개최일과 장소를 확인. 전시·공연별 운영 시간 확인. 야외 조각과 미디어아트 전시, 시민 예술 체험과 도원 릴레이 프로그램."
+      },
+      {
+        "publisher": "안양시",
+        "title": "안양공공예술프로젝트와 도원 릴레이 운영 안내",
+        "url": "https://www.anyang.go.kr/main/selectPressRelease.do?bbsNo=1687&key=4107&nttNo=456479",
+        "facts": "개최지별 전시와 시민 체험, 벼룩시장을 확인.",
+        "checkedAt": "2026-11-07"
+      }
+    ],
+    "scheduleType": "period",
+    "scheduleNote": "전시 기간입니다. 도원 릴레이와 벼룩시장 등은 공식 회차를 확인하세요."
+  },
+  {
+    "id": "paju-hope-art-festival-2026",
+    "title": "제7회 희망·나눔 파주 아트페스티벌",
+    "region": "경기",
+    "theme": "kids",
+    "startDate": "2026-11-11",
+    "endDate": "2026-11-13",
+    "location": "파주시 운정행복센터 대공연장·로비·야외무대",
+    "time": "11월 13일 희망·나눔 음악회 19:30 · 기타 일정 시청 안내 확인",
+    "program": "지역 예술 작품을 소개하는 아트페어와 파주윈드오케스트라 음악회",
+    "feeStatus": "free",
+    "fee": "관람 무료 · 전시 판매 작품 구매는 별도",
+    "booking": "11월 13일 음악회는 파주문화재단 상세 페이지에서 예매 방법 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-07",
+    "sources": [
+      {
+        "publisher": "파주시",
+        "title": "11월 문화행사 · 희망·나눔 파주 아트페스티벌",
+        "url": "https://tour.paju.go.kr/user/link/cultural/BD_selectCulturalList.do?q_day=12&q_month=11&q_year=2026",
+        "checkedAt": "2026-11-07",
+        "facts": "개최일과 장소를 확인. 11월 13일 희망·나눔 음악회 19:30 · 기타 일정 시청 안내 확인. 지역 예술 작품을 소개하는 아트페어와 파주윈드오케스트라 음악회."
+      },
+      {
+        "publisher": "파주문화재단",
+        "title": "희망·나눔 음악회 상세 안내",
+        "url": "https://www.pajucf.or.kr/business/02_1_view.php?no=537&page=2",
+        "facts": "11월 13일 음악회 상세 및 예매 안내.",
+        "checkedAt": "2026-11-07"
+      }
+    ]
+  },
+  {
+    "id": "gwangju-hwadam-autumn-2026",
+    "title": "곤지암리조트·화담숲 가을 단풍축제",
+    "region": "경기",
+    "theme": "nature",
+    "startDate": "2026-10-23",
+    "endDate": "2026-11-15",
+    "location": "광주시 곤지암리조트와 화담숲",
+    "time": "화담숲 입장 시간은 예매 회차 확인",
+    "program": "리조트와 화담숲에서 만나는 가을 단풍과 산책",
+    "feeStatus": "mixed",
+    "fee": "화담숲 입장권 유료 · 모노레일 별도",
+    "booking": "화담숲 관람은 공식 홈페이지에서 예매 회차 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-07",
+    "sources": [
+      {
+        "publisher": "곤지암리조트",
+        "title": "2026 가을 단풍축제 공식 안내",
+        "url": "https://m.konjiamresort.co.kr/contact/noticeView.dev?idx=1706",
+        "checkedAt": "2026-11-07",
+        "facts": "개최일과 장소를 확인. 화담숲 입장 시간은 예매 회차 확인. 리조트와 화담숲에서 만나는 가을 단풍과 산책."
+      },
+      {
+        "publisher": "화담숲",
+        "title": "화담숲 공식 예매 안내",
+        "url": "https://www.hwadamsup.com/",
+        "facts": "화담숲 입장 예매 안내.",
+        "checkedAt": "2026-11-07"
+      }
+    ],
+    "scheduleType": "period",
+    "scheduleNote": "화담숲 입장 가능일·입장권은 예약 화면을 확인하세요."
+  },
+  {
+    "id": "incheon-green-sharing-market-2026",
+    "title": "인천 자원순환 녹색 나눔장터 3회차",
+    "region": "인천",
+    "theme": "kids",
+    "startDate": "2026-11-07",
+    "endDate": "2026-11-07",
+    "location": "남동구 인천시청 애뜰광장",
+    "time": "12:00~16:00",
+    "program": "시민 중고물품을 나누고 거래하는 플리마켓과 환경교육 체험",
+    "feeStatus": "unknown",
+    "fee": "관람료 별도 표기 없음 · 물품 거래 비용 별도",
+    "booking": "판매자 신청은 10월 28일부터 인천YWCA 네이버 예약. 방문객은 판매자 접수와 구분",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-07",
+    "sources": [
+      {
+        "publisher": "인천광역시",
+        "title": "11월 7일 자원순환 녹색 나눔장터 3회차 공지",
+        "url": "https://www.incheon.go.kr/mayor_8/MA040101/view?curPage=5&repSeq=DOM_0000000015862277",
+        "checkedAt": "2026-11-07",
+        "facts": "개최일과 장소를 확인. 12:00~16:00. 시민 중고물품을 나누고 거래하는 플리마켓과 환경교육 체험."
+      }
+    ]
+  },
+  {
+    "id": "incheon-resident-expo-2026",
+    "title": "2026 인천광역시 주민자치박람회",
+    "region": "인천",
+    "theme": "kids",
+    "startDate": "2026-11-07",
+    "endDate": "2026-11-07",
+    "location": "제물포구 월미도 문화의 거리",
+    "time": "세부 회차는 주최 측 안내 확인",
+    "program": "군·구 특산품 전시와 지역 음식 나눔, 주민자치센터 체험·동아리 경연",
+    "feeStatus": "unknown",
+    "fee": "관람료 공식 미표기",
+    "booking": "체험 참여 조건은 현장 안내 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-07",
+    "sources": [
+      {
+        "publisher": "인천광역시",
+        "title": "11월 7일 인천 주민자치박람회 개최",
+        "url": "https://www.incheon.go.kr/IC010205/view?curPage=1&repSeq=DOM_0000000015911328",
+        "checkedAt": "2026-11-07",
+        "facts": "개최일과 장소를 확인. 세부 회차는 주최 측 안내 확인. 군·구 특산품 전시와 지역 음식 나눔, 주민자치센터 체험·동아리 경연."
+      }
+    ]
+  },
+  {
+    "id": "ganghwa-local-artists-2026",
+    "title": "2026 강화 지역예술인 축제",
+    "region": "인천",
+    "theme": "kids",
+    "startDate": "2026-11-07",
+    "endDate": "2026-11-07",
+    "location": "강화군 교동면 화개정원 폭포광장",
+    "time": "10:00~16:00",
+    "program": "지역 예술인 공연과 작품·강화 특산품 아트마켓, 화개정원 분재전시회",
+    "feeStatus": "unknown",
+    "fee": "화개정원 입장 요금 및 행사 조건은 공식 안내 확인",
+    "booking": "프로그램별 현장 운영 안내 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-07",
+    "sources": [
+      {
+        "publisher": "강화군",
+        "title": "화개정원 강화 지역예술인 축제 개최",
+        "url": "https://www.ganghwa.go.kr/open_content/main/bbs/bbsMsgDetail.do?bcd=report&msg_seq=23279",
+        "checkedAt": "2026-11-07",
+        "facts": "개최일과 장소를 확인. 10:00~16:00. 지역 예술인 공연과 작품·강화 특산품 아트마켓, 화개정원 분재전시회."
+      }
+    ]
+  },
+  {
+    "id": "incheon-iap-open-studio-2026",
+    "title": "2026 인천아트플랫폼 오픈스튜디오",
+    "region": "인천",
+    "theme": "kids",
+    "startDate": "2026-11-06",
+    "endDate": "2026-11-29",
+    "location": "제물포구 인천아트플랫폼 창작스튜디오·공연장·시민라운지·중앙광장",
+    "time": "11월 6~8일 12:00~18:00 · 10~29일 결과발표 전시 12:00~17:00",
+    "program": "입주 작가 작업실 공개, 프로젝트 결과 전시, 스크리닝·아티스트 토크",
+    "feeStatus": "free",
+    "fee": "관람 무료",
+    "booking": "토크·체험 등은 공식 페이지 온라인 리플릿에서 회차 및 신청 조건 확인",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-07",
+    "sources": [
+      {
+        "publisher": "인천아트플랫폼",
+        "title": "2026 IAP 오픈스튜디오 공식 일정",
+        "url": "https://www.inartplatform.kr/program/view?no=1362",
+        "checkedAt": "2026-11-07",
+        "facts": "개최일과 장소를 확인. 11월 6~8일 12:00~18:00 · 10~29일 결과발표 전시 12:00~17:00. 입주 작가 작업실 공개, 프로젝트 결과 전시, 스크리닝·아티스트 토크."
+      }
+    ],
+    "scheduleType": "period",
+    "scheduleNote": "작업실 개방은 11월 6~8일입니다. 이후에는 결과발표 전시와 별도 프로그램이 운영됩니다."
+  },
+  {
+    "id": "incheon-yeonsudam-food-2026",
+    "title": "제1회 연수담 전통음식문화마당",
+    "region": "인천",
+    "theme": "food",
+    "startDate": "2026-11-13",
+    "endDate": "2026-11-15",
+    "location": "연수구 청량숲 문화체험원 전통음식문화체험관",
+    "time": "10:00~18:00 · 13일 개막식 14:30",
+    "program": "김장품앗이와 전통음식 만들기, 떡메치기·투호 등 현장 전통놀이, 김치 판매",
+    "feeStatus": "mixed",
+    "fee": "현장 전통놀이 무료 · 김장 재료와 상품 구매 별도",
+    "booking": "일부 음식 체험 사전예약은 10월 19~23일. 전통문화 체험은 현장 접수",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-07",
+    "sources": [
+      {
+        "publisher": "인천 연수구",
+        "title": "제1회 연수담 전통음식문화마당 개최 및 체험 안내",
+        "url": "https://www.yeonsu.go.kr/main/community/notify/notice.asp?category=&dept_idx=&e_date=&eminwon=&gotopage=1&head_idx=&head_idx_cateYN=&keyfield=&keyword=&listCnt=&page=v&s_date=&se_dept_idx=&seq=119875",
+        "checkedAt": "2026-11-07",
+        "facts": "개최일과 장소를 확인. 10:00~18:00 · 13일 개막식 14:30. 김장품앗이와 전통음식 만들기, 떡메치기·투호 등 현장 전통놀이, 김치 판매."
+      }
+    ]
+  },
+  {
+    "id": "incheon-art-t-day-tour-2026",
+    "title": "아트·T 인천 원데이 아트투어",
+    "region": "인천",
+    "theme": "kids",
+    "startDate": "2026-11-21",
+    "endDate": "2026-11-29",
+    "location": "인천아트플랫폼·송도컨벤시아·파라다이스시티·제물포구 일대",
+    "time": "21일 14:00~17:00 · 28일 13:00~17:30 · 29일 10:30~16:20",
+    "program": "해설과 함께 인천의 전시 공간을 버스 또는 도보로 둘러보는 세 가지 코스",
+    "feeStatus": "unknown",
+    "fee": "공식 공고에 참가비 별도 표기 없음 · 회차별 티켓 제공 조건 확인",
+    "booking": "11월 2일 10:00부터 선착순. 인천문화재단 공지의 온라인 신청폼 작성",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-07",
+    "sources": [
+      {
+        "publisher": "인천문화재단",
+        "title": "아트·T 인천 원데이 아트투어 일정 및 신청",
+        "url": "https://ifac.or.kr/bbs/view.do?bbsCtgrySn=&bbsSn=236166&key=m2501152808232&pageIndex=1&sw=",
+        "checkedAt": "2026-11-07",
+        "facts": "개최일과 장소를 확인. 21일 14:00~17:00 · 28일 13:00~17:30 · 29일 10:30~16:20. 해설과 함께 인천의 전시 공간을 버스 또는 도보로 둘러보는 세 가지 코스."
+      },
+      {
+        "publisher": "인천문화재단",
+        "title": "원데이 아트투어 공식 신청폼",
+        "url": "https://ifac.gov-dooray.com/share/form/4446558432408816818",
+        "facts": "공식 공고에서 연결하는 신청 폼. 신청 자격과 세부 코스는 공고 확인.",
+        "checkedAt": "2026-11-07"
+      }
+    ],
+    "scheduleType": "dates",
+    "dates": [
+      "2026-11-21",
+      "2026-11-28",
+      "2026-11-29"
+    ],
+    "familyNote": "20세 이상 인천 시민 대상, 회차당 20명 내외. 출발지와 이동 방식이 회차마다 다릅니다."
+  },
+  {
+    "id": "bupyeong-campmarket-november-2026",
+    "title": "부평 캠프마켓 11월 시민참여 프로그램",
+    "region": "인천",
+    "theme": "kids",
+    "startDate": "2026-11-07",
+    "endDate": "2026-11-15",
+    "location": "부평구 캠프마켓 개방공간",
+    "time": "7일 13:00 · 8·14·15일 10:00 및 14:00",
+    "program": "서바이벌 미션, 리듬줄넘기, 걷기 프로그램과 키링 만들기 등 날짜별 체험",
+    "feeStatus": "unknown",
+    "fee": "공식 안내의 별도 참가비 표기 확인 필요",
+    "booking": "캠프마켓 신청 누리집에서 회차 선택. 잔여 인원이 있을 때 현장 접수 가능",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-07",
+    "sources": [
+      {
+        "publisher": "인천광역시",
+        "title": "2026 캠프마켓 9~11월 시민참여 프로그램",
+        "url": "https://www.incheon.go.kr/IC010601/3084526",
+        "checkedAt": "2026-11-07",
+        "facts": "개최일과 장소를 확인. 7일 13:00 · 8·14·15일 10:00 및 14:00. 서바이벌 미션, 리듬줄넘기, 걷기 프로그램과 키링 만들기 등 날짜별 체험."
+      }
+    ],
+    "scheduleType": "dates",
+    "dates": [
+      "2026-11-07",
+      "2026-11-08",
+      "2026-11-14",
+      "2026-11-15"
+    ]
+  },
+  {
+    "id": "seongbuk-youth-market-2026",
+    "title": "성북 북적북적 청년상생마켓 2회차",
+    "region": "서울",
+    "theme": "kids",
+    "startDate": "2026-11-13",
+    "endDate": "2026-11-14",
+    "location": "성북구 성북천 분수마루 광장",
+    "time": "16:00~20:00",
+    "program": "청년 창업팀과 지역 소상공인이 참여하는 판매·홍보 장터",
+    "feeStatus": "unknown",
+    "fee": "관람료 미표기 · 상품은 별도 구매",
+    "booking": "방문자 예약 안내는 확인 필요",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-07",
+    "sources": [
+      {
+        "publisher": "국민대학교 캠퍼스타운사업단",
+        "title": "성북구와 함께하는 성북 북적북적 청년상생마켓",
+        "url": "https://www.kookmin.ac.kr/comm/board/user/505778f2d4a04163de6ee5fee35d9bb9/view.do?dataSeq=1077067",
+        "checkedAt": "2026-11-07",
+        "facts": "개최일과 장소를 확인. 16:00~20:00. 청년 창업팀과 지역 소상공인이 참여하는 판매·홍보 장터."
+      },
+      {
+        "publisher": "뉴스로 · 성북구 발표",
+        "title": "성북 북적북적 청년상생마켓 2회차 일정",
+        "url": "https://www.newsro.kr/articles/1904496",
+        "facts": "성북구 발표를 인용한 후속 안내에서 2회차 11월 13~14일 및 성북천 분수마루 광장을 확인.",
+        "checkedAt": "2026-11-07"
+      }
+    ]
+  },
+  {
+    "id": "anseong-namsadang-november-2026",
+    "title": "안성 남사당 상설공연 곰뱅이텄다 · 11월",
+    "region": "경기",
+    "theme": "kids",
+    "startDate": "2026-11-07",
+    "endDate": "2026-11-29",
+    "location": "안성시 안성맞춤랜드 남사당공연장",
+    "time": "토·일 14:00~15:30",
+    "program": "안성 남사당바우덕이 풍물단이 선보이는 남사당놀이 상설 공연",
+    "feeStatus": "paid",
+    "fee": "성인 12,000원 · 청소년 6,000원 · 어린이 3,000원",
+    "booking": "안성시 예매 페이지에서 회차 선택. 20인 이상 단체는 전화 예매",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-07",
+    "sources": [
+      {
+        "publisher": "안성시",
+        "title": "2026 안성남사당 상설공연 일정과 예매",
+        "url": "https://www.anseong.go.kr/tourPortal/namsadang/contents.do?mId=0403000000",
+        "checkedAt": "2026-11-07",
+        "facts": "개최일과 장소를 확인. 토·일 14:00~15:30. 안성 남사당바우덕이 풍물단이 선보이는 남사당놀이 상설 공연."
+      },
+      {
+        "publisher": "안성시",
+        "title": "2026 안성남사당 상설공연 공지",
+        "url": "https://www.anseong.go.kr/festival/bbs/view.do?bIdx=195801&mId=0401000000&ptIdx=16",
+        "facts": "4월 4일~11월 29일 토·일 운영, 20인 이상 단체 전화 예매를 확인.",
+        "checkedAt": "2026-11-07"
+      }
+    ],
+    "scheduleType": "dates",
+    "dates": [
+      "2026-11-07",
+      "2026-11-08",
+      "2026-11-14",
+      "2026-11-15",
+      "2026-11-21",
+      "2026-11-22",
+      "2026-11-28",
+      "2026-11-29"
+    ]
   }
 ]
