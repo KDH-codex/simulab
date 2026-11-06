@@ -25,7 +25,7 @@ for(const folder of publicRoots)await cp(path.join(root,folder),path.join(destin
 const familySchedule=JSON.parse(await readFile(path.join(root,'data/family-info/schedule.json'),'utf8'));
 await mkdir(path.join(destination,'feeds/family-info'),{recursive:true});
 for(const id of ['latest',...familySchedule.categories.map(c=>c.id)])await cp(path.join(root,'feeds/family-info',id+'.json'),path.join(destination,'feeds/family-info',id+'.json'));
-for(const file of await readdir(root))if(/^(index\.html|favicon\.svg|manifest\.json|sw\.js|ads\.txt|robots\.txt|naver[a-f0-9]+\.html|_headers|_redirects)$/.test(file))await cp(path.join(root,file),path.join(destination,file));
+for(const file of await readdir(root))if(/^(index\.html|favicon\.(?:svg|ico)|manifest\.json|sw\.js|ads\.txt|robots\.txt|naver[a-f0-9]+\.html|_headers|_redirects)$/.test(file))await cp(path.join(root,file),path.join(destination,file));
 const pages=['index.html','calendar/index.html','map/index.html','curation/index.html','library/index.html','debates/001/index.html','debates/002/index.html','debates/arena/index.html'];
 for(const entry of await readdir(path.join(root,'events'),{withFileTypes:true}))if(entry.isDirectory()){await stat(path.join(root,'events',entry.name,'index.html'));pages.push('events/'+entry.name+'/index.html')}
 try{for(const entry of await readdir(path.join(root,'debates','generated'),{withFileTypes:true}))if(entry.isDirectory()&&/^\d{3}-m\d{3}$/.test(entry.name)){await stat(path.join(root,'debates','generated',entry.name,'index.html'));pages.push(`debates/generated/${entry.name}/index.html`)}}catch(error){if(error.code!=='ENOENT')throw error}
