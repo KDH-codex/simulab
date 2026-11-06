@@ -1,14 +1,26 @@
 const installButton=document.querySelector('.header-install');
 const guide=document.getElementById('install-guide');
 let installPrompt;
+let installed=false;
 
 function showGuide() {
+  const title=guide.querySelector('#install-guide-title');
+  const instructions=guide.querySelector('[data-bookmark-instructions]');
+  const iosInstall=guide.querySelector('[data-ios-install]');
+  const standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
+  iosInstall.hidden=true;
+  if(standalone||installed) {
+    title.textContent='앱 설치 상태';
+    instructions.textContent=standalone?'이미 이번주 축제를 앱으로 열고 있어요.':'이번주 축제를 앱으로 설치했어요.';
+    guide.showModal();
+    return;
+  }
+  title.textContent='북마크 저장';
   const {userAgent,platform,maxTouchPoints}=navigator;
   const ios=/iPhone|iPad|iPod/.test(userAgent)||(platform==='MacIntel'&&maxTouchPoints>1);
-  const instructions=guide.querySelector('[data-bookmark-instructions]');
   if(ios) {
     instructions.textContent='Safari에서 공유 버튼 → 책갈피 추가를 선택하세요. 다른 브라우저에서는 메뉴의 북마크 추가를 선택하세요.';
-    guide.querySelector('[data-ios-install]').hidden=false;
+    iosInstall.hidden=false;
   } else if(/Android/.test(userAgent)) {
     instructions.textContent='브라우저 더보기 메뉴(⋮)에서 별표 또는 북마크 추가를 누르세요.';
   } else {
@@ -25,9 +37,8 @@ if(installButton&&guide) {
   });
   window.addEventListener('appinstalled',()=>{
     installPrompt=undefined;
-    installButton.hidden=true;
+    installed=true;
   });
-  installButton.hidden=matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
   installButton.addEventListener('click',async()=>{
     const prompt=installPrompt;
     if(!prompt) {
