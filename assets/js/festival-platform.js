@@ -3,11 +3,22 @@ import {WEATHER_STATIONS} from './festival-weather-model.js';
 import {modalMarkup,modalTabIds} from './festival-modal.js';
 import {eventImage,imageCaption,activeConditions,detailTagDestination} from './festival-presentation.js';
 import {setupHeadingMotion} from './festival-heading-motion.js';
+import {initializeLanguage} from './festival-language.js';
+import {eventTranslation} from './festival-event-locales.js';
+import {languageURL} from './festival-i18n.js';
+import {highlightFor} from './festival-highlights.js';
 import {koreaToday, shiftDate, weekendRange, overlaps, occursOn, nextDate, eventStatus, escapeHtml as esc, isStale} from '/tools/kids-outing-calendar/model.js';
 
 const data=JSON.parse(document.getElementById('festival-data')?.textContent || '[]');
+const locale=initializeLanguage(data);
+const eventName=e=>eventTranslation(e,locale)?.title||e.title;
 const byId=new Map(data.map(e=>[e.id,e]));
 const today=koreaToday();
+// Static pages can outlive a deployment day. Recheck editorial picks against the visitor's KST date.
+document.querySelectorAll('[data-highlight-id]').forEach(mark=>{const event=byId.get(mark.dataset.highlightId);if(!event||!highlightFor(event,today))mark.remove();});
+document.querySelectorAll('#hot-event-feed [data-card-id]').forEach(card=>{const event=byId.get(card.dataset.cardId);if(!event||!highlightFor(event,today))card.remove();});
+const hotSection=document.querySelector('.hot-section');if(hotSection&&!hotSection.querySelector('[data-card-id]'))hotSection.hidden=true;
+document.querySelectorAll('.detail-page .highlight-explanation').forEach(note=>{const event=data.find(e=>e.url===location.pathname);if(!event||!highlightFor(event,today))note.remove();});
 const page=document.body.dataset.festivalPage;
 const $=id=>document.getElementById(id);
 const params=new URL(location.href).searchParams;
@@ -22,7 +33,7 @@ let saved=[];
 try {const parsed=JSON.parse(localStorage.getItem(storageKey)||'[]');if(Array.isArray(parsed))saved=[...new Set(parsed.filter(id=>typeof id==='string'&&byId.has(id)))];} catch {}
 const fmt=d=>d.slice(5).replace('-','.');
 const range=e=>e.startDate===e.endDate?fmt(e.startDate):fmt(e.startDate)+' — '+fmt(e.endDate);
-const dayLabel=d=>new Intl.DateTimeFormat('ko-KR',{month:'long',day:'numeric',weekday:'long',timeZone:'UTC'}).format(new Date(d+'T00:00:00Z'));
+const dayLabel=d=>new Intl.DateTimeFormat(locale,{month:'long',day:'numeric',weekday:'long',timeZone:'UTC'}).format(new Date(d+'T00:00:00Z'));
 const fee=e=>({free:'입장·기본참여 무료',mixed:'일부 유료',paid:'유료',unknown:'요금 확인 필요'}[e.feeStatus] || '요금 확인 필요');
 function status(e) {
   if(e.endDate<today)return '종료된 일정';
@@ -33,7 +44,7 @@ function imageMarkup(e,hero=false) {
   return eventImage(e,e.image,{hero});
 }
 function card(e) {
-  return '<article class="festival-card" data-card-id="'+esc(e.id)+'"><div class="card-visual theme-'+esc(e.theme)+'"><a href="'+esc(e.url)+'" data-preview="'+esc(e.id)+'" aria-label="'+esc(e.title)+' 상세안내">'+imageMarkup(e)+'<span class="status-badge">'+esc(status(e))+'</span><span class="picture-date">▦ '+esc(range(e))+'</span></a><button class="save-button" data-save="'+esc(e.id)+'" aria-label="'+esc(e.title)+' 보관" aria-pressed="false">♡</button></div><div class="card-content"><p class="place-label">⌖ '+esc(e.region)+' · '+esc(e.location)+'</p><h3><a href="'+esc(e.url)+'" data-preview="'+esc(e.id)+'">'+esc(e.title)+'</a></h3><p class="card-description">'+esc(e.program)+'</p>'+keywordTags(e)+(e.scheduleType==='period'?'<p class="card-schedule-note">기간 내 운영일 확인</p>':'')+'<div class="card-bottom"><div><small>입장·참여 비용</small><strong>'+esc(fee(e))+'</strong></div><a href="'+esc(e.url)+'" class="detail-button" data-preview="'+esc(e.id)+'">상세보기 ↗</a></div></div></article>';
+  return '<article class="festival-card" data-card-id="'+esc(e.id)+'"><div class="card-visual theme-'+esc(e.theme)+'"><a href="'+esc(e.url)+'" data-preview="'+esc(e.id)+'" aria-label="'+esc(e.title)+' 상세안내">'+imageMarkup(e)+'<span class="status-badge">'+esc(status(e))+'</span><span class="picture-date">▦ '+esc(range(e))+'</span></a><button class="save-button" data-save="'+esc(e.id)+'" aria-label="'+esc(e.title)+' 보관" aria-pressed="false">♡</button></div><div class="card-content"><p class="place-label">⌖ '+esc(e.region)+' · <span data-original lang="ko">'+esc(e.location)+'</span>'+'</p><h3><a href="'+esc(e.url)+'" data-preview="'+esc(e.id)+'">'+esc(e.title)+'</a></h3><p class="card-description">'+esc(e.program)+'</p>'+keywordTags(e)+(e.scheduleType==='period'?'<p class="card-schedule-note">기간 내 운영일 확인</p>':'')+'<div class="card-bottom"><div><small>입장·참여 비용</small><strong>'+esc(fee(e))+'</strong></div><a href="'+esc(e.url)+'" class="detail-button" data-preview="'+esc(e.id)+'">상세보기 ↗</a></div></div></article>';
 }
 function keywordTags(e,extraClass='') {
   return '<div class="tag-row keyword-tags '+extraClass+'">'+eventTags(e).map(word=>'<button type="button" data-keyword="'+esc(word)+'" aria-pressed="'+(state.keyword===word)+'">#'+esc(word)+'</button>').join('')+'</div>';
@@ -186,7 +197,7 @@ function syncWeather() {
   const city=WEATHER_STATIONS[weatherStation].city;
   let text=city+' 대표 지점 · ';
   if(weatherState.status==='ready'){
-    const updated=new Intl.DateTimeFormat('ko-KR',{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit',timeZone:'Asia/Seoul'}).format(new Date(weatherState.updatedAt));
+    const updated=new Intl.DateTimeFormat(locale,{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit',timeZone:'Asia/Seoul'}).format(new Date(weatherState.updatedAt));
     text+='예보 갱신 '+updated+' · 제공 범위 '+fmt(weatherState.days[0].date)+'–'+fmt(weatherState.days.at(-1).date);
   }else text+=weatherState.status==='failed'?'예보 연결 실패 · 잠시 후 다시 확인해 주세요.':'예보를 불러오는 중입니다.';
   $('weather-status').textContent=text;
@@ -235,7 +246,7 @@ function renderCalendar() {
   const pool=calendarView==='week'?weeklyEvents(data,activeWeek):monthPool;
   const list=pool.filter(e=>selection(e));
   const monthList=monthPool.filter(e=>selection(e));
-  $('month-title').textContent=new Intl.DateTimeFormat('ko-KR',{year:'numeric',month:'long',timeZone:'UTC'}).format(new Date(shown+'T00:00:00Z'));
+  $('month-title').textContent=new Intl.DateTimeFormat(locale,{year:'numeric',month:'long',timeZone:'UTC'}).format(new Date(shown+'T00:00:00Z'));
   document.querySelectorAll('[data-calendar-view]').forEach(b=>{
     const on=b.dataset.calendarView===calendarView;b.setAttribute('aria-selected',String(on));b.tabIndex=on?0:-1;
   });
@@ -248,7 +259,7 @@ function renderCalendar() {
   for(let d=shown;d<=r.end;d=shiftDate(d,1)){
     const items=eventsForDay(monthList,d);
     const on=selected&&d>=selected.start&&d<=selected.end;
-    cells.push('<button class="calendar-day'+(d===today?' is-today':'')+(on?' is-selected':'')+'" data-day="'+d+'" aria-pressed="'+!!on+'" aria-label="'+esc(dayLabel(d))+' · 수록 '+items.length+'건"><span class="day-number">'+Number(d.slice(8))+(d===today?'<small>오늘</small>':'')+'</span><span data-weather-date="'+d+'">'+dayWeather(d)+'</span><span class="day-events">'+items.slice(0,2).map(e=>'<span class="day-event theme-'+e.theme+'">'+(e.scheduleType==='period'?'◇ ':'')+esc(e.title.replace(/^\d{4}\s*/, '').slice(0,14))+'</span>').join('')+(items.length>2?'<small>+'+(items.length-2)+'개 더</small>':'')+'</span><span class="mobile-day-count">'+(items.length?items.length+'건':'')+'</span></button>');
+    cells.push('<button class="calendar-day'+(d===today?' is-today':'')+(on?' is-selected':'')+'" data-day="'+d+'" aria-pressed="'+!!on+'" aria-label="'+esc(dayLabel(d))+' · 수록 '+items.length+'건"><span class="day-number">'+Number(d.slice(8))+(d===today?'<small>오늘</small>':'')+'</span><span data-weather-date="'+d+'">'+dayWeather(d)+'</span><span class="day-events">'+items.slice(0,2).map(e=>'<span class="day-event theme-'+e.theme+'">'+(e.scheduleType==='period'?'◇ ':'')+esc(eventName(e))+'</span>').join('')+(items.length>2?'<small>+'+(items.length-2)+'개 더</small>':'')+'</span><span class="mobile-day-count">'+(items.length?items.length+'건':'')+'</span></button>');
   }
   $('calendar-grid').innerHTML=cells.join('');
   const weeks=[];
@@ -264,7 +275,7 @@ function renderCalendar() {
       const on=selected?.start===d&&selected?.end===d;
       return '<section class="week-day-column'+(d===today?' is-today':'')+(on?' is-selected':'')+'"><button class="week-day-head" data-day="'+d+'" aria-pressed="'+on+'"><time datetime="'+d+'">'+esc(dayLabel(d).replace('요일',''))+'</time><span data-weather-date="'+d+'">'+dayWeather(d)+'</span></button><div class="week-day-counts"><span>시작 '+rows.filter(e=>e.startDate===d).length+'</span><span>종료 '+rows.filter(e=>e.endDate===d).length+'</span></div><div class="week-day-events">'+(rows.length?rows.map(e=>{
         const milestone=dayMilestone(e,d),tone=milestone==='시작'||milestone==='하루 일정'?'opening':milestone==='종료'?'closing':'continuing';
-        return '<button class="week-event '+tone+'" data-preview="'+esc(e.id)+'"><span class="week-event-label">'+esc(milestone)+'</span><b>'+esc(e.title.replace(/^\d{4}\s*/,''))+'</b><span>⌖ '+esc(e.region)+'</span><small>'+esc(e.time||'시간 확인 필요')+'</small></button>';
+        return '<button class="week-event '+tone+'" data-preview="'+esc(e.id)+'"><span class="week-event-label">'+esc(milestone)+'</span><b>'+esc(eventName(e))+'</b><span>⌖ '+esc(e.region)+'</span><small>'+esc(e.time||'시간 확인 필요')+'</small></button>';
       }).join(''):'<p class="week-no-events">수록 일정 없음</p>')+'</div></section>';
     }).join('');
     $('weekly-timetable').scrollLeft=weekScroll;
@@ -401,12 +412,12 @@ document.addEventListener('click',async event=>{
   if(b.dataset.modalTab){selectModalTab(b.dataset.modalTab);return;}
   if(b.dataset.share){
     const e=byId.get(b.dataset.share);if(!e)return;
-    const url=new URL(e.url,location.origin).href;
+    const shareURL=new URL(e.url,location.origin);shareURL.searchParams.set('lang',locale);const url=shareURL.href;
     try{if(navigator.share){await navigator.share({title:e.title,url});}else{await navigator.clipboard.writeText(url);toast('축제 링크를 복사했어요.');}}catch(error){if(error.name!=='AbortError')toast('공유하지 못했어요. 상세 페이지 주소를 복사해 주세요.');}return;
   }
   if(b.hasAttribute('data-keyword')){
     const destination=detailTagDestination(page,b.dataset.keyword);
-    if(destination){location.assign(destination);return;}
+    if(destination){location.assign(languageURL(destination,locale,location.origin).href);return;}
     if(dialog?.open)closePreview();
     state.keyword=state.keyword===b.dataset.keyword?'':b.dataset.keyword;state.limit=9;updateURL();render();
     const target=page==='calendar'?$('selected-day-section'):$('discover');

@@ -1,0 +1,54 @@
+.language-control{display:inline-flex;align-items:center;gap:4px;border:1px solid #ddd6ee;background:#fff;border-radius:24px;padding:0 9px;min-height:40px;color:#423452;font:inherit}
+.language-icon{font-size:19px;line-height:1;pointer-events:none}
+.language-control select{font:inherit;font-size:12px;font-weight:650;border:0;background:transparent;color:inherit;padding:9px 2px;max-width:105px;cursor:pointer}
+.visitor-guide{margin:16px auto 0;padding:10px 16px;border:1px solid #e8dff1;border-radius:14px;background:#ffffffb8;font-size:12px;color:#62516e}
+.visitor-guide summary{cursor:pointer;font-weight:700;line-height:1.8}
+.visitor-guide summary span{display:inline-block;margin-left:12px;font-size:10px;letter-spacing:.02em;color:#85728e}
+.visitor-guide p{margin-top:10px;max-width:1050px;line-height:1.8}
+.translation-notice{background:#f3effc;color:#514468;font-size:12px;line-height:1.85;border-radius:12px;padding:14px 18px;margin:18px 0}
+.translation-notice details{margin-top:9px}.translation-notice summary{cursor:pointer;font-weight:750}.translation-notice [data-original]{margin-top:8px}
+.festival-dialog .translation-notice,.festival-dialog .highlight-explanation{margin-left:30px;margin-right:30px}
+.highlight-explanation{display:flex;flex-wrap:wrap;gap:5px 14px;align-items:center;background:#fff4e9;border:1px solid #ffd9b7;border-radius:12px;padding:12px 16px;font-size:11px;line-height:1.8;margin-top:16px;margin-bottom:16px}
+.highlight-explanation b{color:#a6380c}.highlight-explanation a{font-weight:750;text-decoration:underline;text-underline-offset:3px}
+.event-highlight{position:absolute;z-index:3;top:54px;left:17px;display:inline-flex;align-items:center;gap:4px;background:linear-gradient(120deg,#b42c25,#d24c0b);color:#fff;border:1px solid #ffdfb4;border-radius:7px;padding:3px 9px;font-size:11px;font-weight:900;letter-spacing:.05em;line-height:1.6;box-shadow:0 3px 9px #54210e33;pointer-events:none}
+.mini-image .event-highlight{top:40px;left:9px;font-size:9px;padding:2px 6px}.hero-image .event-highlight{display:none}
+.detail-image,.modal-cover{position:relative}.detail-image .event-highlight,.detail-mobile-media .event-highlight,.modal-cover .event-highlight{top:18px}
+.hot-section{margin:0 0 48px}.hot-section .section-title h2{color:#ad3919}.hot-section .section-title p{max-width:800px}
+.localized-heading-line{display:block}.localized-heading-line.accent-text{color:var(--orange)}
+.hero-copy h1 .localized-heading-line:first-child{color:#fff}.page-intro h1 .localized-heading-line:first-child{color:var(--ink)}
+html:not([lang=ko]) body{letter-spacing:0;overflow-wrap:anywhere}
+html:not([lang=ko]) h1,html:not([lang=ko]) h2,html:not([lang=ko]) h3{letter-spacing:-.025em;word-break:normal;overflow-wrap:anywhere}
+html:not([lang=ko]) .brand b{font-family:Paperlogy,Pretendard,sans-serif;font-size:20px;max-width:180px;line-height:1.2}
+html:not([lang=ko]) .header-inner{column-gap:20px}
+html:not([lang=ko]) .main-nav{gap:1px}html:not([lang=ko]) .main-nav a{padding-inline:12px}
+html:not([lang=ko]) .hero-copy h1{font-family:Paperlogy,Pretendard,sans-serif;font-size:clamp(37px,4.2vw,64px);line-height:1.2}
+html:not([lang=ko]) .hero-description{max-width:550px}
+html:not([lang=ko]) .hero-actions{flex-wrap:wrap}
+html:not([lang=ko]) .pills button{white-space:normal}
+html:not([lang=ko]) .region-point{font-size:11px;padding:7px 9px;white-space:nowrap}
+html:not([lang=ko]) .region-point b{font-size:10px}
+html:not([lang=ko]) .week-day-counts{flex-wrap:wrap}
+@media(max-width:1200px) and (min-width:851px){.header-inner{gap:15px}.main-nav a{padding-inline:12px}.brand b{font-size:22px}html:not([lang=ko]) .header-inner{flex-wrap:wrap;padding:14px 0 0;gap:12px}html:not([lang=ko]) .main-nav{order:2;flex-basis:100%;padding:6px 0 12px}html:not([lang=ko]) .festival-header-actions{margin-left:auto}}
+@media(max-width:850px){.festival-header-actions{margin-left:auto}.language-control{min-height:36px}.language-control select{font-size:11px;max-width:88px}html:not([lang=ko]) .main-nav a{padding-inline:10px}html:not([lang=ko]) .brand b{font-size:19px}}
+@media(max-width:560px){
+  .site-header .header-inner{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:8px;padding-top:12px}
+  .site-header .brand{min-width:0;gap:7px}.site-header .brand b{font-size:19px}
+  .festival-header-actions{display:grid;grid-template-columns:auto auto;gap:5px;align-items:center;justify-items:end}
+  .language-control{grid-column:1/-1;justify-self:end;min-height:32px;padding:0 7px}.language-control select{padding:5px 0;max-width:100px;font-size:11px}.language-icon{font-size:16px}
+  .site-header .header-install{min-height:32px;font-size:10px;padding:0 7px}.site-header .header-saved{font-size:10px;padding:3px 7px;gap:4px;min-height:32px}.header-saved .saved-label{display:none}
+  .site-header .main-nav{grid-column:1/-1;grid-row:2;margin-top:0;display:flex;justify-content:space-between;padding:8px 0 10px;gap:2px;min-width:0}
+  .site-header .main-nav a{font-size:11px;padding:8px 9px;white-space:normal;text-align:center;line-height:1.4;overflow-wrap:normal;min-width:min-content}
+  html:not([lang=ko]) .site-header .brand b{font-size:18px;max-width:145px}html:not([lang=ko]) .site-header .main-nav a{font-size:10px;padding:8px 6px}
+  .visitor-guide{font-size:11px;margin-top:12px;padding:9px 12px}.visitor-guide summary span{font-size:9px;margin-left:4px}
+  html:not([lang=ko]) .hero-copy h1{font-size:clamp(32px,8.5vw,44px)}
+  html:not([lang=ko]) .hero-top{flex-wrap:wrap;gap:8px}html:not([lang=ko]) .hero-main{min-height:700px}html:not([lang=ko]) .hero-kicker{max-width:220px}
+  html:not([lang=ko]) .hero-event{font-size:22px}html:not([lang=ko]) .hero-actions{gap:14px}
+  .hot-section{margin-bottom:34px}.hot-section .section-title{align-items:start}.hot-section .section-title h2{font-size:23px}.hot-section .section-title p{font-size:11px}
+  .event-highlight{left:14px;top:51px;font-size:10px}.mini-image .event-highlight{top:43px;font-size:8px}
+  .festival-dialog .translation-notice,.festival-dialog .highlight-explanation{margin-left:22px;margin-right:22px}
+  html:not([lang=ko]) .modal-tabs{overflow-x:auto}html:not([lang=ko]) .modal-tabs button{flex-shrink:0}
+  html:not([lang=ko]) .sort-options{flex-shrink:0;flex-direction:column}html:not([lang=ko]) .sort-options button{font-size:10px}
+  html:not([lang=ko]) .calendar-toolbar-actions{flex-wrap:wrap}.calendar-toolbar-actions>*{max-width:100%}
+  .weather-toolbar>div{min-width:0;flex:1 1 100%;max-width:100%;flex-wrap:wrap}.weather-toolbar select{flex:1 1 100px;min-width:0;width:auto;max-width:100%}
+}
+@media(max-width:360px){html[lang=en] .site-header .brand b{font-size:14px}html[lang=en] .site-header .brand img{width:28px;height:28px}}

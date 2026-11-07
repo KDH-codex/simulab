@@ -1,4 +1,5 @@
 import {shiftDate, overlaps, occursOn} from '../../tools/kids-outing-calendar/model.js';
+import {EVENT_LOCALES} from './festival-event-locales.js';
 
 export const THEME_WORDS={light:'빛·야간',food:'먹거리·수확',nature:'꽃·자연',kids:'체험·문화'};
 export function eventTags(event) {
@@ -8,7 +9,7 @@ export function eventTags(event) {
   return [...new Set([...hits,event.region,THEME_WORDS[event.theme]].filter(Boolean))].slice(0,4);
 }
 export function matchesKeyword(event,keyword) {
-  return !keyword||[event.title,event.program,event.location,event.region,THEME_WORDS[event.theme]].join(' ').toLocaleLowerCase('ko').includes(keyword.toLocaleLowerCase('ko'));
+  return !keyword||[event.title,event.program,event.location,event.region,THEME_WORDS[event.theme],...(EVENT_LOCALES[event.id]?.titles||[])].join(' ').toLocaleLowerCase('ko').includes(keyword.toLocaleLowerCase('ko'));
 }
 export function weekRangeFor(date) {
   const start=shiftDate(date,-new Date(date+'T00:00:00Z').getUTCDay());

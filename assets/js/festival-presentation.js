@@ -1,4 +1,5 @@
 import {escapeHtml as esc} from '../../tools/kids-outing-calendar/model.js';
+import {highlightBadge} from './festival-highlights.js';
 
 const themes={light:'빛이 머무는 밤',nature:'계절을 만나는 시간',food:'맛있는 주말의 발견',kids:'새로운 경험 한 조각'};
 const drawings={
@@ -28,10 +29,10 @@ export function imageAttribution(image) {
 }
 
 export function eventImage(event,image,{hero=false,compact=false}={}) {
-  if(!image)return themeArtwork(event);
+  if(!image)return themeArtwork(event)+highlightBadge(event);
   const fullCaption=imageCaption(image);
   const descriptiveAlt=image.alt?image.alt+' · '+fullCaption:image.kind==='context'?'주제 참고 사진 · 행사 현장 사진 아님':image.kind==='generated'?fullCaption:event.title;
-  return '<img src="'+esc(image.src)+'" alt="'+esc(descriptiveAlt)+'" '+(hero?'fetchpriority="high"':'loading="lazy"')+' decoding="async"><span class="image-credit'+(compact?' compact-credit':'')+'" title="'+esc(fullCaption)+'">'+esc(imageCaption(image,{compact}))+'</span>';
+  return '<img src="'+esc(image.src)+'" alt="'+esc(descriptiveAlt)+'" '+(hero?'fetchpriority="high"':'loading="lazy"')+' decoding="async"><span class="image-credit'+(compact?' compact-credit':'')+'" title="'+esc(fullCaption)+'">'+esc(imageCaption(image,{compact}))+'</span>'+highlightBadge(event);
 }
 export function activeConditions(state,defaultPeriod='upcoming') {
   const rows=[];
