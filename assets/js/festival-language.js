@@ -1,22 +1,35 @@
 import {LANGUAGE_KEY,resolveLocale,languageURL,t,translateUI} from './festival-i18n.js';
 import {eventTranslation} from './festival-event-locales.js';
 
-export function initializeLanguage(events) {
+export function initializeLanguage(events,{extraTexts=[]}={}) {
   const current=new URL(location.href);
   let saved;try{saved=localStorage.getItem(LANGUAGE_KEY);}catch{}
   const locale=resolveLocale({query:current.searchParams.get('lang'),saved,languages:navigator.languages||[navigator.language]});
   document.documentElement.lang=locale;
+  const showCurrentTab=()=>{const nav=document.querySelector('.main-nav'),link=nav?.querySelector('[aria-current="page"]');if(nav&&link)window.requestAnimationFrame(()=>{nav.scrollLeft+=link.getBoundingClientRect().left-nav.getBoundingClientRect().left-(nav.clientWidth-link.clientWidth)/2;});};
   const select=document.getElementById('festival-language');
   if(select){select.value=locale;select.addEventListener('change',()=>{
     try{localStorage.setItem(LANGUAGE_KEY,select.value);}catch{}
     location.assign(languageURL(location.href,select.value,location.origin).href);
   });}
   document.addEventListener('click',event=>{const link=event.target.closest?.('a[href]');if(!link||link.getAttribute('href').startsWith('#'))return;const url=languageURL(link.href,locale,location.origin);if(url)link.href=url.href;},true);
-  if(locale==='ko')return locale;
+  if(locale==='ko'){
+    // Keep an explicit Korean choice in links too, including new-tab/context-menu navigation.
+    const updateLinks=root=>{
+      const links=root.matches?.('a[href]')?[root]:root.querySelectorAll?.('a[href]')||[];
+      for(const link of links){if(link.getAttribute('href').startsWith('#'))continue;const url=languageURL(link.href,locale,location.origin);if(url&&link.href!==url.href)link.href=url.href;}
+    };
+    updateLinks(document);
+    showCurrentTab();
+    const linksObserver=new MutationObserver(records=>{for(const record of records){if(record.type==='attributes')updateLinks(record.target);else for(const node of record.addedNodes)updateLinks(node);}});
+    linksObserver.observe(document.body,{subtree:true,childList:true,attributes:true,attributeFilter:['href']});
+    return locale;
+  }
   // Persist explicit query in URLs, even when browser storage is blocked.
   current.searchParams.set('lang',locale);history.replaceState(null,'',current);
   const translated=new Map();
   const names=[];
+  for(const row of extraTexts)if(row.translations[locale])translated.set(row.original,row.translations[locale]);
   for(const event of events){const entry=eventTranslation(event,locale);if(!entry)continue;
     translated.set(event.title,entry.title);translated.set(event.program,entry.summary);names.push([event.title,entry.title]);
   }
@@ -27,6 +40,7 @@ export function initializeLanguage(events) {
   };
   const hero={en:['This week,','discover Korea.'],ja:['今週は、','韓国のお祭りへ。'],'zh-CN':['这个周末，','探索韩国。'],'zh-TW':['這個週末，','探索韓國。']}[locale];
   const headings={
+    sales:{en:['This week,','find a good offer.'],ja:['今週、','お得を見つけよう。'],'zh-CN':['本周，','发现好优惠。'],'zh-TW':['本週，','發現好優惠。']},
     map:{en:['Where will','you go?'],ja:['どこへ','出かけよう？'],'zh-CN':['下一站，','去哪里？'],'zh-TW':['下一站，','去哪裡？']},
     calendar:{en:['Pick a day.','Make a plan.'],ja:['いつ、','出かけよう？'],'zh-CN':['选个日期，','出发吧。'],'zh-TW':['選個日期，','出發吧。']},
     weekend:{en:['This weekend,','find your festival.'],ja:['今週末、','お祭りへ行こう。'],'zh-CN':['这个周末，','遇见精彩。'],'zh-TW':['這個週末，','遇見精彩。']}
@@ -57,9 +71,11 @@ export function initializeLanguage(events) {
     for(const child of root.childNodes)visit(child);
   }
   visit(document.documentElement);
-  const description={en:'Explore festivals and events across South Korea by date, region and theme. Check official schedules, fees and booking details before you travel.',ja:'韓国各地のお祭り・イベントを日付・地域・テーマから検索。出発前に公式日程・料金・予約条件を確認できます。','zh-CN':'按日期、地区与主题探索韩国各地节庆及活动。出发前确认官方日程、费用与预约条件。','zh-TW':'依日期、地區與主題探索韓國各地節慶及活動。出發前確認官方日程、費用與預約條件。'}[locale];
+  showCurrentTab();
+  const shoppingPage=document.body.dataset.festivalPage.startsWith('sales');
+  const description=shoppingPage?{en:'Discover official shopping promotions in Korea. Check the dates, participating stores, membership and payment conditions.',ja:'韓国の公式ショッピングキャンペーン。期間・対象店舗・会員・決済条件を確認できます。','zh-CN':'探索韩国官方购物活动，确认日期、参与门店、会员与付款条件。','zh-TW':'探索韓國官方購物活動，確認日期、參與門市、會員與付款條件。'}[locale]:{en:'Explore festivals and events across South Korea by date, region and theme. Check official schedules, fees and booking details before you travel.',ja:'韓国各地のお祭り・イベントを日付・地域・テーマから検索。出発前に公式日程・料金・予約条件を確認できます。','zh-CN':'按日期、地区与主题探索韩国各地节庆及活动。出发前确认官方日程、费用与预约条件。','zh-TW':'依日期、地區與主題探索韓國各地節慶及活動。出發前確認官方日程、費用與預約條件。'}[locale];
   const event=events.find(e=>location.pathname==='/events/'+e.id+'/');
-  const pageTitle=event?eventTranslation(event,locale)?.title:t({home:'홈',map:'지역별 탐색',calendar:'축제 달력',weekend:'이번 주말'}[document.body.dataset.festivalPage],locale);
+  const pageTitle=document.body.dataset.festivalPage==='sales-detail'?document.querySelector('h1')?.textContent:event?eventTranslation(event,locale)?.title:t({home:'홈',map:'지역별 탐색',calendar:'축제 달력',weekend:'이번 주말',sales:'할인·쇼핑'}[document.body.dataset.festivalPage],locale);
   document.title=(pageTitle||t('이번주 축제',locale))+' | '+t('이번주 축제',locale);
   for(const selector of ['meta[name="description"]','meta[property="og:description"]'])document.querySelector(selector)?.setAttribute('content',description);
   document.querySelector('meta[property="og:title"]')?.setAttribute('content',document.title);

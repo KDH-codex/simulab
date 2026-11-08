@@ -52,3 +52,4 @@ html:not([lang=ko]) .week-day-counts{flex-wrap:wrap}
   .weather-toolbar>div{min-width:0;flex:1 1 100%;max-width:100%;flex-wrap:wrap}.weather-toolbar select{flex:1 1 100px;min-width:0;width:auto;max-width:100%}
 }
 @media(max-width:360px){html[lang=en] .site-header .brand b{font-size:14px}html[lang=en] .site-header .brand img{width:28px;height:28px}}
+.site-header .main-nav{min-width:0;overflow-x:auto;scrollbar-width:thin;justify-content:flex-start}.site-header .main-nav a{flex-shrink:0}

@@ -6,7 +6,7 @@ import {imageCaption} from '../assets/js/festival-presentation.js';
 import {weekendRange, monthRange, overlaps, nextDate} from '../tools/kids-outing-calendar/model.js';
 import {root, esc, shell, active, events, images, today, reviewed, groups, themes, card, filters, grid, imageMarkup, shortRange, feeLabel, badge, eventUrl, detailBody, keywordTags} from './festival-platform.mjs';
 
-const intro = (kicker,titleLines,copy) => '<div class="page-intro"><p class="eyebrow">'+typewriterText(kicker)+'</p><h1>'+typewriterText(titleLines)+'</h1><p>'+esc(copy)+'</p></div>';
+export const intro = (kicker,titleLines,copy) => '<div class="page-intro"><p class="eyebrow">'+typewriterText(kicker)+'</p><h1>'+typewriterText(titleLines)+'</h1><p>'+esc(copy)+'</p></div>';
 const weekend = weekendRange(today);
 const weekendEvents = active.filter(e=>overlaps(e,weekend.start,weekend.end));
 const dateFormat = new Intl.DateTimeFormat('ko-KR',{dateStyle:'long',timeZone:'UTC'});

@@ -9,12 +9,15 @@
     "preview": "node scripts/preview.mjs --port=4180",
     "deals:audit": "node scripts/audit-deals.mjs",
     "family:audit": "node scripts/audit-family-info.mjs",
-    "family:blog": "node scripts/prepare-family-blog.mjs"
+    "family:blog": "node scripts/prepare-family-blog.mjs",
+    "shopping:collect": "node scripts/collect-shopping-candidates.mjs",
+    "pretest": "node scripts/build-parenting-deals.mjs && node scripts/build-sales-page.mjs"
   },
   "engines": {
     "node": ">=22"
   },
   "devDependencies": {
-    "@electric-sql/pglite": "0.5.11"
+    "@electric-sql/pglite": "0.5.11",
+    "jsdom": "26.1.0"
   }
 }

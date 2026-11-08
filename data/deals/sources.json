@@ -722,6 +722,45 @@
       "checkedAt": "2026-10-26T12:50:41+09:00",
       "trackingTier": "priority",
       "rightsNote": "공식 행사 상세의 최소 일정·조건을 자체 정리합니다. 이미지·상품 DB·홍보 원문은 복제하지 않습니다."
+    },
+    {
+      "id": "homeplus",
+      "name": "홈플러스",
+      "operator": "홈플러스",
+      "officialUrl": "https://my.homeplus.co.kr/leaflet",
+      "allowedHosts": [
+        "my.homeplus.co.kr"
+      ],
+      "categories": [
+        "life"
+      ],
+      "aliases": [
+        "HOMEPLUS"
+      ],
+      "trackingTier": "standard",
+      "note": "기간·지점·브랜드별 적용 조건을 상세 원문으로 확인",
+      "checkedAt": "2026-11-08T17:11:20+09:00",
+      "rightsNote": "공식 상세의 행사 기간·적용 지점·조건을 자체 문장으로 요약합니다. 이미지·상품 DB·홍보문을 전재하지 않으며, 공개 열람을 포괄적 재이용 허락으로 표시하지 않습니다."
+    },
+    {
+      "id": "shinsegae-simon",
+      "name": "신세계사이먼 프리미엄 아울렛",
+      "operator": "주식회사 신세계사이먼",
+      "officialUrl": "https://www.premiumoutlets.co.kr/rpage/main/index/01",
+      "allowedHosts": [
+        "www.premiumoutlets.co.kr"
+      ],
+      "categories": [
+        "fashion"
+      ],
+      "aliases": [
+        "여주 프리미엄 아울렛",
+        "SHINSEGAE SIMON"
+      ],
+      "trackingTier": "standard",
+      "note": "기간·지점·브랜드별 적용 조건을 상세 원문으로 확인",
+      "checkedAt": "2026-11-08T17:11:20+09:00",
+      "rightsNote": "공식 상세의 행사 기간·적용 지점·조건을 자체 문장으로 요약합니다. 이미지·상품 DB·홍보문을 전재하지 않으며, 공개 열람을 포괄적 재이용 허락으로 표시하지 않습니다."
     }
   ]
 }

@@ -1,0 +1,239 @@
+{
+  "reviewedAt": "2026-11-08T17:11:20+09:00",
+  "scope": "official date, channel, branch and conditions review; original promotional media not republished",
+  "records": [
+    {
+      "id": "emart-ssg-flyer-20261105",
+      "url": "https://store.emart.com/news/leaflet.do?division=2",
+      "checkedAt": "2026-11-08T17:11:20+09:00",
+      "fields": [
+        "dates",
+        "branch",
+        "channel",
+        "benefits",
+        "conditions"
+      ],
+      "notes": [
+        "참여 점포와 행사상품에 한하며 일부 품목은 제외됩니다.",
+        "신세계포인트 적립 또는 지정 카드 전액 결제 조건을 품목별로 확인하세요.",
+        "전체 그룹 행사와 이 전단 회차는 기간이 다릅니다. 11월 7일 하루 특가를 11월 8일 혜택으로 표시하지 않습니다.",
+        "점포별 휴무·재고·조기품절 및 점내 정정 안내를 확인하세요."
+      ],
+      "corroboratingUrls": [
+        "https://event.ssg.com/eventDetail.ssg?nevntId=1000000024313"
+      ]
+    },
+    {
+      "id": "homeplus-geumcheon-flyer-20261105",
+      "url": "https://my.homeplus.co.kr/leaflet",
+      "checkedAt": "2026-11-08T17:11:20+09:00",
+      "fields": [
+        "dates",
+        "branch",
+        "channel",
+        "benefits",
+        "conditions"
+      ],
+      "notes": [
+        "이번 원문은 금천점 전단 화면입니다. 다른 점포 취급·재고·휴무일은 별도 확인하세요.",
+        "품목별 행사기간은 전단 전체 기간과 다를 수 있습니다.",
+        "멤버특가·지정 카드·최소 구매액 조건은 해당 상품 안내를 따릅니다.",
+        "온라인 가격·혜택은 오프라인 전단과 다를 수 있습니다."
+      ]
+    },
+    {
+      "id": "ikea-cart-threshold-20261029",
+      "url": "https://www.ikea.com/kr/ko/campaigns/10-pub99964500/",
+      "checkedAt": "2026-11-08T17:11:20+09:00",
+      "fields": [
+        "dates",
+        "branch",
+        "channel",
+        "benefits",
+        "conditions"
+      ],
+      "notes": [
+        "IKEA Family 또는 IKEA Business Network 회원당 1회 적용합니다.",
+        "10만원 이상 3,000원, 20만원 이상 10,000원, 50만원 이상 50,000원 할인 구간입니다.",
+        "공식 매장·팝업·온라인몰·앱·헤이 전화 주문 안내를 확인했습니다.",
+        "푸드·레스토랑·비스트로·카페 및 조립·설치·배송 서비스 비용은 대상에서 제외됩니다.",
+        "재고와 채널에 따라 일부 조건이 다를 수 있습니다. 최대 10%를 모든 구매액에 적용하지 않습니다."
+      ]
+    },
+    {
+      "id": "simon-yeoju-nike-202611",
+      "url": "https://www.premiumoutlets.co.kr/rpage/shopping-info/news/special-detail/01/20267",
+      "checkedAt": "2026-11-08T17:11:20+09:00",
+      "fields": [
+        "dates",
+        "branch",
+        "channel",
+        "benefits",
+        "conditions"
+      ],
+      "notes": [
+        "여주 프리미엄 아울렛 나이키 본 매장 행사입니다.",
+        "원문은 전 품목 추가 20% 및 2개 이상 구매 시 추가 30% 조건을 별도로 안내합니다. 할인율을 더해 계산하지 않습니다.",
+        "일부 품목 제외·한정수량 조기소진 가능. 기준 가격과 적용 조건은 매장에서 확인하세요."
+      ]
+    },
+    {
+      "id": "simon-yeoju-adidas-202611",
+      "url": "https://www.premiumoutlets.co.kr/rpage/shopping-info/news/special-detail/01/20262",
+      "checkedAt": "2026-11-08T17:11:20+09:00",
+      "fields": [
+        "dates",
+        "branch",
+        "channel",
+        "benefits",
+        "conditions"
+      ],
+      "notes": [
+        "여주 프리미엄 아울렛 해당 매장 행사로 전국·온라인몰 공통 혜택이 아닙니다.",
+        "2개 구매 조건과 제외 품목을 확인하세요.",
+        "브랜드별 할인율·기간 차이와 한정수량 조기소진 가능성이 안내됩니다."
+      ]
+    },
+    {
+      "id": "simon-yeoju-dewl-202611",
+      "url": "https://www.premiumoutlets.co.kr/rpage/shopping-info/news/special-detail/01/20302",
+      "checkedAt": "2026-11-08T17:11:20+09:00",
+      "fields": [
+        "dates",
+        "branch",
+        "channel",
+        "benefits",
+        "conditions"
+      ],
+      "notes": [
+        "여주 듀엘 본 매장, 지정 신상 아우터 20종의 최대 할인 안내입니다.",
+        "브랜드데이 추가 10%와 통합 멤버십 추가 10% 조건은 각각 확인하고 단순 합산하지 않습니다.",
+        "50만원 이상 구매 사은품 조건이 별도로 있습니다.",
+        "일부 품목 제외·한정수량 조기소진 가능."
+      ]
+    },
+    {
+      "id": "simon-yeoju-jimmychoo-202611",
+      "url": "https://www.premiumoutlets.co.kr/rpage/shopping-info/news/special-detail/01/20291",
+      "checkedAt": "2026-11-08T17:11:20+09:00",
+      "fields": [
+        "dates",
+        "branch",
+        "channel",
+        "benefits",
+        "conditions"
+      ],
+      "notes": [
+        "여주 EAST 219호 본 매장 안내입니다.",
+        "여성 부츠 단독 추가 15% 및 2개·3개 이상 수량별 추가 10~20% 조건을 별도로 확인하세요.",
+        "일부 품목 제외·한정수량 조기소진 가능. 여러 할인율을 더하지 않습니다."
+      ]
+    },
+    {
+      "id": "simon-yeoju-zooc-202611",
+      "url": "https://www.premiumoutlets.co.kr/rpage/shopping-info/news/special-detail/01/20147",
+      "checkedAt": "2026-11-08T17:11:20+09:00",
+      "fields": [
+        "dates",
+        "branch",
+        "channel",
+        "benefits",
+        "conditions"
+      ],
+      "notes": [
+        "여주 본 매장 26년 F/W 상품 행사입니다.",
+        "30만·40만·50만원 이상 구매 시 각각 3만·4만·5만원 즉시 할인 구간이 안내됩니다.",
+        "추가 할인과 구매액별 혜택의 적용 순서·중복은 매장에서 확인하세요.",
+        "일부 품목 제외·한정수량 조기소진 가능."
+      ]
+    },
+    {
+      "id": "simon-yeoju-mulberry-202611",
+      "url": "https://www.premiumoutlets.co.kr/rpage/shopping-info/news/special-detail/01/19569",
+      "checkedAt": "2026-11-08T17:11:20+09:00",
+      "fields": [
+        "dates",
+        "branch",
+        "channel",
+        "benefits",
+        "conditions"
+      ],
+      "notes": [
+        "여주 본 매장, 아울렛 가격 기준 안내입니다.",
+        "100만원·150만원 이상 구매 시 각각 추가 10%·20% 조건이 있습니다.",
+        "지정 태시 호버백 추가 30% 안내는 별도 대상 혜택입니다.",
+        "일부 품목 제외·수량 및 재고 조건을 확인하고 할인율을 합산하지 않습니다."
+      ]
+    },
+    {
+      "id": "simon-yeoju-fendi-202611",
+      "url": "https://www.premiumoutlets.co.kr/rpage/shopping-info/news/special-detail/01/20264",
+      "checkedAt": "2026-11-08T17:11:20+09:00",
+      "fields": [
+        "dates",
+        "branch",
+        "channel",
+        "benefits",
+        "conditions"
+      ],
+      "notes": [
+        "여주 펜디 본 매장 행사입니다.",
+        "2개 이상 구매 수량 조건과 대상 품목별 추가 할인율을 매장에서 확인하세요.",
+        "일부 품목 제외·한정수량 조기소진 가능. 전국·온라인몰 행사로 확대하지 않습니다."
+      ]
+    },
+    {
+      "id": "simon-yeoju-underarmour-202611",
+      "url": "https://www.premiumoutlets.co.kr/rpage/shopping-info/news/special-detail/01/20263",
+      "checkedAt": "2026-11-08T17:11:20+09:00",
+      "fields": [
+        "dates",
+        "branch",
+        "channel",
+        "benefits",
+        "conditions"
+      ],
+      "notes": [
+        "여주 본 매장, 언더아머 팩토리하우스 카카오톡 채널 친구 추가 조건입니다.",
+        "일부 품목 제외, 중복 할인 불가.",
+        "한정수량 조기소진 가능. 가입·적용 방법은 매장에서 확인하세요."
+      ]
+    },
+    {
+      "id": "simon-yeoju-brooksbrothers-202611",
+      "url": "https://www.premiumoutlets.co.kr/rpage/shopping-info/news/special-detail/01/20242",
+      "checkedAt": "2026-11-08T17:11:20+09:00",
+      "fields": [
+        "dates",
+        "branch",
+        "channel",
+        "benefits",
+        "conditions"
+      ],
+      "notes": [
+        "여주 본 매장, 아울렛 가격 기준 행사입니다.",
+        "26년 F/W 10%, 25년 F/W 40% 안내는 시즌별 대상이 다릅니다.",
+        "2개 이상 구매 추가 10%의 중복·적용 순서는 매장에서 확인하세요.",
+        "일부 품목 제외·한정수량 조기소진 가능."
+      ]
+    }
+  ],
+  "deferred": [
+    {
+      "source": "스타필드·롯데백화점·코스트코",
+      "reason": "날짜·조건을 갖춘 상세를 확보하기 전에는 공식 출처 링크로만 안내"
+    },
+    {
+      "source": "유니클로·올리브영",
+      "reason": "직접 요청 제한. 자동 게시·접근제한 우회 없음"
+    },
+    {
+      "source": "현대 리사이클",
+      "reason": "상품 할인 아닌 적립 캠페인으로 세일 목록에 제외"
+    },
+    {
+      "source": "탑텐",
+      "reason": "현재 본문 연도 증거 추가 확인 전 이전 기록의 검토일을 갱신하지 않음"
+    }
+  ]
+}

@@ -910,6 +910,773 @@
       "periodNote": "아모레몰 공식 이벤트 목록의 기간 · 상세 기획전의 대상·유의사항 대조",
       "sourceUrl": "https://www.amoremall.com/kr/ko/display/event_detail?planDisplaySn=15089",
       "periodSourceUrl": "https://www.amoremall.com/kr/ko/display/event"
+    },
+    {
+      "id": "emart-ssg-flyer-20261105",
+      "brandId": "emart",
+      "title": "이마트 쓱데이 전단",
+      "shortTitle": "이마트 쓱데이 전단",
+      "categories": [
+        "life"
+      ],
+      "startDate": "2026-11-05",
+      "endDate": "2026-11-08",
+      "benefitType": "sale",
+      "channels": [
+        "store"
+      ],
+      "summary": "행사상품의 포인트·카드 할인. 품목별 행사일과 적용 조건이 다릅니다.",
+      "conditions": [
+        "참여 점포와 행사상품에 한하며 일부 품목은 제외됩니다.",
+        "신세계포인트 적립 또는 지정 카드 전액 결제 조건을 품목별로 확인하세요.",
+        "전체 그룹 행사와 이 전단 회차는 기간이 다릅니다. 11월 7일 하루 특가를 11월 8일 혜택으로 표시하지 않습니다.",
+        "점포별 휴무·재고·조기품절 및 점내 정정 안내를 확인하세요."
+      ],
+      "periodNote": "공식 상세에서 확인한 기간 · 품목·점포별 적용 조건 확인",
+      "sourceUrl": "https://store.emart.com/news/leaflet.do?division=2",
+      "periodSourceUrl": "https://store.emart.com/news/leaflet.do?division=2",
+      "publicationStatus": "reviewed",
+      "placement": "calendar",
+      "publicationScope": "facts-summary",
+      "reviewWithinDays": 2,
+      "checkedAt": "2026-11-08T17:11:20+09:00",
+      "campaignKind": "limited-sale",
+      "campaignScope": "multi-category",
+      "shopping": {
+        "retailerId": "emart",
+        "brand": "이마트",
+        "brandCode": "EMART",
+        "kind": "mart",
+        "format": "mart",
+        "area": "nationwide",
+        "storeScope": "전단 적용 참여 점포",
+        "specificStore": false,
+        "membership": true,
+        "card": true,
+        "app": false,
+        "reviewWithinHours": 48,
+        "locales": {
+          "en": {
+            "title": "E-Mart SSG Day flyer",
+            "summary": "Selected flyer items have point or card discounts. Dates and conditions vary by item."
+          },
+          "ja": {
+            "title": "Eマート SSGデーのチラシ",
+            "summary": "対象商品のポイント・カード割引。日程と条件は商品ごとに異なります。"
+          },
+          "zh-CN": {
+            "title": "易买得SSG促销传单",
+            "summary": "指定传单商品享积分或银行卡优惠，日期与条件因商品而异。"
+          },
+          "zh-TW": {
+            "title": "易買得SSG促銷傳單",
+            "summary": "指定傳單商品享積分或銀行卡優惠，日期與條件因商品而異。"
+          }
+        }
+      }
+    },
+    {
+      "id": "homeplus-geumcheon-flyer-20261105",
+      "brandId": "homeplus",
+      "title": "홈플러스 주간 전단",
+      "shortTitle": "홈플러스 주간 전단",
+      "categories": [
+        "life"
+      ],
+      "startDate": "2026-11-05",
+      "endDate": "2026-11-11",
+      "benefitType": "sale",
+      "channels": [
+        "store"
+      ],
+      "summary": "금천점 화면에서 확인한 주간 장보기 행사. 멤버특가와 행사 카드 조건을 확인하세요.",
+      "conditions": [
+        "이번 원문은 금천점 전단 화면입니다. 다른 점포 취급·재고·휴무일은 별도 확인하세요.",
+        "품목별 행사기간은 전단 전체 기간과 다를 수 있습니다.",
+        "멤버특가·지정 카드·최소 구매액 조건은 해당 상품 안내를 따릅니다.",
+        "온라인 가격·혜택은 오프라인 전단과 다를 수 있습니다."
+      ],
+      "periodNote": "공식 상세에서 확인한 기간 · 품목·점포별 적용 조건 확인",
+      "sourceUrl": "https://my.homeplus.co.kr/leaflet",
+      "periodSourceUrl": "https://my.homeplus.co.kr/leaflet",
+      "publicationStatus": "reviewed",
+      "placement": "calendar",
+      "publicationScope": "facts-summary",
+      "reviewWithinDays": 2,
+      "checkedAt": "2026-11-08T17:11:20+09:00",
+      "campaignKind": "limited-sale",
+      "campaignScope": "multi-category",
+      "shopping": {
+        "retailerId": "homeplus",
+        "brand": "홈플러스",
+        "brandCode": "HOMEPLUS",
+        "kind": "mart",
+        "format": "mart",
+        "area": "seoul",
+        "storeScope": "금천점 전단 기준",
+        "specificStore": true,
+        "membership": true,
+        "card": true,
+        "app": false,
+        "reviewWithinHours": 48,
+        "locales": {
+          "en": {
+            "title": "Homeplus weekly flyer",
+            "summary": "Weekly groceries shown for Geumcheon. Check membership, card and item-specific conditions."
+          },
+          "ja": {
+            "title": "ホームプラス 週間チラシ",
+            "summary": "衿川店の週間案内です。会員・カード・商品別条件をご確認ください。"
+          },
+          "zh-CN": {
+            "title": "Homeplus每周传单",
+            "summary": "以衿川店页面为准的每周购物活动，需确认会员、银行卡及商品条件。"
+          },
+          "zh-TW": {
+            "title": "Homeplus每週傳單",
+            "summary": "以衿川店頁面為準的每週購物活動，需確認會員、銀行卡及商品條件。"
+          }
+        }
+      }
+    },
+    {
+      "id": "ikea-cart-threshold-20261029",
+      "brandId": "ikea",
+      "title": "이케아 담을수록 더 좋은 가격",
+      "shortTitle": "이케아 담을수록 더 좋은 가격",
+      "categories": [
+        "furniture",
+        "kitchen"
+      ],
+      "startDate": "2026-10-29",
+      "endDate": "2026-11-13",
+      "benefitType": "sale",
+      "channels": [
+        "online",
+        "store",
+        "phone"
+      ],
+      "summary": "회원 구매액 10만·20만·50만원 구간에 따라 3천·1만·5만원 할인.",
+      "conditions": [
+        "IKEA Family 또는 IKEA Business Network 회원당 1회 적용합니다.",
+        "10만원 이상 3,000원, 20만원 이상 10,000원, 50만원 이상 50,000원 할인 구간입니다.",
+        "공식 매장·팝업·온라인몰·앱·헤이 전화 주문 안내를 확인했습니다.",
+        "푸드·레스토랑·비스트로·카페 및 조립·설치·배송 서비스 비용은 대상에서 제외됩니다.",
+        "재고와 채널에 따라 일부 조건이 다를 수 있습니다. 최대 10%를 모든 구매액에 적용하지 않습니다."
+      ],
+      "periodNote": "공식 상세에서 확인한 기간 · 품목·점포별 적용 조건 확인",
+      "sourceUrl": "https://www.ikea.com/kr/ko/campaigns/10-pub99964500/",
+      "periodSourceUrl": "https://www.ikea.com/kr/ko/campaigns/10-pub99964500/",
+      "publicationStatus": "reviewed",
+      "placement": "calendar",
+      "publicationScope": "facts-summary",
+      "reviewWithinDays": 2,
+      "checkedAt": "2026-11-08T17:11:20+09:00",
+      "campaignKind": "limited-sale",
+      "campaignScope": "brand",
+      "shopping": {
+        "retailerId": "ikea",
+        "brand": "이케아",
+        "brandCode": "IKEA",
+        "kind": "brand",
+        "format": "brand",
+        "area": "nationwide",
+        "storeScope": "공식 매장·온라인·앱·전화",
+        "specificStore": false,
+        "membership": true,
+        "card": false,
+        "app": true,
+        "reviewWithinHours": 48,
+        "locales": {
+          "en": {
+            "title": "IKEA spend-and-save offer",
+            "summary": "Members save KRW 3,000 / 10,000 / 50,000 at spending thresholds of KRW 100,000 / 200,000 / 500,000."
+          },
+          "ja": {
+            "title": "IKEA 購入額別メンバー割引",
+            "summary": "会員は10万・20万・50万ウォン以上の購入で、それぞれ3千・1万・5万ウォン割引。"
+          },
+          "zh-CN": {
+            "title": "宜家会员满额优惠",
+            "summary": "会员购买满10万、20万、50万韩元，分别减3千、1万、5万韩元。"
+          },
+          "zh-TW": {
+            "title": "宜家會員滿額優惠",
+            "summary": "會員購買滿10萬、20萬、50萬韓元，分別減3千、1萬、5萬韓元。"
+          }
+        }
+      }
+    },
+    {
+      "id": "simon-yeoju-nike-202611",
+      "brandId": "shinsegae-simon",
+      "title": "여주 나이키 프로모션",
+      "shortTitle": "여주 나이키 프로모션",
+      "categories": [
+        "fashion"
+      ],
+      "startDate": "2026-11-02",
+      "endDate": "2026-11-15",
+      "benefitType": "sale",
+      "channels": [
+        "store"
+      ],
+      "summary": "추가 20% 안내와 2개 이상 구매 시 추가 30% 조건을 별도로 확인하세요.",
+      "conditions": [
+        "여주 프리미엄 아울렛 나이키 본 매장 행사입니다.",
+        "원문은 전 품목 추가 20% 및 2개 이상 구매 시 추가 30% 조건을 별도로 안내합니다. 할인율을 더해 계산하지 않습니다.",
+        "일부 품목 제외·한정수량 조기소진 가능. 기준 가격과 적용 조건은 매장에서 확인하세요."
+      ],
+      "periodNote": "공식 상세에서 확인한 기간 · 품목·점포별 적용 조건 확인",
+      "sourceUrl": "https://www.premiumoutlets.co.kr/rpage/shopping-info/news/special-detail/01/20267",
+      "periodSourceUrl": "https://www.premiumoutlets.co.kr/rpage/shopping-info/news/special-detail/01/20267",
+      "publicationStatus": "reviewed",
+      "placement": "calendar",
+      "publicationScope": "facts-summary",
+      "reviewWithinDays": 2,
+      "checkedAt": "2026-11-08T17:11:20+09:00",
+      "campaignKind": "limited-sale",
+      "campaignScope": "brand",
+      "shopping": {
+        "retailerId": "shinsegae-simon",
+        "brand": "나이키",
+        "brandCode": "NIKE",
+        "kind": "mall",
+        "format": "outlet",
+        "area": "gyeonggi",
+        "storeScope": "여주 프리미엄 아울렛 해당 본 매장",
+        "specificStore": true,
+        "membership": false,
+        "card": false,
+        "app": false,
+        "reviewWithinHours": 48,
+        "locales": {
+          "en": {
+            "title": "Nike promotion in Yeoju",
+            "summary": "Check the separate extra 20% and extra 30% for two-or-more-item conditions. Yeoju store only."
+          },
+          "ja": {
+            "title": "驪州ナイキ プロモーション",
+            "summary": "追加20%と2点以上で追加30%の条件を分けて確認。驪州店限定。"
+          },
+          "zh-CN": {
+            "title": "骊州耐克门店促销",
+            "summary": "需分别确认额外20%及购买两件以上额外30%的条件，仅限骊州店。"
+          },
+          "zh-TW": {
+            "title": "驪州耐吉門市促銷",
+            "summary": "需分別確認額外20%及購買兩件以上額外30%的條件，僅限驪州店。"
+          }
+        }
+      }
+    },
+    {
+      "id": "simon-yeoju-adidas-202611",
+      "brandId": "shinsegae-simon",
+      "title": "여주 아디다스 프로모션",
+      "shortTitle": "여주 아디다스 프로모션",
+      "categories": [
+        "fashion"
+      ],
+      "startDate": "2026-10-30",
+      "endDate": "2026-11-09",
+      "benefitType": "sale",
+      "channels": [
+        "store"
+      ],
+      "summary": "2개 구매 시 추가 30% 할인 안내. 일부 품목은 제외됩니다.",
+      "conditions": [
+        "여주 프리미엄 아울렛 해당 매장 행사로 전국·온라인몰 공통 혜택이 아닙니다.",
+        "2개 구매 조건과 제외 품목을 확인하세요.",
+        "브랜드별 할인율·기간 차이와 한정수량 조기소진 가능성이 안내됩니다."
+      ],
+      "periodNote": "공식 상세에서 확인한 기간 · 품목·점포별 적용 조건 확인",
+      "sourceUrl": "https://www.premiumoutlets.co.kr/rpage/shopping-info/news/special-detail/01/20262",
+      "periodSourceUrl": "https://www.premiumoutlets.co.kr/rpage/shopping-info/news/special-detail/01/20262",
+      "publicationStatus": "reviewed",
+      "placement": "calendar",
+      "publicationScope": "facts-summary",
+      "reviewWithinDays": 2,
+      "checkedAt": "2026-11-08T17:11:20+09:00",
+      "campaignKind": "limited-sale",
+      "campaignScope": "brand",
+      "shopping": {
+        "retailerId": "shinsegae-simon",
+        "brand": "아디다스",
+        "brandCode": "ADIDAS",
+        "kind": "mall",
+        "format": "outlet",
+        "area": "gyeonggi",
+        "storeScope": "여주 프리미엄 아울렛 해당 본 매장",
+        "specificStore": true,
+        "membership": false,
+        "card": false,
+        "app": false,
+        "reviewWithinHours": 48,
+        "locales": {
+          "en": {
+            "title": "Adidas promotion in Yeoju",
+            "summary": "Extra 30% when buying two items, with exclusions. Yeoju store only."
+          },
+          "ja": {
+            "title": "驪州アディダス プロモーション",
+            "summary": "2点購入で追加30%割引。一部対象外、驪州店限定。"
+          },
+          "zh-CN": {
+            "title": "骊州阿迪达斯门店促销",
+            "summary": "购买两件额外优惠30%，部分商品除外，仅限骊州店。"
+          },
+          "zh-TW": {
+            "title": "驪州adidas門市促銷",
+            "summary": "購買兩件額外優惠30%，部分商品除外，僅限驪州店。"
+          }
+        }
+      }
+    },
+    {
+      "id": "simon-yeoju-dewl-202611",
+      "brandId": "shinsegae-simon",
+      "title": "여주 듀엘 겨울 아우터 프로모션",
+      "shortTitle": "여주 듀엘 겨울 아우터 프로모션",
+      "categories": [
+        "fashion"
+      ],
+      "startDate": "2026-11-12",
+      "endDate": "2026-11-15",
+      "benefitType": "sale",
+      "channels": [
+        "store"
+      ],
+      "summary": "지정 겨울 아우터 20종 최대 50% 특가와 조건별 추가 혜택 안내.",
+      "conditions": [
+        "여주 듀엘 본 매장, 지정 신상 아우터 20종의 최대 할인 안내입니다.",
+        "브랜드데이 추가 10%와 통합 멤버십 추가 10% 조건은 각각 확인하고 단순 합산하지 않습니다.",
+        "50만원 이상 구매 사은품 조건이 별도로 있습니다.",
+        "일부 품목 제외·한정수량 조기소진 가능."
+      ],
+      "periodNote": "공식 상세에서 확인한 기간 · 품목·점포별 적용 조건 확인",
+      "sourceUrl": "https://www.premiumoutlets.co.kr/rpage/shopping-info/news/special-detail/01/20302",
+      "periodSourceUrl": "https://www.premiumoutlets.co.kr/rpage/shopping-info/news/special-detail/01/20302",
+      "publicationStatus": "reviewed",
+      "placement": "calendar",
+      "publicationScope": "facts-summary",
+      "reviewWithinDays": 2,
+      "checkedAt": "2026-11-08T17:11:20+09:00",
+      "campaignKind": "limited-sale",
+      "campaignScope": "brand",
+      "shopping": {
+        "retailerId": "shinsegae-simon",
+        "brand": "듀엘",
+        "brandCode": "DEWL",
+        "kind": "mall",
+        "format": "outlet",
+        "area": "gyeonggi",
+        "storeScope": "여주 프리미엄 아울렛 해당 본 매장",
+        "specificStore": true,
+        "membership": true,
+        "card": false,
+        "app": false,
+        "reviewWithinHours": 48,
+        "locales": {
+          "en": {
+            "title": "DEWL winter outerwear in Yeoju",
+            "summary": "Up to 50% on 20 selected winter outerwear styles; extra offers have separate conditions."
+          },
+          "ja": {
+            "title": "驪州DEWL 冬アウター",
+            "summary": "対象の冬アウター20種が最大50%。追加特典は条件別に確認。"
+          },
+          "zh-CN": {
+            "title": "骊州DEWL冬季外套促销",
+            "summary": "指定20款冬季外套最高优惠50%，额外优惠需分别确认条件。"
+          },
+          "zh-TW": {
+            "title": "驪州DEWL冬季外套促銷",
+            "summary": "指定20款冬季外套最高優惠50%，額外優惠需分別確認條件。"
+          }
+        }
+      }
+    },
+    {
+      "id": "simon-yeoju-jimmychoo-202611",
+      "brandId": "shinsegae-simon",
+      "title": "여주 지미추 구매 조건별 혜택",
+      "shortTitle": "여주 지미추 구매 조건별 혜택",
+      "categories": [
+        "fashion"
+      ],
+      "startDate": "2026-10-26",
+      "endDate": "2026-11-22",
+      "benefitType": "sale",
+      "channels": [
+        "store"
+      ],
+      "summary": "여성 부츠 추가 15%, 수량 조건별 추가 10~20% 안내를 확인하세요.",
+      "conditions": [
+        "여주 EAST 219호 본 매장 안내입니다.",
+        "여성 부츠 단독 추가 15% 및 2개·3개 이상 수량별 추가 10~20% 조건을 별도로 확인하세요.",
+        "일부 품목 제외·한정수량 조기소진 가능. 여러 할인율을 더하지 않습니다."
+      ],
+      "periodNote": "공식 상세에서 확인한 기간 · 품목·점포별 적용 조건 확인",
+      "sourceUrl": "https://www.premiumoutlets.co.kr/rpage/shopping-info/news/special-detail/01/20291",
+      "periodSourceUrl": "https://www.premiumoutlets.co.kr/rpage/shopping-info/news/special-detail/01/20291",
+      "publicationStatus": "reviewed",
+      "placement": "calendar",
+      "publicationScope": "facts-summary",
+      "reviewWithinDays": 2,
+      "checkedAt": "2026-11-08T17:11:20+09:00",
+      "campaignKind": "limited-sale",
+      "campaignScope": "brand",
+      "shopping": {
+        "retailerId": "shinsegae-simon",
+        "brand": "지미추",
+        "brandCode": "JIMMY CHOO",
+        "kind": "mall",
+        "format": "outlet",
+        "area": "gyeonggi",
+        "storeScope": "여주 프리미엄 아울렛 해당 본 매장",
+        "specificStore": true,
+        "membership": false,
+        "card": false,
+        "app": false,
+        "reviewWithinHours": 48,
+        "locales": {
+          "en": {
+            "title": "Jimmy Choo offers in Yeoju",
+            "summary": "Separate extra-discount conditions for women’s boots and multi-item purchases. Yeoju only."
+          },
+          "ja": {
+            "title": "驪州ジミーチュウ 購入条件別特典",
+            "summary": "女性ブーツと複数点購入の追加割引条件を別々に確認。驪州店限定。"
+          },
+          "zh-CN": {
+            "title": "骊州Jimmy Choo购买条件优惠",
+            "summary": "女靴与多件购买各有额外优惠条件，仅限骊州店。"
+          },
+          "zh-TW": {
+            "title": "驪州Jimmy Choo購買條件優惠",
+            "summary": "女靴與多件購買各有額外優惠條件，僅限驪州店。"
+          }
+        }
+      }
+    },
+    {
+      "id": "simon-yeoju-zooc-202611",
+      "brandId": "shinsegae-simon",
+      "title": "여주 주크 30주년 프로모션",
+      "shortTitle": "여주 주크 30주년 프로모션",
+      "categories": [
+        "fashion"
+      ],
+      "startDate": "2026-11-05",
+      "endDate": "2026-11-18",
+      "benefitType": "sale",
+      "channels": [
+        "store"
+      ],
+      "summary": "26년 F/W 추가 30% 및 구매액 구간별 즉시 할인 조건 안내.",
+      "conditions": [
+        "여주 본 매장 26년 F/W 상품 행사입니다.",
+        "30만·40만·50만원 이상 구매 시 각각 3만·4만·5만원 즉시 할인 구간이 안내됩니다.",
+        "추가 할인과 구매액별 혜택의 적용 순서·중복은 매장에서 확인하세요.",
+        "일부 품목 제외·한정수량 조기소진 가능."
+      ],
+      "periodNote": "공식 상세에서 확인한 기간 · 품목·점포별 적용 조건 확인",
+      "sourceUrl": "https://www.premiumoutlets.co.kr/rpage/shopping-info/news/special-detail/01/20147",
+      "periodSourceUrl": "https://www.premiumoutlets.co.kr/rpage/shopping-info/news/special-detail/01/20147",
+      "publicationStatus": "reviewed",
+      "placement": "calendar",
+      "publicationScope": "facts-summary",
+      "reviewWithinDays": 2,
+      "checkedAt": "2026-11-08T17:11:20+09:00",
+      "campaignKind": "limited-sale",
+      "campaignScope": "brand",
+      "shopping": {
+        "retailerId": "shinsegae-simon",
+        "brand": "주크",
+        "brandCode": "ZOOC",
+        "kind": "mall",
+        "format": "outlet",
+        "area": "gyeonggi",
+        "storeScope": "여주 프리미엄 아울렛 해당 본 매장",
+        "specificStore": true,
+        "membership": false,
+        "card": false,
+        "app": false,
+        "reviewWithinHours": 48,
+        "locales": {
+          "en": {
+            "title": "ZOOC anniversary in Yeoju",
+            "summary": "Extra 30% on selected 2026 autumn/winter items and separate spend-threshold offers."
+          },
+          "ja": {
+            "title": "驪州ZOOC 30周年",
+            "summary": "2026年秋冬対象品の追加30%と購入額別特典。条件は別途確認。"
+          },
+          "zh-CN": {
+            "title": "骊州ZOOC三十周年促销",
+            "summary": "指定2026秋冬商品额外优惠30%，另有满额优惠条件。"
+          },
+          "zh-TW": {
+            "title": "驪州ZOOC三十週年促銷",
+            "summary": "指定2026秋冬商品額外優惠30%，另有滿額優惠條件。"
+          }
+        }
+      }
+    },
+    {
+      "id": "simon-yeoju-mulberry-202611",
+      "brandId": "shinsegae-simon",
+      "title": "여주 멀버리 프로모션",
+      "shortTitle": "여주 멀버리 프로모션",
+      "categories": [
+        "fashion"
+      ],
+      "startDate": "2026-10-22",
+      "endDate": "2026-11-10",
+      "benefitType": "sale",
+      "channels": [
+        "store"
+      ],
+      "summary": "구매액별 추가 할인과 지정 가방의 별도 혜택을 확인하세요.",
+      "conditions": [
+        "여주 본 매장, 아울렛 가격 기준 안내입니다.",
+        "100만원·150만원 이상 구매 시 각각 추가 10%·20% 조건이 있습니다.",
+        "지정 태시 호버백 추가 30% 안내는 별도 대상 혜택입니다.",
+        "일부 품목 제외·수량 및 재고 조건을 확인하고 할인율을 합산하지 않습니다."
+      ],
+      "periodNote": "공식 상세에서 확인한 기간 · 품목·점포별 적용 조건 확인",
+      "sourceUrl": "https://www.premiumoutlets.co.kr/rpage/shopping-info/news/special-detail/01/19569",
+      "periodSourceUrl": "https://www.premiumoutlets.co.kr/rpage/shopping-info/news/special-detail/01/19569",
+      "publicationStatus": "reviewed",
+      "placement": "calendar",
+      "publicationScope": "facts-summary",
+      "reviewWithinDays": 2,
+      "checkedAt": "2026-11-08T17:11:20+09:00",
+      "campaignKind": "limited-sale",
+      "campaignScope": "brand",
+      "shopping": {
+        "retailerId": "shinsegae-simon",
+        "brand": "멀버리",
+        "brandCode": "MULBERRY",
+        "kind": "mall",
+        "format": "outlet",
+        "area": "gyeonggi",
+        "storeScope": "여주 프리미엄 아울렛 해당 본 매장",
+        "specificStore": true,
+        "membership": false,
+        "card": false,
+        "app": false,
+        "reviewWithinHours": 48,
+        "locales": {
+          "en": {
+            "title": "Mulberry promotion in Yeoju",
+            "summary": "Spend-threshold discounts and a separate offer on a selected bag. Yeoju store only."
+          },
+          "ja": {
+            "title": "驪州マルベリー プロモーション",
+            "summary": "購入額別割引と指定バッグの特典を別々に確認。驪州店限定。"
+          },
+          "zh-CN": {
+            "title": "骊州Mulberry门店促销",
+            "summary": "满额优惠与指定包款优惠需分别确认，仅限骊州店。"
+          },
+          "zh-TW": {
+            "title": "驪州Mulberry門市促銷",
+            "summary": "滿額優惠與指定包款優惠需分別確認，僅限驪州店。"
+          }
+        }
+      }
+    },
+    {
+      "id": "simon-yeoju-fendi-202611",
+      "brandId": "shinsegae-simon",
+      "title": "여주 펜디 프로모션",
+      "shortTitle": "여주 펜디 프로모션",
+      "categories": [
+        "fashion"
+      ],
+      "startDate": "2026-10-30",
+      "endDate": "2026-11-22",
+      "benefitType": "sale",
+      "channels": [
+        "store"
+      ],
+      "summary": "2개 이상 구매 시 추가 20~30% 할인 안내. 일부 품목 제외.",
+      "conditions": [
+        "여주 펜디 본 매장 행사입니다.",
+        "2개 이상 구매 수량 조건과 대상 품목별 추가 할인율을 매장에서 확인하세요.",
+        "일부 품목 제외·한정수량 조기소진 가능. 전국·온라인몰 행사로 확대하지 않습니다."
+      ],
+      "periodNote": "공식 상세에서 확인한 기간 · 품목·점포별 적용 조건 확인",
+      "sourceUrl": "https://www.premiumoutlets.co.kr/rpage/shopping-info/news/special-detail/01/20264",
+      "periodSourceUrl": "https://www.premiumoutlets.co.kr/rpage/shopping-info/news/special-detail/01/20264",
+      "publicationStatus": "reviewed",
+      "placement": "calendar",
+      "publicationScope": "facts-summary",
+      "reviewWithinDays": 2,
+      "checkedAt": "2026-11-08T17:11:20+09:00",
+      "campaignKind": "limited-sale",
+      "campaignScope": "brand",
+      "shopping": {
+        "retailerId": "shinsegae-simon",
+        "brand": "펜디",
+        "brandCode": "FENDI",
+        "kind": "mall",
+        "format": "outlet",
+        "area": "gyeonggi",
+        "storeScope": "여주 프리미엄 아울렛 해당 본 매장",
+        "specificStore": true,
+        "membership": false,
+        "card": false,
+        "app": false,
+        "reviewWithinHours": 48,
+        "locales": {
+          "en": {
+            "title": "Fendi promotion in Yeoju",
+            "summary": "Extra 20–30% for two-or-more-item purchases, with exclusions. Yeoju only."
+          },
+          "ja": {
+            "title": "驪州フェンディ プロモーション",
+            "summary": "2点以上購入で追加20〜30%、一部対象外。驪州店限定。"
+          },
+          "zh-CN": {
+            "title": "骊州芬迪门店促销",
+            "summary": "购买两件以上额外优惠20至30%，部分商品除外，仅限骊州店。"
+          },
+          "zh-TW": {
+            "title": "驪州Fendi門市促銷",
+            "summary": "購買兩件以上額外優惠20至30%，部分商品除外，僅限驪州店。"
+          }
+        }
+      }
+    },
+    {
+      "id": "simon-yeoju-underarmour-202611",
+      "brandId": "shinsegae-simon",
+      "title": "여주 언더아머 채널 친구 혜택",
+      "shortTitle": "여주 언더아머 채널 친구 혜택",
+      "categories": [
+        "fashion"
+      ],
+      "startDate": "2026-10-29",
+      "endDate": "2026-11-08",
+      "benefitType": "sale",
+      "channels": [
+        "store"
+      ],
+      "summary": "팩토리하우스 카카오톡 채널 친구 조건의 추가 40% 할인 안내.",
+      "conditions": [
+        "여주 본 매장, 언더아머 팩토리하우스 카카오톡 채널 친구 추가 조건입니다.",
+        "일부 품목 제외, 중복 할인 불가.",
+        "한정수량 조기소진 가능. 가입·적용 방법은 매장에서 확인하세요."
+      ],
+      "periodNote": "공식 상세에서 확인한 기간 · 품목·점포별 적용 조건 확인",
+      "sourceUrl": "https://www.premiumoutlets.co.kr/rpage/shopping-info/news/special-detail/01/20263",
+      "periodSourceUrl": "https://www.premiumoutlets.co.kr/rpage/shopping-info/news/special-detail/01/20263",
+      "publicationStatus": "reviewed",
+      "placement": "calendar",
+      "publicationScope": "facts-summary",
+      "reviewWithinDays": 2,
+      "checkedAt": "2026-11-08T17:11:20+09:00",
+      "campaignKind": "limited-sale",
+      "campaignScope": "brand",
+      "shopping": {
+        "retailerId": "shinsegae-simon",
+        "brand": "언더아머",
+        "brandCode": "UNDER ARMOUR",
+        "kind": "mall",
+        "format": "outlet",
+        "area": "gyeonggi",
+        "storeScope": "여주 프리미엄 아울렛 해당 본 매장",
+        "specificStore": true,
+        "membership": true,
+        "card": false,
+        "app": false,
+        "reviewWithinHours": 48,
+        "locales": {
+          "en": {
+            "title": "Under Armour channel offer in Yeoju",
+            "summary": "Extra 40% requires adding the Factory House KakaoTalk channel; exclusions apply."
+          },
+          "ja": {
+            "title": "驪州アンダーアーマー チャネル特典",
+            "summary": "追加40%には公式カカオトークチャネル登録が必要。一部対象外。"
+          },
+          "zh-CN": {
+            "title": "骊州安德玛频道好友优惠",
+            "summary": "额外优惠40%需添加Factory House官方KakaoTalk频道，部分商品除外。"
+          },
+          "zh-TW": {
+            "title": "驪州Under Armour頻道好友優惠",
+            "summary": "額外優惠40%需加入Factory House官方KakaoTalk頻道，部分商品除外。"
+          }
+        }
+      }
+    },
+    {
+      "id": "simon-yeoju-brooksbrothers-202611",
+      "brandId": "shinsegae-simon",
+      "title": "여주 브룩스 브라더스 F/W 행사",
+      "shortTitle": "여주 브룩스 브라더스 F/W 행사",
+      "categories": [
+        "fashion"
+      ],
+      "startDate": "2026-11-01",
+      "endDate": "2026-11-08",
+      "benefitType": "sale",
+      "channels": [
+        "store"
+      ],
+      "summary": "시즌별 10%·40% 할인과 2개 이상 구매 추가 혜택을 구분해 확인하세요.",
+      "conditions": [
+        "여주 본 매장, 아울렛 가격 기준 행사입니다.",
+        "26년 F/W 10%, 25년 F/W 40% 안내는 시즌별 대상이 다릅니다.",
+        "2개 이상 구매 추가 10%의 중복·적용 순서는 매장에서 확인하세요.",
+        "일부 품목 제외·한정수량 조기소진 가능."
+      ],
+      "periodNote": "공식 상세에서 확인한 기간 · 품목·점포별 적용 조건 확인",
+      "sourceUrl": "https://www.premiumoutlets.co.kr/rpage/shopping-info/news/special-detail/01/20242",
+      "periodSourceUrl": "https://www.premiumoutlets.co.kr/rpage/shopping-info/news/special-detail/01/20242",
+      "publicationStatus": "reviewed",
+      "placement": "calendar",
+      "publicationScope": "facts-summary",
+      "reviewWithinDays": 2,
+      "checkedAt": "2026-11-08T17:11:20+09:00",
+      "campaignKind": "limited-sale",
+      "campaignScope": "brand",
+      "shopping": {
+        "retailerId": "shinsegae-simon",
+        "brand": "브룩스 브라더스",
+        "brandCode": "BROOKS BROTHERS",
+        "kind": "mall",
+        "format": "outlet",
+        "area": "gyeonggi",
+        "storeScope": "여주 프리미엄 아울렛 해당 본 매장",
+        "specificStore": true,
+        "membership": false,
+        "card": false,
+        "app": false,
+        "reviewWithinHours": 48,
+        "locales": {
+          "en": {
+            "title": "Brooks Brothers F/W in Yeoju",
+            "summary": "Different offers for 2026 and 2025 autumn/winter items, plus a multi-item condition."
+          },
+          "ja": {
+            "title": "驪州ブルックスブラザーズ 秋冬",
+            "summary": "2026年と2025年の秋冬品で割引が異なり、複数点購入条件もあります。"
+          },
+          "zh-CN": {
+            "title": "骊州Brooks Brothers秋冬促销",
+            "summary": "2026与2025秋冬商品适用不同优惠，另有多件购买条件。"
+          },
+          "zh-TW": {
+            "title": "驪州Brooks Brothers秋冬促銷",
+            "summary": "2026與2025秋冬商品適用不同優惠，另有多件購買條件。"
+          }
+        }
+      }
     }
   ],
   "memberOffers": [

@@ -15,7 +15,7 @@ export function resolveLocale({query,saved,languages=[]}={}) {
 }
 export function languageURL(value,locale,origin='https://simulab.kr') {
   const url=new URL(value,origin);
-  if(url.origin!==new URL(origin).origin||!/^\/(?:$|map\/$|calendar\/$|curation\/$|events\/[a-z0-9-]+\/$)/.test(url.pathname))return null;
+  if(url.origin!==new URL(origin).origin||!/^\/(?:$|map\/$|calendar\/$|curation\/$|sales\/(?:[a-z0-9-]+\/)?$|events\/[a-z0-9-]+\/$)/.test(url.pathname))return null;
   url.searchParams.set('lang',normalizeLocale(locale)||'ko');
   return url;
 }
@@ -27,6 +27,8 @@ const rows=`
 지역별 탐색|Explore regions|地域から探す|按地区探索|依地區探索
 축제 달력|Festival calendar|お祭りカレンダー|节庆日历|節慶月曆
 이번 주말|This weekend|今週末|本周末|本週末
+할인·쇼핑|Shopping offers|セール情報|优惠购物|優惠購物
+할인 보관함|Saved shopping offers|セール保存一覧|优惠收藏夹|優惠收藏夾
 앱설치|Install|アプリ追加|安装|安裝
 보관함|Saved|保存|收藏|收藏
 보관한 축제|Saved festivals|保存したお祭り|已收藏节庆|已收藏節慶

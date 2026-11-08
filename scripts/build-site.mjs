@@ -8,7 +8,7 @@ import {publicationCatalog} from './publication.mjs';
 const root=fileURLToPath(new URL('../',import.meta.url));
 const maintenanceSchedule=JSON.parse(await readFile(path.join(root,'data/family-info/schedule.json'),'utf8'));
 const festivalOnly=maintenanceSchedule.maintenanceMode?.activeSiteCategories?.length===1&&maintenanceSchedule.maintenanceMode.activeSiteCategories[0]==='festivals';
-const siteScripts=festivalOnly?['build-event-data.mjs','build-family-info.mjs','build-home.mjs','build-calendar-page.mjs','build-map-page.mjs','build-curation-page.mjs','build-festa-details.mjs','build-legal.mjs','build-kids-calendar.mjs','build-publishing-ui.mjs']:['build-focused-tools.mjs','build-event-data.mjs','build-parenting-deals.mjs','build-family-info.mjs','build-weekday-guides.mjs','build-family-guides.mjs','build-editorial-guides.mjs','build-library.mjs','build-debate-pages.mjs','build-debate-002.mjs','build-home.mjs','build-calendar-page.mjs','build-map-page.mjs','build-curation-page.mjs','build-festa-details.mjs','build-legal.mjs','build-core-guides.mjs','normalize-pages.mjs','build-kids-calendar.mjs','build-publishing-ui.mjs'];
+const siteScripts=festivalOnly?['build-parenting-deals.mjs','build-event-data.mjs','build-family-info.mjs','build-home.mjs','build-calendar-page.mjs','build-map-page.mjs','build-curation-page.mjs','build-festa-details.mjs','build-sales-page.mjs','build-legal.mjs','build-kids-calendar.mjs','build-publishing-ui.mjs']:['build-focused-tools.mjs','build-event-data.mjs','build-parenting-deals.mjs','build-family-info.mjs','build-weekday-guides.mjs','build-family-guides.mjs','build-editorial-guides.mjs','build-library.mjs','build-debate-pages.mjs','build-debate-002.mjs','build-home.mjs','build-calendar-page.mjs','build-map-page.mjs','build-curation-page.mjs','build-festa-details.mjs','build-sales-page.mjs','build-legal.mjs','build-core-guides.mjs','normalize-pages.mjs','build-kids-calendar.mjs','build-publishing-ui.mjs'];
 for(const script of siteScripts) {
  const result=spawnSync(process.execPath,[path.join(root,'scripts',script)],{cwd:root,stdio:'inherit'});if(result.status!==0)process.exit(result.status||1);
 }
@@ -19,15 +19,16 @@ const destination=path.resolve(root,'dist');
 if(path.relative(root,destination)!=='dist')throw new Error('Unsafe output path');
 try{if((await lstat(destination)).isSymbolicLink())throw new Error('Refusing symlink output');await rm(destination,{recursive:true});}catch(error){if(error.code!=='ENOENT')throw error;}
 await mkdir(destination,{recursive:true});
-const publicRoots=['assets','tools','guides','legal','admin','debates','library','events','calendar','map','curation'];
+const publicRoots=['assets','tools','guides','legal','admin','debates','library','events','calendar','map','curation','sales'];
 for(const folder of publicRoots)await cp(path.join(root,folder),path.join(destination,folder),{recursive:true,filter:source=>!/(?:^|[\\/])(?:node_modules|\.git|scratch)(?:[\\/]|$)|\.backup\.|\.map$/i.test(source)&&!/[\\/]tools[\\/]game-tetris[\\/](?:app|logic)\.js$/i.test(source)});
 // Only explicitly generated public feeds are admitted. Internal data remains private.
 const familySchedule=JSON.parse(await readFile(path.join(root,'data/family-info/schedule.json'),'utf8'));
 await mkdir(path.join(destination,'feeds/family-info'),{recursive:true});
 for(const id of ['latest',...familySchedule.categories.map(c=>c.id)])await cp(path.join(root,'feeds/family-info',id+'.json'),path.join(destination,'feeds/family-info',id+'.json'));
 for(const file of await readdir(root))if(/^(index\.html|favicon\.(?:svg|ico)|manifest\.json|sw\.js|ads\.txt|robots\.txt|naver[a-f0-9]+\.html|_headers|_redirects)$/.test(file))await cp(path.join(root,file),path.join(destination,file));
-const pages=['index.html','calendar/index.html','map/index.html','curation/index.html','library/index.html','debates/001/index.html','debates/002/index.html','debates/arena/index.html'];
+const pages=['sales/index.html','index.html','calendar/index.html','map/index.html','curation/index.html','library/index.html','debates/001/index.html','debates/002/index.html','debates/arena/index.html'];
 for(const entry of await readdir(path.join(root,'events'),{withFileTypes:true}))if(entry.isDirectory()){await stat(path.join(root,'events',entry.name,'index.html'));pages.push('events/'+entry.name+'/index.html')}
+for(const entry of await readdir(path.join(root,'sales'),{withFileTypes:true}))if(entry.isDirectory()){await stat(path.join(root,'sales',entry.name,'index.html'));pages.push('sales/'+entry.name+'/index.html')}
 try{for(const entry of await readdir(path.join(root,'debates','generated'),{withFileTypes:true}))if(entry.isDirectory()&&/^\d{3}-m\d{3}$/.test(entry.name)){await stat(path.join(root,'debates','generated',entry.name,'index.html'));pages.push(`debates/generated/${entry.name}/index.html`)}}catch(error){if(error.code!=='ENOENT')throw error}
 const {ids:publishedIds}=await publicationCatalog();
 for(const entry of await readdir(path.join(root,'tools'),{withFileTypes:true}))if(entry.isDirectory()&&publishedIds.has(entry.name)){

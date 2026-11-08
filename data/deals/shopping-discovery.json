@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "policy": "Discover public candidates only; never update reviewed data or checkedAt automatically. No authentication or access-control bypass.",
+  "entries": [
+    {"id":"emart","name":"이마트","url":"https://store.emart.com/news/leaflet.do?division=2","hosts":["store.emart.com"],"adapter":"notice","status":"원문 확인","enabled":true},
+    {"id":"homeplus","name":"홈플러스","url":"https://my.homeplus.co.kr/leaflet","hosts":["my.homeplus.co.kr"],"adapter":"notice","status":"원문 확인","enabled":true},
+    {"id":"ikea","name":"이케아","url":"https://www.ikea.com/kr/ko/offers/","hosts":["www.ikea.com"],"adapter":"campaign-links","status":"원문 확인","enabled":true},
+    {"id":"shinsegae-simon","name":"신세계사이먼 여주","url":"https://www.premiumoutlets.co.kr/rpage/main/index/01","hosts":["www.premiumoutlets.co.kr"],"adapter":"outlet-links","status":"원문 확인","enabled":true},
+    {"id":"shinsegae-dept","name":"신세계백화점","url":"https://www.shinsegae.com/shopping/list.do?storeCd=SC00002","hosts":["www.shinsegae.com"],"adapter":"notice","status":"행사 상세 추가 확인","enabled":true},
+    {"id":"hyundai-dept","name":"현대백화점","url":"https://www.ehyundai.com/newPortal/EV/EV000001_L.do","hosts":["www.ehyundai.com"],"adapter":"campaign-links","status":"행사 상세 추가 확인","enabled":true},
+    {"id":"lotte-dept","name":"롯데백화점","url":"https://www.lotteshopping.com/","hosts":["www.lotteshopping.com"],"adapter":"notice","status":"행사 상세 추가 확인","enabled":false},
+    {"id":"starfield","name":"스타필드 코엑스몰","url":"https://www.starfield.co.kr/coexmall/eventBenefit/brand","hosts":["www.starfield.co.kr"],"adapter":"notice","status":"행사 상세 추가 확인","enabled":false},
+    {"id":"costco","name":"코스트코","url":"https://www.costco.co.kr/events","hosts":["www.costco.co.kr"],"adapter":"notice","status":"행사 상세 추가 확인","enabled":false},
+    {"id":"lottemart","name":"롯데마트 글로벌","url":"https://global.lottemart.com/events","hosts":["global.lottemart.com"],"adapter":"notice","status":"행사 상세 추가 확인","enabled":false}
+  ]
+}
