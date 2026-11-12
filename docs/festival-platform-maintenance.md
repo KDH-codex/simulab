@@ -47,6 +47,13 @@
 
 출처별 재시도 2회 이내, 실행 3시간 이내. 로그인·캡차·접근 제한을 우회하지 않는다. 새 과금·인증키·호스팅을 켜지 않는다. Supabase·관리자·광고·방문통계·연락처는 변경하지 않는다.
 
+## 2026년 11월 14~15일 홈 추천
+
+- 고흥유자축제는 [고흥군의 개최 안내](https://tour.goheung.go.kr/front/M0000052/festival/view.do)와 [전년도 군 집계를 인용한 보도](https://theleader.mt.co.kr/articleView.html?no=2026102917497894681)를 확인했다. 31만 3,980명은 2025년 방문객이다.
+- 광주비엔날레는 [올해 전시 일정](https://tour.gwangju.go.kr/home/board/B0049.cs?act=read&articleId=7924&m=356&pageIndex=1&searchCondition=&searchKeyword=)과 [재단의 2024년 개막 한 달 방문객 발표](https://www.gwangjubiennale.org/gb/Board/11829/detailView.do)를 확인했다.
+- 서울카페쇼는 [주최 측의 코엑스 전관 규모와 일반 관람일](https://kor.cafeshow.com/kor/cafeshow/summary.asp)을 근거로 선정했다. 일반 관람 마지막 날은 11월 14일이다.
+- 대표 3장은 기존 AI 참고 이미지를 사용한다. 이번 주말 수록 행사 37건의 이미지 항목과 파일을 확인했다. Antigravity에 공식 일정과 과거 방문객 확인을 배정했으나 응답 제한 시간 내 결과를 받지 못했다. 공개 원문은 Codex가 대조했다.
+
 ## 디자인 원본
 
 Stitch 프로젝트 **8340159177898116761 / 축제 플랫폼**. 4개 UI 화면의 HTML과 6개 화면 이미지를 scratch/stitch-import/에 다운로드했다. 원본은 검토 참고용이며 배포 목록에 넣지 않는다. 지도 2개는 이미지 전용 화면이므로 HTML이 없다.

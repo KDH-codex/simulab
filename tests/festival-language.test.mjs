@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {normalizeLocale,resolveLocale,languageURL,UI_TRANSLATIONS,translateUI,LANGUAGES} from '../assets/js/festival-i18n.js';
 import {EVENT_LOCALES,eventTranslation} from '../assets/js/festival-event-locales.js';
-import {highlightFor,FESTIVAL_HIGHLIGHTS} from '../assets/js/festival-highlights.js';
+import {highlightFor,FESTIVAL_HIGHLIGHTS,homeRecommendations} from '../assets/js/festival-highlights.js';
 import {matchesKeyword} from '../assets/js/festival-ui-model.js';
 const events=JSON.parse(await readFile(new URL('../data/events/reviewed.json',import.meta.url),'utf8'));
 
@@ -54,4 +54,18 @@ test('editorial HOT marks expire and cannot be applied to cancelled or unselecte
   assert.equal(highlightFor({...selected,publicationStatus:'cancelled'},'2026-11-07'),null);
   assert.equal(highlightFor({...selected,id:'unknown'},'2026-11-07'),null);
   for(const [id,entry] of Object.entries(FESTIVAL_HIGHLIGHTS)){assert.ok(events.some(e=>e.id===id));assert.ok(entry.reason);assert.equal(new URL(entry.source).protocol,'https:');}
+});
+
+test('home recommendations follow the featured weekend and expire on Korea dates',()=>{
+  const picks=['goheung-yuja-2026','gwangju-biennale-2026','seoul-cafe-show-2026'];
+  const hasImage=event=>event.id!=='gwangju-yangdong-hongtak-2026';
+  const selected=date=>homeRecommendations(events,date,hasImage);
+
+  assert.deepEqual(selected('2026-11-12').heroes.map(event=>event.id),picks);
+  assert.deepEqual(selected('2026-11-14').heroes.map(event=>event.id),picks);
+  const sunday=selected('2026-11-15');
+  assert.deepEqual(sunday.heroes.slice(0,2).map(event=>event.id),picks.slice(0,2));
+  assert.equal(sunday.events.some(event=>event.id===picks[2]),false);
+  assert.equal(selected('2026-11-16').heroes.some(event=>picks.includes(event.id)),false);
+  assert.equal(selected('2026-11-14').heroes.some(event=>event.id==='busan-fireworks-2026'),false);
 });

@@ -34,6 +34,15 @@ export function eventImage(event,image,{hero=false,compact=false}={}) {
   const descriptiveAlt=image.alt?image.alt+' · '+fullCaption:image.kind==='context'?'주제 참고 사진 · 행사 현장 사진 아님':image.kind==='generated'?fullCaption:event.title;
   return '<img src="'+esc(image.src)+'" alt="'+esc(descriptiveAlt)+'" '+(hero?'fetchpriority="high"':'loading="lazy"')+' decoding="async"><span class="image-credit'+(compact?' compact-credit':'')+'" title="'+esc(fullCaption)+'">'+esc(imageCaption(image,{compact}))+'</span>'+highlightBadge(event);
 }
+
+export function miniEvent(event, {url, image, status, dates, theme}) {
+  return '<a href="'+esc(url)+'" data-preview="'+esc(event.id)+'" class="mini-event">'+
+    '<div class="mini-image theme-'+esc(event.theme)+'">'+eventImage(event,image,{compact:true})+
+    '<span class="mini-badge">'+esc(status)+'</span></div>'+
+    '<div class="mini-copy"><small>'+esc(event.region)+' · '+esc(theme)+'</small>'+
+    '<h3>'+esc(event.title)+'</h3><p>'+esc(event.program)+'</p>'+
+    '<strong>'+esc(dates)+' <span aria-hidden="true">↗</span></strong></div></a>';
+}
 export function activeConditions(state,defaultPeriod='upcoming') {
   const rows=[];
   if(state.keyword)rows.push({key:'keyword',label:'#'+state.keyword,removable:true});

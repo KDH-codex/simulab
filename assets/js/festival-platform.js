@@ -1,24 +1,34 @@
-import {eventTags,matchesKeyword,weekRangeFor,weekDays,weeklyEvents,eventsForDay,dayMilestone,toggleDaySelection} from './festival-ui-model.js';
+import {eventTags,matchesKeyword,weekRangeFor,weekDays,weeklyEvents,eventsForDay,dayMilestone,toggleDaySelection,THEME_WORDS} from './festival-ui-model.js';
 import {WEATHER_STATIONS} from './festival-weather-model.js';
 import {modalMarkup,modalTabIds} from './festival-modal.js';
-import {eventImage,imageCaption,activeConditions,detailTagDestination} from './festival-presentation.js';
+import {eventImage,imageCaption,activeConditions,detailTagDestination,miniEvent} from './festival-presentation.js';
 import {setupHeadingMotion} from './festival-heading-motion.js';
 import {initializeLanguage} from './festival-language.js';
 import {eventTranslation} from './festival-event-locales.js';
 import {languageURL} from './festival-i18n.js';
-import {highlightFor} from './festival-highlights.js';
+import {highlightFor, homeRecommendations} from './festival-highlights.js';
 import {koreaToday, shiftDate, weekendRange, overlaps, occursOn, nextDate, eventStatus, escapeHtml as esc, isStale} from '/tools/kids-outing-calendar/model.js';
 
 const data=JSON.parse(document.getElementById('festival-data')?.textContent || '[]');
 const locale=initializeLanguage(data);
 const eventName=e=>eventTranslation(e,locale)?.title||e.title;
 const byId=new Map(data.map(e=>[e.id,e]));
-const today=koreaToday();
-// Static pages can outlive a deployment day. Recheck editorial picks against the visitor's KST date.
-document.querySelectorAll('[data-highlight-id]').forEach(mark=>{const event=byId.get(mark.dataset.highlightId);if(!event||!highlightFor(event,today))mark.remove();});
-document.querySelectorAll('#hot-event-feed [data-card-id]').forEach(card=>{const event=byId.get(card.dataset.cardId);if(!event||!highlightFor(event,today))card.remove();});
-const hotSection=document.querySelector('.hot-section');if(hotSection&&!hotSection.querySelector('[data-card-id]'))hotSection.hidden=true;
-document.querySelectorAll('.detail-page .highlight-explanation').forEach(note=>{const event=data.find(e=>e.url===location.pathname);if(!event||!highlightFor(event,today))note.remove();});
+let today=koreaToday();
+function refreshHighlights() {
+  document.querySelectorAll('[data-highlight-id]').forEach(mark=>{
+    const event=byId.get(mark.dataset.highlightId);
+    if(!event||!highlightFor(event,today))mark.remove();
+  });
+  document.querySelectorAll('#hot-event-feed [data-card-id]').forEach(card=>{
+    const event=byId.get(card.dataset.cardId);
+    if(!event||!highlightFor(event,today))card.remove();
+  });
+  const hotSection=document.querySelector('.hot-section');
+  if(hotSection&&!hotSection.querySelector('[data-card-id]'))hotSection.hidden=true;
+  const detail=data.find(e=>e.url===location.pathname);
+  if(detail&&!highlightFor(detail,today))document.querySelector('.detail-page .highlight-explanation')?.remove();
+}
+refreshHighlights();
 const page=document.body.dataset.festivalPage;
 const $=id=>document.getElementById(id);
 const params=new URL(location.href).searchParams;
@@ -155,7 +165,8 @@ function syncPills(pool) {
 }
 function renderGrid() {
   const r=periodRange();
-  const pool=data.filter(e=>overlaps(e,r.start,r.end));
+  const start=r.start<today?today:r.start;
+  const pool=data.filter(e=>overlaps(e,start,r.end));
   const filtered=pool.filter(e=>selection(e)).sort((a,b)=>(state.sort==='end'?a.endDate.localeCompare(b.endDate):nextDate(a,r.start).localeCompare(nextDate(b,r.start))) || a.title.localeCompare(b.title,'ko'));
   const el=$('event-cards');if(!el)return;
   el.innerHTML=filtered.slice(0,state.limit).map(card).join('');
@@ -316,8 +327,7 @@ function reset() {
 function render(){if(page==='calendar')renderCalendar();else renderGrid();}
 
 
-const upcoming=data.filter(e=>overlaps(e,today,shiftDate(today,60))).sort((a,b)=>nextDate(a,today).localeCompare(nextDate(b,today))||a.title.localeCompare(b.title,'ko'));
-const heroes=[...upcoming.filter(e=>e.theme==='light'&&e.image),...upcoming].filter((e,i,a)=>a.indexOf(e)===i).slice(0,3);
+let heroes=[];
 let heroIndex=0;
 let heroPaused=false;
 let heroTimer;
@@ -333,15 +343,19 @@ function syncHeroTimer() {
   if(!$('hero-main')||heroes.length<2||heroPaused||!heroVisible||heroHover||heroFocus||document.hidden||$('festival-dialog')?.open)return;
   heroTimer=setTimeout(()=>{setHero(heroIndex+1);},3000);
 }
-function setHero(index) {
+function setHero(index,{immediate=false}={}) {
   if(!heroes.length)return;
   const nextIndex=(index+heroes.length)%heroes.length;
-  if(nextIndex===heroIndex){syncHeroTimer();return;}
+  if(nextIndex===heroIndex&&!immediate){syncHeroTimer();return;}
   const previous=heroes[heroIndex];heroIndex=nextIndex;
   const transition=++heroTransition;
   const e=heroes[heroIndex],container=document.querySelector('[data-hero-image]');if(!container)return;
   heroAnimations.forEach(a=>a.cancel());heroAnimations=[];
-  container.innerHTML='<div class="hero-frame hero-frame-old">'+imageMarkup(previous,true)+'</div><div class="hero-frame hero-frame-new">'+imageMarkup(e,true)+'</div>';
+  const shouldAnimate=!immediate&&previous&&!reducedMotion.matches&&typeof container.animate==='function';
+  container.innerHTML=shouldAnimate
+    ? '<div class="hero-frame hero-frame-old">'+imageMarkup(previous,true)+'</div><div class="hero-frame hero-frame-new">'+imageMarkup(e,true)+'</div>'
+    : imageMarkup(e,true);
+  $('hero-main').className='hero-main theme-'+e.theme;
   document.querySelector('[data-hero-title]').textContent=e.title;
   document.querySelector('[data-hero-meta]').textContent='▦ '+range(e)+'　⌖ '+e.region;
   document.querySelector('[data-hero-description]').textContent=e.program;
@@ -350,17 +364,51 @@ function setHero(index) {
   const link=document.querySelector('[data-hero-detail]');link.href=e.url;link.dataset.preview=e.id;
   $('hero-position').textContent=String(heroIndex+1).padStart(2,'0')+' / '+String(heroes.length).padStart(2,'0');
   document.querySelectorAll('[data-hero-slide]').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.heroSlide)===heroIndex)));
-  const fresh=container.querySelector('.hero-frame-new');
-  if(!reducedMotion.matches&&fresh.animate){
+  if(shouldAnimate){
     // Keep the previous image opaque underneath, avoiding a dark flash mid-fade.
-    const entering=fresh.animate([{opacity:0},{opacity:1}],{duration:800,easing:'ease-in-out',fill:'forwards'});
+    const entering=container.querySelector('.hero-frame-new').animate([{opacity:0},{opacity:1}],{duration:800,easing:'ease-in-out',fill:'forwards'});
     heroAnimations.push(entering);
     heroAnimations.push(document.querySelector('.hero-event-details').animate([{opacity:0},{opacity:1}],{duration:450,easing:'ease-in-out'}));
     entering.onfinish=()=>{if(transition===heroTransition){heroAnimations.forEach(animation=>animation.cancel());heroAnimations=[];container.innerHTML=imageMarkup(e,true);}};
-  }else container.innerHTML=imageMarkup(e,true);
+  }
   syncKeywordButtons();syncHeroTimer();
 }
 const heroElement=$('hero-main');
+function refreshHome() {
+  if(page!=='home')return;
+  const recommendations=homeRecommendations(data,today,e=>!!e.image);
+  heroes=recommendations.heroes;
+  const main=$('main');
+  if(main.dataset.homeDate!==today){
+    main.dataset.homeDate=today;
+    const {events,weekend}=recommendations;
+    const feed=$('home-weekend-feed');
+    feed.innerHTML=events.length
+      ? events.slice(0,4).map(card).join('')
+      : '<div class="feed-empty">이 주말의 수록 일정이 없어요. 달력에서 다른 날짜를 살펴보세요.</div>';
+    document.querySelector('.weekend-feed-actions .feed-controls').hidden=events.length<2;
+    if(heroElement){
+      const banner=document.querySelector('.hero-side .weekend-banner');
+      document.querySelectorAll('.hero-side .mini-event').forEach(card=>card.remove());
+      banner.insertAdjacentHTML('beforebegin',heroes.slice(1).map(event=>miniEvent(event,{
+        url:event.url,image:event.image,status:status(event),dates:range(event),theme:THEME_WORDS[event.theme]
+      })).join(''));
+      banner.querySelector('[data-weekend-summary]').textContent=
+        fmt(weekend.start)+' — '+fmt(weekend.end)+' · 수록 일정 '+events.length+'건';
+      const dots=heroElement.querySelector('.hero-dots');
+      dots.innerHTML=heroes.map((event,index)=>'<button type="button" data-hero-slide="'+index+
+        '" aria-label="추천 '+(index+1)+' · '+esc(event.title)+'"></button>').join('');
+      setHero(0,{immediate:true});
+    }
+  }
+  if(heroElement){
+    heroElement.closest('.hero-layout').hidden=heroes.length===0;
+    heroElement.querySelector('.hero-controls').hidden=heroes.length<2;
+    heroElement.querySelector('.hero-dots').hidden=heroes.length<2;
+    syncHeroTimer();
+  }
+}
+refreshHome();
 if(heroElement){
   for(const e of heroes){if(e.image){const img=new Image();img.src=e.image.src;}}
   heroElement.addEventListener('pointerenter',()=>{heroHover=true;syncHeroTimer();});
@@ -369,8 +417,29 @@ if(heroElement){
   heroElement.addEventListener('focusout',event=>{if(!heroElement.contains(event.relatedTarget)){heroFocus=false;syncHeroTimer();}});
   if('IntersectionObserver' in window)new IntersectionObserver(entries=>{heroVisible=entries[0].isIntersecting;syncHeroTimer();},{threshold:.15}).observe(heroElement);
   document.addEventListener('visibilitychange',syncHeroTimer);
-  reducedMotion.addEventListener('change',()=>{if(reducedMotion.matches){heroTransition++;heroAnimations.forEach(a=>a.cancel());heroAnimations=[];document.querySelector('[data-hero-image]').innerHTML=imageMarkup(heroes[heroIndex],true);}syncHeroTimer();});
+  reducedMotion.addEventListener('change',()=>{if(reducedMotion.matches&&heroes[heroIndex]){heroTransition++;heroAnimations.forEach(a=>a.cancel());heroAnimations=[];document.querySelector('[data-hero-image]').innerHTML=imageMarkup(heroes[heroIndex],true);}syncHeroTimer();});
   syncHeroTimer();
+}
+
+function refreshDetailStatus() {
+  const label=document.querySelector('[data-event-status]');
+  const event=label&&byId.get(label.dataset.eventStatus);
+  if(event)label.textContent=status(event);
+}
+refreshDetailStatus();
+
+if(page==='home'||page==='detail'){
+  const checkDate=()=>{
+    const date=koreaToday();
+    if(date===today)return;
+    today=date;
+    refreshHighlights();
+    refreshHome();
+    refreshDetailStatus();
+    if(page==='home')renderGrid();
+  };
+  window.setInterval(checkDate,60_000);
+  document.addEventListener('visibilitychange',checkDate);
 }
 
 

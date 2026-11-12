@@ -2021,21 +2021,28 @@
     "booking": "체험별 신청과 비용은 주최 측 프로그램 확인",
     "familyNote": "야간 행사까지 관람할 경우 공식 셔틀 막차를 확인하세요.",
     "verificationStatus": "verified",
-    "checkedAt": "2026-11-05",
+    "checkedAt": "2026-11-12",
     "sources": [
       {
         "publisher": "고흥군·고흥군축제위원회",
         "title": "제6회 고흥유자축제 안내",
         "url": "https://www.goheungyuja.com/sub.do?menuCd=01_01",
         "facts": "2026년 개최 기간·행사장 주소",
-        "checkedAt": "2026-11-05"
+        "checkedAt": "2026-11-12"
       },
       {
         "publisher": "문화체육관광부 지역축제",
         "title": "제6회 고흥유자축제 안내",
         "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pRo=3&pSeq=11905",
         "facts": "시간·일부 유료 조건",
-        "checkedAt": "2026-11-05"
+        "checkedAt": "2026-11-12"
+      },
+      {
+        "publisher": "고흥군",
+        "title": "고흥군 관광 축제 안내",
+        "url": "https://tour.goheung.go.kr/front/M0000052/festival/view.do",
+        "facts": "2026년 11월 12~15일 풍양면 개최, 유자밭 체험과 야간 경관 프로그램 확인.",
+        "checkedAt": "2026-11-12"
       }
     ]
   },
@@ -2290,13 +2297,13 @@
     "time": "장소별 운영시간·휴관일 확인",
     "program": "국제 현대미술 전시와 시민 참여 프로그램",
     "feeStatus": "paid",
-    "fee": "본전시 유료 · 프로그램별 별도 조건 확인",
-    "booking": "본전시 입장권 및 별도 프로그램 신청은 공식 안내 확인",
+    "fee": "본전시 일반 성인 20,000원 · 청소년 10,000원 · 어린이 7,000원",
+    "booking": "본전시 입장권은 공식 관람 안내에서 연결하는 예매처 또는 현장 매표소. 시민참여 프로그램은 회차별로 별도 신청.",
     "familyNote": "시민참여 프로그램은 날짜·회차별로 운영합니다.",
     "scheduleType": "period",
     "scheduleNote": "전시장별 실제 운영일과 입장 조건은 공식 안내 확인",
     "verificationStatus": "verified",
-    "checkedAt": "2026-11-05",
+    "checkedAt": "2026-11-12",
     "sources": [
       {
         "publisher": "한국관광공사",
@@ -2310,7 +2317,28 @@
         "title": "제16회 광주비엔날레 안내",
         "url": "https://www.gwangjubiennale.org/gb/Board/12146/detailView.do",
         "facts": "시민참여 프로그램 별도 운영·예약",
-        "checkedAt": "2026-11-05"
+        "checkedAt": "2026-11-12"
+      },
+      {
+        "publisher": "광주비엔날레",
+        "title": "제16회 광주비엔날레 입장 요금 안내",
+        "url": "https://gwangjubiennale.org/gb/exhibition/biennale/visitorinfo.do?subPage=ticketInfo",
+        "facts": "본전시 정상 입장료와 할인·현장 매표 조건, 공식 예매 링크 확인.",
+        "checkedAt": "2026-11-12"
+      },
+      {
+        "publisher": "광주비엔날레 공식 예매처",
+        "title": "제16회 광주비엔날레 입장권",
+        "url": "https://tickets.interpark.com/goods/26007603",
+        "facts": "재단 관람 안내가 연결하는 본전시 예매 페이지.",
+        "checkedAt": "2026-11-12"
+      },
+      {
+        "publisher": "광주관광 오매광주",
+        "title": "제16회 광주비엔날레 개최기간",
+        "url": "https://tour.gwangju.go.kr/home/board/B0049.cs?act=read&articleId=7924&m=356&pageIndex=1&searchCondition=&searchKeyword=",
+        "facts": "본전시 개최기간 9월 5일~11월 15일 확인.",
+        "checkedAt": "2026-11-12"
       }
     ]
   },
@@ -4076,16 +4104,16 @@
     "time": "13일 10:00~18:00(입장마감 17:30) · 14일 10:00~16:00(입장마감 15:30)",
     "program": "커피·차·베이커리 브랜드 전시, 카페 장비와 디저트 소개",
     "feeStatus": "paid",
-    "fee": "1일권 11월 1~8일 사전예매 22,000원 · 현장 25,000원",
-    "booking": "11월 8일까지 사전예매. 공식 안내의 티켓 링크에서 구매. 11월 11~12일은 업계 대상",
+    "fee": "현장 1일권 25,000원",
+    "booking": "사전 등록은 11월 8일 종료. 일반 관람은 11월 13~14일 현장에서 등록·결제.",
     "verificationStatus": "verified",
-    "checkedAt": "2026-11-07",
+    "checkedAt": "2026-11-12",
     "sources": [
       {
         "publisher": "서울카페쇼",
         "title": "2026 서울카페쇼 참관 일정·입장 안내",
         "url": "https://eng.cafeshow.com/kor/visitor/visitor_info.asp",
-        "checkedAt": "2026-11-07",
+        "checkedAt": "2026-11-12",
         "facts": "개최일과 장소를 확인. 13일 10:00~18:00(입장마감 17:30) · 14일 10:00~16:00(입장마감 15:30). 커피·차·베이커리 브랜드 전시, 카페 장비와 디저트 소개."
       },
       {
@@ -4095,7 +4123,8 @@
         "facts": "주최 측 참관 안내에서 연결하는 2026 회차 입장권.",
         "checkedAt": "2026-11-07"
       }
-    ]
+    ],
+    "familyNote": "토요일은 15:30 입장 마감. 접이식 카트를 포함한 캐리어는 반입할 수 없습니다."
   },
   {
     "id": "seoul-independent-film-festival-2026",
@@ -4560,6 +4589,58 @@
       "2026-11-22",
       "2026-11-28",
       "2026-11-29"
+    ]
+  },
+  {
+    "id": "seosan-chrysanthemum-2026",
+    "title": "제26회 서산국화축제",
+    "region": "충남",
+    "theme": "nature",
+    "startDate": "2026-11-06",
+    "endDate": "2026-11-15",
+    "location": "서산시 고북면 복남골길 31-1 일원",
+    "program": "국화 미로와 꽃길 산책, 국화꽃 따기와 알타리무 수확 체험",
+    "feeStatus": "unknown",
+    "fee": "입장·체험 요금은 공식 안내 확인",
+    "booking": "체험별 접수 여부와 운영시간은 주최 측 안내 확인",
+    "scheduleType": "period",
+    "scheduleNote": "공연과 수확 체험은 프로그램별 운영일을 확인하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-12",
+    "sources": [
+      {
+        "publisher": "서산시",
+        "title": "제26회 서산국화축제 개최 공지",
+        "url": "https://www.seosan.go.kr/www/selectBbsNttView.do?bbsNo=101&key=1260&nttNo=341763",
+        "facts": "2026년 11월 6~15일 개최, 고북면 행사장 주소, 국화정원과 수확 체험 확인.",
+        "checkedAt": "2026-11-12"
+      }
+    ]
+  },
+  {
+    "id": "yangsan-chrysanthemum-2026",
+    "title": "2026 양산국화축제",
+    "region": "경남",
+    "theme": "nature",
+    "startDate": "2026-10-30",
+    "endDate": "2026-11-15",
+    "location": "양산시 물금읍 황산공원 중부광장",
+    "program": "국화 작품과 양산의 역사·관광을 주제로 한 대형 꽃 조형물 전시",
+    "feeStatus": "unknown",
+    "fee": "입장·체험 요금은 공식 안내 확인",
+    "booking": "관람과 개별 체험의 참여 조건은 양산시 안내 확인",
+    "scheduleType": "period",
+    "scheduleNote": "연계 행사와 체험은 프로그램별 운영일을 확인하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-12",
+    "sources": [
+      {
+        "publisher": "양산시",
+        "title": "2026 양산국화축제 시정 안내",
+        "url": "https://www.yangsan.go.kr/portal/news/view.do?mid=0106010200&newsGubun=N&newsId=27888&newsSidx=4",
+        "facts": "2026년 10월 30일~11월 15일 개최, 황산공원 중부광장과 국화 작품 전시 확인.",
+        "checkedAt": "2026-11-12"
+      }
     ]
   }
 ]

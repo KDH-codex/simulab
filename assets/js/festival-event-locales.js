@@ -1,6 +1,8 @@
 // Editorial guide names, not organizer-certified translations. Keep Korean names for maps/sources.
 // id | summary topic | English | Japanese | Simplified Chinese | Traditional Chinese
 const rows = `
+seosan-chrysanthemum-2026|flowers|26th Seosan Chrysanthemum Festival|第26回 瑞山菊祭り|第26届瑞山菊花节|第26屆瑞山菊花節
+yangsan-chrysanthemum-2026|flowers|2026 Yangsan Chrysanthemum Festival|2026 梁山菊祭り|2026 梁山菊花节|2026 梁山菊花節
 seoul-drone-2026|drone|Seoul International Drone Racing World Cup|ソウル国際ドローンレースW杯|首尔国际无人机竞速世界杯|首爾國際無人機競速世界盃
 seoul-bbq-2026|food|Seoul BBQ Festival|ソウルBBQフェスティバル|首尔烧烤节|首爾烤肉節
 namsan-night-2026|night|Namsan Night Festival|南山ナイトフェスティバル|南山夜间节|南山夜間節
