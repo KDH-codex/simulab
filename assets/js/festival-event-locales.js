@@ -1,6 +1,29 @@
 // Editorial guide names, not organizer-certified translations. Keep Korean names for maps/sources.
 // id | summary topic | English | Japanese | Simplified Chinese | Traditional Chinese
 const rows = `
+busan-gstar-2026|games|G-STAR 2026 · Public Exhibition|G-STAR 2026 一般公開|G-STAR 2026 游戏展公众场|G-STAR 2026 遊戲展公眾場
+busan-haeundae-light-2026|night|13th Haeundae Light Festival|第13回 海雲台光祭り|第13届海云台灯光节|第13屆海雲臺燈光節
+ulsan-christmas-market-2026|market|Ulsan Christmas Market|蔚山クリスマスマーケット|蔚山圣诞市集|蔚山聖誕市集
+incheon-ohslow-vintage-market-2026|market|Ohslow Vintage Christmas Market|オースロー・ヴィンテージクリスマスマーケット|Ohslow 复古圣诞市集|Ohslow 復古聖誕市集
+daejeon-yuseong-christmas-2026|market|Yuseong Hot Springs Christmas Festival|儒城温泉クリスマス祭り|儒城温泉圣诞节|儒城溫泉聖誕節
+busan-gwangbok-street-festa-2026|culture|Gwangbok Street Festa and Balcony Music Show|光復路ストリートフェスタ＆バルコニー音楽ショー|光复路街头节与阳台音乐秀|光復路街頭節與陽台音樂秀
+nonsan-yangchon-persimmon-2026|harvest|Nonsan Yangchon Dried Persimmon Festival|論山 陽村干し柿祭り|论山阳村柿饼节|論山陽村柿餅節
+seoul-lantern-winter-2026|night|2026 Seoul Lantern Festival|2026 ソウルランタンフェスティバル|2026 首尔灯节|2026 首爾燈節
+seoul-gwanghwamun-market-2026|market|2026 Gwanghwamun Market|2026 光化門マーケット|2026 光化门市集|2026 光化門市集
+seoul-light-gwanghwamun-2026|media|Seoul Light Gwanghwamun 2026|ソウルライト光化門 2026|2026 首尔之光光化门|2026 首爾之光光化門
+hampyeong-winter-lights-2026|night|Hampyeong Winter Light Festival|咸平ウィンターライトフェスティバル|咸平冬季灯光节|咸平冬季燈光節
+seoul-hangang-christmas-market-2026|market|Romantic Hangang Christmas Market|ロマンチック漢江クリスマスマーケット|浪漫汉江圣诞市集|浪漫漢江聖誕市集
+seoul-bosingak-countdown-2026|culture|Bosingak New Year’s Eve Bell-Ringing|普信閣 除夜の鐘|普信阁除夕敲钟仪式|普信閣除夕敲鐘儀式
+gwangju-new-year-citizen-festival-2026|culture|Gwangju New Year’s Eve Festival|光州年越し市民祭り|光州跨年市民节|光州跨年市民節
+seoul-korea-christmas-festival-2026|night|Korea Christmas Festival at Seoul Plaza|ソウル広場 大韓民国クリスマス祭り|首尔广场韩国圣诞节|首爾廣場韓國聖誕節
+daegu-christmas-fair-2026|market|Daegu Christmas Fair 2026|大邱クリスマスフェア2026|2026 大邱圣诞展|2026 大邱聖誕展
+jeju-vicheollin-winter-flower-2026|garden|Vicheollin Winter Flower Festival|ビチェオリン冬の花祭り|Vicheollin 冬季花卉节|Vicheollin 冬季花卉節
+goyang-agf-2026|games|Anime × Game Festival 2026|アニメ×ゲームフェスティバル 2026|2026 动漫游戏节 AGF|2026 動漫遊戲節 AGF
+incheon-paradise-alpine-market-2026|market|Paradise City Alpine Holiday Christmas Market|パラダイスシティ アルペンホリデー・クリスマスマーケット|百乐达斯城高山假日圣诞市集|百樂達斯城高山假日聖誕市集
+seoul-christmas-pet-show-2026|pets|Christmas Seoul Pet Show 2026|クリスマス・ソウルペットショー2026|2026 首尔圣诞宠物展|2026 首爾聖誕寵物展
+chuncheon-legoland-christmas-2026|family|Christmas at LEGOLAND Korea|レゴランド・コリアのクリスマス|韩国乐高乐园圣诞季|韓國樂高樂園聖誕季
+goesan-eco-museum-space-exhibit-2026|art|Goesan Space Explorers Exhibition|槐山 宇宙探検隊 体験展|槐山宇宙探险队体验展|槐山宇宙探險隊體驗展
+sejong-just-beside-year-end-concert-2026|performance|Sejong Arts Center Year-End Concert: JUST BESIDE|世宗芸術の殿堂 年末コンサート JUST BESIDE|世宗艺术殿堂年终音乐会 JUST BESIDE|世宗藝術殿堂年終音樂會 JUST BESIDE
 seosan-chrysanthemum-2026|flowers|26th Seosan Chrysanthemum Festival|第26回 瑞山菊祭り|第26届瑞山菊花节|第26屆瑞山菊花節
 yangsan-chrysanthemum-2026|flowers|2026 Yangsan Chrysanthemum Festival|2026 梁山菊祭り|2026 梁山菊花节|2026 梁山菊花節
 seoul-drone-2026|drone|Seoul International Drone Racing World Cup|ソウル国際ドローンレースW杯|首尔国际无人机竞速世界杯|首爾國際無人機競速世界盃

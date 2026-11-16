@@ -22,5 +22,45 @@
     "sourceUrl": "https://ygcf.or.kr/Festival/F60000/F60300/boardView?board_key=15226",
     "reviewedAt": "2026-10-28T23:31:13.561Z",
     "reason": "문체부·2026리플릿 체험10~17시와 운영기관 프로그램 카드10~18시가 상충하여 전체 종료시각만 확정하지 않음."
+  },
+  {
+    "provider": "boseong",
+    "sourceRecordId": "boseong-tea-lights-2026",
+    "title": "보성차밭빛축제",
+    "sourceUrl": "https://www.boseong.go.kr/tour/festivity/light_festival",
+    "reviewedAt": "2026-11-16",
+    "reason": "군 공식 축제 페이지는 보성차정원 조성 중이라 당분간 개최 계획이 없다고 안내한다."
+  },
+  {
+    "provider": "imsil",
+    "sourceRecordId": "imsil-santa-2026",
+    "title": "임실 산타축제",
+    "sourceUrl": "https://www.imsil.go.kr/tour/index.imsil?menuCd=DOM_000000203001008001",
+    "reviewedAt": "2026-11-16",
+    "reason": "현재 공식 소개는 2025년 회차이며, 2026년 12월 24일과 25일 개막 정보가 엇갈려 올해 상세 공지를 기다린다."
+  },
+  {
+    "provider": "geoje",
+    "sourceRecordId": "geoje-jangseungpo-fireworks-2026",
+    "title": "장승포항 송년불꽃축제",
+    "sourceUrl": "https://www.gachiilteo.or.kr/user/bidPblanc/bidPblancDtl.do?bidNtceNo=R26BK01763088&bidNtceOrd=000&menuCode=mn010109",
+    "reviewedAt": "2026-11-16",
+    "reason": "9월 표준데이터의 12월 31일과 이후 통합 행사 용역 자료의 일정이 달라 올해 방문객용 공지를 기다린다."
+  },
+  {
+    "provider": "seoul",
+    "sourceRecordId": "seoul-light-ddp-winter-2026",
+    "title": "서울라이트 DDP 2026 겨울",
+    "sourceUrl": "https://festival.seoul.go.kr/festival/main/festivalView.do?festacode=452",
+    "reviewedAt": "2026-11-16",
+    "reason": "서울시 최신 자료에 개막 예정일 12월 17일은 있으나 전체 운영 기간과 종료일은 확인되지 않아 후속 공지를 기다린다."
+  },
+  {
+    "provider": "suseong",
+    "sourceRecordId": "suseong-light-art-2026",
+    "title": "제8회 수성빛예술제",
+    "sourceUrl": "https://korean.visitkorea.or.kr/kfes/detail/fstvlDetail.do?fstvlCntntsId=10dc8d4b-e6ce-46c8-8778-bf6f579ac953",
+    "reviewedAt": "2026-11-16",
+    "reason": "관광공사 공개 상세는 2025년 제7회이며 2026년 회차의 공식 방문 일정과 날짜별 운영은 추가 확인이 필요하다."
   }
 ]

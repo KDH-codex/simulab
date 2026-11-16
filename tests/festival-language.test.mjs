@@ -69,3 +69,14 @@ test('home recommendations follow the featured weekend and expire on Korea dates
   assert.equal(selected('2026-11-16').heroes.some(event=>picks.includes(event.id)),false);
   assert.equal(selected('2026-11-14').heroes.some(event=>event.id==='busan-fireworks-2026'),false);
 });
+
+test('curated winter banners honor the actual operation dates',()=>{
+  const picks=date=>homeRecommendations(events,date,()=>true).heroes.map(event=>event.id);
+  const lateDecember=['seoul-lantern-winter-2026','busan-haeundae-light-2026','hampyeong-winter-lights-2026'];
+  assert.deepEqual(picks('2026-11-16'),['pohang-fire-light-2026','busan-gstar-2026','jeju-moseulpo-yellowtail-2026']);
+  assert.deepEqual(picks('2026-11-22'),['busan-gstar-2026','jeju-moseulpo-yellowtail-2026','sunchang-tteokbokki-2026']);
+  assert.ok(!picks('2026-12-12').includes(lateDecember[2]));
+  assert.deepEqual(picks('2026-12-19'),lateDecember);
+  assert.deepEqual(picks('2026-12-27'),lateDecember);
+  assert.ok(!picks('2027-01-02').includes(lateDecember[2]));
+});

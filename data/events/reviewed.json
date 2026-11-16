@@ -2088,13 +2088,13 @@
     "endDate": "2026-11-21",
     "location": "경북 포항시 영일대해수욕장·송도 포항구항 일원",
     "time": "11/21 국제불꽃쇼 예정 · 상세 시각은 공식 일정 확인",
-    "program": "해변 야간 프로그램과 국제불꽃쇼",
+    "program": "포항의 해변 야간 프로그램과 11월 21일 국제불꽃쇼",
     "feeStatus": "free",
     "fee": "기본 관람 무료 · 먹거리와 개별 프로그램 비용 별도 확인",
     "booking": "개별 행사 신청 여부는 공식 일정 확인",
     "familyNote": "국제불꽃쇼는 축제 마지막 날 예정입니다. 기상 및 현장 공지를 확인하세요.",
     "verificationStatus": "verified",
-    "checkedAt": "2026-11-05",
+    "checkedAt": "2026-11-16",
     "sources": [
       {
         "publisher": "포항문화재단",
@@ -2115,7 +2115,7 @@
         "title": "2026 포항국제불빛축제 안내",
         "url": "https://phcf.or.kr/phcf/festival_detail/view.do?festivalId=FST_LIGHT_2026_001&tab=program",
         "facts": "2026년 행사 일정 및 프로그램",
-        "checkedAt": "2026-11-05"
+        "checkedAt": "2026-11-16"
       }
     ]
   },
@@ -3706,14 +3706,14 @@
     "fee": "기본 관람 무료 · 음식 구매와 체험 비용 별도 확인",
     "booking": "체험별 참여 조건은 축제 공지 확인",
     "verificationStatus": "verified",
-    "checkedAt": "2026-11-05",
+    "checkedAt": "2026-11-16",
     "sources": [
       {
         "publisher": "비짓제주",
         "title": "제26회 최남단방어축제 안내",
         "url": "https://www.visitjeju.net/kr/festival/view?contentsid=CNTS_300000000015191",
         "facts": "2026년 행사 날짜와 장소, 프로그램 및 공개 관람 안내를 확인.",
-        "checkedAt": "2026-11-05"
+        "checkedAt": "2026-11-16"
       }
     ]
   },
@@ -3756,14 +3756,14 @@
     "fee": "먹거리·체험 비용은 현장 안내 확인",
     "booking": "체험별 신청 여부는 공식 시간표 참고",
     "verificationStatus": "verified",
-    "checkedAt": "2026-11-05",
+    "checkedAt": "2026-11-16",
     "sources": [
       {
         "publisher": "파주시",
         "title": "2026 파주장단콩축제 안내",
         "url": "https://tour.paju.go.kr/tour/festival/festival02/festival02_2/festival02_2_01/festival02_2_01_01.jsp",
         "facts": "2026년 행사 날짜와 장소, 프로그램 및 공개 관람 안내를 확인.",
-        "checkedAt": "2026-11-05"
+        "checkedAt": "2026-11-16"
       }
     ]
   },
@@ -4640,6 +4640,688 @@
         "url": "https://www.yangsan.go.kr/portal/news/view.do?mid=0106010200&newsGubun=N&newsId=27888&newsSidx=4",
         "facts": "2026년 10월 30일~11월 15일 개최, 황산공원 중부광장과 국화 작품 전시 확인.",
         "checkedAt": "2026-11-12"
+      }
+    ]
+  },
+  {
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-16",
+    "id": "busan-gstar-2026",
+    "title": "국제게임전시회 지스타 2026 · 일반 관람",
+    "region": "부산",
+    "theme": "kids",
+    "startDate": "2026-11-19",
+    "endDate": "2026-11-22",
+    "location": "부산 해운대구 벡스코 일반 관람(BTC) 전시장",
+    "time": "11월 19일 11:00 개장 · 입장권 확인 17:00 마감, 입장 17:30 마감",
+    "program": "국내외 게임 전시, 신작과 인디게임 체험, 무대와 이스포츠 행사",
+    "feeStatus": "paid",
+    "fee": "성인 18,000원 · 청소년 8,000원 · 무료 대상은 공식 안내 확인",
+    "booking": "공식 입장권 안내에서 날짜를 골라 전날 자정까지 온라인 예매. 전체 판매는 11월 21일 23:59 종료. 현장 판매 없음.",
+    "familyNote": "예매한 날만 입장할 수 있습니다. 현장에서 입장 팔찌를 받고 청소년은 연령 증빙을 지참하세요.",
+    "sources": [
+      {
+        "publisher": "지스타 조직위원회",
+        "title": "일반 관람 입장권 안내",
+        "url": "https://www.gstar.or.kr/part/gstar_btc_info.do",
+        "facts": "일반권 가격, 온라인 예매 기간, 현장 미판매, 첫날 개장 및 입장 마감.",
+        "checkedAt": "2026-11-16"
+      },
+      {
+        "publisher": "지스타 조직위원회",
+        "title": "2026 지스타 전시개요",
+        "url": "https://gstar.or.kr/gstar/gstar_info.do",
+        "facts": "벡스코 일반 관람 11월 19~22일.",
+        "checkedAt": "2026-11-16"
+      }
+    ]
+  },
+  {
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-16",
+    "id": "busan-haeundae-light-2026",
+    "title": "제13회 해운대 빛축제",
+    "region": "부산",
+    "theme": "light",
+    "startDate": "2026-11-28",
+    "endDate": "2027-01-10",
+    "location": "부산 해운대구 해운대스퀘어(구남로) 및 해운대해수욕장",
+    "time": "점등 18:00~23:00",
+    "program": "바다와 심해를 주제로 한 빛 터널, 해양 조형물과 관람객이 조작하는 조명",
+    "feeStatus": "free",
+    "fee": "기본 관람 무료 · 개별 체험 조건은 공식 안내 확인",
+    "booking": "일반 관람 자유. 만들기 체험의 운영일과 참여 방법은 현장 안내 확인.",
+    "scheduleType": "period",
+    "scheduleNote": "11월 28일 점등. 체험은 주말 중심이며 점등 시간과 회차는 주최 측 안내를 확인하세요.",
+    "sources": [
+      {
+        "publisher": "해운대구 제출 · 대한민국 구석구석",
+        "title": "제13회 해운대 빛축제 최신 상세 안내",
+        "url": "https://korean.visitkorea.or.kr/kfes/detail/fstvlDetail.do?fstvlCntntsId=b3b7a23c-c7f6-45db-930a-b139e4d8cd9f",
+        "facts": "11월 28일~1월 10일, 구남로와 해수욕장, 무료 관람 및 올해 심해 테마.",
+        "checkedAt": "2026-11-16"
+      },
+      {
+        "publisher": "해운대구청 공식 채널",
+        "title": "제13회 해운대 빛축제 일정",
+        "url": "https://pf.kakao.com/_zExaDC",
+        "facts": "2026년 11월 5일 소식에서 회차와 점등 18:00~23:00 확인.",
+        "checkedAt": "2026-11-16"
+      }
+    ]
+  },
+  {
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-16",
+    "id": "ulsan-christmas-market-2026",
+    "title": "2026 울산 크리스마스 마켓",
+    "region": "울산",
+    "theme": "light",
+    "startDate": "2026-11-27",
+    "endDate": "2026-12-26",
+    "location": "울산 남구 울산대공원 정문 풍차 일원",
+    "time": "운영일 18:00~22:00",
+    "dates": [
+      "2026-11-27",
+      "2026-11-28",
+      "2026-12-04",
+      "2026-12-05",
+      "2026-12-11",
+      "2026-12-12",
+      "2026-12-18",
+      "2026-12-19",
+      "2026-12-23",
+      "2026-12-24",
+      "2026-12-25",
+      "2026-12-26"
+    ],
+    "scheduleType": "dates",
+    "scheduleNote": "매주 금·토 운영. 성탄 주간에는 12월 23~26일 수~토 운영.",
+    "program": "야간 마켓과 푸드트럭, 회전목마, 산타의 집과 버스킹",
+    "feeStatus": "unknown",
+    "fee": "구매·놀이시설·체험별 비용은 행사 안내 확인",
+    "booking": "놀이시설과 체험 참여 방법은 행사 안내 확인",
+    "sources": [
+      {
+        "publisher": "울산문화관광재단 · 울산테크노파크 공지",
+        "title": "울산 크리스마스 마켓 운영 안내",
+        "url": "https://www.utp.or.kr/board/board.php?bo_table=sub0501&menu_group=4&mnuno=M0000046&sno=0401&wr_id=40274",
+        "facts": "기간, 금·토 및 성탄 주간 운영, 정문 풍차 일원, 마켓과 공연 프로그램.",
+        "checkedAt": "2026-11-16"
+      }
+    ]
+  },
+  {
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-16",
+    "id": "incheon-ohslow-vintage-market-2026",
+    "title": "오슬로우 빈티지 크리스마스 마켓",
+    "region": "인천",
+    "theme": "kids",
+    "startDate": "2026-12-04",
+    "endDate": "2026-12-20",
+    "location": "인천 상상플랫폼 1관·2관·라운지",
+    "time": "운영일 11:00~19:00",
+    "dates": [
+      "2026-12-04",
+      "2026-12-05",
+      "2026-12-06",
+      "2026-12-11",
+      "2026-12-12",
+      "2026-12-13",
+      "2026-12-18",
+      "2026-12-19",
+      "2026-12-20"
+    ],
+    "scheduleType": "dates",
+    "scheduleNote": "12월 첫 세 주 금·토·일에만 운영. 회차마다 참여 브랜드가 달라집니다.",
+    "program": "빈티지 의류와 생활 소품, 식음료 브랜드가 모이는 실내 마켓",
+    "feeStatus": "paid",
+    "fee": "1인 1일 일반 10,000원 · 11월 사전예매 5,000원 · 초등학생 이하 무료",
+    "booking": "11월 2~30일 공식 예매 안내에서 얼리버드 입장권 구매.",
+    "sources": [
+      {
+        "publisher": "오슬로우 마켓",
+        "title": "공식 운영 일정과 마켓 소개",
+        "url": "https://ohslowmarket.com/",
+        "facts": "2026년 9일 운영, 장소, 시간, 입장료, 회차별 출점.",
+        "checkedAt": "2026-11-16"
+      },
+      {
+        "publisher": "오슬로우 마켓",
+        "title": "공식 사전 예매 안내",
+        "url": "https://ohslowmarket.com/tickets",
+        "facts": "사전예매 권종과 구매 경로.",
+        "checkedAt": "2026-11-16"
+      }
+    ]
+  },
+  {
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-16",
+    "id": "daejeon-yuseong-christmas-2026",
+    "title": "2026 유성온천 크리스마스축제",
+    "region": "대전",
+    "theme": "light",
+    "startDate": "2026-12-04",
+    "endDate": "2026-12-06",
+    "location": "대전 유성구 유림공원 동편광장",
+    "time": "마켓 부스 운영 안내 11:00~21:00",
+    "program": "크리스마스 소품 마켓과 현장 체험 부스",
+    "feeStatus": "unknown",
+    "fee": "관람·개별 체험 비용은 방문객용 공지 확인",
+    "booking": "세부 체험 신청은 방문객용 공지 확인",
+    "scheduleType": "period",
+    "scheduleNote": "공식 부스 모집 공지 기준. 세부 운영 시간은 관람 안내 확인.",
+    "sources": [
+      {
+        "publisher": "대전 유성구",
+        "title": "2026 크리스마스마켓 셀러·체험부스 모집",
+        "url": "https://www.yuseong.go.kr/bbs/BBSMSTR_000000000099/view.do?nttId=B000000144936My8uA4",
+        "facts": "유성온천 크리스마스축제 개최 기간과 장소, 마켓 부스 운영 근거.",
+        "checkedAt": "2026-11-16"
+      }
+    ]
+  },
+  {
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-16",
+    "id": "busan-gwangbok-street-festa-2026",
+    "title": "광복로 스트릿페스타 앤 발코니뮤직쇼",
+    "region": "부산",
+    "theme": "kids",
+    "startDate": "2026-12-05",
+    "endDate": "2026-12-19",
+    "location": "부산 중구 광복로 차 없는 거리",
+    "time": "12월 5일 16:00~22:00 · 12일과 19일 18:00~21:00",
+    "dates": [
+      "2026-12-05",
+      "2026-12-12",
+      "2026-12-19"
+    ],
+    "scheduleType": "dates",
+    "scheduleNote": "5일 거리축제, 12·19일 발코니 뮤직쇼.",
+    "program": "광복로 거리공연과 크리스마스 퍼레이드, 발코니 라이브 무대",
+    "feeStatus": "unknown",
+    "fee": "프로그램별 참여 비용은 주최 측 안내 확인",
+    "booking": "구체적인 프로그램 참여 방법은 비짓부산 안내 확인",
+    "sources": [
+      {
+        "publisher": "부산관광공사",
+        "title": "12월 스트릿페스타 앤 발코니뮤직쇼",
+        "url": "https://visitbusan.net/schedule/view.do?boardId=BBS_0000009&dataSid=6482&menuCd=DOM_000000204012000000",
+        "facts": "세 날짜와 각각의 시간, 광복로 장소, 거리공연과 퍼레이드.",
+        "checkedAt": "2026-11-16"
+      }
+    ]
+  },
+  {
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-16",
+    "id": "nonsan-yangchon-persimmon-2026",
+    "title": "제24회 논산양촌곶감축제",
+    "region": "충남",
+    "theme": "food",
+    "startDate": "2026-12-11",
+    "endDate": "2026-12-13",
+    "location": "충남 논산시 양촌면 양촌리 체육공원 일원",
+    "time": "판매·체험 부스 운영 안내 10:00~18:00",
+    "program": "양촌 곶감과 지역 농특산물, 먹거리와 체험 부스",
+    "feeStatus": "unknown",
+    "fee": "입장·체험 요금은 방문객 안내 확인",
+    "booking": "관람·체험 안내는 논산문화관광재단의 후속 공지 확인",
+    "sources": [
+      {
+        "publisher": "논산문화관광재단",
+        "title": "2026 제24회 논산양촌곶감축제 공고",
+        "url": "https://www.nonsan.go.kr/cntf/html/sub05/0501.html?dlgt=N&file_id=233513&mode=D&no=8f2c9f4e17ec02066a4db7a023d39c32",
+        "facts": "부스 모집 공고로 행사 기간, 장소와 부스 운영시간 확인.",
+        "checkedAt": "2026-11-16"
+      }
+    ]
+  },
+  {
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-16",
+    "id": "seoul-lantern-winter-2026",
+    "title": "2026 서울빛초롱축제",
+    "region": "서울",
+    "theme": "light",
+    "startDate": "2026-12-11",
+    "endDate": "2027-01-31",
+    "location": "서울 청계천 청계광장~삼일교",
+    "time": "매일 18:00~23:00",
+    "program": "청계천 4개 구역의 한지 등과 미디어아트, 체험 프로그램",
+    "feeStatus": "free",
+    "fee": "기본 관람 무료 · 개별 체험 조건 확인",
+    "booking": "기본 관람 자유. 체험 접수는 행사 안내 확인.",
+    "sources": [
+      {
+        "publisher": "서울시",
+        "title": "2026 서울빛초롱축제 상세",
+        "url": "https://festival.seoul.go.kr/festival/main/festivalView.do?festacode=983",
+        "facts": "기간과 점등 시간, 장소, 네 전시 구역과 무료 관람.",
+        "checkedAt": "2026-11-16"
+      },
+      {
+        "publisher": "서울관광재단",
+        "title": "2026 서울빛초롱축제 관광 안내",
+        "url": "https://korean.visitseoul.net/events/2026SeoulLanternFestival/KOPi0rhml",
+        "facts": "올해 청계천 구간과 운영 기간 교차 확인.",
+        "checkedAt": "2026-11-16"
+      }
+    ]
+  },
+  {
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-16",
+    "id": "seoul-gwanghwamun-market-2026",
+    "title": "2026 광화문 마켓",
+    "region": "서울",
+    "theme": "light",
+    "startDate": "2026-12-11",
+    "endDate": "2027-01-10",
+    "location": "서울 종로구 광화문광장 및 세종로공원",
+    "time": "일~목 17:30~22:00 · 금·토 17:30~22:30",
+    "program": "대형 트리와 마켓 부스의 크리스마스 소품, 먹거리, 포토존과 체험",
+    "feeStatus": "free",
+    "fee": "입장 무료 · 먹거리·소품·개별 체험 비용 별도 확인",
+    "booking": "기본 입장 자유. 개별 체험은 공식 안내 확인.",
+    "sources": [
+      {
+        "publisher": "서울시",
+        "title": "2026 광화문 마켓 상세",
+        "url": "https://festival.seoul.go.kr/festival/main/festivalView.do?festacode=984",
+        "facts": "개최 기간, 장소, 요일별 시간과 무료 입장.",
+        "checkedAt": "2026-11-16"
+      }
+    ]
+  },
+  {
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-16",
+    "id": "seoul-light-gwanghwamun-2026",
+    "title": "2026 서울라이트 광화문 · 윤슬: 시간의 수면",
+    "region": "서울",
+    "theme": "light",
+    "startDate": "2026-12-11",
+    "endDate": "2027-01-10",
+    "location": "서울 종로구 광화문광장",
+    "time": "17:30~22:00 · 개별 행사는 공식 안내 확인",
+    "program": "광화문 미디어파사드와 시민 참여 프로그램, 신년 카운트다운",
+    "feeStatus": "unknown",
+    "fee": "개별 프로그램의 관람·참여 조건은 주최 측 공지 확인",
+    "booking": "시민 참여 및 카운트다운 세부 안내는 공식 누리집 확인",
+    "sources": [
+      {
+        "publisher": "서울시",
+        "title": "2026 서울라이트 광화문 최종 안내",
+        "url": "https://festival.seoul.go.kr/festival/main/festivalView.do?festacode=372",
+        "facts": "2027년 1월 10일까지 변경된 전시 기간, 시간과 프로그램.",
+        "checkedAt": "2026-11-16"
+      }
+    ]
+  },
+  {
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-16",
+    "id": "hampyeong-winter-lights-2026",
+    "title": "2026 함평 겨울빛축제",
+    "region": "전남",
+    "theme": "light",
+    "startDate": "2026-12-18",
+    "endDate": "2026-12-31",
+    "location": "전남 함평군 함평엑스포공원과 함평읍 시가지",
+    "time": "16:00~21:00",
+    "program": "빛 조형물과 대형 크리스마스트리, 소원배 띄우기와 겨울 체험",
+    "feeStatus": "free",
+    "fee": "기본 관람 무료 · 체험별 조건 확인",
+    "booking": "기본 관람 자유. 체험의 운영일·참여 방법은 공식 안내 확인.",
+    "scheduleNote": "행사는 12월 31일 종료. 야간 경관 조명은 2027년 1월 17일까지 유지.",
+    "sources": [
+      {
+        "publisher": "함평 운영기관 제출 · 대한민국 구석구석",
+        "title": "2026 함평 겨울빛축제 상세",
+        "url": "https://korean.visitkorea.or.kr/kfes/detail/fstvlDetail.do?fstvlCntntsId=3afbe8aa-05a3-4cdc-aa7a-81ae0bb36cfd",
+        "facts": "축제 기간과 조명 유지 기간을 구분하고 운영시간·무료 행사·장소 확인.",
+        "checkedAt": "2026-11-16"
+      }
+    ]
+  },
+  {
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-16",
+    "id": "seoul-hangang-christmas-market-2026",
+    "title": "2026 로맨틱한강 크리스마스 마켓",
+    "region": "서울",
+    "theme": "kids",
+    "startDate": "2026-12-24",
+    "endDate": "2026-12-27",
+    "location": "서울 광진구 뚝섬한강공원",
+    "program": "뚝섬한강공원에서 열리는 크리스마스 시즌 마켓",
+    "feeStatus": "unknown",
+    "fee": "올해 운영시간과 이용료는 서울시 후속 공지 확인",
+    "booking": "세부 운영 및 신청 방법은 서울시 후속 공지 확인",
+    "scheduleType": "period",
+    "scheduleNote": "서울시가 공지한 올해 기간과 장소 기준.",
+    "sources": [
+      {
+        "publisher": "서울시",
+        "title": "2026 로맨틱한강 크리스마스 마켓",
+        "url": "https://festival.seoul.go.kr/festival/main/festivalView.do?festacode=415",
+        "facts": "올해 12월 24~27일, 뚝섬한강공원 확인.",
+        "checkedAt": "2026-11-16"
+      }
+    ]
+  },
+  {
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-16",
+    "id": "seoul-bosingak-countdown-2026",
+    "title": "보신각 제야의 종 타종행사",
+    "region": "서울",
+    "theme": "kids",
+    "startDate": "2026-12-31",
+    "endDate": "2027-01-01",
+    "location": "서울 종로구 보신각",
+    "program": "연말 시민과 함께하는 보신각 타종과 새해맞이",
+    "feeStatus": "unknown",
+    "fee": "관람 구역과 행사 이용 조건은 서울시 공지 확인",
+    "booking": "통제 구간과 관람 방법은 행사 전 서울시 안내 확인",
+    "scheduleType": "period",
+    "scheduleNote": "12월 31일 밤부터 새해로 이어지는 행사. 세부 시각은 후속 공지 확인.",
+    "sources": [
+      {
+        "publisher": "서울시",
+        "title": "제야의 종 타종행사 2026~2027",
+        "url": "https://festival.seoul.go.kr/festival/main/festivalView.do?festacode=389",
+        "facts": "서울시 행사 기간과 보신각 장소 확인.",
+        "checkedAt": "2026-11-16"
+      }
+    ]
+  },
+  {
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-16",
+    "id": "gwangju-new-year-citizen-festival-2026",
+    "title": "광주 송신년 시민축제",
+    "region": "광주",
+    "theme": "kids",
+    "startDate": "2026-12-31",
+    "endDate": "2027-01-01",
+    "location": "광주 5·18민주광장",
+    "program": "5·18민주광장에서 해를 보내고 새해를 맞는 시민 행사",
+    "feeStatus": "unknown",
+    "fee": "관람 조건은 시의 행사 공지 확인",
+    "booking": "세부 프로그램과 관람 안내는 광주시 후속 공지 확인",
+    "scheduleType": "period",
+    "scheduleNote": "광주관광 공식 일정 기준. 세부 시각과 프로그램은 추후 공지.",
+    "sources": [
+      {
+        "publisher": "광주관광 오매광주",
+        "title": "광주 2026 월별행사일정",
+        "url": "https://tour.gwangju.go.kr/home/sub.cs?m=347",
+        "facts": "12월 항목에서 12월 31일~1월 1일, 광장 장소와 담당 부서를 확인.",
+        "checkedAt": "2026-11-16"
+      }
+    ]
+  },
+  {
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-16",
+    "id": "seoul-korea-christmas-festival-2026",
+    "title": "2026 대한민국 성탄축제",
+    "region": "서울",
+    "theme": "light",
+    "startDate": "2026-11-16",
+    "endDate": "2026-12-31",
+    "location": "서울 중구 서울광장·덕수궁·정동길 일대",
+    "program": "서울광장 대형 성탄트리와 정동길 성탄 거리 행사",
+    "feeStatus": "unknown",
+    "fee": "거리 행사와 체험별 참여 조건 확인",
+    "booking": "공연·체험의 운영일과 참여 방법은 공식 안내 확인",
+    "scheduleType": "period",
+    "scheduleNote": "11월 16일 점등식과 전체 성탄 시즌이 구분됩니다. 정동길 공연·체험은 별도 일정 확인.",
+    "sources": [
+      {
+        "publisher": "서울관광재단 비짓서울",
+        "title": "대한민국 성탄축제 2026",
+        "url": "https://korean.visitseoul.net/events/2026KoreaChristmasFestival/KOPqjti55",
+        "facts": "올해 전체 기간, 서울광장 점등식과 정동길 거리축제 구분.",
+        "checkedAt": "2026-11-16"
+      }
+    ]
+  },
+  {
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-16",
+    "id": "daegu-christmas-fair-2026",
+    "title": "2026 대구크리스마스페어",
+    "region": "대구",
+    "theme": "kids",
+    "startDate": "2026-12-04",
+    "endDate": "2026-12-06",
+    "location": "대구 북구 엑스코 서관 1·2홀",
+    "time": "12월 4~5일 10:00~18:00 · 6일 운영시간 재확인",
+    "program": "성탄 장식, 선물, 생활 소품과 핸드메이드 제품 전시",
+    "feeStatus": "unknown",
+    "fee": "입장료는 주최사 안내 확인",
+    "booking": "한국전시산업진흥회 상세 페이지의 주최사 사전등록 메뉴 확인",
+    "sources": [
+      {
+        "publisher": "엑스코 주최 · 한국전시산업진흥회",
+        "title": "2026 대구크리스마스페어 전시 안내",
+        "url": "https://www.showala.com/ex/ex_detail.php?idx=3820",
+        "facts": "2026년 12월 4~6일, 엑스코 서관, 공개 전시. 일요일 시간 항목의 연도 표기 불일치.",
+        "checkedAt": "2026-11-16"
+      }
+    ]
+  },
+  {
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-16",
+    "id": "jeju-vicheollin-winter-flower-2026",
+    "title": "비체올린 겨울꽃·나비꽃축제",
+    "region": "제주",
+    "theme": "nature",
+    "startDate": "2026-09-30",
+    "endDate": "2026-12-31",
+    "location": "제주시 한경면 비체올린",
+    "time": "08:45~18:00 · 입장 마감 17:20",
+    "program": "정원을 산책하며 나비꽃과 계절 꽃을 감상하는 행사",
+    "feeStatus": "paid",
+    "fee": "성인 9,000원 · 청소년 8,000원 · 어린이 7,000원",
+    "booking": "개화 상태와 현장 이용 조건은 비짓제주 안내 확인",
+    "sources": [
+      {
+        "publisher": "제주관광공사 비짓제주",
+        "title": "비체올린 겨울꽃·나비꽃축제 상세",
+        "url": "https://www.visitjeju.net/kr/festival/view?contentsid=CNTS_300000000014953",
+        "facts": "2026년 12월 31일까지, 제주 한경면, 입장 마감·요금 확인.",
+        "checkedAt": "2026-11-16"
+      }
+    ]
+  },
+  {
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-16",
+    "id": "goyang-agf-2026",
+    "title": "애니메이션 X 게임 페스티벌 AGF 2026",
+    "region": "경기",
+    "theme": "kids",
+    "startDate": "2026-12-04",
+    "endDate": "2026-12-06",
+    "location": "경기 고양시 킨텍스",
+    "program": "애니메이션·게임 전시, 무대 프로그램과 관련 상품 부스",
+    "feeStatus": "paid",
+    "fee": "일반 1일권 29,000원 · 3일권 65,000원",
+    "booking": "11월 12일~12월 6일 공식 예매 안내의 티켓 링크에서 일반권 구매. 1일권은 지정일 입장. 현장 판매는 상황에 따라 중단될 수 있음.",
+    "familyNote": "주최 측은 12세 이하에게 부적절한 콘텐츠나 상품이 일부 있을 수 있다고 안내합니다.",
+    "sources": [
+      {
+        "publisher": "AGF 조직위원회",
+        "title": "AGF 2026 행사 소개",
+        "url": "https://www.agfkorea.com/",
+        "facts": "2026년 행사 전시·무대 내용과 킨텍스 일정.",
+        "checkedAt": "2026-11-16"
+      },
+      {
+        "publisher": "AGF 조직위원회",
+        "title": "AGF 2026 티켓 예매",
+        "url": "https://www.agfkorea.com/ticket",
+        "facts": "12월 4~6일 지정일 입장, 일반권 가격·예매 기간과 입장 규칙.",
+        "checkedAt": "2026-11-16"
+      }
+    ]
+  },
+  {
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-16",
+    "id": "incheon-paradise-alpine-market-2026",
+    "title": "파라다이스시티 알파인 홀리데이 크리스마스 마켓",
+    "region": "인천",
+    "theme": "kids",
+    "startDate": "2026-11-13",
+    "endDate": "2027-01-03",
+    "location": "인천 중구 영종도 파라다이스시티 플라자",
+    "time": "11:00~20:00 · 12월 5·12·19일과 21~27일은 21:00까지",
+    "program": "북유럽 스키 마을을 주제로 한 실내 마켓과 디저트·오너먼트 판매",
+    "feeStatus": "unknown",
+    "fee": "상품 구매 및 별도 프로그램 비용은 운영사 안내 확인",
+    "booking": "마켓과 별도 공연·행사의 이용 조건은 운영사 안내 확인",
+    "scheduleNote": "플라자 마켓 운영시간입니다. 미디어파사드는 별도 장소에서 열리며 화요일 휴연.",
+    "sources": [
+      {
+        "publisher": "파라다이스시티",
+        "title": "알파인 홀리데이 공식 상세",
+        "url": "https://www.p-city.com/front/event/eventView?P_CTNT_TY=imageTy&P_SEQ=14410",
+        "facts": "2026~2027 플라자 마켓 운영일과 시간, 연장일, 미디어파사드 화요일 휴연 확인.",
+        "checkedAt": "2026-11-16"
+      }
+    ]
+  },
+  {
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-16",
+    "id": "seoul-christmas-pet-show-2026",
+    "title": "2026 크리스마스 서울펫쇼",
+    "region": "서울",
+    "theme": "kids",
+    "startDate": "2026-12-11",
+    "endDate": "2026-12-13",
+    "location": "서울 강남구 SETEC",
+    "time": "10:00~18:00",
+    "program": "반려동물 먹거리와 용품, 펫 관련 브랜드 전시",
+    "feeStatus": "paid",
+    "fee": "정가 7,000원 · 12월 10일까지 사전등록 무료 · 11일부터 사전등록 5,000원",
+    "booking": "공식 홈페이지에서 크리스마스 서울펫쇼 사전등록. 무료입장 대상과 반려동물 동반 규정은 공식 안내 확인.",
+    "sources": [
+      {
+        "publisher": "서울펫쇼",
+        "title": "크리스마스 서울펫쇼 행사개요",
+        "url": "https://www.pet-show.co.kr/page/page179",
+        "facts": "12월 11~13일, SETEC, 시간과 기간별 사전등록 요금.",
+        "checkedAt": "2026-11-16"
+      },
+      {
+        "publisher": "서울펫쇼",
+        "title": "크리스마스 서울펫쇼 사전등록",
+        "url": "https://www.pet-show.co.kr/page/page172",
+        "facts": "공식 온라인 사전등록 경로.",
+        "checkedAt": "2026-11-16"
+      }
+    ]
+  },
+  {
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-16",
+    "id": "chuncheon-legoland-christmas-2026",
+    "title": "레고랜드 크리스마스 겨울 축제",
+    "region": "강원",
+    "theme": "kids",
+    "startDate": "2026-11-20",
+    "endDate": "2026-12-27",
+    "location": "강원 춘천시 레고랜드 코리아 리조트",
+    "program": "크리스마스 스탬프 랠리, 만들기 체험과 주말 가족 프로그램",
+    "feeStatus": "paid",
+    "fee": "파크 입장권 유료 · 특별 프로그램 가격 별도 확인",
+    "booking": "공식 행사 페이지의 티켓 구매에서 이용 날짜와 권종을 선택.",
+    "scheduleType": "period",
+    "scheduleNote": "겨울 파크 운영일과 운영구역은 공식 캘린더 확인. 일부 프로그램은 주말·공휴일.",
+    "sources": [
+      {
+        "publisher": "레고랜드 코리아",
+        "title": "크리스마스 겨울 축제 공식 안내",
+        "url": "https://legoland.kr/파크이벤트/이-시즌-축제이벤트/christmas-at-legoland/",
+        "facts": "11월 20일~12월 27일 시즌, 프로그램과 공식 티켓 구매 경로.",
+        "checkedAt": "2026-11-16"
+      },
+      {
+        "publisher": "레고랜드 코리아",
+        "title": "파크 운영 캘린더",
+        "url": "https://www.legoland.kr/방문-정보/방문-계획/운영-캘린더/",
+        "facts": "방문일별 공식 운영일과 운영시간 확인 경로.",
+        "checkedAt": "2026-11-16"
+      }
+    ]
+  },
+  {
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-16",
+    "id": "goesan-eco-museum-space-exhibit-2026",
+    "title": "괴산 우주특별시 별별탐사대",
+    "region": "충북",
+    "theme": "kids",
+    "startDate": "2026-04-30",
+    "endDate": "2026-12-06",
+    "location": "충북 괴산군 괴산 생태뮤지엄",
+    "time": "10:00~18:00 · 월요일 휴관",
+    "program": "우주 생태를 상상하며 설치미술과 예술 체험을 만나는 어린이 전시",
+    "feeStatus": "free",
+    "fee": "전시 입장 무료",
+    "booking": "별도 프로그램 참여 조건은 충북문화재단 안내 확인",
+    "scheduleType": "period",
+    "scheduleNote": "월요일은 휴관합니다.",
+    "sources": [
+      {
+        "publisher": "충북문화재단",
+        "title": "괴산 생태뮤지엄 특별체험전 안내",
+        "url": "https://www.cbfc.or.kr/home/sub.php?menukey=6430&mod=view&no=2130071&page=1&scode=00000003",
+        "facts": "2026년 행사 기간, 월요일 휴관, 시간과 무료 입장.",
+        "checkedAt": "2026-11-16"
+      },
+      {
+        "publisher": "한국관광공사",
+        "title": "괴산 우주특별시 별별탐사대 상세",
+        "url": "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=1589608",
+        "facts": "충북 괴산 생태뮤지엄 장소와 기간 교차 확인.",
+        "checkedAt": "2026-11-16"
+      }
+    ]
+  },
+  {
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-16",
+    "id": "sejong-just-beside-year-end-concert-2026",
+    "title": "2026 세종예술의전당 송년음악회 JUST BESIDE",
+    "region": "세종",
+    "theme": "kids",
+    "startDate": "2026-12-30",
+    "endDate": "2026-12-30",
+    "location": "세종 나성동 세종예술의전당",
+    "time": "19:30 · 약 90분",
+    "program": "KNCO와 함께하는 세종예술의전당 연말 기획 음악회",
+    "feeStatus": "paid",
+    "fee": "무대석 50,000원 · R석 40,000원 · S석 30,000원",
+    "booking": "11월 27일 14:00 예매 시작 예정. 세종예술의전당 공식 안내 로그인 후 예매.",
+    "familyNote": "8세 이상 관람 가능.",
+    "sources": [
+      {
+        "publisher": "세종예술의전당",
+        "title": "송년음악회 JUST BESIDE",
+        "url": "https://www.sjac.or.kr/base/nrr/performance/read?menuLevel=2&menuNo=77&performanceNo=743",
+        "facts": "12월 30일 회차, 장소, 관람연령, 가격과 예매 시작 예정일.",
+        "checkedAt": "2026-11-16"
       }
     ]
   }
