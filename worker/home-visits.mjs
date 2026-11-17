@@ -38,6 +38,7 @@ export class HomeVisitCounter {
         ON CONFLICT(date) DO UPDATE SET visits=visits+1 RETURNING visits`,date)
       : this.sql.exec('SELECT visits FROM daily_totals WHERE date=?',date);
     const visits=rows.toArray()[0]?.visits??0;
-    return Response.json({date,visits},{headers});
+    const {totalVisits}=this.sql.exec('SELECT COALESCE(SUM(visits),0) AS totalVisits FROM daily_totals').toArray()[0];
+    return Response.json({date,visits,totalVisits},{headers});
   }
 }

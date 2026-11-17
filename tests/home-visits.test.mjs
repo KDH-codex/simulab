@@ -24,15 +24,17 @@ test('home visits are durable Korean-day totals, with no writes from reads or cr
     }}),namespace,now);
     assert.equal((await write(beforeMidnight,'2026-11-17',{Origin:'https://elsewhere.test'})).status,403);
     assert.equal((await write(midnight,'2026-11-17')).status,400);
-    assert.deepEqual(await (await read(beforeMidnight)).json(),{date:'2026-11-17',visits:0});
+    assert.deepEqual(await (await read(beforeMidnight)).json(),{date:'2026-11-17',visits:0,totalVisits:0});
     const first=await write(beforeMidnight,'2026-11-17');
     assert.equal(first.headers.get('Cache-Control'),'no-store');
-    assert.deepEqual(await first.json(),{date:'2026-11-17',visits:1});
+    assert.deepEqual(await first.json(),{date:'2026-11-17',visits:1,totalVisits:1});
     object=counter();
     assert.equal((await (await read(beforeMidnight)).json()).visits,1);
     assert.equal((await (await write(beforeMidnight,'2026-11-17')).json()).visits,2);
-    assert.deepEqual(await (await read(midnight)).json(),{date:'2026-11-18',visits:0});
-    assert.deepEqual(await (await write(midnight,'2026-11-18')).json(),{date:'2026-11-18',visits:1});
+    assert.deepEqual(await (await read(midnight)).json(),{date:'2026-11-18',visits:0,totalVisits:2});
+    assert.deepEqual(await (await write(midnight,'2026-11-18')).json(),{date:'2026-11-18',visits:1,totalVisits:3});
+    object=counter();
+    assert.deepEqual(await (await read(midnight)).json(),{date:'2026-11-18',visits:1,totalVisits:3});
   }finally{db.close();}
 });
 
@@ -45,7 +47,7 @@ test('the home footer counts a reload once, resets on a new Korean day, and resp
     const label=window.document.querySelector('[data-home-visits]');
     window.fetch=async(path,options)=>{
       requests.push({path,...options});
-      return Response.json({date:day,visits:42});
+      return Response.json({date:day,visits:42,totalVisits:1234});
     };
     const setup=window.eval(source.replace('export function','function')+'\nsetupHomeVisits');
     const visit=async()=>{
@@ -61,7 +63,7 @@ test('the home footer counts a reload once, resets on a new Korean day, and resp
     await visit();
     assert.deepEqual(requests.map(x=>x.method),['POST','GET','POST','GET']);
     assert.ok(requests.every(x=>x.path==='/api/home-visits'&&x.credentials==='omit'));
-    assert.equal(label.textContent,'오늘 방문자 42명');
+    assert.equal(label.textContent,'오늘 방문자 42명 · 누적 1,234명');
     assert.equal(label.hidden,false);
   }finally{window.close();}
 });

@@ -1,11 +1,11 @@
 const key='simulab_home_visit_day';
 const endpoint='/api/home-visits';
 const labels={
-  ko:n=>'오늘 방문자 '+n+'명',
-  en:n=>'Visitors today: '+n,
-  ja:n=>'今日の訪問者：'+n+'人',
-  'zh-CN':n=>'今日访客：'+n+'人',
-  'zh-TW':n=>'今日訪客：'+n+'人'
+  ko:(n,total)=>'오늘 방문자 '+n+'명 · 누적 '+total+'명',
+  en:(n,total)=>'Visitors today: '+n+' · Total visits: '+total,
+  ja:(n,total)=>'今日の訪問者：'+n+'人 · 累計：'+total+'人',
+  'zh-CN':(n,total)=>'今日访客：'+n+'人 · 累计：'+total+'人',
+  'zh-TW':(n,total)=>'今日訪客：'+n+'人 · 累計：'+total+'人'
 };
 
 export function setupHomeVisits(label,locale,koreaToday){
@@ -30,9 +30,10 @@ export function setupHomeVisits(label,locale,koreaToday){
       credentials:'omit',cache:'no-store',referrerPolicy:'no-referrer',keepalive:countVisit
     });
     if(!response.ok)return;
-    const {visits}=await response.json();
-    if(!Number.isSafeInteger(visits)||visits<0)return;
-    label.textContent=(labels[locale]||labels.ko)(new Intl.NumberFormat(locale).format(visits));
+    const {visits,totalVisits}=await response.json();
+    if(!Number.isSafeInteger(visits)||visits<0||!Number.isSafeInteger(totalVisits)||totalVisits<visits)return;
+    const format=new Intl.NumberFormat(locale);
+    label.textContent=(labels[locale]||labels.ko)(format.format(visits),format.format(totalVisits));
     label.hidden=false;
   }
   function start(){

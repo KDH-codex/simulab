@@ -63,9 +63,9 @@
 
 ## 홈 방문자 수
 
-- 홈(/)의 저작권 문구 오른쪽에 한국시간 기준 오늘의 합계를 둔다. 평소 글자색은 하단 배경색과 같으며, 텍스트를 선택하면 읽을 수 있다. 다른 탭과 상세 페이지는 집계하지 않는다.
+- 홈(/)의 저작권 문구 오른쪽에 한국시간 기준 오늘 방문자 수와 총 누계를 둔다. 누계는 집계를 시작한 날부터 저장된 일별 방문 수의 합이며, 같은 브라우저가 다른 날 다시 방문하면 누계에도 더한다. 전체 기간의 중복 없는 사람 수가 아니다. 평소 글자색은 하단 배경색과 같으며, 텍스트를 선택하면 읽을 수 있다. 다른 탭과 상세 페이지는 집계하지 않는다.
 - 브라우저는 마지막 집계 날짜만 저장한다. 브라우저 저장소를 못 쓰는 경우, 선택 통계를 거부한 경우, GPC가 켜진 경우에는 읽기만 한다. 열람 시점 기준 추정 집계이므로 사람 수와 같지 않으며, 배포 이전 날짜는 채우지 않는다.
-- 공개 경로 `GET /api/home-visits`는 오늘 합계만 반환하며 증가시키지 않는다. 이전 날짜는 권한이 있는 운영자가 Cloudflare의 Durable Objects → `HomeVisitCounter` → Data Studio에서 객체 이름 `home-totals`를 열어 `SELECT date, visits FROM daily_totals ORDER BY date DESC;`로 확인한다. 테이블에는 날짜와 합계만 남는다.
+- 공개 경로 `GET /api/home-visits`는 오늘 합계(`visits`)와 총 누계(`totalVisits`)를 반환하며 증가시키지 않는다. 이전 날짜는 권한이 있는 운영자가 Cloudflare의 Durable Objects → `HomeVisitCounter` → Data Studio에서 객체 이름 `home-totals`를 열어 `SELECT date, visits FROM daily_totals ORDER BY date DESC;`로 확인한다. 테이블에는 날짜와 합계만 남는다.
 
 ## 디자인 원본
 
