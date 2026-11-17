@@ -4,6 +4,7 @@ import {modalMarkup,modalTabIds} from './festival-modal.js';
 import {eventImage,imageCaption,activeConditions,detailTagDestination,miniEvent} from './festival-presentation.js';
 import {setupHeadingMotion} from './festival-heading-motion.js';
 import {initializeLanguage} from './festival-language.js';
+import {setupHomeVisits} from './festival-home-visits.js';
 import {eventTranslation} from './festival-event-locales.js';
 import {languageURL} from './festival-i18n.js';
 import {highlightFor, homeRecommendations} from './festival-highlights.js';
@@ -11,6 +12,7 @@ import {koreaToday, shiftDate, weekendRange, overlaps, occursOn, nextDate, event
 
 const data=JSON.parse(document.getElementById('festival-data')?.textContent || '[]');
 const locale=initializeLanguage(data);
+setupHomeVisits(document.querySelector('[data-home-visits]'),locale,koreaToday);
 const eventName=e=>eventTranslation(e,locale)?.title||e.title;
 const byId=new Map(data.map(e=>[e.id,e]));
 let today=koreaToday();

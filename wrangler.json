@@ -12,5 +12,9 @@
       "/naver600f1685b4bb1a22e32ec0f968c5989b.html"
     ]
   },
-  "main": "./worker/index.mjs"
+  "main": "./worker/index.mjs",
+  "durable_objects": {
+    "bindings": [{ "name": "HOME_VISITS", "class_name": "HomeVisitCounter" }]
+  },
+  "migrations": [{ "tag": "home-visits-v1", "new_sqlite_classes": ["HomeVisitCounter"] }]
 }

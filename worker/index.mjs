@@ -1,7 +1,12 @@
 import {weatherResponse} from './weather.mjs';
+import {homeVisitResponse} from './home-visits.mjs';
+
+export {HomeVisitCounter} from './home-visits.mjs';
+
 export default {
   async fetch(request,env) {
     const url=new URL(request.url);
+    if(url.pathname==='/api/home-visits')return homeVisitResponse(request,env.HOME_VISITS);
     if(url.pathname==='/api/weather')return weatherResponse(request,{cache:caches.default});
     if(url.pathname.startsWith('/api/'))return new Response('Not found',{status:404});
     // Serve the Naver verification file at its original .html URL without an external redirect.
