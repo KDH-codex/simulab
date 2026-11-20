@@ -74,7 +74,20 @@ const rows=`
 축제 보관함 ↗|Saved festivals ↗|保存したお祭り ↗|节庆收藏夹 ↗|節慶收藏夾 ↗
 공유|Share|共有|分享|分享
 제공처 안내가 우선합니다. 판매·예약·쿠폰 발급을 대행하지 않습니다.|Official terms take priority. We do not sell, book or issue coupons.|提供元の案内を優先します。販売・予約・クーポン発行の代行ではありません。|以官方公告为准，本站不代售、预约或发放优惠券。|以官方公告為準，本站不代售、預約或發放優惠券。
-상품 사진이 아닌 안내 카드입니다.|Guide card, not a product photograph.|商品写真ではなく案内カードです。|此为信息卡片，非商品照片。|此為資訊卡片，非商品照片。
+이번 주 할인·쇼핑|This Week’s Shopping Offers|今週のセール情報|本周购物优惠|本週購物優惠
+식품부터 가전까지, 이번 주 할인과 적용 조건을 한곳에서 확인하세요.|Browse this week’s offers and terms, from groceries to electronics.|食品から家電まで、今週のセールと利用条件をまとめて確認できます。|从食品到家电，一站查看本周优惠和适用条件。|從食品到家電，一站查看本週優惠和適用條件。
+할인 행사 둘러보기|Explore offers|セールを見る|浏览优惠|瀏覽優惠
+주목할 할인|Featured offer|注目のセール|推荐优惠|推薦優惠
+품목별 할인|Shop by category|商品分野から探す|按品类浏览|按品類瀏覽
+공식 홍보 이미지|Official campaign image|公式キャンペーン画像|官方宣传图|官方宣傳圖
+AI 참고 이미지|AI reference image|AI 参考画像|AI 参考图|AI 參考圖
+이미지 이용 안내 ↗|Image usage terms ↗|画像利用案内 ↗|图片使用条款 ↗|圖片使用條款 ↗
+채소와 과일이 담긴 장바구니|Grocery basket with vegetables and fruit|野菜と果物が入った買い物かご|装有蔬果的购物篮|裝有蔬果的購物籃
+매장에 걸린 겨울 코트와 니트|Winter coats and knitwear on a rack|ラックに並ぶ冬のコートとニット|衣架上的冬季外套和针织衫|衣架上的冬季外套和針織衫
+소파와 테이블이 놓인 거실|Living room with a sofa and table|ソファとテーブルのあるリビング|摆有沙发和桌子的客厅|擺有沙發和桌子的客廳
+세탁기와 냉장고가 놓인 공간|Display with a washer and refrigerator|洗濯機と冷蔵庫が並ぶ空間|摆放着洗衣机和冰箱的展示区|擺放著洗衣機和冰箱的展示區
+접어 둔 아기 옷과 기저귀|Folded baby clothes and diapers|折りたたんだベビー服とおむつ|叠好的婴儿衣服与纸尿裤|疊好的嬰兒衣服與紙尿褲
+식료품과 생활용품이 담긴 쇼핑 카트|Shopping cart with groceries and household goods|食品と日用品が入ったカート|装有食品和日用品的购物车|裝有食品和日用品的購物車
 채널·점포별 조건 확인|Check channel and store terms|チャネル・店舗条件を確認|确认渠道与门店条件|確認管道與門市條件
 `.trim().split('\n');
 Object.assign(UI_TRANSLATIONS,Object.fromEntries(rows.map(row=>{const [key,...values]=row.split('|');return [key,values];})));

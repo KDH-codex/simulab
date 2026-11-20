@@ -2119,6 +2119,13 @@
             "title": "三星韓國購物節",
             "summary": "指定家電及數位產品優惠，視型號和銷售通路而定。"
           }
+        },
+        "image": {
+          "src": "/assets/img/shopping/samsung-grand-festival-202611.jpg",
+          "alt": "코리아 그랜드 페스티벌 배너 아래 삼성전자 가전이 진열된 공식 홍보 사진",
+          "credit": "Samsung Newsroom Korea",
+          "originalUrl": "https://img.kr.news.samsung.com/kr/wp-content/uploads/2026/10/29165818/1-%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90-%EC%BD%94%EB%A6%AC%EC%95%84-%EA%B7%B8%EB%9E%9C%EB%93%9C-%ED%8E%98%EC%8A%A4%ED%8B%B0%EB%B2%8C.jpg",
+          "usageUrl": "https://news.samsung.com/kr/%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90-%EB%89%B4%EC%8A%A4%EB%A3%B8-%EC%BD%98%ED%85%90%EC%B8%A0-%EC%9D%B4%EC%9A%A9%EC%97%90-%EB%8C%80%ED%95%9C-%EC%95%88%EB%82%B4"
         }
       }
     },
@@ -2206,7 +2213,7 @@
         "다른 하기스 기획전, 국민행복카드 바우처 사용 조건과는 구분합니다."
       ],
       "periodNote": "베팡몰 공식 행사 목록의 [하기스맥스드라이&에어] 기획전",
-      "sourceUrl": "https://bebe-box.co.kr/shop/bepangmall_brand_event.php?ev=76",
+      "sourceUrl": "https://bebe-box.co.kr/shop/bepangmall_brand_event.php?device=mobile&ev=76",
       "periodSourceUrl": "https://bebe-box.co.kr/shop/bepangmall_brand_event.php?ev=76",
       "checkedAt": "2026-11-20T16:48:48+09:00",
       "publicationStatus": "reviewed",

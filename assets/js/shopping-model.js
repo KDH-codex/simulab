@@ -1,5 +1,5 @@
 import {validateEvent,eventState,isCalendarEligible,koreaToday,addDays} from '../../tools/parenting-deals/model.js';
-import {weekendRange} from '../../tools/kids-outing-calendar/model.js';
+import {weekendRange,safeUrl} from '../../tools/kids-outing-calendar/model.js';
 
 export const SHOP_KINDS={all:'전체',mall:'몰·아울렛',mart:'마트·창고형',department:'백화점',brand:'브랜드'};
 export const SHOP_CATEGORIES={all:'모든 품목',life:'식품·생활',fashion:'의류·스포츠',furniture:'가구·리빙',appliances:'가전·디지털',kids:'육아용품·키즈',kitchen:'주방용품',beauty:'뷰티'};
@@ -17,6 +17,12 @@ export function validateShoppingEvent(e,sources,now=new Date()) {
   for(const key of ['specificStore','membership','card','app'])if(typeof s[key]!=='boolean')errors.push('Invalid scope flag '+key);
   if(!Number.isInteger(s.reviewWithinHours)||s.reviewWithinHours<1||s.reviewWithinHours>168)errors.push('Invalid shopping freshness');
   for(const lang of ['en','ja','zh-CN','zh-TW'])if(!s.locales?.[lang]?.title||!s.locales?.[lang]?.summary)errors.push('Missing shopping translation '+lang);
+  if (s.image) {
+    const {src,alt,credit,originalUrl,usageUrl} = s.image;
+    if (typeof src !== 'string' || !/^\/assets\/img\/shopping\/[a-z0-9-]+\.(?:jpg|jpeg|png|webp)$/.test(src)) errors.push('Invalid shopping image path');
+    if (typeof alt !== 'string' || !alt.trim() || typeof credit !== 'string' || !credit.trim()) errors.push('Missing shopping image attribution');
+    if (!safeUrl(originalUrl) || !safeUrl(usageUrl)) errors.push('Missing shopping image source or terms');
+  }
   return errors;
 }
 export function shoppingState(e,now=new Date()) {

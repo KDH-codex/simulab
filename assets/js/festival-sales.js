@@ -3,7 +3,7 @@ import {setupHeadingMotion} from './festival-heading-motion.js';
 import {languageURL} from './festival-i18n.js';
 import {shopT as t} from './shopping-i18n.js';
 import {SHOP_KINDS,SHOP_CATEGORIES,SHOP_AREAS,SHOP_CHANNELS,SHOP_STORAGE,shoppingState,shoppingText,filterShopping,restoreShoppingSaved,saleURL} from './shopping-model.js';
-import {saleCard,saleDetails,saleActions} from './shopping-presentation.js';
+import {saleCard,saleDetails,saleActions,saleSpotlight} from './shopping-presentation.js';
 
 const rows=JSON.parse(document.getElementById('sales-data')?.textContent||'[]');
 const byId=new Map(rows.map(e=>[e.id,e]));
@@ -37,6 +37,10 @@ function render(){
  $('shop-query').value=state.query;$('shop-saved').setAttribute('aria-pressed',String(state.saved));
  $('shop-saved').textContent='♡ '+t('보관한 할인',locale);
  $('shop-member').checked=state.member;$('shop-card').checked=state.card;
+ document.querySelectorAll('[data-shop-category-link]').forEach(link=>{
+   if (link.dataset.shopCategoryLink===state.category) link.setAttribute('aria-current','true');
+   else link.removeAttribute('aria-current');
+ });
  document.querySelectorAll('[data-shop-kind]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.shopKind===state.kind)));
  document.querySelectorAll('[data-shop-count]').forEach(el=>el.textContent=pool.filter(e=>el.dataset.shopCount==='all'||e.shopping.kind===el.dataset.shopCount).length);
  $('shop-stat-total').textContent=filterShopping(rows).length;$('shop-stat-ending').textContent=filterShopping(rows,{period:'ending'}).length;$('shop-stat-upcoming').textContent=filterShopping(rows,{period:'upcoming'}).length;
@@ -66,7 +70,10 @@ for(const key of ['member','card'])$('shop-'+key)?.addEventListener('change',eve
 $('shop-query')?.addEventListener('input',event=>{const value=event.target.value;clearTimeout(searchTimer);searchTimer=setTimeout(()=>{state.query=value.slice(0,100);state.limit=9;updateURL();render();},160);});
 document.addEventListener('keydown',event=>{const b=event.target.closest?.('[data-sale-tab]');if(!b||!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;const ids=['conditions','schedule','source'],i=ids.indexOf(b.dataset.saleTab);event.preventDefault();tab(event.key==='Home'?ids[0]:event.key==='End'?ids.at(-1):ids[(i+(event.key==='ArrowRight'?1:2))%3],true);});
 window.addEventListener('storage',event=>{if(event.key!==SHOP_STORAGE)return;saved=restoreShoppingSaved(event.newValue,rows);syncSaved();if(state.saved)render();});
-let timeSignature='';function refreshTime(){const signature=rows.map(e=>shoppingState(e).code).join('|');if(signature===timeSignature)return;timeSignature=signature;render();document.querySelectorAll('.shopping-inline-status').forEach(el=>{const item=activeEvent||rows.find(e=>location.pathname===saleURL(e));if(item){const status=shoppingState(item);el.textContent=t(status.label,locale);el.className='shopping-inline-status state-'+status.code;}});}
+let timeSignature='';function refreshTime(){const signature=rows.map(e=>shoppingState(e).code).join('|');if(signature===timeSignature)return;timeSignature=signature;
+ const spotlight=$('shop-spotlight');
+ if(spotlight) spotlight.innerHTML=saleSpotlight(filterShopping(rows),{locale});
+ render();document.querySelectorAll('.shopping-inline-status').forEach(el=>{const item=activeEvent||rows.find(e=>location.pathname===saleURL(e));if(item){const status=shoppingState(item);el.textContent=t(status.label,locale);el.className='shopping-inline-status state-'+status.code;}});}
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshTime();});setInterval(refreshTime,60000);
 motion.addEventListener('change',reveal);
 render();syncSaved();refreshTime();setupHeadingMotion({reducedMotion:motion});
