@@ -276,3 +276,31 @@ button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible{ou
 @media(max-width:360px){.hero-copy{padding-left:20px;padding-right:20px}.hero-copy h1{font-size:44px}.hero-event{font-size:21px}.hero-main{min-height:630px}.hero-top{padding:17px 16px}.hero-controls{gap:1px;padding:3px}.hero-controls button{min-width:34px;width:34px}.hero-controls #hero-position{min-width:48px}.day-weather i{display:none}.weekdays span{font-size:7px}.card-bottom{gap:10px}.card-bottom strong{font-size:13px}.detail-button{font-size:11px;min-width:80px}.modal-tabs{padding-left:18px;padding-right:18px}.modal-tabs button{font-size:10px;padding:7px 9px}}
 @media(max-width:640px){[data-festival-page="weekend"] .page-intro h1{font-size:clamp(24px,8vw,31px)}}
 @media(prefers-reduced-motion:reduce){.sticky-filterbar,#weather-status[data-status=loading]::before,.split-playing .split-char{animation:none}.festival-card,.card-visual img,.mini-image img,.mini-event,.keyword-tags button,.region-point,.feed-controls button{transition:none}.festival-card:hover,.festival-card:hover .card-visual img,.mini-event:hover,.mini-event:hover .mini-image img,.feed-controls button:hover{transform:none}.is-typing .typewriter-char:not(.is-typed){opacity:1}.typewriter-char.has-cursor::after{content:none}html{scroll-behavior:auto}}
+
+.hero-side-items {display:contents}
+.site-header .main-nav .christmas-nav-tab {
+  display:inline-flex;
+  flex:none;
+  align-items:center;
+  justify-content:center;
+  gap:4px;
+  margin-inline:2px;
+  border:1px solid #ae2840;
+  background:linear-gradient(155deg,#b82741,#89172a);
+  color:#fff;
+  white-space:nowrap;
+  animation:christmas-tab-glow 2.15s ease-in-out 2;
+}
+.site-header .main-nav .christmas-nav-tab:hover,
+.site-header .main-nav .christmas-nav-tab[aria-current="page"] {
+  border-color:#7c1428;
+  background:#89172a;
+  color:#fff;
+}
+@keyframes christmas-tab-glow {
+  0%,100% {box-shadow:0 0 0 0 #c9344d00}
+  50% {box-shadow:0 0 0 3px #c9344d48,0 0 13px #c9344d4a}
+}
+@media (prefers-reduced-motion:reduce) {
+  .site-header .main-nav .christmas-nav-tab {animation:none}
+}

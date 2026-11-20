@@ -1,99 +1,246 @@
-.christmas-spotlight,.christmas-collection-hero {
-  display:grid;
-  align-items:center;
-  gap:clamp(18px,3vw,38px);
-  background:#163936;
-  color:#fff9e9;
-  border-radius:26px;
-  padding:clamp(18px,3vw,33px);
+/* Seasonal edition of the shared festival carousel and event cards. */
+.christmas-hero,
+.christmas-page,
+.christmas-home-picks {
+  --holiday-red:#a71e34;
+  --holiday-red-hover:#851728;
+  --holiday-green:#123e32;
+  --holiday-green-hover:#092a22;
+  --holiday-cream:#fff9f3;
+  --holiday-line:#e5dbd0;
 }
-.christmas-spotlight {
-  grid-template-columns:minmax(150px, .7fr) minmax(0,1fr) minmax(175px,.72fr);
-  margin:26px 0 34px;
+
+body[data-festival-page="christmas"] {
+  background:linear-gradient(145deg,#fff6f0 0,#f8fbf6 740px,#fff 1280px);
 }
-.christmas-spotlight h2,.christmas-collection-hero h1 {
+
+.christmas-hero.hero-layout {
+  grid-template-columns:minmax(0,2.2fr) minmax(270px,1fr);
+  gap:16px;
+  padding-block:28px 32px;
+}
+
+.christmas-hero .hero-main,
+body[data-festival-page="home"] .christmas-hero .hero-main {
+  min-height:484px;
+  border:1px solid #0e3028;
+  border-radius:24px;
+  background:#092a22;
+  box-shadow:0 14px 36px #142d2129;
+}
+
+.christmas-hero .hero-image img {
+  object-position:60% center;
+}
+
+.christmas-hero .hero-shade {
+  background:
+    linear-gradient(90deg,#071e18f5 0%,#081f19b3 55%,#09201720 100%),
+    linear-gradient(0deg,#061c17ed 0%,transparent 74%);
+}
+
+.christmas-hero .hero-top {align-items:center;padding:20px 26px}
+.christmas-hero [data-hero-badge] {
+  background:var(--holiday-red);
+  color:#fff;
+  padding:7px 13px;
+}
+.christmas-hero .hero-controls {background:#132a23c7}
+.christmas-hero .hero-copy {max-width:720px;padding:27px 34px 70px}
+.christmas-hero .hero-kicker {
+  margin:0 0 12px;
+  color:#f6d3c4;
+  font-weight:750;
+  letter-spacing:.04em;
+}
+.christmas-hero .hero-copy h1.christmas-hero-heading {
+  max-width:14ch;
   margin:0;
-  color:inherit;
-  line-height:1.22;
-  letter-spacing:-.045em;
+  color:#fff;
+  font-size:clamp(37px,4.5vw,66px);
+  line-height:1.2;
+  text-wrap:balance;
+  word-break:keep-all;
 }
-.christmas-spotlight h2{font-size:clamp(23px,2.7vw,36px)}
-.christmas-spotlight-copy p,.christmas-collection-hero p{
-  color:#f5e8cf;
-  margin:9px 0 15px;
-  line-height:1.6;
+html:not([lang="ko"]) .christmas-hero .hero-copy h1.christmas-hero-heading {max-width:20ch}
+.christmas-hero .hero-event {
+  margin-top:16px;
+  color:#ffdbcf;
+  font-size:clamp(21px,2.05vw,31px);
+  line-height:1.35;
 }
-.christmas-spotlight .button.secondary {background:#ffedc3;color:#24443a;white-space:normal}
-.christmas-spotlight .button.secondary:hover {background:#fff6de;color:#163936}
-.christmas-image {
+.christmas-hero .hero-meta {color:#fff}
+.christmas-hero .hero-description {max-width:55ch;color:#f8eee7}
+.christmas-hero .hero-actions {gap:10px;margin-top:21px}
+.christmas-hero .hero-actions .button,
+.christmas-hero .hero-calendar-link {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:44px;
+  padding:9px 16px;
+  border:1px solid transparent;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:750;
+}
+.christmas-hero .hero-actions .button {background:var(--holiday-red);color:#fff}
+.christmas-hero .hero-actions .button:hover {background:var(--holiday-red-hover)}
+.christmas-hero .hero-calendar-link {
+  border-color:#b4d3bcb0;
+  background:var(--holiday-green);
+  color:#fff;
+}
+.christmas-hero .hero-calendar-link:hover {background:var(--holiday-green-hover)}
+.christmas-hero .hero-dots {left:34px}
+.christmas-hero .hero-dots button[aria-pressed="true"] {background:#ffb9aa}
+.christmas-hero .hero-picture-note {background:#081c17e6}
+
+.christmas-hero .hero-side {
+  padding:22px 18px;
+  border:1px solid #2e594a;
+  border-radius:24px;
+  background:linear-gradient(150deg,#1a4b3c,#092e24 85%);
+  box-shadow:0 14px 36px #142d211a;
+  color:#fff;
+  gap:12px;
+}
+.christmas-hero .hero-side .section-title {
+  display:flex;
+  align-items:center;
+  gap:6px;
+  min-height:32px;
+}
+.christmas-hero .hero-side h2 {color:#fff}
+.christmas-hero .mini-event {
+  border:1px solid #e4ede5;
+  border-radius:14px;
+  background:#fff;
+  box-shadow:none;
+}
+.christmas-hero .mini-event:hover {border-color:#cf8e94}
+.christmas-hero .mini-copy h3 {color:#133b31}
+.christmas-hero .mini-copy small {color:#356049}
+.christmas-hero .mini-badge {background:var(--holiday-red);color:#fff}
+.christmas-hero .weekend-banner {
+  margin-top:auto;
+  background:#ffffff12;
+  border:1px solid #ffffff40;
+  color:#fff;
+}
+.christmas-hero .weekend-banner:hover {background:#ffffff25}
+.christmas-hero .weekend-banner small {color:#e5f1e7}
+.christmas-hero .weekend-banner .banner-symbol {color:#ffb9aa;background:#ffffff19}
+
+.christmas-page {padding-bottom:60px}
+.christmas-archive-title {padding-top:36px;color:var(--holiday-green)}
+.christmas-nav {
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:0 0 26px;
+  padding:12px;
+  border:1px solid var(--holiday-line);
+  border-radius:16px;
+  background:#fff;
+}
+.christmas-nav a {
+  display:inline-flex;
+  align-items:center;
+  padding:9px 14px;
+  border:1px solid #dae8de;
+  border-radius:999px;
+  background:#edf6ee;
+  color:var(--holiday-green);
+  font-size:13px;
+  font-weight:750;
+  text-decoration:none;
+}
+.christmas-nav a:hover {background:var(--holiday-green);color:#fff}
+.christmas-nav a[href="#christmas-week"] {
+  border-color:#f3d9d9;
+  background:#fff0f0;
+  color:var(--holiday-red-hover);
+}
+.christmas-nav a[href="#christmas-week"]:hover {background:var(--holiday-red-hover);color:#fff}
+.christmas-group {margin:0 0 45px;scroll-margin-top:166px}
+.christmas-group h2 {margin-bottom:16px;color:var(--holiday-green)}
+
+.christmas-home-picks {
+  margin:0 0 38px;
+  padding:22px;
+  border:1px solid var(--holiday-line);
+  border-radius:20px;
+  background:linear-gradient(120deg,#fff6f1,#f3f8f2);
+}
+.christmas-home-picks h2 {color:var(--holiday-green)}
+.christmas-home-picks .text-link,
+.christmas-page .text-link {color:var(--holiday-red-hover)}
+[data-christmas-card] {border-color:var(--holiday-line);background:#fff}
+[data-christmas-card] .place-label {color:var(--holiday-green)}
+[data-christmas-card] .status-badge {background:#fff6f4;color:var(--holiday-red-hover)}
+[data-christmas-card] .detail-button {
+  background:var(--holiday-green);
+  color:#fff;
+}
+[data-christmas-card] .detail-button:hover {background:var(--holiday-green-hover);color:#fff}
+
+.christmas-offers {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,215px),1fr));
+  gap:12px;
+  margin-bottom:16px;
+}
+.christmas-offers article {
   position:relative;
-  overflow:hidden;
-  width:100%;
+  padding:16px;
+  border:1px solid var(--holiday-line);
+  border-radius:14px;
+  background:#fff;
   min-width:0;
-  border-radius:15px;
-  aspect-ratio:16/9;
-  background:#244844;
 }
-.christmas-image img{width:100%;height:100%;object-fit:cover;object-position:50% 52%;display:block}
-.christmas-image .image-credit{
-  right:7px;bottom:7px;left:auto;max-width:calc(100% - 14px);
-  background:#173936;color:#fff9e9;
+.christmas-offers h3 {margin-bottom:10px;color:var(--holiday-green)}
+.christmas-offers dl>div {display:flex;gap:9px;margin:5px 0;font-size:13px}
+.christmas-offers dt {font-weight:750;white-space:nowrap}
+.christmas-offers p {margin:10px 0;font-size:13px;line-height:1.65}
+.christmas-offers a {color:var(--holiday-red-hover);font-size:13px;font-weight:750}
+.christmas-state {
+  display:block;
+  width:max-content;
+  margin-top:8px;
+  padding:4px 8px;
+  border-radius:999px;
+  background:#f3efeb;
+  color:#615851;
+  font-size:12px;
 }
-.christmas-shortcuts{display:grid;gap:6px}
-.christmas-shortcuts a{
-  border-bottom:1px solid #ffffff50;padding:8px 0;
-  color:#fff2d7;display:flex;justify-content:space-between;gap:8px;
-  line-height:1.5;font-weight:700;
+.christmas-state[hidden] {display:none}
+
+@media (max-width:850px) {
+  .christmas-hero.hero-layout {grid-template-columns:minmax(0,1fr)}
+  .christmas-hero .hero-side {
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+  .christmas-hero .weekend-banner {grid-column:1/-1}
 }
-.christmas-shortcuts a:hover{color:#fff;text-decoration:underline}
-.christmas-page{padding-bottom:48px}
-.christmas-collection-hero{grid-template-columns:minmax(0,1fr) minmax(0,.9fr);margin:24px 0 18px}
-.christmas-collection-hero h1{font-size:clamp(31px,5vw,63px)}
-.christmas-collection-hero .christmas-season-year{color:#f1cc8a;font-weight:750;margin:0 0 5px}
-.christmas-nav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 35px}
-.christmas-nav a{
-  color:#244940;background:#eef7f0;border:1px solid #d4e6da;
-  border-radius:20px;padding:8px 13px;font-weight:700;font-size:13px;
-}
-.christmas-nav a:hover{background:#dcece1}
-.christmas-group{margin:0 0 32px;scroll-margin-top:115px}
-.christmas-group h2{font-size:clamp(20px,2.7vw,30px);margin:0 0 12px}
-.christmas-event-grid,.christmas-offers{
-  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;
-}
-.christmas-event,.christmas-offers article{
-  min-width:0;background:#fff;border:1px solid #e1e7df;
-  border-radius:18px;padding:clamp(14px,2vw,21px);display:flex;flex-direction:column;gap:10px;
-}
-.christmas-event-meta{display:flex;justify-content:space-between;gap:10px;color:#46654e;font-size:12px;font-weight:750}
-.christmas-event h3,.christmas-offers h3{color:#24443b;font-size:17px;line-height:1.4}
-.christmas-event p,.christmas-offers p,.christmas-event dd,.christmas-offers dd{
-  line-height:1.55;color:#514556;font-size:13px;
-}
-.christmas-event dl,.christmas-offers dl{margin:0}
-.christmas-event dl div,.christmas-offers dl div{
-  display:grid;grid-template-columns:68px minmax(0,1fr);gap:7px;
-  border-top:1px solid #ece8ed;padding:6px 0;
-}
-.christmas-event dt,.christmas-offers dt{font-weight:750;font-size:12px;color:#49404f}
-.christmas-event dd,.christmas-offers dd{margin:0;overflow-wrap:anywhere}
-.christmas-event-links{
-  display:flex;flex-wrap:wrap;gap:8px 13px;margin-top:auto;align-items:center;
-}
-.christmas-event-links a,.christmas-offers a{font-size:13px;font-weight:750;color:#275b49;text-decoration:underline}
-.christmas-event .christmas-date-note{color:#695479;font-size:12px}
-.christmas-state{font-size:11px;color:#695479}
-.christmas-offers{margin-bottom:12px}
-@media(max-width:860px){
-  .christmas-spotlight{grid-template-columns:minmax(125px,.6fr) minmax(0,1fr)}
-  .christmas-shortcuts{grid-column:1/-1;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-  .christmas-event-grid,.christmas-offers{grid-template-columns:repeat(2,minmax(0,1fr))}
-}
-@media(max-width:560px){
-  .christmas-spotlight,.christmas-collection-hero,.christmas-event-grid,.christmas-offers{grid-template-columns:minmax(0,1fr)}
-  .christmas-spotlight{gap:12px}
-  .christmas-spotlight .christmas-image{aspect-ratio:2.9/1}
-  .christmas-shortcuts{grid-template-columns:1fr;gap:0}
-  .christmas-shortcuts a{font-size:13px}
-  .christmas-collection-hero .christmas-image{aspect-ratio:2.2/1}
+
+@media (max-width:600px) {
+  .christmas-hero.hero-layout {gap:12px;padding-block:18px 23px}
+  .christmas-hero .hero-main,
+  body[data-festival-page="home"] .christmas-hero .hero-main {min-height:430px;border-radius:18px}
+  .christmas-hero .hero-top {padding:14px 12px}
+  .christmas-hero .hero-copy {padding:24px 19px 68px}
+  .christmas-hero .hero-copy h1.christmas-hero-heading {font-size:clamp(32px,8.65vw,46px)}
+  .christmas-hero .hero-shade {
+    background:linear-gradient(90deg,#071e18eb,#081f1980),
+      linear-gradient(0deg,#061c17 0%,#061c1730 83%);
+  }
+  .christmas-hero .hero-dots {left:19px}
+  .christmas-hero .hero-side {display:flex;padding:14px;border-radius:18px}
+  .christmas-hero .hero-actions .button,
+  .christmas-hero .hero-calendar-link {padding-inline:12px;font-size:12px}
+  .christmas-home-picks {padding:14px}
+  .christmas-home-picks>.section-title {align-items:flex-start;flex-wrap:wrap;gap:7px}
+  .christmas-group {scroll-margin-top:160px}
 }

@@ -3412,8 +3412,15 @@
     "fee": "유료 · 방문 날짜와 시간대에 따라 요금 상이",
     "booking": "11/2부터 지정 예매처에서 운영일과 권종을 선택해 예매",
     "verificationStatus": "verified",
-    "checkedAt": "2026-11-05",
+    "checkedAt": "2026-11-20",
     "sources": [
+      {
+        "publisher": "마켓창고",
+        "title": "크리스마스 빌리지 부산 2026 공식 안내",
+        "url": "https://marketchango.com/CHRISTMAS_VILLAGE_BUSAN_2026",
+        "facts": "영화의전당, 11/26~12/25 중 지정일 21일 운영, 예매 절차 확인.",
+        "checkedAt": "2026-11-20"
+      },
       {
         "publisher": "공식 안내",
         "title": "크리스마스 빌리지 부산 2026 공지·예약 안내",
@@ -5679,6 +5686,34 @@
         "title": "ICC JEJU 윈터페스타 참관객 사전등록",
         "url": "https://jejuchristmasfair.com/bbs/write.php?bo_table=sub01_3_aadw",
         "facts": "관람객 사전등록 양식 확인. 접수 마감·요금 미확인.",
+        "checkedAt": "2026-11-20"
+      }
+    ]
+  },
+  {
+    "id": "seoul-plaza-ice-rink-2026",
+    "title": "2026 서울광장 스케이트장",
+    "region": "서울",
+    "theme": "kids",
+    "startDate": "2026-12-18",
+    "endDate": "2027-02-09",
+    "location": "서울광장 · 서울 중구 세종대로 110, 시청역 5번 출구",
+    "time": "일~목 10:00~21:30 · 금·토 다음 날 00:30까지 · 12/24·31 다음 날 01:00까지",
+    "program": "도심 야외 스케이트장, 어린이 링크, 초보자 강습과 시즌별 공연",
+    "feeStatus": "paid",
+    "fee": "1회(1시간) 1,000원 · 스케이트화·헬멧 대여 포함",
+    "booking": "올해 회차별 예매 안내는 서울시 공식 공지 확인",
+    "familyNote": "12월 24일은 심야 회차가 있습니다. 기상과 대기질에 따라 운영이 변경될 수 있습니다.",
+    "scheduleType": "period",
+    "scheduleNote": "전체 운영 기간이며 날짜별 회차·기상 휴장은 공식 공지 확인.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-20",
+    "sources": [
+      {
+        "publisher": "서울특별시",
+        "title": "펀서울 · 서울광장 스케이트장 방문 안내",
+        "url": "https://festival.seoul.go.kr/festival/main/festivalView.do?festacode=355",
+        "facts": "12/18~2/9, 시간, 12/24·31 연장, 스케이트화·헬멧 포함 1,000원, 어린이 링크와 기상 변경 안내.",
         "checkedAt": "2026-11-20"
       }
     ]
