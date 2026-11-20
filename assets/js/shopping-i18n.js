@@ -17,12 +17,12 @@ const rows=`
 브랜드|Brands|ブランド|品牌|品牌
 모든 품목|All categories|全商品分野|全部品类|全部品類
 식품·생활|Groceries & daily goods|食品・日用品|食品与日用品|食品與日用品
-패션·스포츠|Fashion & sports|ファッション・スポーツ|时尚与运动|時尚與運動
+의류·스포츠|Clothing & sports|衣料・スポーツ|服装与运动|服裝與運動
 뷰티|Beauty|ビューティー|美妆|美妝
-리빙·가구|Home & furniture|生活・家具|家居与家具|家居與家具
+가구·리빙|Furniture & home|家具・生活|家具与家居|家具與家居
 가전·디지털|Electronics|家電・デジタル|家电与数码|家電與數位
 주방용품|Kitchen|キッチン|厨房用品|廚房用品
-키즈|Kids|キッズ|儿童|兒童
+육아용품·키즈|Baby & kids|育児用品・キッズ|育儿用品与童装|育兒用品與童裝
 모든 지역|All regions|全地域|全部地区|全部地區
 전국·온라인|Nationwide / online|全国・オンライン|全国／线上|全國／線上
 경기·인천|Gyeonggi & Incheon|京畿・仁川|京畿与仁川|京畿與仁川

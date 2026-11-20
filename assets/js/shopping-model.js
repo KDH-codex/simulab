@@ -2,7 +2,7 @@ import {validateEvent,eventState,isCalendarEligible,koreaToday,addDays} from '..
 import {weekendRange} from '../../tools/kids-outing-calendar/model.js';
 
 export const SHOP_KINDS={all:'전체',mall:'몰·아울렛',mart:'마트·창고형',department:'백화점',brand:'브랜드'};
-export const SHOP_CATEGORIES={all:'모든 품목',life:'식품·생활',fashion:'패션·스포츠',beauty:'뷰티',furniture:'리빙·가구',appliances:'가전·디지털',kitchen:'주방용품',kids:'키즈'};
+export const SHOP_CATEGORIES={all:'모든 품목',life:'식품·생활',fashion:'의류·스포츠',furniture:'가구·리빙',appliances:'가전·디지털',kids:'육아용품·키즈',kitchen:'주방용품',beauty:'뷰티'};
 export const SHOP_AREAS={all:'모든 지역',nationwide:'전국·온라인',seoul:'서울',gyeonggi:'경기·인천',gangwon:'강원',chungcheong:'충청',jeolla:'전라',gyeongsang:'경상',jeju:'제주'};
 export const SHOP_CHANNELS={all:'모든 채널',online:'온라인',store:'매장',app:'앱',phone:'전화 주문'};
 export const SHOP_STORAGE='thisweekfestival.shopping.saved.v1';

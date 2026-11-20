@@ -37,6 +37,8 @@ const rows=`
 ● 이번 주의 발견|● This week’s picks|● 今週の発見|● 本周精选|● 本週精選
 ✦ 다가오는 축제|✦ Coming up|✦ これからのお祭り|✦ 即将举办|✦ 即將舉辦
 다가오는 축제|Coming up|これからのお祭り|即将举办|即將舉辦
+✦ 이번 주말 추천|✦ This weekend’s picks|✦ 今週末のおすすめ|✦ 本周末推荐|✦ 本週末推薦
+이번 주말 추천|This weekend’s picks|今週末のおすすめ|本周末推荐|本週末推薦
 축제 자세히 보기 ↗|Explore this event ↗|このイベントを見る ↗|查看活动详情 ↗|查看活動詳情 ↗
 달력으로 찾아보기 →|Browse the calendar →|カレンダーで探す →|查看日历 →|查看月曆 →
 이번 주말, 같이 떠나요|Make a weekend of it|今週末、一緒に出かけよう|一起享受这个周末|一起享受這個週末
@@ -349,7 +351,9 @@ export function translateUI(text,locale='ko') {
     '이전 추천':['Previous pick','前のおすすめ','上一推荐','上一推薦'],'다음 추천':['Next pick','次のおすすめ','下一推荐','下一推薦'],
     '자동 전환 일시정지':['Pause slideshow','自動切替を停止','暂停轮播','暫停輪播'],'자동 전환 재생':['Play slideshow','自動切替を再生','播放轮播','播放輪播']
   };
-  let result=text.replace(/수록 일정 (\d+)건/g,(_,count)=>[
+  let result=text.replace(/종료 포함 · 보관 일정 (\d+)건/g,(_,count)=>[
+    'Saved events including ended: '+count,'終了分を含む保存済み '+count+'件','已收藏（含已结束）：'+count+'项','已收藏（含已結束）：'+count+'項'
+  ][columns[locale]]).replace(/수록 일정 (\d+)건/g,(_,count)=>[
     'Listed events: '+count,'掲載予定 '+count+'件','已收录活动：'+count+'项','已收錄活動：'+count+'項'
   ][columns[locale]]).replace(/(\d+)주차/g,(_,week)=>['Week '+week,week+'週目','第'+week+'周','第'+week+'週'][columns[locale]])
     .replace(/의 축제/g,[' · festivals','のお祭り',' · 节庆',' · 節慶'][columns[locale]])

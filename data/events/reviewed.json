@@ -2087,12 +2087,12 @@
     "startDate": "2026-11-19",
     "endDate": "2026-11-21",
     "location": "경북 포항시 영일대해수욕장·송도 포항구항 일원",
-    "time": "11/21 국제불꽃쇼 예정 · 상세 시각은 공식 일정 확인",
-    "program": "포항의 해변 야간 프로그램과 11월 21일 국제불꽃쇼",
+    "time": "11월 21일 20:00~21:00 국제불꽃쇼 예정",
+    "program": "영일대해수욕장 불빛 퍼레이드와 11월 21일 밤 8시 국제불꽃쇼",
     "feeStatus": "free",
     "fee": "기본 관람 무료 · 먹거리와 개별 프로그램 비용 별도 확인",
     "booking": "개별 행사 신청 여부는 공식 일정 확인",
-    "familyNote": "국제불꽃쇼는 축제 마지막 날 예정입니다. 기상 및 현장 공지를 확인하세요.",
+    "familyNote": "국제불꽃쇼는 21일 하루입니다. 22일 이후 연계행사는 별도 일정이며, 출발 전 기상·현장 공지를 확인하세요.",
     "verificationStatus": "verified",
     "checkedAt": "2026-11-16",
     "sources": [
@@ -2116,6 +2116,13 @@
         "url": "https://phcf.or.kr/phcf/festival_detail/view.do?festivalId=FST_LIGHT_2026_001&tab=program",
         "facts": "2026년 행사 일정 및 프로그램",
         "checkedAt": "2026-11-16"
+      },
+      {
+        "publisher": "포항문화재단",
+        "title": "2026 포항국제불빛축제 공식 리플릿",
+        "url": "https://www.phcf.or.kr/common/downAttachFile.do?fileSeq=30707362",
+        "facts": "11월 21일 20:00~21:00 국제불꽃쇼, 19~21일 본행사 운영 시간표.",
+        "checkedAt": "2026-11-20"
       }
     ]
   },
@@ -3700,7 +3707,7 @@
     "startDate": "2026-11-19",
     "endDate": "2026-11-22",
     "location": "제주 서귀포시 대정읍 모슬포항 일원",
-    "time": "프로그램별 운영시간 확인",
+    "time": "축제 안내 10:00~19:00 · 체험·공연 시간은 개별 확인",
     "program": "제철 방어 먹거리와 방어잡기 등 해양 체험, 공연",
     "feeStatus": "mixed",
     "fee": "기본 관람 무료 · 음식 구매와 체험 비용 별도 확인",
@@ -3714,6 +3721,13 @@
         "url": "https://www.visitjeju.net/kr/festival/view?contentsid=CNTS_300000000015191",
         "facts": "2026년 행사 날짜와 장소, 프로그램 및 공개 관람 안내를 확인.",
         "checkedAt": "2026-11-16"
+      },
+      {
+        "publisher": "문화체육관광부 · 대한민국 구석구석",
+        "title": "2026 최남단방어축제 지역축제 안내",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=13570",
+        "facts": "11월 19~22일 10:00~19:00, 모슬포항 일원, 기본 무료 관람.",
+        "checkedAt": "2026-11-20"
       }
     ]
   },
@@ -4657,15 +4671,15 @@
     "program": "국내외 게임 전시, 신작과 인디게임 체험, 무대와 이스포츠 행사",
     "feeStatus": "paid",
     "fee": "성인 18,000원 · 청소년 8,000원 · 무료 대상은 공식 안내 확인",
-    "booking": "공식 입장권 안내에서 날짜를 골라 전날 자정까지 온라인 예매. 전체 판매는 11월 21일 23:59 종료. 현장 판매 없음.",
+    "booking": "공식 입장권 안내에서 날짜를 골라 전날 자정까지 온라인 예매(1인 1일 2매 제한). 전체 판매는 11월 21일 23:59 종료. 현장 판매 없음.",
     "familyNote": "예매한 날만 입장할 수 있습니다. 현장에서 입장 팔찌를 받고 청소년은 연령 증빙을 지참하세요.",
     "sources": [
       {
         "publisher": "지스타 조직위원회",
         "title": "일반 관람 입장권 안내",
         "url": "https://www.gstar.or.kr/part/gstar_btc_info.do",
-        "facts": "일반권 가격, 온라인 예매 기간, 현장 미판매, 첫날 개장 및 입장 마감.",
-        "checkedAt": "2026-11-16"
+        "facts": "일반권 가격, 11월 21일 23:59 판매 종료, 1인 1일 2매, 입장권 확인 17:00·입장 17:30 마감.",
+        "checkedAt": "2026-11-20"
       },
       {
         "publisher": "지스타 조직위원회",

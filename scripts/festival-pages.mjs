@@ -18,7 +18,7 @@ export async function buildHome() {
   const {heroes:picks, events:weekendEvents}=homeRecommendations(active,today,e=>!!images[e.id]);
   const hero=picks[0];
   const heroImage=hero&&images[hero.id];
-  const heroHTML='<section class="hero-layout" aria-label="다가오는 축제"'+(hero?'':' hidden')+'>'+
+  const heroHTML='<section class="hero-layout" aria-label="이번 주말 추천"'+(hero?'':' hidden')+'>'+
     '<div class="hero-main theme-'+esc(hero?.theme||'kids')+'" id="hero-main">'+
     '<div class="hero-image" data-hero-image>'+(hero?imageMarkup(hero,{hero:true}):'')+'</div>'+
     '<div class="hero-shade"></div><p class="hero-picture-note" data-hero-credit>'+esc(imageCaption(heroImage))+'</p>'+
@@ -40,7 +40,7 @@ export async function buildHome() {
     '<div class="hero-dots"'+(picks.length<2?' hidden':'')+'>'+
     picks.map((e,i)=>'<button data-hero-slide="'+i+'" aria-label="추천 '+(i+1)+' · '+esc(e.title)+
       '" aria-pressed="'+(i===0)+'"></button>').join('')+'</div></div>'+
-    '<aside class="hero-side"><div class="section-title small"><h2>✦ 다가오는 축제</h2><span>FESTIVAL PICKS</span></div>'+
+    '<aside class="hero-side"><div class="section-title small"><h2>✦ 이번 주말 추천</h2><span>FESTIVAL PICKS</span></div>'+
     picks.slice(1).map(mini).join('')+
     '<a class="weekend-banner" href="/curation/"><span class="banner-symbol" aria-hidden="true">✳</span>'+
     '<span><b>이번 주말, 같이 떠나요</b><small data-weekend-summary>'+weekend.start.slice(5).replace('-','.')+

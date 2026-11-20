@@ -7,7 +7,7 @@ export const FESTIVAL_HIGHLIGHTS={
   'seoul-cafe-show-2026':{reason:'코엑스 전관을 사용하는 국제 커피 전시와 서울커피페스티벌',source:'https://kor.cafeshow.com/kor/cafeshow/summary.asp'},
   'seoul-design-festival-2026':{reason:'국내외 디자이너·브랜드가 참여하는 디자인 전문 전시',source:'https://seoul.designfestival.co.kr/sdf/overview/'},
   'pohang-fire-light-2026':{reason:'포항시 대표 국제불꽃 행사로 시의회에서 연간 관람 규모를 약 30만 명으로 추산',source:'https://council.pohang.go.kr/mnts/cnts/mnt/mntsViewer.php?schSn=6110'},
-  'busan-gstar-2026':{reason:'벡스코에서 열리는 한국게임산업협회 주최 국제게임전시회',source:'https://gstar.or.kr/gstar/gstar_info.do'},
+  'busan-gstar-2026':{reason:'부산시 발표 기준 2025년 44개국 1,273개 게임사와 3,269개 부스가 참가한 국제게임전시회',source:'https://www.busan.go.kr/nbtnewsBU/1705887'},
   'jeju-moseulpo-yellowtail-2026':{reason:'모슬포항의 제26회 제주 대표 제철 방어 축제',source:'https://www.visitjeju.net/kr/festival/view?contentsid=CNTS_300000000015191'},
   'seoul-lantern-winter-2026':{reason:'서울관광재단 집계 2025년 383만 명 방문',source:'https://sto.or.kr/press/16035_/16035'},
   'busan-haeundae-light-2026':{reason:'해운대 해변과 구남로를 잇는 제13회 부산 겨울 빛축제',source:'https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=12038'},

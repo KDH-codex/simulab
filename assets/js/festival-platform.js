@@ -23,14 +23,18 @@ function refreshHighlights() {
   });
   document.querySelectorAll('#hot-event-feed [data-card-id]').forEach(card=>{
     const event=byId.get(card.dataset.cardId);
-    if(!event||!highlightFor(event,today))card.remove();
+    if(!event||!highlightFor(event,today)){
+      card.remove();
+      return;
+    }
+    const badge=card.querySelector('.status-badge');
+    if(badge)badge.textContent=status(event);
   });
   const hotSection=document.querySelector('.hot-section');
   if(hotSection&&!hotSection.querySelector('[data-card-id]'))hotSection.hidden=true;
   const detail=data.find(e=>e.url===location.pathname);
   if(detail&&!highlightFor(detail,today))document.querySelector('.detail-page .highlight-explanation')?.remove();
 }
-refreshHighlights();
 const page=document.body.dataset.festivalPage;
 const $=id=>document.getElementById(id);
 const params=new URL(location.href).searchParams;
@@ -52,6 +56,7 @@ function status(e) {
   if(e.startDate<=today) return eventStatus(e,today)==='예정'?'다음 운영 '+fmt(nextDate(e,today)):eventStatus(e,today);
   return 'D-'+Math.round((new Date(e.startDate+'T00:00:00Z')-new Date(today+'T00:00:00Z'))/86400000);
 }
+refreshHighlights();
 function imageMarkup(e,hero=false) {
   return eventImage(e,e.image,{hero});
 }
@@ -168,14 +173,18 @@ function syncPills(pool) {
 function renderGrid() {
   const r=periodRange();
   const start=r.start<today?today:r.start;
-  const pool=data.filter(e=>overlaps(e,start,r.end));
+  const showSavedHistory=state.saved&&state.period==='upcoming';
+  const pool=data.filter(e=>overlaps(e,start,r.end)||
+    (showSavedHistory&&e.endDate<today&&saved.includes(e.id)));
   const filtered=pool.filter(e=>selection(e)).sort((a,b)=>(state.sort==='end'?a.endDate.localeCompare(b.endDate):nextDate(a,r.start).localeCompare(nextDate(b,r.start))) || a.title.localeCompare(b.title,'ko'));
   const el=$('event-cards');if(!el)return;
   el.innerHTML=filtered.slice(0,state.limit).map(card).join('');
   $('empty-state').hidden=filtered.length>0;
   $('load-more').hidden=filtered.length<=state.limit;
   $('result-title').textContent=(state.saved?'보관한 축제':state.region==='all'?'전국 축제 모아보기':state.region+' 축제 모아보기');
-  $('result-summary').textContent=(state.period==='weekend'?'이번 주말':state.period==='today'?'오늘':'앞으로 60일')+' · '+r.start.replaceAll('-','.')+' — '+fmt(r.end)+' · 수록 일정 '+filtered.length+'건';
+  $('result-summary').textContent=showSavedHistory
+    ? '종료 포함 · 보관 일정 '+filtered.length+'건'
+    : (state.period==='weekend'?'이번 주말':state.period==='today'?'오늘':'앞으로 60일')+' · '+r.start.replaceAll('-','.')+' — '+fmt(r.end)+' · 수록 일정 '+filtered.length+'건';
   syncPills(pool);syncSaved();revealCards();
 }
 function updateURL() {
