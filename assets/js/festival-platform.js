@@ -433,13 +433,22 @@ if(heroElement){
 }
 
 function refreshDetailStatus() {
-  const label=document.querySelector('[data-event-status]');
-  const event=label&&byId.get(label.dataset.eventStatus);
-  if(event)label.textContent=status(event);
+  document.querySelectorAll('[data-event-status]').forEach(label=>{
+    const event=byId.get(label.dataset.eventStatus);
+    if(event)label.textContent=status(event);
+  });
+}
+function refreshChristmas() {
+  const spotlight=document.querySelector('[data-christmas-until]');
+  if(spotlight)spotlight.hidden=today>spotlight.dataset.christmasUntil;
+  document.querySelectorAll('[data-christmas-offer-end]').forEach(label=>{
+    label.hidden=today<=label.dataset.christmasOfferEnd;
+  });
 }
 refreshDetailStatus();
+refreshChristmas();
 
-if(page==='home'||page==='detail'){
+if(page==='home'||page==='detail'||page==='christmas'){
   const checkDate=()=>{
     const date=koreaToday();
     if(date===today)return;
@@ -447,6 +456,7 @@ if(page==='home'||page==='detail'){
     refreshHighlights();
     refreshHome();
     refreshDetailStatus();
+    refreshChristmas();
     if(page==='home')renderGrid();
   };
   window.setInterval(checkDate,60_000);

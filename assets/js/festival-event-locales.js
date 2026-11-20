@@ -1,6 +1,8 @@
 // Editorial guide names, not organizer-certified translations. Keep Korean names for maps/sources.
 // id | summary topic | English | Japanese | Simplified Chinese | Traditional Chinese
 const rows = `
+jeju-christmas-village-2026|night|Jeju Christmas Village 2026|済州クリスマスビレッジ2026|2026 济州圣诞村|2026 濟州聖誕村
+seogwipo-jeju-icc-santa-2026|market|Santa Watsuda at ICC JEJU Winter Festa|ICC JEJU ウィンターフェスタ「サンタワッスダ」|ICC济州冬季庆典「圣诞老人来了」|ICC濟州冬季慶典「聖誕老人來了」
 seoul-hangang-gym-run-2026|walk|Hangang Gym Run 2026|漢江ジムラン2026|2026 汉江健身跑|2026 漢江健身跑
 seoul-unfold-x-2026|media|Unfold X 2026: Reality Check|アンフォールドX 2026「リアリティ・チェック」|Unfold X 2026《现实检验》|Unfold X 2026《現實檢驗》
 seoul-lotte-town-christmas-market-2026|market|Lotte Town Christmas Market 2026|ロッテタウン・クリスマスマーケット2026|2026 乐天城圣诞市集|2026 樂天城聖誕市集

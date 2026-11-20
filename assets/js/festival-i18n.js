@@ -15,12 +15,29 @@ export function resolveLocale({query,saved,languages=[]}={}) {
 }
 export function languageURL(value,locale,origin='https://simulab.kr') {
   const url=new URL(value,origin);
-  if(url.origin!==new URL(origin).origin||!/^\/(?:$|map\/$|calendar\/$|curation\/$|sales\/(?:[a-z0-9-]+\/)?$|events\/[a-z0-9-]+\/$)/.test(url.pathname))return null;
+  if(url.origin!==new URL(origin).origin||!/^\/(?:$|map\/$|calendar\/$|curation\/(?:christmas\/)?$|sales\/(?:[a-z0-9-]+\/)?$|events\/[a-z0-9-]+\/$)/.test(url.pathname))return null;
   url.searchParams.set('lang',normalizeLocale(locale)||'ko');
   return url;
 }
 // Hand-authored interface copy. Event guide names/summaries live in festival-event-locales.js.
 const rows=`
+크리스마스 특집|Christmas special|クリスマス特集|圣诞特辑|聖誕特輯
+크리스마스 모음집|Christmas guide|クリスマスガイド|圣诞指南|聖誕指南
+겨울 마켓과 빛축제, 성탄 주간 나들이와 케이크 예약을 모았어요.|Find winter markets, light festivals, Christmas week outings and cake reservations.|冬のマーケット、イルミネーション、クリスマスのお出かけとケーキ予約をまとめました。|冬日市集、灯会、圣诞出游与蛋糕预订一览。|冬日市集、燈會、聖誕出遊與蛋糕預訂一覽。
+크리스마스 모음집 보기|Open the Christmas guide|クリスマスガイドを見る|查看圣诞指南|查看聖誕指南
+크리스마스 일정 바로가기|Jump to Christmas dates|クリスマス日程へ|跳转到圣诞日程|跳轉到聖誕日程
+12월 초 마켓|Early December markets|12月上旬のマーケット|十二月初市集|十二月初市集
+11월 말~12월 초|Late November to early December|11月下旬〜12月上旬|十一月下旬至十二月初|十一月下旬至十二月初
+12월 중순|Mid-December|12月中旬|十二月中旬|十二月中旬
+성탄 주간|Christmas week|クリスマスの週|圣诞周|聖誕週
+케이크 예약·장식 할인|Cake preorders and décor offers|ケーキ予約と装飾品セール|蛋糕预订和装饰优惠|蛋糕預訂和裝飾優惠
+겨울 마켓부터 성탄 주간 행사까지. 운영일과 예약 조건을 확인하고 갈 곳을 골라보세요.|From winter markets to Christmas week events, check opening days and booking details before you go.|冬のマーケットからクリスマスの催しまで。開催日と予約条件を確認してお出かけ先を選べます。|从冬日市集到圣诞周活动，查好开放日与预约条件再出发。|從冬日市集到聖誕週活動，查好開放日與預約條件再出發。
+예약 기간|Preorder dates|予約期間|预订日期|預訂日期
+매장 수령|In-store pickup|店舗受け取り|门店领取|門市領取
+할인 기간|Offer dates|セール期間|优惠日期|優惠日期
+공식 예약 안내|Official booking information|公式予約案内|官方预订指南|官方預訂指南
+공식 쿠폰 안내|Official coupon terms|公式クーポン案内|官方优惠券规则|官方優惠券規則
+할인·쇼핑 더 보기|More shopping offers|ほかのセールを見る|查看其他购物优惠|查看其他購物優惠
 이번주 축제|Korea Festival Guide|韓国お祭りガイド|韩国节庆指南|韓國節慶指南
 홈|Home|ホーム|首页|首頁
 본문으로|Skip to content|本文へ|跳到正文|跳到正文

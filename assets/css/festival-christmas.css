@@ -1,0 +1,99 @@
+.christmas-spotlight,.christmas-collection-hero {
+  display:grid;
+  align-items:center;
+  gap:clamp(18px,3vw,38px);
+  background:#163936;
+  color:#fff9e9;
+  border-radius:26px;
+  padding:clamp(18px,3vw,33px);
+}
+.christmas-spotlight {
+  grid-template-columns:minmax(150px, .7fr) minmax(0,1fr) minmax(175px,.72fr);
+  margin:26px 0 34px;
+}
+.christmas-spotlight h2,.christmas-collection-hero h1 {
+  margin:0;
+  color:inherit;
+  line-height:1.22;
+  letter-spacing:-.045em;
+}
+.christmas-spotlight h2{font-size:clamp(23px,2.7vw,36px)}
+.christmas-spotlight-copy p,.christmas-collection-hero p{
+  color:#f5e8cf;
+  margin:9px 0 15px;
+  line-height:1.6;
+}
+.christmas-spotlight .button.secondary {background:#ffedc3;color:#24443a;white-space:normal}
+.christmas-spotlight .button.secondary:hover {background:#fff6de;color:#163936}
+.christmas-image {
+  position:relative;
+  overflow:hidden;
+  width:100%;
+  min-width:0;
+  border-radius:15px;
+  aspect-ratio:16/9;
+  background:#244844;
+}
+.christmas-image img{width:100%;height:100%;object-fit:cover;object-position:50% 52%;display:block}
+.christmas-image .image-credit{
+  right:7px;bottom:7px;left:auto;max-width:calc(100% - 14px);
+  background:#173936;color:#fff9e9;
+}
+.christmas-shortcuts{display:grid;gap:6px}
+.christmas-shortcuts a{
+  border-bottom:1px solid #ffffff50;padding:8px 0;
+  color:#fff2d7;display:flex;justify-content:space-between;gap:8px;
+  line-height:1.5;font-weight:700;
+}
+.christmas-shortcuts a:hover{color:#fff;text-decoration:underline}
+.christmas-page{padding-bottom:48px}
+.christmas-collection-hero{grid-template-columns:minmax(0,1fr) minmax(0,.9fr);margin:24px 0 18px}
+.christmas-collection-hero h1{font-size:clamp(31px,5vw,63px)}
+.christmas-collection-hero .christmas-season-year{color:#f1cc8a;font-weight:750;margin:0 0 5px}
+.christmas-nav{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 35px}
+.christmas-nav a{
+  color:#244940;background:#eef7f0;border:1px solid #d4e6da;
+  border-radius:20px;padding:8px 13px;font-weight:700;font-size:13px;
+}
+.christmas-nav a:hover{background:#dcece1}
+.christmas-group{margin:0 0 32px;scroll-margin-top:115px}
+.christmas-group h2{font-size:clamp(20px,2.7vw,30px);margin:0 0 12px}
+.christmas-event-grid,.christmas-offers{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;
+}
+.christmas-event,.christmas-offers article{
+  min-width:0;background:#fff;border:1px solid #e1e7df;
+  border-radius:18px;padding:clamp(14px,2vw,21px);display:flex;flex-direction:column;gap:10px;
+}
+.christmas-event-meta{display:flex;justify-content:space-between;gap:10px;color:#46654e;font-size:12px;font-weight:750}
+.christmas-event h3,.christmas-offers h3{color:#24443b;font-size:17px;line-height:1.4}
+.christmas-event p,.christmas-offers p,.christmas-event dd,.christmas-offers dd{
+  line-height:1.55;color:#514556;font-size:13px;
+}
+.christmas-event dl,.christmas-offers dl{margin:0}
+.christmas-event dl div,.christmas-offers dl div{
+  display:grid;grid-template-columns:68px minmax(0,1fr);gap:7px;
+  border-top:1px solid #ece8ed;padding:6px 0;
+}
+.christmas-event dt,.christmas-offers dt{font-weight:750;font-size:12px;color:#49404f}
+.christmas-event dd,.christmas-offers dd{margin:0;overflow-wrap:anywhere}
+.christmas-event-links{
+  display:flex;flex-wrap:wrap;gap:8px 13px;margin-top:auto;align-items:center;
+}
+.christmas-event-links a,.christmas-offers a{font-size:13px;font-weight:750;color:#275b49;text-decoration:underline}
+.christmas-event .christmas-date-note{color:#695479;font-size:12px}
+.christmas-state{font-size:11px;color:#695479}
+.christmas-offers{margin-bottom:12px}
+@media(max-width:860px){
+  .christmas-spotlight{grid-template-columns:minmax(125px,.6fr) minmax(0,1fr)}
+  .christmas-shortcuts{grid-column:1/-1;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+  .christmas-event-grid,.christmas-offers{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:560px){
+  .christmas-spotlight,.christmas-collection-hero,.christmas-event-grid,.christmas-offers{grid-template-columns:minmax(0,1fr)}
+  .christmas-spotlight{gap:12px}
+  .christmas-spotlight .christmas-image{aspect-ratio:2.9/1}
+  .christmas-shortcuts{grid-template-columns:1fr;gap:0}
+  .christmas-shortcuts a{font-size:13px}
+  .christmas-collection-hero .christmas-image{aspect-ratio:2.2/1}
+}

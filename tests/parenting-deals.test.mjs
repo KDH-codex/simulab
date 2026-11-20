@@ -11,7 +11,7 @@ const at='2026-10-25T23:00:00+09:00',hm=events.find(e=>e.brandId==='hm'),kurly=e
 
 test('tracked brands include requested fashion, beauty, life and marketplace sales',()=>{
  assert.ok(sources.length>=36);assert.equal(new Set(sources.map(s=>s.id)).size,sources.length);
- const required=['kurly','emart','lottemart','modernhouse','uniqlo','hm','zara','newbalance','topten','jellymallow','monbebe','littleground','minkmui','bebedepino','absorba','hanssem','iloom','musinsa','oliveyoung','muji','amoremall','naver-store','11st'];
+ const required=['kurly','emart','lottemart','modernhouse','uniqlo','hm','zara','newbalance','topten','jellymallow','monbebe','littleground','minkmui','bebedepino','absorba','hanssem','iloom','musinsa','oliveyoung','muji','amoremall','naver-store','11st','traders','gmarket'];
  for(const id of required)assert.equal(sources.find(s=>s.id===id)?.trackingTier,'priority',id);
  assert.ok(events.filter(isCalendarEligible).length>=20);assert.equal(events.filter(e=>e.publicationStatus==='held').length,8);
  assert.equal(filterEvents(events,{month:'2026-10'},at).some(e=>e.brandId==='11st'),false);
@@ -136,7 +136,7 @@ test('legacy library preserves the calendar and shopping disclosures distinguish
 });
 
 test('beauty and fashion filters find new brands without turning member offers into calendar sales',()=>{
- assert.deepEqual(filterSources(sources,{category:'beauty'}).map(s=>s.id),['oliveyoung','amoremall','naver-store','11st']);
+ assert.deepEqual(filterSources(sources,{category:'beauty'}).map(s=>s.id),['oliveyoung','amoremall','naver-store','11st','gmarket']);
  assert.equal(filterSources(sources,{category:'fashion',query:'무탠다드'})[0].id,'musinsa');
  assert.equal(filterSources(sources,{category:'life',query:'MUJI'})[0].id,'muji');
  assert.equal(filterEvents(events,{month:'2026-10',category:'beauty'},at)[0].brandId,'amoremall');

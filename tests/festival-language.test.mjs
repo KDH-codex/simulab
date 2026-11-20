@@ -22,6 +22,9 @@ test('language links preserve dates, region, saved filter and anchor without lea
   assert.equal(url.searchParams.get('lang'),'zh-TW');
   assert.equal(languageURL('https://map.naver.com/v5/search/서울','en'),null);
   assert.equal(languageURL('/legal/privacy','en'),null);
+  const christmas=languageURL('/curation/christmas/#holiday-shopping','ja');
+  assert.equal(christmas.searchParams.get('lang'),'ja');
+  assert.equal(christmas.hash,'#holiday-shopping');
   assert.equal(languageURL('/events/busan-fireworks-2026/','ja').searchParams.get('lang'),'ja');
 });
 test('every reviewed event has four guide names and topic summaries, with Korean data preserved',()=>{

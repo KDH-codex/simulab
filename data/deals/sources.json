@@ -817,6 +817,65 @@
       "checkedAt": "2026-11-20T16:48:48+09:00",
       "trackingTier": "priority",
       "rightsNote": "공식 공지의 날짜와 적용 조건을 자체 문장으로 안내합니다."
+    },
+    {
+      "id": "traders",
+      "name": "트레이더스 홀세일 클럽",
+      "operator": "주식회사 이마트",
+      "officialUrl": "https://www.traders.co.kr/",
+      "allowedHosts": [
+        "www.traders.co.kr",
+        "store.emart.com",
+        "eapp.emart.com",
+        "traders.ssg.com"
+      ],
+      "categories": [
+        "life",
+        "kitchen",
+        "appliances",
+        "kids"
+      ],
+      "aliases": [
+        "트레이더스",
+        "이마트 트레이더스",
+        "TRADERS"
+      ],
+      "trackingTier": "priority",
+      "note": "점포 전단과 휴점, 클럽 회원 및 결제 조건. 일반 이마트와 트레이더스몰은 각각 적용 범위 확인.",
+      "rightsNote": "공식 공지의 일정과 이용 조건을 자체 문장으로 안내합니다.",
+      "checkedAt": "2026-11-20T17:38:03+09:00"
+    },
+    {
+      "id": "gmarket",
+      "name": "G마켓",
+      "operator": "주식회사 지마켓",
+      "officialUrl": "https://www.gmarket.co.kr/",
+      "allowedHosts": [
+        "www.gmarket.co.kr",
+        "m.gmarket.co.kr",
+        "event.gmarket.co.kr",
+        "rpp.gmarket.co.kr",
+        "news.gmarket.com"
+      ],
+      "categories": [
+        "life",
+        "fashion",
+        "beauty",
+        "kids",
+        "furniture",
+        "appliances",
+        "kitchen"
+      ],
+      "aliases": [
+        "지마켓",
+        "Gmarket",
+        "빅스마일데이",
+        "빡세일"
+      ],
+      "trackingTier": "priority",
+      "note": "공식 기획전과 뉴스룸에서 플랫폼 공통·입점 판매자·쿠폰·카드 범위를 확인.",
+      "rightsNote": "공식 공지의 일정과 이용 조건을 자체 문장으로 안내합니다.",
+      "checkedAt": "2026-11-20T17:38:03+09:00"
     }
   ]
 }

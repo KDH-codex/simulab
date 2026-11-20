@@ -4928,7 +4928,7 @@
   },
   {
     "verificationStatus": "verified",
-    "checkedAt": "2026-11-16",
+    "checkedAt": "2026-11-20",
     "id": "seoul-gwanghwamun-market-2026",
     "title": "2026 광화문 마켓",
     "region": "서울",
@@ -4948,6 +4948,13 @@
         "url": "https://festival.seoul.go.kr/festival/main/festivalView.do?festacode=984",
         "facts": "개최 기간, 장소, 요일별 시간과 무료 입장.",
         "checkedAt": "2026-11-16"
+      },
+      {
+        "publisher": "서울관광재단",
+        "title": "2026 광화문 마켓 방문 안내",
+        "url": "https://korean.visitseoul.net/events/2026GwanghwamunMarket/KOP0rc1ic",
+        "facts": "12/11~1/10, 광화문광장·세종로공원 일대, 크리스마스 마켓과 푸드·시즌 소품 확인.",
+        "checkedAt": "2026-11-20"
       }
     ]
   },
@@ -5004,21 +5011,28 @@
   },
   {
     "verificationStatus": "verified",
-    "checkedAt": "2026-11-16",
+    "checkedAt": "2026-11-20",
     "id": "seoul-hangang-christmas-market-2026",
     "title": "2026 로맨틱한강 크리스마스 마켓",
     "region": "서울",
     "theme": "kids",
     "startDate": "2026-12-24",
     "endDate": "2026-12-27",
-    "location": "서울 광진구 뚝섬한강공원",
-    "program": "뚝섬한강공원에서 열리는 크리스마스 시즌 마켓",
+    "location": "뚝섬한강공원 이벤트광장 · 자벌레(한강플플)와 청담대교 하부 일대",
+    "program": "실내외 마켓, 푸드트럭, 대형 트리, 회전목마, 라이브 공연과 체험",
     "feeStatus": "unknown",
-    "fee": "올해 운영시간과 이용료는 서울시 후속 공지 확인",
-    "booking": "세부 운영 및 신청 방법은 서울시 후속 공지 확인",
-    "scheduleType": "period",
-    "scheduleNote": "서울시가 공지한 올해 기간과 장소 기준.",
+    "fee": "구매·체험별 비용은 운영사 안내 확인",
+    "booking": "마켓 방문 안내와 개별 프로그램 참여 방법은 공식 운영 페이지 확인",
+    "scheduleType": "continuous",
+    "scheduleNote": "12/24~27 운영. 12/24 18시 점등식.",
     "sources": [
+      {
+        "publisher": "로맨틱한강 크리스마스마켓 운영사무국",
+        "title": "2026 마켓 행사 개요와 점등식",
+        "url": "https://www.hangangchristmas.co.kr/accessibilitystatement",
+        "facts": "12/24~27, 13:00~21:00, 12/24 18시 점등식, 실내외 마켓과 체험 확인. 개별 체험 요금 미확인.",
+        "checkedAt": "2026-11-20"
+      },
       {
         "publisher": "서울시",
         "title": "2026 로맨틱한강 크리스마스 마켓",
@@ -5026,7 +5040,8 @@
         "facts": "올해 12월 24~27일, 뚝섬한강공원 확인.",
         "checkedAt": "2026-11-16"
       }
-    ]
+    ],
+    "time": "13:00~21:00 · 12/24 점등식 18:00"
   },
   {
     "verificationStatus": "verified",
@@ -5605,5 +5620,67 @@
     ],
     "verificationStatus": "verified",
     "checkedAt": "2026-11-20"
+  },
+  {
+    "id": "jeju-christmas-village-2026",
+    "title": "2026 제주 크리스마스 빌리지",
+    "region": "제주",
+    "theme": "light",
+    "startDate": "2026-11-28",
+    "endDate": "2026-12-25",
+    "location": "제주성안교회 앞마당 일대 · 제주시 중앙로 470",
+    "time": "공연·체험별 상이 · 토요일 먹거리 부스 12:00~19:00",
+    "program": "트리니팅 가로수길, 성탄 전시, 11/28 인형극·12/5 뮤지컬·12/12 재즈·12/19 콘서트",
+    "feeStatus": "free",
+    "fee": "입장·공연 무료 · 먹거리·굿즈 별도",
+    "booking": "도슨트는 현장 선착순 20명. 회차별 이용은 공식 행사일정 확인",
+    "familyNote": "11/28 인형극 15시·18시, 12/5 뮤지컬 14시·17시, 12/12와 12/19 공연 17시. 먹거리 부스는 토요일 운영입니다.",
+    "scheduleType": "period",
+    "scheduleNote": "전체 기간이며 공연은 지정 토요일에 진행.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-20",
+    "sources": [
+      {
+        "publisher": "제주성안교회",
+        "title": "제주 크리스마스 빌리지 행사일정",
+        "url": "https://jejuchristmasvillage.co.kr/schedule",
+        "facts": "11/28~12/25, 주소, 입장·공연 무료, 토요일 공연 시간, 도슨트 현장 접수 확인.",
+        "checkedAt": "2026-11-20"
+      }
+    ]
+  },
+  {
+    "id": "seogwipo-jeju-icc-santa-2026",
+    "title": "2026 ICC JEJU 윈터페스타 ‘산타왔수다’",
+    "region": "제주",
+    "theme": "kids",
+    "startDate": "2026-12-12",
+    "endDate": "2026-12-13",
+    "location": "제주국제컨벤션센터 2센터 · 서귀포시 중문동",
+    "time": "날짜별 시간표는 공식 행사일정표 확인",
+    "program": "제주 지역 먹거리·선물 전시와 크리스마스 시즌 체험. 현장에 제주 북케이션 위크·작심삼일 엑스포도 열림.",
+    "feeStatus": "unknown",
+    "fee": "관람·개별 체험 요금은 주최 측 확인",
+    "booking": "공식 참관객 사전등록 양식에서 신청. 접수 마감과 현장 등록 여부는 주최 측 안내 확인.",
+    "familyNote": "행사장으로 갈 때 제주국제컨벤션센터 2센터 위치를 확인하세요. 체험마다 참가 조건이 다를 수 있습니다.",
+    "scheduleType": "continuous",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-20",
+    "sources": [
+      {
+        "publisher": "제주국제컨벤션센터",
+        "title": "산타왔수다 공식 행사 안내",
+        "url": "https://jejuchristmasfair.com/pages/sub02_1.php",
+        "facts": "12/12~13, ICC 제주 2센터, 시즌 선물과 지역 먹거리 확인.",
+        "checkedAt": "2026-11-20"
+      },
+      {
+        "publisher": "제주국제컨벤션센터",
+        "title": "ICC JEJU 윈터페스타 참관객 사전등록",
+        "url": "https://jejuchristmasfair.com/bbs/write.php?bo_table=sub01_3_aadw",
+        "facts": "관람객 사전등록 양식 확인. 접수 마감·요금 미확인.",
+        "checkedAt": "2026-11-20"
+      }
+    ]
   }
 ]
