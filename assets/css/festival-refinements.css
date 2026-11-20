@@ -304,3 +304,23 @@ button:focus-visible,a:focus-visible,select:focus-visible,input:focus-visible{ou
 @media (prefers-reduced-motion:reduce) {
   .site-header .main-nav .christmas-nav-tab {animation:none}
 }
+
+/* Retain the full artwork of posters published with a no-derivatives license. */
+:is(.card-visual,.mini-image,.detail-image,.detail-mobile-media,.modal-cover,.hero-image) img.official-poster-image {
+  object-fit:contain;
+  background:#211d26;
+  padding-block-end:28px;
+}
+.festival-card:hover .card-visual img.official-poster-image,
+.mini-event:hover .mini-image img.official-poster-image {transform:none}
+.hero-image img.official-poster-image {
+  object-position:85% center;
+  padding-block:16px 38px;
+}
+
+.card-visual>a:has(.official-poster-image)::after {display:none}
+.card-visual>a:has(.official-poster-image) .picture-date {
+  padding:2px 5px;
+  border-radius:4px;
+  background:#211d26e8;
+}

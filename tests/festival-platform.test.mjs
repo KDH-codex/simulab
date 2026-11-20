@@ -1,7 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
-import {events,active,all,json,card,badge} from '../scripts/festival-platform.mjs';
+import {createHash} from 'node:crypto';
+import {CHRISTMAS_GROUPS} from '../assets/js/festival-christmas-model.js';
+import {events,active,all,images,json,card,badge} from '../scripts/festival-platform.mjs';
 import {occursOn} from '../tools/kids-outing-calendar/model.js';
 const read=p=>readFile(new URL('../'+p,import.meta.url),'utf8');
 
@@ -44,4 +46,18 @@ test('regional navigation is an explicitly schematic overview',async()=>{
   assert.equal((html.match(/class="region-point point-/g)||[]).length,7);
   const home=await read('index.html');
   assert.ok((home.match(/data-card-id=/g)||[]).length>=active.length);
+});
+
+test('the Christmas collection gives each event a distinct image file',async()=>{
+  const digests=new Map();
+  for(const {ids} of CHRISTMAS_GROUPS){
+    for(const id of ids){
+      const image=images[id];
+      assert.ok(image?.src.startsWith('/assets/img/festivals/'),id+' needs an event image');
+      const bytes=await readFile(new URL('..'+image.src,import.meta.url));
+      const hash=createHash('sha256').update(bytes).digest('hex');
+      assert.equal(digests.get(hash),undefined,id+' shares an image with '+digests.get(hash));
+      digests.set(hash,id);
+    }
+  }
 });

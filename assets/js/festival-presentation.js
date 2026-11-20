@@ -32,7 +32,8 @@ export function eventImage(event,image,{hero=false,compact=false}={}) {
   if(!image)return themeArtwork(event)+highlightBadge(event);
   const fullCaption=imageCaption(image);
   const descriptiveAlt=image.alt?image.alt+' · '+fullCaption:image.kind==='context'?'주제 참고 사진 · 행사 현장 사진 아님':image.kind==='generated'?fullCaption:event.title;
-  return '<img src="'+esc(image.src)+'" alt="'+esc(descriptiveAlt)+'" '+(hero?'fetchpriority="high"':'loading="lazy"')+' decoding="async"><span class="image-credit'+(compact?' compact-credit':'')+'" title="'+esc(fullCaption)+'">'+esc(imageCaption(image,{compact}))+'</span>'+highlightBadge(event);
+  const posterClass=image.kind==='poster'?' class="official-poster-image"':'';
+  return '<img'+posterClass+' src="'+esc(image.src)+'" alt="'+esc(descriptiveAlt)+'" '+(hero?'fetchpriority="high"':'loading="lazy"')+' decoding="async"><span class="image-credit'+(compact?' compact-credit':'')+'" title="'+esc(fullCaption)+'">'+esc(imageCaption(image,{compact}))+'</span>'+highlightBadge(event);
 }
 
 export function miniEvent(event, {url, image, status, dates, theme}) {
