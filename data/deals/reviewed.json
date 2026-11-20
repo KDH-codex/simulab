@@ -1677,6 +1677,576 @@
           }
         }
       }
+    },
+    {
+      "id": "emart-fresh-flyer-20261119",
+      "brandId": "emart",
+      "title": "이마트 특별전단 신선 먹거리",
+      "shortTitle": "이마트 특별전단 신선 먹거리",
+      "categories": [
+        "life"
+      ],
+      "startDate": "2026-11-19",
+      "endDate": "2026-11-25",
+      "benefitType": "sale",
+      "channels": [
+        "store"
+      ],
+      "summary": "감귤·생굴·와규 등 지정 신선식품에 신세계포인트 할인.",
+      "conditions": [
+        "특별전단의 참여점 한정이며, 표시 가격은 일부를 제외하고 은평점 기준입니다.",
+        "신세계포인트 할인은 결제 시 적립해야 적용됩니다. 상품·규격·취급 여부는 점포별로 다를 수 있습니다.",
+        "일부 상품은 먼저 품절될 수 있으므로 방문할 점포와 휴무일을 확인하세요."
+      ],
+      "periodNote": "특별전단 1면 신선식품 행사 기간",
+      "sourceUrl": "https://emartapp.emart.com/leaflet/FlyerMainViewer.do?image_pop=true",
+      "periodSourceUrl": "https://emartapp.emart.com/leaflet/FlyerMainViewer.do?image_pop=true",
+      "checkedAt": "2026-11-20T16:48:48+09:00",
+      "publicationStatus": "reviewed",
+      "placement": "calendar",
+      "publicationScope": "facts-summary",
+      "reviewWithinDays": 2,
+      "campaignKind": "limited-sale",
+      "campaignScope": "category",
+      "shopping": {
+        "retailerId": "emart",
+        "brand": "이마트",
+        "brandCode": "EMART",
+        "kind": "mart",
+        "format": "mart",
+        "area": "nationwide",
+        "storeScope": "은평점 등 공식 특별전단에 표시된 20개 참여점",
+        "specificStore": false,
+        "membership": true,
+        "card": false,
+        "app": false,
+        "reviewWithinHours": 48,
+        "locales": {
+          "en": {
+            "title": "E-Mart fresh food flyer",
+            "summary": "Shinsegae Points discounts on selected fresh foods at participating stores."
+          },
+          "ja": {
+            "title": "Eマート 生鮮食品セール",
+            "summary": "参加店の対象生鮮食品に新世界ポイント割引。"
+          },
+          "zh-CN": {
+            "title": "易买得生鲜食品促销",
+            "summary": "参加门店的指定生鲜商品享新世界积分优惠。"
+          },
+          "zh-TW": {
+            "title": "易買得生鮮食品促銷",
+            "summary": "參加門市的指定生鮮商品享新世界點數優惠。"
+          }
+        }
+      }
+    },
+    {
+      "id": "homeplus-online-groceries-20261119",
+      "brandId": "homeplus",
+      "title": "홈플러스 온라인 전단 장보기",
+      "shortTitle": "홈플러스 온라인 전단 장보기",
+      "categories": [
+        "life"
+      ],
+      "startDate": "2026-11-19",
+      "endDate": "2026-11-25",
+      "benefitType": "mixed",
+      "channels": [
+        "online"
+      ],
+      "summary": "한우·제철 과일·냉동식품 등의 주간 행사. 상품별 수량과 쿠폰 조건 적용.",
+      "conditions": [
+        "공식 온라인 전단에서 확인한 행사입니다. 점포별 취급 품목과 가격, 배송 가능 지역을 확인하세요.",
+        "품목별 1+1, 묶음 구매, 상품 할인과 장바구니 쿠폰의 조건이 다릅니다.",
+        "일부 농수산물은 행사 대상 3만원 이상 장바구니 쿠폰이 붙습니다. 결제 화면에서 적용 여부를 확인하세요."
+      ],
+      "periodNote": "홈플러스 온라인 주간 전단의 2026년 표시 기간",
+      "sourceUrl": "https://mfront.homeplus.co.kr/leaflet",
+      "periodSourceUrl": "https://mfront.homeplus.co.kr/leaflet",
+      "checkedAt": "2026-11-20T16:48:48+09:00",
+      "publicationStatus": "reviewed",
+      "placement": "calendar",
+      "publicationScope": "facts-summary",
+      "reviewWithinDays": 2,
+      "campaignKind": "limited-sale",
+      "campaignScope": "category",
+      "shopping": {
+        "retailerId": "homeplus",
+        "brand": "홈플러스",
+        "brandCode": "HOMEPLUS",
+        "kind": "mart",
+        "format": "mart",
+        "area": "nationwide",
+        "storeScope": "홈플러스 온라인몰 전단 · 매직배송 가능 지역",
+        "specificStore": false,
+        "membership": false,
+        "card": false,
+        "app": false,
+        "reviewWithinHours": 48,
+        "locales": {
+          "en": {
+            "title": "Homeplus online grocery flyer",
+            "summary": "Weekly grocery offers with item-specific coupon and quantity rules."
+          },
+          "ja": {
+            "title": "ホームプラス ネットスーパー週替わり特売",
+            "summary": "食品の週替わり特売。数量とクーポン条件は商品別。"
+          },
+          "zh-CN": {
+            "title": "Homeplus 线上食品周促",
+            "summary": "每周食材优惠，数量和优惠券条件因商品而异。"
+          },
+          "zh-TW": {
+            "title": "Homeplus 線上食品週促",
+            "summary": "每週食材優惠，數量和折價券條件因商品而異。"
+          }
+        }
+      }
+    },
+    {
+      "id": "musinsa-eunpyeong-winter-outlet-20261120",
+      "brandId": "musinsa",
+      "title": "무신사 무진장 롯데몰 은평점 특가",
+      "shortTitle": "무신사 무진장 롯데몰 은평점 특가",
+      "categories": [
+        "fashion"
+      ],
+      "startDate": "2026-11-20",
+      "endDate": "2026-12-02",
+      "benefitType": "sale",
+      "channels": [
+        "store"
+      ],
+      "summary": "나이키·무신사 스탠다드 등 참여 브랜드의 은평점 특가 상품 최대 70% 할인.",
+      "conditions": [
+        "롯데몰 은평점 무신사 아울렛 & 유즈드 매장 행사입니다.",
+        "최대 할인율은 일부 행사 상품에 해당합니다. 현장 가격·사이즈·재고를 확인하세요.",
+        "결제수단별 추가 혜택은 따로 운영되며 일부는 11월 30일에 끝납니다."
+      ],
+      "periodNote": "공식 오프라인 가이드의 은평점 아울렛 특가 기준",
+      "sourceUrl": "https://www.musinsa.com/content/1566699932019111639",
+      "periodSourceUrl": "https://www.musinsa.com/content/1566699932019111639",
+      "checkedAt": "2026-11-20T16:48:48+09:00",
+      "publicationStatus": "reviewed",
+      "placement": "calendar",
+      "publicationScope": "facts-summary",
+      "reviewWithinDays": 2,
+      "campaignKind": "limited-sale",
+      "campaignScope": "category",
+      "shopping": {
+        "retailerId": "musinsa",
+        "brand": "무신사",
+        "brandCode": "MUSINSA",
+        "kind": "mall",
+        "format": "mall",
+        "area": "seoul",
+        "storeScope": "무신사 아울렛 & 유즈드 롯데몰 은평점",
+        "specificStore": true,
+        "membership": false,
+        "card": false,
+        "app": false,
+        "reviewWithinHours": 48,
+        "locales": {
+          "en": {
+            "title": "Musinsa winter sale at Lotte Mall Eunpyeong",
+            "summary": "Up to 70% off selected fashion at the Eunpyeong outlet."
+          },
+          "ja": {
+            "title": "ムシンサ ロッテモール恩平店セール",
+            "summary": "恩平店の対象ファッションが最大70%オフ。"
+          },
+          "zh-CN": {
+            "title": "Musinsa 乐天购物中心恩平店特卖",
+            "summary": "恩平店指定时尚商品最高减70%。"
+          },
+          "zh-TW": {
+            "title": "Musinsa 樂天購物中心恩平店特賣",
+            "summary": "恩平店指定時尚商品最高減價70%。"
+          }
+        }
+      }
+    },
+    {
+      "id": "hyundai-ulsan-winter-sale-202611",
+      "brandId": "hyundai-dept",
+      "title": "현대백화점 울산점 Winter is On",
+      "shortTitle": "현대백화점 울산점 Winter is On",
+      "categories": [
+        "fashion",
+        "furniture"
+      ],
+      "startDate": "2026-11-13",
+      "endDate": "2026-11-29",
+      "benefitType": "sale",
+      "channels": [
+        "store"
+      ],
+      "summary": "울산점 참여 매장의 겨울 의류와 리빙 상품 할인.",
+      "conditions": [
+        "울산점 쇼핑뉴스에 실린 참여 브랜드에 적용됩니다.",
+        "브랜드별 기간·할인율이 다르고 일부 품목은 제외됩니다.",
+        "할인율 산정 기준은 최초 판매가입니다. 해당 매장의 안내를 확인하세요."
+      ],
+      "periodNote": "울산점 공식 쇼핑뉴스에서 확인",
+      "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?branchCd=B00129000&category=event&evntCrdCd=E2902611515481",
+      "periodSourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?branchCd=B00129000&category=event&evntCrdCd=E2902611515481",
+      "checkedAt": "2026-11-20T16:48:48+09:00",
+      "publicationStatus": "reviewed",
+      "placement": "calendar",
+      "publicationScope": "facts-summary",
+      "reviewWithinDays": 2,
+      "campaignKind": "limited-sale",
+      "campaignScope": "multi-category",
+      "shopping": {
+        "retailerId": "hyundai-dept",
+        "brand": "현대백화점",
+        "brandCode": "HYUNDAI-DEPT",
+        "kind": "department",
+        "format": "department",
+        "area": "gyeongsang",
+        "storeScope": "현대백화점 울산점 해당 매장",
+        "specificStore": true,
+        "membership": false,
+        "card": false,
+        "app": false,
+        "reviewWithinHours": 48,
+        "locales": {
+          "en": {
+            "title": "Hyundai Department Store Ulsan winter sale",
+            "summary": "Selected clothing and home goods at the Ulsan branch."
+          },
+          "ja": {
+            "title": "現代百貨店 蔚山店 冬セール",
+            "summary": "蔚山店の対象衣料・生活用品。"
+          },
+          "zh-CN": {
+            "title": "现代百货蔚山店冬季促销",
+            "summary": "蔚山店指定服装及家居用品优惠。"
+          },
+          "zh-TW": {
+            "title": "現代百貨蔚山店冬季促銷",
+            "summary": "蔚山店指定服裝及家居用品優惠。"
+          }
+        }
+      }
+    },
+    {
+      "id": "ikea-christmas-home-coupon-202611",
+      "brandId": "ikea",
+      "title": "이케아 크리스마스 홈데코 쿠폰",
+      "shortTitle": "이케아 크리스마스 홈데코 쿠폰",
+      "categories": [
+        "furniture"
+      ],
+      "startDate": "2026-11-14",
+      "endDate": "2026-11-30",
+      "benefitType": "coupon",
+      "channels": [
+        "online",
+        "store"
+      ],
+      "summary": "크리스마스 지정 제품 7만원 이상 구매 시 15% 할인, 최대 5만원.",
+      "conditions": [
+        "IKEA Family 회원 본인만 기간 중 온·오프라인 통합 1회 사용 가능합니다.",
+        "VINTERFINT 2026·STRÅLA 2026 시즌 제품에 적용합니다. 음식과 배송·조립·설치 비용은 제외합니다.",
+        "다른 할인 쿠폰과 중복 사용이 불가하며 결제 전에 적용해야 합니다. 공식 안내에서 온라인 코드 또는 매장 제시 쿠폰을 확인하세요."
+      ],
+      "periodNote": "공식 쿠폰 유의사항 기준",
+      "sourceUrl": "https://www.ikea.com/kr/ko/campaigns/11-14-pub6a561c20/",
+      "periodSourceUrl": "https://www.ikea.com/kr/ko/campaigns/11-14-pub6a561c20/",
+      "checkedAt": "2026-11-20T16:48:48+09:00",
+      "publicationStatus": "reviewed",
+      "placement": "calendar",
+      "publicationScope": "facts-summary",
+      "reviewWithinDays": 2,
+      "campaignKind": "limited-sale",
+      "campaignScope": "category",
+      "shopping": {
+        "retailerId": "ikea",
+        "brand": "이케아",
+        "brandCode": "IKEA",
+        "kind": "brand",
+        "format": "brand",
+        "area": "nationwide",
+        "storeScope": "이케아 온라인몰 및 전 매장",
+        "specificStore": false,
+        "membership": true,
+        "card": false,
+        "app": false,
+        "reviewWithinHours": 48,
+        "locales": {
+          "en": {
+            "title": "IKEA Christmas home décor coupon",
+            "summary": "IKEA Family members can get 15% off selected décor with a minimum purchase."
+          },
+          "ja": {
+            "title": "IKEA クリスマス装飾クーポン",
+            "summary": "対象商品を購入するIKEA Family会員向け15%クーポン。"
+          },
+          "zh-CN": {
+            "title": "宜家圣诞家饰优惠券",
+            "summary": "IKEA Family会员购买指定商品满额享85折。"
+          },
+          "zh-TW": {
+            "title": "IKEA 聖誕家飾折價券",
+            "summary": "IKEA Family會員購買指定商品滿額享85折。"
+          }
+        }
+      }
+    },
+    {
+      "id": "ohouse-edenne-brand-week-202611",
+      "brandId": "ohouse",
+      "title": "오늘의집 에덴느 침대·소파 브랜드위크",
+      "shortTitle": "오늘의집 에덴느 침대·소파 브랜드위크",
+      "categories": [
+        "furniture"
+      ],
+      "startDate": "2026-11-16",
+      "endDate": "2026-11-30",
+      "benefitType": "mixed",
+      "channels": [
+        "online"
+      ],
+      "summary": "에덴느 침대·소파 대상 브랜드 쿠폰 최대 20%. 지정 상품 토스페이 결제 혜택 별도.",
+      "conditions": [
+        "쿠폰은 적용 품목별 할인율과 사용 조건을 확인하세요.",
+        "공식 행사에는 토스페이 10% 즉시 할인(최대 10만원)이 별도로 표시됩니다. 적용 상품·결제 조건과 쿠폰 중복 여부는 결제 전에 확인하세요.",
+        "상품 옵션과 배송·설치비는 모델과 배송지에 따라 달라질 수 있습니다."
+      ],
+      "periodNote": "오늘의집 공식 브랜드위크 안내 기준",
+      "sourceUrl": "https://events.ohou.se/promotion-pages/100444?owap=true&webviewType=page",
+      "periodSourceUrl": "https://events.ohou.se/promotion-pages/100444?owap=true&webviewType=page",
+      "checkedAt": "2026-11-20T16:48:48+09:00",
+      "publicationStatus": "reviewed",
+      "placement": "calendar",
+      "publicationScope": "facts-summary",
+      "reviewWithinDays": 2,
+      "campaignKind": "limited-sale",
+      "campaignScope": "category",
+      "shopping": {
+        "retailerId": "ohouse",
+        "brand": "에덴느",
+        "brandCode": "EDENNE",
+        "kind": "mall",
+        "format": "online-mall",
+        "area": "nationwide",
+        "storeScope": "오늘의집 온라인 에덴느 브랜드위크 대상 상품",
+        "specificStore": false,
+        "membership": false,
+        "card": false,
+        "app": false,
+        "reviewWithinHours": 48,
+        "locales": {
+          "en": {
+            "title": "Ohouse Edenne bed and sofa week",
+            "summary": "Selected Edenne furniture coupons and separate Toss Pay offers."
+          },
+          "ja": {
+            "title": "Ohouse エデンヌ家具特集",
+            "summary": "対象のベッド・ソファのクーポンとToss Pay特典。"
+          },
+          "zh-CN": {
+            "title": "Ohouse Edenne家具品牌周",
+            "summary": "指定床和沙发有优惠券及单独的Toss Pay优惠。"
+          },
+          "zh-TW": {
+            "title": "Ohouse Edenne家具品牌週",
+            "summary": "指定床架及沙發有折價券及另列的Toss Pay優惠。"
+          }
+        }
+      }
+    },
+    {
+      "id": "samsung-grand-festival-home-202611",
+      "brandId": "samsung",
+      "title": "삼성전자 코리아 그랜드 페스티벌",
+      "shortTitle": "삼성전자 코리아 그랜드 페스티벌",
+      "categories": [
+        "appliances"
+      ],
+      "startDate": "2026-11-01",
+      "endDate": "2026-11-30",
+      "benefitType": "sale",
+      "channels": [
+        "online",
+        "store"
+      ],
+      "summary": "세탁건조기·TV·냉장고와 모바일·IT 행사 모델 할인.",
+      "conditions": [
+        "공식 발표 기준 행사 대상 가전은 11개 품목, 모바일·IT는 5개 품목입니다.",
+        "제품과 채널별 할인율이 다릅니다. 2개 품목 이상 스마트 패키지 혜택은 적용 모델과 채널을 확인하세요.",
+        "별도 삼성전자 사업자몰 혜택은 일반 소비자 조건과 구분합니다."
+      ],
+      "periodNote": "삼성전자 뉴스룸의 일반 소비자 대상 11월 프로모션 안내 기준",
+      "sourceUrl": "https://news.samsung.com/kr/%EC%86%8C%EB%B9%84%EC%9E%90%EC%99%80-%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8-%EB%AA%A8%EB%91%90%EB%A5%BC-%EC%9C%84%ED%95%9C-%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90%EC%99%80-%ED%95%A8%EA%BB%98-%ED%95%98",
+      "periodSourceUrl": "https://news.samsung.com/kr/%EC%86%8C%EB%B9%84%EC%9E%90%EC%99%80-%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8-%EB%AA%A8%EB%91%90%EB%A5%BC-%EC%9C%84%ED%95%9C-%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90%EC%99%80-%ED%95%A8%EA%BB%98-%ED%95%98",
+      "checkedAt": "2026-11-20T16:48:48+09:00",
+      "publicationStatus": "reviewed",
+      "placement": "calendar",
+      "publicationScope": "facts-summary",
+      "reviewWithinDays": 2,
+      "campaignKind": "limited-sale",
+      "campaignScope": "category",
+      "shopping": {
+        "retailerId": "samsung",
+        "brand": "삼성전자",
+        "brandCode": "SAMSUNG",
+        "kind": "brand",
+        "format": "brand",
+        "area": "nationwide",
+        "storeScope": "삼성전자 공식 안내의 소비자 참여 채널",
+        "specificStore": false,
+        "membership": false,
+        "card": false,
+        "app": false,
+        "reviewWithinHours": 48,
+        "locales": {
+          "en": {
+            "title": "Samsung Korea Grand Festival",
+            "summary": "Selected Samsung appliances and IT products. Offers vary by model and retailer."
+          },
+          "ja": {
+            "title": "サムスン コリアグランドフェスティバル",
+            "summary": "対象家電・IT製品。特典は機種と購入先により異なります。"
+          },
+          "zh-CN": {
+            "title": "三星韩国购物节",
+            "summary": "指定家电及数码产品优惠，视型号和销售渠道而定。"
+          },
+          "zh-TW": {
+            "title": "三星韓國購物節",
+            "summary": "指定家電及數位產品優惠，視型號和銷售通路而定。"
+          }
+        }
+      }
+    },
+    {
+      "id": "lg-kimchi-fridge-black-friday-202611",
+      "brandId": "lg-electronics",
+      "title": "LG전자 김치냉장고 블랙프라이데이",
+      "shortTitle": "LG전자 김치냉장고 블랙프라이데이",
+      "categories": [
+        "appliances"
+      ],
+      "startDate": "2026-11-02",
+      "endDate": "2026-11-30",
+      "benefitType": "mixed",
+      "channels": [
+        "online"
+      ],
+      "summary": "공식 온라인몰 김치냉장고 대상 모델과 결제 혜택, 조건부 포토리뷰 적립.",
+      "conditions": [
+        "11월 2~30일은 기획전 안내에 표시된 구매 확정 기간입니다.",
+        "포토리뷰 혜택은 대상 모델을 12월 15일까지 설치하고 포토리뷰까지 완료한 고객에게 12월 말 지급 예정입니다.",
+        "결제일 할인·간편결제 적립은 적용 모델, 결제수단과 제외 조건이 다릅니다."
+      ],
+      "periodNote": "김치냉장고 개별 기획전 기간. 전체 엘지닷 블랙프라이데이 기간과 다릅니다.",
+      "sourceUrl": "https://www.lge.co.kr/benefits/exhibitions/detail-PE01033001",
+      "periodSourceUrl": "https://www.lge.co.kr/benefits/exhibitions/detail-PE01033001",
+      "checkedAt": "2026-11-20T16:48:48+09:00",
+      "publicationStatus": "reviewed",
+      "placement": "calendar",
+      "publicationScope": "facts-summary",
+      "reviewWithinDays": 2,
+      "campaignKind": "limited-sale",
+      "campaignScope": "category",
+      "shopping": {
+        "retailerId": "lg-electronics",
+        "brand": "LG전자",
+        "brandCode": "LG",
+        "kind": "brand",
+        "format": "brand",
+        "area": "nationwide",
+        "storeScope": "LGE.COM 기획전 대상 김치냉장고",
+        "specificStore": false,
+        "membership": false,
+        "card": true,
+        "app": false,
+        "reviewWithinHours": 48,
+        "locales": {
+          "en": {
+            "title": "LG kimchi refrigerator Black Friday",
+            "summary": "Selected models with payment and conditional photo-review benefits."
+          },
+          "ja": {
+            "title": "LG キムチ冷蔵庫 ブラックフライデー",
+            "summary": "対象機種の決済・写真レビュー特典。"
+          },
+          "zh-CN": {
+            "title": "LG 泡菜冰箱黑五活动",
+            "summary": "指定型号享支付优惠及符合条件的晒单奖励。"
+          },
+          "zh-TW": {
+            "title": "LG 泡菜冰箱黑五活動",
+            "summary": "指定型號享付款優惠及符合條件的照片評論回饋。"
+          }
+        }
+      }
+    },
+    {
+      "id": "bepang-huggies-max-dry-202611",
+      "brandId": "bepang",
+      "title": "베팡몰 하기스 맥스드라이·에어 기저귀 특가",
+      "shortTitle": "베팡몰 하기스 맥스드라이·에어 기저귀 특가",
+      "categories": [
+        "kids"
+      ],
+      "startDate": "2026-11-16",
+      "endDate": "2026-11-22",
+      "benefitType": "sale",
+      "channels": [
+        "online"
+      ],
+      "summary": "하기스 맥스드라이·에어 지정 1박스 상품 특가.",
+      "conditions": [
+        "베팡몰의 해당 기획전 상품에 한합니다. 기저귀 단계·포장 수량·최종 결제가를 상품 안내에서 확인하세요.",
+        "신세계 이마트 상품권 5만원은 5명 추첨 혜택입니다.",
+        "다른 하기스 기획전, 국민행복카드 바우처 사용 조건과는 구분합니다."
+      ],
+      "periodNote": "베팡몰 공식 행사 목록의 [하기스맥스드라이&에어] 기획전",
+      "sourceUrl": "https://bebe-box.co.kr/shop/bepangmall_brand_event.php?ev=76",
+      "periodSourceUrl": "https://bebe-box.co.kr/shop/bepangmall_brand_event.php?ev=76",
+      "checkedAt": "2026-11-20T16:48:48+09:00",
+      "publicationStatus": "reviewed",
+      "placement": "calendar",
+      "publicationScope": "facts-summary",
+      "reviewWithinDays": 2,
+      "campaignKind": "limited-sale",
+      "campaignScope": "category",
+      "shopping": {
+        "retailerId": "bepang",
+        "brand": "하기스",
+        "brandCode": "HUGGIES",
+        "kind": "mall",
+        "format": "online-mall",
+        "area": "nationwide",
+        "storeScope": "베팡몰 기획전에 표시된 하기스 맥스드라이·에어 대상 상품",
+        "specificStore": false,
+        "membership": false,
+        "card": false,
+        "app": false,
+        "reviewWithinHours": 48,
+        "locales": {
+          "en": {
+            "title": "Bepang Huggies Max Dry & Air diaper offer",
+            "summary": "Selected single-box diapers, with a separate prize draw."
+          },
+          "ja": {
+            "title": "ベパン ハギーズおむつ特売",
+            "summary": "マックスドライ・エアの対象1箱商品を特価提供。抽選特典は別。"
+          },
+          "zh-CN": {
+            "title": "Bepang 好奇纸尿裤特卖",
+            "summary": "指定Max Dry及Air单箱商品特价，另有抽奖。"
+          },
+          "zh-TW": {
+            "title": "Bepang 好奇紙尿褲特賣",
+            "summary": "指定Max Dry及Air單箱商品特價，另有抽獎。"
+          }
+        }
+      }
     }
   ],
   "memberOffers": [

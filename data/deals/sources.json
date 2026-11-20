@@ -29,7 +29,8 @@
       "operator": "주식회사 이마트",
       "officialUrl": "https://store.emart.com/news/leaflet.do?division=2",
       "allowedHosts": [
-        "store.emart.com"
+        "store.emart.com",
+        "emartapp.emart.com"
       ],
       "categories": [
         "life"
@@ -441,7 +442,8 @@
       "operator": "삼성전자",
       "officialUrl": "https://www.samsung.com/sec/shop/",
       "allowedHosts": [
-        "www.samsung.com"
+        "www.samsung.com",
+        "news.samsung.com"
       ],
       "categories": [
         "appliances"
@@ -729,7 +731,8 @@
       "operator": "홈플러스",
       "officialUrl": "https://my.homeplus.co.kr/leaflet",
       "allowedHosts": [
-        "my.homeplus.co.kr"
+        "my.homeplus.co.kr",
+        "mfront.homeplus.co.kr"
       ],
       "categories": [
         "life"
@@ -761,6 +764,59 @@
       "note": "기간·지점·브랜드별 적용 조건을 상세 원문으로 확인",
       "checkedAt": "2026-11-08T17:11:20+09:00",
       "rightsNote": "공식 상세의 행사 기간·적용 지점·조건을 자체 문장으로 요약합니다. 이미지·상품 DB·홍보문을 전재하지 않으며, 공개 열람을 포괄적 재이용 허락으로 표시하지 않습니다."
+    },
+    {
+      "id": "hyundai-dept",
+      "name": "현대백화점",
+      "operator": "현대백화점",
+      "officialUrl": "https://www.ehyundai.com/",
+      "allowedHosts": [
+        "www.ehyundai.com"
+      ],
+      "categories": [
+        "fashion",
+        "furniture"
+      ],
+      "aliases": [],
+      "note": "공식 상세 공지의 기간과 적용 범위를 확인한 조사 대상입니다.",
+      "checkedAt": "2026-11-20T16:48:48+09:00",
+      "trackingTier": "priority",
+      "rightsNote": "공식 공지의 날짜와 적용 조건을 자체 문장으로 안내합니다."
+    },
+    {
+      "id": "ohouse",
+      "name": "오늘의집",
+      "operator": "버킷플레이스",
+      "officialUrl": "https://ohou.se/",
+      "allowedHosts": [
+        "ohou.se",
+        "events.ohou.se"
+      ],
+      "categories": [
+        "furniture"
+      ],
+      "aliases": [],
+      "note": "공식 상세 공지의 기간과 적용 범위를 확인한 조사 대상입니다.",
+      "checkedAt": "2026-11-20T16:48:48+09:00",
+      "trackingTier": "priority",
+      "rightsNote": "공식 공지의 날짜와 적용 조건을 자체 문장으로 안내합니다."
+    },
+    {
+      "id": "bepang",
+      "name": "베팡몰",
+      "operator": "주식회사 스미딧",
+      "officialUrl": "https://bebe-box.co.kr/",
+      "allowedHosts": [
+        "bebe-box.co.kr"
+      ],
+      "categories": [
+        "kids"
+      ],
+      "aliases": [],
+      "note": "공식 상세 공지의 기간과 적용 범위를 확인한 조사 대상입니다.",
+      "checkedAt": "2026-11-20T16:48:48+09:00",
+      "trackingTier": "priority",
+      "rightsNote": "공식 공지의 날짜와 적용 조건을 자체 문장으로 안내합니다."
     }
   ]
 }

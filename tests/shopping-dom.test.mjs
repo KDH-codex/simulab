@@ -5,7 +5,8 @@ import {setTimeout as delay} from 'node:timers/promises';
 import {JSDOM} from 'jsdom';
 const html=await readFile(new URL('../sales/index.html',import.meta.url),'utf8');
 const data=JSON.parse(html.match(/id="sales-data">([\s\S]*?)<\/script>/)[1]);
-const at=Math.max(...data.map(e=>Date.parse(e.checkedAt)))+600000;
+// This scenario exercises the November 8 offers even as new offers enter the catalog.
+const at=Date.parse('2026-11-08T17:21:20+09:00');
 let run=0;
 async function runtime(locale,callback,{blockedStorage=false,detail=false}={}){
  const page=detail?await readFile(new URL('../sales/'+data[0].id+'/index.html',import.meta.url),'utf8'):html;

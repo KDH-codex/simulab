@@ -8,10 +8,11 @@ import {approvedURL,discoverLinks,fetchApproved} from '../scripts/shopping/disco
 const {sources}=JSON.parse(await readFile(new URL('../data/deals/sources.json',import.meta.url),'utf8'));
 const records=JSON.parse(await readFile(new URL('../data/deals/reviewed.json',import.meta.url),'utf8')).events.filter(e=>e.shopping);
 const rows=records.map(e=>({...e,brandName:sources.find(s=>s.id===e.brandId).name}));
-const now=new Date(Math.max(...rows.map(e=>Date.parse(e.checkedAt)))+600000);
+const now=new Date('2026-11-08T17:21:20+09:00');
+const latestReview=new Date(Math.max(...rows.map(e=>Date.parse(e.checkedAt))));
 test('shopping records retain retailer, brand and branch scope and four translated summaries',()=>{
  assert.ok(rows.length>=12);assert.equal(new Set(rows.map(e=>e.id)).size,rows.length);
- for(const e of rows)assert.deepEqual(validateShoppingEvent(e,sources,now),[],e.id);
+ for(const e of rows)assert.deepEqual(validateShoppingEvent(e,sources,latestReview),[],e.id);
  const nike=rows.find(e=>e.shopping.brandCode==='NIKE');
  assert.equal(nike.brandId,'shinsegae-simon');assert.equal(nike.shopping.specificStore,true);assert.match(nike.shopping.storeScope,/여주/);
  assert.ok(validateShoppingEvent({...nike,shopping:{...nike.shopping,retailerId:'nike'}},sources,now).length);

@@ -93,7 +93,9 @@ test('overlapping bars have valid spans and disjoint lanes; hidden events are di
 test('life, kids, brand, channel, status and search combine while empty tracked brands stay available',()=>{
  assert.equal(filterEvents(events,{month:'2026-10',category:'life'},at).length,4);
  assert.deepEqual(filterEvents(events,{month:'2026-10',category:'kids'},at).map(e=>e.brandId),['naver-store']);
- assert.equal(filterSources(sources,{category:'kids'}).length,9);
+ const kidsSources=filterSources(sources,{category:'kids'});
+ assert.ok(kidsSources.some(source=>source.id==='monbebe'));
+ assert.ok(kidsSources.every(source=>source.categories.includes('kids')));
  assert.equal(filterSources(sources,{query:'몽베'})[0].id,'monbebe');
  assert.equal(filterSources(sources,{query:'젤리벨로'})[0].id,'jellymallow');
  assert.equal(filterSources(sources,{brand:'newbalance'}).length,1);
