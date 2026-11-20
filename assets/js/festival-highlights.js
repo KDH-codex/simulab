@@ -13,6 +13,7 @@ export const FESTIVAL_HIGHLIGHTS={
   'busan-haeundae-light-2026':{reason:'해운대 해변과 구남로를 잇는 제13회 부산 겨울 빛축제',source:'https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pSeq=12038'},
   'goyang-agf-2026':{reason:'킨텍스에서 열리는 애니메이션·게임 축제',source:'https://www.agfkorea.com/'},
   'hampyeong-winter-lights-2026':{reason:'함평축제관광재단 집계 2025년 회차 약 16만 명 방문',source:'https://www.hpftf.or.kr/boardView.do?boardId=BD0006&movePage=1&pageId=www16&searchCtgry=4&seq=7274660'},
+  'seoul-lotte-town-christmas-market-2026':{reason:'롯데쇼핑 집계 기준 2024년 잠실 크리스마스 마켓에 약 39만 명 방문',source:'https://story.lotteon.com/wp-content/uploads/2024/06/%EB%A1%AF%EB%8D%B0%EC%87%BC%ED%95%91-2024-%EC%A7%80%EC%86%8D%EA%B0%80%EB%8A%A5%EA%B2%BD%EC%98%81%EB%B3%B4%EA%B3%A0%EC%84%9C.pdf'},
   'paju-jangdan-bean-2026':{reason:'파주시가 소개하는 지역 대표 농특산물 축제',source:'https://tour.paju.go.kr/tour/festival/festival02/festival02_2/festival02_2_01/festival02_2_01_01.jsp'}
 };
 

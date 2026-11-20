@@ -981,5 +981,53 @@
     "kind": "generated",
     "credit": "이번주 축제 · AI 생성",
     "alt": "공연장 무대에 조명이 비치는 참고 이미지"
+  },
+  "seoul-hangang-gym-run-2026": {
+    "src": "/assets/img/festivals/nov-running-close-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "낙엽이 깔린 길을 달리는 사람들의 발걸음"
+  },
+  "seoul-unfold-x-2026": {
+    "src": "/assets/img/festivals/gwangju-biennale-2026-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "현대미술 전시장 천장에 걸린 추상 조형물"
+  },
+  "seoul-lotte-town-christmas-market-2026": {
+    "src": "/assets/img/festivals/nov-christmas-close-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "크리스마스트리와 따뜻한 조명으로 꾸민 마켓"
+  },
+  "tongyeong-chudo-island-film-2026": {
+    "src": "/assets/img/festivals/capital-cinema-2026-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "붉은 좌석과 스크린이 있는 영화 상영 참고 이미지"
+  },
+  "chilgok-christmas-market-2026": {
+    "src": "/assets/img/festivals/nov-christmas-close-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "크리스마스트리와 따뜻한 조명으로 꾸민 마켓"
+  },
+  "seoul-geumcheon-winter-coat-market-2026": {
+    "src": "/assets/img/festivals/capital-reuse-2026-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "중고 의류와 책, 장난감이 놓인 나눔장터 판매대"
+  },
+  "yangpyeong-ice-fishing-2026": {
+    "src": "/assets/img/festivals/yangpyeong-ice-fishing-2026-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "겨울 얼음 구멍 위에 낚싯대를 든 장갑 낀 손"
+  },
+  "gwangju-liquor-festa-2026": {
+    "src": "/assets/img/festivals/daejeon-wine-expo-2026-ai.jpg",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "전시 부스를 배경으로 놓인 세 종류의 와인 잔"
   }
 }

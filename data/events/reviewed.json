@@ -5338,5 +5338,272 @@
         "checkedAt": "2026-11-16"
       }
     ]
+  },
+  {
+    "id": "seoul-hangang-gym-run-2026",
+    "title": "2026 한강 짐런(GYM RUN)",
+    "region": "서울",
+    "theme": "kids",
+    "startDate": "2026-11-21",
+    "endDate": "2026-11-22",
+    "location": "잠실한강공원 야외 헬스장·물놀이장 일대 · 서울 송파구 잠실동 1-1",
+    "time": "07:30~16:00 · 그룹별 출발",
+    "program": "공원 순환 달리기와 야외 헬스장 기구 운동을 번갈아 하는 레이스",
+    "feeStatus": "mixed",
+    "fee": "참가 무료 · 예치금 10,000원, 참석 확인 후 환불",
+    "booking": "이벤터스 사전 접수 · 11/20 23:30까지 공지, 잔여석은 예약 페이지 확인",
+    "familyNote": "달리기와 기구 운동을 함께 하는 행사입니다. 참가 조건과 그룹별 시간을 확인하세요.",
+    "scheduleType": "continuous",
+    "sources": [
+      {
+        "publisher": "서울특별시",
+        "title": "펀서울 · 한강 짐런 안내",
+        "url": "https://festival.seoul.go.kr/festival/main/festivalView.do?festacode=980",
+        "facts": "시민 레이스 11/21~22, 잠실한강공원, 운영시간과 환불 조건 확인.",
+        "checkedAt": "2026-11-20"
+      },
+      {
+        "publisher": "한강짐런 · 이벤터스",
+        "title": "한강 짐런 공식 사전 접수",
+        "url": "https://event-us.kr/gymrun/event/139805",
+        "facts": "공식 접수 11/10~11/20 23:30. 공개 레이스 기간은 서울시 안내 기준.",
+        "checkedAt": "2026-11-20"
+      }
+    ],
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-20"
+  },
+  {
+    "id": "seoul-unfold-x-2026",
+    "title": "언폴드엑스 2026 《리얼리티 체크》",
+    "region": "서울",
+    "theme": "kids",
+    "startDate": "2026-11-26",
+    "endDate": "2026-12-09",
+    "location": "문화역서울284 · 서울 중구 통일로 1",
+    "time": "11:00~19:00 · 입장 마감 18:30 · 11/26은 15:00 개장",
+    "program": "미디어아트 전시, 사운드·미디어 퍼포먼스, 작가 토크, 투어",
+    "feeStatus": "free",
+    "fee": "전시 관람 무료",
+    "booking": "전시 관람 안내는 문화역서울284 · 투어와 토크 등 개별 회차는 주최 측 안내 확인",
+    "familyNote": "전시는 기간 중 휴관일이 없습니다. 개막일 일정과 공연·토크 참여 조건은 다를 수 있습니다.",
+    "scheduleType": "continuous",
+    "sources": [
+      {
+        "publisher": "문화역서울284",
+        "title": "언폴드엑스 2026 전시 안내",
+        "url": "https://seoul284.org/program/view/category/319/state/5/menu/328?idx=379",
+        "facts": "11/26~12/9, 무료, 휴관일 없음, 11/26 15시 개장과 18:30 입장 마감 확인.",
+        "checkedAt": "2026-11-20"
+      },
+      {
+        "publisher": "서울특별시",
+        "title": "펀서울 · 언폴드엑스 2026",
+        "url": "https://festival.seoul.go.kr/festival/main/festivalView.do?festacode=386",
+        "facts": "전시·토크·미디어 퍼포먼스·투어 프로그램 유형 확인. 주소는 전시장 공식 안내 기준.",
+        "checkedAt": "2026-11-20"
+      }
+    ],
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-20"
+  },
+  {
+    "id": "seoul-lotte-town-christmas-market-2026",
+    "title": "2026 롯데타운 크리스마스 마켓",
+    "region": "서울",
+    "theme": "light",
+    "startDate": "2026-11-19",
+    "endDate": "2027-01-03",
+    "location": "롯데월드타워 월드파크 잔디광장 · 서울 송파구 올림픽로 300",
+    "time": "11:30~22:00",
+    "program": "19세기 영국 거리 테마의 겨울 마켓, 조명, 공연과 먹거리",
+    "feeStatus": "mixed",
+    "fee": "일반 입장권 무료 · 패스트 패스 15,000원",
+    "booking": "롯데백화점몰 입장권 예약 · 11/20 2차(12/1~17), 12/7 3차(12/18~1/3)",
+    "familyNote": "예약 페이지에서 방문 날짜와 입장권별 조건을 확인하세요. 야외 마켓이며 공연 일정은 날짜에 따라 달라집니다.",
+    "scheduleType": "continuous",
+    "sources": [
+      {
+        "publisher": "롯데백화점",
+        "title": "롯데타운 크리스마스마켓 일반 입장권",
+        "url": "https://www.lotteon.com/display/shop/seltDpShop/62897?mall_no=2",
+        "facts": "공식 예약, 11/19~1/3 입장분과 회차별 오픈 일정 확인.",
+        "checkedAt": "2026-11-20"
+      },
+      {
+        "publisher": "롯데온",
+        "title": "크리스마스마켓 사전예약",
+        "url": "https://www.lotteon.com/display/shop/seltDpShop/56137",
+        "facts": "예약 1~3차 시작일 확인.",
+        "checkedAt": "2026-11-20"
+      },
+      {
+        "publisher": "연합뉴스",
+        "title": "잠실 롯데타운 크리스마스 마켓 개막",
+        "url": "https://www.yna.co.kr/view/AKR20261119088000030",
+        "facts": "2026년 개막·장소·테마와 입장권 안내 교차확인.",
+        "checkedAt": "2026-11-20"
+      }
+    ],
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-20"
+  },
+  {
+    "id": "tongyeong-chudo-island-film-2026",
+    "title": "제3회 추도 섬 영화제",
+    "region": "경남",
+    "theme": "kids",
+    "startDate": "2026-11-27",
+    "endDate": "2026-11-29",
+    "location": "경남 통영시 산양읍 추도 일원",
+    "time": "2박 3일 · 프로그램별 운영",
+    "program": "초청작 상영, 감독과의 대화, 섬길 트레킹과 지역 음식 체험",
+    "feeStatus": "paid",
+    "fee": "주최 측 모집 공지 기준 숙박 참가 100,000원 · 왕복 선박표 별도",
+    "booking": "숙박 참가 신청 마감 보도 · 비숙박 및 취소 대기는 영화제 최신 공지 확인",
+    "familyNote": "기상으로 10월에서 11월로 연기되었습니다. 방문 전 입도 교통과 참가 가능 여부를 확인하세요.",
+    "scheduleType": "continuous",
+    "sources": [
+      {
+        "publisher": "국제해양영화제조직위원회",
+        "title": "제3회 추도 섬 영화제 참가자 모집",
+        "url": "https://www.filmmakers.co.kr/pr/36674591",
+        "facts": "조직위원회가 11/10 게시한 변경 개최일, 장소, 프로그램, 참가비와 선박표 별도 조건 확인.",
+        "checkedAt": "2026-11-20"
+      },
+      {
+        "publisher": "컬처GB신문",
+        "title": "추도 섬 영화제 일정 변경 및 참가 신청 마감",
+        "url": "https://m.culturegb.com/view.php?idx=2568",
+        "facts": "11/17 기준 기상으로 일정 변경, 참가 신청 마감과 추가 모집 공지 경로를 보도.",
+        "checkedAt": "2026-11-20"
+      }
+    ],
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-20"
+  },
+  {
+    "id": "chilgok-christmas-market-2026",
+    "title": "2026 럭키칠곡 크리스마스 마켓",
+    "region": "경북",
+    "theme": "light",
+    "startDate": "2026-12-01",
+    "endDate": "2027-01-10",
+    "location": "왜관역 광장 및 1번 도로 일원 · 경북 칠곡군 왜관읍 중앙로8길 10",
+    "time": "한국관광공사 안내 12:00~20:00 · 세부 운영일 별도 확인",
+    "program": "왜관역 앞 크리스마스 경관, 지역 상인의 소품 판매와 체험",
+    "feeStatus": "mixed",
+    "fee": "입장 무료 · 일부 체험은 유료",
+    "booking": "개별 체험 신청과 부스 운영일은 칠곡문화관광재단 공지 확인",
+    "familyNote": "왜관역 앞 행사입니다. 특정 체험이나 마켓 부스를 찾는다면 방문할 날짜의 운영 여부를 확인하세요.",
+    "scheduleType": "period",
+    "scheduleNote": "전체 행사 기간이며 부스·체험은 날짜별로 다를 수 있습니다.",
+    "sources": [
+      {
+        "publisher": "한국관광공사",
+        "title": "럭키칠곡 크리스마스 마켓",
+        "url": "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=1595451",
+        "facts": "12/1~1/10, 12~20시, 왜관역 광장, 전 연령, 일부 체험 유료 확인. 회차별 운영일은 미확인.",
+        "checkedAt": "2026-11-20"
+      }
+    ],
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-20"
+  },
+  {
+    "id": "seoul-geumcheon-winter-coat-market-2026",
+    "title": "금천구 ‘외투의 외출’ 나눔·플리마켓",
+    "region": "서울",
+    "theme": "kids",
+    "startDate": "2026-12-05",
+    "endDate": "2026-12-05",
+    "location": "금천구가족센터 · 서울 금천구 시흥대로 467",
+    "time": "세부 운영시간은 금천구가족센터 문의",
+    "program": "외국인 주민 대상 겨울옷 나눔, 다문화 플리마켓, 문화체험과 먹거리 나눔",
+    "feeStatus": "unknown",
+    "fee": "겨울옷 나눔 무료 · 입장 및 체험 요금 별도 공지 확인",
+    "booking": "방문·체험 접수 문의 070-7487-5508",
+    "familyNote": "겨울옷 나눔은 외국인 주민 대상입니다. 체험 시간과 참여 조건은 가족센터에 확인하세요.",
+    "scheduleType": "continuous",
+    "sources": [
+      {
+        "publisher": "금천구청",
+        "title": "‘외투의 외출’ 나눔·플리마켓 개최 안내",
+        "url": "https://m.geumcheon.go.kr/portal/selectBbsNttView.do?bbsNo=8&id=&integrDeptCode=&key=297&nttNo=271494&pageIndex=1&searchCnd=all&searchCtgry=&searchDeptCode=&searchKrwd=",
+        "facts": "12/5 가족센터 개최, 겨울옷 무료 나눔 대상, 다문화 벼룩시장 프로그램과 문의 확인.",
+        "checkedAt": "2026-11-20"
+      }
+    ],
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-20"
+  },
+  {
+    "id": "yangpyeong-ice-fishing-2026",
+    "title": "2026 양평빙송어축제",
+    "region": "경기",
+    "theme": "nature",
+    "startDate": "2026-12-05",
+    "endDate": "2027-03-07",
+    "location": "수미마을·봉상2리 일원 · 경기 양평군 곱다니길 55-2",
+    "time": "체험별 운영시간은 수미마을 문의",
+    "program": "빙어 뜰채, 빙어·송어 낚시, 송어 맨손잡기, 눈썰매 등 겨울 체험",
+    "feeStatus": "paid",
+    "fee": "관광공사 안내 할인가 · 돔빙어 10,000원, 돔송어 19,000원, 빙어낚시 2시간 13,000원",
+    "booking": "체험별 접수와 이용 가능 여부는 수미마을 문의 031-775-5205",
+    "familyNote": "날씨에 따라 얼음 위 체험과 눈썰매 운영이 달라질 수 있습니다. 어린이 체험 조건을 확인하세요.",
+    "scheduleType": "period",
+    "scheduleNote": "전체 개최 기간이며 개별 체험 운영일은 현장 상황에 따라 달라집니다.",
+    "sources": [
+      {
+        "publisher": "한국관광공사",
+        "title": "대한민국 구석구석 · 양평빙송어축제",
+        "url": "https://korean.visitkorea.or.kr/kfes/detail/fstvlDetail.do?cmsCntntsId=1762432",
+        "facts": "11/19 운영기관 제출 자료에서 12/5~3/7 일정, 장소, 체험과 패키지 안내가 확인됨.",
+        "checkedAt": "2026-11-20"
+      }
+    ],
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-20"
+  },
+  {
+    "id": "gwangju-liquor-festa-2026",
+    "title": "2026 광주주류페스타",
+    "region": "광주",
+    "theme": "food",
+    "startDate": "2026-12-05",
+    "endDate": "2026-12-06",
+    "location": "김대중컨벤션센터 A홀 · 광주 서구 상무누리로 30",
+    "time": "12/5 11:00~18:00 · 12/6 11:00~17:00 · 입장 마감은 종료 1시간 전",
+    "program": "전통주·와인·위스키·맥주 전시와 시음",
+    "feeStatus": "paid",
+    "fee": "현장 15,000원 · 11/30까지 11,000원, 12/1~4 사전 13,200원",
+    "booking": "주최 측 온라인 티켓 구매 또는 행사일 현장 구매",
+    "familyNote": "만 19세 이상만 입장할 수 있으며 신분증이 필요합니다. 미성년자는 보호자 동반 시에도 입장할 수 없습니다.",
+    "scheduleType": "continuous",
+    "sources": [
+      {
+        "publisher": "광주주류페스타",
+        "title": "공식 일정 및 입장권 안내",
+        "url": "https://www.liquorfesta.com/theme/basic/sub_301.php",
+        "facts": "12/5~6, 날짜별 시간, 사전·현장 요금, 성인과 신분증 조건 확인.",
+        "checkedAt": "2026-11-20"
+      },
+      {
+        "publisher": "광주주류페스타",
+        "title": "1차 얼리버드 구매 및 개최 장소",
+        "url": "https://liquorfesta.com/bbs/board.php?bo_table=notice&wr_id=80",
+        "facts": "김대중컨벤션센터 A홀, 공식 구매 페이지와 회차별 판매일 확인.",
+        "checkedAt": "2026-11-20"
+      },
+      {
+        "publisher": "광주주류페스타",
+        "title": "공식 입장권 구매처",
+        "url": "https://gbeticket.mycafe24.com/",
+        "facts": "주최사 공지에서 연결한 온라인 구매 페이지.",
+        "checkedAt": "2026-11-20"
+      }
+    ],
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-20"
   }
 ]

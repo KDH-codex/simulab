@@ -1,6 +1,14 @@
 // Editorial guide names, not organizer-certified translations. Keep Korean names for maps/sources.
 // id | summary topic | English | Japanese | Simplified Chinese | Traditional Chinese
 const rows = `
+seoul-hangang-gym-run-2026|walk|Hangang Gym Run 2026|漢江ジムラン2026|2026 汉江健身跑|2026 漢江健身跑
+seoul-unfold-x-2026|media|Unfold X 2026: Reality Check|アンフォールドX 2026「リアリティ・チェック」|Unfold X 2026《现实检验》|Unfold X 2026《現實檢驗》
+seoul-lotte-town-christmas-market-2026|market|Lotte Town Christmas Market 2026|ロッテタウン・クリスマスマーケット2026|2026 乐天城圣诞市集|2026 樂天城聖誕市集
+tongyeong-chudo-island-film-2026|culture|3rd Chudo Island Film Festival|第3回 楸島映画祭|第3届楸岛电影节|第3屆楸島電影節
+chilgok-christmas-market-2026|market|Lucky Chilgok Christmas Market 2026|ラッキー漆谷クリスマスマーケット2026|2026 幸运漆谷圣诞市集|2026 幸運漆谷聖誕市集
+seoul-geumcheon-winter-coat-market-2026|market|Geumcheon Winter Coat Share and Flea Market|衿川 冬コートおすそ分け＆フリーマーケット|衿川冬衣捐赠与跳蚤市场|衿川冬衣捐贈與跳蚤市場
+yangpyeong-ice-fishing-2026|family|Yangpyeong Smelt and Trout Festival|楊平ワカサギ・マス祭り|杨平公鱼鳟鱼节|楊平公魚鱒魚節
+gwangju-liquor-festa-2026|food|Gwangju Liquor Festa 2026|光州酒類フェスタ2026|2026 光州酒类展|2026 光州酒類展
 busan-gstar-2026|games|G-STAR 2026 · Public Exhibition|G-STAR 2026 一般公開|G-STAR 2026 游戏展公众场|G-STAR 2026 遊戲展公眾場
 busan-haeundae-light-2026|night|13th Haeundae Light Festival|第13回 海雲台光祭り|第13届海云台灯光节|第13屆海雲臺燈光節
 ulsan-christmas-market-2026|market|Ulsan Christmas Market|蔚山クリスマスマーケット|蔚山圣诞市集|蔚山聖誕市集
