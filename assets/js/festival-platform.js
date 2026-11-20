@@ -6,8 +6,8 @@ import {setupHeadingMotion} from './festival-heading-motion.js';
 import {initializeLanguage} from './festival-language.js';
 import {setupHomeVisits} from './festival-home-visits.js';
 import {eventTranslation} from './festival-event-locales.js';
-import {languageURL,t} from './festival-i18n.js';
-import {CHRISTMAS_HEADING,CHRISTMAS_PATH,christmasRecommendations} from './festival-christmas-model.js';
+import {languageURL} from './festival-i18n.js';
+import {christmasHeroPicks} from './festival-christmas-model.js';
 import {highlightFor, homeRecommendations} from './festival-highlights.js';
 import {koreaToday, shiftDate, weekendRange, overlaps, occursOn, nextDate, eventStatus, escapeHtml as esc, isStale} from '/tools/kids-outing-calendar/model.js';
 
@@ -61,9 +61,8 @@ refreshHighlights();
 function imageMarkup(e,hero=false) {
   return eventImage(e,e.image,{hero});
 }
-function card(e,{christmas=false}={}) {
-  const id=esc(e.id);
-  return '<article class="festival-card" data-card-id="'+id+'"'+(christmas?' data-christmas-card':'')+'><div class="card-visual theme-'+esc(e.theme)+'"><a href="'+esc(e.url)+'" data-preview="'+esc(e.id)+'" aria-label="'+esc(e.title)+' 상세안내">'+imageMarkup(e)+'<span class="status-badge"'+(christmas?' data-event-status="'+id+'"':'')+'>'+esc(status(e))+'</span><span class="picture-date">▦ '+esc(range(e))+'</span></a><button class="save-button" data-save="'+esc(e.id)+'" aria-label="'+esc(e.title)+' 보관" aria-pressed="false">♡</button></div><div class="card-content"><p class="place-label">⌖ '+esc(e.region)+' · <span data-original lang="ko">'+esc(e.location)+'</span>'+'</p><h3><a href="'+esc(e.url)+'" data-preview="'+esc(e.id)+'">'+esc(e.title)+'</a></h3><p class="card-description">'+esc(e.program)+'</p>'+(christmas?'':keywordTags(e))+(e.scheduleType==='period'?'<p class="card-schedule-note">기간 내 운영일 확인</p>':'')+'<div class="card-bottom"><div><small>입장·참여 비용</small><strong>'+esc(fee(e))+'</strong></div><a href="'+esc(e.url)+'" class="detail-button" data-preview="'+esc(e.id)+'">상세보기 ↗</a></div></div></article>';
+function card(e) {
+  return '<article class="festival-card" data-card-id="'+esc(e.id)+'"><div class="card-visual theme-'+esc(e.theme)+'"><a href="'+esc(e.url)+'" data-preview="'+esc(e.id)+'" aria-label="'+esc(e.title)+' 상세안내">'+imageMarkup(e)+'<span class="status-badge">'+esc(status(e))+'</span><span class="picture-date">▦ '+esc(range(e))+'</span></a><button class="save-button" data-save="'+esc(e.id)+'" aria-label="'+esc(e.title)+' 보관" aria-pressed="false">♡</button></div><div class="card-content"><p class="place-label">⌖ '+esc(e.region)+' · <span data-original lang="ko">'+esc(e.location)+'</span>'+'</p><h3><a href="'+esc(e.url)+'" data-preview="'+esc(e.id)+'">'+esc(e.title)+'</a></h3><p class="card-description">'+esc(e.program)+'</p>'+keywordTags(e)+(e.scheduleType==='period'?'<p class="card-schedule-note">기간 내 운영일 확인</p>':'')+'<div class="card-bottom"><div><small>입장·참여 비용</small><strong>'+esc(fee(e))+'</strong></div><a href="'+esc(e.url)+'" class="detail-button" data-preview="'+esc(e.id)+'">상세보기 ↗</a></div></div></article>';
 }
 function keywordTags(e,extraClass='') {
   return '<div class="tag-row keyword-tags '+extraClass+'">'+eventTags(e).map(word=>'<button type="button" data-keyword="'+esc(word)+'" aria-pressed="'+(state.keyword===word)+'">#'+esc(word)+'</button>').join('')+'</div>';
@@ -387,88 +386,39 @@ function setHero(index,{immediate=false}={}) {
   syncKeywordButtons();syncHeroTimer();
 }
 const heroElement=$('hero-main');
-let heroRenderKey='';
-function refreshHome() {
-  if(page!=='home'&&page!=='christmas')return;
-  const collection=page==='christmas';
-  const recommendations=collection?null:homeRecommendations(data,today,event=>Boolean(event.image));
-  const seasonalPicks=christmasRecommendations(data,today,event=>Boolean(event.image));
-  const seasonal=collection||seasonalPicks.heroes.length>0;
-  const main=$('main');
-  if(!collection&&main.dataset.homeDate!==today){
-    main.dataset.homeDate=today;
-    const {events}=recommendations;
-    $('home-weekend-feed').innerHTML=events.length
-      ? events.slice(0,4).map(card).join('')
-      : '<div class="feed-empty">이 주말의 수록 일정이 없어요. 달력에서 다른 날짜를 살펴보세요.</div>';
-    document.querySelector('.weekend-feed-actions .feed-controls').hidden=events.length<2;
-  }
-
-  const homePicks=main.querySelector('.christmas-home-picks');
-  if(homePicks){
-    const grid=homePicks.querySelector('.event-grid');
-    const cards=seasonalPicks.cards;
-    homePicks.hidden=!cards.length;
-    const existing=[...grid.children].map(item=>item.dataset.cardId).join();
-    if(existing!==cards.map(event=>event.id).join()){
-      grid.innerHTML=cards.map(event=>card(event,{christmas:true})).join('');
-      syncSaved();
-      revealCards();
-    }
-  }
-
+function refreshFeatured() {
   if(!heroElement)return;
-  heroes=seasonal?seasonalPicks.heroes:recommendations.heroes;
   const layout=heroElement.closest('.hero-layout');
-  const mode=seasonal?'christmas':'weekend';
-  const sideTitle=seasonal?'크리스마스 TOP 3':'✦ 이번 주말 추천';
-  const secondary=seasonal?'크리스마스 행사 모두 보기':'달력으로 찾아보기 →';
-  const sideText=seasonal?'성탄 주간 일정 보기':'이번 주말, 같이 떠나요';
-  const side=layout.querySelector('.weekend-banner');
-  if(layout.dataset.heroMode!==mode){
-    layout.dataset.heroMode=mode;
-    layout.classList.toggle('christmas-hero',seasonal);
-    layout.setAttribute('aria-label',t(sideTitle,locale));
-    const heading=document.createElement('h1');
-    if(seasonal)heading.className='christmas-hero-heading';
-    heading.textContent=seasonal?CHRISTMAS_HEADING:'이번 주 어디 갈까?';
-    layout.querySelector('[data-hero-heading]').replaceChildren(heading);
-    layout.querySelector('[data-hero-badge]').textContent=seasonal?'크리스마스 특집':'● 이번 주의 발견';
-    layout.querySelector('[data-hero-kicker]').textContent=seasonal?'마켓·빛축제·성탄 주간':'일상에 설렘을 더하는 축제 한 조각';
-    layout.querySelector('[data-hero-side-title]').textContent=sideTitle;
-    layout.querySelector('[data-hero-side-label]').hidden=seasonal;
-    const secondaryLink=layout.querySelector('[data-hero-secondary]');
-    secondaryLink.setAttribute('href',seasonal?CHRISTMAS_PATH:'/calendar/');
-    secondaryLink.textContent=secondary;
-    side.setAttribute('href',seasonal?CHRISTMAS_PATH+'#christmas-week':'/curation/');
-    side.querySelector('.banner-symbol').textContent=seasonal?'✦':'✳';
-    side.querySelector('[data-hero-side-link]').textContent=sideText;
+  if(page==='christmas'){
+    heroes=christmasHeroPicks(data,today,event=>Boolean(event.image));
+    document.querySelector('[data-christmas-archive-heading]').hidden=heroes.length>0;
+  }else{
+    const {heroes:weekendPicks,events,weekend}=homeRecommendations(data,today,event=>Boolean(event.image));
+    heroes=weekendPicks;
+    layout.querySelector('[data-weekend-summary]').textContent=
+      fmt(weekend.start)+' — '+fmt(weekend.end)+' · 수록 일정 '+events.length+'건';
+    const main=$('main');
+    if(main.dataset.homeDate!==today){
+      main.dataset.homeDate=today;
+      $('home-weekend-feed').innerHTML=events.length
+        ? events.slice(0,4).map(card).join('')
+        : '<div class="feed-empty">이 주말의 수록 일정이 없어요. 달력에서 다른 날짜를 살펴보세요.</div>';
+      document.querySelector('.weekend-feed-actions .feed-controls').hidden=events.length<2;
+    }
   }
 
-  const key=today+':'+mode+':'+heroes.map(event=>event.id).join();
-  if(heroRenderKey!==key){
-    heroRenderKey=key;
-    layout.querySelector('[data-hero-side-items]').innerHTML=heroes.slice(1).map(event=>miniEvent(event,{
-      url:event.url,image:event.image,status:status(event),dates:range(event),theme:THEME_WORDS[event.theme]
-    })).join('');
-    if(!seasonal){
-      const {weekend,events}=recommendations;
-      side.querySelector('[data-weekend-summary]').textContent=
-        fmt(weekend.start)+' — '+fmt(weekend.end)+' · 수록 일정 '+events.length+'건';
-    }else{
-      side.querySelector('[data-weekend-summary]').textContent='마켓·빛축제·성탄 주간';
-    }
-    heroElement.querySelector('.hero-dots').innerHTML=heroes.map((event,index)=>'<button type="button" data-hero-slide="'+index+
-      '" aria-label="추천 '+(index+1)+' · '+esc(event.title)+'"></button>').join('');
-    setHero(0,{immediate:true});
-  }
+  layout.querySelector('[data-hero-side-items]').innerHTML=heroes.slice(1).map(event=>miniEvent(event,{
+    url:event.url,image:event.image,status:status(event),dates:range(event),theme:THEME_WORDS[event.theme]
+  })).join('');
+  heroElement.querySelector('.hero-dots').innerHTML=heroes.map((event,index)=>'<button type="button" data-hero-slide="'+index+
+    '" aria-label="추천 '+(index+1)+' · '+esc(event.title)+'"></button>').join('');
+  setHero(0,{immediate:true});
   layout.hidden=heroes.length===0;
   heroElement.querySelector('.hero-controls').hidden=heroes.length<2;
   heroElement.querySelector('.hero-dots').hidden=heroes.length<2;
-  if(collection)main.querySelector('[data-christmas-archive-heading]').hidden=heroes.length>0;
   syncHeroTimer();
 }
-refreshHome();
+refreshFeatured();
 if(heroElement){
   for(const e of heroes){if(e.image){const img=new Image();img.src=e.image.src;}}
   heroElement.addEventListener('pointerenter',()=>{heroHover=true;syncHeroTimer();});
@@ -501,7 +451,7 @@ if(page==='home'||page==='detail'||page==='christmas'){
     if(date===today)return;
     today=date;
     refreshHighlights();
-    refreshHome();
+    refreshFeatured();
     refreshDetailStatus();
     refreshChristmas();
     if(page==='home')renderGrid();

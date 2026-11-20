@@ -1,7 +1,6 @@
 /* Seasonal edition of the shared festival carousel and event cards. */
 .christmas-hero,
-.christmas-page,
-.christmas-home-picks {
+.christmas-page {
   --holiday-red:#a71e34;
   --holiday-red-hover:#851728;
   --holiday-green:#123e32;
@@ -20,8 +19,7 @@ body[data-festival-page="christmas"] {
   padding-block:28px 32px;
 }
 
-.christmas-hero .hero-main,
-body[data-festival-page="home"] .christmas-hero .hero-main {
+.christmas-hero .hero-main {
   min-height:484px;
   border:1px solid #0e3028;
   border-radius:24px;
@@ -40,7 +38,7 @@ body[data-festival-page="home"] .christmas-hero .hero-main {
 }
 
 .christmas-hero .hero-top {align-items:center;padding:20px 26px}
-.christmas-hero [data-hero-badge] {
+.christmas-hero .orange-badge {
   background:var(--holiday-red);
   color:#fff;
   padding:7px 13px;
@@ -166,15 +164,6 @@ html:not([lang="ko"]) .christmas-hero .hero-copy h1.christmas-hero-heading {max-
 .christmas-group {margin:0 0 45px;scroll-margin-top:166px}
 .christmas-group h2 {margin-bottom:16px;color:var(--holiday-green)}
 
-.christmas-home-picks {
-  margin:0 0 38px;
-  padding:22px;
-  border:1px solid var(--holiday-line);
-  border-radius:20px;
-  background:linear-gradient(120deg,#fff6f1,#f3f8f2);
-}
-.christmas-home-picks h2 {color:var(--holiday-green)}
-.christmas-home-picks .text-link,
 .christmas-page .text-link {color:var(--holiday-red-hover)}
 [data-christmas-card] {border-color:var(--holiday-line);background:#fff}
 [data-christmas-card] .place-label {color:var(--holiday-green)}
@@ -227,8 +216,7 @@ html:not([lang="ko"]) .christmas-hero .hero-copy h1.christmas-hero-heading {max-
 
 @media (max-width:600px) {
   .christmas-hero.hero-layout {gap:12px;padding-block:18px 23px}
-  .christmas-hero .hero-main,
-  body[data-festival-page="home"] .christmas-hero .hero-main {min-height:430px;border-radius:18px}
+  .christmas-hero .hero-main {min-height:430px;border-radius:18px}
   .christmas-hero .hero-top {padding:14px 12px}
   .christmas-hero .hero-copy {padding:24px 19px 68px}
   .christmas-hero .hero-copy h1.christmas-hero-heading {font-size:clamp(32px,8.65vw,46px)}
@@ -240,7 +228,5 @@ html:not([lang="ko"]) .christmas-hero .hero-copy h1.christmas-hero-heading {max-
   .christmas-hero .hero-side {display:flex;padding:14px;border-radius:18px}
   .christmas-hero .hero-actions .button,
   .christmas-hero .hero-calendar-link {padding-inline:12px;font-size:12px}
-  .christmas-home-picks {padding:14px}
-  .christmas-home-picks>.section-title {align-items:flex-start;flex-wrap:wrap;gap:7px}
   .christmas-group {scroll-margin-top:160px}
 }

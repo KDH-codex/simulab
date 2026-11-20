@@ -27,8 +27,6 @@ const rows=`
 마켓·빛축제·성탄 주간|Markets, lights and Christmas week|マーケット・イルミネーション・クリスマスの週|市集、灯光节与圣诞周|市集、燈光節與聖誕週
 크리스마스 행사 모두 보기|Explore all Christmas events|クリスマスイベント一覧|查看全部圣诞活动|查看全部聖誕活動
 성탄 주간 일정 보기|See what is on Christmas week|クリスマスの週のイベントを見る|查看圣诞周活动|查看聖誕週活動
-더 많은 크리스마스 행사|More Christmas events|もっとクリスマスイベントを見る|更多圣诞活动|更多聖誕活動
-이번 주 어디 갈까?|Where to go this week?|今週はどこへ行こう？|这周去哪儿？|這週去哪裡？
 크리스마스 특집|Christmas special|クリスマス特集|圣诞特辑|聖誕特輯
 크리스마스 모음집|Christmas guide|クリスマスガイド|圣诞指南|聖誕指南
 겨울 마켓과 빛축제, 성탄 주간 나들이와 케이크 예약을 모았어요.|Find winter markets, light festivals, Christmas week outings and cake reservations.|冬のマーケット、イルミネーション、クリスマスのお出かけとケーキ予約をまとめました。|冬日市集、灯会、圣诞出游与蛋糕预订一览。|冬日市集、燈會、聖誕出遊與蛋糕預訂一覽。

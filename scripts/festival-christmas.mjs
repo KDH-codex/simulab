@@ -2,7 +2,7 @@ import {mkdir} from 'node:fs/promises';
 import {writeFile} from './write-public-file.mjs';
 import {root, esc, shell, events, today, card, images} from './festival-platform.mjs';
 import {renderFestivalHero} from './festival-hero.mjs';
-import {CHRISTMAS_GROUPS, CHRISTMAS_HEADING, CHRISTMAS_PATH, christmasRecommendations} from '../assets/js/festival-christmas-model.js';
+import {CHRISTMAS_GROUPS, CHRISTMAS_HEADING, CHRISTMAS_PATH, christmasHeroPicks} from '../assets/js/festival-christmas-model.js';
 
 const byId = new Map(events.map(event=>[event.id,event]));
 const cakes = [
@@ -23,15 +23,6 @@ const decor = {
 const fmt = date=>date.slice(5).replace('-','.');
 function dateRange(start,end) {
   return fmt(start)+'–'+(start.slice(0,4)===end.slice(0,4)?fmt(end):end.replaceAll('-','.'));
-}
-export function christmasHomeSection(cards) {
-  return `<section class="christmas-home-picks" aria-labelledby="christmas-heading"${cards.length?'':' hidden'}>
-    <div class="section-title">
-      <div><h2 id="christmas-heading">더 많은 크리스마스 행사</h2></div>
-      <a class="text-link" href="${CHRISTMAS_PATH}">크리스마스 모음집 보기 <span aria-hidden="true">↗</span></a>
-    </div>
-    <div class="event-grid">${cards.map(event=>card(event,{christmas:true})).join('')}</div>
-  </section>`;
 }
 
 function campaignStatus(end) {
@@ -65,8 +56,8 @@ export async function buildChristmasCollection() {
     </article></div>
     <a class="text-link" href="/sales/">할인·쇼핑 더 보기 <span aria-hidden="true">↗</span></a>
   </section>`;
-  const {heroes}=christmasRecommendations(events,today,event=>Boolean(images[event.id]));
-  const hero=renderFestivalHero(heroes,{seasonal:true,collection:true});
+  const heroes=christmasHeroPicks(events,today,event=>Boolean(images[event.id]));
+  const hero=renderFestivalHero(heroes,{seasonal:true});
   const body = `<main id="main" class="page-width christmas-page">
     ${hero}<h1 class="christmas-archive-title" data-christmas-archive-heading${heroes.length?' hidden':''}>${CHRISTMAS_HEADING}</h1>
     <nav class="christmas-nav" aria-label="크리스마스 일정 바로가기">${nav}<a href="#holiday-shopping">케이크 예약·장식 할인</a></nav>
