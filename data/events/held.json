@@ -72,14 +72,6 @@
     "reason": "11/28~29 후보를 찾았으나 시·상인회가 공개한 2026년 방문 안내 원문을 확인하지 못함."
   },
   {
-    "provider": "gangseo",
-    "sourceRecordId": "seoul-magok-wish-village-2026",
-    "title": "2026 마곡위시빌리지",
-    "sourceUrl": "https://www.g2b.go.kr/pn/pnz/pnza/UntyAtchFile/downloadFile.do?bfSpecRegNo=R26BD00273079&fileSeq=1&fileType=BFDTL",
-    "reviewedAt": "2026-11-20",
-    "reason": "강서구 발주 자료는 12/27까지 점등 및 12/28 철거를 명시. 12/28까지 운영으로 소개된 자료와 다르므로 최신 방문객용 공식 공지 확인 전 보류."
-  },
-  {
     "provider": "hwasun",
     "sourceRecordId": "hwasun-early-christmas-2026",
     "title": "미리미리 크리스마스",

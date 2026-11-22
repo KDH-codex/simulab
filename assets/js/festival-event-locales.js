@@ -1,6 +1,16 @@
 // Editorial guide names, not organizer-certified translations. Keep Korean names for maps/sources.
 // id | summary topic | English | Japanese | Simplified Chinese | Traditional Chinese
 const rows = `
+incheon-yeonsu-christmas-tree-2026|night|Yeonsu Christmas Tree Festival 2026|延寿クリスマスツリー文化祭2026|2026 延寿圣诞树文化节|2026 延壽聖誕樹文化節
+suncheon-nammun-christmas-2026|family|Early Christmas at Suncheon Nammun Square|順天南門広場のひと足早いクリスマス|顺天南门广场提前过圣诞|順天南門廣場提前過聖誕
+bucheon-moving-media-playground-2026|family|Moving Media Art Playground 2026|動くメディアアート遊び場2026|2026 动起来的媒体艺术游乐场|2026 動起來的媒體藝術遊樂場
+yeongdeungpo-living-art-fair-2026|market|Yeongdeungpo Living Art Fair: TOWN MATE|永登浦リビングアートフェア「TOWN MATE」|永登浦生活艺术展销会 TOWN MATE|永登浦生活藝術展銷會 TOWN MATE
+jeonju-kimjang-sharing-2026|food|Jeonju Kimjang Sharing Day|全州 キムジャン分かち合いの日|全州泡菜制作分享日|全州泡菜製作分享日
+seoul-magok-wish-village-2026|night|Magok Wish Village 2026|麻谷ウィッシュヴィレッジ2026|2026 麻谷许愿村|2026 麻谷許願村
+daejeon-artience-2026|science|Artience Daejeon Festival 2026|アーティエンス大田フェスティバル2026|2026 大田艺术科技节|2026 大田藝術科技節
+seocheon-migratory-bird-festival-2026|birdwatching|Seocheon Migratory Bird Festival 2026|舒川渡り鳥フェスティバル2026|2026 舒川候鸟节|2026 舒川候鳥節
+gwangju-baegun-street-food-2026|food|Baegun Square Street Food Festival: Final November Date|白雲広場ストリートフードフェスティバル 11月最終回|白云广场街头美食节11月最后一场|白雲廣場街頭美食節11月最後一場
+cheongju-ocean-stories-2026|science|Stories That Lead to the Ocean at Cheongju Ocean Science Museum|国立清州海洋科学館「海へつながる物語」|国立清州海洋科学馆「通往海洋的故事」|國立清州海洋科學館「通往海洋的故事」
 seoul-plaza-ice-rink-2026|walk|Seoul Plaza Ice Rink 2026|ソウル広場スケートリンク2026|2026 首尔广场滑冰场|2026 首爾廣場滑冰場
 jeju-christmas-village-2026|night|Jeju Christmas Village 2026|済州クリスマスビレッジ2026|2026 济州圣诞村|2026 濟州聖誕村
 seogwipo-jeju-icc-santa-2026|market|Santa Watsuda at ICC JEJU Winter Festa|ICC JEJU ウィンターフェスタ「サンタワッスダ」|ICC济州冬季庆典「圣诞老人来了」|ICC濟州冬季慶典「聖誕老人來了」
@@ -207,6 +217,7 @@ books:['Books, reading and cultural programs. Session schedules and booking rule
 art:['Discover exhibitions, artists and creative work. Check ticket and program details.','展示・作家・クリエイティブな作品に出会おう。チケットと内容をご確認ください。','探索展览、艺术家与创作。请确认门票及活动详情。','探索展覽、藝術家與創作。請確認門票及活動詳情。'],
 culture:['Experience local culture and community programs. Check the day-by-day schedule.','地域文化や交流プログラムを楽しもう。日別の予定をご確認ください。','体验当地文化与社区活动。请确认每日安排。','體驗當地文化與社區活動。請確認每日安排。'],
 heritage:['Discover Korean history and heritage. Check tour times and participation rules.','韓国の歴史・文化遺産に出会おう。開催時間と参加条件をご確認ください。','探索韩国历史与文化遗产。请确认活动时间与参与条件。','探索韓國歷史與文化遺產。請確認活動時間與參與條件。'],
+birdwatching:['Winter birdwatching at the Geum River estuary. Check tour times and registration.','錦江河口で冬の渡り鳥を観察。ツアーの時間と申込方法をご確認ください。','在锦江河口观赏冬季候鸟。请确认导览时间及报名方式。','在錦江河口觀賞冬季候鳥。請確認導覽時間及報名方式。'],
 walk:['Walking or running outdoors. Check route, registration and weather guidance.','屋外でのウォーキング・ランニング。コース・申込・天候案内をご確認ください。','户外步行或跑步活动。请确认路线、报名与天气指引。','戶外步行或跑步活動。請確認路線、報名與天氣指引。'],
 performance:['Live performances. Check individual show times and admission rules.','ライブ公演。各回の開演時間と入場条件をご確認ください。','现场演出。请确认各场时间与入场条件。','現場演出。請確認各場時間與入場條件。'],
 coffee:['Coffee culture and related exhibits. Check public admission dates and ticket rules.','コーヒー文化と関連展示。一般入場日とチケット条件をご確認ください。','咖啡文化与相关展览。请确认公众开放日及门票条件。','咖啡文化與相關展覽。請確認公眾開放日及門票條件。'],

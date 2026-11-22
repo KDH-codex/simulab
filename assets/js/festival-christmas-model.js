@@ -7,6 +7,7 @@ export const CHRISTMAS_GROUPS = [
   {id:'early', title:'11월 말~12월 초', ids:[
     'seoul-lotte-town-christmas-market-2026','chuncheon-legoland-christmas-2026',
     'busan-christmas-village-2026','ulsan-christmas-market-2026','jeju-christmas-village-2026',
+    'incheon-yeonsu-christmas-tree-2026','seoul-magok-wish-village-2026','suncheon-nammun-christmas-2026',
     'chilgok-christmas-market-2026','daejeon-yuseong-christmas-2026','daegu-christmas-fair-2026',
     'incheon-ohslow-vintage-market-2026'
   ]},

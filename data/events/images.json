@@ -479,10 +479,15 @@
     "alt": "가을 과수원의 나뭇가지와 빨갛게 익은 사과"
   },
   "pocheon-petstar-2026": {
-    "src": "/assets/img/festivals/nov-pet-close-ai.jpg",
-    "kind": "generated",
-    "credit": "이번주 축제 · AI 생성",
-    "alt": "잔디 위 체험용 콘 곁에 있는 반려견 두 마리"
+    "src": "/assets/img/festivals/pocheon-petstar-2026-week4-poster.jpg",
+    "kind": "poster",
+    "credit": "포천시 · 경기도뉴스포털",
+    "creditUrl": "https://gnews.gg.go.kr/briefing/brief_gongbo_view.do?BS_CODE=s003&number=115307",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "licenseLabel": "공공누리 제1유형",
+    "alt": "11월 29일로 변경된 2026 포천 펫스타를 알리는 포천시 포스터",
+    "sourceImage": "https://gnews.gg.go.kr/UP_FILES/_UP_BS_FILEZ/202611/6%20%ED%8F%AC%EC%B2%9C%EC%8B%9C%EF%BC%8C%20%E2%80%982026%20%ED%8F%AC%EC%B2%9C%20%ED%8E%AB%EC%8A%A4%ED%83%80%E2%80%99%2011%EC%9B%94%2029%EC%9D%BC%EB%A1%9C%20%EC%97%B0%EA%B8%B0%E2%80%A6%20%EA%B8%B0%EC%83%81%EC%95%85%ED%99%94%EC%97%90%20%EB%94%B0%EB%A5%B8%20%EC%95%88%EC%A0%84%20%EA%B3%A0%EB%A0%A4.jpg",
+    "officialPosterUrl": "https://gnews.gg.go.kr/briefing/brief_gongbo_view.do?BS_CODE=s003&number=115307"
   },
   "busan-run-festival-2026": {
     "src": "/assets/img/festivals/nov-running-close-ai.jpg",
@@ -657,7 +662,8 @@
     "src": "/assets/img/festivals/nov-beans-ai.jpg",
     "kind": "generated",
     "credit": "이번주 축제 · AI 생성",
-    "alt": "나무 판매대의 그릇에 담긴 흰콩과 검은콩"
+    "alt": "나무 판매대의 그릇에 담긴 흰콩과 검은콩",
+    "officialPosterUrl": "https://www.paju.go.kr/news/user/BD_newsView.do?newsSeq=1184&q_ctgCd=1001"
   },
   "goyang-k-rice-festa-2026": {
     "src": "/assets/img/festivals/nov-rice-drink-ai.jpg",
@@ -666,10 +672,11 @@
     "alt": "쌀과 함께 진열된 전통주 시음 잔과 술병"
   },
   "seoul-design-festival-2026": {
-    "src": "/assets/img/festivals/nov-architecture-ai.jpg",
+    "src": "/assets/img/festivals/seoul-design-festival-2026-week4-ai.webp",
     "kind": "generated",
     "credit": "이번주 축제 · AI 생성",
-    "alt": "전시장에 놓인 목재와 콘크리트 견본, 건축 모형"
+    "alt": "현대 디자인 제품과 조명이 전시된 전시장 참고 이미지",
+    "officialPosterUrl": "https://seoul.designfestival.co.kr/news/notice/"
   },
   "incheon-robotex-2026": {
     "src": "/assets/img/festivals/nov-robot-close-ai.jpg",
@@ -720,10 +727,10 @@
     "alt": "농산물과 간식이 진열된 한국 전통시장 통로"
   },
   "yeongdeungpo-dungdung-2026": {
-    "src": "/assets/img/festivals/incheon-art-show-2026-ai.jpg",
+    "src": "/assets/img/festivals/yeongdeungpo-dungdung-2026-week4-ai.webp",
     "kind": "generated",
     "credit": "이번주 축제 · AI 생성",
-    "alt": "흰 전시장에 놓인 추상 도자 조형물과 그림"
+    "alt": "아이들이 그림과 종이 조형물을 만드는 창의예술 체험 참고 이미지"
   },
   "maeheon-garden-concert-2026": {
     "src": "/assets/img/festivals/nov-stage-ai.jpg",
@@ -762,10 +769,10 @@
     "alt": "단풍이 물든 공원 산책로를 걷는 사람들"
   },
   "anyang-apap8-2026": {
-    "src": "/assets/img/festivals/suseong-biennale-2026-ai.jpg",
+    "src": "/assets/img/festivals/anyang-apap8-2026-week4-ai.webp",
     "kind": "generated",
     "credit": "이번주 축제 · AI 생성",
-    "alt": "가을 호숫가에 놓인 목재 건축 파빌리온"
+    "alt": "안양예술공원 산책로를 연상시키는 공간의 야외 공공미술 참고 이미지"
   },
   "paju-hope-art-festival-2026": {
     "src": "/assets/img/festivals/incheon-art-show-2026-ai.jpg",
@@ -810,10 +817,10 @@
     "alt": "절임배추에 붉은 양념을 바르는 김장 작업"
   },
   "incheon-art-t-day-tour-2026": {
-    "src": "/assets/img/festivals/incheon-art-show-2026-ai.jpg",
+    "src": "/assets/img/festivals/incheon-art-t-day-tour-2026-week4-ai.webp",
     "kind": "generated",
     "credit": "이번주 축제 · AI 생성",
-    "alt": "흰 전시장에 놓인 추상 도자 조형물과 그림"
+    "alt": "인천 개항장 골목을 연상시키는 공간에서 미술 산책을 하는 참고 이미지"
   },
   "bupyeong-campmarket-november-2026": {
     "src": "/assets/img/festivals/nov-culture-expo-ai.jpg",
@@ -828,10 +835,10 @@
     "alt": "천 주머니와 도자기 등 한국 공예 기념품"
   },
   "anseong-namsadang-november-2026": {
-    "src": "/assets/img/festivals/nov-folk-ai.jpg",
+    "src": "/assets/img/festivals/anseong-namsadang-november-2026-week4-ai.webp",
     "kind": "generated",
     "credit": "이번주 축제 · AI 생성",
-    "alt": "장구와 북으로 장단을 맞추는 전통 풍물 연주"
+    "alt": "한발씩 줄을 건너는 줄타기와 풍물 공연을 표현한 참고 이미지"
   },
   "seosan-chrysanthemum-2026": {
     "src": "/assets/img/festivals/hampyeong-chrysanthemum-2026-ai.jpg",
@@ -1009,10 +1016,10 @@
     "alt": "크리스마스 조명과 회전목마가 어우러진 도심 마켓 참고 장면"
   },
   "tongyeong-chudo-island-film-2026": {
-    "src": "/assets/img/festivals/capital-cinema-2026-ai.jpg",
+    "src": "/assets/img/festivals/tongyeong-chudo-island-film-2026-week4-ai.webp",
     "kind": "generated",
     "credit": "이번주 축제 · AI 생성",
-    "alt": "붉은 좌석과 스크린이 있는 영화 상영 참고 이미지"
+    "alt": "통영의 작은 섬을 연상시키는 포구 야외 극장에서 영화를 보는 참고 이미지"
   },
   "chilgok-christmas-market-2026": {
     "src": "/assets/img/festivals/chilgok-christmas-market-2026-poster.jpg",
@@ -1062,5 +1069,74 @@
     "credit": "이번주 축제 · AI 생성",
     "alt": "저녁 도심 야외 스케이트장에서 스케이트를 타는 시민을 그린 참고 장면",
     "officialPosterUrl": "https://festival.seoul.go.kr/festival/main/festivalView.do?festacode=355"
+  },
+  "incheon-yeonsu-christmas-tree-2026": {
+    "src": "/assets/img/festivals/incheon-yeonsu-christmas-tree-2026-week4-ai.webp",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "구청 앞 열린 광장의 높은 크리스마스트리와 야간 조명 참고 이미지",
+    "officialPosterUrl": "https://www.yeonsu.go.kr/tour/festival/christmas/info.asp"
+  },
+  "suncheon-nammun-christmas-2026": {
+    "src": "/assets/img/festivals/suncheon-nammun-christmas-2026-week4-ai.webp",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "옛 성터를 연상시키는 광장에서 즐기는 어린이 크리스마스 놀이와 공연 참고 이미지",
+    "officialPosterUrl": "https://www.cfsc.or.kr/contents/open/open0102.asp?aseq=4369&bseq=1&cat=39&mode=view&page=2&yy=2026"
+  },
+  "bucheon-moving-media-playground-2026": {
+    "src": "/assets/img/festivals/bucheon-moving-media-playground-2026-week4-ai.webp",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "실내 벽에 투영된 색색의 미디어 영상과 가족 체험을 표현한 참고 이미지",
+    "officialPosterUrl": "https://www.bcf.or.kr/base/board/read?boardManagementNo=25&boardNo=153466&searchCategory=&page=1&searchType=&searchWord=&menuLevel=2&menuNo=86"
+  },
+  "yeongdeungpo-living-art-fair-2026": {
+    "src": "/assets/img/festivals/yeongdeungpo-living-art-fair-2026-week4-ai.webp",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "문래동 철공소 골목 분위기의 독립 디자인 소품 전시 참고 이미지",
+    "officialPosterUrl": "https://www.ydpcf.or.kr/postview.do?bid=1&pid=2885"
+  },
+  "jeonju-kimjang-sharing-2026": {
+    "src": "/assets/img/festivals/jeonju-kimjang-sharing-2026-week4-ai.webp",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "전라감영의 전통 건축을 연상시키는 마당에서 김치를 담그는 참고 이미지",
+    "officialPosterUrl": "https://www.culture.go.kr/portal/cltInfo/oneCltInfo/oneCltInfoView.do?menuNo=200010&pageIndex=17&pblprfrSn=408874&srvcCstCdNm=02"
+  },
+  "seoul-magok-wish-village-2026": {
+    "src": "/assets/img/festivals/seoul-magok-wish-village-2026-week4-ai.webp",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "도심 광장의 별빛 소원 산책길을 표현한 겨울 조명 참고 이미지",
+    "officialPosterUrl": "https://festival.seoul.go.kr/festival/main/festivalView.do?festacode=489"
+  },
+  "daejeon-artience-2026": {
+    "src": "/assets/img/festivals/daejeon-artience-2026-week4-ai.webp",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "과학 자료를 본뜬 빛과 영상이 있는 융복합 미술 전시 참고 이미지",
+    "officialPosterUrl": "https://www.science.go.kr/mps/0/bbs/321/moveBbsNttDetail.do?nttSn=50327"
+  },
+  "seocheon-migratory-bird-festival-2026": {
+    "src": "/assets/img/festivals/seocheon-migratory-bird-festival-2026-week4-ai.webp",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "금강 하구 습지를 연상시키는 물가에서 관찰하는 겨울철새 참고 이미지",
+    "officialPosterUrl": "https://www.nie.re.kr/nie/bbs/BMSR00028/view.do?boardId=695968494&menuNo=200097"
+  },
+  "gwangju-baegun-street-food-2026": {
+    "src": "/assets/img/festivals/gwangju-baegun-street-food-2026-week4-ai.webp",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "백운광장 스트리트 푸드존의 야외 먹거리 거리를 연상시키는 참고 이미지"
+  },
+  "cheongju-ocean-stories-2026": {
+    "src": "/assets/img/festivals/cheongju-ocean-stories-2026-week4-ai.webp",
+    "kind": "generated",
+    "credit": "이번주 축제 · AI 생성",
+    "alt": "해양과학관에서 관찰하는 연구 자료와 모형을 표현한 참고 이미지",
+    "officialPosterUrl": "https://www.cbfc.or.kr/home/sub.php?menukey=6446&mod=view&no=2514610"
   }
 }

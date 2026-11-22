@@ -2919,35 +2919,43 @@
   },
   {
     "id": "pocheon-petstar-2026",
-    "title": "포천펫스타",
+    "title": "2026 포천 펫스타 in 아트밸리",
     "region": "경기",
     "theme": "kids",
-    "startDate": "2026-11-14",
-    "endDate": "2026-11-14",
+    "startDate": "2026-11-29",
+    "endDate": "2026-11-29",
     "location": "포천 아트밸리 · 경기도 포천시 신북면 아트밸리로 234",
-    "time": "10:00~ 18:00",
-    "program": "반려견과 함께 하는 야외 체험, 산책과 전문가 토크",
+    "time": "10:00~17:00 (포천시 변경 공지)",
+    "program": "반려견과 아트밸리 산책, 행동전문가 토크, 도그 필라테스와 펫림픽",
     "feeStatus": "paid",
-    "fee": "포천아트밸리 입장료 적용",
-    "booking": "반려동물 동반 및 체험별 등록 안내 확인",
+    "fee": "포천아트밸리 입장료 적용 · 개별 체험 조건 별도",
+    "booking": "반려동물 동반과 체험별 사전·현장 접수는 공식 행사 페이지 확인",
     "verificationStatus": "verified",
-    "checkedAt": "2026-11-05",
+    "checkedAt": "2026-11-22",
     "sources": [
       {
-        "publisher": "공식 안내",
-        "title": "포천펫스타 공지·예약 안내",
+        "publisher": "포천시 · 경기도뉴스포털",
+        "title": "11/29 개최 변경 공지",
+        "url": "https://gnews.gg.go.kr/briefing/brief_gongbo_view.do?BS_CODE=s003&number=115307",
+        "facts": "11/14에서 11/29로 연기, 10:00~17:00 및 장소·주요 프로그램 유지.",
+        "checkedAt": "2026-11-22"
+      },
+      {
+        "publisher": "포천 펫스타 운영사무국",
+        "title": "포천 펫스타 프로그램·동반 안내",
         "url": "https://p-petstar.imweb.me/",
-        "facts": "행사 공식 일정 또는 관람 안내.",
-        "checkedAt": "2026-11-05"
+        "facts": "운영 프로그램과 참가 조건 확인.",
+        "checkedAt": "2026-11-22"
       },
       {
         "publisher": "대한민국 구석구석",
-        "title": "포천펫스타 상세",
-        "url": "https://korean.visitkorea.or.kr/detail/fes_detail.do?cotid=445e541a-a345-4af4-a817-0a9e16c3d4de",
-        "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
-        "checkedAt": "2026-11-05"
+        "title": "포천 펫스타 상세",
+        "url": "https://korean.visitkorea.or.kr/kfes/detail/fstvlDetail.do?fstvlCntntsId=06c85b3f-b302-4025-9cc5-27ec77b3a5ff",
+        "facts": "변경 날짜 11/29, 포천아트밸리와 유료 입장 확인.",
+        "checkedAt": "2026-11-22"
       }
-    ]
+    ],
+    "familyNote": "11/14 행사는 기상 예보에 따라 연기됐습니다. 반려견 동반 조건은 공식 안내를 확인하세요."
   },
   {
     "id": "busan-run-festival-2026",
@@ -3342,20 +3350,27 @@
     "startDate": "2026-11-26",
     "endDate": "2026-11-28",
     "location": "강릉단오제전수교육관 일원 · 강원특별자치도 강릉시 단오장길 1 (노암동)",
-    "time": "10:30~19:30",
-    "program": "강원 지역 전통 연희와 초청 공연",
+    "time": "공연별 회차 상이 · 11/28 영산홍콘서트 16:30",
+    "program": "안예은·추다혜차지스 초청공연, 강원 전통연희와 어린이·청소년 한마당, 영산홍콘서트",
     "feeStatus": "free",
     "fee": "무료",
-    "booking": "공연마다 시작 시각과 관람 방식 확인",
+    "booking": "무료 사전예매 또는 공연 1시간 전 현장 선착순 발권. 사전예매도 시작 10분 전까지 입장.",
     "verificationStatus": "verified",
-    "checkedAt": "2026-11-05",
+    "checkedAt": "2026-11-22",
     "sources": [
       {
-        "publisher": "공식 안내",
-        "title": "2026 단단단페스티벌 공지·예약 안내",
+        "publisher": "강릉단오제위원회",
+        "title": "2026 단단단페스티벌 공식 공연별 시간표",
         "url": "https://www.danojefestival.or.kr/kor/dandan/dandan.html",
-        "facts": "행사 공식 일정 또는 관람 안내.",
-        "checkedAt": "2026-11-05"
+        "facts": "11/26~28 프로그램, 무료 관람과 발권 방식 확인.",
+        "checkedAt": "2026-11-22"
+      },
+      {
+        "publisher": "강릉단오제전수교육관",
+        "title": "공연일정·예매",
+        "url": "https://www.gn.go.kr/dano/selectMoonhwainList.do?key=5850&searchMoon_p_team=dano",
+        "facts": "위원회 안내가 연결하는 공연 예매 경로.",
+        "checkedAt": "2026-11-22"
       },
       {
         "publisher": "대한민국 구석구석",
@@ -3374,14 +3389,28 @@
     "startDate": "2026-11-26",
     "endDate": "2026-11-29",
     "location": "유에코(UECO) · 울산광역시 울주군 삼남읍 울산역로 255",
-    "time": "10:00~18:00",
+    "time": "11/26 13:00~18:00 · 11/27~29 10:00~18:00",
     "program": "울산 지역 문화 전시, 시민 체험과 공연",
-    "feeStatus": "mixed",
-    "fee": "무료(일부 유료)",
-    "booking": "공식 사전등록 페이지에서 관람 등록 가능",
+    "feeStatus": "free",
+    "fee": "박람회 관람 무료 · 세부 체험 조건 확인",
+    "booking": "일반 사전등록은 11/15 마감. 현장 입장 절차는 공식 참관 안내와 등록데스크 확인.",
     "verificationStatus": "verified",
-    "checkedAt": "2026-11-05",
+    "checkedAt": "2026-11-22",
     "sources": [
+      {
+        "publisher": "울산문화박람회",
+        "title": "2026 참관 안내",
+        "url": "https://www.uce.or.kr/visitor",
+        "facts": "첫날 13시 시작, 나머지 10시 시작, 관람 무료, 사전등록 접수 기간 확인.",
+        "checkedAt": "2026-11-22"
+      },
+      {
+        "publisher": "울산문화박람회",
+        "title": "사전등록 마감 안내",
+        "url": "https://www.uce.or.kr/registration",
+        "facts": "일반 사전등록 마감 상태 확인.",
+        "checkedAt": "2026-11-22"
+      },
       {
         "publisher": "공식 안내",
         "title": "울산문화박람회 공지·예약 안내",
@@ -3396,7 +3425,8 @@
         "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "familyNote": "보호자를 동반한 초등학생과 영유아는 개별 사전등록을 생략할 수 있습니다."
   },
   {
     "id": "busan-christmas-village-2026",
@@ -3406,27 +3436,34 @@
     "startDate": "2026-11-26",
     "endDate": "2026-12-25",
     "location": "영화의전당 · 부산광역시 해운대구 수영강변대로 120 (우동)",
-    "time": "- 평일 16:00~22:00 · - 주말/크리스마스시즌 11:00~22:00",
-    "program": "부산 영화의전당 야외 크리스마스 마켓과 공연",
+    "time": "평일 16:00~22:00 · 주말·12/24~25 11:00~22:00",
+    "program": "야외 크리스마스 마켓, 산타 퍼레이드와 공연, 부산 브랜드 먹거리·선물",
     "feeStatus": "paid",
-    "fee": "유료 · 방문 날짜와 시간대에 따라 요금 상이",
-    "booking": "11/2부터 지정 예매처에서 운영일과 권종을 선택해 예매",
+    "fee": "평일·주말 주간 5,900원, 주말 야간 7,900원, 12/24~25 14,900원(예매 정상가)",
+    "booking": "예스24에서 11/2부터 운영일·입장 시간대별 권종 선택. 현장 입장 조건과 매진 여부는 예매처 확인.",
     "verificationStatus": "verified",
-    "checkedAt": "2026-11-20",
+    "checkedAt": "2026-11-22",
     "sources": [
+      {
+        "publisher": "예스24 티켓",
+        "title": "크리스마스 빌리지 부산 공식 권종·운영일 안내",
+        "url": "https://m.ticket.yes24.com/Notice/18701?order=1&type=1",
+        "facts": "지정일 21일 운영, 정상가·할인과 영유아 요금, 본판매 시작일 확인. 전년도 45만 명 방문은 주최 측 소개 수치.",
+        "checkedAt": "2026-11-22"
+      },
+      {
+        "publisher": "예스24 티켓",
+        "title": "크리스마스 빌리지 부산 직접 예매",
+        "url": "https://ticket.yes24.com/perf/60679",
+        "facts": "이용일과 입장 시간대 권종 선택.",
+        "checkedAt": "2026-11-22"
+      },
       {
         "publisher": "마켓창고",
         "title": "크리스마스 빌리지 부산 2026 공식 안내",
         "url": "https://marketchango.com/CHRISTMAS_VILLAGE_BUSAN_2026",
         "facts": "영화의전당, 11/26~12/25 중 지정일 21일 운영, 예매 절차 확인.",
         "checkedAt": "2026-11-20"
-      },
-      {
-        "publisher": "공식 안내",
-        "title": "크리스마스 빌리지 부산 2026 공지·예약 안내",
-        "url": "https://ticket.yes24.com/perf/60679",
-        "facts": "행사 공식 일정 또는 관람 안내.",
-        "checkedAt": "2026-11-05"
       },
       {
         "publisher": "대한민국 구석구석",
@@ -3467,7 +3504,8 @@
       "2026-12-25"
     ],
     "scheduleType": "dates",
-    "scheduleNote": "매주 목~일과 12/21~25 운영 · 지정일 예매"
+    "scheduleNote": "매주 목~일과 12/21~25 운영 · 지정일 예매",
+    "familyNote": "전 연령 관람. 36개월 미만은 증빙 제출 시 무료 입장."
   },
   {
     "id": "yeosu-jinnamgwan-media-2026",
@@ -3765,26 +3803,33 @@
   },
   {
     "id": "paju-jangdan-bean-2026",
-    "title": "2026 파주장단콩축제",
+    "title": "제30회 파주장단콩축제",
     "region": "경기",
     "theme": "food",
     "startDate": "2026-11-27",
     "endDate": "2026-11-29",
-    "location": "경기 파주시 임진각 광장",
-    "time": "11/27 개막식 14:00 · 체험별 시간표 확인",
-    "program": "파주 장단콩과 농산물 판매, 먹거리와 체험",
+    "location": "경기 파주시 임진각광장·평화누리 일원",
+    "time": "11/27 개막식 14:00 · 회차 및 셔틀은 공식 시간표 참고",
+    "program": "장단콩 직거래, 두부·장류 먹거리, 꼬마메주 만들기와 30주년 가래떡 나눔",
     "feeStatus": "unknown",
-    "fee": "먹거리·체험 비용은 현장 안내 확인",
-    "booking": "체험별 신청 여부는 공식 시간표 참고",
+    "fee": "먹거리·체험 비용은 프로그램별 안내 확인",
+    "booking": "체험별 참여 방법과 운영 시각은 파주시 공식 시간표 확인",
     "verificationStatus": "verified",
-    "checkedAt": "2026-11-16",
+    "checkedAt": "2026-11-22",
     "sources": [
       {
         "publisher": "파주시",
-        "title": "2026 파주장단콩축제 안내",
+        "title": "제30회 파주장단콩축제 최신 보도자료",
+        "url": "https://www.paju.go.kr/news/user/BD_newsView.do?newsSeq=1184&q_ctgCd=1001",
+        "facts": "11/27~29 개최, 임진각·평화누리 일원, 전체 342동과 농특산물·체험 구성.",
+        "checkedAt": "2026-11-22"
+      },
+      {
+        "publisher": "파주시 문화관광",
+        "title": "행사 시간표·교통 안내",
         "url": "https://tour.paju.go.kr/tour/festival/festival02/festival02_2/festival02_2_01/festival02_2_01_01.jsp",
-        "facts": "2026년 행사 날짜와 장소, 프로그램 및 공개 관람 안내를 확인.",
-        "checkedAt": "2026-11-16"
+        "facts": "11/27 14시 개막, 운영일별 체험 시간표와 주차장·셔틀 안내 확인.",
+        "checkedAt": "2026-11-22"
       }
     ]
   },
@@ -3797,19 +3842,19 @@
     "endDate": "2026-11-29",
     "location": "경기 고양시 킨텍스 제1전시장 2홀",
     "time": "11/27~28 10:00~18:00 · 11/29 10:00~17:00",
-    "program": "국산 쌀 가공식품과 우리술 전시, 시식과 판매",
+    "program": "우리쌀 가공식품과 우리술 전시·판매, 시식과 만들기 체험",
     "feeStatus": "unknown",
     "fee": "입장권과 시음 조건은 공식 관람안내 확인",
     "booking": "사전등록 안내는 주최 측 공지 확인",
     "verificationStatus": "verified",
-    "checkedAt": "2026-11-05",
+    "checkedAt": "2026-11-22",
     "sources": [
       {
-        "publisher": "K-라이스페스타 사무국",
-        "title": "2026 우리쌀·우리술 K-라이스페스타 안내",
+        "publisher": "농협경제지주",
+        "title": "2026 K-라이스페스타 개최 안내",
         "url": "https://k-ricefesta.co.kr/59/?bmode=view&idx=172110637",
-        "facts": "2026년 행사 날짜와 장소, 프로그램 및 공개 관람 안내를 확인.",
-        "checkedAt": "2026-11-05"
+        "facts": "11/27~29, 일요일 17시 종료, 킨텍스 제1전시장 2홀, 프로그램 확인.",
+        "checkedAt": "2026-11-22"
       }
     ]
   },
@@ -3821,14 +3866,21 @@
     "startDate": "2026-11-26",
     "endDate": "2026-11-29",
     "location": "서울 강남구 코엑스 1층 A홀",
-    "time": "관람시간과 입장 마감은 주최 측 확인",
+    "time": "11/26~28 10:30~18:30 · 11/29 10:30~17:00 · 입장 마감 1시간 전",
     "program": "디자인 브랜드와 디자이너 작업 전시",
     "feeStatus": "paid",
-    "fee": "관람권 가격은 공식 예매 안내 확인",
-    "booking": "주최 측 관람 및 티켓 안내에서 예매 조건 확인",
+    "fee": "현장 구매 15,000원 · 파이널 얼리버드 12,000원(~11/22)",
+    "booking": "주최 측 티켓 페이지의 네이버·NOL·티켓링크 연결과 현장 발권 안내 확인.",
     "verificationStatus": "verified",
-    "checkedAt": "2026-11-05",
+    "checkedAt": "2026-11-22",
     "sources": [
+      {
+        "publisher": "서울디자인페스티벌",
+        "title": "공식 관람 안내와 예매처",
+        "url": "https://seoul.designfestival.co.kr/visit/ticket/",
+        "facts": "코엑스 1층 Hall A, 일요일 단축 운영, 공식 가격·예매 방법 확인.",
+        "checkedAt": "2026-11-22"
+      },
       {
         "publisher": "서울디자인페스티벌",
         "title": "제25회 서울디자인페스티벌 안내",
@@ -4699,7 +4751,7 @@
   },
   {
     "verificationStatus": "verified",
-    "checkedAt": "2026-11-16",
+    "checkedAt": "2026-11-22",
     "id": "busan-haeundae-light-2026",
     "title": "제13회 해운대 빛축제",
     "region": "부산",
@@ -4707,8 +4759,8 @@
     "startDate": "2026-11-28",
     "endDate": "2027-01-10",
     "location": "부산 해운대구 해운대스퀘어(구남로) 및 해운대해수욕장",
-    "time": "점등 18:00~23:00",
-    "program": "바다와 심해를 주제로 한 빛 터널, 해양 조형물과 관람객이 조작하는 조명",
+    "time": "18:00~23:00 · 11/28 점등식",
+    "program": "‘딥 다이브 해운대’ 해양 빛 조형물과 미디어아트, 11개 트리 숲과 소원 포토존",
     "feeStatus": "free",
     "fee": "기본 관람 무료 · 개별 체험 조건은 공식 안내 확인",
     "booking": "일반 관람 자유. 만들기 체험의 운영일과 참여 방법은 현장 안내 확인.",
@@ -4716,18 +4768,18 @@
     "scheduleNote": "11월 28일 점등. 체험은 주말 중심이며 점등 시간과 회차는 주최 측 안내를 확인하세요.",
     "sources": [
       {
-        "publisher": "해운대구 제출 · 대한민국 구석구석",
-        "title": "제13회 해운대 빛축제 최신 상세 안내",
-        "url": "https://korean.visitkorea.or.kr/kfes/detail/fstvlDetail.do?fstvlCntntsId=b3b7a23c-c7f6-45db-930a-b139e4d8cd9f",
-        "facts": "11월 28일~1월 10일, 구남로와 해수욕장, 무료 관람 및 올해 심해 테마.",
-        "checkedAt": "2026-11-16"
+        "publisher": "문화체육관광부 · 해운대구",
+        "title": "제13회 해운대 빛축제 상세",
+        "url": "https://www.mcst.go.kr/site/s_culture/festival/festivalView.jsp?pRo=11&pSeq=12038",
+        "facts": "11/28~1/10, 18:00~23:00, 무료, 구남로·해수욕장, 올해 테마와 점등식.",
+        "checkedAt": "2026-11-22"
       },
       {
-        "publisher": "해운대구청 공식 채널",
-        "title": "제13회 해운대 빛축제 일정",
-        "url": "https://pf.kakao.com/_zExaDC",
-        "facts": "2026년 11월 5일 소식에서 회차와 점등 18:00~23:00 확인.",
-        "checkedAt": "2026-11-16"
+        "publisher": "해운대구 제공 · 대한민국 구석구석",
+        "title": "해운대 빛축제 개최 안내",
+        "url": "https://korean.visitkorea.or.kr/kfes/detail/fstvlDetail.do?fstvlCntntsId=b3b7a23c-c7f6-45db-930a-b139e4d8cd9f",
+        "facts": "올해 일정, 장소와 관람 정보 대조.",
+        "checkedAt": "2026-11-22"
       }
     ]
   },
@@ -5715,6 +5767,338 @@
         "url": "https://festival.seoul.go.kr/festival/main/festivalView.do?festacode=355",
         "facts": "12/18~2/9, 시간, 12/24·31 연장, 스케이트화·헬멧 포함 1,000원, 어린이 링크와 기상 변경 안내.",
         "checkedAt": "2026-11-20"
+      }
+    ]
+  },
+  {
+    "id": "incheon-yeonsu-christmas-tree-2026",
+    "title": "2026 연수 크리스마스트리 문화축제",
+    "region": "인천",
+    "theme": "light",
+    "startDate": "2026-11-26",
+    "endDate": "2027-01-15",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-22",
+    "location": "인천 연수구청 한마음광장 · 원인재로 115",
+    "time": "매일 17:00~22:00 점등 · 11/26 17:30 점등식",
+    "program": "크리스마스트리와 포토존 상설 전시, 개막 축하공연과 점등식",
+    "feeStatus": "free",
+    "fee": "무료",
+    "booking": "일반 조명 관람은 연수문화재단 운영 안내 확인",
+    "sources": [
+      {
+        "publisher": "연수문화재단",
+        "title": "크리스마스트리 문화축제 운영 안내",
+        "url": "https://www.ysfac.or.kr/user/cultural/events_view.php?sq=417",
+        "facts": "11/26~1/15, 매일 17~22시 점등, 장소·입장 무료, 점등식 확인.",
+        "checkedAt": "2026-11-22"
+      },
+      {
+        "publisher": "연수구 문화관광",
+        "title": "공식 포스터 원문",
+        "url": "https://www.yeonsu.go.kr/tour/festival/christmas/info.asp",
+        "facts": "본청과 제2청사 포스터는 별도이며, 원문 이용 조건은 공공누리 제2유형. 요약은 본청 한마음광장 기준.",
+        "checkedAt": "2026-11-22"
+      }
+    ]
+  },
+  {
+    "id": "suncheon-nammun-christmas-2026",
+    "title": "남문터에서 미리 크리스마스",
+    "region": "전남",
+    "theme": "kids",
+    "startDate": "2026-11-28",
+    "endDate": "2026-11-28",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-22",
+    "location": "순천부 읍성 남문터 야외광장 · 순천시 중앙로 93",
+    "time": "13:00~18:00 · 마술쇼 14:00, 서커스 16:30",
+    "program": "크리스마스 에어바운스, 마술과 서커스, 루돌프 키링·엽서 만들기",
+    "feeStatus": "mixed",
+    "fee": "참가 무료 · 지정 간식·키링 사전접수 각 1,000원, 현장 각 2,000원(현장 현금)",
+    "booking": "체험·간식 사전접수는 11/18~11/25 16:00까지. 1부·2부 신청서가 다르며, 기간 내 입금해야 사전 접수 확정.",
+    "familyNote": "유아·초등학생 동반 가족 대상. 비가 오면 회랑에서 진행합니다.",
+    "sources": [
+      {
+        "publisher": "순천문화재단",
+        "title": "13:00~15:00 1부 사전접수",
+        "url": "https://forms.gle/sSwdhKd9VDgDWTV27",
+        "facts": "공식 1부 신청서, 11/25 16시까지 접수 및 입금 조건.",
+        "checkedAt": "2026-11-22"
+      },
+      {
+        "publisher": "순천문화재단",
+        "title": "15:00~18:00 2부 사전접수",
+        "url": "https://forms.gle/1qMdfmFSJaeAo2Tw8",
+        "facts": "공식 2부 신청서, 11/25 16시까지 접수 및 입금 조건.",
+        "checkedAt": "2026-11-22"
+      },
+      {
+        "publisher": "순천문화재단",
+        "title": "남문터 광장 문화 콘서트 공지",
+        "url": "https://www.cfsc.or.kr/contents/open/open0102.asp?aseq=4369&bseq=1&cat=39&mode=view&page=2&yy=2026",
+        "facts": "11/28 13~18시, 장소, 우천 장소, 가족 대상, 참가비와 부스 비용·현금 결제 확인.",
+        "checkedAt": "2026-11-22"
+      }
+    ]
+  },
+  {
+    "id": "bucheon-moving-media-playground-2026",
+    "title": "2026 움직이는 미디어 예술 놀이터",
+    "region": "경기",
+    "theme": "kids",
+    "startDate": "2026-11-27",
+    "endDate": "2026-11-28",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-22",
+    "location": "부천시민미디어센터 · 부천시 원미구 장말로 107",
+    "time": "10:00~16:00 · 개인 예약 프로그램 11/28 13:00",
+    "program": "어린이가 참여하는 미디어 예술 놀이와 ‘화면 밖 친구들’ 체험",
+    "feeStatus": "unknown",
+    "fee": "프로그램별 요금은 주최 측 안내 확인",
+    "booking": "11/27 어린이집 단체, 11/28 13시 개인 체험(선착순 15명)은 각각 공지에 연결된 신청서 이용.",
+    "familyNote": "단체 회차와 개인 신청 회차가 다릅니다. 참여 전 대상과 회차를 확인하세요.",
+    "sources": [
+      {
+        "publisher": "부천문화재단 · 부천시민미디어센터",
+        "title": "움직이는 미디어 예술 놀이터 공식 공지",
+        "url": "https://www.bcf.or.kr/base/board/read?boardManagementNo=25&boardNo=153466&searchCategory=&page=1&searchType=&searchWord=&menuLevel=2&menuNo=86",
+        "facts": "단체와 개인 프로그램 신청 대상 및 개인 회차의 선착순 정원 확인.",
+        "checkedAt": "2026-11-22"
+      },
+      {
+        "publisher": "부천시민미디어센터",
+        "title": "11/28 13시 개인 프로그램 신청",
+        "url": "https://forms.gle/LT4vtv9uTG9Nkav59",
+        "facts": "공지에 연결된 ‘화면 밖 친구들’ 신청서.",
+        "checkedAt": "2026-11-22"
+      },
+      {
+        "publisher": "부천시민미디어센터",
+        "title": "11/27 어린이집 단체 신청",
+        "url": "https://forms.gle/Ukwhic7d3bmBkW489",
+        "facts": "공지에 연결된 어린이집 단체용 신청서.",
+        "checkedAt": "2026-11-22"
+      },
+      {
+        "publisher": "문화포털",
+        "title": "행사 일정과 포스터",
+        "url": "https://www.culture.go.kr/portal/cltInfo/oneCltInfo/oneCltInfoView.do?menuNo=200010&pageIndex=20&pblprfrSn=407804&srvcCstCdNm=02",
+        "facts": "포스터에서 11/27~28 10~16시, 부천시민미디어센터 확인.",
+        "checkedAt": "2026-11-22"
+      }
+    ]
+  },
+  {
+    "id": "yeongdeungpo-living-art-fair-2026",
+    "title": "2026 영등포 리빙아트페어 ‘TOWN MATE’",
+    "region": "서울",
+    "theme": "kids",
+    "startDate": "2026-11-27",
+    "endDate": "2026-11-29",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-22",
+    "location": "서울 영등포구 문래동 도림로128가길 행사 공간",
+    "time": "11/27 15:00~20:00 · 11/28~29 12:00~20:00",
+    "program": "영등포 작가·디자이너와 지역 브랜드의 작품과 생활 소품 전시·판매",
+    "feeStatus": "unknown",
+    "fee": "관람료와 작품·제품 구매 비용은 현장 안내 확인",
+    "booking": "재단 공지의 현장 안내와 문의처 참고",
+    "sources": [
+      {
+        "publisher": "영등포문화재단",
+        "title": "YDP EDITION : TOWN MATE 운영 안내",
+        "url": "https://www.ydpcf.or.kr/postview.do?bid=1&pid=2885",
+        "facts": "날짜별 운영시간, 문래동 도림로128가길, 지역 크리에이터 전시·판매 확인.",
+        "checkedAt": "2026-11-22"
+      }
+    ]
+  },
+  {
+    "id": "jeonju-kimjang-sharing-2026",
+    "title": "전라감영의 날 ‘담그랑께 나누랑께’",
+    "region": "전북",
+    "theme": "food",
+    "startDate": "2026-11-29",
+    "endDate": "2026-11-29",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-22",
+    "location": "전라감영 서편부지 · 전주시 완산구 전라감영로 55",
+    "time": "김장 체험 13:00 · 14:00 · 15:00",
+    "program": "이웃과 함께하는 김장 나눔, 전통놀이와 체험",
+    "feeStatus": "free",
+    "fee": "김장 체험 무료",
+    "booking": "공식 신청서에서 13·14·15시 중 선택. 회차별 150명 선착순.",
+    "sources": [
+      {
+        "publisher": "문화포털 · 전북특별자치도·전주시",
+        "title": "담그랑께 나누랑께 행사 안내",
+        "url": "https://www.culture.go.kr/portal/cltInfo/oneCltInfo/oneCltInfoView.do?menuNo=200010&pageIndex=17&pblprfrSn=408874&srvcCstCdNm=02",
+        "facts": "일자·장소·주최와 공식 신청서 연결을 확인.",
+        "checkedAt": "2026-11-22"
+      },
+      {
+        "publisher": "문화예술공작소",
+        "title": "김장 나눔 체험 신청서",
+        "url": "https://forms.gle/LJHhspTab1WLjfAE7",
+        "facts": "회차당 150명, 13·14·15시 운영, 무료 참여 확인.",
+        "checkedAt": "2026-11-22"
+      }
+    ]
+  },
+  {
+    "id": "seoul-magok-wish-village-2026",
+    "title": "2026 마곡위시빌리지",
+    "region": "서울",
+    "theme": "light",
+    "startDate": "2026-11-27",
+    "endDate": "2026-12-28",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-22",
+    "location": "마곡문화거리 발산역 1번 출구 광장 · 서울 강서구 마곡동 797-13",
+    "time": "매일 17:00~23:00 · 11/27 점등식 18:00~19:00",
+    "program": "대형 크리스마스트리와 LED 조명 산책, 포토존",
+    "feeStatus": "free",
+    "fee": "무료",
+    "booking": "공개 광장 관람. 점등식은 출발 전 공식 일정 확인.",
+    "sources": [
+      {
+        "publisher": "서울시 펀서울 · 강서구",
+        "title": "마곡위시빌리지 방문 안내와 공식 포스터",
+        "url": "https://festival.seoul.go.kr/festival/main/festivalView.do?festacode=489",
+        "facts": "주최 측 포스터와 상세 본문에서 11/27~12/28 운영, 점등식 18~19시와 매일 17~23시 점등 확인.",
+        "checkedAt": "2026-11-22"
+      }
+    ]
+  },
+  {
+    "id": "daejeon-artience-2026",
+    "title": "2026 아티언스 대전 페스티벌 ‘지능과 지능사이’",
+    "region": "대전",
+    "theme": "kids",
+    "startDate": "2026-11-17",
+    "endDate": "2026-11-28",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-22",
+    "location": "국립중앙과학관 미래기술관 3층·원두막쉼터 · 대전 유성구 대덕대로 481",
+    "time": "11/28 융복합 공연 13:00 · 워크숍 14:00",
+    "program": "예술가와 과학자의 협업 전시, 공연, 자율 창작 체험과 워크숍",
+    "feeStatus": "unknown",
+    "fee": "11/28 워크숍 무료 · 다른 프로그램 조건은 과학관 안내 확인",
+    "booking": "11/28 14시 워크숍은 공식 신청서로 선착순 10명, 대기 5명 접수. 전시와 상설 체험은 프로그램별 안내 확인.",
+    "scheduleType": "dates",
+    "dates": [
+      "2026-11-17",
+      "2026-11-18",
+      "2026-11-19",
+      "2026-11-20",
+      "2026-11-21",
+      "2026-11-22",
+      "2026-11-24",
+      "2026-11-25",
+      "2026-11-26",
+      "2026-11-27",
+      "2026-11-28"
+    ],
+    "scheduleNote": "11월 23일 월요일 휴관. 공연·워크숍은 별도 회차.",
+    "sources": [
+      {
+        "publisher": "국립중앙과학관 · 대전문화재단",
+        "title": "아티언스 대전 프로그램·참여 안내",
+        "url": "https://www.science.go.kr/mps/0/bbs/321/moveBbsNttDetail.do?nttSn=50327",
+        "facts": "11/17~28 전시, 11/28 13시 공연과 14시 워크숍, 원두막쉼터 등 운영 장소 확인.",
+        "checkedAt": "2026-11-22"
+      },
+      {
+        "publisher": "국립중앙과학관 · 대전문화재단",
+        "title": "11/28 14시 아티언스대전 워크숍 신청",
+        "url": "https://forms.gle/7HcaAK6nGMWVK5Ps7",
+        "facts": "국립중앙과학관 공식 공지에서 연결한 신청서. 워크숍은 무료이며 14세 이상, 선착순 10명과 대기 5명.",
+        "checkedAt": "2026-11-22"
+      }
+    ],
+    "familyNote": "11/28 워크숍은 14세 이상(2013년생 및 이전 출생자) 대상입니다."
+  },
+  {
+    "id": "seocheon-migratory-bird-festival-2026",
+    "title": "2026 서천 철새 여행",
+    "region": "충남",
+    "theme": "nature",
+    "startDate": "2026-11-28",
+    "endDate": "2026-11-29",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-22",
+    "location": "서천군 조류생태전시관 일원 · 충남 서천군 마서면 장산로 916",
+    "time": "11/28 개막식 11:00 · 탐조 회차는 공식 리플릿 확인",
+    "program": "금강 하구 겨울 철새 관찰, 탐조 프로그램과 생태·공예 체험",
+    "feeStatus": "unknown",
+    "fee": "탐조·체험별 비용 공식 리플릿 확인",
+    "booking": "프로그램별 회차와 접수 방법은 국립생태원 공지에 첨부된 공식 리플릿 확인",
+    "sources": [
+      {
+        "publisher": "국립생태원",
+        "title": "서천 철새 여행 안내·공식 리플릿",
+        "url": "https://www.nie.re.kr/nie/bbs/BMSR00028/view.do?boardId=695968494&menuNo=200097",
+        "facts": "11/28~29, 장소와 11/28 11시 개막 확인. 공식 포스터와 리플릿 제공.",
+        "checkedAt": "2026-11-22"
+      }
+    ]
+  },
+  {
+    "id": "gwangju-baegun-street-food-2026",
+    "title": "백운광장 스트리트 푸드 페스티벌 11월 마지막 회차",
+    "region": "광주",
+    "theme": "food",
+    "startDate": "2026-11-28",
+    "endDate": "2026-11-28",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-22",
+    "location": "광주 남구 백운광장 스트리트 푸드존 일원",
+    "time": "16:00~22:00",
+    "program": "백운광장 스트리트 푸드존에서 즐기는 먹거리 장터",
+    "feeStatus": "unknown",
+    "fee": "음식 가격과 행사 비용은 현장 안내 확인",
+    "booking": "공개 거리 행사. 별도 참여 조건은 주최 측 공지 확인.",
+    "sources": [
+      {
+        "publisher": "광주관광 오매광주 · 광주 남구",
+        "title": "백운광장 스트리트 푸드 페스티벌 안내",
+        "url": "https://tour.gwangju.go.kr/home/tour/culture/festival.cs?m=315",
+        "facts": "2026년 토요일 16~22시 운영, 11/28 마지막 날과 장소 확인. 이번 주 회차만 수록.",
+        "checkedAt": "2026-11-22"
+      }
+    ]
+  },
+  {
+    "id": "cheongju-ocean-stories-2026",
+    "title": "국립청주해양과학관 ‘바다로 이어지는 이야기’",
+    "region": "충북",
+    "theme": "kids",
+    "startDate": "2026-11-28",
+    "endDate": "2026-11-28",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-22",
+    "location": "국립청주해양과학관 지하 1층 대강당",
+    "time": "13:30~16:30",
+    "program": "청주에서 바다까지 과학과 시민을 잇는 시민 참여형 융합 학술행사",
+    "feeStatus": "free",
+    "fee": "참가 무료",
+    "booking": "온라인 사전 신청 또는 현장 접수. 일반 시민·청소년·가족 등 선착순 200명 이내.",
+    "familyNote": "가족 단위 관람객과 청소년도 참여할 수 있습니다.",
+    "sources": [
+      {
+        "publisher": "충북문화재단 · 국립청주해양과학관",
+        "title": "바다로 이어지는 이야기 행사 안내",
+        "url": "https://www.cbfc.or.kr/home/sub.php?menukey=6446&mod=view&no=2514610",
+        "facts": "일시, 과학관 지하 1층, 무료, 일반 시민 및 가족, 사전·현장 접수 조건 확인.",
+        "checkedAt": "2026-11-22"
+      },
+      {
+        "publisher": "국립청주해양과학관",
+        "title": "직접 사전 신청",
+        "url": "https://form.naver.com/response/89Ev3YOnSBq",
+        "facts": "충북문화재단의 공식 공지가 연결한 사전 신청서.",
+        "checkedAt": "2026-11-22"
       }
     ]
   }
