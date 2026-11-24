@@ -6,22 +6,24 @@ const photoRoot = '/assets/img/shopping/';
 export const SHOPPING_PHOTOS = {
   life: {src: photoRoot+'life-reference.webp', alt: '채소와 과일이 담긴 장바구니'},
   fashion: {src: photoRoot+'fashion-reference.webp', alt: '매장에 걸린 겨울 코트와 니트'},
+  beauty: {src: photoRoot+'beauty-reference.jpg', alt: '화장대에 놓인 겨울 보습 스킨케어 용기', referenceCredit: 'Pexels'},
   furniture: {src: photoRoot+'furniture-reference.webp', alt: '소파와 테이블이 놓인 거실'},
   appliances: {src: photoRoot+'appliances-reference.webp', alt: '세탁기와 냉장고가 놓인 공간'},
+  kitchen: {src: photoRoot+'kitchen-reference.jpg', alt: '조리대 위에 놓인 스테인리스 프라이팬', referenceCredit: 'Jim Stonos / Wikimedia Commons · CC BY-SA 4.0'},
   kids: {src: photoRoot+'kids-reference.webp', alt: '접어 둔 아기 옷과 기저귀'},
   market: {src: photoRoot+'market-reference.webp', alt: '식료품과 생활용품이 담긴 쇼핑 카트'}
 };
 
 function saleFigure(image,{locale='ko',eager=false}={}) {
   const official = Boolean(image.credit);
-  const label = official ? t('공식 홍보 이미지',locale)+' · '+image.credit : t('AI 참고 이미지',locale);
+  const label = official ? t('공식 홍보 이미지',locale)+' · '+image.credit : (image.referenceCredit ? t('참고 사진',locale)+' · '+image.referenceCredit : t('AI 참고 이미지',locale));
   return `<figure class="shopping-photo${official?' shopping-photo-official':''}">
     <img src="${esc(image.src)}" alt="${esc(official?image.alt:t(image.alt,locale))}" ${official?'lang="ko"':''} loading="${eager?'eager':'lazy'}" decoding="async">
     <figcaption>${esc(label)}</figcaption>
   </figure>`;
 }
 
-function saleImage(event) {
+export function saleImage(event) {
   const category = event.categories.find(key=>Object.hasOwn(SHOPPING_PHOTOS,key));
   return event.shopping.image || SHOPPING_PHOTOS[category] || SHOPPING_PHOTOS.market;
 }

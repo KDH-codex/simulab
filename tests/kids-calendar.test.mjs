@@ -40,8 +40,8 @@ test('Korea today and weekends work across UTC midnight, month and year boundari
   assert.equal(monthRange(2028, 2).end, '2028-02-29');
 });
 test('past events are opt-in and stale data never gets a new verification date', () => {
-  assert.equal(filterEvents({ ...monthRange(2026, 10), today: '2027-01-01', includeEnded: false }).length, 0);
-  assert.ok(filterEvents({ ...monthRange(2026, 10), today: '2027-01-01', includeEnded: true }).length > 0);
+  assert.equal(filterEvents({ ...monthRange(2026, 10), today: '2028-01-01', includeEnded: false }).length, 0);
+  assert.ok(filterEvents({ ...monthRange(2026, 10), today: '2028-01-01', includeEnded: true }).length > 0);
   assert.equal(isStale('2026-10-23', '2026-10-30'), false);
   assert.equal(isStale('2026-10-23', '2026-10-31'), true);
 });

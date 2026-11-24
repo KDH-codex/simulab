@@ -350,7 +350,8 @@
     "alt": "2014년 파주 운정호수공원의 호수와 주변 풍경",
     "caption": "운정호수공원 2014년 · 장소 참고 사진",
     "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Unjeong_Lake_Park.jpg",
-    "changes": "웹 표시용 크기·압축 조정 및 화면 비율에 따라 가장자리 일부 가림"
+    "changes": "웹 표시용 크기·압축 조정 및 화면 비율에 따라 가장자리 일부 가림",
+    "officialPosterUrl": "https://tour.paju.go.kr/user/link/cultural/BD_selectCulturalView.do?cultMstSn=967"
   },
   "pohang-fire-light-2026": {
     "src": "/assets/img/festivals/pohang-fire-light-2026-reference.jpg",
@@ -458,7 +459,8 @@
     "src": "/assets/img/festivals/nov-architecture-ai.jpg",
     "kind": "generated",
     "credit": "이번주 축제 · AI 생성",
-    "alt": "전시장에 놓인 목재와 콘크리트 견본, 건축 모형"
+    "alt": "전시장에 놓인 목재와 콘크리트 견본, 건축 모형",
+    "officialPosterUrl": "https://korean.visitkorea.or.kr/detail/fes_detail.do?cotid=391d3fb6-2a69-4055-a122-835485238cff"
   },
   "gwangju-yangdong-hongtak-2026": {
     "src": "/assets/img/festivals/nov-market-ai.jpg",
@@ -517,7 +519,8 @@
     "src": "/assets/img/festivals/nov-theatre-ai.jpg",
     "kind": "generated",
     "credit": "이번주 축제 · AI 생성",
-    "alt": "검은 소극장 무대에 조명을 받는 빈 나무 의자"
+    "alt": "검은 소극장 무대에 조명을 받는 빈 나무 의자",
+    "officialPosterUrl": "https://www.quad.or.kr/product/performance/1278"
   },
   "busan-folk-arts-festival-2026": {
     "src": "/assets/img/festivals/nov-folk-ai.jpg",
@@ -571,13 +574,15 @@
     "src": "/assets/img/festivals/nov-folk-ai.jpg",
     "kind": "generated",
     "credit": "이번주 축제 · AI 생성",
-    "alt": "장구와 북으로 장단을 맞추는 전통 풍물 연주"
+    "alt": "장구와 북으로 장단을 맞추는 전통 풍물 연주",
+    "officialPosterUrl": "https://www.danojefestival.or.kr/kor/dandan/dandan.html"
   },
   "ulsan-culture-expo-2026": {
     "src": "/assets/img/festivals/nov-culture-expo-ai.jpg",
     "kind": "generated",
     "credit": "이번주 축제 · AI 생성",
-    "alt": "지역 공예품과 만들기 체험 작업대가 있는 실내 전시"
+    "alt": "지역 공예품과 만들기 체험 작업대가 있는 실내 전시",
+    "officialPosterUrl": "https://www.uce.or.kr/visitor"
   },
   "busan-christmas-village-2026": {
     "src": "/assets/img/festivals/christmas-2026-busan-ai.webp",
@@ -669,7 +674,8 @@
     "src": "/assets/img/festivals/nov-rice-drink-ai.jpg",
     "kind": "generated",
     "credit": "이번주 축제 · AI 생성",
-    "alt": "쌀과 함께 진열된 전통주 시음 잔과 술병"
+    "alt": "쌀과 함께 진열된 전통주 시음 잔과 술병",
+    "officialPosterUrl": "https://k-ricefesta.co.kr/59/?bmode=view&idx=172110637"
   },
   "seoul-design-festival-2026": {
     "src": "/assets/img/festivals/seoul-design-festival-2026-week4-ai.webp",
@@ -682,7 +688,8 @@
     "src": "/assets/img/festivals/nov-robot-close-ai.jpg",
     "kind": "generated",
     "credit": "이번주 축제 · AI 생성",
-    "alt": "경기용 매트 위에 놓인 바퀴 달린 소형 로봇"
+    "alt": "경기용 매트 위에 놓인 바퀴 달린 소형 로봇",
+    "officialPosterUrl": "https://songdoconvensia.visitincheon.or.kr/page/schedule.do?ac=view&addNo=ADD00016482&eventCd=E202611011"
   },
   "dangjin-chrysanthemum-2026": {
     "src": "/assets/img/festivals/hampyeong-chrysanthemum-2026-ai.jpg",
@@ -694,7 +701,8 @@
     "src": "/assets/img/festivals/nov-dmz-ai.jpg",
     "kind": "generated",
     "credit": "이번주 축제 · AI 생성",
-    "alt": "평화를 주제로 한 전시 공간과 반투명 전시 패널"
+    "alt": "평화를 주제로 한 전시 공간과 반투명 전시 패널",
+    "officialPosterUrl": "https://dmz.gg.go.kr/dmz/bbs/boardView.do?bIdx=112896&bsIdx=3&menuId=54"
   },
   "jeonju-jeolla-governor-2026": {
     "src": "/assets/img/festivals/nov-jeonju-gamyeong-reference.jpg",
@@ -706,7 +714,8 @@
     "licenseLabel": "CC BY 4.0",
     "alt": "전주 전라감영 선화당",
     "caption": "2024년 전라감영 선화당 장소 참고 사진 · 행사 현장 사진 아님",
-    "changes": "웹용 크기 조정 및 압축 · 카드 비율에 따라 가장자리가 가려질 수 있음"
+    "changes": "웹용 크기 조정 및 압축 · 카드 비율에 따라 가장자리가 가려질 수 있음",
+    "officialPosterUrl": "https://daum.jeonju.go.kr/main/menu?gc=1020SEHK&do=view&bwrite_id=VZJptoYHRiTv"
   },
   "incheon-jemulpo-wave-market-2026": {
     "src": "/assets/img/festivals/seoul-souvenir-fair-2026-ai.jpg",
@@ -730,7 +739,8 @@
     "src": "/assets/img/festivals/yeongdeungpo-dungdung-2026-week4-ai.webp",
     "kind": "generated",
     "credit": "이번주 축제 · AI 생성",
-    "alt": "아이들이 그림과 종이 조형물을 만드는 창의예술 체험 참고 이미지"
+    "alt": "아이들이 그림과 종이 조형물을 만드는 창의예술 체험 참고 이미지",
+    "officialPosterUrl": "https://www.ydpcf.or.kr/training/view.do?id=67"
   },
   "maeheon-garden-concert-2026": {
     "src": "/assets/img/festivals/nov-stage-ai.jpg",
@@ -754,7 +764,8 @@
     "src": "/assets/img/festivals/capital-cinema-2026-ai.jpg",
     "kind": "generated",
     "credit": "이번주 축제 · AI 생성",
-    "alt": "붉은 좌석과 스크린이 있는 빈 영화관"
+    "alt": "붉은 좌석과 스크린이 있는 빈 영화관",
+    "officialPosterUrl": "https://siff.kr/%EA%B0%9C%EC%B5%9C-%EA%B0%9C%EC%9A%94/"
   },
   "yangpyeong-migam-market-2026": {
     "src": "/assets/img/festivals/seoul-souvenir-fair-2026-ai.jpg",
@@ -772,7 +783,8 @@
     "src": "/assets/img/festivals/anyang-apap8-2026-week4-ai.webp",
     "kind": "generated",
     "credit": "이번주 축제 · AI 생성",
-    "alt": "안양예술공원 산책로를 연상시키는 공간의 야외 공공미술 참고 이미지"
+    "alt": "안양예술공원 산책로를 연상시키는 공간의 야외 공공미술 참고 이미지",
+    "officialPosterUrl": "https://ayac.or.kr/base/board/read?boardManagementNo=8&boardNo=6182&menuLevel=2&menuNo=20&page=1"
   },
   "paju-hope-art-festival-2026": {
     "src": "/assets/img/festivals/incheon-art-show-2026-ai.jpg",
@@ -808,7 +820,8 @@
     "src": "/assets/img/festivals/incheon-art-show-2026-ai.jpg",
     "kind": "generated",
     "credit": "이번주 축제 · AI 생성",
-    "alt": "흰 전시장에 놓인 추상 도자 조형물과 그림"
+    "alt": "흰 전시장에 놓인 추상 도자 조형물과 그림",
+    "officialPosterUrl": "https://www.inartplatform.kr/program/view?no=1362"
   },
   "incheon-yeonsudam-food-2026": {
     "src": "/assets/img/festivals/pyeongchang-kimjang-2026-ai.jpg",
@@ -820,7 +833,8 @@
     "src": "/assets/img/festivals/incheon-art-t-day-tour-2026-week4-ai.webp",
     "kind": "generated",
     "credit": "이번주 축제 · AI 생성",
-    "alt": "인천 개항장 골목을 연상시키는 공간에서 미술 산책을 하는 참고 이미지"
+    "alt": "인천 개항장 골목을 연상시키는 공간에서 미술 산책을 하는 참고 이미지",
+    "officialPosterUrl": "https://ifac.or.kr/bbs/view.do?bbsCtgrySn=&bbsSn=236166&key=m2501152808232&pageIndex=1&sw="
   },
   "bupyeong-campmarket-november-2026": {
     "src": "/assets/img/festivals/nov-culture-expo-ai.jpg",
@@ -838,7 +852,8 @@
     "src": "/assets/img/festivals/anseong-namsadang-november-2026-week4-ai.webp",
     "kind": "generated",
     "credit": "이번주 축제 · AI 생성",
-    "alt": "한발씩 줄을 건너는 줄타기와 풍물 공연을 표현한 참고 이미지"
+    "alt": "한발씩 줄을 건너는 줄타기와 풍물 공연을 표현한 참고 이미지",
+    "officialPosterUrl": "https://www.anseong.go.kr/festival/bbs/view.do?bIdx=195801&mId=0401000000&ptIdx=16"
   },
   "seosan-chrysanthemum-2026": {
     "src": "/assets/img/festivals/hampyeong-chrysanthemum-2026-ai.jpg",
@@ -862,7 +877,8 @@
     "src": "/assets/img/festivals/haeundae-winter-lights-2026-ai.jpg",
     "kind": "generated",
     "credit": "이번주 축제 · AI 생성",
-    "alt": "겨울 바닷가의 푸른 조명과 고래 조형물을 표현한 참고 이미지"
+    "alt": "겨울 바닷가의 푸른 조명과 고래 조형물을 표현한 참고 이미지",
+    "officialPosterUrl": "https://korean.visitkorea.or.kr/kfes/detail/fstvlDetail.do?fstvlCntntsId=b3b7a23c-c7f6-45db-930a-b139e4d8cd9f"
   },
   "ulsan-christmas-market-2026": {
     "src": "/assets/img/festivals/ulsan-christmas-market-2026-ai.webp",
@@ -875,7 +891,8 @@
     "src": "/assets/img/festivals/incheon-ohslow-vintage-market-2026-ai.webp",
     "kind": "generated",
     "credit": "이번주 축제 · AI 생성",
-    "alt": "항만 창고를 닮은 실내에서 빈티지 의류와 소품을 고르는 크리스마스 마켓 참고 장면"
+    "alt": "항만 창고를 닮은 실내에서 빈티지 의류와 소품을 고르는 크리스마스 마켓 참고 장면",
+    "officialPosterUrl": "https://ohslowmarket.com/"
   },
   "daejeon-yuseong-christmas-2026": {
     "src": "/assets/img/festivals/daejeon-yuseong-christmas-2026-ai.webp",
@@ -887,7 +904,8 @@
     "src": "/assets/img/festivals/nov-stage-ai.jpg",
     "kind": "generated",
     "credit": "이번주 축제 · AI 생성",
-    "alt": "야외 무대 조명과 공연을 보는 관객들의 뒷모습"
+    "alt": "야외 무대 조명과 공연을 보는 관객들의 뒷모습",
+    "officialPosterUrl": "https://visitbusan.net/schedule/view.do?boardId=BBS_0000009&dataSid=6482&menuCd=DOM_000000204012000000"
   },
   "nonsan-yangchon-persimmon-2026": {
     "src": "/assets/img/festivals/nov-market-ai.jpg",
@@ -913,7 +931,8 @@
     "src": "/assets/img/festivals/seoul-lantern-winter-2026-ai.jpg",
     "kind": "generated",
     "credit": "이번주 축제 · AI 생성",
-    "alt": "도심 하천을 밝히는 한지 등과 겨울 야경을 표현한 참고 이미지"
+    "alt": "도심 하천을 밝히는 한지 등과 겨울 야경을 표현한 참고 이미지",
+    "officialPosterUrl": "https://festival.seoul.go.kr/festival/main/festivalView.do?festacode=372"
   },
   "hampyeong-winter-lights-2026": {
     "src": "/assets/img/festivals/hampyeong-winter-lights-2026-ai.jpg",
@@ -926,7 +945,8 @@
     "src": "/assets/img/festivals/seoul-hangang-christmas-market-2026-ai.webp",
     "kind": "generated",
     "credit": "이번주 축제 · AI 생성",
-    "alt": "겨울 한강변 교량 아래 푸드트럭, 트리와 공연이 있는 마켓 참고 장면"
+    "alt": "겨울 한강변 교량 아래 푸드트럭, 트리와 공연이 있는 마켓 참고 장면",
+    "officialPosterUrl": "https://festival.seoul.go.kr/festival/main/festivalView.do?festacode=415"
   },
   "seoul-bosingak-countdown-2026": {
     "src": "/assets/img/festivals/nov-stage-ai.jpg",
@@ -944,7 +964,8 @@
     "src": "/assets/img/festivals/nov-christmas-close-ai.jpg",
     "kind": "generated",
     "credit": "이번주 축제 · AI 생성",
-    "alt": "크리스마스트리와 따뜻한 조명으로 꾸민 마켓"
+    "alt": "크리스마스트리와 따뜻한 조명으로 꾸민 마켓",
+    "officialPosterUrl": "https://korean.visitseoul.net/events/2026KoreaChristmasFestival/KOPqjti55"
   },
   "daegu-christmas-fair-2026": {
     "src": "/assets/img/festivals/daegu-christmas-fair-2026-ai.webp",
@@ -957,19 +978,22 @@
     "src": "/assets/img/festivals/nov-walk-ai.jpg",
     "kind": "generated",
     "credit": "이번주 축제 · AI 생성",
-    "alt": "나무 사이로 이어지는 산책로 테마 이미지"
+    "alt": "나무 사이로 이어지는 산책로 테마 이미지",
+    "officialPosterUrl": "https://www.visitjeju.net/kr/festival/view?contentsid=CNTS_300000000014953"
   },
   "goyang-agf-2026": {
     "src": "/assets/img/festivals/nov-controller-close-ai.jpg",
     "kind": "generated",
     "credit": "이번주 축제 · AI 생성",
-    "alt": "실내 게임 체험석에서 컨트롤러를 사용하는 모습"
+    "alt": "실내 게임 체험석에서 컨트롤러를 사용하는 모습",
+    "officialPosterUrl": "https://www.agfkorea.com/"
   },
   "incheon-paradise-alpine-market-2026": {
     "src": "/assets/img/festivals/incheon-paradise-alpine-market-2026-ai.webp",
     "kind": "generated",
     "credit": "이번주 축제 · AI 생성",
-    "alt": "눈 덮인 북유럽 산장과 스키 장식으로 꾸민 실내 크리스마스 마켓 참고 장면"
+    "alt": "눈 덮인 북유럽 산장과 스키 장식으로 꾸민 실내 크리스마스 마켓 참고 장면",
+    "officialPosterUrl": "https://www.p-city.com/front/event/eventView?P_CTNT_TY=imageTy&P_SEQ=14410"
   },
   "seoul-christmas-pet-show-2026": {
     "src": "/assets/img/festivals/seoul-christmas-pet-show-2026-ai.webp",
@@ -989,13 +1013,15 @@
     "src": "/assets/img/festivals/suseong-biennale-2026-ai.jpg",
     "kind": "generated",
     "credit": "이번주 축제 · AI 생성",
-    "alt": "가을 호숫가에 놓인 목재 건축 파빌리온"
+    "alt": "가을 호숫가에 놓인 목재 건축 파빌리온",
+    "officialPosterUrl": "https://www.cbfc.or.kr/home/sub.php?menukey=6430&mod=view&no=2130071&page=1&scode=00000003"
   },
   "sejong-just-beside-year-end-concert-2026": {
     "src": "/assets/img/festivals/nov-theatre-ai.jpg",
     "kind": "generated",
     "credit": "이번주 축제 · AI 생성",
-    "alt": "공연장 무대에 조명이 비치는 참고 이미지"
+    "alt": "공연장 무대에 조명이 비치는 참고 이미지",
+    "officialPosterUrl": "https://www.sjac.or.kr/base/nrr/performance/read?menuLevel=2&menuNo=77&performanceNo=743"
   },
   "seoul-hangang-gym-run-2026": {
     "src": "/assets/img/festivals/nov-running-close-ai.jpg",
@@ -1007,7 +1033,8 @@
     "src": "/assets/img/festivals/gwangju-biennale-2026-ai.jpg",
     "kind": "generated",
     "credit": "이번주 축제 · AI 생성",
-    "alt": "현대미술 전시장 천장에 걸린 추상 조형물"
+    "alt": "현대미술 전시장 천장에 걸린 추상 조형물",
+    "officialPosterUrl": "https://seoul284.org/program/view/category/319/state/5/menu/328?idx=379"
   },
   "seoul-lotte-town-christmas-market-2026": {
     "src": "/assets/img/festivals/christmas-2026-lotte-ai.webp",
@@ -1019,7 +1046,8 @@
     "src": "/assets/img/festivals/tongyeong-chudo-island-film-2026-week4-ai.webp",
     "kind": "generated",
     "credit": "이번주 축제 · AI 생성",
-    "alt": "통영의 작은 섬을 연상시키는 포구 야외 극장에서 영화를 보는 참고 이미지"
+    "alt": "통영의 작은 섬을 연상시키는 포구 야외 극장에서 영화를 보는 참고 이미지",
+    "officialPosterUrl": "https://www.filmmakers.co.kr/pr/36674591"
   },
   "chilgok-christmas-market-2026": {
     "src": "/assets/img/festivals/chilgok-christmas-market-2026-poster.jpg",
@@ -1036,19 +1064,22 @@
     "src": "/assets/img/festivals/capital-reuse-2026-ai.jpg",
     "kind": "generated",
     "credit": "이번주 축제 · AI 생성",
-    "alt": "중고 의류와 책, 장난감이 놓인 나눔장터 판매대"
+    "alt": "중고 의류와 책, 장난감이 놓인 나눔장터 판매대",
+    "officialPosterUrl": "https://m.geumcheon.go.kr/portal/selectBbsNttView.do?bbsNo=8&id=&integrDeptCode=&key=297&nttNo=271494&pageIndex=1&searchCnd=all&searchCtgry=&searchDeptCode=&searchKrwd="
   },
   "yangpyeong-ice-fishing-2026": {
     "src": "/assets/img/festivals/yangpyeong-ice-fishing-2026-ai.jpg",
     "kind": "generated",
     "credit": "이번주 축제 · AI 생성",
-    "alt": "겨울 얼음 구멍 위에 낚싯대를 든 장갑 낀 손"
+    "alt": "겨울 얼음 구멍 위에 낚싯대를 든 장갑 낀 손",
+    "officialPosterUrl": "https://korean.visitkorea.or.kr/kfes/detail/fstvlDetail.do?cmsCntntsId=1762432"
   },
   "gwangju-liquor-festa-2026": {
     "src": "/assets/img/festivals/daejeon-wine-expo-2026-ai.jpg",
     "kind": "generated",
     "credit": "이번주 축제 · AI 생성",
-    "alt": "전시 부스를 배경으로 놓인 세 종류의 와인 잔"
+    "alt": "전시 부스를 배경으로 놓인 세 종류의 와인 잔",
+    "officialPosterUrl": "https://www.liquorfesta.com/theme/basic/sub_301.php"
   },
   "jeju-christmas-village-2026": {
     "src": "/assets/img/festivals/jeju-christmas-village-2026-ai.webp",
@@ -1061,7 +1092,8 @@
     "src": "/assets/img/festivals/seogwipo-jeju-icc-santa-2026-ai.webp",
     "kind": "generated",
     "credit": "이번주 축제 · AI 생성",
-    "alt": "감귤과 제주 먹거리·선물, 독립출판물로 꾸민 실내 겨울 페어 참고 장면"
+    "alt": "감귤과 제주 먹거리·선물, 독립출판물로 꾸민 실내 겨울 페어 참고 장면",
+    "officialPosterUrl": "https://jejuchristmasfair.com/pages/sub02_1.php"
   },
   "seoul-plaza-ice-rink-2026": {
     "src": "/assets/img/festivals/seoul-plaza-ice-rink-2026-ai.webp",
@@ -1130,7 +1162,8 @@
     "src": "/assets/img/festivals/gwangju-baegun-street-food-2026-week4-ai.webp",
     "kind": "generated",
     "credit": "이번주 축제 · AI 생성",
-    "alt": "백운광장 스트리트 푸드존의 야외 먹거리 거리를 연상시키는 참고 이미지"
+    "alt": "백운광장 스트리트 푸드존의 야외 먹거리 거리를 연상시키는 참고 이미지",
+    "officialPosterUrl": "https://dmgj.kr/event.es?mid=a10303000000&p_cate=0303&category=0303000000&act=view&seq=9358"
   },
   "cheongju-ocean-stories-2026": {
     "src": "/assets/img/festivals/cheongju-ocean-stories-2026-week4-ai.webp",
@@ -1138,5 +1171,181 @@
     "credit": "이번주 축제 · AI 생성",
     "alt": "해양과학관에서 관찰하는 연구 자료와 모형을 표현한 참고 이미지",
     "officialPosterUrl": "https://www.cbfc.or.kr/home/sub.php?menukey=6446&mod=view&no=2514610"
+  },
+  "seocheon-nie-climate-ecosystems-2026": {
+    "src": "/assets/img/festivals/seocheon-nie-climate-ecosystems-2026-poster.png",
+    "kind": "poster",
+    "credit": "국립생태원",
+    "creditUrl": "https://www.nie.re.kr/nie/bbs/BMSR00053/view.do?boardId=695968203&menuNo=200288&dateType=1",
+    "licenseUrl": "https://www.kogl.or.kr/info/licenseType1.do",
+    "licenseLabel": "공공누리 제1유형",
+    "alt": "국립생태원 기후와 생태계 함께 걷는 기후대 공식 포스터",
+    "sourceImage": "https://www.nie.re.kr/cmmn/file/imageSrc.do?atchFileId=f5d42cfc67954e02af8b80cdfc0e904f&fileSn=8",
+    "officialPosterUrl": "https://www.nie.re.kr/nie/bbs/BMSR00053/view.do?boardId=695968203&menuNo=200288&dateType=1"
+  },
+  "busan-sciport-buildup-project-2026": {
+    "src": "/assets/img/festivals/busan-sciport-buildup-project-2026-ref.jpg",
+    "kind": "context",
+    "credit": "Captmondo / Wikimedia Commons",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:ArchitecturalModelOfExhibitionStadium_Aug25-05.jpg",
+    "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+    "licenseLabel": "CC BY-SA 3.0",
+    "alt": "철골과 트러스 구조로 지어진 대형 경기장 건축 모형 전시",
+    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/9/98/ArchitecturalModelOfExhibitionStadium_Aug25-05.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "officialPosterUrl": "https://www.sciport.or.kr/kor/CMS/EventMgr/view.do?mCode=MN121&sitecode=kor&event_code=4249"
+  },
+  "busan-museum-joseon-garden-2026": {
+    "src": "/assets/img/festivals/busan-museum-joseon-garden-2026-ref.jpg",
+    "kind": "context",
+    "credit": "Basile Morin / Wikimedia Commons",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Exterior_front_view_of_the_pavilion_Samsamwa_with_blue_sky_at_Changdeokgung_Palace_in_Seoul.jpg",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "licenseLabel": "CC BY-SA 4.0",
+    "alt": "전통 기와 정자와 고목이 어우러진 조선 정원 건축 풍경",
+    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Exterior_front_view_of_the_pavilion_Samsamwa_with_blue_sky_at_Changdeokgung_Palace_in_Seoul.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "officialPosterUrl": "https://museum.busan.go.kr/busan/specmun?bbsNo=1"
+  },
+  "daegu-art-museum-picasso-kiki-2026": {
+    "src": "/assets/img/festivals/daegu-art-museum-picasso-kiki-2026-ref.jpg",
+    "kind": "context",
+    "credit": "Joshua Tree National Park / Wikimedia Commons",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Marcia_Geiger_Exhibition_at_Black_Rock_Art_Gallery_(54378366949).jpg",
+    "licenseUrl": "https://creativecommons.org/licenses/",
+    "licenseLabel": "Public domain",
+    "alt": "전시 공간에 회화와 조형 작품이 걸린 현대 미술관 전경",
+    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/0/06/Marcia_Geiger_Exhibition_at_Black_Rock_Art_Gallery_%2854378366949%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "officialPosterUrl": "https://daeguartmuseum.or.kr/index.do?menu_id=00000729"
+  },
+  "daegu-national-museum-dalgubeol-2026": {
+    "src": "/assets/img/festivals/daegu-national-museum-dalgubeol-2026-ref.jpg",
+    "kind": "context",
+    "credit": "Tristan Surtel / Wikimedia Commons",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Gilt-bronze_shoes_at_National_Museum_of_Korea.jpg",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "licenseLabel": "CC BY-SA 4.0",
+    "alt": "박물관 진열장에 전시된 고대 금동신발 유물",
+    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/1/18/Gilt-bronze_shoes_at_National_Museum_of_Korea.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "officialPosterUrl": "https://daegu.museum.go.kr/prog/speclDspy/01/kor/sub03_02_01/view.do?mngNo=148"
+  },
+  "sejong-winter-symphony-2026": {
+    "src": "/assets/img/festivals/sejong-winter-symphony-2026-ref.jpg",
+    "kind": "context",
+    "credit": "Saruwine / Wikimedia Commons",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Helsinki_Music_Centre_Concert_Hall_1.jpg",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+    "licenseLabel": "CC BY 4.0",
+    "alt": "목조 음향 패널로 둘러싸인 클래식 콘서트홀 무대",
+    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/f/f7/Helsinki_Music_Centre_Concert_Hall_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "officialPosterUrl": "https://www.sjac.or.kr/culture/nrr/performance/read?performanceNo=737&menuLevel=2&menuNo=76"
+  },
+  "sejong-arboretum-little-prince-2026": {
+    "src": "/assets/img/festivals/sejong-arboretum-little-prince-2026-ref.jpg",
+    "kind": "context",
+    "credit": "PDru2014 from Detroit, United States / Wikimedia Commons",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Anna_Scripps_Whitcomb_Conservatory_(3478836789).jpg",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "licenseLabel": "CC BY 2.0",
+    "alt": "열대·온대 식물이 자라는 유리 천장 대형 식물원 온실",
+    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Anna_Scripps_Whitcomb_Conservatory_%283478836789%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "officialPosterUrl": "https://www.koagi.or.kr/sjna/user/bbs/BD_selectBbs.do?q_bbsSn=1046&q_clsfNo=3&q_bbsDocNo=20261016075127240"
+  },
+  "geochang-christmas-tree-festival-2026": {
+    "src": "/assets/img/festivals/geochang-christmas-tree-festival-2026-ref.jpg",
+    "kind": "context",
+    "credit": "P4K1T0 / Wikimedia Commons",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:%C3%81rbol_navide%C3%B1o_en_la_plaza_de_Espa%C3%B1a_(20201210_182302).jpg",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "licenseLabel": "CC BY-SA 4.0",
+    "alt": "광장에 설치된 거대한 크리스마스 트리와 야간 성탄 조명",
+    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/4/45/%C3%81rbol_navide%C3%B1o_en_la_plaza_de_Espa%C3%B1a_%2820201210_182302%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "officialPosterUrl": "https://geochangchristmas.kr/theme/xmas/html/gcctf/01.php"
+  },
+  "sangju-nnibr-dog-cat-2026": {
+    "src": "/assets/img/festivals/sangju-nnibr-dog-cat-2026-ref.jpg",
+    "kind": "context",
+    "credit": "Faypearse / Wikimedia Commons",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Cat_and_Dog_Game.jpg",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "licenseLabel": "CC BY-SA 4.0",
+    "alt": "서로 마주 보며 교감하는 개와 고양이 모습",
+    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/5/58/Cat_and_Dog_Game.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "officialPosterUrl": "https://www.nnibr.re.kr/index.do?menu_id=00000009&menu_link=/front/eventInfo/eventInfoViewFront.do&event_id=EVENTINFO_00000521"
+  },
+  "bonghwa-baekdudaegan-forest-open-2026": {
+    "src": "/assets/img/festivals/bonghwa-baekdudaegan-forest-open-2026-ref.jpg",
+    "kind": "context",
+    "credit": "Christophe95 / Wikimedia Commons",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Pine_forest_in_Gangneung_1.jpg",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "licenseLabel": "CC BY-SA 4.0",
+    "alt": "곧게 뻗은 한국 소나무들이 이어지는 울창한 산림 풍경",
+    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/3/37/Pine_forest_in_Gangneung_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "officialPosterUrl": "https://bdna.koagi.or.kr/bdna/user/bbs/BD_selectBbs.do?q_bbsSn=1046&q_clsfNo=2&q_bbsDocNo=20260916134630174"
+  },
+  "iksan-jeseoksa-temple-2026": {
+    "src": "/assets/img/festivals/iksan-jeseoksa-temple-2026-ref.jpg",
+    "kind": "context",
+    "credit": "LandAndTree / Wikimedia Commons",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Flagpole_Supports_of_Mireuksa_Temple_20250224_(03).jpg",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "licenseLabel": "CC BY-SA 4.0",
+    "alt": "백제 사찰 유적지에 세워진 전통 석조 당간지주",
+    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/1/1b/Flagpole_Supports_of_Mireuksa_Temple_20250224_%2803%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "officialPosterUrl": "https://iksan.museum.go.kr/kor/html/sub02/0202.html?mode=VD&d_mng_no=187"
+  },
+  "jecheon-nutcracker-ballet-2026": {
+    "src": "/assets/img/festivals/jecheon-nutcracker-ballet-2026-ref.jpg",
+    "kind": "context",
+    "credit": "Caitlin Wilkins / Wikimedia Commons",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Madison_Ballet_-_The_Nutcracker_-_December_10,_2021_2.jpg",
+    "licenseUrl": "https://creativecommons.org/licenses/",
+    "licenseLabel": "Public domain",
+    "alt": "호두까기 인형 전막 발레 공연의 무대 위 발레리나와 무용수들",
+    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Madison_Ballet_-_The_Nutcracker_-_December_10%2C_2021_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "officialPosterUrl": "https://www.jccf.or.kr/bbs/board.php?bo_table=w6_1&wr_id=697"
+  },
+  "jecheon-red-fishcake-festival-2026": {
+    "src": "/assets/img/festivals/jecheon-red-fishcake-festival-2026-ref.jpg",
+    "kind": "context",
+    "credit": "Republic of Korea from Seoul, Republic of Korea / Wikimedia Commons",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Goraesa_Eomuk_01_(25551679606).jpg",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+    "licenseLabel": "CC BY-SA 2.0",
+    "alt": "모둠 어묵과 다양한 겨울 길거리 간식 진열 모습",
+    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/3/33/Goraesa_Eomuk_01_%2825551679606%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "officialPosterUrl": "https://www.jecheon.go.kr/www/selectBbsNttView.do?key=114&bbsNo=11&nttNo=406649"
+  },
+  "chuncheon-craft-masterpieces-2026": {
+    "src": "/assets/img/festivals/chuncheon-craft-masterpieces-2026-ref.jpg",
+    "kind": "context",
+    "credit": "Suohros / Wikimedia Commons",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Goryeo_Celadon111.jpg",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "licenseLabel": "CC0",
+    "alt": "은은한 비취색을 띠는 한국 전통 고려청자 공예품",
+    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/1/16/Goryeo_Celadon111.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "officialPosterUrl": "https://chuncheon.museum.go.kr/prog/openExht/kor/sub02_06/view.do?pageIndex=1&openExhtId=OPENEXHT_00000000082"
+  },
+  "naju-mahan-imported-artifacts-2026": {
+    "src": "/assets/img/festivals/naju-mahan-imported-artifacts-2026-ref.jpg",
+    "kind": "context",
+    "credit": "Gary Todd from Xinzheng, China / Wikimedia Commons",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Baekje_Kingdom_Pottery_(17371094224).jpg",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "licenseLabel": "CC0",
+    "alt": "박물관에 전시된 고대 백제·마한 시대 토기 유물",
+    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/8/8d/Baekje_Kingdom_Pottery_%2817371094224%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "officialPosterUrl": "https://naju.museum.go.kr/prog/spclexht/A/kor/sub02_02_01/view.do?spclExhtId=SPCLEXHT_00000000047"
+  },
+  "jeju-kim-young-gap-photo-2026": {
+    "src": "/assets/img/festivals/jeju-kim-young-gap-photo-2026-ref.jpg",
+    "kind": "context",
+    "credit": "Basile Morin / Wikimedia Commons",
+    "creditUrl": "https://commons.wikimedia.org/wiki/File:Green_vegetation_on_the_low_cloud-swept_relief_in_Hallasan_National_Park_Jeju_South_Korea.jpg",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "licenseLabel": "CC BY-SA 4.0",
+    "alt": "구름 아래 펼쳐진 제주 한라산과 오름의 능선 풍경",
+    "sourceImage": "https://upload.wikimedia.org/wikipedia/commons/c/cd/Green_vegetation_on_the_low_cloud-swept_relief_in_Hallasan_National_Park_Jeju_South_Korea.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+    "officialPosterUrl": "https://jeju.museum.go.kr/_prog/special_exhibit/index.php?site_dvs_cd=kr&menu_dvs_cd=0202&mode=V&mng_no=283"
   }
 }

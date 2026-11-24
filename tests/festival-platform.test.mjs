@@ -85,4 +85,8 @@ test('step 1 growth features render search input, quick presets, ending-soon fee
   assert.match(detailHtml,/data-calendar-ics="/);
   assert.match(detailHtml,/https:\/\/calendar\.google\.com\/calendar\/render/);
   assert.match(detailHtml,/related-festivals-section/);
+  assert.match(home,/id="home-deals-spotlight"/);
+  assert.match(home,/class="card-quick-facts"/);
+  assert.match(detailHtml,/class="aside-checklist"/);
+  assert.match(detailHtml,/href="\/tools\/travel-budget-calc\/"/);
 });

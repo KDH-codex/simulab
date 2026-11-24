@@ -1,7 +1,7 @@
 import {eventTags,matchesKeyword,weekRangeFor,weekDays,weeklyEvents,eventsForDay,dayMilestone,toggleDaySelection,THEME_WORDS,QUICK_PRESETS,matchesPreset,endingThisWeekEvents,CONCIERGE_MODES,conciergePicksFor,parseSharedPicks,buildSharedPicksURL,icsContent,isIndoorVenue} from './festival-ui-model.js';
 import {WEATHER_STATIONS} from './festival-weather-model.js';
 import {modalMarkup,modalTabIds} from './festival-modal.js';
-import {eventImage,imageCaption,activeConditions,detailTagDestination,miniEvent,conciergeCardMarkup,sharedPicksBoardMarkup} from './festival-presentation.js';
+import {eventImage,imageCaption,activeConditions,detailTagDestination,miniEvent,conciergeCardMarkup,sharedPicksBoardMarkup,cardQuickFacts} from './festival-presentation.js';
 import {setupHeadingMotion} from './festival-heading-motion.js';
 import {initializeLanguage} from './festival-language.js';
 import {setupHomeVisits} from './festival-home-visits.js';
@@ -65,7 +65,7 @@ function imageMarkup(e,hero=false) {
   return eventImage(e,e.image,{hero});
 }
 function card(e) {
-  return '<article class="festival-card" data-card-id="'+esc(e.id)+'"><div class="card-visual theme-'+esc(e.theme)+'"><a href="'+esc(e.url)+'" data-preview="'+esc(e.id)+'" aria-label="'+esc(e.title)+' 상세안내">'+imageMarkup(e)+'<span class="status-badge">'+esc(status(e))+'</span><span class="picture-date">▦ '+esc(range(e))+'</span></a><button class="save-button" data-save="'+esc(e.id)+'" aria-label="'+esc(e.title)+' 보관" aria-pressed="false">♡</button></div><div class="card-content"><p class="place-label">⌖ '+esc(e.region)+' · <span data-original lang="ko">'+esc(e.location)+'</span>'+'</p><h3><a href="'+esc(e.url)+'" data-preview="'+esc(e.id)+'">'+esc(e.title)+'</a></h3><p class="card-description">'+esc(e.program)+'</p>'+keywordTags(e)+(e.scheduleType==='period'?'<p class="card-schedule-note">기간 내 운영일 확인</p>':'')+'<div class="card-bottom"><div><small>입장·참여 비용</small><strong>'+esc(fee(e))+'</strong></div><a href="'+esc(e.url)+'" class="detail-button" data-preview="'+esc(e.id)+'">상세보기 ↗</a></div></div></article>';
+  return '<article class="festival-card" data-card-id="'+esc(e.id)+'"><div class="card-visual theme-'+esc(e.theme)+'"><a href="'+esc(e.url)+'" data-preview="'+esc(e.id)+'" aria-label="'+esc(e.title)+' 상세안내">'+imageMarkup(e)+'<span class="status-badge">'+esc(status(e))+'</span><span class="picture-date">▦ '+esc(range(e))+'</span></a><button class="save-button" data-save="'+esc(e.id)+'" aria-label="'+esc(e.title)+' 보관" aria-pressed="false">♡</button></div><div class="card-content"><p class="place-label">⌖ '+esc(e.region)+' · <span data-original lang="ko">'+esc(e.location)+'</span>'+'</p><h3><a href="'+esc(e.url)+'" data-preview="'+esc(e.id)+'">'+esc(e.title)+'</a></h3><p class="card-description">'+esc(e.program)+'</p>'+cardQuickFacts(e)+keywordTags(e)+(e.scheduleType==='period'?'<p class="card-schedule-note">기간 내 운영일 확인</p>':'')+'<div class="card-bottom"><div><small>입장·참여 비용</small><strong>'+esc(fee(e))+'</strong></div><a href="'+esc(e.url)+'" class="detail-button" data-preview="'+esc(e.id)+'">상세보기 ↗</a></div></div></article>';
 }
 function keywordTags(e,extraClass='') {
   return '<div class="tag-row keyword-tags '+extraClass+'">'+eventTags(e).map(word=>'<button type="button" data-keyword="'+esc(word)+'" aria-pressed="'+(state.keyword===word)+'">#'+esc(word)+'</button>').join('')+'</div>';

@@ -827,7 +827,8 @@
         "www.traders.co.kr",
         "store.emart.com",
         "eapp.emart.com",
-        "traders.ssg.com"
+        "traders.ssg.com",
+        "www.shinsegaegroupnewsroom.com"
       ],
       "categories": [
         "life",
@@ -876,6 +877,139 @@
       "note": "공식 기획전과 뉴스룸에서 플랫폼 공통·입점 판매자·쿠폰·카드 범위를 확인.",
       "rightsNote": "공식 공지의 일정과 이용 조건을 자체 문장으로 안내합니다.",
       "checkedAt": "2026-11-20T17:38:03+09:00"
+    },
+    {
+      "id": "shinsegae-dept",
+      "name": "신세계백화점",
+      "operator": "주식회사 신세계",
+      "officialUrl": "https://www.shinsegae.com/shopping/list.do?storeCd=SC00002",
+      "allowedHosts": [
+        "www.shinsegae.com",
+        "www.shinsegaegroupnewsroom.com"
+      ],
+      "categories": [
+        "fashion",
+        "beauty",
+        "life",
+        "furniture"
+      ],
+      "aliases": [
+        "신세계",
+        "SHINSEGAE"
+      ],
+      "trackingTier": "priority",
+      "note": "점포(강남점·본점·타임스퀘어점·대전 등)별 쇼핑뉴스 JSON/상세 페이지에서 행사 기간과 적용 층·품목을 각각 확인.",
+      "rightsNote": "공식 출처와 운영 브랜드를 확인한 추적 대상입니다. 공개 열람은 재이용 허락을 뜻하지 않습니다. 기간 한정 대표 세일의 최소 사실만 검토 후 자체 정리하며, 이미지·홍보문·상품 DB를 복제하거나 세일 기간을 추정하지 않습니다.",
+      "checkedAt": "2026-11-25T01:19:00+09:00"
+    },
+    {
+      "id": "chicor",
+      "name": "시코르",
+      "operator": "주식회사 신세계 (시코르닷컴)",
+      "officialUrl": "https://chicor.com/main",
+      "allowedHosts": [
+        "chicor.com",
+        "www.chicor.com"
+      ],
+      "categories": [
+        "beauty"
+      ],
+      "aliases": [
+        "CHICOR",
+        "시코르닷컴"
+      ],
+      "trackingTier": "priority",
+      "note": "시코르닷컴 공식 기획전의 행사 기간과 온라인·오프라인 매장 적용 범위를 구분해 확인.",
+      "rightsNote": "공식 출처와 운영 브랜드를 확인한 추적 대상입니다. 공개 열람은 재이용 허락을 뜻하지 않습니다. 기간 한정 대표 세일의 최소 사실만 검토 후 자체 정리하며, 이미지·홍보문·상품 DB를 복제하거나 세일 기간을 추정하지 않습니다.",
+      "checkedAt": "2026-11-25T01:19:00+09:00"
+    },
+    {
+      "id": "innisfree",
+      "name": "이니스프리",
+      "operator": "주식회사 이니스프리",
+      "officialUrl": "https://www.innisfree.com/kr/ko/ca/event",
+      "allowedHosts": [
+        "www.innisfree.com",
+        "m.innisfree.com"
+      ],
+      "categories": [
+        "beauty"
+      ],
+      "aliases": [
+        "INNISFREE"
+      ],
+      "trackingTier": "priority",
+      "note": "공식 이벤트 상세의 온·오프라인 적용 범위, 증정 수량 조건, 별도 카드사 결제일 할인 구분.",
+      "rightsNote": "공식 출처와 운영 브랜드를 확인한 추적 대상입니다. 공개 열람은 재이용 허락을 뜻하지 않습니다. 기간 한정 대표 세일의 최소 사실만 검토 후 자체 정리하며, 이미지·홍보문·상품 DB를 복제하거나 세일 기간을 추정하지 않습니다.",
+      "checkedAt": "2026-11-25T01:19:00+09:00"
+    },
+    {
+      "id": "ipoomgo",
+      "name": "아이품고",
+      "operator": "아이품고 공식 온라인몰",
+      "officialUrl": "https://ipoomgo.com/",
+      "allowedHosts": [
+        "ipoomgo.com",
+        "www.ipoomgo.com"
+      ],
+      "categories": [
+        "kids",
+        "life"
+      ],
+      "aliases": [
+        "IPOOMGO",
+        "블랙품고데이"
+      ],
+      "trackingTier": "priority",
+      "note": "출산·육아용품 및 브랜드위크 기획전의 회원 전용 특가, 쿠폰, 사은품 수량 조건 확인.",
+      "rightsNote": "공식 출처와 운영 브랜드를 확인한 추적 대상입니다. 공개 열람은 재이용 허락을 뜻하지 않습니다. 기간 한정 대표 세일의 최소 사실만 검토 후 자체 정리하며, 이미지·홍보문·상품 DB를 복제하거나 세일 기간을 추정하지 않습니다.",
+      "checkedAt": "2026-11-25T01:19:00+09:00"
+    },
+    {
+      "id": "himart",
+      "name": "롯데하이마트",
+      "operator": "롯데하이마트 주식회사",
+      "officialUrl": "https://www.e-himart.co.kr/app/display/main?tab=10015128",
+      "allowedHosts": [
+        "www.e-himart.co.kr",
+        "m.e-himart.co.kr"
+      ],
+      "categories": [
+        "appliances",
+        "kitchen",
+        "furniture"
+      ],
+      "aliases": [
+        "하이마트",
+        "HIMART"
+      ],
+      "trackingTier": "priority",
+      "note": "메인 배너 기간과 상세 기획전(listPlanDetail)의 실제 rawStartDate/rawEndDate를 대조해 장기 상시 기획전을 제외하고 단기 행사만 선별.",
+      "rightsNote": "공식 출처와 운영 브랜드를 확인한 추적 대상입니다. 공개 열람은 재이용 허락을 뜻하지 않습니다. 기간 한정 대표 세일의 최소 사실만 검토 후 자체 정리하며, 이미지·홍보문·상품 DB를 복제하거나 세일 기간을 추정하지 않습니다.",
+      "checkedAt": "2026-11-25T01:19:00+09:00"
+    },
+    {
+      "id": "lotte-dept",
+      "name": "롯데백화점",
+      "operator": "롯데쇼핑 백화점사업부",
+      "officialUrl": "https://www.lotteshopping.com/store/main?cstrCd=0002",
+      "allowedHosts": [
+        "www.lotteshopping.com",
+        "minfo.lotteshopping.com"
+      ],
+      "categories": [
+        "fashion",
+        "beauty",
+        "life"
+      ],
+      "aliases": [
+        "롯백",
+        "LOTTE DEPARTMENT STORE"
+      ],
+      "trackingTier": "priority",
+      "note": "지점별 메인 및 쇼핑뉴스 상세(shpgnewsDetail)에서 점포·기간 확인 필요 (상세 본문은 클라이언트 렌더링으로 별도 확인).",
+      "rightsNote": "공식 출처와 운영 브랜드를 확인한 추적 대상입니다. 공개 열람은 재이용 허락을 뜻하지 않습니다. 기간 한정 대표 세일의 최소 사실만 검토 후 자체 정리하며, 이미지·홍보문·상품 DB를 복제하거나 세일 기간을 추정하지 않습니다.",
+      "checkedAt": "2026-11-25T01:19:00+09:00"
     }
   ]
 }

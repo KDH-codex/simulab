@@ -1,6 +1,6 @@
 import {escapeHtml as esc} from '../../tools/kids-outing-calendar/model.js';
 import {highlightBadge} from './festival-highlights.js';
-import {PRESET_LABELS} from './festival-ui-model.js';
+import {PRESET_LABELS,isIndoorVenue,hasAdvanceBooking} from './festival-ui-model.js';
 
 const themes={light:'빛이 머무는 밤',nature:'계절을 만나는 시간',food:'맛있는 주말의 발견',kids:'새로운 경험 한 조각'};
 const drawings={
@@ -113,4 +113,19 @@ export function sharedPicksBoardMarkup(items,{statusFn,feeFn,isIndoorFn}={}) {
     row('예약 · 시간',e=>'<span>'+esc(e.booking||'공식 안내 확인')+'</span><small class="picks-time-note">'+esc(e.time||'시간 확인 필요')+'</small>')+
     row('일정 담기',e=>'<div class="picks-cell-actions"><button type="button" class="quiet-button" data-calendar-ics="'+esc(e.id)+'">📅 폰 달력 저장</button><a class="text-link" href="'+esc(e.url||'/events/'+encodeURIComponent(e.id)+'/')+'" data-preview="'+esc(e.id)+'">상세보기 ↗</a></div>')+
   '</tbody></table></div>';
+}
+
+/**
+ * 카드 상단 요약 아래에 실내 여부, 사전신청, 운영시간 등 방문 전 핵심 힌트 칩(최대 3개)을 생성합니다.
+ */
+export function cardQuickFacts(event) {
+  const chips=[];
+  if(isIndoorVenue(event))chips.push('<span class="fact-chip">🏛 실내 시설</span>');
+  if(hasAdvanceBooking(event))chips.push('<span class="fact-chip">📝 사전신청 안내</span>');
+  const rawTime=String(event.time||'').trim();
+  if(rawTime&&!/확인 필요|추후 안내|미기재/.test(rawTime)){
+    const shortTime=rawTime.split('·')[0].split('(')[0].trim();
+    if(shortTime&&shortTime.length<=24)chips.push('<span class="fact-chip fact-time">◷ <span data-original lang="ko">'+esc(shortTime)+'</span></span>');
+  }
+  return chips.length?'<div class="card-quick-facts">'+chips.slice(0,3).join('')+'</div>':'';
 }

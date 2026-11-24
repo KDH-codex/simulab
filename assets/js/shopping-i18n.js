@@ -81,11 +81,14 @@ const rows=`
 품목별 할인|Shop by category|商品分野から探す|按品类浏览|按品類瀏覽
 공식 홍보 이미지|Official campaign image|公式キャンペーン画像|官方宣传图|官方宣傳圖
 AI 참고 이미지|AI reference image|AI 参考画像|AI 参考图|AI 參考圖
+참고 사진|Reference photo|参考写真|参考图片|參考圖片
 이미지 이용 안내 ↗|Image usage terms ↗|画像利用案内 ↗|图片使用条款 ↗|圖片使用條款 ↗
 채소와 과일이 담긴 장바구니|Grocery basket with vegetables and fruit|野菜と果物が入った買い物かご|装有蔬果的购物篮|裝有蔬果的購物籃
 매장에 걸린 겨울 코트와 니트|Winter coats and knitwear on a rack|ラックに並ぶ冬のコートとニット|衣架上的冬季外套和针织衫|衣架上的冬季外套和針織衫
+화장대에 놓인 겨울 보습 스킨케어 용기|Minimalist winter skincare bottles and cream jar|化粧台に置かれた冬の保湿スキンケア容器|梳妆台上的冬季保湿护肤容器|梳妝台上的冬季保濕護膚容器
 소파와 테이블이 놓인 거실|Living room with a sofa and table|ソファとテーブルのあるリビング|摆有沙发和桌子的客厅|擺有沙發和桌子的客廳
 세탁기와 냉장고가 놓인 공간|Display with a washer and refrigerator|洗濯機と冷蔵庫が並ぶ空間|摆放着洗衣机和冰箱的展示区|擺放著洗衣機和冰箱的展示區
+조리대 위에 놓인 스테인리스 프라이팬|Stainless steel frying pan on a kitchen cooktop|キッチンコンロに置かれたステンレスフライパン|灶台上的不锈钢平底锅|爐台上的不鏽鋼平底鍋
 접어 둔 아기 옷과 기저귀|Folded baby clothes and diapers|折りたたんだベビー服とおむつ|叠好的婴儿衣服与纸尿裤|疊好的嬰兒衣服與紙尿褲
 식료품과 생활용품이 담긴 쇼핑 카트|Shopping cart with groceries and household goods|食品と日用品が入ったカート|装有食品和日用品的购物车|裝有食品和日用品的購物車
 채널·점포별 조건 확인|Check channel and store terms|チャネル・店舗条件を確認|确认渠道与门店条件|確認管道與門市條件

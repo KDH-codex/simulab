@@ -11,7 +11,16 @@ const cakes = [
     url:'https://baskinrobbins.co.kr/information-center/press/view.php?findword=&page=1&seq=1494'},
   {name:'뚜레쥬르', start:'2026-11-11', end:'2026-12-22', pickup:'12.18–12.25',
     terms:'뚜레쥬르 앱에서 대상 홀리데이 케이크 사전예약 시 최대 30%. 매장 수령일을 선택하세요.',
-    url:'https://www.tlj.co.kr/microsite/2026/holiday/intro.asp'}
+    url:'https://www.tlj.co.kr/microsite/2026/holiday/intro.asp'},
+  {name:'파리바게뜨', start:'2026-11-10', end:'2026-12-19', pickup:'12.21–12.25 (앱·배너 확인)',
+    terms:'2026 홀리데이 케이크 사전예약 최대 30% 혜택. 파바앱·해피오더·땡겨요·카카오톡 예약하기 등 채널별 시작일과 할인 조건이 다르니 앱별 예약 화면을 확인하세요.',
+    url:'https://www.paris.co.kr/promotion/holiday-2026-preorder/'},
+  {name:'스타벅스', start:'2026-11-16', end:'2026-12-11', pickup:'12.19–12.27 (일부 12.26–01.03)',
+    terms:'사이렌 오더 사전예약 시 수령 매장 방문 픽업 및 산타 베어리스타 캔들 한정 증정. 리워드 회원 11.26까지 10% 할인, 신한·우리카드 10% 청구할인 및 아메리카노 1+1 쿠폰 제공(11.30 온라인 2차 별도 공개).',
+    url:'https://www.shinsegaegroupnewsroom.com/starbucks-opens-christmas-cake-pre-orders/'},
+  {name:'파라다이스시티 가든카페', start:'2026-11-11', end:'2027-01-03', pickup:'12.18–01.03 (E-SHOP 확인)',
+    terms:'파라다이스시티 E-SHOP 테이크아웃(GRAB&GO) 기준 CHRISTMAS CAKE 76,500원부터 판매. 얼리버드 10% 할인(11.16–12.13) 및 가든카페·부산 부티크 수령 조건은 예약 페이지에서 확인하세요.',
+    url:'https://www.p-city.com/front/pcityeshop/overview?TYPE=GOURMET'}
 ];
 
 const decor = {

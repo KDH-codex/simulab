@@ -136,7 +136,7 @@ test('legacy library preserves the calendar and shopping disclosures distinguish
 });
 
 test('beauty and fashion filters find new brands without turning member offers into calendar sales',()=>{
- assert.deepEqual(filterSources(sources,{category:'beauty'}).map(s=>s.id),['oliveyoung','amoremall','naver-store','11st','gmarket']);
+ assert.deepEqual(filterSources(sources,{category:'beauty'}).map(s=>s.id),['oliveyoung','amoremall','naver-store','11st','gmarket','shinsegae-dept','chicor','innisfree','lotte-dept']);
  assert.equal(filterSources(sources,{category:'fashion',query:'무탠다드'})[0].id,'musinsa');
  assert.equal(filterSources(sources,{category:'life',query:'MUJI'})[0].id,'muji');
  assert.equal(filterEvents(events,{month:'2026-10',category:'beauty'},at)[0].brandId,'amoremall');

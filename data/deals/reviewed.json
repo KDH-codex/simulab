@@ -1701,11 +1701,11 @@
       "periodNote": "특별전단 1면 신선식품 행사 기간",
       "sourceUrl": "https://emartapp.emart.com/leaflet/FlyerMainViewer.do?image_pop=true",
       "periodSourceUrl": "https://emartapp.emart.com/leaflet/FlyerMainViewer.do?image_pop=true",
-      "checkedAt": "2026-11-20T16:48:48+09:00",
+      "checkedAt": "2026-11-25T01:30:00+09:00",
       "publicationStatus": "reviewed",
       "placement": "calendar",
       "publicationScope": "facts-summary",
-      "reviewWithinDays": 2,
+      "reviewWithinDays": 5,
       "campaignKind": "limited-sale",
       "campaignScope": "category",
       "shopping": {
@@ -1720,7 +1720,7 @@
         "membership": true,
         "card": false,
         "app": false,
-        "reviewWithinHours": 48,
+        "reviewWithinHours": 120,
         "locales": {
           "en": {
             "title": "E-Mart fresh food flyer",
@@ -1764,11 +1764,11 @@
       "periodNote": "홈플러스 온라인 주간 전단의 2026년 표시 기간",
       "sourceUrl": "https://mfront.homeplus.co.kr/leaflet",
       "periodSourceUrl": "https://mfront.homeplus.co.kr/leaflet",
-      "checkedAt": "2026-11-20T16:48:48+09:00",
+      "checkedAt": "2026-11-25T01:30:00+09:00",
       "publicationStatus": "reviewed",
       "placement": "calendar",
       "publicationScope": "facts-summary",
-      "reviewWithinDays": 2,
+      "reviewWithinDays": 5,
       "campaignKind": "limited-sale",
       "campaignScope": "category",
       "shopping": {
@@ -1783,7 +1783,7 @@
         "membership": false,
         "card": false,
         "app": false,
-        "reviewWithinHours": 48,
+        "reviewWithinHours": 120,
         "locales": {
           "en": {
             "title": "Homeplus online grocery flyer",
@@ -1827,11 +1827,11 @@
       "periodNote": "공식 오프라인 가이드의 은평점 아울렛 특가 기준",
       "sourceUrl": "https://www.musinsa.com/content/1566699932019111639",
       "periodSourceUrl": "https://www.musinsa.com/content/1566699932019111639",
-      "checkedAt": "2026-11-20T16:48:48+09:00",
+      "checkedAt": "2026-11-25T01:30:00+09:00",
       "publicationStatus": "reviewed",
       "placement": "calendar",
       "publicationScope": "facts-summary",
-      "reviewWithinDays": 2,
+      "reviewWithinDays": 5,
       "campaignKind": "limited-sale",
       "campaignScope": "category",
       "shopping": {
@@ -1846,7 +1846,7 @@
         "membership": false,
         "card": false,
         "app": false,
-        "reviewWithinHours": 48,
+        "reviewWithinHours": 120,
         "locales": {
           "en": {
             "title": "Musinsa winter sale at Lotte Mall Eunpyeong",
@@ -1891,11 +1891,11 @@
       "periodNote": "울산점 공식 쇼핑뉴스에서 확인",
       "sourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?branchCd=B00129000&category=event&evntCrdCd=E2902611515481",
       "periodSourceUrl": "https://www.ehyundai.com/newPortal/SN/SN_0201000.do?branchCd=B00129000&category=event&evntCrdCd=E2902611515481",
-      "checkedAt": "2026-11-20T16:48:48+09:00",
+      "checkedAt": "2026-11-25T01:30:00+09:00",
       "publicationStatus": "reviewed",
       "placement": "calendar",
       "publicationScope": "facts-summary",
-      "reviewWithinDays": 2,
+      "reviewWithinDays": 5,
       "campaignKind": "limited-sale",
       "campaignScope": "multi-category",
       "shopping": {
@@ -1910,7 +1910,7 @@
         "membership": false,
         "card": false,
         "app": false,
-        "reviewWithinHours": 48,
+        "reviewWithinHours": 120,
         "locales": {
           "en": {
             "title": "Hyundai Department Store Ulsan winter sale",
@@ -1955,11 +1955,11 @@
       "periodNote": "공식 쿠폰 유의사항 기준",
       "sourceUrl": "https://www.ikea.com/kr/ko/campaigns/11-14-pub6a561c20/",
       "periodSourceUrl": "https://www.ikea.com/kr/ko/campaigns/11-14-pub6a561c20/",
-      "checkedAt": "2026-11-20T16:48:48+09:00",
+      "checkedAt": "2026-11-25T01:30:00+09:00",
       "publicationStatus": "reviewed",
       "placement": "calendar",
       "publicationScope": "facts-summary",
-      "reviewWithinDays": 2,
+      "reviewWithinDays": 5,
       "campaignKind": "limited-sale",
       "campaignScope": "category",
       "shopping": {
@@ -1974,7 +1974,7 @@
         "membership": true,
         "card": false,
         "app": false,
-        "reviewWithinHours": 48,
+        "reviewWithinHours": 120,
         "locales": {
           "en": {
             "title": "IKEA Christmas home décor coupon",
@@ -2018,11 +2018,11 @@
       "periodNote": "오늘의집 공식 브랜드위크 안내 기준",
       "sourceUrl": "https://events.ohou.se/promotion-pages/100444?owap=true&webviewType=page",
       "periodSourceUrl": "https://events.ohou.se/promotion-pages/100444?owap=true&webviewType=page",
-      "checkedAt": "2026-11-20T16:48:48+09:00",
+      "checkedAt": "2026-11-25T01:30:00+09:00",
       "publicationStatus": "reviewed",
       "placement": "calendar",
       "publicationScope": "facts-summary",
-      "reviewWithinDays": 2,
+      "reviewWithinDays": 5,
       "campaignKind": "limited-sale",
       "campaignScope": "category",
       "shopping": {
@@ -2037,7 +2037,7 @@
         "membership": false,
         "card": false,
         "app": false,
-        "reviewWithinHours": 48,
+        "reviewWithinHours": 120,
         "locales": {
           "en": {
             "title": "Ohouse Edenne bed and sofa week",
@@ -2082,11 +2082,11 @@
       "periodNote": "삼성전자 뉴스룸의 일반 소비자 대상 11월 프로모션 안내 기준",
       "sourceUrl": "https://news.samsung.com/kr/%EC%86%8C%EB%B9%84%EC%9E%90%EC%99%80-%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8-%EB%AA%A8%EB%91%90%EB%A5%BC-%EC%9C%84%ED%95%9C-%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90%EC%99%80-%ED%95%A8%EA%BB%98-%ED%95%98",
       "periodSourceUrl": "https://news.samsung.com/kr/%EC%86%8C%EB%B9%84%EC%9E%90%EC%99%80-%EC%86%8C%EC%83%81%EA%B3%B5%EC%9D%B8-%EB%AA%A8%EB%91%90%EB%A5%BC-%EC%9C%84%ED%95%9C-%EC%82%BC%EC%84%B1%EC%A0%84%EC%9E%90%EC%99%80-%ED%95%A8%EA%BB%98-%ED%95%98",
-      "checkedAt": "2026-11-20T16:48:48+09:00",
+      "checkedAt": "2026-11-25T01:30:00+09:00",
       "publicationStatus": "reviewed",
       "placement": "calendar",
       "publicationScope": "facts-summary",
-      "reviewWithinDays": 2,
+      "reviewWithinDays": 5,
       "campaignKind": "limited-sale",
       "campaignScope": "category",
       "shopping": {
@@ -2101,7 +2101,7 @@
         "membership": false,
         "card": false,
         "app": false,
-        "reviewWithinHours": 48,
+        "reviewWithinHours": 120,
         "locales": {
           "en": {
             "title": "Samsung Korea Grand Festival",
@@ -2152,11 +2152,11 @@
       "periodNote": "김치냉장고 개별 기획전 기간. 전체 엘지닷 블랙프라이데이 기간과 다릅니다.",
       "sourceUrl": "https://www.lge.co.kr/benefits/exhibitions/detail-PE01033001",
       "periodSourceUrl": "https://www.lge.co.kr/benefits/exhibitions/detail-PE01033001",
-      "checkedAt": "2026-11-20T16:48:48+09:00",
+      "checkedAt": "2026-11-25T01:30:00+09:00",
       "publicationStatus": "reviewed",
       "placement": "calendar",
       "publicationScope": "facts-summary",
-      "reviewWithinDays": 2,
+      "reviewWithinDays": 5,
       "campaignKind": "limited-sale",
       "campaignScope": "category",
       "shopping": {
@@ -2171,7 +2171,7 @@
         "membership": false,
         "card": true,
         "app": false,
-        "reviewWithinHours": 48,
+        "reviewWithinHours": 120,
         "locales": {
           "en": {
             "title": "LG kimchi refrigerator Black Friday",
@@ -2251,6 +2251,889 @@
           "zh-TW": {
             "title": "Bepang 好奇紙尿褲特賣",
             "summary": "指定Max Dry及Air單箱商品特價，另有抽獎。"
+          }
+        }
+      }
+    },
+    {
+      "id": "traders-16th-anniversary-202611",
+      "brandId": "traders",
+      "title": "트레이더스 개점 16주년 고객 감사제",
+      "shortTitle": "트레이더스 16주년 행사",
+      "categories": [
+        "life",
+        "appliances",
+        "kitchen"
+      ],
+      "startDate": "2026-11-23",
+      "endDate": "2026-11-29",
+      "benefitType": "mixed",
+      "channels": [
+        "store"
+      ],
+      "summary": "개점 16주년을 맞아 대용량 먹거리·키친타월 등 생필품과 음식물처리기·무선청소기 등 가전을 특가로 선보입니다.",
+      "conditions": [
+        "신세계그룹 뉴스룸(11월 24일) 공식 발표 기준 11월 23일부터 29일까지 일주일간 진행됩니다.",
+        "할인은 품목에 따라 신세계포인트 적립 또는 삼성카드 결제 시 적용되며 대상 품목과 할인액이 다릅니다.",
+        "15만 원 이상 결제 고객(주류·도서·가전 제외) 대상 1천 원 한정 판매는 11/26까지 재래김, 11/27~29 크리스마스 틴 웨이퍼롤로 기간이 나뉩니다."
+      ],
+      "periodNote": "신세계그룹 뉴스룸 공식 보도자료의 16주년 행사 1주일 기간",
+      "sourceUrl": "https://www.shinsegaegroupnewsroom.com/traders-celebrates-16th-anniversary-with-discounts/",
+      "periodSourceUrl": "https://www.shinsegaegroupnewsroom.com/traders-celebrates-16th-anniversary-with-discounts/",
+      "checkedAt": "2026-11-25T01:19:00+09:00",
+      "publicationStatus": "reviewed",
+      "placement": "calendar",
+      "publicationScope": "facts-summary",
+      "reviewWithinDays": 5,
+      "campaignKind": "limited-sale",
+      "campaignScope": "multi-category",
+      "shopping": {
+        "retailerId": "traders",
+        "brand": "트레이더스 홀세일 클럽",
+        "brandCode": "TRADERS",
+        "kind": "mart",
+        "format": "mart",
+        "area": "nationwide",
+        "storeScope": "전국 트레이더스 홀세일 클럽 매장 (점포별 취급·휴점일 확인)",
+        "specificStore": false,
+        "membership": true,
+        "card": true,
+        "app": false,
+        "reviewWithinHours": 120,
+        "locales": {
+          "en": {
+            "title": "Traders 16th anniversary sale",
+            "summary": "Warehouse club deals on fresh food, daily essentials and appliances with point or Samsung Card terms."
+          },
+          "ja": {
+            "title": "トレーダーズ 16周年感謝祭",
+            "summary": "大容量食品・日用品・家電の特価。新世界ポイント積立またはサムスンカード決済条件は商品別。"
+          },
+          "zh-CN": {
+            "title": "Traders 16周年店庆优惠",
+            "summary": "大包装食品、日用品及家电特卖，不同商品适用新世界积分或三星卡条件。"
+          },
+          "zh-TW": {
+            "title": "Traders 16週年店慶優惠",
+            "summary": "大包裝食品、日用品及家電特賣，各品項適用新世界點數或三星卡條件。"
+          }
+        }
+      }
+    },
+    {
+      "id": "emart-nonfresh-stamp-202611",
+      "brandId": "emart",
+      "title": "이마트 특별전단 비신선식품·스탬프 행사",
+      "shortTitle": "이마트 비신선·스탬프",
+      "categories": [
+        "life",
+        "kitchen",
+        "appliances"
+      ],
+      "startDate": "2026-11-12",
+      "endDate": "2026-12-02",
+      "benefitType": "mixed",
+      "channels": [
+        "store"
+      ],
+      "summary": "이마트 특별전단 참여점의 비신선식품 할인과 이마트앱 스탬프 물티슈·키친타월 증정, 주차별 e머니 적립 안내입니다.",
+      "conditions": [
+        "비신선식품 행사기간(11/12~12/2)과 신선·일상 가전 일부(11/19~11/25)의 기간이 다르며, 참여 20개점 한정입니다.",
+        "7만 원 이상 결제 후 이마트앱 스탬프 2회 적립 시 물티슈 1개, 3회 적립 시 키친타월 6입을 고객만족센터에서 점별 한정수량 증정합니다.",
+        "e머니 최대 2만 점 혜택은 1차(11/12~18)·2차(11/19~25)·3차(11/26~12/2) 각 10만 원 이상 결제 및 모두 달성 조건이며 12/10 지급·적립금으로 즉시 할인과 구분합니다."
+      ],
+      "periodNote": "이마트 특별전단 내 비신선식품 및 이마트앱 스탬프 행사 기간",
+      "sourceUrl": "https://emartapp.emart.com/leaflet/FlyerMainViewer.do?image_pop=true",
+      "periodSourceUrl": "https://emartapp.emart.com/leaflet/FlyerMainViewer.do?image_pop=true",
+      "checkedAt": "2026-11-25T01:19:00+09:00",
+      "publicationStatus": "reviewed",
+      "placement": "calendar",
+      "publicationScope": "facts-summary",
+      "reviewWithinDays": 5,
+      "campaignKind": "limited-sale",
+      "campaignScope": "multi-category",
+      "shopping": {
+        "retailerId": "emart",
+        "brand": "이마트",
+        "brandCode": "EMART",
+        "kind": "mart",
+        "format": "mart",
+        "area": "nationwide",
+        "storeScope": "은평점 등 공식 특별전단 20개 참여점",
+        "specificStore": false,
+        "membership": true,
+        "card": true,
+        "app": true,
+        "reviewWithinHours": 120,
+        "locales": {
+          "en": {
+            "title": "E-Mart non-fresh & app stamp event",
+            "summary": "Non-fresh flyer items and E-Mart app stamp rewards at 20 participating stores."
+          },
+          "ja": {
+            "title": "Eマート 非生鮮食品・スタンプ特典",
+            "summary": "参加20店の非生鮮食品セールとEマートアプリスタンプ特典。"
+          },
+          "zh-CN": {
+            "title": "易买得非生鲜及App集章活动",
+            "summary": "20家参加门店非生鲜商品促销及易买得App集章赠礼。"
+          },
+          "zh-TW": {
+            "title": "易買得非生鮮及App集點活動",
+            "summary": "20家參加門市非生鮮商品促銷及易買得App集點贈禮。"
+          }
+        }
+      }
+    },
+    {
+      "id": "shinsegae-gangnam-market-202611",
+      "brandId": "shinsegae-dept",
+      "title": "신세계백화점 강남점 신세계 마켓 스페셜 위크",
+      "shortTitle": "신세계 강남 신세계마켓",
+      "categories": [
+        "life"
+      ],
+      "startDate": "2026-11-20",
+      "endDate": "2026-11-26",
+      "benefitType": "sale",
+      "channels": [
+        "store"
+      ],
+      "summary": "강남점 지하 1층 신세계 마켓에서 제철 푸드와 신세계 미경산 암소 한우 등을 선보이는 주간 식품 행사입니다.",
+      "conditions": [
+        "신세계백화점 강남점 지하 1층 신세계 마켓 한정 행사이며 타 지점 및 SSG.COM 온라인몰과 다릅니다.",
+        "품목별 수량 한정 및 조기 품절 가능성이 있으므로 매장 현장 안내를 확인하세요."
+      ],
+      "periodNote": "신세계백화점 강남점 공식 쇼핑정보 기준",
+      "sourceUrl": "https://www.shinsegae.com/shopping/view.do?mainCd=11&pageLink=/cms12/SC00002/info/theme/8687444_4465.txt&contentDtlCd=06&contentId=8687444&storeCd=SC00002",
+      "periodSourceUrl": "https://www.shinsegae.com/shopping/list.do?storeCd=SC00002",
+      "checkedAt": "2026-11-25T01:19:00+09:00",
+      "publicationStatus": "reviewed",
+      "placement": "calendar",
+      "publicationScope": "facts-summary",
+      "reviewWithinDays": 5,
+      "campaignKind": "limited-sale",
+      "campaignScope": "category",
+      "shopping": {
+        "retailerId": "shinsegae-dept",
+        "brand": "신세계백화점",
+        "brandCode": "SHINSEGAE",
+        "kind": "department",
+        "format": "department",
+        "area": "seoul",
+        "storeScope": "신세계백화점 강남점 지하 1층 신세계 마켓",
+        "specificStore": true,
+        "membership": false,
+        "card": false,
+        "app": false,
+        "reviewWithinHours": 120,
+        "locales": {
+          "en": {
+            "title": "Shinsegae Gangnam Market Special Week",
+            "summary": "Seasonal food and Hanwoo offers at the B1 Shinsegae Market in Gangnam."
+          },
+          "ja": {
+            "title": "新世界百貨店 江南店 マーケット特集",
+            "summary": "江南店地下1階の新世界マーケットで旬の食材などを案内。"
+          },
+          "zh-CN": {
+            "title": "新世界百货江南店生鲜市集周",
+            "summary": "江南店地下一层新世界市集推出时令美食及韩牛促销。"
+          },
+          "zh-TW": {
+            "title": "新世界百貨江南店市集特別週",
+            "summary": "江南店地下一樓新世界市集推出時令美食與韓牛優惠。"
+          }
+        }
+      }
+    },
+    {
+      "id": "shinsegae-timesquare-living-202611",
+      "brandId": "shinsegae-dept",
+      "title": "신세계백화점 타임스퀘어점 생활 SALE",
+      "shortTitle": "신세계 타임스퀘어 생활SALE",
+      "categories": [
+        "furniture",
+        "kitchen",
+        "life"
+      ],
+      "startDate": "2026-11-12",
+      "endDate": "2026-11-29",
+      "benefitType": "sale",
+      "channels": [
+        "store"
+      ],
+      "summary": "타임스퀘어점 리빙관 각 층 본매장에서 진행하는 생활·주방·홈리빙 시즌 세일입니다.",
+      "conditions": [
+        "신세계백화점 타임스퀘어점 리빙관 각 층 본매장 한정 공지이며 타 지점과 적용 조건이 다릅니다.",
+        "입점 브랜드별로 할인율·제외 품목·재고 상황이 상이하므로 매장별 고지 내용을 확인하세요."
+      ],
+      "periodNote": "신세계백화점 타임스퀘어점 공식 쇼핑정보 기준",
+      "sourceUrl": "https://www.shinsegae.com/shopping/view.do?mainCd=11&pageLink=/cms12/SC00003/info/theme/8683347_4485.txt&contentDtlCd=06&contentId=8683347&storeCd=SC00003",
+      "periodSourceUrl": "https://www.shinsegae.com/shopping/list.do?storeCd=SC00003",
+      "checkedAt": "2026-11-25T01:19:00+09:00",
+      "publicationStatus": "reviewed",
+      "placement": "calendar",
+      "publicationScope": "facts-summary",
+      "reviewWithinDays": 5,
+      "campaignKind": "limited-sale",
+      "campaignScope": "multi-category",
+      "shopping": {
+        "retailerId": "shinsegae-dept",
+        "brand": "신세계백화점",
+        "brandCode": "SHINSEGAE",
+        "kind": "department",
+        "format": "department",
+        "area": "seoul",
+        "storeScope": "신세계백화점 타임스퀘어점 리빙관 각 층 본매장",
+        "specificStore": true,
+        "membership": false,
+        "card": false,
+        "app": false,
+        "reviewWithinHours": 120,
+        "locales": {
+          "en": {
+            "title": "Shinsegae Times Square living sale",
+            "summary": "Living, kitchen and home goods sale across the Times Square Living Hall."
+          },
+          "ja": {
+            "title": "新世界百貨店 タイムズスクエア店 生活セール",
+            "summary": "タイムズスクエア店リビング館の本売場で実施する生活用品セール。"
+          },
+          "zh-CN": {
+            "title": "新世界百货时代广场店生活馆特卖",
+            "summary": "时代广场店生活馆各楼层专柜家居及厨房用品促销。"
+          },
+          "zh-TW": {
+            "title": "新世界百貨時代廣場店生活館特賣",
+            "summary": "時代廣場店生活館各樓層專櫃家居與廚房用品促銷。"
+          }
+        }
+      }
+    },
+    {
+      "id": "shinsegae-daejeon-holiday-beauty-202611",
+      "brandId": "shinsegae-dept",
+      "title": "대전신세계 2026 홀리데이 뷰티 컬렉션",
+      "shortTitle": "대전신세계 홀리데이 뷰티",
+      "categories": [
+        "beauty"
+      ],
+      "startDate": "2026-11-17",
+      "endDate": "2026-12-06",
+      "benefitType": "mixed",
+      "channels": [
+        "store"
+      ],
+      "summary": "대전신세계 Art & Science 1층 코스메틱 본매장에서 진행하는 2026 홀리데이 뷰티 프로모션입니다.",
+      "conditions": [
+        "대전신세계 Art & Science 1층 본매장 코스메틱 장르 공지이며, 타 지점 및 온라인과 별도 운영됩니다.",
+        "연말 홀리데이 컬렉션·증정·할인 조건은 입점 브랜드별로 다르고 한정 수량 소진 시 종료될 수 있습니다."
+      ],
+      "periodNote": "대전신세계 Art & Science 공식 쇼핑정보 기준",
+      "sourceUrl": "https://www.shinsegae.com/shopping/view.do?mainCd=11&pageLink=/cms12/SC00060/info/theme/8689005_5346.txt&contentDtlCd=06&contentId=8689005&storeCd=SC00060",
+      "periodSourceUrl": "https://www.shinsegae.com/shopping/list.do?storeCd=SC00060",
+      "checkedAt": "2026-11-25T01:19:00+09:00",
+      "publicationStatus": "reviewed",
+      "placement": "calendar",
+      "publicationScope": "facts-summary",
+      "reviewWithinDays": 5,
+      "campaignKind": "limited-sale",
+      "campaignScope": "category",
+      "shopping": {
+        "retailerId": "shinsegae-dept",
+        "brand": "신세계백화점",
+        "brandCode": "SHINSEGAE",
+        "kind": "department",
+        "format": "department",
+        "area": "chungcheong",
+        "storeScope": "대전신세계 Art & Science 1층 코스메틱 본매장",
+        "specificStore": true,
+        "membership": false,
+        "card": false,
+        "app": false,
+        "reviewWithinHours": 120,
+        "locales": {
+          "en": {
+            "title": "Daejeon Shinsegae 2026 Holiday Beauty",
+            "summary": "Cosmetics holiday collection offers on 1F at Daejeon Shinsegae Art & Science."
+          },
+          "ja": {
+            "title": "大田新世界 2026 ホリデービューティー",
+            "summary": "大田新世界 Art & Science 1階コスメ売場のホリデー特集。"
+          },
+          "zh-CN": {
+            "title": "大田新世界 2026假日美妆系列",
+            "summary": "大田新世界 Art & Science 一层美妆专柜假日活动。"
+          },
+          "zh-TW": {
+            "title": "大田新世界 2026假日美妝系列",
+            "summary": "大田新世界 Art & Science 一樓美妝專櫃假日活動。"
+          }
+        }
+      }
+    },
+    {
+      "id": "chicor-beautytool-bf-202611",
+      "brandId": "chicor",
+      "title": "시코르뷰티툴 블랙프라이데이 최대 60%",
+      "shortTitle": "시코르뷰티툴 블프",
+      "categories": [
+        "beauty"
+      ],
+      "startDate": "2026-11-18",
+      "endDate": "2026-12-01",
+      "benefitType": "sale",
+      "channels": [
+        "online"
+      ],
+      "summary": "시코르닷컴 공식 기획전으로 시코르뷰티툴 대상 상품을 최대 60% 할인 판매합니다.",
+      "conditions": [
+        "시코르닷컴 온라인 기획전 기준이며, 표기된 최대 60%는 일부 대상 품목에 한합니다.",
+        "브러시·퍼프 등 품목별 할인율과 재고 소진 시 조기 종료 여부를 상품 상세에서 확인하세요."
+      ],
+      "periodNote": "시코르닷컴 공식 기획전 페이지 명시 기간",
+      "sourceUrl": "https://chicor.com/exhibition/7459",
+      "periodSourceUrl": "https://chicor.com/exhibition/7459",
+      "checkedAt": "2026-11-25T01:19:00+09:00",
+      "publicationStatus": "reviewed",
+      "placement": "calendar",
+      "publicationScope": "facts-summary",
+      "reviewWithinDays": 5,
+      "campaignKind": "limited-sale",
+      "campaignScope": "brand",
+      "shopping": {
+        "retailerId": "chicor",
+        "brand": "시코르",
+        "brandCode": "CHICOR",
+        "kind": "mall",
+        "format": "online-mall",
+        "area": "nationwide",
+        "storeScope": "시코르닷컴 온라인 기획전 대상 뷰티툴 상품",
+        "specificStore": false,
+        "membership": false,
+        "card": false,
+        "app": false,
+        "reviewWithinHours": 120,
+        "locales": {
+          "en": {
+            "title": "CHICOR Beauty Tool Black Friday",
+            "summary": "Up to 60% off selected CHICOR beauty tools online."
+          },
+          "ja": {
+            "title": "シコル ビューティーツール ブラックフライデー",
+            "summary": "シコル公式通販で対象ビューティーツールが最大60%オフ。"
+          },
+          "zh-CN": {
+            "title": "CHICOR美妆工具黑五特惠",
+            "summary": "CHICOR官网指定美妆工具最高优惠60%。"
+          },
+          "zh-TW": {
+            "title": "CHICOR美妝工具黑五特惠",
+            "summary": "CHICOR官網指定美妝工具最高優惠60%。"
+          }
+        }
+      }
+    },
+    {
+      "id": "innisfree-holiday-edition-202611",
+      "brandId": "innisfree",
+      "title": "이니스프리 2026 홀리데이 에디션 기획전",
+      "shortTitle": "이니스프리 홀리데이 에디션",
+      "categories": [
+        "beauty"
+      ],
+      "startDate": "2026-11-19",
+      "endDate": "2026-11-30",
+      "benefitType": "mixed",
+      "channels": [
+        "online",
+        "store"
+      ],
+      "summary": "2026 홀리데이 에디션 최대 35% 할인과 추가 증정 혜택을 제공하는 온·오프라인 행사입니다.",
+      "conditions": [
+        "원문 기준 이니스프리 공식 온라인몰 및 오프라인 매장에서 진행됩니다.",
+        "최대 35% 할인율과 추가 증정 혜택은 대상 세트·수량에 따라 다르며, 선착순 증정은 소진 시 종료됩니다.",
+        "같은 기간 별도 운영되는 카드사 결제일 할인(롯데카드·BC카드)과는 적용 조건이 다릅니다."
+      ],
+      "periodNote": "이니스프리 공식 이벤트 페이지 기준",
+      "sourceUrl": "https://www.innisfree.com/kr/ko/ca/event/106484",
+      "periodSourceUrl": "https://www.innisfree.com/kr/ko/ca/event/106484",
+      "checkedAt": "2026-11-25T01:19:00+09:00",
+      "publicationStatus": "reviewed",
+      "placement": "calendar",
+      "publicationScope": "facts-summary",
+      "reviewWithinDays": 5,
+      "campaignKind": "limited-sale",
+      "campaignScope": "brand",
+      "shopping": {
+        "retailerId": "innisfree",
+        "brand": "이니스프리",
+        "brandCode": "INNISFREE",
+        "kind": "brand",
+        "format": "brand",
+        "area": "nationwide",
+        "storeScope": "이니스프리 공식 온라인몰 및 오프라인 매장",
+        "specificStore": false,
+        "membership": false,
+        "card": false,
+        "app": false,
+        "reviewWithinHours": 120,
+        "locales": {
+          "en": {
+            "title": "Innisfree 2026 Holiday Edition event",
+            "summary": "Up to 35% off Holiday Edition sets plus bonus gifts online and in stores."
+          },
+          "ja": {
+            "title": "イニスフリー 2026 ホリデーエディション",
+            "summary": "ホリデーセット最大35%オフおよび追加贈呈特典。公式通販・店舗で実施。"
+          },
+          "zh-CN": {
+            "title": "悦诗风吟 2026假日限定系列活动",
+            "summary": "假日限定套装最高减35%并附赠品，线上商城及线下门店同步。"
+          },
+          "zh-TW": {
+            "title": "悅詩風吟 2026假日限定系列活動",
+            "summary": "假日限定禮盒最高享65折並附贈品，官網與門市同步進行。"
+          }
+        }
+      }
+    },
+    {
+      "id": "innisfree-winter-moisture-202611",
+      "brandId": "innisfree",
+      "title": "이니스프리 겨울 보습템 특가 최대 50%",
+      "shortTitle": "이니스프리 겨울 보습템",
+      "categories": [
+        "beauty"
+      ],
+      "startDate": "2026-11-19",
+      "endDate": "2026-11-30",
+      "benefitType": "mixed",
+      "channels": [
+        "online"
+      ],
+      "summary": "수분 세럼·크림·토너 등 겨울 보습 스킨케어 기획전을 최대 50% 할인 및 증정 혜택으로 운영합니다.",
+      "conditions": [
+        "표시된 최대 50%는 일부 행사 상품 기준이며, 상품별 할인율과 증정 용량이 다릅니다.",
+        "공식몰 이벤트 기간 중 롯데카드 터치 5천원 할인(11/19~30), BC카드 마이태그 5천원 할인(11/23~30) 등은 3만원 이상 등 별도 카드사 조건을 충족해야 합니다."
+      ],
+      "periodNote": "이니스프리 공식 이벤트 페이지 기준",
+      "sourceUrl": "https://www.innisfree.com/kr/ko/ca/event/106446",
+      "periodSourceUrl": "https://www.innisfree.com/kr/ko/ca/event/106446",
+      "checkedAt": "2026-11-25T01:19:00+09:00",
+      "publicationStatus": "reviewed",
+      "placement": "calendar",
+      "publicationScope": "facts-summary",
+      "reviewWithinDays": 5,
+      "campaignKind": "limited-sale",
+      "campaignScope": "category",
+      "shopping": {
+        "retailerId": "innisfree",
+        "brand": "이니스프리",
+        "brandCode": "INNISFREE",
+        "kind": "brand",
+        "format": "brand",
+        "area": "nationwide",
+        "storeScope": "이니스프리 공식 온라인몰 겨울 보습템 특가 대상",
+        "specificStore": false,
+        "membership": false,
+        "card": true,
+        "app": false,
+        "reviewWithinHours": 120,
+        "locales": {
+          "en": {
+            "title": "Innisfree winter moisture skincare deals",
+            "summary": "Up to 50% off selected winter skincare items with gifts and separate card offers."
+          },
+          "ja": {
+            "title": "イニスフリー 冬保湿ケア特価",
+            "summary": "対象の冬保湿スキンケアが最大50%オフ。カード決済特典は条件別。"
+          },
+          "zh-CN": {
+            "title": "悦诗风吟冬季保湿护肤特卖",
+            "summary": "指定冬季保湿护肤品最高减50%，另需单独确认银行卡满减条件。"
+          },
+          "zh-TW": {
+            "title": "悅詩風吟冬季保濕護膚特賣",
+            "summary": "指定冬季保濕護膚品最高優惠5折，銀行卡滿減條件需另行確認。"
+          }
+        }
+      }
+    },
+    {
+      "id": "amoremall-black-friday-202611",
+      "brandId": "amoremall",
+      "title": "아모레몰 2026 블랙 프라이데이 고능소비 4X",
+      "shortTitle": "아모레몰 블랙프라이데이",
+      "categories": [
+        "beauty"
+      ],
+      "startDate": "2026-11-23",
+      "endDate": "2026-11-29",
+      "benefitType": "mixed",
+      "channels": [
+        "online"
+      ],
+      "summary": "헤라·에스트라·일리윤 등 주요 브랜드가 참여하는 아모레몰 2026 블랙프라이데이 통합 기획전입니다.",
+      "conditions": [
+        "APP 전용 5% 추가 할인 쿠폰과 유료 멤버십플러스 전용 2% 추가 할인 쿠폰은 각 자격·사용 조건을 충족해야 적용됩니다.",
+        "쿠폰은 단독 사용만 가능하며 타 쿠폰과 중복 사용할 수 없습니다.",
+        "뷰티포인트 전액 결제 및 비회원 Npay 구매 시 사은품·기프트카드·페이백 대상에서 제외됩니다."
+      ],
+      "periodNote": "아모레몰 이벤트 상세 eventStartDt~eventEndDt 및 이벤트 목록 대조",
+      "sourceUrl": "https://www.amoremall.com/kr/ko/display/event_detail?planDisplaySn=15316",
+      "periodSourceUrl": "https://www.amoremall.com/kr/ko/display/event",
+      "checkedAt": "2026-11-25T01:19:00+09:00",
+      "publicationStatus": "reviewed",
+      "placement": "calendar",
+      "publicationScope": "facts-summary",
+      "reviewWithinDays": 5,
+      "campaignKind": "limited-sale",
+      "campaignScope": "multi-category",
+      "shopping": {
+        "retailerId": "amoremall",
+        "brand": "아모레몰",
+        "brandCode": "AMORE MALL",
+        "kind": "brand",
+        "format": "online-mall",
+        "area": "nationwide",
+        "storeScope": "아모레몰 공식 온라인몰·앱 참여 브랜드",
+        "specificStore": false,
+        "membership": true,
+        "card": false,
+        "app": true,
+        "reviewWithinHours": 120,
+        "locales": {
+          "en": {
+            "title": "Amore Mall 2026 Black Friday",
+            "summary": "Multi-brand beauty deals with separate app-only 5% and Membership Plus 2% coupons."
+          },
+          "ja": {
+            "title": "アモーレモール 2026 ブラックフライデー",
+            "summary": "HERA・AESTURA等の参加企画展。アプリ限定5%・有料会員2%クーポンは条件別。"
+          },
+          "zh-CN": {
+            "title": "爱茉莉商城 2026黑色星期五",
+            "summary": "多品牌参与的大促活动，App专属5%与付费会员2%优惠券条件各异。"
+          },
+          "zh-TW": {
+            "title": "愛茉莉商城 2026黑色星期五",
+            "summary": "多品牌參與的大促活動，App專屬5%與付費會員2%折價券條件各異。"
+          }
+        }
+      }
+    },
+    {
+      "id": "amoremall-sulwhasoo-holiday-202611",
+      "brandId": "amoremall",
+      "title": "아모레몰 설화수 자음생·윤조 홀리데이 에디션",
+      "shortTitle": "아모레몰 설화수 홀리데이",
+      "categories": [
+        "beauty"
+      ],
+      "startDate": "2026-11-23",
+      "endDate": "2026-12-06",
+      "benefitType": "mixed",
+      "channels": [
+        "online"
+      ],
+      "summary": "설화수 홀리데이 에디션 대상 10%·15%·17% 쇼핑지원 쿠폰과 구매 혜택을 안내하는 기획전입니다.",
+      "conditions": [
+        "설화수 쇼핑지원 10%·15%·17% 할인 쿠폰은 단독 사용만 가능하며 쿠폰별 적용 상품과 사용 기한(최종 결제 완료 기준)을 확인하세요.",
+        "뷰티포인트 전액 결제 시 스페셜 사은품·기프트카드 증정에서 제외되며 비회원 Npay 구매도 스페셜 사은품 대상이 아닙니다.",
+        "교환·환불 시 제공된 사은품을 함께 동봉해야 하며 재고 소진 시 조기 종료될 수 있습니다."
+      ],
+      "periodNote": "아모레몰 공식 이벤트 상세 기준 (2026-11-23 ~ 2026-12-06)",
+      "sourceUrl": "https://www.amoremall.com/kr/ko/display/event_detail?planDisplaySn=15342",
+      "periodSourceUrl": "https://www.amoremall.com/kr/ko/display/event",
+      "checkedAt": "2026-11-25T01:19:00+09:00",
+      "publicationStatus": "reviewed",
+      "placement": "calendar",
+      "publicationScope": "facts-summary",
+      "reviewWithinDays": 5,
+      "campaignKind": "limited-sale",
+      "campaignScope": "brand",
+      "shopping": {
+        "retailerId": "amoremall",
+        "brand": "설화수",
+        "brandCode": "SULWHASOO",
+        "kind": "brand",
+        "format": "online-mall",
+        "area": "nationwide",
+        "storeScope": "아모레몰 온라인 설화수 홀리데이 기획전 대상 상품",
+        "specificStore": false,
+        "membership": true,
+        "card": false,
+        "app": false,
+        "reviewWithinHours": 120,
+        "locales": {
+          "en": {
+            "title": "Amore Mall Sulwhasoo Holiday Edition",
+            "summary": "10%, 15% and 17% brand coupons on selected Sulwhasoo holiday items."
+          },
+          "ja": {
+            "title": "アモーレモール 雪花秀 ホリデー",
+            "summary": "対象商品向けの10%・15%・17%クーポン。他クーポン併用不可。"
+          },
+          "zh-CN": {
+            "title": "爱茉莉商城 雪花秀假日限定活动",
+            "summary": "指定雪花秀假日商品提供10%、15%、17%购物支持优惠券，不可叠加。"
+          },
+          "zh-TW": {
+            "title": "愛茉莉商城 雪花秀假日限定活動",
+            "summary": "指定雪花秀假日商品提供10%、15%、17%購物支援折價券，不可疊加。"
+          }
+        }
+      }
+    },
+    {
+      "id": "ipoomgo-goon-diaper-202611",
+      "brandId": "ipoomgo",
+      "title": "아이품고 군 기저귀 입점특가 브랜드위크",
+      "shortTitle": "아이품고 군 기저귀 특가",
+      "categories": [
+        "kids"
+      ],
+      "startDate": "2026-11-25",
+      "endDate": "2026-11-30",
+      "benefitType": "mixed",
+      "channels": [
+        "online"
+      ],
+      "summary": "군 슈퍼빅·나이트·슈페리어 기저귀 1+1 및 단품에 회원 전용 특가와 입점 5% 쿠폰을 제공합니다.",
+      "conditions": [
+        "아이품고 회원 전용 특가로 운영되며 로그인 후 할인가와 입점 5% 쿠폰 적용 여부를 확인해야 합니다.",
+        "1+1 구성과 단품 상품, 기저귀 단계·수량별 적용 조건이 상이합니다."
+      ],
+      "periodNote": "아이품고 기획전 제목 및 본문 명시 기간 (11.25~11.30)",
+      "sourceUrl": "https://ipoomgo.com/shop/plan.html?plan_id=4643",
+      "periodSourceUrl": "https://ipoomgo.com/",
+      "checkedAt": "2026-11-25T01:19:00+09:00",
+      "publicationStatus": "reviewed",
+      "placement": "calendar",
+      "publicationScope": "facts-summary",
+      "reviewWithinDays": 5,
+      "campaignKind": "limited-sale",
+      "campaignScope": "brand",
+      "shopping": {
+        "retailerId": "ipoomgo",
+        "brand": "군",
+        "brandCode": "GOO.N",
+        "kind": "mall",
+        "format": "online-mall",
+        "area": "nationwide",
+        "storeScope": "아이품고 온라인몰 군 브랜드위크 대상 상품",
+        "specificStore": false,
+        "membership": true,
+        "card": false,
+        "app": false,
+        "reviewWithinHours": 120,
+        "locales": {
+          "en": {
+            "title": "Ipoomgo GOO.N diaper brand week",
+            "summary": "Member-only diaper 1+1 offers and 5% launch coupons."
+          },
+          "ja": {
+            "title": "アイプムゴ グーンおむつ特集",
+            "summary": "会員限定特価および5%クーポン対象のグーンおむつ企画展。"
+          },
+          "zh-CN": {
+            "title": "Ipoomgo 大王纸尿裤品牌周",
+            "summary": "会员专享1+1纸尿裤特惠及5%入驻优惠券。"
+          },
+          "zh-TW": {
+            "title": "Ipoomgo 大王紙尿褲品牌週",
+            "summary": "會員專享1+1紙尿褲特惠及5%進駐折價券。"
+          }
+        }
+      }
+    },
+    {
+      "id": "ipoomgo-truelac-kids-202611",
+      "brandId": "ipoomgo",
+      "title": "아이품고 트루락 베베·키즈 유산균 모음전",
+      "shortTitle": "아이품고 트루락 유산균",
+      "categories": [
+        "kids"
+      ],
+      "startDate": "2026-11-25",
+      "endDate": "2026-11-30",
+      "benefitType": "mixed",
+      "channels": [
+        "online"
+      ],
+      "summary": "트루락 베베·키즈업 유산균 1+1 및 2+2 구성에 회원 특가 최대 70%, 3% 쿠폰, 본품 사은품 혜택을 안내합니다.",
+      "conditions": [
+        "아이품고 회원 전용 특가이며 표기된 최대 70% 할인은 기획전 내 일부 옵션 기준입니다.",
+        "3% 쿠폰과 엑스퍼트 프로바이오틱스 사은품 증정은 상품 옵션(1+1, 2+2)에 따라 증정 수량이 다릅니다."
+      ],
+      "periodNote": "아이품고 기획전 제목 및 본문 명시 기간 (11.25~11.30)",
+      "sourceUrl": "https://ipoomgo.com/shop/plan.html?plan_id=4657",
+      "periodSourceUrl": "https://ipoomgo.com/",
+      "checkedAt": "2026-11-25T01:19:00+09:00",
+      "publicationStatus": "reviewed",
+      "placement": "calendar",
+      "publicationScope": "facts-summary",
+      "reviewWithinDays": 5,
+      "campaignKind": "limited-sale",
+      "campaignScope": "brand",
+      "shopping": {
+        "retailerId": "ipoomgo",
+        "brand": "트루락",
+        "brandCode": "TRUELAC",
+        "kind": "mall",
+        "format": "online-mall",
+        "area": "nationwide",
+        "storeScope": "아이품고 온라인몰 트루락 모음전 대상 상품",
+        "specificStore": false,
+        "membership": true,
+        "card": false,
+        "app": false,
+        "reviewWithinHours": 120,
+        "locales": {
+          "en": {
+            "title": "Ipoomgo Truelac kids probiotics sale",
+            "summary": "Member-only bundle deals up to 70% off with 3% coupons and gifts."
+          },
+          "ja": {
+            "title": "アイプムゴ トゥルーラック乳酸菌セール",
+            "summary": "ベビー・キッズ乳酸菌の会員特価最大70%オフと3%クーポン・贈呈。"
+          },
+          "zh-CN": {
+            "title": "Ipoomgo Truelac婴童益生菌特卖",
+            "summary": "会员专享最高优惠70%，部分套餐含3%优惠券及赠品。"
+          },
+          "zh-TW": {
+            "title": "Ipoomgo Truelac嬰童益生菌特賣",
+            "summary": "會員專享最高優惠70%，部分組合含3%折價券及贈品。"
+          }
+        }
+      }
+    },
+    {
+      "id": "simon-yeoju-bonpoint-202611",
+      "brandId": "shinsegae-simon",
+      "title": "여주 프리미엄 아울렛 봉쁘앙 프로모션",
+      "shortTitle": "여주 봉쁘앙 프로모션",
+      "categories": [
+        "kids",
+        "fashion"
+      ],
+      "startDate": "2026-11-19",
+      "endDate": "2026-11-30",
+      "benefitType": "sale",
+      "channels": [
+        "store"
+      ],
+      "summary": "여주 프리미엄 아울렛 봉쁘앙 매장에서 시즌별 다점 구매 시 추가 5~10% 할인을 적용합니다.",
+      "conditions": [
+        "여주 프리미엄 아울렛 WEST LOW 401호 봉쁘앙 매장 단독 행사이며 온라인 및 타 지점에 적용되지 않습니다.",
+        "26년 F/W는 2PCS 이상 구매 시 추가 10%, 24~25년 F/W는 2/3PCS 이상 구매 시 각각 추가 5%/10% 할인으로 시즌별 조건이 다릅니다.",
+        "재고 소진 및 일부 제외 품목은 매장에서 직접 확인하세요."
+      ],
+      "periodNote": "신세계사이먼 여주 공식 상세 공지 기준",
+      "sourceUrl": "https://www.premiumoutlets.co.kr/rpage/shopping-info/news/special-detail/01/20593",
+      "periodSourceUrl": "https://www.premiumoutlets.co.kr/rpage/shopping-info/news/special-detail/01/20593",
+      "checkedAt": "2026-11-25T01:19:00+09:00",
+      "publicationStatus": "reviewed",
+      "placement": "calendar",
+      "publicationScope": "facts-summary",
+      "reviewWithinDays": 5,
+      "campaignKind": "limited-sale",
+      "campaignScope": "brand",
+      "shopping": {
+        "retailerId": "shinsegae-simon",
+        "brand": "봉쁘앙",
+        "brandCode": "BONPOINT",
+        "kind": "mall",
+        "format": "outlet",
+        "area": "gyeonggi",
+        "storeScope": "여주 프리미엄 아울렛 WEST LOW 401호 봉쁘앙",
+        "specificStore": true,
+        "membership": false,
+        "card": false,
+        "app": false,
+        "reviewWithinHours": 120,
+        "locales": {
+          "en": {
+            "title": "Bonpoint promotion in Yeoju",
+            "summary": "Extra multi-piece discounts on 2024–2026 F/W kids fashion at the Yeoju outlet."
+          },
+          "ja": {
+            "title": "驪州ボンポワン プロモーション",
+            "summary": "2024〜2026年秋冬キッズ衣料の複数点購入追加割引。驪州店限定。"
+          },
+          "zh-CN": {
+            "title": "骊州Bonpoint童装促销",
+            "summary": "2024至2026秋冬童装多件购买享额外折扣，仅限骊州店。"
+          },
+          "zh-TW": {
+            "title": "驪州Bonpoint童裝促銷",
+            "summary": "2024至2026秋冬童裝多件購買享額外折扣，僅限驪州店。"
+          }
+        }
+      }
+    },
+    {
+      "id": "simon-paju-underarmour-202611",
+      "brandId": "shinsegae-simon",
+      "title": "파주 프리미엄 아울렛 언더아머 프로모션",
+      "shortTitle": "파주 언더아머 프로모션",
+      "categories": [
+        "fashion"
+      ],
+      "startDate": "2026-11-25",
+      "endDate": "2026-11-29",
+      "benefitType": "sale",
+      "channels": [
+        "store"
+      ],
+      "summary": "파주 프리미엄 아울렛 언더아머 본 매장에서 2·3개 구매 시 최종결제가 기준 추가 40~50% 할인을 제공합니다.",
+      "conditions": [
+        "파주 프리미엄 아울렛 언더아머 본 매장 한정 행사이며 타 지점·온라인몰과 다릅니다.",
+        "2PCS 구매 시 추가 40%, 3PCS 구매 시 추가 50% 할인이 최종결제가 기준으로 적용되며 일부 품목은 제외됩니다.",
+        "타 할인과 중복 불가하며 한정수량 조기 소진 가능성이 있습니다."
+      ],
+      "periodNote": "신세계사이먼 파주 공식 상세 공지 기준",
+      "sourceUrl": "https://www.premiumoutlets.co.kr/rpage/shopping-info/news/special-detail/02/20596",
+      "periodSourceUrl": "https://www.premiumoutlets.co.kr/rpage/shopping-info/news/special-detail/02/20596",
+      "checkedAt": "2026-11-25T01:19:00+09:00",
+      "publicationStatus": "reviewed",
+      "placement": "calendar",
+      "publicationScope": "facts-summary",
+      "reviewWithinDays": 5,
+      "campaignKind": "limited-sale",
+      "campaignScope": "brand",
+      "shopping": {
+        "retailerId": "shinsegae-simon",
+        "brand": "언더아머",
+        "brandCode": "UNDER ARMOUR",
+        "kind": "mall",
+        "format": "outlet",
+        "area": "gyeonggi",
+        "storeScope": "파주 프리미엄 아울렛 언더아머 본 매장",
+        "specificStore": true,
+        "membership": false,
+        "card": false,
+        "app": false,
+        "reviewWithinHours": 120,
+        "locales": {
+          "en": {
+            "title": "Under Armour promotion in Paju",
+            "summary": "Extra 40% off 2 items or 50% off 3 items at Paju Premium Outlets."
+          },
+          "ja": {
+            "title": "坡州アンダーアーマー プロモーション",
+            "summary": "2点購入で追加40%、3点で追加50%割引。坡州店限定。"
+          },
+          "zh-CN": {
+            "title": "坡州安德玛门店促销",
+            "summary": "购买两件额外减40%、三件额外减50%，仅限坡州店。"
+          },
+          "zh-TW": {
+            "title": "坡州Under Armour門市促銷",
+            "summary": "購買兩件額外減40%、三件額外減50%，僅限坡州店。"
           }
         }
       }

@@ -199,6 +199,22 @@ incheon-art-t-day-tour-2026|art|Art T Incheon One-Day Art Tour|アートT 仁川
 bupyeong-campmarket-november-2026|family|Camp Market: November Weekends|キャンプマーケット 11月の週末|营地市场十一月周末活动|營地市場十一月週末活動
 seongbuk-youth-market-2026|market|Seongbuk Youth Together Market: Round 2|城北青年共生マーケット 第2回|城北青年共生市集第二场|城北青年共生市集第二場
 anseong-namsadang-november-2026|performance|Anseong Namsadang: November Performances|安城男寺党 11月公演|安城男寺党十一月演出|安城男寺黨十一月演出
+busan-sciport-buildup-project-2026|science|Busan National Science Museum Build-Up Project|国立釜山科学館 ビルドアッププロジェクト特別展|国立釜山科学馆 建造工程特别企划展|國立釜山科學館 建造工程特別企劃展
+busan-museum-joseon-garden-2026|garden|Joseon Gardens: Planting Hearts, Wandering Landscapes|釜山博物館「朝鮮の庭園、心を植え風景に遊ぶ」|釜山博物馆 朝鲜庭园交流企划展|釜山博物館 朝鮮庭園交流企劃展
+daegu-art-museum-picasso-kiki-2026|art|From Picasso to Kiki Smith: Portraits of Modernity|大邱美術館「ピカソからキキ・スミスまで」|大邱美术馆 从毕加索到奇奇·史密斯：现代性的肖像|大邱美術館 從畢卡索到奇奇·史密斯：現代性的肖像
+daegu-national-museum-dalgubeol-2026|heritage|Dalgubeol: Connected Lands, Unfolded Worlds|国立大邱博物館 特別展「達句伐」|国立大邱博物馆 特别展《达句伐：延续的故土，展开的世界》|國立大邱博物館 特別展《達句伐：延續的故土，展開的世界》
+sejong-winter-symphony-2026|performance|Sejong Year-End Concert: A Winter Symphony 2026|世宗文化芸術会館 忘年特別公演「A Winter Symphony」|2026 世宗文化艺术会馆岁末特别音乐会《冬日交响曲》|2026 世宗文化藝術會館歲末特別音樂會《冬日交響曲》
+sejong-arboretum-little-prince-2026|garden|The Little Prince's Earth Journey at Sejong Arboretum|国立世宗樹木園「星の王子さまの地球旅行」特別展|国立世宗树木园《小王子的地球之旅》温室特展|國立世宗樹木園《小王子的地球之旅》溫室特展
+geochang-christmas-tree-festival-2026|night|14th Geochang Christmas Tree Culture Festival 2026|第14回 居昌クリスマスツリー文化祭り 2026|2026 第14届居昌圣诞树文化节|2026 第14屆居昌聖誕樹文化節
+sangju-nnibr-dog-cat-2026|science|Dogs and Cats: Two Diverging Paths Special Exhibition|国立洛東江生物資源館 特別展「犬と猫：二つの道」|国立洛东江生物资源馆 特别展《狗与猫：两条分岔路》|國立洛東江生物資源館 特別展《狗與貓：兩條分岔路》
+bonghwa-baekdudaegan-forest-open-2026|garden|Today the Forest is Open: Baekdudaegan Arboretum|国立白頭大幹樹木園「今日、森は営業中」特別展|国立白头大干树木园《今日森林营业中》特别展|國立白頭大幹樹木園《今日森林營業中》特別展
+iksan-jeseoksa-temple-2026|heritage|Jeseoksa Temple Revealed: Royal Temple of Baekje|国立益山博物館 特別展「明明白白 帝釈寺」|国立益山博物馆 特别展《明明白白帝释寺》|國立益山博物館 特別展《明明白白帝釋寺》
+seocheon-nie-climate-ecosystems-2026|science|Climate and Ecosystems at National Institute of Ecology|国立生態院 企画展示「気候と生態系」|国立生态院《气候与生态系统：同行气候带》展览|國立生態院《氣候與生態系統：同行氣候帶》展覽
+jecheon-nutcracker-ballet-2026|performance|Dream Dance Company Jecheon: The Nutcracker Ballet|夢の舞踊団「堤川」定期公演「くるみ割り人形」全幕バレエ|梦之舞团“堤川”定期公演 全幕芭蕾《胡桃夹子》|夢之舞團「堤川」定期公演 全幕芭蕾《胡桃鉗》
+jecheon-red-fishcake-festival-2026|food|3rd Jecheon Red Fishcake Festival 2026-2027|第3回 堤川赤おでん祭り 2026-2027|2026-2027 第3届堤川辣鱼糕节|2026-2027 第3屆堤川辣魚糕節
+chuncheon-craft-masterpieces-2026|art|2026 Traveling Craft Masterpieces Exhibition in Chuncheon|国立春川博物館「2026 訪ねる工芸名作展」|国立春川博物馆《2026 寻访工艺名作展》|國立春川博物館《2026 尋訪工藝名作展》
+naju-mahan-imported-artifacts-2026|heritage|Mahan Meets the Unfamiliar: Imported Artifacts in Naju|国立羅州博物館 特別展「馬韓、見知らぬものと出会う」|国立罗州博物馆 特别展《马韩，邂逅陌生之物》|國立羅州博物館 特別展《馬韓，邂逅陌生之物》
+jeju-kim-young-gap-photo-2026|art|Eternity in a Moment: Kim Young-gap Photo Exhibition|国立済州博物館 特別展「刹那の永遠、済州を撮る」|国立济州博物馆 特别展《刹那的永恒：金永甲摄影展》|國立濟州博物館 特別展《剎那的永恆：金永甲攝影展》
 `.trim().split('\n').map(row=>row.split('|'));
 export const EVENT_LOCALES = Object.fromEntries(rows.map(([id,topic,...titles])=>[id,{topic,titles}]));
 const topics = {

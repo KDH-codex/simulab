@@ -9,11 +9,11 @@ export const CHRISTMAS_GROUPS = [
     'busan-christmas-village-2026','ulsan-christmas-market-2026','jeju-christmas-village-2026',
     'incheon-yeonsu-christmas-tree-2026','seoul-magok-wish-village-2026','suncheon-nammun-christmas-2026',
     'chilgok-christmas-market-2026','daejeon-yuseong-christmas-2026','daegu-christmas-fair-2026',
-    'incheon-ohslow-vintage-market-2026'
+    'incheon-ohslow-vintage-market-2026','jecheon-nutcracker-ballet-2026'
   ]},
   {id:'mid-december', title:'12월 중순', ids:[
     'seoul-gwanghwamun-market-2026','seoul-lantern-winter-2026','seoul-christmas-pet-show-2026',
-    'seogwipo-jeju-icc-santa-2026'
+    'seogwipo-jeju-icc-santa-2026','geochang-christmas-tree-festival-2026'
   ]},
   {id:'christmas-week', title:'성탄 주간', ids:[
     'seoul-hangang-christmas-market-2026','seoul-plaza-ice-rink-2026',

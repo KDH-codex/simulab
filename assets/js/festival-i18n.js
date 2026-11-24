@@ -416,6 +416,22 @@ Safari에서 공유 버튼 → 책갈피 추가를 선택하세요. 다른 브�
 비슷한 테마 추천 축제|Festivals with a similar theme|似たテーマのおすすめお祭り|相似主题推荐节庆|相似主題推薦節慶
 비슷한 분위기의 추천 축제|Festivals with a similar vibe|同じ雰囲気のお祭り|相似氛围推荐节庆|相似氛圍推薦節慶
 같은 테마 더 보기 ↗|More with this theme ↗|同じテーマを見る ↗|查看更多同主题活动 ↗|查看更多同主題活動 ↗
+📝 사전신청 안내|📝 Booking guide|📝 事前申込案内|📝 预约指南|📝 預約指南
+이번 주 검증된 할인·쇼핑 스포트라이트|This week’s verified shopping spotlight|今週の確認済みセール注目情報|本周已核实购物优惠精选|本週已核實購物優惠精選
+나들이 장보기부터 백화점·가전·뷰티까지 오늘 바로 이용 가능한 공식 확인 할인입니다.|Verified grocery, department store, electronics and beauty offers available today.|お出かけ前の買い出しから百貨店・家電・ビューティーまで今日使える公式セール。|涵盖生鲜采购、百货、家电与美妆，今日即可使用的官方核实优惠。|涵蓋生鮮採購、百貨、家電與美妝，今日即可使用的官方核實優惠。
+전체 할인·쇼핑 보기 ↗|See all shopping offers ↗|すべてのセールを見る ↗|查看全部购物优惠 ↗|查看全部購物優惠 ↗
+몰·아울렛|Malls & outlets|モール・アウトレット|商场与奥特莱斯|商場與暢貨中心
+마트·창고형|Supermarkets|スーパー・倉庫店|超市与仓储店|超市與倉儲店
+백화점|Department stores|百貨店|百货商店|百貨公司
+브랜드|Brands|ブランド|品牌|品牌
+조건 확인하기 ↗|See conditions ↗|条件を確認 ↗|查看条件 ↗|查看條件 ↗
+출발 전 3초 체크리스트|Quick 3-point checklist|出発前3秒チェック|出发前3秒检查清单|出發前3秒檢查清單
+공식 공지에서 우천·휴관 변동 확인|Weather or closure updates checked|雨天・休館の変更を公式で確認|核对官方雨天或闭馆调整|核對官方雨天或閉館調整
+주차장·대중교통 및 입장 마감 시간 확인|Parking, transit and last entry time|駐車場・交通と最終入場時間|确认停车、交通与最晚入场时间|確認停車、交通與最晚入場時間
+사전예약·신분증·할인 증빙 지참 확인|Reservation, ID or discount proof ready|事前予約・身分証・割引証明|携带预约凭证、身份证或优惠证明|攜帶預約憑證、身分證或優惠證明
+함께 쓰면 편한 나들이 도구|Handy trip tools|お出かけに便利なツール|实用出游小工具|實用出遊小工具
+🧮 여행·나들이 예산 계산기 ↗|🧮 Outing budget calculator ↗|🧮 お出かけ予算計算機 ↗|🧮 出游预算计算器 ↗|🧮 出遊預算計算器 ↗
+💸 모임 더치페이 정산 ↗|💸 Group split-bill calculator ↗|💸 割り勘精算ツール ↗|💸 聚会AA制分账 ↗|💸 聚會AA制分帳 ↗
 `.trim().split('\n')){const [key,...values]=row.split('|');UI_TRANSLATIONS[key]=values;}
 const tokenRules=Object.keys(UI_TRANSLATIONS).sort((a,b)=>b.length-a.length).map(token=>{
   const escaped=token.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
