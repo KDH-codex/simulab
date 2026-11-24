@@ -61,3 +61,28 @@ test('the Christmas collection gives each event a distinct image file',async()=>
     }
   }
 });
+
+test('step 1 growth features render search input, quick presets, ending-soon feed and event og:image',async()=>{
+  for(const p of ['index.html','calendar/index.html','map/index.html','curation/index.html']){
+    const html=await read(p);
+    assert.match(html,/id="festival-search"/);
+    assert.match(html,/data-preset="indoor"/);
+    assert.match(html,/data-preset="ending"/);
+    assert.match(html,/data-preset="booking"/);
+  }
+  const home=await read('index.html');
+  assert.match(home,/id="ending-soon-section"/);
+  assert.match(home,/href="\/curation\/christmas\/"/);
+  assert.match(home,/href="\/sales\/"/);
+  const detailSample=active.find(e=>images[e.id]?.src);
+  assert.ok(detailSample);
+  const detailHtml=await read('events/'+detailSample.id+'/index.html');
+  assert.match(detailHtml,new RegExp('property="og:image" content="https://simulab\\.kr'+images[detailSample.id].src.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'"'));
+  assert.match(home,/id="weekend-concierge"/);
+  assert.match(home,/id="home-weather-city"/);
+  assert.match(home,/id="floating-picks-bar"/);
+  assert.match(home,/id="shared-picks-board"/);
+  assert.match(detailHtml,/data-calendar-ics="/);
+  assert.match(detailHtml,/https:\/\/calendar\.google\.com\/calendar\/render/);
+  assert.match(detailHtml,/related-festivals-section/);
+});

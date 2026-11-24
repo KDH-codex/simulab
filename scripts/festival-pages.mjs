@@ -3,8 +3,10 @@ import {mkdir} from 'node:fs/promises';
 import {typewriterText} from '../assets/js/festival-heading-motion.js';
 import {writeFile} from './write-public-file.mjs';
 import {highlightFor, homeRecommendations} from '../assets/js/festival-highlights.js';
+import {endingThisWeekEvents, CONCIERGE_MODES, conciergePicksFor, relatedEventsFor} from '../assets/js/festival-ui-model.js';
+import {conciergeCardMarkup} from '../assets/js/festival-presentation.js';
 import {weekendRange, monthRange, overlaps, nextDate} from '../tools/kids-outing-calendar/model.js';
-import {root, esc, shell, active, events, images, today, reviewed, groups, themes, card, filters, grid, imageMarkup, shortRange, feeLabel, badge, eventUrl, detailBody, keywordTags} from './festival-platform.mjs';
+import {root, esc, shell, active, events, images, today, reviewed, groups, themes, groupFor, card, filters, grid, imageMarkup, range, shortRange, feeLabel, badge, eventUrl, detailBody, keywordTags} from './festival-platform.mjs';
 
 export const intro = (kicker,titleLines,copy) => '<div class="page-intro"><p class="eyebrow">'+typewriterText(kicker)+'</p><h1>'+typewriterText(titleLines)+'</h1><p>'+esc(copy)+'</p></div>';
 const weekend = weekendRange(today);
@@ -19,7 +21,28 @@ export async function buildHome() {
   const weekendEvents=weekendPicks.events;
   const featured=active.filter(e=>highlightFor(e,today));
   const hotHTML=featured.length?'<section class="hot-section" aria-labelledby="hot-heading"><div class="section-title"><div><p class="eyebrow">EDITOR’S PICKS</p><h2 id="hot-heading">HOT · 주목할 행사</h2><p>공식 규모·대표성에 근거한 편집 선정이며 실시간 인기 순위가 아닙니다.</p></div><div class="feed-controls"><button data-scroll-feed="prev" data-feed-target="hot-event-feed" aria-label="이전 카드">‹</button><button data-scroll-feed="next" data-feed-target="hot-event-feed" aria-label="다음 카드">›</button></div></div><div class="horizontal-feed" id="hot-event-feed">'+featured.map(card).join('')+'</div></section>':'';
-  const body='<main id="main" class="page-width" data-home-date="'+today+'">'+heroHTML+hotHTML+'<section id="discover" class="discover-section"><div class="section-title"><div><p class="eyebrow">EXPLORE ALL FESTIVALS</p><h2>전국 축제 모아보기</h2><p>날짜와 지역, 좋아하는 테마로 다음 나들이를 골라보세요.</p></div><a class="text-link" href="/map/">지역별로 둘러보기 ↗</a></div>'+filters()+grid()+'</section><section class="weekend-section"><div class="section-title"><div><p class="eyebrow">YOUR WEEKEND STARTS HERE</p><h2>이번 주말엔 이런 축제 어때요?</h2></div><div class="weekend-feed-actions"><a class="text-link" href="/curation/">주말 일정 모두 보기 ↗</a>'+'<div class="feed-controls"'+(weekendEvents.length>1?'':' hidden')+'><button data-scroll-feed="prev" data-feed-target="home-weekend-feed" aria-label="이전 주말 카드">‹</button><button data-scroll-feed="next" data-feed-target="home-weekend-feed" aria-label="다음 주말 카드">›</button></div></div></div><div class="horizontal-feed" id="home-weekend-feed">'+(weekendEvents.length?weekendEvents.slice(0,4).map(card).join(''):'<div class="feed-empty">이 주말의 수록 일정이 없어요. 달력에서 다른 날짜를 살펴보세요.</div>')+'</div></section><section class="explore-links"><a href="/map/"><span class="link-illustration">⌖</span><div><small>NEAR YOUR NEXT DESTINATION</small><h2>가고 싶은 지역부터</h2><p>서울부터 제주까지, 7개 권역으로 가볍게 탐색해요.</p></div><b aria-hidden="true">↗</b></a><a href="/calendar/"><span class="link-illustration purple">▦</span><div><small>MAKE TIME FOR SOMETHING GOOD</small><h2>비어 있는 날짜부터</h2><p>달력에서 날짜를 누르면 그날의 수록 일정을 볼 수 있어요.</p></div><b aria-hidden="true">↗</b></a></section><section class="trust-strip"><span class="trust-icon" aria-hidden="true">✓</span><div><b>즐거운 나들이의 시작은, 정확한 정보에서</b><p>공식 안내를 읽고 개최일·요금·예약 조건을 정리합니다. 각 상세안내에서 출처와 확인일을 확인하세요.</p></div><span class="review-stamp">자료 확인<br><strong>'+esc(reviewed || '확인일 미등록')+'</strong></span></section></main>';
+  // 히어로 바로 아래에 '스마트 주말 컨시어지 + 주말 날씨 브리핑' 대시보드를 배치해 첫 화면의 체감 가치를 높입니다.
+  const conciergePool=active.map(e=>({...e,image:images[e.id]||null,url:eventUrl(e)}));
+  const initialConcierge=conciergePicksFor(conciergePool,'indoor',today);
+  const conciergeTabs=CONCIERGE_MODES.map(([id,label],index)=>'<button type="button" role="tab" data-concierge-mode="'+esc(id)+'" aria-selected="'+(index===0)+'">'+esc(label)+'</button>').join('');
+  const conciergeCards=initialConcierge.picks.map((e,index)=>conciergeCardMarkup(e,index,{image:e.image,statusLabel:badge(e),dateLabel:shortRange(e),feeText:feeLabel(e)})).join('');
+  const conciergeHTML='<section class="concierge-panel" id="weekend-concierge" aria-labelledby="concierge-heading">'+
+    '<div class="concierge-top">'+
+      '<div><p class="eyebrow">WEEKEND CONCIERGE</p><h2 id="concierge-heading">이번 주말, 상황별 맞춤 코스 3선</h2><p id="concierge-copy" class="concierge-copy">'+esc(CONCIERGE_MODES[0][2])+'</p></div>'+
+      '<div class="home-weather-box">'+
+        '<div class="home-weather-select-wrap"><label for="home-weather-city">⛅ 주말 날씨</label><select id="home-weather-city" aria-label="홈 주말 날씨 기준 도시"><option value="seoul">서울</option><option value="suwon">수원 · 경기</option><option value="gangneung">강릉 · 강원</option><option value="daejeon">대전 · 충청</option><option value="gwangju">광주 · 전라</option><option value="busan">부산 · 경상</option><option value="jeju">제주</option></select></div>'+
+        '<p id="home-weather-summary" role="status">주말 예보를 확인하고 있어요.</p>'+
+        '<button type="button" id="home-weather-cta" class="weather-indoor-cta" data-apply-preset="indoor" hidden>추위·우천 대비 실내 추천 보기 ↗</button>'+
+      '</div>'+
+    '</div>'+
+    '<div class="concierge-tabs" role="tablist" aria-label="주말 나들이 맞춤 모드">'+conciergeTabs+'</div>'+
+    '<div id="concierge-picks" class="concierge-picks">'+conciergeCards+'</div>'+
+    '<div class="concierge-bottom"><span class="microcopy">예보 출처: MET Norway 대표 지점 낮 예보 · 행사장 실황이 아닙니다.</span><button type="button" class="text-link" id="concierge-view-all" data-concierge-all="indoor">이 조건 전체 보기 →</button></div>'+
+  '</section>';
+  // 이번 주 일요일까지 종료되는 '마감 임박' 행사를 별도 가로 피드로 구성해 즉각적인 방문 결정을 돕습니다.
+  const endingSoon=endingThisWeekEvents(active,today);
+  const endingHTML='<section class="ending-soon-section" id="ending-soon-section" aria-labelledby="ending-soon-heading"'+(endingSoon.length?'':' hidden')+'><div class="section-title"><div><p class="eyebrow">ENDING THIS WEEK</p><h2 id="ending-soon-heading">⏳ 이번 주말이 마지막인 축제</h2><p>이번 주 일요일 전에 종료되는 수록 일정입니다. 놓치기 전에 운영 시간을 확인하세요.</p></div><div class="weekend-feed-actions"><a class="text-link" href="/?preset=ending#discover" data-apply-preset="ending">마감 임박 모두 보기 ↗</a><div class="feed-controls"'+(endingSoon.length>1?'':' hidden')+'><button data-scroll-feed="prev" data-feed-target="ending-soon-feed" aria-label="이전 마감 임박 카드">‹</button><button data-scroll-feed="next" data-feed-target="ending-soon-feed" aria-label="다음 마감 임박 카드">›</button></div></div></div><div class="horizontal-feed" id="ending-soon-feed">'+endingSoon.slice(0,8).map(card).join('')+'</div></section>';
+  const body='<main id="main" class="page-width" data-home-date="'+today+'">'+heroHTML+conciergeHTML+hotHTML+endingHTML+'<section id="discover" class="discover-section"><div class="section-title"><div><p class="eyebrow">EXPLORE ALL FESTIVALS</p><h2>전국 축제 모아보기</h2><p>날짜와 지역, 좋아하는 테마로 다음 나들이를 골라보세요.</p></div><a class="text-link" href="/map/">지역별로 둘러보기 ↗</a></div>'+filters()+grid()+'</section><section class="weekend-section"><div class="section-title"><div><p class="eyebrow">YOUR WEEKEND STARTS HERE</p><h2>이번 주말엔 이런 축제 어때요?</h2></div><div class="weekend-feed-actions"><a class="text-link" href="/curation/">주말 일정 모두 보기 ↗</a>'+'<div class="feed-controls"'+(weekendEvents.length>1?'':' hidden')+'><button data-scroll-feed="prev" data-feed-target="home-weekend-feed" aria-label="이전 주말 카드">‹</button><button data-scroll-feed="next" data-feed-target="home-weekend-feed" aria-label="다음 주말 카드">›</button></div></div></div><div class="horizontal-feed" id="home-weekend-feed">'+(weekendEvents.length?weekendEvents.slice(0,4).map(card).join(''):'<div class="feed-empty">이 주말의 수록 일정이 없어요. 달력에서 다른 날짜를 살펴보세요.</div>')+'</div></section><section class="explore-links"><a href="/map/"><span class="link-illustration">⌖</span><div><small>NEAR YOUR NEXT DESTINATION</small><h2>가고 싶은 지역부터</h2><p>서울부터 제주까지, 7개 권역으로 가볍게 탐색해요.</p></div><b aria-hidden="true">↗</b></a><a href="/calendar/"><span class="link-illustration purple">▦</span><div><small>MAKE TIME FOR SOMETHING GOOD</small><h2>비어 있는 날짜부터</h2><p>달력에서 날짜를 누르면 그날의 수록 일정을 볼 수 있어요.</p></div><b aria-hidden="true">↗</b></a><a href="/curation/christmas/"><span class="link-illustration christmas-bridge" aria-hidden="true">🎄</span><div><small>WINTER SPECIAL GUIDE</small><h2>크리스마스 모음집</h2><p>겨울 마켓과 빛축제, 성탄 주간 나들이와 케이크 예약을 모았어요.</p></div><b aria-hidden="true">↗</b></a><a href="/sales/"><span class="link-illustration sales-bridge" aria-hidden="true">🛍</span><div><small>WEEKEND SHOPPING OFFERS</small><h2>이번 주 할인·쇼핑</h2><p>나들이 전후 챙길 마트·아울렛·백화점 할인 조건을 한곳에서 확인하세요.</p></div><b aria-hidden="true">↗</b></a></section><section class="trust-strip"><span class="trust-icon" aria-hidden="true">✓</span><div><b>즐거운 나들이의 시작은, 정확한 정보에서</b><p>공식 안내를 읽고 개최일·요금·예약 조건을 정리합니다. 각 상세안내에서 출처와 확인일을 확인하세요.</p></div><span class="review-stamp">자료 확인<br><strong>'+esc(reviewed || '확인일 미등록')+'</strong></span></section></main>';
   await writeFile(new URL('index.html',root),shell({
     title:'이번주 축제 | 주말에 가볼 만한 전국 축제·행사',
     description:'이번 주말 어디 갈까? 전국 축제를 지역·날짜·테마별로 찾고 운영일·입장료·예약 조건을 확인하세요. English·日本語·简体中文·繁體中文 안내도 제공합니다.',
@@ -63,16 +86,23 @@ export async function buildDetails() {
     const schema={'@context':'https://schema.org','@type':e.dates?.length>1?'EventSeries':'Event',name:e.title,description:e.program,startDate:e.startDate,endDate:e.endDate,location:{'@type':'Place',name:e.location},url:'https://simulab.kr'+eventUrl(e),inLanguage:'ko-KR'};
     if(e.dates?.length>1) schema.subEvent=e.dates.map(d=>({'@type':'Event',name:e.title,startDate:d,endDate:d,location:{'@type':'Place',name:e.location}}));
     // Prices, inventory, organizer and event photographs must never be inferred.
-    const body='<main id="main" class="page-width detail-page"><div class="breadcrumbs"><a href="/">홈</a><span>/</span><a href="/map/?region='+encodeURIComponent(groups.find(g=>g.regions.includes(e.region))?.label || '')+'">'+esc(e.region)+'</a><span>/</span> 축제 상세안내</div><article class="detail-surface">'+detailBody(e)+'</article></main>';
+    // 검색으로 들어온 방문자가 다른 권역·테마 축제로 이어서 탐색할 수 있게 연관 추천 섹션을 붙입니다.
+    const {sameRegion, sameTheme}=relatedEventsFor(e,active,groupFor);
+    const relatedParts=[];
+    if(sameRegion.length)relatedParts.push('<section class="related-festivals-section" aria-label="같은 권역 추천 축제"><div class="section-title"><div><p class="eyebrow">NEARBY IN '+esc(groupFor(e))+'</p><h2>같은 권역에서 함께 열리는 축제</h2></div><a class="text-link" href="/map/?region='+encodeURIComponent(groupFor(e))+'">권역 일정 더 보기 ↗</a></div><div class="event-grid">'+sameRegion.map(card).join('')+'</div></section>');
+    if(sameTheme.length)relatedParts.push('<section class="related-festivals-section" aria-label="비슷한 테마 추천 축제"><div class="section-title"><div><p class="eyebrow">SIMILAR THEME PICKS</p><h2>비슷한 분위기의 추천 축제</h2></div><a class="text-link" href="/?theme='+encodeURIComponent(e.theme)+'#discover">같은 테마 더 보기 ↗</a></div><div class="event-grid">'+sameTheme.map(card).join('')+'</div></section>');
+    const body='<main id="main" class="page-width detail-page"><div class="breadcrumbs"><a href="/">홈</a><span>/</span><a href="/map/?region='+encodeURIComponent(groups.find(g=>g.regions.includes(e.region))?.label || '')+'">'+esc(e.region)+'</a><span>/</span> 축제 상세안내</div><article class="detail-surface">'+detailBody(e)+'</article>'+relatedParts.join('')+'</main>';
     await mkdir(new URL('events/'+e.id+'/',root),{recursive:true});
     const dates=dateFormat.formatRange(new Date(e.startDate),new Date(e.endDate));
     const schedule=e.dates?'지정일 운영':e.scheduleType==='period'?'기간 내 운영일 확인':'';
     const fee=e.feeStatus==='unknown'?'':feeLabel(e);
     const booking=e.endDate>=today?e.booking:'';
     const description=[dates,e.location,e.program,schedule,fee,booking].filter(Boolean).join(' · ');
+    // 검증된 축제 사진이 있으면 해당 행사 전용 og:image를 연결해 카카오톡·SNS 공유 미리보기를 개선합니다.
+    const socialImg=images[e.id]?.src||'/assets/img/brand/festival-social.jpg';
     await writeFile(new URL('events/'+e.id+'/index.html',root),shell({
       title:e.title+' | 일정·장소'+(fee?'·참여 비용':''),
-      description,path:eventUrl(e),page:'detail',adEligible:e.endDate>=today,body,structuredData:schema
+      description,ogImage:socialImg,path:eventUrl(e),page:'detail',adEligible:e.endDate>=today,body,structuredData:schema
     }),'utf8');
   }
 }

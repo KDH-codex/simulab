@@ -1,7 +1,7 @@
-import {eventTags,matchesKeyword,weekRangeFor,weekDays,weeklyEvents,eventsForDay,dayMilestone,toggleDaySelection,THEME_WORDS} from './festival-ui-model.js';
+import {eventTags,matchesKeyword,weekRangeFor,weekDays,weeklyEvents,eventsForDay,dayMilestone,toggleDaySelection,THEME_WORDS,QUICK_PRESETS,matchesPreset,endingThisWeekEvents,CONCIERGE_MODES,conciergePicksFor,parseSharedPicks,buildSharedPicksURL,icsContent,isIndoorVenue} from './festival-ui-model.js';
 import {WEATHER_STATIONS} from './festival-weather-model.js';
 import {modalMarkup,modalTabIds} from './festival-modal.js';
-import {eventImage,imageCaption,activeConditions,detailTagDestination,miniEvent} from './festival-presentation.js';
+import {eventImage,imageCaption,activeConditions,detailTagDestination,miniEvent,conciergeCardMarkup,sharedPicksBoardMarkup} from './festival-presentation.js';
 import {setupHeadingMotion} from './festival-heading-motion.js';
 import {initializeLanguage} from './festival-language.js';
 import {setupHomeVisits} from './festival-home-visits.js';
@@ -44,7 +44,10 @@ const labels={light:'✦ 불꽃·야경',food:'◒ 먹거리·수확',nature:'�
 const regionNames=['서울','경기지역','강원지역','충청지역','전라지역','경상지역','제주지역'];
 const defaultPeriod=page==='calendar'?'month':page==='weekend'?'weekend':'upcoming';
 const allowedPeriods=page==='calendar'?['month','weekend','today']:['upcoming','weekend','today'];
-const state={region:regionNames.includes(params.get('region'))?params.get('region'):'all',theme:Object.hasOwn(labels,params.get('theme'))?params.get('theme'):'all',period:allowedPeriods.includes(params.get('period'))?params.get('period'):defaultPeriod,keyword:(params.get('tag')||'').slice(0,40),free:params.get('free')==='1',saved:params.get('saved')==='1',sort:'start',limit:9};
+const allowedPresets=QUICK_PRESETS.map(([id])=>id);
+const state={region:regionNames.includes(params.get('region'))?params.get('region'):'all',theme:Object.hasOwn(labels,params.get('theme'))?params.get('theme'):'all',period:allowedPeriods.includes(params.get('period'))?params.get('period'):defaultPeriod,preset:allowedPresets.includes(params.get('preset'))?params.get('preset'):'',keyword:(params.get('tag')||'').slice(0,40),free:params.get('free')==='1',saved:params.get('saved')==='1',sort:'start',limit:9};
+let sharedPicks=parseSharedPicks(params.get('picks'),byId);
+let conciergeMode='indoor';
 const storageKey='thisweekfestival.saved.v1';
 let saved=[];
 try {const parsed=JSON.parse(localStorage.getItem(storageKey)||'[]');if(Array.isArray(parsed))saved=[...new Set(parsed.filter(id=>typeof id==='string'&&byId.has(id)))];} catch {}
@@ -67,10 +70,17 @@ function card(e) {
 function keywordTags(e,extraClass='') {
   return '<div class="tag-row keyword-tags '+extraClass+'">'+eventTags(e).map(word=>'<button type="button" data-keyword="'+esc(word)+'" aria-pressed="'+(state.keyword===word)+'">#'+esc(word)+'</button>').join('')+'</div>';
 }
+function syncSearchInput() {
+  const input=$('festival-search');
+  if(input&&input.value!==state.keyword)input.value=state.keyword;
+  const clearBtn=$('clear-festival-search');
+  if(clearBtn)clearBtn.hidden=!state.keyword;
+}
 function syncKeywordButtons() {
   document.querySelectorAll('[data-keyword]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.keyword===state.keyword)));
   const el=$('keyword-selection');
   if(el){el.hidden=!state.keyword;el.innerHTML=state.keyword?'<span>선택한 키워드</span><button data-clear-keyword>'+esc(state.keyword)+' <span aria-hidden="true">×</span></button>':'';}
+  syncSearchInput();
 }
 function syncConditions() {
   const container=$('dock-active-conditions');if(!container)return;
@@ -141,6 +151,22 @@ function toast(message) {
   const el=$('festival-toast');if(!el)return;
   el.textContent=message;el.hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.hidden=true,3200);
 }
+function syncFloatingPicks() {
+  const bar=$('floating-picks-bar');
+  if(!bar)return;
+  bar.hidden=saved.length===0;
+  if(!saved.length)return;
+  const count=$('floating-picks-count');
+  if(count)count.textContent=String(saved.length);
+  const thumbs=$('floating-picks-thumbs');
+  if(thumbs){
+    thumbs.innerHTML=saved.slice(-3).map(id=>{
+      const ev=byId.get(id);
+      if(!ev)return '';
+      return ev.image?'<img src="'+esc(ev.image.src)+'" alt="" width="28" height="28">':'<span class="floating-thumb-dot theme-'+esc(ev.theme)+'">✦</span>';
+    }).join('');
+  }
+}
 function syncSaved() {
   document.querySelectorAll('[data-saved-count]').forEach(el=>el.textContent=saved.length);
   document.querySelectorAll('[data-save]').forEach(b=>{
@@ -149,9 +175,10 @@ function syncSaved() {
     b.classList.toggle('is-saved',has);
     b.textContent=b.classList.contains('save-button')?(has?'♥':'♡'):(has?'♥ 보관됨':'♡ 일정 보관');
   });
+  syncFloatingPicks();
 }
 function selection(e,{ignoreRegion=false,ignoreTheme=false}={}) {
-  return (ignoreRegion||state.region==='all'||e.group===state.region)&&(ignoreTheme||state.theme==='all'||e.theme===state.theme)&&(!state.free||e.feeStatus==='free')&&(!state.saved||saved.includes(e.id))&&matchesKeyword(e,state.keyword);
+  return (ignoreRegion||state.region==='all'||e.group===state.region)&&(ignoreTheme||state.theme==='all'||e.theme===state.theme)&&(!state.free||e.feeStatus==='free')&&(!state.saved||saved.includes(e.id))&&matchesKeyword(e,state.keyword)&&matchesPreset(e,state.preset,today);
 }
 function periodRange() {
   if(state.period==='weekend')return weekendRange(today);
@@ -162,6 +189,7 @@ function syncPills(pool) {
   document.querySelectorAll('[data-region]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.region===state.region)));
   document.querySelectorAll('[data-theme]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.theme===state.theme)));
   document.querySelectorAll('[data-period]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.period===state.period)));
+  document.querySelectorAll('[data-preset]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.preset===state.preset)));
   document.querySelectorAll('[data-sort]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.sort===state.sort)));
   const counts=pool.filter(e=>selection(e,{ignoreRegion:true}));
   document.querySelectorAll('[data-region-count]').forEach(el=>el.textContent=el.dataset.regionCount==='all'?counts.length:counts.filter(e=>e.group===el.dataset.regionCount).length);
@@ -190,7 +218,7 @@ function renderGrid() {
 }
 function updateURL() {
   const url=new URL(location.href);
-  for(const [key,val,empty] of [['region',state.region,'all'],['theme',state.theme,'all'],['saved',state.saved?'1':'',''],['free',state.free?'1':'',''],['period',state.period,defaultPeriod],['tag',state.keyword,'']]){if(val!==empty)url.searchParams.set(key,val);else url.searchParams.delete(key);}
+  for(const [key,val,empty] of [['region',state.region,'all'],['theme',state.theme,'all'],['saved',state.saved?'1':'',''],['free',state.free?'1':'',''],['period',state.period,defaultPeriod],['preset',state.preset,''],['tag',state.keyword,''],['picks',sharedPicks.join(','),'']]){if(val!==empty)url.searchParams.set(key,val);else url.searchParams.delete(key);}
   history.replaceState(null,'',url);
 }
 let shown=today.slice(0,7)+'-01';
@@ -333,7 +361,7 @@ function navigateCalendar(step) {
   state.period='month';updateURL();renderCalendar();
 }
 function reset() {
-  Object.assign(state,{region:'all',theme:'all',keyword:'',free:false,saved:false,period:page==='calendar'?'month':page==='weekend'?'weekend':'upcoming',sort:'start',limit:9});
+  Object.assign(state,{region:'all',theme:'all',preset:'',keyword:'',free:false,saved:false,period:page==='calendar'?'month':page==='weekend'?'weekend':'upcoming',sort:'start',limit:9});
   selected=null;selectedWeek=null;calendarView='month';updateURL();render();weatherForRegion();
 }
 function render(){if(page==='calendar')renderCalendar();else renderGrid();}
@@ -442,8 +470,80 @@ function refreshChristmas() {
     label.hidden=today<=label.dataset.christmasOfferEnd;
   });
 }
+function refreshEndingSoon() {
+  const section=$('ending-soon-section'),feed=$('ending-soon-feed');
+  if(!section||!feed)return;
+  const items=endingThisWeekEvents(data,today);
+  section.hidden=items.length===0;
+  feed.innerHTML=items.slice(0,8).map(card).join('');
+  const controls=section.querySelector('.feed-controls');
+  if(controls)controls.hidden=items.length<2;
+}
+// 홈 스마트 컨시어지 패널(실내·무료·야경·마감임박 4모드)을 현재 모드와 날짜 기준으로 갱신합니다.
+function renderConcierge() {
+  const section=$('weekend-concierge'),picksEl=$('concierge-picks');
+  if(!section||!picksEl)return;
+  const meta=CONCIERGE_MODES.find(([id])=>id===conciergeMode)||CONCIERGE_MODES[0];
+  conciergeMode=meta[0];
+  section.querySelectorAll('[data-concierge-mode]').forEach(btn=>btn.setAttribute('aria-selected',String(btn.dataset.conciergeMode===conciergeMode)));
+  const copyEl=$('concierge-copy');
+  if(copyEl)copyEl.textContent=meta[2];
+  const {picks}=conciergePicksFor(data,conciergeMode,today);
+  picksEl.innerHTML=picks.map((e,index)=>conciergeCardMarkup(e,index,{image:e.image,statusLabel:status(e),dateLabel:range(e),feeText:fee(e),saved:saved.includes(e.id)})).join('');
+  const viewAll=$('concierge-view-all');
+  if(viewAll)viewAll.dataset.conciergeAll=conciergeMode;
+  syncSaved();
+}
+// URL ?picks= 또는 보관함 비교 버튼으로 열린 후보 비교 보드를 화면에 표시합니다.
+function renderPicksBoard() {
+  const board=$('shared-picks-board');
+  if(!board)return;
+  const items=sharedPicks.map(id=>byId.get(id)).filter(Boolean);
+  board.hidden=items.length===0;
+  board.innerHTML=items.length?sharedPicksBoardMarkup(items,{statusFn:status,feeFn:fee,isIndoorFn:isIndoorVenue}):'';
+}
+// 홈 상단에서 Cloudflare Worker(/api/weather)를 호출해 이번 주말 날씨와 실내 추천 CTA를 보여줍니다.
+async function loadHomeWeather(stationId=$('home-weather-city')?.value||'seoul') {
+  const summaryEl=$('home-weather-summary'),ctaEl=$('home-weather-cta');
+  if(!summaryEl)return;
+  const id=Object.hasOwn(WEATHER_STATIONS,stationId)?stationId:'seoul';
+  if($('home-weather-city'))$('home-weather-city').value=id;
+  try {
+    let result=weatherMemory.get(id);
+    if(!result||new Date(result.expiresAt)<=new Date()){
+      const res=await fetch('/api/weather?region='+id,{signal:AbortSignal.timeout(12000)});
+      if(!res.ok)throw new Error('weather unavailable');
+      result=await res.json();
+      if(!Array.isArray(result.days)||!result.days.length)throw new Error('weather empty');
+      weatherMemory.set(id,result);
+    }
+    const wk=weekendRange(today);
+    const sat=result.days.find(d=>d.date===wk.start);
+    const sun=result.days.find(d=>d.date===wk.end);
+    const city=WEATHER_STATIONS[id].city;
+    if(sat||sun){
+      const parts=[];
+      if(sat)parts.push('토 '+sat.icon+' '+sat.temperature+'° '+sat.label);
+      if(sun)parts.push('일 '+sun.icon+' '+sun.temperature+'° '+sun.label);
+      summaryEl.textContent=city+' 주말 예보 · '+parts.join(' / ');
+      const badWeather=[sat,sun].filter(Boolean).some(d=>d.temperature<=9||/비|눈|진눈깨비|천둥/.test(d.label));
+      if(ctaEl)ctaEl.hidden=!badWeather;
+    }else{
+      const near=result.days.slice(0,2).map(d=>d.date.slice(8)+'일 '+d.icon+' '+d.temperature+'°').join(' · ');
+      summaryEl.textContent=city+' 최근 예보 · '+near;
+      if(ctaEl)ctaEl.hidden=true;
+    }
+  } catch {
+    summaryEl.textContent='예보 연결이 잠시 지연되고 있어요. 실내·전시 조건으로도 찾아볼 수 있습니다.';
+    if(ctaEl)ctaEl.hidden=false;
+  }
+}
 refreshDetailStatus();
 refreshChristmas();
+refreshEndingSoon();
+renderConcierge();
+renderPicksBoard();
+loadHomeWeather();
 
 if(page==='home'||page==='detail'||page==='christmas'){
   const checkDate=()=>{
@@ -454,6 +554,9 @@ if(page==='home'||page==='detail'||page==='christmas'){
     refreshFeatured();
     refreshDetailStatus();
     refreshChristmas();
+    refreshEndingSoon();
+    renderConcierge();
+    renderPicksBoard();
     if(page==='home')renderGrid();
   };
   window.setInterval(checkDate,60_000);
@@ -512,10 +615,89 @@ document.addEventListener('click',async event=>{
   }
   if(b.hasAttribute('data-remove-condition')){
     const key=b.dataset.removeCondition;
-    if(key==='keyword')state.keyword='';else if(key==='free')state.free=false;else if(key==='saved')state.saved=false;else if(key==='period'){
+    if(key==='keyword')state.keyword='';else if(key==='free')state.free=false;else if(key==='saved')state.saved=false;else if(key==='preset')state.preset='';else if(key==='period'){
       state.period=defaultPeriod;if(page==='calendar'){selected=calendarView==='week'?{start:activeWeek,end:shiftDate(activeWeek,6)}:null;}
     }else return;
     state.limit=9;updateURL();render();document.querySelector('[data-scroll-to-filters]')?.focus({preventScroll:true});return;
+  }
+  if(b.hasAttribute('data-apply-preset')){
+    event.preventDefault();
+    state.preset=allowedPresets.includes(b.dataset.applyPreset)?b.dataset.applyPreset:'';
+    state.limit=9;updateURL();render();
+    $('discover')?.scrollIntoView({behavior:reducedMotion.matches?'instant':'smooth',block:'start'});return;
+  }
+  if(b.hasAttribute('data-preset')){
+    const next=b.dataset.preset;
+    state.preset=next&&state.preset===next?'':next;
+    state.limit=9;updateURL();render();return;
+  }
+  if(b.hasAttribute('data-concierge-mode')){
+    conciergeMode=b.dataset.conciergeMode;
+    renderConcierge();
+    animateRegion($('concierge-picks'));
+    return;
+  }
+  if(b.hasAttribute('data-concierge-all')){
+    const mode=b.dataset.conciergeAll;
+    Object.assign(state,{region:'all',theme:'all',preset:'',keyword:'',free:false,saved:false,period:'upcoming'});
+    if(mode==='indoor')state.preset='indoor';
+    else if(mode==='free')state.free=true;
+    else if(mode==='night')state.theme='light';
+    else if(mode==='ending')state.preset='ending';
+    state.limit=9;updateURL();render();
+    $('discover')?.scrollIntoView({behavior:reducedMotion.matches?'instant':'smooth',block:'start'});
+    return;
+  }
+  if(b.id==='open-picks-compare'){
+    if(!saved.length)return;
+    const board=$('shared-picks-board');
+    if(board){
+      sharedPicks=saved.slice(0,6);
+      updateURL();renderPicksBoard();
+      board.scrollIntoView({behavior:reducedMotion.matches?'instant':'smooth',block:'start'});
+    }else{
+      location.assign(buildSharedPicksURL(saved,location.origin,locale));
+    }
+    return;
+  }
+  if(b.id==='share-picks-link'||b.hasAttribute('data-share-picks')){
+    const list=b.hasAttribute('data-share-picks')&&sharedPicks.length?sharedPicks:saved;
+    if(!list.length)return;
+    const url=buildSharedPicksURL(list,location.origin,locale);
+    try{
+      if(navigator.share)await navigator.share({title:'우리 이번 주말 어디 갈까? | 이번주 축제 후보 비교',url});
+      else{await navigator.clipboard.writeText(url);toast('후보 비교 링크를 복사했어요. 일행에게 보내 함께 골라보세요!');}
+    }catch(error){if(error.name!=='AbortError')toast('공유하지 못했어요. 주소창 링크를 복사해 주세요.');}
+    return;
+  }
+  if(b.hasAttribute('data-save-all-picks')){
+    saved=[...new Set([...saved,...sharedPicks.filter(id=>byId.has(id))])];
+    let persisted=true;try{localStorage.setItem(storageKey,JSON.stringify(saved));}catch{persisted=false;}
+    syncSaved();if(state.saved)render();
+    toast(persisted?'공유받은 후보 일정을 내 보관함에 모두 담았어요.':'이 화면에서만 보관됩니다. 브라우저 저장 공간을 사용할 수 없어요.');
+    return;
+  }
+  if(b.hasAttribute('data-remove-pick')){
+    const id=b.dataset.removePick;
+    sharedPicks=sharedPicks.filter(x=>x!==id);
+    updateURL();renderPicksBoard();
+    return;
+  }
+  if(b.hasAttribute('data-close-picks-board')){
+    sharedPicks=[];updateURL();renderPicksBoard();
+    return;
+  }
+  if(b.hasAttribute('data-calendar-ics')){
+    const e=byId.get(b.dataset.calendarIcs);
+    if(!e)return;
+    const blob=new Blob([icsContent(e,today)],{type:'text/calendar;charset=utf-8'});
+    const objectUrl=URL.createObjectURL(blob);
+    const link=document.createElement('a');
+    link.href=objectUrl;link.download=e.id+'.ics';
+    document.body.appendChild(link);link.click();link.remove();
+    setTimeout(()=>URL.revokeObjectURL(objectUrl),1000);
+    toast('달력 일정 파일(.ics)을 저장했어요.');
+    return;
   }
   if(b.hasAttribute('data-clear-keyword')){state.keyword='';updateURL();render();return;}
   if(b.hasAttribute('data-scroll-to-filters')){document.querySelector('.filter-panel').scrollIntoView({behavior:reducedMotion.matches?'instant':'smooth',block:'start'});return;}
@@ -552,11 +734,15 @@ document.addEventListener('click',async event=>{
 
 });
 $('only-free')?.addEventListener('change',e=>{state.free=e.target.checked;state.limit=9;updateURL();render();});
+// 빠른 검색 입력 시 즉시 목록과 URL(?tag=)을 동기화하고 지우기 버튼으로 바로 초기화합니다.
+$('festival-search')?.addEventListener('input',e=>{state.keyword=e.target.value.trim().slice(0,40);state.limit=9;updateURL();render();});
+$('clear-festival-search')?.addEventListener('click',()=>{state.keyword='';const input=$('festival-search');if(input){input.value='';input.focus();}state.limit=9;updateURL();render();});
 window.addEventListener('storage',e=>{if(e.key!==storageKey)return;try{const v=JSON.parse(e.newValue||'[]');saved=Array.isArray(v)?[...new Set(v.filter(id=>byId.has(id)))]:[];}catch{saved=[];}syncSaved();if(state.saved)render();});
 setupFilterDock();
-if(page==='calendar'){if(state.period!=='month')selected=periodRange();loadWeather();}else if($('event-cards'))renderGrid();
+if(page==='calendar'){if(state.period!=='month')selected=periodRange();loadWeather();}else if($('event-cards'))renderGrid();else syncSearchInput();
 syncSaved();revealCards();setupHeadingMotion({reducedMotion});
 $('weather-location')?.addEventListener('change',event=>loadWeather(event.target.value));
+$('home-weather-city')?.addEventListener('change',event=>loadHomeWeather(event.target.value));
 document.addEventListener('keydown',event=>{const button=event.target.closest?.('[data-calendar-view]');if(!button||!['ArrowLeft','ArrowRight','Home','End'].includes(event.key))return;event.preventDefault();const view=event.key==='Home'?'month':event.key==='End'?'week':button.dataset.calendarView==='month'?'week':'month';setCalendarView(view);document.querySelector('[data-calendar-view="'+view+'"]').focus();});
 function syncDetailLocation(){if(page!=='detail')return;document.querySelectorAll('.detail-tabs a').forEach(link=>{if(location.hash&&link.hash===location.hash)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current');});}
 window.addEventListener('hashchange',syncDetailLocation);syncDetailLocation();

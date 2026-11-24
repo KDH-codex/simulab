@@ -353,6 +353,69 @@ Safari에서 공유 버튼 → 책갈피 추가를 선택하세요. 다른 브�
 를 누르거나 주소창의 별표로 이 페이지를 북마크에 추가하세요.|to bookmark this page, or use the star in the address bar.|を押すか、アドレスバーの星印でブックマークしてください。|可添加本页为书签，或点击地址栏星标。|可將本頁加入書籤，或點選網址列星號。
 앱 아이콘을 만들려면 Safari의 공유 메뉴에서|To create an app icon, use Safari’s Share menu and choose|アプリアイコンを作るにはSafariの共有メニューで|创建应用图标，请在Safari分享菜单中选择|建立應用程式圖示，請在Safari分享選單中選擇
 를 선택하세요.|.|を選んでください。|。|。
+⌕ 빠른 검색|⌕ Quick search|⌕ キーワード検索|⌕ 快速搜索|⌕ 快速搜尋
+축제명·장소·키워드 검색 (예: 크리스마스, 과학관, 부산)|Search by festival, venue or keyword (e.g. Christmas, museum, Busan)|祭り名・会場・キーワード検索（例：クリスマス、科学館、釜山）|搜索节庆、地点或关键词（如：圣诞、科学馆、釜山）|搜尋節慶、地點或關鍵字（如：聖誕、科學館、釜山）
+검색어 지우기|Clear search|検索語を消去|清除搜索词|清除搜尋詞
+⚡ 빠른 조건|⚡ Quick filters|⚡ クイック条件|⚡ 快捷筛选|⚡ 快速篩選
+상황별 빠른 조건|Quick situational filters|状況別クイック条件|按场景快捷筛选|依情境快速篩選
+전체 조건|All options|すべての条件|全部条件|全部條件
+🏛 실내·전시관|🏛 Indoor & halls|🏛 屋内・展示館|🏛 室内与展馆|🏛 室內與展館
+⏳ 이번 주 마감|⏳ Ending this week|⏳ 今週終了|⏳ 本周截止|⏳ 本週截止
+📝 사전신청 안내|📝 Advance booking|📝 事前予約あり|📝 需提前预约|📝 需提前預約
+⏳ 이번 주말이 마지막인 축제|⏳ Last chance this weekend|⏳ 今週末で終了するお祭り|⏳ 本周末即将结束的节庆|⏳ 本週末即將結束的節慶
+이번 주 일요일 전에 종료되는 수록 일정입니다. 놓치기 전에 운영 시간을 확인하세요.|Listed events ending by this Sunday. Check operating hours before you go.|今週日曜日までに終了する掲載予定です。出発前に開催時間をご確認ください。|本周日前结束的已收录活动，出发前请确认开放时间。|本週日前結束的已收錄活動，出發前請確認開放時間。
+마감 임박 모두 보기 ↗|See all ending soon ↗|まもなく終了をすべて見る ↗|查看全部即将结束 ↗|查看全部即將結束 ↗
+이전 마감 임박 카드|Previous ending-soon cards|前の終了間近カード|上一组即将结束卡片|上一組即將結束卡片
+다음 마감 임박 카드|Next ending-soon cards|次の終了間近カード|下一组即将结束卡片|下一組即將結束卡片
+이번 주 할인·쇼핑|This week’s shopping offers|今週のセール情報|本周优惠购物|本週優惠購物
+나들이 전후 챙길 마트·아울렛·백화점 할인 조건을 한곳에서 확인하세요.|Check mart, outlet and department store offers before or after your outing.|お出かけ前後に使えるマート・アウトレット・百貨店のセール条件を確認。|出游前后顺便查看超市、奥莱与百货优惠条件。|出遊前後順道查看超市、Outlet與百貨優惠條件。
+이번 주말, 상황별 맞춤 코스 3선|Weekend picks for any plan|今週末のテーマ別おすすめ3選|本周末场景精选3选|本週末情境精選3選
+🏛 추위 걱정 없는 실내·전시|🏛 Cozy indoor exhibitions|🏛 寒い日も安心の屋内展示|🏛 温暖室内展览|🏛 溫暖室內展覽
+💸 입장 무료 알짜 나들이|💸 Free admission outings|💸 入場無料のお出かけ|💸 免费入场推荐|💸 免費入場推薦
+✨ 겨울밤 빛축제·마켓|✨ Winter lights & markets|✨ 冬のイルミ・マーケット|✨ 冬夜灯会与市集|✨ 冬夜燈會與市集
+⏳ 이번 일요일 마감 임박|⏳ Ending this Sunday|⏳ 今週日曜で終了|⏳ 本周日即将结束|⏳ 本週日即將結束
+비·추위 걱정 없이 박물관·과학관·전시관에서 즐기는 일정입니다.|Enjoy museums, science centers and exhibition halls without worrying about the weather.|雨や寒さを気にせず博物館・科学館・展示館で楽しめる予定です。|无需担心风雨寒冷，在博物馆、科学馆与展馆轻松游玩。|無需擔心風雨寒冷，在博物館、科學館與展館輕鬆遊玩。
+입장·기본참여 무료로 확인된 부담 없는 나들이 일정입니다.|Checked listings with free basic admission for an easy outing.|入場・基本参加が無料と確認された気軽なお出かけ先です。|已确认基本入场免费的轻松出游选择。|已確認基本入場免費的輕鬆出遊選擇。
+저녁 시간대 조명·야경·겨울 마켓 분위기를 즐길 수 있는 일정입니다.|Evening illuminations, night views and winter market gatherings.|夜のライトアップや夜景、冬のマーケットを楽しめる予定です。|适合夜间赏灯、看夜景与逛冬日市集的活动。|適合夜間賞燈、看夜景與逛冬日市集的活動。
+이번 주 일요일을 끝으로 막을 내리는 놓치기 아쉬운 일정입니다.|Listed events closing by this Sunday so you do not miss them.|今週日曜日で終了する見逃せない掲載予定です。|本周日即将结束的精彩活动，错过不再。|本週日即將結束的精彩活動，錯過不再。
+⛅ 주말 날씨|⛅ Weekend weather|⛅ 週末の天気|⛅ 周末天气|⛅ 週末天氣
+홈 주말 날씨 기준 도시|Weekend weather forecast city|週末天気の対象都市|周末天气预报城市|週末天氣預報城市
+주말 예보를 확인하고 있어요.|Checking the weekend forecast.|週末の予報を確認中です。|正在获取周末天气预报。|正在取得週末天氣預報。
+추위·우천 대비 실내 추천 보기 ↗|See indoor picks for cold or rainy weather ↗|寒い日・雨の日の屋内おすすめを見る ↗|查看防寒防雨室内推荐 ↗|查看防寒防雨室內推薦 ↗
+주말 나들이 맞춤 모드|Weekend concierge modes|週末お出かけモード|周末出游精选模式|週末出遊精選模式
+예보 출처: MET Norway 대표 지점 낮 예보 · 행사장 실황이 아닙니다.|Forecast source: MET Norway daytime city forecast; not live venue weather.|予報出典：MET Norway代表地点の昼予報・会場実況ではありません。|预报来源：MET Norway代表城市日间预报，非现场实况。|預報來源：MET Norway代表城市日間預報，非現場實況。
+이 조건 전체 보기 →|See all matching events →|この条件をすべて見る →|查看全部符合活动 →|查看全部符合活動 →
+주말 나들이 후보 비교 보드|Weekend shortlist comparison board|週末のお出かけ候補比較ボード|周末出游候选对比看板|週末出遊候選對比看板
+💌 함께 고르는 주말 나들이 후보|💌 Compare weekend picks together|💌 みんなで選ぶ週末お出かけ候補|💌 一起对比周末出游候选|💌 一起對比週末出遊候選
+기간·장소·실내 여부·비용·예약 조건을 한눈에 비교하고 일행에게 공유해 보세요.|Compare dates, venues, indoor access, fees and booking details, then share with your group.|日程・場所・屋内施設・料金・予約条件をまとめて比較して共有できます。|一站式对比日期、地点、室内与否、费用和预约条件并分享给同伴。|一站式對比日期、地點、室內與否、費用和預約條件並分享給同伴。
+💬 비교 링크 공유|💬 Share comparison link|💬 比較リンクを共有|💬 分享对比链接|💬 分享對比連結
+♡ 내 보관함에 모두 담기|♡ Save all to my list|♡ すべて自分の保存へ|♡ 全部加入我的收藏|♡ 全部加入我的收藏
+닫기 ×|Close ×|閉じる ×|关闭 ×|關閉 ×
+비교 항목|Compare|比較項目|对比项目|對比項目
+목록에서 빼기|Remove|リストから外す|移出清单|移出清單
+운영 기간|Dates|開催期間|开放日期|開放日期
+지역 · 장소|Region & venue|地域・会場|地区与地点|地區與地點
+🏛 실내 시설|🏛 Indoor venue|🏛 屋内施設|🏛 室内场馆|🏛 室內場館
+예약 · 시간|Booking & hours|予約・時間|预约与时间|預約與時間
+일정 담기|Calendar & link|予定保存|加入日程|加入日程
+📅 폰 달력 저장|📅 Save to phone calendar|📅 カレンダーに保存|📅 保存到手机日历|📅 儲存到手機行事曆
+📅 달력 저장|📅 Save date|📅 カレンダー保存|📅 保存日程|📅 儲存日程
+구글 캘린더 ↗|Google Calendar ↗|Googleカレンダー ↗|Google日历 ↗|Google日曆 ↗
+📅 구글 캘린더에 바로 등록 ↗|📅 Add directly to Google Calendar ↗|📅 Googleカレンダーに登録 ↗|📅 直接添加到Google日历 ↗|📅 直接加入Google日曆 ↗
+보관한 축제 비교 및 공유|Compare and share saved festivals|保存したお祭りを比較・共有|对比与分享已收藏节庆|對比與分享已收藏節慶
+보관한 후보|Saved picks|保存した候補|已收藏候选|已收藏候選
+🔍 한눈에 비교|🔍 Compare|🔍 まとめて比較|🔍 一键对比|🔍 一鍵對比
+💬 일행에게 공유|💬 Share with group|💬 みんなに共有|💬 分享给同伴|💬 分享給同伴
+후보 비교 링크를 복사했어요. 일행에게 보내 함께 골라보세요!|Comparison link copied. Send it to your group to decide together!|比較リンクをコピーしました。家族や友人に送って一緒に選びましょう！|已复制对比链接，发送给同伴一起挑选吧！|已複製對比連結，傳送給同伴一起挑選吧！
+공유하지 못했어요. 주소창 링크를 복사해 주세요.|Could not share. Please copy the link from the address bar.|共有できませんでした。アドレスバーのURLをコピーしてください。|无法分享，请复制地址栏链接。|無法分享，請複製網址列連結。
+공유받은 후보 일정을 내 보관함에 모두 담았어요.|All shared candidates have been saved to your list.|共有された候補をすべて保存しました。|已将分享的候选活动全部加入我的收藏。|已將分享的候選活動全部加入我的收藏。
+달력 일정 파일(.ics)을 저장했어요.|Calendar event file (.ics) saved.|カレンダー予定ファイル(.ics)を保存しました。|已保存日历日程文件(.ics)。|已儲存行事曆檔案(.ics)。
+같은 권역 추천 축제|Nearby festivals in the same region|同じエリアのおすすめお祭り|同地区推荐节庆|同地區推薦節慶
+같은 권역에서 함께 열리는 축제|More festivals nearby|同じエリアで開催中のお祭り|同地区正在举办的其他节庆|同地區正在舉辦的其他節慶
+권역 일정 더 보기 ↗|More in this region ↗|エリアの一覧を見る ↗|查看更多同地区活动 ↗|查看更多同地區活動 ↗
+비슷한 테마 추천 축제|Festivals with a similar theme|似たテーマのおすすめお祭り|相似主题推荐节庆|相似主題推薦節慶
+비슷한 분위기의 추천 축제|Festivals with a similar vibe|同じ雰囲気のお祭り|相似氛围推荐节庆|相似氛圍推薦節慶
+같은 테마 더 보기 ↗|More with this theme ↗|同じテーマを見る ↗|查看更多同主题活动 ↗|查看更多同主題活動 ↗
 `.trim().split('\n')){const [key,...values]=row.split('|');UI_TRANSLATIONS[key]=values;}
 const tokenRules=Object.keys(UI_TRANSLATIONS).sort((a,b)=>b.length-a.length).map(token=>{
   const escaped=token.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');

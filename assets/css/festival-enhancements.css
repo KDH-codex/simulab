@@ -180,3 +180,118 @@ html{scroll-padding-top:calc(var(--site-header-height,100px) + 18px)}
 }
 .card-schedule-note{font-size:9px;color:#a18aa7;margin-top:8px;line-height:1.6}
 main{overflow-anchor:none}.weekly-timetable{max-height:640px;overflow:auto;scrollbar-gutter:stable}.week-day-head{position:sticky;top:0;z-index:2;background:#f8f5fd;padding-top:4px}.week-day-column.is-today .week-day-head{background:#fff6ee}
+
+/* 1단계 추가 UI: 실시간 통합 검색창, 상황별 빠른 조건 칩, 이번 주 마감 임박 섹션, 교차 브릿지 */
+.search-filter-row{align-items:center}
+.search-filter-row .filter-label{flex:0 0 80px;font-size:11px;font-weight:750;color:#5b526d}
+.festival-search-box{position:relative;flex:1;max-width:560px;min-width:0;display:flex;align-items:center}
+#festival-search{width:100%;min-height:40px;padding:8px 38px 8px 14px;border:1px solid #dfd9ef;border-radius:12px;background:#fbfaff;font-size:13px;color:var(--ink);transition:border-color .18s,box-shadow .18s,background .18s}
+#festival-search::placeholder{color:#9a8fad;font-size:12px}
+#festival-search:focus{outline:none;border-color:var(--indigo);background:#fff;box-shadow:0 0 0 3px #6366f11f}
+#festival-search::-webkit-search-cancel-button{-webkit-appearance:none}
+.search-clear-button{position:absolute;right:8px;width:26px;height:26px;border-radius:50%;background:#ece8f8;color:#57487a;font-size:15px;line-height:1;display:inline-flex;align-items:center;justify-content:center}
+.search-clear-button:hover{background:#ded7f5}
+.preset-filter-row>b{color:#4b3f72}
+.preset-pills button[aria-pressed=true]{background:var(--indigo);color:#fff;border-color:var(--indigo)}
+.ending-soon-section{margin:10px 0 56px}
+.link-illustration.christmas-bridge{background:#fff1f2;color:#dc2626}
+.link-illustration.sales-bridge{background:#fff7ed;color:#ea580c}
+@media(max-width:1150px){
+  .search-filter-row .filter-label{flex-basis:70px}
+}
+@media(max-width:850px){
+  .search-filter-row .filter-label{flex-basis:70px}
+}
+@media(max-width:560px){
+  .search-filter-row .filter-label{display:block;font-size:10px;padding:0 0 8px}
+  .festival-search-box{max-width:100%}
+  #festival-search{font-size:12px;min-height:38px;padding:7px 36px 7px 12px}
+  #festival-search::placeholder{font-size:11px}
+  .ending-soon-section{margin:6px 0 36px}
+  .ending-soon-section .section-title h2{font-size:21px;max-width:235px}
+}
+
+/* 2·3단계 핵심 체감 UI: 스마트 주말 컨시어지, 플로팅 후보 트레이, 나란히 비교 보드, 상세 연관 추천 */
+.concierge-panel{background:linear-gradient(135deg,#f5f2ff 0%,#fff6ec 100%);border:1px solid #e2dbf5;border-radius:24px;padding:28px;margin:-18px 0 54px;box-shadow:0 16px 40px #2a1b4e0d}
+.concierge-top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap}
+.concierge-top h2{font-size:27px;font-weight:900;margin-bottom:6px}
+.concierge-copy{font-size:13px;color:#5c5170}
+.home-weather-box{background:#ffffffeb;border:1px solid #e7e0f5;border-radius:16px;padding:12px 16px;min-width:265px;max-width:390px;display:flex;flex-direction:column;gap:7px;box-shadow:0 6px 16px #2d1b5408}
+.home-weather-select-wrap{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.home-weather-select-wrap label{font-size:11px;font-weight:800;color:#4f3e78}
+.home-weather-select-wrap select{font:inherit;font-size:11px;font-weight:700;padding:4px 10px;border:1px solid #ddd3f2;border-radius:20px;background:#faf8ff;color:var(--ink)}
+#home-weather-summary{font-size:12px;font-weight:700;color:#2c2344;line-height:1.5}
+.weather-indoor-cta{align-self:flex-start;font-size:11px;font-weight:800;color:#fff;background:var(--indigo);padding:5px 12px;border-radius:20px}
+.concierge-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 18px}
+.concierge-tabs button{padding:9px 16px;border-radius:999px;background:#ffffffd9;border:1px solid #e4dcf5;font-size:12px;font-weight:750;color:#52466e;transition:transform .16s,background .16s,box-shadow .16s}
+.concierge-tabs button:hover{transform:translateY(-1px);border-color:#c9bce8}
+.concierge-tabs button[aria-selected=true]{background:var(--orange);color:#fff;border-color:var(--orange);box-shadow:0 7px 18px #f9731630}
+.concierge-picks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.concierge-card{background:#fff;border:1px solid #eae4f6;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 6px 18px #271b4b08;transition:transform .18s,box-shadow .18s}
+.concierge-card:hover{transform:translateY(-3px);box-shadow:0 12px 28px #271b4b14}
+.concierge-card-visual{position:relative;display:block;aspect-ratio:1.78;overflow:hidden}
+.concierge-card-visual img{width:100%;height:100%;object-fit:cover}
+.concierge-rank{position:absolute;top:12px;right:12px;background:#171c30d9;color:#fff;font-family:"Festival Paperlogy",sans-serif;font-weight:800;font-size:13px;padding:3px 10px;border-radius:999px;backdrop-filter:blur(6px)}
+.concierge-card-body{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1;gap:6px}
+.concierge-card-body h3{font-size:17px;font-weight:850;line-height:1.4;word-break:keep-all}
+.concierge-card-meta{display:flex;justify-content:space-between;gap:8px;align-items:center;font-size:11px;color:#6f6482;margin-top:4px;flex-wrap:wrap}
+.concierge-card-meta strong{color:var(--purple);font-size:11px}
+.concierge-card-foot{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:10px;border-top:1px solid #f4f1fa}
+.concierge-bottom{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:16px;flex-wrap:wrap}
+
+.shared-picks-board{background:#fff;border:2px solid var(--indigo);border-radius:20px;padding:22px 24px;margin-bottom:28px;box-shadow:0 16px 36px #4c3b9114}
+.picks-board-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+.picks-board-head h2{font-size:22px;font-weight:900;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.picks-board-head p:not(.eyebrow){font-size:12px;color:var(--muted);margin-top:5px}
+.picks-count-pill{background:var(--indigo);color:#fff;font-size:12px;border-radius:999px;padding:2px 10px;line-height:1.5}
+.picks-board-actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.picks-board-actions .button{min-height:38px;padding:8px 16px;font-size:12px}
+.picks-compare-wrap{overflow-x:auto;border:1px solid #ebe6f6;border-radius:14px}
+.picks-compare-table{width:100%;border-collapse:collapse;min-width:620px;font-size:12px}
+.picks-compare-table th,.picks-compare-table td{border-bottom:1px solid #f1edf9;border-right:1px solid #f1edf9;padding:12px 14px;text-align:left;vertical-align:top}
+.picks-compare-table th:last-child,.picks-compare-table td:last-child{border-right:0}
+.picks-compare-table tbody tr:last-child th,.picks-compare-table tbody tr:last-child td{border-bottom:0}
+.picks-compare-table tbody th{background:#f8f6fd;width:115px;font-size:11px;font-weight:800;color:#5a4d78;white-space:nowrap}
+.picks-col-head{display:flex;flex-direction:column;gap:8px;min-width:175px}
+.picks-col-thumb{position:relative;display:block;aspect-ratio:1.8;border-radius:10px;overflow:hidden}
+.picks-col-thumb img{width:100%;height:100%;object-fit:cover}
+.picks-col-title{font-size:14px;font-weight:850;line-height:1.35;color:var(--ink)}
+.picks-col-remove{align-self:flex-start;font-size:10px;color:#8a7d9d;text-decoration:underline;padding:2px 0}
+.picks-status-tag{display:inline-block;margin-left:6px;background:var(--lavender);color:var(--purple);padding:2px 7px;border-radius:999px;font-size:10px;font-weight:750}
+.indoor-chip{display:inline-block;margin-top:6px;background:#e8f5ff;color:#1765a3;padding:2px 8px;border-radius:999px;font-size:10px;font-weight:750}
+.picks-time-note{display:block;margin-top:5px;font-size:10px;color:#867996}
+.picks-cell-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+
+.floating-picks-bar{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:45;background:#1a1530f0;color:#fff;backdrop-filter:blur(16px);border:1px solid #ffffff24;border-radius:999px;padding:8px 10px 8px 14px;display:flex;align-items:center;gap:14px;box-shadow:0 16px 40px #120b294d;max-width:calc(100% - 24px)}
+.floating-picks-info{display:flex;align-items:center;gap:10px;min-width:0}
+.floating-picks-thumbs{display:flex;align-items:center}
+.floating-picks-thumbs img,.floating-thumb-dot{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid #1a1530;margin-left:-8px;background:#3a2f5d;display:inline-flex;align-items:center;justify-content:center;font-size:11px}
+.floating-picks-thumbs>*:first-child{margin-left:0}
+.floating-picks-text{font-size:12px;font-weight:750;white-space:nowrap}
+.floating-picks-text b{color:#ffb77c;margin-left:3px}
+.floating-picks-actions{display:flex;gap:6px;flex-shrink:0}
+.picks-action-btn{padding:8px 14px;border-radius:999px;font-size:11px;font-weight:800;white-space:nowrap}
+.picks-action-btn.compare{background:#fff;color:#1a1530}
+.picks-action-btn.share{background:var(--orange);color:#fff}
+.toast{bottom:84px}
+.modal-calendar-row{margin-top:14px}
+.related-festivals-section{margin:40px 0 56px}
+
+@media(max-width:980px){
+  .concierge-picks{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  .concierge-panel{padding:20px 16px;border-radius:18px;margin:-8px 0 36px}
+  .concierge-top h2{font-size:22px}
+  .home-weather-box{width:100%;max-width:none;min-width:0}
+  .concierge-tabs{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:4px}
+  .concierge-tabs::-webkit-scrollbar{display:none}
+  .concierge-tabs button{flex-shrink:0;padding:8px 13px;font-size:11px}
+  .concierge-picks{grid-template-columns:1fr;gap:14px}
+  .shared-picks-board{padding:16px}
+  .picks-board-head h2{font-size:19px}
+  .floating-picks-bar{padding:7px 8px 7px 12px;gap:9px;bottom:14px}
+  .floating-picks-thumbs{display:none}
+  .floating-picks-text{font-size:11px}
+  .picks-action-btn{padding:7px 11px;font-size:10px}
+}
