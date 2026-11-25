@@ -432,6 +432,38 @@ Safari에서 공유 버튼 → 책갈피 추가를 선택하세요. 다른 브�
 함께 쓰면 편한 나들이 도구|Handy trip tools|お出かけに便利なツール|实用出游小工具|實用出遊小工具
 🧮 여행·나들이 예산 계산기 ↗|🧮 Outing budget calculator ↗|🧮 お出かけ予算計算機 ↗|🧮 出游预算计算器 ↗|🧮 出遊預算計算器 ↗
 💸 모임 더치페이 정산 ↗|💸 Group split-bill calculator ↗|💸 割り勘精算ツール ↗|💸 聚会AA制分账 ↗|💸 聚會AA制分帳 ↗
+📋 카톡·블로그 요약 복사|📋 Copy summary text|📋 まとめテキストをコピー|📋 复制行程摘要文本|📋 複製行程摘要文字
+카톡·블로그에 바로 붙여넣을 코스 요약을 복사했어요!|Copied the course summary to paste into chat or notes!|メッセージやメモに貼れるコース概要をコピーしました！|已复制行程摘要，可直接粘贴分享给同伴！|已複製行程摘要，可直接貼上分享給同伴！
+요약 복사에 실패했어요. 비교 링크 공유를 이용해 주세요.|Could not copy summary. Please share the comparison link instead.|コピーできませんでした。比較リンク共有をご利用ください。|无法复制摘要，请使用对比链接分享。|無法複製摘要，請使用對比連結分享。
+서울 축제·전시 모음|Seoul Festivals & Exhibitions|ソウルのお祭り・展示|首尔节庆与展览精选|首爾節慶與展覽精選
+경기·인천 축제·전시 모음|Gyeonggi & Incheon Festivals|京畿・仁川のお祭り・展示|京畿与仁川节庆活动精选|京畿與仁川節慶活動精選
+강원 축제·전시 모음|Gangwon Festivals & Winter Events|江原のお祭り・冬のイベント|江原道冬日与节庆精选|江原道冬日與節慶精選
+대전·세종·충청 축제·전시 모음|Chungcheong Festivals & Exhibitions|大田・世宗・忠清のお祭り|大田·世宗·忠清节庆与展览|大田·世宗·忠清節慶與展覽
+광주·전라 축제·전시 모음|Jeolla Festivals & Exhibitions|光州・全羅のお祭り・展示|光州与全罗节庆活动精选|光州與全羅節慶活動精選
+부산·대구·울산·경상 축제·전시 모음|Gyeongsang & Busan Festivals|釜山・大邱・慶尚のお祭り|釜山·大邱·庆尚节庆精选|釜山·大邱·慶尚節慶精選
+제주 축제·전시 모음|Jeju Festivals & Exhibitions|済州のお祭り・展示案内|济州节庆与展览精选|濟州節慶與展覽精選
+전국 실내 전시·박물관·과학관 모음|Indoor Museums & Exhibitions|全国 屋内展示・博物館特集|韩国室内展览·博物馆·科学馆精选|韓國室內展覽·博物館·科學館精選
+입장 무료 전국 축제·전시 모음|Free Admission Festivals|入場無料のお祭り・展示特集|免费入场韩国节庆与展览精选|免費入場韓國節慶與展覽精選
+2026–2027 겨울·빛축제·연말 특집|Winter Lights & Year-End Special|2026–2027 冬・ライト・年末特集|2026–2027 韩国冬季灯会与岁末特辑|2026–2027 韓國冬季燈會與歲末特輯
+기본 입장 무료|Free admission|基本入場無料|免费入场|免費入場
+최근 확인일|Last reviewed|最終確認日|最近核实日期|最近核實日期
+🔍 추천 3곳 한눈에 비교하기 ↗|🔍 Compare top 3 picks ↗|🔍 おすすめ3選を比較する ↗|🔍 一键对比前3项推荐 ↗|🔍 一鍵對比前3項推薦 ↗
+📅 달력으로 일정 보기 ↗|📅 Browse on calendar ↗|📅 カレンダーで見る ↗|📅 在日历中查看日程 ↗|📅 在行事曆中查看日程 ↗
+🏛 실내 전시·박물관|🏛 Indoor exhibitions|🏛 屋内展示・博物館|🏛 室内展览·博物馆|🏛 室內展覽·博物館
+💸 입장 무료|💸 Free admission|💸 入場無料|💸 免费入场|💸 免費入場
+❄️ 겨울·연말 특집|❄️ Winter & year-end|❄️ 冬・年末特集|❄️ 冬季·岁末特辑|❄️ 冬季·歲末特輯
+🎄 크리스마스|🎄 Christmas guide|🎄 クリスマス|🎄 圣诞节特辑|🎄 聖誕節特輯
+🛍 함께 확인하면 좋은 이번 주 할인|🛍 Verified shopping deals nearby|🛍 あわせてチェックしたい今週のセール|🛍 同区域及线上本周精选优惠|🛍 同區域及線上本週精選優惠
+🛍 다녀오는 길에 함께 챙길 할인|🛍 Verified shopping deals for your trip|🛍 お出かけ前後に使える公式セール|🛍 出游顺路可享的核实优惠|🛍 出遊順路可享的核實優惠
+나들이 전후 챙길 해당 권역·온라인 공식 확인 할인입니다.|Verified regional and online offers to pair with your outing.|お出かけ前後に役立つ地域・オンラインの公式確認済みセールです。|适合出游前后顺便查看的该地区及线上官方优惠。|適合出遊前後順便查看的該地區及線上官方優惠。
+해당 권역이나 온라인에서 지금 바로 이용할 수 있는 공식 확인 할인 행사입니다.|Verified regional or nationwide online deals available right now.|対象地域やオンラインで今すぐ使える公式確認済みセールです。|该地区或全国线上目前即可使用的官方核实优惠。|該地區或全國線上目前即可使用的官方核實優惠。
+지역·테마 모음|Regional & theme collections|地域・テーマ特集|地区与主题合集|地區與主題合集
+권역·테마별 전용 안내|Browse by region & season|地域別・テーマ別専用ページ|按地区与季节专题浏览|按地區與季節專題瀏覽
+검색하기 좋은 지역별·테마별 맞춤 페이지로 바로 이동하세요.|Jump directly to dedicated regional guides and winter or indoor picks.|検索しやすい地域別ガイドや屋内・冬特集ページへすぐ移動できます。|直达各地区与室内、免费、冬日专题页面。|直達各地區與室內、免費、冬日專題頁面。
+실내 전시·박물관 모음|Indoor exhibitions|屋内展示・博物館特集|室内展览·博物馆合集|室內展覽·博物館合集
+무료 축제 모음|Free festivals|無料お祭り特集|免费节庆合集|免費節慶合集
+겨울·연말 축제 특집|Winter & year-end guide|冬・年末お祭り特集|冬季·岁末节庆特辑|冬季·歲末節慶特輯
+자주 묻는 질문|Frequently asked questions|よくある質問|常见问题|常見問題
 `.trim().split('\n')){const [key,...values]=row.split('|');UI_TRANSLATIONS[key]=values;}
 const tokenRules=Object.keys(UI_TRANSLATIONS).sort((a,b)=>b.length-a.length).map(token=>{
   const escaped=token.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');

@@ -2,6 +2,8 @@ import {LANGUAGES} from '../assets/js/festival-i18n.js';
 import {highlightFor} from '../assets/js/festival-highlights.js';
 import {eventTags,QUICK_PRESETS,googleCalendarUrl} from '../assets/js/festival-ui-model.js';
 import {eventImage,imageAttribution,cardQuickFacts} from '../assets/js/festival-presentation.js';
+import {filterShopping,shoppingState,saleURL,SHOP_KINDS} from '../assets/js/shopping-model.js';
+import {saleImage} from '../assets/js/shopping-presentation.js';
 import {readFile} from 'node:fs/promises';
 import '../assets/js/site-settings.js';
 import {escapeHtml, validateEvent, koreaToday, shiftDate, nextDate, overlaps, REGION_GROUPS, eventStatus} from '../tools/kids-outing-calendar/model.js';
@@ -15,6 +17,17 @@ export const images = JSON.parse(await readFile(new URL('data/events/images.json
 export const events = all.filter(e => !validateEvent(e, {today}).length && /^[a-z0-9-]+$/.test(e.id) && e.publicationStatus !== 'cancelled');
 export const active = events.filter(e => overlaps(e, today, shiftDate(today, 60))).sort((a,b) => nextDate(a,today).localeCompare(nextDate(b,today)) || a.title.localeCompare(b.title,'ko'));
 export const reviewed = events.map(e => e.checkedAt).sort().at(-1) || '';
+// 홈·상세·SEO 기획전 페이지가 공통으로 재사용하는 진행 중 할인 목록입니다 (당일 마감보다 주말까지 남은 할인을 우선 정렬).
+const dealNow = new Date();
+const dealSources = JSON.parse(await readFile(new URL('data/deals/sources.json', root), 'utf8')).sources;
+const dealRaw = JSON.parse(await readFile(new URL('data/deals/reviewed.json', root), 'utf8')).events.filter(e => e.shopping && e.publicationStatus !== 'held');
+const dealRows = dealRaw.map(e => ({...e, brandName: dealSources.find(s => s.id === e.brandId)?.name || e.shopping.brand}));
+const currentDeals = filterShopping(dealRows, {}, dealNow);
+export const activeDeals = [...currentDeals.filter(d => d.endDate > today), ...currentDeals.filter(d => d.endDate === today)];
+export function dealCardHTML(d) {
+  const img = saleImage(d), st = shoppingState(d, dealNow), period = d.startDate.slice(5).replace('-','.') + '–' + d.endDate.slice(5).replace('-','.');
+  return '<article class="home-deal-card"><a class="home-deal-thumb" href="'+esc(saleURL(d))+'"><img src="'+esc(img.src)+'" alt="" loading="lazy" decoding="async"><span class="home-deal-badge">'+esc(st.label)+'</span></a><div class="home-deal-body"><div class="home-deal-meta"><span data-original lang="ko">'+esc(d.brandName)+'</span><span>'+esc(period)+'</span></div><h3><a href="'+esc(saleURL(d))+'" data-original lang="ko">'+esc(d.shortTitle || d.title)+'</a></h3><p class="home-deal-summary" data-original lang="ko">'+esc(d.summary)+'</p><div class="home-deal-foot"><span class="microcopy">'+esc(SHOP_KINDS[d.shopping.kind] || '')+'</span><a class="text-link" href="'+esc(saleURL(d))+'">조건 확인하기 ↗</a></div></div></article>';
+}
 export const groups = REGION_GROUPS;
 export const themes = {light:['✦','불꽃·야경'], food:['◒','먹거리·수확'], nature:['❋','꽃·자연'], kids:['✳','체험·문화']};
 export const eventUrl = e => '/events/' + encodeURIComponent(e.id) + '/';
@@ -48,7 +61,7 @@ export function header(page='home') {
 }
 export function footer({showHomeVisits=false}={}) {
   const visits=showHomeVisits?'<span class="footer-home-visits" data-home-visits translate="no" hidden></span>':'';
-  return '<footer class="site-footer"><div class="footer-grid"><div><a class="brand" href="/"><img src="/assets/img/brand/festival-fireworks.png" width="40" height="40" alt=""><span><b>이번주 축제</b><small>FESTA CALENDAR</small></span></a><p>이번 주, 새로운 즐거움을 발견하세요.<br>공식 안내를 바탕으로 모은 전국 축제·행사.</p></div><div><b>가고 싶은 축제 찾기</b><a href="/map/">7개 권역으로 탐색</a><a href="/calendar/">날짜별 축제 달력</a><a href="/curation/">이번 주말 일정</a><a href="/sales/">할인·쇼핑</a></div><div><b>정보 이용 안내</b><a href="/legal/about">서비스 소개·문의</a><a href="/legal/terms">이용약관·면책 안내</a><a href="/legal/privacy">개인정보처리방침</a><a href="/legal/editorial">출처·검토·정정 기준</a><a href="/legal/fonts">사용 서체·출처</a><a href="/library/">기존 시뮬랩 자료</a></div></div><div class="footer-note"><span>© '+today.slice(0,4)+' 이번주 축제 · simulab.kr'+visits+'</span><p>축제 주최·예약 대행 서비스가 아닙니다. 일정·요금·예약 및 취소 여부는 출발 전 공식 안내에서 다시 확인하세요. 카드 건수는 이 사이트에 수록된 일정 수이며 전국 전체 개최 수가 아닙니다.</p></div></footer>';
+  return '<footer class="site-footer"><div class="footer-grid"><div><a class="brand" href="/"><img src="/assets/img/brand/festival-fireworks.png" width="40" height="40" alt=""><span><b>이번주 축제</b><small>FESTA CALENDAR</small></span></a><p>이번 주, 새로운 즐거움을 발견하세요.<br>공식 안내를 바탕으로 모은 전국 축제·행사.</p></div><div><b>가고 싶은 축제 찾기</b><a href="/curation/indoor/">실내 전시·박물관 모음</a><a href="/curation/free/">무료 축제 모음</a><a href="/curation/winter-2026/">겨울·연말 축제 특집</a><a href="/curation/christmas/">크리스마스 모음집</a><a href="/map/">7개 권역으로 탐색</a><a href="/calendar/">날짜별 축제 달력</a><a href="/sales/">할인·쇼핑</a></div><div><b>정보 이용 안내</b><a href="/legal/about">서비스 소개·문의</a><a href="/legal/terms">이용약관·면책 안내</a><a href="/legal/privacy">개인정보처리방침</a><a href="/legal/editorial">출처·검토·정정 기준</a><a href="/legal/fonts">사용 서체·출처</a><a href="/library/">기존 시뮬랩 자료</a></div></div><div class="footer-note"><span>© '+today.slice(0,4)+' 이번주 축제 · simulab.kr'+visits+'</span><p>축제 주최·예약 대행 서비스가 아닙니다. 일정·요금·예약 및 취소 여부는 출발 전 공식 안내에서 다시 확인하세요. 카드 건수는 이 사이트에 수록된 일정 수이며 전국 전체 개최 수가 아닙니다.</p></div></footer>';
 }
 export function filters({weekend=false,calendar=false}={}) {
   // 기존 지역/테마 필터 위에 즉시 검색창과 상황별 빠른 조건(실내·마감임박·사전신청)을 추가합니다.

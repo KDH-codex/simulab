@@ -1,4 +1,4 @@
-import {eventTags,matchesKeyword,weekRangeFor,weekDays,weeklyEvents,eventsForDay,dayMilestone,toggleDaySelection,THEME_WORDS,QUICK_PRESETS,matchesPreset,endingThisWeekEvents,CONCIERGE_MODES,conciergePicksFor,parseSharedPicks,buildSharedPicksURL,icsContent,isIndoorVenue} from './festival-ui-model.js';
+import {eventTags,matchesKeyword,weekRangeFor,weekDays,weeklyEvents,eventsForDay,dayMilestone,toggleDaySelection,THEME_WORDS,QUICK_PRESETS,matchesPreset,endingThisWeekEvents,CONCIERGE_MODES,conciergePicksFor,parseSharedPicks,buildSharedPicksURL,icsContent,isIndoorVenue,formatCourseSummaryText} from './festival-ui-model.js';
 import {WEATHER_STATIONS} from './festival-weather-model.js';
 import {modalMarkup,modalTabIds} from './festival-modal.js';
 import {eventImage,imageCaption,activeConditions,detailTagDestination,miniEvent,conciergeCardMarkup,sharedPicksBoardMarkup,cardQuickFacts} from './festival-presentation.js';
@@ -668,6 +668,18 @@ document.addEventListener('click',async event=>{
       if(navigator.share)await navigator.share({title:'우리 이번 주말 어디 갈까? | 이번주 축제 후보 비교',url});
       else{await navigator.clipboard.writeText(url);toast('후보 비교 링크를 복사했어요. 일행에게 보내 함께 골라보세요!');}
     }catch(error){if(error.name!=='AbortError')toast('공유하지 못했어요. 주소창 링크를 복사해 주세요.');}
+    return;
+  }
+  if(b.hasAttribute('data-copy-course-text')){
+    const items=(sharedPicks.length?sharedPicks:saved).slice(0,6).map(id=>byId.get(id)).filter(Boolean);
+    if(!items.length)return;
+    const summary=formatCourseSummaryText(items,buildSharedPicksURL(items.map(e=>e.id),location.origin,locale),today);
+    try{
+      await navigator.clipboard.writeText(summary);
+      toast('카톡·블로그에 바로 붙여넣을 코스 요약을 복사했어요!');
+    }catch{
+      toast('요약 복사에 실패했어요. 비교 링크 공유를 이용해 주세요.');
+    }
     return;
   }
   if(b.hasAttribute('data-save-all-picks')){

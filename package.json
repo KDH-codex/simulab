@@ -8,6 +8,7 @@
     "events:collect": "node scripts/collect-event-candidates.mjs",
     "preview": "node scripts/preview.mjs --port=4180",
     "deals:audit": "node scripts/audit-deals.mjs",
+    "freshness:report": "node scripts/check-freshness.mjs",
     "family:audit": "node scripts/audit-family-info.mjs",
     "family:blog": "node scripts/prepare-family-blog.mjs",
     "shopping:collect": "node scripts/collect-shopping-candidates.mjs",

@@ -240,3 +240,69 @@ export function toggleDaySelection(current,date,{view='month',weekStart}={}) {
   return view==='week'&&current?.start===date&&current?.end===date
     ?{start:weekStart,end:shiftDate(weekStart,6)}:{start:date,end:date};
 }
+
+/**
+ * 7개 권역별 SEO 전용 랜딩 페이지(/region/{slug}/) 메타데이터 정의입니다.
+ */
+export const REGION_SEO_PAGES=[
+  {slug:'seoul',label:'서울',shortLabel:'서울',regions:['서울'],areaKeys:['seoul','gyeonggi'],title:'이번 주 서울 축제·전시 | 주말 가볼 만한 곳',description:'서울 도심 축제·박물관·야간 빛축제·겨울 마켓 일정을 운영일·입장료·예약 조건과 함께 한곳에서 확인하세요.'},
+  {slug:'gyeonggi',label:'경기지역',shortLabel:'경기·인천',regions:['경기','인천'],areaKeys:['gyeonggi','seoul'],title:'경기·인천 축제·행사 | 수도권 주말 나들이 모음',description:'경기·인천의 주말 축제, 야간 불빛정원, 수목원·과학관 전시와 반려동물·먹거리 행사를 한눈에 살펴보세요.'},
+  {slug:'gangwon',label:'강원지역',shortLabel:'강원',regions:['강원'],areaKeys:[],title:'강원 겨울·지역 축제 | 춘천·강릉·평창·홍천 가볼 만한 곳',description:'강원의 겨울 빛·공예 전시·눈꽃·송어·연말 해맞이 축제 일정과 운영시간·요금 안내를 확인하세요.'},
+  {slug:'chungcheong',label:'충청지역',shortLabel:'대전·세종·충청',regions:['대전','세종','충북','충남'],areaKeys:['chungcheong'],title:'대전·세종·충청 축제·전시 | 주말 가족 나들이',description:'대전·세종·충북·충남의 겨울 크리스마스 축제, 수목원·생태원·박물관 특별전과 먹거리 행사 모음입니다.'},
+  {slug:'jeolla',label:'전라지역',shortLabel:'광주·전라',regions:['광주','전북','전남'],areaKeys:[],title:'광주·전라 축제·전시 | 전주·나주·익산·여수 가볼 만한 곳',description:'광주·전북·전남의 김장·주류·빛축제, 국립박물관 특별전과 해맞이 명소 일정을 확인하세요.'},
+  {slug:'gyeongsang',label:'경상지역',shortLabel:'부산·대구·울산·경상',regions:['대구','부산','울산','경북','경남'],areaKeys:['gyeongsang'],title:'부산·대구·울산·경상 축제·전시 | 영남 주말 나들이',description:'부산·대구·울산·경북·경남의 해운대 빛축제, 크리스마스 마켓·트리축제, 과학관·미술관·수목원 전시 안내입니다.'},
+  {slug:'jeju',label:'제주지역',shortLabel:'제주',regions:['제주'],areaKeys:[],title:'제주 축제·전시 | 겨울 동백·크리스마스·일출 여행 일정',description:'제주 크리스마스 빌리지, 겨울꽃 축제, 국립제주박물관 사진전과 성산 일출 일정을 공식 출처로 확인하세요.'}
+];
+
+const WINTER_SEASON_PATTERN=/겨울|윈터|눈꽃|얼음|빙어|송어|산천어|눈썰매|스케이트|빛축제|불빛|일루미|트리|크리스마스|성탄|산타|제야|타종|해맞이|해넘이|일출|송년|연말|온실/;
+
+/**
+ * 12월 이후까지 이어지는 겨울·연말·빛·눈·해맞이·동절기 실내 특별전 행사인지 판별합니다.
+ */
+export function isWinterSeasonEvent(event) {
+  if(!event||event.publicationStatus==='cancelled'||event.endDate<'2026-12-01')return false;
+  const text=[event.title,event.program,event.location].filter(Boolean).join(' ');
+  return event.theme==='light'||WINTER_SEASON_PATTERN.test(text);
+}
+
+/**
+ * 축제 권역과 겹치거나 전국에서 바로 이용 가능한 진행 중 할인 행사를 브랜드 중복 없이 최대 limit건 고릅니다.
+ */
+export function nearbyDealsForEvent(event,activeDeals,getGroup,limit=3) {
+  if(!event||!Array.isArray(activeDeals)||!activeDeals.length)return [];
+  const group=typeof getGroup==='function'?getGroup(event):event.region;
+  const meta=REGION_SEO_PAGES.find(p=>p.label===group||p.regions.includes(event.region));
+  const areaKeys=meta?.areaKeys||[];
+  const local=areaKeys.length?activeDeals.filter(d=>areaKeys.includes(d.shopping?.area)):[];
+  const nationwide=activeDeals.filter(d=>d.shopping?.area==='nationwide');
+  const seen=new Set();const picked=[];
+  for(const deal of [...local,...nationwide]){
+    if(seen.has(deal.brandId))continue;
+    seen.add(deal.brandId);
+    picked.push(deal);
+    if(picked.length>=limit)break;
+  }
+  return picked;
+}
+
+/**
+ * 선택한 비교 후보들을 카카오톡·블로그 등에 바로 붙여넣기 좋은 일정 요약 텍스트로 변환합니다.
+ */
+export function formatCourseSummaryText(items,shareUrl,today='') {
+  if(!Array.isArray(items)||!items.length)return '';
+  const feeNames={free:'입장·기본참여 무료',mixed:'일부 유료',paid:'유료',unknown:'요금 확인 필요'};
+  const lines=['📅 [이번주 축제] 나들이 추천 코스 ('+items.length+'곳)'];
+  if(today)lines.push('기준일: '+today+' KST');
+  lines.push('');
+  items.forEach((e,i)=>{
+    const dates=e.startDate===e.endDate?e.startDate:e.startDate+' ~ '+e.endDate;
+    const indoor=isIndoorVenue(e)?' · 🏛 실내 시설':'';
+    const feeText=e.fee||feeNames[e.feeStatus]||'요금 확인 필요';
+    lines.push((i+1)+'. ['+e.region+'] '+e.title);
+    lines.push('   · 일정: '+dates+indoor);
+    lines.push('   · 장소: '+e.location);
+    lines.push('   · 비용: '+feeText);
+  });
+  if(shareUrl){lines.push('');lines.push('👉 한눈에 비교하기: '+shareUrl);}
+  return lines.join('\n');
+}

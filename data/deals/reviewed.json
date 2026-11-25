@@ -3137,6 +3137,643 @@
           }
         }
       }
+    },
+    {
+      "id": "chicor-jungsaemmool-pick-202611",
+      "brandId": "chicor",
+      "title": "시코르 PICK 정샘물 최대 40% 할인 기획전",
+      "shortTitle": "시코르 정샘물 기획전",
+      "categories": [
+        "beauty"
+      ],
+      "startDate": "2026-11-25",
+      "endDate": "2026-12-01",
+      "benefitType": "mixed",
+      "channels": [
+        "online"
+      ],
+      "summary": "시코르닷컴 공식 기획전으로 정샘물 쿠션·아이팔레트·파우더팩트 등 주요 메이크업 제품을 15~40% 할인하고 기획세트 증정 구성을 선보입니다.",
+      "conditions": [
+        "시코르닷컴 온라인 기획전 기준(2026.11.25 ~ 2026.12.01)이며 오프라인 시코르 매장과 할인율·재고가 다를 수 있습니다.",
+        "표기된 최대 40% 할인은 일부 품목(프라이머·피니쉬파우더 등) 기준이며 쿠션·미스트·립 등은 15~20% 할인 등 품목별 할인율이 상이합니다.",
+        "기획세트 내 미니 블러쉬·브러시·겔패드 등 추가 증정 구성은 한정 수량으로 소진 시 종료될 수 있습니다."
+      ],
+      "periodNote": "시코르닷컴 공식 기획전 페이지 명시 기간 (2026.11.25 ~ 2026.12.01)",
+      "sourceUrl": "https://chicor.com/exhibition/7481",
+      "periodSourceUrl": "https://chicor.com/exhibition/7481",
+      "checkedAt": "2026-11-25T11:00:00+09:00",
+      "publicationStatus": "reviewed",
+      "placement": "calendar",
+      "publicationScope": "facts-summary",
+      "reviewWithinDays": 5,
+      "campaignKind": "limited-sale",
+      "campaignScope": "brand",
+      "shopping": {
+        "retailerId": "chicor",
+        "brand": "정샘물",
+        "brandCode": "JUNGSAEMMOOL",
+        "kind": "mall",
+        "format": "online-mall",
+        "area": "nationwide",
+        "storeScope": "시코르닷컴 온라인 기획전 대상 정샘물 상품",
+        "specificStore": false,
+        "membership": false,
+        "card": false,
+        "app": false,
+        "reviewWithinHours": 120,
+        "locales": {
+          "en": {
+            "title": "CHICOR PICK JUNGSAEMMOOL up to 40% off",
+            "summary": "Up to 40% off selected JUNGSAEMMOOL makeup items and gift sets at CHICOR online."
+          },
+          "ja": {
+            "title": "シコル JUNGSAEMMOOL 最大40%オフ",
+            "summary": "シコル公式通販でジョンセンムル対象商品が最大40%割引・限定セットを展開。"
+          },
+          "zh-CN": {
+            "title": "CHICOR JUNGSAEMMOOL 最高减40%",
+            "summary": "CHICOR官网指定JUNGSAEMMOOL彩妆及礼盒最高优惠40%。"
+          },
+          "zh-TW": {
+            "title": "CHICOR JUNGSAEMMOOL 最高減40%",
+            "summary": "CHICOR官網指定JUNGSAEMMOOL彩妝及禮盒最高優惠40%。"
+          }
+        }
+      }
+    },
+    {
+      "id": "musinsa-mujinjang-winter-202611",
+      "brandId": "musinsa",
+      "title": "무신사 무진장 2026 겨울 블랙프라이데이",
+      "shortTitle": "무신사 무진장 겨울 블프",
+      "categories": [
+        "fashion"
+      ],
+      "startDate": "2026-11-22",
+      "startTime": "19:00",
+      "endDate": "2026-12-02",
+      "endTime": "23:59",
+      "benefitType": "mixed",
+      "channels": [
+        "online"
+      ],
+      "summary": "총 4,909개 브랜드와 74만여 개 상품이 참여하는 무신사 하반기 최대 온라인 프로모션입니다. 브랜드별 할인과 캠페인 전용 쿠폰을 확인하세요.",
+      "conditions": [
+        "무신사 공식 캠페인 일정 기준 2026년 11월 22일 19시부터 12월 2일 24시(2026-12-03T00:00:00+09:00 직전)까지 진행됩니다.",
+        "무신사 스탠다드·어그·나이키·아디다스·노스페이스 등 입점 브랜드별 특가와 타임딜·라이브 특가는 상품·시간대별로 할인율이 다릅니다.",
+        "캠페인 쿠폰팩 및 선착순 쿠폰은 로그인 회원 대상이며, 쿠폰별 최소 구매금액·적용 가능 브랜드·수량 소진 여부를 결제 전 확인하세요."
+      ],
+      "periodNote": "무신사 공식 메인·캠페인 페이지 campaignStart~campaignFinish 기준 (11/22 19:00 ~ 12/2 24:00)",
+      "sourceUrl": "https://www.musinsa.com/campaign/mujinjangsale/mujinjangIndex",
+      "periodSourceUrl": "https://www.musinsa.com/",
+      "checkedAt": "2026-11-25T11:00:00+09:00",
+      "publicationStatus": "reviewed",
+      "placement": "calendar",
+      "publicationScope": "facts-summary",
+      "reviewWithinDays": 5,
+      "campaignKind": "limited-sale",
+      "campaignScope": "multi-category",
+      "shopping": {
+        "retailerId": "musinsa",
+        "brand": "무신사",
+        "brandCode": "MUSINSA",
+        "kind": "mall",
+        "format": "online-mall",
+        "area": "nationwide",
+        "storeScope": "무신사 공식 온라인 스토어·앱 (4,909개 참여 브랜드)",
+        "specificStore": false,
+        "membership": true,
+        "card": false,
+        "app": true,
+        "reviewWithinHours": 120,
+        "locales": {
+          "en": {
+            "title": "Musinsa Mujinjang 2026 Winter Black Friday",
+            "summary": "Musinsa's major winter sale across 4,909 brands with item discounts and campaign coupons."
+          },
+          "ja": {
+            "title": "ムシンサ ムジンジャン 2026 冬ブラックフライデー",
+            "summary": "4,909ブランド参加のムシンサ大型冬セール。商品別割引とクーポンを実施。"
+          },
+          "zh-CN": {
+            "title": "Musinsa 2026冬季黑色星期五大促",
+            "summary": "集结4,909个品牌的Musinsa冬季大型特卖，含限时特价与活动优惠券。"
+          },
+          "zh-TW": {
+            "title": "Musinsa 2026冬季黑色星期五大促",
+            "summary": "集結4,909個品牌的Musinsa冬季大型特賣，含限時特價與活動折價券。"
+          }
+        }
+      }
+    },
+    {
+      "id": "shinsegae-gangnam-dalba-202611",
+      "brandId": "shinsegae-dept",
+      "title": "신세계백화점 강남점 달바 시그니처 팝업 스토어",
+      "shortTitle": "신세계 강남 달바 팝업",
+      "categories": [
+        "beauty"
+      ],
+      "startDate": "2026-11-20",
+      "endDate": "2026-12-03",
+      "benefitType": "mixed",
+      "channels": [
+        "store"
+      ],
+      "summary": "신세계백화점 강남점 지하 1층 팝업 스토어에서 달바 시그니처 리프팅·탄력 스킨케어 및 디바이스 특가 할인과 금액대별 사은품 증정을 진행합니다.",
+      "conditions": [
+        "신세계백화점 강남점 지하 1층 팝업 스토어(시코르 매장 옆) 단독 행사이며 타 지점·온라인몰과 조건이 다릅니다.",
+        "시그니처 리프팅 리추얼 기프트 4종(189,000원)·탄력 풀케어 3종(139,000원)·하이리프트 샷 4X 프로(429,000원) 등 품목별 특가가 적용됩니다.",
+        "전 구매 고객 7종 샤셰 트라이얼 키트 및 5만/15만/40만 원 이상 구매 시 금액대별 사은품이 증정되며 한정 수량 소진 시 종료될 수 있습니다."
+      ],
+      "periodNote": "신세계백화점 강남점 공식 쇼핑정보 및 팝업 상세 안내 기준",
+      "sourceUrl": "https://www.shinsegae.com/shopping/view.do?mainCd=11&pageLink=/cms12/SC00002/info/theme/8683664_4465.txt&contentDtlCd=06&contentId=8683664&storeCd=SC00002",
+      "periodSourceUrl": "https://www.shinsegae.com/shopping/list.do?storeCd=SC00002",
+      "checkedAt": "2026-11-25T11:00:00+09:00",
+      "publicationStatus": "reviewed",
+      "placement": "calendar",
+      "publicationScope": "facts-summary",
+      "reviewWithinDays": 5,
+      "campaignKind": "limited-sale",
+      "campaignScope": "brand",
+      "shopping": {
+        "retailerId": "shinsegae-dept",
+        "brand": "달바",
+        "brandCode": "D'ALBA",
+        "kind": "department",
+        "format": "department",
+        "area": "seoul",
+        "storeScope": "신세계백화점 강남점 지하 1층 팝업 스토어(시코르 매장 옆)",
+        "specificStore": true,
+        "membership": false,
+        "card": false,
+        "app": false,
+        "reviewWithinHours": 120,
+        "locales": {
+          "en": {
+            "title": "d'Alba Signature Pop-up at Shinsegae Gangnam",
+            "summary": "Special set discounts and tiered gifts at the B1 d'Alba pop-up store in Gangnam."
+          },
+          "ja": {
+            "title": "新世界百貨店 江南店 ダルバ ポップアップ",
+            "summary": "江南店地下1階ポップアップでシグネチャーセット特価および購入額別贈呈を実施。"
+          },
+          "zh-CN": {
+            "title": "新世界百货江南店 d'Alba 快闪店",
+            "summary": "江南店地下一层快闪店推出套装特价及按消费金额赠送礼品活动。"
+          },
+          "zh-TW": {
+            "title": "新世界百貨江南店 d'Alba 快閃店",
+            "summary": "江南店地下一樓快閃店推出禮盒特價及依消費金額贈禮活動。"
+          }
+        }
+      }
+    },
+    {
+      "id": "simon-paju-ck-blackfriday-202611",
+      "brandId": "shinsegae-simon",
+      "title": "파주 프리미엄 아울렛 캘빈클라인진/언더웨어 블랙프라이데이",
+      "shortTitle": "파주 캘빈클라인 블프",
+      "categories": [
+        "fashion"
+      ],
+      "startDate": "2026-11-27",
+      "endDate": "2026-12-03",
+      "benefitType": "sale",
+      "channels": [
+        "store"
+      ],
+      "summary": "파주 프리미엄 아울렛 캘빈클라인진·언더웨어 본 매장에서 전 품목 최종결제가 기준 추가 20% 할인을 제공합니다.",
+      "conditions": [
+        "파주 프리미엄 아울렛 캘빈클라인진·언더웨어 본 매장 한정 행사이며 타 지점 및 온라인몰과 다릅니다.",
+        "추가 20% 할인은 최종결제가 기준이며 일부 품목은 행사에서 제외됩니다.",
+        "한정 수량 상품은 조기 소진될 수 있으므로 매장 내 적용 품목과 재고를 확인하세요."
+      ],
+      "periodNote": "신세계사이먼 파주 공식 상세 공지 기준 (2026.11.27 ~ 2026.12.03)",
+      "sourceUrl": "https://www.premiumoutlets.co.kr/rpage/shopping-info/news/special-detail/02/20483",
+      "periodSourceUrl": "https://www.premiumoutlets.co.kr/rpage/shopping-info/news/special-detail/02/20483",
+      "checkedAt": "2026-11-25T11:00:00+09:00",
+      "publicationStatus": "reviewed",
+      "placement": "calendar",
+      "publicationScope": "facts-summary",
+      "reviewWithinDays": 5,
+      "campaignKind": "limited-sale",
+      "campaignScope": "brand",
+      "shopping": {
+        "retailerId": "shinsegae-simon",
+        "brand": "캘빈클라인",
+        "brandCode": "CALVIN KLEIN",
+        "kind": "mall",
+        "format": "outlet",
+        "area": "gyeonggi",
+        "storeScope": "파주 프리미엄 아울렛 캘빈클라인진·언더웨어 본 매장",
+        "specificStore": true,
+        "membership": false,
+        "card": false,
+        "app": false,
+        "reviewWithinHours": 120,
+        "locales": {
+          "en": {
+            "title": "Calvin Klein Black Friday in Paju",
+            "summary": "Extra 20% off final outlet prices on Calvin Klein Jeans and Underwear at Paju."
+          },
+          "ja": {
+            "title": "坡州 カルバンクライン ブラックフライデー",
+            "summary": "坡州店の本売場で最終決済価格から全品追加20%割引。一部対象外あり。"
+          },
+          "zh-CN": {
+            "title": "坡州奥莱 Calvin Klein 黑五促销",
+            "summary": "坡州门店在折后价基础上全场额外8折，部分商品除外。"
+          },
+          "zh-TW": {
+            "title": "坡州奧萊 Calvin Klein 黑五促銷",
+            "summary": "坡州門市於折後價基礎上全館額外8折，部分商品除外。"
+          }
+        }
+      }
+    },
+    {
+      "id": "amoremall-makeon-special-202611",
+      "brandId": "amoremall",
+      "title": "아모레몰 메이크온 젬소노테라피 스페셜 위크",
+      "shortTitle": "아모레몰 메이크온 위크",
+      "categories": [
+        "beauty",
+        "appliances"
+      ],
+      "startDate": "2026-11-23",
+      "endDate": "2026-12-06",
+      "benefitType": "mixed",
+      "channels": [
+        "online"
+      ],
+      "summary": "메이크온 뷰티 디바이스와 마스크팩 등 홈케어 제품을 모은 아모레몰 기획전으로 5% 지원 쿠폰과 첫구매 5천원 추가할인 혜택을 제공합니다.",
+      "conditions": [
+        "5% 쇼핑 지원 쿠폰은 젬 소노 테라피 릴리프·스킨 라이트 테라피 3S·온페이스 LED마스크 대상이며 11/23~12/6 발급·사용 가능합니다.",
+        "첫구매 5천원 추가할인은 2026.1.1~11.23 동안 아모레몰 내 메이크온 구매 이력이 없는 고객 대상(시트마스크 상품 제외)입니다.",
+        "뷰티포인트 전액 결제 시 스페셜 사은품·기프트카드 제외, 비회원 Npay 결제 시 사은품 제외 및 교환·환불 시 사은품 동봉이 필요합니다."
+      ],
+      "periodNote": "아모레몰 공식 이벤트 목록 및 상세 기획전 기준 (2026.11.23 ~ 2026.12.06)",
+      "sourceUrl": "https://www.amoremall.com/kr/ko/display/event_detail?planDisplaySn=14546",
+      "periodSourceUrl": "https://www.amoremall.com/kr/ko/display/event",
+      "checkedAt": "2026-11-25T11:00:00+09:00",
+      "publicationStatus": "reviewed",
+      "placement": "calendar",
+      "publicationScope": "facts-summary",
+      "reviewWithinDays": 5,
+      "campaignKind": "limited-sale",
+      "campaignScope": "brand",
+      "shopping": {
+        "retailerId": "amoremall",
+        "brand": "메이크온",
+        "brandCode": "MAKEON",
+        "kind": "brand",
+        "format": "online-mall",
+        "area": "nationwide",
+        "storeScope": "아모레몰 온라인 메이크온 스페셜 위크 대상 상품",
+        "specificStore": false,
+        "membership": true,
+        "card": false,
+        "app": false,
+        "reviewWithinHours": 120,
+        "locales": {
+          "en": {
+            "title": "Amore Mall MAKEON Special Week",
+            "summary": "5% coupons on selected MAKEON beauty devices plus a KRW 5,000 first-purchase coupon."
+          },
+          "ja": {
+            "title": "アモーレモール MAKEON スペシャルウィーク",
+            "summary": "対象の美顔器向け5%クーポンと初回購入5,000ウォン追加割引クーポンを提供。"
+          },
+          "zh-CN": {
+            "title": "爱茉莉商城 MAKEON 特别周",
+            "summary": "指定MAKEON美容仪享5%优惠券，首购顾客另享5000韩元追加立减。"
+          },
+          "zh-TW": {
+            "title": "愛茉莉商城 MAKEON 特別週",
+            "summary": "指定MAKEON美容儀享5%折價券，首購顧客另享5000韓元追加折抵。"
+          }
+        }
+      }
+    },
+    {
+      "id": "shinsegae-daejeon-duvetica-202611",
+      "brandId": "shinsegae-dept",
+      "title": "대전신세계 Art & Science 듀베티카 POP-UP",
+      "shortTitle": "대전신세계 듀베티카 팝업",
+      "categories": [
+        "fashion"
+      ],
+      "startDate": "2026-11-17",
+      "endDate": "2026-12-06",
+      "benefitType": "mixed",
+      "channels": [
+        "store"
+      ],
+      "summary": "대전신세계 Art & Science 1층 미디어 스테이지에서 진행되는 듀베티카 26 WINTER 팝업으로 신상품 10% 할인과 구매 사은품을 제공합니다.",
+      "conditions": [
+        "대전신세계 Art & Science 1F 미디어 스테이지 팝업 매장 한정 공지이며 타 지점 및 온라인몰과 다릅니다.",
+        "26 WINTER 신상품 10% 할인은 12월 6일까지 적용되며 마라테아·소바라·토리사 벨벳 등 팝업 대상 아우터를 현장에서 확인하세요.",
+        "200만 원 이상 구매 고객 대상 듀베티카 베니티 케이스 증정은 30개 선착순 한정으로 조기 소진될 수 있습니다."
+      ],
+      "periodNote": "대전신세계 Art & Science 공식 쇼핑정보 기준 (2026.11.17 ~ 2026.12.06)",
+      "sourceUrl": "https://www.shinsegae.com/shopping/view.do?mainCd=11&pageLink=/cms12/SC00060/info/theme/8689002_5346.txt&contentDtlCd=06&contentId=8689002&storeCd=SC00060",
+      "periodSourceUrl": "https://www.shinsegae.com/shopping/list.do?storeCd=SC00060",
+      "checkedAt": "2026-11-25T11:00:00+09:00",
+      "publicationStatus": "reviewed",
+      "placement": "calendar",
+      "publicationScope": "facts-summary",
+      "reviewWithinDays": 5,
+      "campaignKind": "limited-sale",
+      "campaignScope": "brand",
+      "shopping": {
+        "retailerId": "shinsegae-dept",
+        "brand": "듀베티카",
+        "brandCode": "DUVETICA",
+        "kind": "department",
+        "format": "department",
+        "area": "chungcheong",
+        "storeScope": "대전신세계 Art & Science 1F 미디어 스테이지",
+        "specificStore": true,
+        "membership": false,
+        "card": false,
+        "app": false,
+        "reviewWithinHours": 120,
+        "locales": {
+          "en": {
+            "title": "DUVETICA Pop-up at Daejeon Shinsegae",
+            "summary": "10% off 26 Winter new arrivals and a limited gift over KRW 2M on 1F in Daejeon."
+          },
+          "ja": {
+            "title": "大田新世界 DUVETICA ポップアップ",
+            "summary": "1階メディアステージで冬新作10%割引および200万ウォン以上の限定贈呈を実施。"
+          },
+          "zh-CN": {
+            "title": "大田新世界 DUVETICA 快闪店",
+            "summary": "一层快闪店26冬季新品9折，消费满200万韩元限量赠手提包。"
+          },
+          "zh-TW": {
+            "title": "大田新世界 DUVETICA 快閃店",
+            "summary": "一樓快閃店26冬季新品9折，消費滿200萬韓元限量贈化妝箱。"
+          }
+        }
+      }
+    },
+    {
+      "id": "simon-busan-adidas-202611",
+      "brandId": "shinsegae-simon",
+      "title": "부산 프리미엄 아울렛 아디다스 프로모션",
+      "shortTitle": "부산 아디다스 프로모션",
+      "categories": [
+        "fashion"
+      ],
+      "startDate": "2026-11-17",
+      "endDate": "2026-12-07",
+      "benefitType": "sale",
+      "channels": [
+        "store"
+      ],
+      "summary": "부산 프리미엄 아울렛 아디다스 본 매장에서 2개 이상 구매 시 최초 정상 판매가 기준 추가 20% 할인을 제공합니다.",
+      "conditions": [
+        "부산 프리미엄 아울렛 SPORTS PROMOTION 공지 내 아디다스 본 매장 일정(11/17~12/7) 기준이며, 같은 페이지의 나이키(11/16~29)·언더아머(11/25~29)와 기간이 다릅니다.",
+        "2PCS 이상 구매 시 추가 20% 할인은 최초 정상 판매 가격 기준이며 일부 품목 제외 및 타 할인과 중복 불가합니다.",
+        "한정 수량 상품 조기 소진 가능하므로 매장 내 적용 품목을 확인하세요."
+      ],
+      "periodNote": "신세계사이먼 부산 공식 SPORTS PROMOTION 내 아디다스 기간 (11.17 ~ 12.07)",
+      "sourceUrl": "https://www.premiumoutlets.co.kr/rpage/shopping-info/news/special-detail/03/20173",
+      "periodSourceUrl": "https://www.premiumoutlets.co.kr/rpage/shopping-info/news/special-detail/03/20173",
+      "checkedAt": "2026-11-25T11:00:00+09:00",
+      "publicationStatus": "reviewed",
+      "placement": "calendar",
+      "publicationScope": "facts-summary",
+      "reviewWithinDays": 5,
+      "campaignKind": "limited-sale",
+      "campaignScope": "brand",
+      "shopping": {
+        "retailerId": "shinsegae-simon",
+        "brand": "아디다스",
+        "brandCode": "ADIDAS",
+        "kind": "mall",
+        "format": "outlet",
+        "area": "gyeongsang",
+        "storeScope": "부산 프리미엄 아울렛 아디다스 본 매장",
+        "specificStore": true,
+        "membership": false,
+        "card": false,
+        "app": false,
+        "reviewWithinHours": 120,
+        "locales": {
+          "en": {
+            "title": "Adidas promotion in Busan",
+            "summary": "Extra 20% off original retail prices when buying 2+ items at Busan Premium Outlets."
+          },
+          "ja": {
+            "title": "釜山 アディダス プロモーション",
+            "summary": "2点以上購入で通常価格基準の追加20%割引。釜山プレミアムアウトレット限定。"
+          },
+          "zh-CN": {
+            "title": "釜山奥莱阿迪达斯促销",
+            "summary": "购买两件及以上按原价享额外8折，仅限釜山奥莱门店。"
+          },
+          "zh-TW": {
+            "title": "釜山奧萊 adidas 促銷",
+            "summary": "購買兩件以上依原價享額外8折，僅限釜山奧萊門市。"
+          }
+        }
+      }
+    },
+    {
+      "id": "topten-goodwear-tmaker-202611",
+      "brandId": "topten",
+      "title": "굿웨어몰 티메이커 겨울 위시리스트 기획전",
+      "shortTitle": "굿웨어몰 티메이커 겨울전",
+      "categories": [
+        "fashion"
+      ],
+      "startDate": "2026-11-23",
+      "startTime": "10:00",
+      "endDate": "2026-12-09",
+      "endTime": "23:59",
+      "benefitType": "mixed",
+      "channels": [
+        "online"
+      ],
+      "summary": "신성통상 공식 굿웨어몰에서 티메이커(TMAKER) 겨울 니트·플리스 할인과 10% 추가 쿠폰(1만 원 이상 최대 2만 원 할인)을 제공합니다.",
+      "conditions": [
+        "굿웨어몰 공식 온라인 기획전 기준이며, [티메이커] 인플루언서픽 10% 쿠폰은 1만 원 이상 구매 시 최대 2만 원 할인(상품 ID당 3장) 조건입니다.",
+        "상품 기본 할인(약 29% 수준 등 품목별 상이)과 쿠폰 적용 가능 품목은 상품 상세 및 유의사항에서 확인하세요.",
+        "온라인 전용 기획전으로 탑텐 등 타 입점 브랜드 매장·기획전과 별도 운영됩니다."
+      ],
+      "periodNote": "굿웨어몰 공식 기획전 및 쿠폰 사용기한 기준 (2026.11.23 10:00 ~ 2026.12.09 23:59)",
+      "sourceUrl": "https://display.goodwearmall.com/special/300557/view",
+      "periodSourceUrl": "https://display.goodwearmall.com/special/300557/view",
+      "checkedAt": "2026-11-25T11:00:00+09:00",
+      "publicationStatus": "reviewed",
+      "placement": "calendar",
+      "publicationScope": "facts-summary",
+      "reviewWithinDays": 5,
+      "campaignKind": "limited-sale",
+      "campaignScope": "brand",
+      "shopping": {
+        "retailerId": "topten",
+        "brand": "티메이커",
+        "brandCode": "TMAKER",
+        "kind": "brand",
+        "format": "online-mall",
+        "area": "nationwide",
+        "storeScope": "굿웨어몰 공식 온라인몰 티메이커 기획전 대상 상품",
+        "specificStore": false,
+        "membership": true,
+        "card": false,
+        "app": false,
+        "reviewWithinHours": 120,
+        "locales": {
+          "en": {
+            "title": "Goodwear Mall TMAKER winter wishlist",
+            "summary": "Winter knitwear and fleece markdowns plus 10% member coupons up to KRW 20,000 off."
+          },
+          "ja": {
+            "title": "グッドウェアモール TMAKER 冬企画展",
+            "summary": "冬ニット・フリース割引に加え、1万ウォン以上で最大2万ウォン引き10%クーポン。"
+          },
+          "zh-CN": {
+            "title": "Goodwear Mall TMAKER 冬季心愿单特卖",
+            "summary": "冬季针织与抓绒单品特惠，另提供满1万减10%（最高减2万韩元）优惠券。"
+          },
+          "zh-TW": {
+            "title": "Goodwear Mall TMAKER 冬季許願單特賣",
+            "summary": "冬季針織與刷毛單品特惠，另提供滿1萬享9折（最高折2萬韓元）折價券。"
+          }
+        }
+      }
+    },
+    {
+      "id": "topten-goodwear-edition-festa-202611",
+      "brandId": "topten",
+      "title": "굿웨어몰 에디션 페스타(EDITION FESTA) 최대 50%+10% 쿠폰",
+      "shortTitle": "굿웨어몰 에디션 페스타",
+      "categories": [
+        "fashion"
+      ],
+      "startDate": "2026-11-20",
+      "startTime": "10:00",
+      "endDate": "2026-12-11",
+      "endTime": "09:59",
+      "benefitType": "mixed",
+      "channels": [
+        "online"
+      ],
+      "summary": "신성통상 공식 굿웨어몰의 에디션(EDITION) 연말 결산 세일로 아우터·스웨터·슬랙스 최대 50% 할인과 회원 전용 10% 쿠폰을 제공합니다.",
+      "conditions": [
+        "[EDITION FESTA] 10% 쿠폰은 굿웨어몰 회원 전용(무제한 발급)이며 2만 원 이상 구매 시 최대 3만 원 할인됩니다.",
+        "쿠폰 발급·사용 기간은 11월 20일 10:00 ~ 12월 11일 09:59이며, 기획상품·세트상품 및 일부 품목은 쿠폰 적용에서 제외됩니다.",
+        "상품 쿠폰으로 장바구니·플러스 쿠폰과 중복 가능 여부는 행사별 규정에 따르며 단순 변심 반품 시 기한 만료 쿠폰은 복원되지 않습니다."
+      ],
+      "periodNote": "굿웨어몰 공식 기획전 및 쿠폰 유의사항 기준 (11.20 10:00 ~ 12.11 09:59)",
+      "sourceUrl": "https://display.goodwearmall.com/special/300549/view",
+      "periodSourceUrl": "https://display.goodwearmall.com/special/300549/view",
+      "checkedAt": "2026-11-25T11:00:00+09:00",
+      "publicationStatus": "reviewed",
+      "placement": "calendar",
+      "publicationScope": "facts-summary",
+      "reviewWithinDays": 5,
+      "campaignKind": "limited-sale",
+      "campaignScope": "brand",
+      "shopping": {
+        "retailerId": "topten",
+        "brand": "에디션",
+        "brandCode": "EDITION",
+        "kind": "brand",
+        "format": "online-mall",
+        "area": "nationwide",
+        "storeScope": "굿웨어몰 공식 온라인몰 에디션(EDITION) 기획전 대상",
+        "specificStore": false,
+        "membership": true,
+        "card": false,
+        "app": false,
+        "reviewWithinHours": 120,
+        "locales": {
+          "en": {
+            "title": "Goodwear Mall EDITION FESTA",
+            "summary": "Year-end discounts up to 50% plus a 10% member coupon (up to KRW 30,000 off)."
+          },
+          "ja": {
+            "title": "グッドウェアモール EDITION FESTA",
+            "summary": "最大50%オフの年末セールに加え、会員限定の10%（最大3万ウォン引）クーポンを提供。"
+          },
+          "zh-CN": {
+            "title": "Goodwear Mall EDITION 年终狂欢",
+            "summary": "年末最高5折优惠，叠加会员专属9折商品券（最高减3万韩元）。"
+          },
+          "zh-TW": {
+            "title": "Goodwear Mall EDITION 年終盛典",
+            "summary": "年終最高5折優惠，疊加會員專屬9折商品券（最高折3萬韓元）。"
+          }
+        }
+      }
+    },
+    {
+      "id": "simon-yeoju-freight-202611",
+      "brandId": "shinsegae-simon",
+      "title": "여주 프리미엄 아울렛 프레이트 프로모션",
+      "shortTitle": "여주 프레이트 프로모션",
+      "categories": [
+        "fashion"
+      ],
+      "startDate": "2026-11-15",
+      "endDate": "2026-12-15",
+      "benefitType": "sale",
+      "channels": [
+        "store"
+      ],
+      "summary": "여주 프리미엄 아울렛 프레이트 본 매장에서 이스트로그·언어팩티드 등 30~60% 할인과 다운점퍼·자켓 겨울 아우터 행사를 진행합니다.",
+      "conditions": [
+        "여주 프리미엄 아울렛 프레이트 본 매장 한정 행사이며 타 지점·온라인몰과 다릅니다.",
+        "안내된 30~60% 할인율은 아울렛 가격 기준이며 입점 브랜드·품목별로 할인율과 기간이 상이합니다.",
+        "일부 품목은 제외되며 한정 수량 상품은 조기 소진될 수 있습니다."
+      ],
+      "periodNote": "신세계사이먼 여주 공식 상세 공지 기준 (2026.11.15 ~ 2026.12.15 · 총 31일)",
+      "sourceUrl": "https://www.premiumoutlets.co.kr/rpage/shopping-info/news/special-detail/01/20069",
+      "periodSourceUrl": "https://www.premiumoutlets.co.kr/rpage/shopping-info/news/special-detail/01/20069",
+      "checkedAt": "2026-11-25T11:00:00+09:00",
+      "publicationStatus": "reviewed",
+      "placement": "calendar",
+      "publicationScope": "facts-summary",
+      "reviewWithinDays": 5,
+      "campaignKind": "limited-sale",
+      "campaignScope": "brand",
+      "shopping": {
+        "retailerId": "shinsegae-simon",
+        "brand": "프레이트",
+        "brandCode": "FREIGHT",
+        "kind": "mall",
+        "format": "outlet",
+        "area": "gyeonggi",
+        "storeScope": "여주 프리미엄 아울렛 프레이트 본 매장",
+        "specificStore": true,
+        "membership": false,
+        "card": false,
+        "app": false,
+        "reviewWithinHours": 120,
+        "locales": {
+          "en": {
+            "title": "FREIGHT promotion in Yeoju",
+            "summary": "30–60% off Eastlogue, Uneffected and winter outerwear at Yeoju Premium Outlets."
+          },
+          "ja": {
+            "title": "驪州 FREIGHT プロモーション",
+            "summary": "イーストログ等のアイテムが30〜60%割引。驪州プレミアムアウトレット限定。"
+          },
+          "zh-CN": {
+            "title": "骊州奥莱 FREIGHT 促销",
+            "summary": "Eastlogue等品牌服饰及冬装外套30%至60%折扣，仅限骊州店。"
+          },
+          "zh-TW": {
+            "title": "驪州奧萊 FREIGHT 促銷",
+            "summary": "Eastlogue等品牌服飾及冬裝外套30%至60%折扣，僅限驪州店。"
+          }
+        }
+      }
     }
   ],
   "memberOffers": [

@@ -215,6 +215,20 @@ jecheon-red-fishcake-festival-2026|food|3rd Jecheon Red Fishcake Festival 2026-2
 chuncheon-craft-masterpieces-2026|art|2026 Traveling Craft Masterpieces Exhibition in Chuncheon|国立春川博物館「2026 訪ねる工芸名作展」|国立春川博物馆《2026 寻访工艺名作展》|國立春川博物館《2026 尋訪工藝名作展》
 naju-mahan-imported-artifacts-2026|heritage|Mahan Meets the Unfamiliar: Imported Artifacts in Naju|国立羅州博物館 特別展「馬韓、見知らぬものと出会う」|国立罗州博物馆 特别展《马韩，邂逅陌生之物》|國立羅州博物館 特別展《馬韓，邂逅陌生之物》
 jeju-kim-young-gap-photo-2026|art|Eternity in a Moment: Kim Young-gap Photo Exhibition|国立済州博物館 特別展「刹那の永遠、済州を撮る」|国立济州博物馆 特别展《刹那的永恒：金永甲摄影展》|國立濟州博物館 特別展《剎那的永恆：金永甲攝影展》
+gapyeong-morningcalm-starlight-2026|garden|The Garden of Morning Calm Starlight Festival|アチムゴヨ樹木園 五色星光庭園展|晨静树木园五色星光庭园展|晨靜樹木園五色星光庭園展
+bucheon-bingpania-ice-world-2026|family|Bucheon Ice World Bingpania 2026-2027|富川アイスワールド ビンパニア 2026-2027|富川冰雪世界 Bingpania 2026-2027|富川冰雪世界 Bingpania 2026-2027
+siheung-geobukseom-skating-rink-2026|family|Siheung Geobukseom Outdoor Skating Rink|始興 亀島 屋外スケート場 2026-2027|始兴龟岛户外滑冰场 2026-2027|始興龜島戶外滑冰場 2026-2027
+seoul-botanicpark-hesse-winter-2026|garden|Seoul Botanic Park Winter Festival Hesse's Garden|ソウル植物園 冬祭り ヘッセの庭園|首尔植物园冬季庆典 黑塞的花园|首爾植物園冬季慶典 赫塞的花園
+seoul-cheonggyecheon-light-2026|night|12th Cheonggyecheon Light Festival|第12回 清渓川の光フェスティバル|第12届清溪川之光庆典|第12屆清溪川之光慶典
+jecheon-winter-kingdom-2026|family|2026 Jecheon Winter Kingdom Festival Season 2|2026 堤川 冬の王国フェスティバル シーズン2|2026 堤川冰雪王国庆典 第二季|2026 堤川冰雪王國慶典 第二季
+taean-light-festival-2026|night|Taean Light Festival at Nature World|泰安 光の祝祭（ネイチャーワールド）|泰安灯光节（自然世界）|泰安燈光節（自然世界）
+daegu-naturepark-christmas-winter-2026|family|Daegu Nature Park Christmas & Winter Event|大邱ネイチャーパーク クリスマス＆冬イベント|大邱自然公园圣诞暨冬季活动|大邱自然公園聖誕暨冬季活動
+ulsan-seongnamdong-snow-2026|family|20th Ulsan Seongnam-dong Snow Festival|第20回 蔚山 城南洞 雪の花祭り|第20届蔚山城南洞雪花庆典|第20屆蔚山城南洞雪花慶典
+hwacheon-sancheoneo-2027|family|2027 Hwacheon Sancheoneo Ice Festival|2027 氷の国 華川ヤマメ祭り|2027 华川山鳟鱼冰雪节|2027 華川山鱒魚冰雪節
+pyeongchang-trout-festival-2027|family|2027 Pyeongchang Trout Festival|2027 平昌マス祭り|2027 平昌鳟鱼节|2027 平昌鱒魚節
+pyeongchang-daegwallyeong-snow-2027|family|35th Daegwallyeong Snow Festival 2027|2027 第35回 大関嶺雪花祭り|2027 第35届大关岭雪花庆典|2027 第35屆大關嶺雪花慶典
+cheorwon-hantan-ice-trekking-2027|walk|2027 Cheorwon Hantangang Ice Trekking Festival|2027 鉄原 漢灘江 氷トレッキング祭り|2027 铁原汉滩江冰上徒步节|2027 鐵原漢灘江冰上健行節
+jeju-seongsan-sunrise-2026|culture|34th Seongsan Sunrise Festival Jeju|第34回 城山日出祭り（済州）|第34届济州城山日出节|第34屆濟州城山日出節
 `.trim().split('\n').map(row=>row.split('|'));
 export const EVENT_LOCALES = Object.fromEntries(rows.map(([id,topic,...titles])=>[id,{topic,titles}]));
 const topics = {

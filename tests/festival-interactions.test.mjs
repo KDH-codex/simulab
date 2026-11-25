@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {eventTags,matchesKeyword,weekRangeFor,weekDays,weeklyEvents,eventsForDay,dayMilestone,isIndoorVenue,isEndingThisWeek,hasAdvanceBooking,matchesPreset,endingThisWeekEvents,conciergePicksFor,parseSharedPicks,buildSharedPicksURL,googleCalendarUrl,icsContent,relatedEventsFor} from '../assets/js/festival-ui-model.js';
+import {eventTags,matchesKeyword,weekRangeFor,weekDays,weeklyEvents,eventsForDay,dayMilestone,isIndoorVenue,isEndingThisWeek,hasAdvanceBooking,matchesPreset,endingThisWeekEvents,conciergePicksFor,parseSharedPicks,buildSharedPicksURL,googleCalendarUrl,icsContent,relatedEventsFor,isWinterSeasonEvent,nearbyDealsForEvent,formatCourseSummaryText} from '../assets/js/festival-ui-model.js';
 import {summarizeForecast} from '../assets/js/festival-weather-model.js';
 import {weatherResponse} from '../worker/weather.mjs';
 import worker from '../worker/index.mjs';
@@ -124,4 +124,26 @@ test('worker preserves static routing and rejects unrelated API paths',async()=>
   const unknown=await worker.fetch(new Request('https://simulab.kr/api/not-weather'),env);
   assert.equal(unknown.status,404);
   assert.equal(seen.length,1);
+});
+test('winter season classifier, nearby deals matcher and course summary formatter work accurately',()=>{
+  assert.equal(isWinterSeasonEvent({id:'w1',title:'부산 해운대 빛축제',program:'겨울 야간 조명',theme:'light',endDate:'2026-12-31'}),true);
+  assert.equal(isWinterSeasonEvent({id:'w2',title:'겨울 눈꽃 축제',program:'눈썰매 체험',theme:'craft',endDate:'2026-11-29'}),false);
+  assert.equal(isWinterSeasonEvent({id:'w3',title:'겨울 빛축제',program:'점등식',theme:'light',endDate:'2026-12-20',publicationStatus:'cancelled'}),false);
+
+  const sampleDeals=[
+    {id:'d1',brandId:'b1',brand:'이랜드몰',shopping:{area:'nationwide'}},
+    {id:'d2',brandId:'b2',brand:'더현대 서울',shopping:{area:'seoul'}},
+    {id:'d3',brandId:'b2',brand:'더현대 서울 2차',shopping:{area:'seoul'}},
+    {id:'d4',brandId:'b3',brand:'스타필드 하남',shopping:{area:'gyeonggi'}},
+    {id:'d5',brandId:'b4',brand:'올리브영',shopping:{area:'nationwide'}}
+  ];
+  const seoulEvent={id:'seoul-test',region:'서울'};
+  const picked=nearbyDealsForEvent(seoulEvent,sampleDeals,e=>e.region==='서울'?'서울':'경기지역',3);
+  assert.deepEqual(picked.map(d=>d.id),['d2','d4','d1']);
+
+  const summary=formatCourseSummaryText([{id:'e1',region:'서울',title:'겨울 실내 특별전',startDate:'2026-12-01',endDate:'2026-12-10',location:'국립중앙박물관 전시관',fee:'',feeStatus:'free'}],'https://simulab.kr/?picks=e1','2026-11-25');
+  assert.match(summary,/1\. \[서울\] 겨울 실내 특별전/);
+  assert.match(summary,/🏛 실내 시설/);
+  assert.match(summary,/입장·기본참여 무료/);
+  assert.match(summary,/https:\/\/simulab\.kr\/\?picks=e1/);
 });

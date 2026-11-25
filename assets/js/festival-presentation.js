@@ -102,6 +102,7 @@ export function sharedPicksBoardMarkup(items,{statusFn,feeFn,isIndoorFn}={}) {
     '<div><p class="eyebrow">SHARED PICKS BOARD</p><h2>💌 함께 고르는 주말 나들이 후보 <b class="picks-count-pill">'+items.length+'</b></h2><p>기간·장소·실내 여부·비용·예약 조건을 한눈에 비교하고 일행에게 공유해 보세요.</p></div>'+
     '<div class="picks-board-actions">'+
       '<button type="button" class="button primary" data-share-picks>💬 비교 링크 공유</button>'+
+      '<button type="button" class="button secondary" data-copy-course-text>📋 카톡·블로그 요약 복사</button>'+
       '<button type="button" class="button secondary" data-save-all-picks>♡ 내 보관함에 모두 담기</button>'+
       '<button type="button" class="quiet-button" data-close-picks-board>닫기 ×</button>'+
     '</div>'+
