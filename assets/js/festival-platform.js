@@ -1,4 +1,4 @@
-import {eventTags,matchesKeyword,weekRangeFor,weekDays,weeklyEvents,eventsForDay,dayMilestone,toggleDaySelection,THEME_WORDS,QUICK_PRESETS,matchesPreset,endingThisWeekEvents,CONCIERGE_MODES,conciergePicksFor,parseSharedPicks,buildSharedPicksURL,icsContent,isIndoorVenue,formatCourseSummaryText} from './festival-ui-model.js';
+import {eventTags,matchesKeyword,weekRangeFor,weekDays,weeklyEvents,eventsForDay,dayMilestone,toggleDaySelection,THEME_WORDS,QUICK_PRESETS,EVENT_CATEGORIES,CATEGORY_LABELS,eventCategoryOf,matchesCategory,matchesPreset,endingThisWeekEvents,CONCIERGE_MODES,conciergePicksFor,parseSharedPicks,buildSharedPicksURL,icsContent,isIndoorVenue,formatCourseSummaryText} from './festival-ui-model.js';
 import {WEATHER_STATIONS} from './festival-weather-model.js';
 import {modalMarkup,modalTabIds} from './festival-modal.js';
 import {eventImage,imageCaption,activeConditions,detailTagDestination,miniEvent,conciergeCardMarkup,sharedPicksBoardMarkup,cardQuickFacts} from './festival-presentation.js';
@@ -45,7 +45,9 @@ const regionNames=['서울','경기지역','강원지역','충청지역','전라
 const defaultPeriod=page==='calendar'?'month':page==='weekend'?'weekend':'upcoming';
 const allowedPeriods=page==='calendar'?['month','weekend','today']:['upcoming','weekend','today'];
 const allowedPresets=QUICK_PRESETS.map(([id])=>id);
-const state={region:regionNames.includes(params.get('region'))?params.get('region'):'all',theme:Object.hasOwn(labels,params.get('theme'))?params.get('theme'):'all',period:allowedPeriods.includes(params.get('period'))?params.get('period'):defaultPeriod,preset:allowedPresets.includes(params.get('preset'))?params.get('preset'):'',keyword:(params.get('tag')||'').slice(0,40),free:params.get('free')==='1',saved:params.get('saved')==='1',sort:'start',limit:9};
+const defaultCategory=page==='home'?'festival':'all';
+const allowedCategories=page==='home'?['festival','exhibition','indoor','all']:['all','festival','exhibition','indoor'];
+const state={category:allowedCategories.includes(params.get('category'))?params.get('category'):defaultCategory,region:regionNames.includes(params.get('region'))?params.get('region'):'all',theme:Object.hasOwn(labels,params.get('theme'))?params.get('theme'):'all',period:allowedPeriods.includes(params.get('period'))?params.get('period'):defaultPeriod,preset:allowedPresets.includes(params.get('preset'))?params.get('preset'):'',keyword:(params.get('tag')||'').slice(0,40),free:params.get('free')==='1',saved:params.get('saved')==='1',sort:'start',limit:9};
 let sharedPicks=parseSharedPicks(params.get('picks'),byId);
 let conciergeMode='indoor';
 const storageKey='thisweekfestival.saved.v1';
@@ -84,7 +86,7 @@ function syncKeywordButtons() {
 }
 function syncConditions() {
   const container=$('dock-active-conditions');if(!container)return;
-  const rows=activeConditions(state,defaultPeriod);
+  const rows=activeConditions(state,defaultPeriod,defaultCategory);
   container.hidden=!rows.length;
   container.innerHTML=rows.map(row=>row.removable?'<button data-remove-condition="'+row.key+'" aria-label="'+esc(row.label)+' 조건 해제">'+esc(row.label)+' <span aria-hidden="true">×</span></button>':'<span>'+esc(row.label)+'</span>').join('');
 }
@@ -125,7 +127,10 @@ reducedMotion.addEventListener('change',revealCards);
 function setupFilterDock() {
   const filter=document.querySelector('.filter-panel'),dock=$('sticky-filterbar'),header=document.querySelector('.site-header'),inner=document.querySelector('.header-inner');
   if(!filter||!dock)return;
-  dock.innerHTML='<div class="sticky-filter-inner"><a class="dock-brand" href="/" aria-label="이번주 축제 홈"><img src="/assets/img/brand/festival-fireworks.png" width="31" height="31" alt=""></a><div class="dock-rows"><div class="dock-pills" role="group" aria-label="고정 지역 필터"><button data-region="all" aria-pressed="true">전국</button>'+regionNames.map(name=>'<button data-region="'+name+'" aria-pressed="false">'+name+'</button>').join('')+'</div><div class="dock-pills dock-themes" role="group" aria-label="고정 테마 필터"><button data-theme="all" aria-pressed="true">전체 테마</button>'+Object.entries(labels).map(([id,label])=>'<button data-theme="'+id+'" aria-pressed="false">'+esc(label)+'</button>').join('')+'</div><div id="dock-active-conditions" class="dock-conditions" role="group" aria-label="활성 추가 조건" hidden></div></div><button class="dock-all-filters" data-scroll-to-filters>전체 조건 ↑</button></div>';
+  const dockCategories=page==='home'
+    ? '<div class="dock-pills dock-categories" role="group" aria-label="고정 유형 탭">'+EVENT_CATEGORIES.map(([id,label])=>'<button type="button" data-category="'+esc(id)+'" aria-pressed="false">'+esc(label)+'</button>').join('')+'</div>'
+    : '<div class="dock-pills dock-categories" role="group" aria-label="고정 유형 필터"><button type="button" data-category="all" aria-pressed="true">전체 유형</button>'+EVENT_CATEGORIES.map(([id,label])=>'<button type="button" data-category="'+esc(id)+'" aria-pressed="false">'+esc(label)+'</button>').join('')+'</div>';
+  dock.innerHTML='<div class="sticky-filter-inner"><a class="dock-brand" href="/" aria-label="이번주 축제 홈"><img src="/assets/img/brand/festival-fireworks.png" width="31" height="31" alt=""></a><div class="dock-rows">'+dockCategories+'<div class="dock-pills" role="group" aria-label="고정 지역 필터"><button data-region="all" aria-pressed="true">전국</button>'+regionNames.map(name=>'<button data-region="'+name+'" aria-pressed="false">'+name+'</button>').join('')+'</div><div class="dock-pills dock-themes" role="group" aria-label="고정 테마 필터"><button data-theme="all" aria-pressed="true">전체 테마</button>'+Object.entries(labels).map(([id,label])=>'<button data-theme="'+id+'" aria-pressed="false">'+esc(label)+'</button>').join('')+'</div><div id="dock-active-conditions" class="dock-conditions" role="group" aria-label="활성 추가 조건" hidden></div></div><button class="dock-all-filters" data-scroll-to-filters>전체 조건 ↑</button></div>';
   let queued=false,active=false;
   function update() {
     queued=false;
@@ -177,8 +182,8 @@ function syncSaved() {
   });
   syncFloatingPicks();
 }
-function selection(e,{ignoreRegion=false,ignoreTheme=false}={}) {
-  return (ignoreRegion||state.region==='all'||e.group===state.region)&&(ignoreTheme||state.theme==='all'||e.theme===state.theme)&&(!state.free||e.feeStatus==='free')&&(!state.saved||saved.includes(e.id))&&matchesKeyword(e,state.keyword)&&matchesPreset(e,state.preset,today);
+function selection(e,{ignoreRegion=false,ignoreTheme=false,ignoreCategory=false}={}) {
+  return (ignoreCategory||matchesCategory(e,state.category))&&(ignoreRegion||state.region==='all'||e.group===state.region)&&(ignoreTheme||state.theme==='all'||e.theme===state.theme)&&(!state.free||e.feeStatus==='free')&&(!state.saved||saved.includes(e.id))&&matchesKeyword(e,state.keyword)&&matchesPreset(e,state.preset,today);
 }
 function periodRange() {
   if(state.period==='weekend')return weekendRange(today);
@@ -186,11 +191,15 @@ function periodRange() {
   return {start:today,end:shiftDate(today,60)};
 }
 function syncPills(pool) {
+  document.querySelectorAll('[data-category-tab]').forEach(b=>b.setAttribute('aria-selected',String(b.dataset.categoryTab===state.category)));
+  document.querySelectorAll('[data-category]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.category===state.category)));
   document.querySelectorAll('[data-region]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.region===state.region)));
   document.querySelectorAll('[data-theme]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.theme===state.theme)));
   document.querySelectorAll('[data-period]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.period===state.period)));
   document.querySelectorAll('[data-preset]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.preset===state.preset)));
   document.querySelectorAll('[data-sort]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.sort===state.sort)));
+  const catCounts=pool.filter(e=>selection(e,{ignoreCategory:true}));
+  document.querySelectorAll('[data-category-count]').forEach(el=>el.textContent=el.dataset.categoryCount==='all'?catCounts.length:catCounts.filter(e=>eventCategoryOf(e)===el.dataset.categoryCount).length);
   const counts=pool.filter(e=>selection(e,{ignoreRegion:true}));
   document.querySelectorAll('[data-region-count]').forEach(el=>el.textContent=el.dataset.regionCount==='all'?counts.length:counts.filter(e=>e.group===el.dataset.regionCount).length);
   document.querySelectorAll('[data-map-count]').forEach(el=>el.textContent=counts.filter(e=>e.group===el.dataset.mapCount).length);
@@ -210,7 +219,8 @@ function renderGrid() {
   el.innerHTML=filtered.slice(0,state.limit).map(card).join('');
   $('empty-state').hidden=filtered.length>0;
   $('load-more').hidden=filtered.length<=state.limit;
-  $('result-title').textContent=(state.saved?'보관한 축제':state.region==='all'?'전국 축제 모아보기':state.region+' 축제 모아보기');
+  const catHeading=state.category==='exhibition'?'전시·박람회 모아보기':state.category==='indoor'?'실내 체험·기관 이벤트 모아보기':state.category==='festival'?'야외·지역 축제 모아보기':'축제·전시 모아보기';
+  $('result-title').textContent=(state.saved?'보관한 축제':(state.region==='all'?'전국':state.region)+' '+catHeading);
   $('result-summary').textContent=showSavedHistory
     ? '종료 포함 · 보관 일정 '+filtered.length+'건'
     : (state.period==='weekend'?'이번 주말':state.period==='today'?'오늘':'앞으로 60일')+' · '+r.start.replaceAll('-','.')+' — '+fmt(r.end)+' · 수록 일정 '+filtered.length+'건';
@@ -218,7 +228,7 @@ function renderGrid() {
 }
 function updateURL() {
   const url=new URL(location.href);
-  for(const [key,val,empty] of [['region',state.region,'all'],['theme',state.theme,'all'],['saved',state.saved?'1':'',''],['free',state.free?'1':'',''],['period',state.period,defaultPeriod],['preset',state.preset,''],['tag',state.keyword,''],['picks',sharedPicks.join(','),'']]){if(val!==empty)url.searchParams.set(key,val);else url.searchParams.delete(key);}
+  for(const [key,val,empty] of [['category',state.category,defaultCategory],['region',state.region,'all'],['theme',state.theme,'all'],['saved',state.saved?'1':'',''],['free',state.free?'1':'',''],['period',state.period,defaultPeriod],['preset',state.preset,''],['tag',state.keyword,''],['picks',sharedPicks.join(','),'']]){if(val!==empty)url.searchParams.set(key,val);else url.searchParams.delete(key);}
   history.replaceState(null,'',url);
 }
 let shown=today.slice(0,7)+'-01';
@@ -361,7 +371,7 @@ function navigateCalendar(step) {
   state.period='month';updateURL();renderCalendar();
 }
 function reset() {
-  Object.assign(state,{region:'all',theme:'all',preset:'',keyword:'',free:false,saved:false,period:page==='calendar'?'month':page==='weekend'?'weekend':'upcoming',sort:'start',limit:9});
+  Object.assign(state,{category:defaultCategory,region:'all',theme:'all',preset:'',keyword:'',free:false,saved:false,period:page==='calendar'?'month':page==='weekend'?'weekend':'upcoming',sort:'start',limit:9});
   selected=null;selectedWeek=null;calendarView='month';updateURL();render();weatherForRegion();
 }
 function render(){if(page==='calendar')renderCalendar();else renderGrid();}
@@ -615,14 +625,24 @@ document.addEventListener('click',async event=>{
   }
   if(b.hasAttribute('data-remove-condition')){
     const key=b.dataset.removeCondition;
-    if(key==='keyword')state.keyword='';else if(key==='free')state.free=false;else if(key==='saved')state.saved=false;else if(key==='preset')state.preset='';else if(key==='period'){
+    if(key==='category')state.category=defaultCategory;else if(key==='keyword')state.keyword='';else if(key==='free')state.free=false;else if(key==='saved')state.saved=false;else if(key==='preset')state.preset='';else if(key==='period'){
       state.period=defaultPeriod;if(page==='calendar'){selected=calendarView==='week'?{start:activeWeek,end:shiftDate(activeWeek,6)}:null;}
     }else return;
     state.limit=9;updateURL();render();document.querySelector('[data-scroll-to-filters]')?.focus({preventScroll:true});return;
   }
+  if(b.hasAttribute('data-category-tab')){
+    state.category=allowedCategories.includes(b.dataset.categoryTab)?b.dataset.categoryTab:defaultCategory;
+    state.limit=9;updateURL();render();animateRegion($('event-cards'));return;
+  }
+  if(b.hasAttribute('data-category')){
+    state.category=allowedCategories.includes(b.dataset.category)?b.dataset.category:defaultCategory;
+    state.limit=9;updateURL();render();animateRegion($('event-cards'));return;
+  }
   if(b.hasAttribute('data-apply-preset')){
     event.preventDefault();
     state.preset=allowedPresets.includes(b.dataset.applyPreset)?b.dataset.applyPreset:'';
+    if(state.preset==='indoor'&&page==='home'){state.category='indoor';state.preset='';}
+    else if(state.preset==='ending'&&page==='home'){state.category='all';}
     state.limit=9;updateURL();render();
     $('discover')?.scrollIntoView({behavior:reducedMotion.matches?'instant':'smooth',block:'start'});return;
   }
@@ -639,11 +659,15 @@ document.addEventListener('click',async event=>{
   }
   if(b.hasAttribute('data-concierge-all')){
     const mode=b.dataset.conciergeAll;
-    Object.assign(state,{region:'all',theme:'all',preset:'',keyword:'',free:false,saved:false,period:'upcoming'});
-    if(mode==='indoor')state.preset='indoor';
-    else if(mode==='free')state.free=true;
-    else if(mode==='night')state.theme='light';
-    else if(mode==='ending')state.preset='ending';
+    Object.assign(state,{category:defaultCategory,region:'all',theme:'all',preset:'',keyword:'',free:false,saved:false,period:'upcoming'});
+    if(mode==='indoor'){
+      if(page==='home')state.category='indoor';else state.preset='indoor';
+    }else{
+      if(page==='home')state.category='all';
+      if(mode==='free')state.free=true;
+      else if(mode==='night')state.theme='light';
+      else if(mode==='ending')state.preset='ending';
+    }
     state.limit=9;updateURL();render();
     $('discover')?.scrollIntoView({behavior:reducedMotion.matches?'instant':'smooth',block:'start'});
     return;

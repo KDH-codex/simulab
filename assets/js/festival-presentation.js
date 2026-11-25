@@ -1,6 +1,6 @@
 import {escapeHtml as esc} from '../../tools/kids-outing-calendar/model.js';
 import {highlightBadge} from './festival-highlights.js';
-import {PRESET_LABELS,isIndoorVenue,hasAdvanceBooking} from './festival-ui-model.js';
+import {PRESET_LABELS,CATEGORY_LABELS,eventCategoryOf,isIndoorVenue,hasAdvanceBooking} from './festival-ui-model.js';
 
 const themes={light:'빛이 머무는 밤',nature:'계절을 만나는 시간',food:'맛있는 주말의 발견',kids:'새로운 경험 한 조각'};
 const drawings={
@@ -45,8 +45,9 @@ export function miniEvent(event, {url, image, status, dates, theme}) {
     '<h3>'+esc(event.title)+'</h3><p>'+esc(event.program)+'</p>'+
     '<strong>'+esc(dates)+' <span aria-hidden="true">↗</span></strong></div></a>';
 }
-export function activeConditions(state,defaultPeriod='upcoming') {
+export function activeConditions(state,defaultPeriod='upcoming',defaultCategory='all') {
   const rows=[];
+  if(state.category&&state.category!=='all'&&state.category!==defaultCategory&&Object.hasOwn(CATEGORY_LABELS,state.category))rows.push({key:'category',label:CATEGORY_LABELS[state.category],removable:true});
   if(state.keyword)rows.push({key:'keyword',label:'#'+state.keyword,removable:true});
   if(state.free)rows.push({key:'free',label:'입장·기본참여 무료',removable:true});
   if(state.saved)rows.push({key:'saved',label:'보관한 일정',removable:true});
@@ -121,7 +122,10 @@ export function sharedPicksBoardMarkup(items,{statusFn,feeFn,isIndoorFn}={}) {
  */
 export function cardQuickFacts(event) {
   const chips=[];
-  if(isIndoorVenue(event))chips.push('<span class="fact-chip">🏛 실내 시설</span>');
+  const cat=eventCategoryOf(event);
+  if(cat==='exhibition')chips.push('<span class="fact-chip fact-exhibition">🖼️ 전시·박람회</span>');
+  else if(cat==='indoor')chips.push('<span class="fact-chip fact-indoor">🏛 실내 체험·기관</span>');
+  else if(isIndoorVenue(event))chips.push('<span class="fact-chip">🏛 실내 시설</span>');
   if(hasAdvanceBooking(event))chips.push('<span class="fact-chip">📝 사전신청 안내</span>');
   const rawTime=String(event.time||'').trim();
   if(rawTime&&!/확인 필요|추후 안내|미기재/.test(rawTime)){

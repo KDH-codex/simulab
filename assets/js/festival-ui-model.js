@@ -3,6 +3,14 @@ import {EVENT_LOCALES} from './festival-event-locales.js';
 
 export const THEME_WORDS={light:'빛·야간',food:'먹거리·수확',nature:'꽃·자연',kids:'체험·문화'};
 
+// 홈·탐색 화면에서 축제·전시·실내 체험을 명확히 구분해 보여주기 위한 3대 대분류 정의
+export const EVENT_CATEGORIES=[
+  ['festival','🎪 야외·지역 축제','빛축제·겨울·먹거리·지역 대표 축제와 야외 행사'],
+  ['exhibition','🖼️ 전시·박람회','박물관·미술관 특별전, 기획전, 사진전, 비엔날레·박람회'],
+  ['indoor','🏛 실내 체험·기관','과학관·박물관 체험, 공연, 도서관·문화회관·실내 기관 이벤트']
+];
+export const CATEGORY_LABELS=Object.fromEntries(EVENT_CATEGORIES.map(([id,label])=>[id,label]));
+
 // 겨울철·상황별로 자주 찾는 빠른 필터 목록 (화면 버튼과 URL ?preset= 에서 함께 사용)
 export const QUICK_PRESETS=[
   ['indoor','🏛 실내·전시관'],
@@ -12,7 +20,10 @@ export const QUICK_PRESETS=[
 export const PRESET_LABELS=Object.fromEntries(QUICK_PRESETS);
 
 // 박물관·과학관·전시관 등 비·추위를 피할 수 있는 실내 장소 판별 정규식
-const INDOOR_VENUE_PATTERN=/박물관|미술관|과학관|전시관|코엑스|킨텍스|벡스코|엑스코|컨벤션|아트센터|문화회관|도서관|실내|홀|백화점|아울렛|체육관|공연장|극장/;
+const INDOOR_VENUE_PATTERN=/박물관|미술관|과학관|전시관|코엑스|킨텍스|벡스코|엑스코|유에코|컨벤션|아트센터|문화회관|예술의전당|도서관|실내|홀|백화점|아울렛|체육관|공연장|극장|온실|생물자원관|SETEC|상상플랫폼|CGV|창의예술|교육센터|아트플랫폼|전시장|어린이세상|해양과학관|생태원|아트벙커/;
+const OUTDOOR_FESTIVAL_PATTERN=/얼음낚시|송어축제|산천어|철새|해맞이|일출|타종|호수공원|유림공원|차\s*없는\s*거리|불꽃축제|얼음트레킹/;
+const EXHIBITION_TITLE_PATTERN=/특별전|기획전|사진전|미술전|열린전시|전시|비엔날레|트리엔날레|오픈\s*스튜디오|아트쇼|박람회|페어|엑스포|전람회|작품전|명작전|교류전|어린왕자|피카소|달구벌|제석사|마한|김영갑|물신|MATERIALISM/i;
+const FESTIVAL_TITLE_PATTERN=/빛축제|불빛|눈꽃|산천어|송어|빙어|얼음|스케이트|일출|해맞이|타종|김장|불꽃/;
 
 // 사전예약·사전신청이 필요한 안내인지 판별하는 정규식 (예약 불필요 문구는 제외)
 const ADVANCE_BOOKING_PATTERN=/사전\s*신청|사전\s*예약|온라인\s*신청|온라인\s*예약|예매|접수/;
@@ -20,10 +31,34 @@ const NO_BOOKING_PATTERN=/사전\s*예약\s*없음|별도\s*예약\s*없이|예�
 
 /**
  * 행사의 장소명·제목·프로그램 설명에 실내 시설 키워드가 포함되어 있는지 확인합니다.
+ * 정본 데이터에 boolean `indoor` 필드가 있으면 이를 최우선으로 사용합니다.
  */
 export function isIndoorVenue(event) {
-  const text=[event.location,event.title,event.program].filter(Boolean).join(' ');
+  if(typeof event?.indoor==='boolean')return event.indoor;
+  const title=String(event?.title||'');
+  if(OUTDOOR_FESTIVAL_PATTERN.test(title))return false;
+  const text=[event?.location,event?.title,event?.program].filter(Boolean).join(' ');
   return INDOOR_VENUE_PATTERN.test(text);
+}
+
+/**
+ * 행사 레코드를 'festival'(야외·지역 축제), 'exhibition'(전시·박람회), 'indoor'(실내 체험·기관)로 분류합니다.
+ */
+export function eventCategoryOf(event) {
+  if(event?.eventCategory==='festival'||event?.eventCategory==='exhibition'||event?.eventCategory==='indoor'){
+    return event.eventCategory;
+  }
+  const title=String(event?.title||'');
+  if(EXHIBITION_TITLE_PATTERN.test(title)&&!FESTIVAL_TITLE_PATTERN.test(title))return 'exhibition';
+  if(isIndoorVenue(event))return 'indoor';
+  return 'festival';
+}
+
+/**
+ * 선택한 대분류('all' | 'festival' | 'exhibition' | 'indoor')와 행사 분류가 일치하는지 확인합니다.
+ */
+export function matchesCategory(event,category) {
+  return !category||category==='all'||eventCategoryOf(event)===category;
 }
 
 /**

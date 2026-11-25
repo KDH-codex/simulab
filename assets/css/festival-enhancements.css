@@ -368,3 +368,41 @@ main{overflow-anchor:none}.weekly-timetable{max-height:640px;overflow:auto;scrol
   .seo-hero h1{font-size:24px}
   .seo-deals-grid{grid-template-columns:1fr}
 }
+
+/* 홈 3대 탭(야외·지역 축제 / 전시·박람회 / 실내 체험·기관), 탐색 페이지 유형 필터 및 8개 상단 메뉴 반응형 보정 */
+.header-inner{gap:24px}
+.main-nav{gap:4px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.main-nav::-webkit-scrollbar{display:none}
+.main-nav a{padding:9px 13px;font-size:14px}
+@media(max-width:1150px){
+  .main-nav a{padding:8px 11px;font-size:13px}
+}
+@media(max-width:850px){
+  .main-nav{justify-content:flex-start}
+  .main-nav a{padding:8px 13px;font-size:12px}
+}
+@media(max-width:560px){
+  .main-nav{justify-content:flex-start;gap:4px}
+  .main-nav a{padding:7px 11px;font-size:11px}
+}
+
+.home-category-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0 0 18px}
+.home-category-tabs button{text-align:left;padding:15px 18px;border-radius:16px;background:#fff;border:1.5px solid #e5def5;display:flex;flex-direction:column;gap:5px;transition:transform .16s ease,border-color .16s ease,box-shadow .16s ease,background .16s ease}
+.home-category-tabs button:hover{transform:translateY(-2px);border-color:#c3b5ec}
+.home-category-tabs button[aria-selected=true]{background:linear-gradient(135deg,#fff6ed 0%,#f5f1ff 100%);border-color:var(--orange);box-shadow:0 10px 24px #f9731618}
+.cat-tab-top{display:flex;justify-content:space-between;align-items:center;gap:8px;width:100%}
+.cat-tab-top strong{font-size:15px;font-weight:850;color:var(--ink)}
+.cat-tab-count{background:#f0ecfb;color:var(--purple);font-size:12px;font-weight:850;padding:2px 10px;border-radius:999px;font-variant-numeric:tabular-nums}
+.home-category-tabs button[aria-selected=true] .cat-tab-count{background:var(--orange);color:#fff}
+.home-category-tabs small{font-size:11px;line-height:1.45;color:var(--muted)}
+
+.category-filter-row>b{color:var(--ink)}
+.category-pills button[aria-pressed=true]{background:var(--orange);color:#fff;border-color:var(--orange)}
+.dock-categories button[aria-pressed=true]{background:var(--orange);color:#fff;border-color:var(--orange)}
+.fact-chip.fact-exhibition{background:#f5f0ff;color:#5b21b6;border-color:#ddd6fe}
+.fact-chip.fact-indoor{background:#e8f5ff;color:#1765a3;border-color:#bae0ff}
+
+@media(max-width:850px){
+  .home-category-tabs{grid-template-columns:1fr;gap:8px}
+  .home-category-tabs button{padding:12px 14px}
+}

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {eventTags,matchesKeyword,weekRangeFor,weekDays,weeklyEvents,eventsForDay,dayMilestone,isIndoorVenue,isEndingThisWeek,hasAdvanceBooking,matchesPreset,endingThisWeekEvents,conciergePicksFor,parseSharedPicks,buildSharedPicksURL,googleCalendarUrl,icsContent,relatedEventsFor,isWinterSeasonEvent,nearbyDealsForEvent,formatCourseSummaryText} from '../assets/js/festival-ui-model.js';
+import {eventTags,matchesKeyword,weekRangeFor,weekDays,weeklyEvents,eventsForDay,dayMilestone,isIndoorVenue,eventCategoryOf,matchesCategory,isEndingThisWeek,hasAdvanceBooking,matchesPreset,endingThisWeekEvents,conciergePicksFor,parseSharedPicks,buildSharedPicksURL,googleCalendarUrl,icsContent,relatedEventsFor,isWinterSeasonEvent,nearbyDealsForEvent,formatCourseSummaryText} from '../assets/js/festival-ui-model.js';
 import {summarizeForecast} from '../assets/js/festival-weather-model.js';
 import {weatherResponse} from '../worker/weather.mjs';
 import worker from '../worker/index.mjs';
@@ -146,4 +146,20 @@ test('winter season classifier, nearby deals matcher and course summary formatte
   assert.match(summary,/🏛 실내 시설/);
   assert.match(summary,/입장·기본참여 무료/);
   assert.match(summary,/https:\/\/simulab\.kr\/\?picks=e1/);
+});
+test('eventCategoryOf, matchesCategory and explicit indoor flag separate festivals, exhibitions and indoor events',()=>{
+  const outdoor={id:'o1',title:'평창송어축제',location:'진부면 오대천 송어축제장',program:'실내 낚시터 및 얼음낚시',indoor:false,eventCategory:'festival'};
+  const exh={id:'ex1',title:'국립박물관 특별전',location:'국립박물관',program:'상설 및 기획전시',indoor:true,eventCategory:'exhibition'};
+  const ind={id:'in1',title:'국립과천과학관 겨울 체험',location:'과천과학관',program:'주말 사이언스 체험',indoor:true,eventCategory:'indoor'};
+  assert.equal(isIndoorVenue(outdoor),false);
+  assert.equal(isIndoorVenue(exh),true);
+  assert.equal(eventCategoryOf(outdoor),'festival');
+  assert.equal(eventCategoryOf(exh),'exhibition');
+  assert.equal(eventCategoryOf(ind),'indoor');
+  assert.equal(eventCategoryOf({title:'서울 공예 특별전',program:'전시'}),'exhibition');
+  assert.equal(eventCategoryOf({title:'과학관 주말 체험교실',location:'국립과학관'}),'indoor');
+  assert.equal(eventCategoryOf({title:'강원 눈꽃 축제',location:'야외 광장'}),'festival');
+  assert.equal(matchesCategory(exh,'all'),true);
+  assert.equal(matchesCategory(exh,'exhibition'),true);
+  assert.equal(matchesCategory(exh,'festival'),false);
 });

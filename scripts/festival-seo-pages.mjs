@@ -1,7 +1,7 @@
 import {mkdir} from 'node:fs/promises';
 import {writeFile} from './write-public-file.mjs';
 import {root, esc, shell, active, activeDeals, dealCardHTML, today, card, eventUrl} from './festival-platform.mjs';
-import {REGION_SEO_PAGES, isIndoorVenue, isWinterSeasonEvent} from '../assets/js/festival-ui-model.js';
+import {REGION_SEO_PAGES, isIndoorVenue, isWinterSeasonEvent, eventCategoryOf} from '../assets/js/festival-ui-model.js';
 
 /**
  * 10개 SEO 전용 랜딩 페이지(/region/* 7개 + /curation/indoor, free, winter-2026)를 정적 생성합니다.
@@ -26,7 +26,8 @@ function buildFaqItems(heading, items, indoorCount, freeCount) {
 
 function seoNavigationBar(currentPath) {
   const collections = [
-    ['/curation/indoor/', '🏛 실내 전시·박물관'],
+    ['/curation/exhibitions/', '🖼️ 전시·박람회'],
+    ['/curation/indoor/', '🏛 실내 체험·기관'],
     ['/curation/free/', '💸 입장 무료'],
     ['/curation/winter-2026/', '❄️ 겨울·연말 특집'],
     ['/curation/christmas/', '🎄 크리스마스'],
@@ -50,7 +51,7 @@ function pickRelatedDeals(areaKeys = []) {
   return picked;
 }
 
-async function writeCollectionPage({relDir, pathUrl, h1, eyebrow, lead, title, description, items, areaKeys = []}) {
+async function writeCollectionPage({relDir, pathUrl, h1, eyebrow, lead, title, description, items, areaKeys = [], page = 'collection'}) {
   const indoorCount = items.filter(isIndoorVenue).length;
   const freeCount = items.filter(e => e.feeStatus === 'free').length;
   const latestChecked = items.map(e => e.checkedAt).sort().at(-1) || today;
@@ -127,7 +128,7 @@ async function writeCollectionPage({relDir, pathUrl, h1, eyebrow, lead, title, d
 
   await mkdir(new URL(relDir, root), {recursive: true});
   await writeFile(new URL(relDir + 'index.html', root), shell({
-    title, description, path: pathUrl, page: 'collection', body, adEligible: false, structuredData
+    title, description, path: pathUrl, page, body, adEligible: false, structuredData
   }), 'utf8');
 }
 
@@ -147,15 +148,30 @@ export async function buildSeoCollections() {
     });
   }
 
-  const indoorItems = active.filter(isIndoorVenue);
+  const exhibitionItems = active.filter(e => eventCategoryOf(e) === 'exhibition');
+  await writeCollectionPage({
+    relDir: 'curation/exhibitions/',
+    pathUrl: '/curation/exhibitions/',
+    page: 'exhibitions',
+    h1: '전국 전시·박물관·박람회 모음',
+    eyebrow: 'EXHIBITIONS & MUSEUMS',
+    lead: '야외 지역축제와 구분해 전국 국립·시립 박물관 특별전, 미술관 기획전, 사진전·비엔날레·박람회 일정만 깔끔하게 모았습니다.',
+    title: '전국 전시·박물관·박람회 모음 | 이번 주 가볼 만한 전시',
+    description: '지역 축제와 분리해 살펴보는 전국 박물관 특별전, 미술관 기획전, 사진전, 아트페어 및 산업 박람회 공식 관람 안내입니다.',
+    items: exhibitionItems,
+    areaKeys: ['seoul', 'gyeonggi', 'gyeongsang', 'chungcheong']
+  });
+
+  const indoorItems = active.filter(e => eventCategoryOf(e) === 'indoor');
   await writeCollectionPage({
     relDir: 'curation/indoor/',
     pathUrl: '/curation/indoor/',
-    h1: '전국 실내 전시·박물관·과학관 모음',
-    eyebrow: 'INDOOR EXHIBITIONS & MUSEUMS',
-    lead: '한파·눈·비 걱정 없이 쾌적하게 관람할 수 있는 전국 박물관·미술관·과학관·전시관·수목원 온실 일정을 모았습니다.',
-    title: '전국 실내 전시·박물관 모음 | 비·추위 걱정 없는 주말 나들이',
-    description: '추운 겨울이나 비 오는 주말에 가기 좋은 전국 국립·시립 박물관, 미술관, 과학관, 식물원 온실 특별전 일정 안내입니다.',
+    page: 'indoor',
+    h1: '전국 실내 체험·박물관·기관 이벤트 모음',
+    eyebrow: 'INDOOR EXPERIENCES & INSTITUTIONS',
+    lead: '한파·눈·비 걱정 없이 방문하기 좋은 과학관 체험, 어린이박물관, 도서관, 문화예술회관 공연과 실내 기관 행사를 모았습니다. (박물관·미술관 특별전은 전시 탭에서 따로 볼 수 있습니다.)',
+    title: '전국 실내 체험·기관 이벤트 모음 | 과학관·어린이박물관·공연',
+    description: '추위나 비 걱정 없이 즐기는 전국 과학관 사이언스 체험, 어린이박물관·도서관 프로그램, 문화예술회관 공연 및 실내 기관 이벤트 안내입니다.',
     items: indoorItems,
     areaKeys: ['seoul', 'gyeonggi', 'gyeongsang', 'chungcheong']
   });

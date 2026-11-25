@@ -464,6 +464,29 @@ Safari에서 공유 버튼 → 책갈피 추가를 선택하세요. 다른 브�
 무료 축제 모음|Free festivals|無料お祭り特集|免费节庆合集|免費節慶合集
 겨울·연말 축제 특집|Winter & year-end guide|冬・年末お祭り特集|冬季·岁末节庆特辑|冬季·歲末節慶特輯
 자주 묻는 질문|Frequently asked questions|よくある質問|常见问题|常見問題
+전시|Exhibitions|展示|展览|展覽
+실내|Indoor|屋内|室内|室內
+🎪 야외·지역 축제|🎪 Outdoor & Local Festivals|🎪 屋外・地域祭り|🎪 户外及地方庆典|🎪 戶外及地方慶典
+🖼️ 전시·박람회|🖼️ Exhibitions & Fairs|🖼️ 展示・博覧会|🖼️ 展览与博览会|🖼️ 展覽與博覽會
+🏛 실내 체험·기관|🏛 Indoor & Institutions|🏛 屋内体験・施設|🏛 室内体验与场馆|🏛 室內體驗與場館
+📋 유형 선택|📋 Category|📋 カテゴリ|📋 活动分类|📋 活動分類
+전체 유형|All types|すべて|全部分类|全部分類
+고정 유형 탭|Sticky category tabs|固定カテゴリタブ|固定分类标签|固定分類標籤
+고정 유형 필터|Sticky category filters|固定カテゴリフィルター|固定分类筛选|固定分類篩選
+축제 · 전시 · 실내 체험 찾아보기|Explore Festivals, Exhibitions & Indoor Events|お祭り・展示・屋内体験を探す|探索节庆、展览与室内活动|探索節慶、展覽與室內活動
+전시와 실내 체험·기관 행사는 전용 탭으로 깔끔하게 나눠 볼 수 있어요.|Browse festivals, exhibitions, and indoor experiences in separate dedicated tabs.|展示や屋内体験イベントは専用タブで分かりやすく見られます。|节庆、展览及室内机构活动现已在各自专属标签页分开呈现。|節慶、展覽及室內機構活動現已在各自專屬標籤頁分開呈現。
+전국 야외·지역 축제 모아보기|Outdoor & Local Festivals Across Korea|全国 屋外・地域のお祭り|韩国户外与地方节庆精选|韓國戶外與地方節慶精選
+야외·지역 축제 모아보기|Outdoor & Local Festivals|屋外・地域のお祭り|户外与地方节庆|戶外與地方節慶
+전시·박람회 모아보기|Exhibitions & Fairs|展示・博覧会|展览与博览会|展覽與博覽會
+실내 체험·기관 이벤트 모아보기|Indoor & Institutional Events|屋内体験・施設イベント|室内体验与场馆活动|室內體驗與場館活動
+축제·전시 모아보기|Festivals & Exhibitions|お祭り・展示|节庆与展览|節慶與展覽
+전국 전시·박물관·박람회 모음|National Exhibitions & Fairs|全国 展示・博物館・博覧会特集|韩国展览·博物馆·博览会合集|韓國展覽·博物館·博覽會合集
+전국 실내 체험·박물관·기관 이벤트 모음|Indoor Experiences & Institutional Events|全国 屋内体験・施設イベント特集|韩国室内体验·场馆活动合集|韓國室內體驗·場館活動合集
+전국 전시·박람회 모음|National Exhibitions & Fairs|全国 展示・博覧会特集|韩国展览与博览会合集|韓國展覽與博覽會合集
+실내 체험·기관 이벤트|Indoor Experiences & Events|屋内体験・施設イベント|室内体验与场馆活动|室內體驗與場館活動
+빛축제·겨울·먹거리·지역 대표 축제와 야외 행사|Light festivals, seasonal food markets and regional celebrations|光の祭り・グルメ・地域の代表イベント|灯光节、冬日庆典与各地特色节庆|燈光節、冬日慶典與各地特色慶典
+박물관·미술관 특별전, 기획전, 사진전, 비엔날레·박람회|Museum and gallery exhibitions, photo shows, biennales and fairs|博物館・美術館の特別展・企画展・見本市|博物馆与美术馆特展、摄影展及博览会|博物館與美術館特展、攝影展及博覽會
+과학관·박물관 체험, 공연, 도서관·문화회관·실내 기관 이벤트|Science museums, children's centers, libraries, theaters and indoor programs|科学館体験・公演・図書館・文化会館などの屋内イベント|科技馆、儿童博物馆、图书馆与剧场等室内活动|科學館、兒童博物館、圖書館與劇場等室內活動
 `.trim().split('\n')){const [key,...values]=row.split('|');UI_TRANSLATIONS[key]=values;}
 const tokenRules=Object.keys(UI_TRANSLATIONS).sort((a,b)=>b.length-a.length).map(token=>{
   const escaped=token.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');

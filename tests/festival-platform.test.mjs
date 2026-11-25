@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {CHRISTMAS_GROUPS} from '../assets/js/festival-christmas-model.js';
-import {REGION_SEO_PAGES} from '../assets/js/festival-ui-model.js';
+import {REGION_SEO_PAGES,eventCategoryOf} from '../assets/js/festival-ui-model.js';
 import {sharedPicksBoardMarkup} from '../assets/js/festival-presentation.js';
 import {events,active,all,images,json,card,badge} from '../scripts/festival-platform.mjs';
 import {occursOn} from '../tools/kids-outing-calendar/model.js';
@@ -47,7 +47,14 @@ test('regional navigation is an explicitly schematic overview',async()=>{
   assert.doesNotMatch(html,/239|19°C|주차 혼잡|서울 여의도에서|스마트오더/);
   assert.equal((html.match(/class="region-point point-/g)||[]).length,7);
   const home=await read('index.html');
-  assert.ok((home.match(/data-card-id=/g)||[]).length>=active.length);
+  const homeFestivalCount=active.filter(e=>eventCategoryOf(e)==='festival').length;
+  assert.ok((home.match(/data-card-id=/g)||[]).length>=homeFestivalCount);
+  assert.match(home,/class="home-category-tabs"/);
+  assert.match(home,/data-category-tab="festival"/);
+  assert.match(home,/data-category-tab="exhibition"/);
+  assert.match(home,/data-category-tab="indoor"/);
+  assert.match(home,/href="\/curation\/exhibitions\/"/);
+  assert.match(home,/href="\/curation\/indoor\/"/);
 });
 
 test('the Christmas collection gives each event a distinct image file',async()=>{
@@ -104,10 +111,17 @@ test('SEO region and curation landing pages, nearby deals and course text copy r
 
   const expectedUrls=[
     ...REGION_SEO_PAGES.map(p=>'region/'+p.slug+'/index.html'),
+    'curation/exhibitions/index.html',
     'curation/indoor/index.html',
     'curation/free/index.html',
     'curation/winter-2026/index.html'
   ];
+  for(const p of ['map/index.html','calendar/index.html','curation/index.html']){
+    const navHtml=await read(p);
+    assert.match(navHtml,/class="filter-row category-filter-row"/);
+    assert.match(navHtml,/data-category="exhibition"/);
+    assert.match(navHtml,/data-category="indoor"/);
+  }
   for(const rel of expectedUrls){
     const html=await read(rel);
     assert.match(html,/class="seo-hero"/);

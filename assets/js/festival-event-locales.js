@@ -229,6 +229,25 @@ pyeongchang-trout-festival-2027|family|2027 Pyeongchang Trout Festival|2027 平�
 pyeongchang-daegwallyeong-snow-2027|family|35th Daegwallyeong Snow Festival 2027|2027 第35回 大関嶺雪花祭り|2027 第35届大关岭雪花庆典|2027 第35屆大關嶺雪花慶典
 cheorwon-hantan-ice-trekking-2027|walk|2027 Cheorwon Hantangang Ice Trekking Festival|2027 鉄原 漢灘江 氷トレッキング祭り|2027 铁原汉滩江冰上徒步节|2027 鐵原漢灘江冰上健行節
 jeju-seongsan-sunrise-2026|culture|34th Seongsan Sunrise Festival Jeju|第34回 城山日出祭り（済州）|第34届济州城山日出节|第34屆濟州城山日出節
+chuncheon-museum-magic-of-light-2026|performance|Chuncheon National Museum: Magic of Light|国立春川博物館「光の魔法がやってきた」|国立春川博物馆《光之魔法降临》演出|國立春川博物館《光之魔法降臨》演出
+gangneung-artcenter-ssireum-season2-2026|performance|Five Heavenly Generals: Protect the Ssireum Secret Book Season 2|天の五将軍・シルム秘伝書を守れ シーズン2|天界五将军守护摔跤秘籍 第二季音乐剧|天界五將軍守護摔角秘笈 第二季音樂劇
+gangneung-dream-orchestra-2026|performance|14th Dream Orchestra Gangneung Regular Concert|第14回 夢のオーケストラ江陵 定期演奏会|第14届梦想管弦乐团江陵定期音乐会|第14屆夢想管弦樂團江陵定期音樂會
+daejeon-nsm-tech-expedition-winter-2026|science|Advanced Tech Expedition Winter Season at NSM|国立中央科学館「2026 先端技術遠征隊」冬体験|国立中央科学馆2026尖端技术远征队冬季体验|國立中央科學館2026尖端技術遠征隊冬季體驗
+sejong-child-museum-my-friend-robosi-2026|science|National Children's Museum Weekend Class: My Friend Robosi|国立子ども博物館 週末教育「私の友達ロボシ」|国立儿童博物馆周末课程《我的朋友罗博西》|國立兒童博物館週末課程《我的朋友羅博西》
+cheongju-museum-little-match-girl-musical-2026|performance|The Little Match Girl Children's Musical at Cheongju Museum|国立清州博物館 子どもミュージカル「マッチ売りの少女」|国立清州博物馆儿童音乐剧《卖火柴的小女孩》|國立清州博物館兒童音樂劇《賣火柴的小女孩》
+seoul-imagination-heat-energy-hide-and-seek-2026|science|Seoul Children's Museum: Heat Energy Hide-and-Seek|ソウル想像の国「ぽかぽか！熱エネルギーかくれんぼ」|首尔想象之国《热能捉迷藏》儿童科学体验|首爾想像之國《熱能捉迷藏》兒童科學體驗
+gyeonggi-child-museum-hear-your-voice-2026|family|Gyeonggi Children's Museum Weekend Family Class: Hear Your Voice|京畿道子ども博物館 週末家族教育「君の声が聞こえる」|京畿道儿童博物馆周末亲子课《听见你的声音》|京畿道兒童博物館週末親子課《聽見你的聲音》
+incheon-science-concert-2026|science|2026 Incheon Children Science Museum Science Concert|2026 仁川子ども科学館 サイエンスコンサート|2026仁川儿童科学馆科学音乐会（第3·4场）|2026仁川兒童科學館科學音樂會（第3·4場）
+busan-sciport-sunday-science-theater-2026|science|Busan National Science Museum Sunday Science Theater: Edison vs Tesla|国立釜山科学館 日曜サイエンス劇場 エジソンVSテスラ|国立釜山科学馆周日科学剧场 爱迪生VS特斯拉|國立釜山科學館週日科學劇場 愛迪生VS特斯拉
+busan-library-christmas-magic-balloon-2026|books|Busan Library Christmas Magic Balloon Show|釜山図書館 クリスマス・マジック・バルーンショー|釜山图书馆圣诞魔术气球秀|釜山圖書館聖誕魔術氣球秀
+daegu-childrens-world-wolf-christmas-2026|performance|Daegu Children's World Winter Special Musical: Mr. Wolf's Christmas Gift|大邱子ども世界 冬特別公演『オオカミおじさんのクリスマスプレゼント』|大邱儿童世界冬季特别音乐剧《狼大叔的圣诞礼物》|大邱兒童世界冬季特別音樂劇《狼大叔的聖誕禮物》
+ulsan-ucac-cheoyong-children-2026|performance|Ulsan Culture & Arts Center Children's Show: Cheoyong, Child of Five Lights|蔚山文化芸術会館 子ども公演『五つの光を宿した子、処容』|蔚山文化艺术会馆儿童演出《怀抱五光的孩子，处容》|蔚山文化藝術會館兒童演出《懷抱五光的孩子，處容》
+changwon-jinhae-paris-boys-choir-2026|performance|Changwon Cultural Foundation: Les Petits Chanteurs a la Croix de Bois|昌原文化財団 パリ木の十字架少年合唱団 招聘公演|昌原文化财团 巴黎木十字少年合唱团特邀演出|昌原文化財團 巴黎木十字少年合唱團特邀演出
+gyeongju-shilla-gochwidae-10th-2026|culture|Gyeongju Municipal Silla Gochwidae 10th Concert: People of Gyeongju|慶州市立新羅鼓吹隊 第10回定期公演『慶州人』|庆州市立新罗鼓吹队第10届定期演出《庆州人》|慶州市立新羅鼓吹隊第10屆定期演出《慶州人》
+gwangju-sciencecenter-dec-weekend-2026|science|Gwangju National Science Museum December Weekend Event: Santa's Gift|国立光州科学館 12月週末科学文化イベント『サンタおじいさんのプレゼント』|国立光州科学馆12月周末科学文化活动《圣诞老人的礼物》|國立光州科學館12月週末科學文化活動《聖誕老人的禮物》
+jeonju-hanbyeok-master-series-2026|performance|Jeonju Hanbyeok Cultural Center 2026 Masterpiece Series II|全州韓壁文化館 2026優秀作品シリーズII マスター|全州韩壁文化馆2026优秀作品系列II 大师篇|全州韓壁文化館2026優秀作品系列II 大師篇
+naju-museum-wednesday-treasure-hunt-2026|heritage|Naju National Museum Children's Museum: Mahan Treasure Stamp Hunt|国立羅州博物館 子ども博物館『馬韓の宝探し』スタンプラリー|国立罗州博物馆儿童博物馆《寻找马韩宝藏》盖章体验|國立羅州博物館兒童博物館《尋找馬韓寶藏》集章體驗
+jeju-acenter-nutcracker-ballet-2026|performance|Jeju Arts Center: Seoul Ballet Theatre The Nutcracker|済州アートセンター ソウルバレエシアター『くるみ割り人形』|济州艺术中心 首尔芭蕾舞团《胡桃夹子》|濟州藝術中心 首爾芭蕾舞團《胡桃夾子》
 `.trim().split('\n').map(row=>row.split('|'));
 export const EVENT_LOCALES = Object.fromEntries(rows.map(([id,topic,...titles])=>[id,{topic,titles}]));
 const topics = {

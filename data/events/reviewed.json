@@ -23,7 +23,9 @@
         "facts": "10월 23~24일 광나루 개최, 시민 체험 시간 확인. 요금 미확인.",
         "checkedAt": "2026-10-23"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "seoul-bbq-2026",
@@ -56,7 +58,9 @@
         "facts": "기간·운영시간 및 무료 입장 안내 확인.",
         "checkedAt": "2026-10-23"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "namsan-night-2026",
@@ -92,7 +96,9 @@
         "facts": "실제 운영일 7일, 프로그램별 장소·시간·보증금·예약일 확인. 매일 개최 아님.",
         "checkedAt": "2026-10-26"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "hangang-forest-2026",
@@ -118,7 +124,9 @@
         "facts": "10월 24~25일 13~17시, 장소, 무료 참가비, 사전예약 종료 시각 확인.",
         "checkedAt": "2026-10-23"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "seoul-market-2026",
@@ -144,7 +152,9 @@
         "facts": "10월 24~25일 청계광장 10~21시 예정, 전시·판매·체험 운영 확인. 요금 미확인.",
         "checkedAt": "2026-10-23"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "exhibition"
   },
   {
     "id": "yongsan-harvest-2026",
@@ -170,7 +180,9 @@
         "facts": "10월 24일 13~17시 제1광장, 어린이 동반 가족, 프로그램별 예약·현장 체험 확인.",
         "checkedAt": "2026-10-23"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "botanic-exhibition-2026",
@@ -196,7 +208,9 @@
         "facts": "10월 23~24일 회차, 상세 대상 연령, 무료 프로그램과 별도 입장권, 접수 기간 확인.",
         "checkedAt": "2026-10-23"
       }
-    ]
+    ],
+    "eventCategory": "exhibition",
+    "indoor": true
   },
   {
     "id": "yeoju-ogok-2026",
@@ -222,7 +236,9 @@
         "facts": "10월 23~25일 신륵사관광지 및 행사 성격 확인. 개별 요금·시간 미확인.",
         "checkedAt": "2026-10-23"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "iksan-chrysanthemum-2026",
@@ -255,7 +271,9 @@
         "facts": "10/23~11/1,중앙체육공원10~21시,무료 관람과 프로그램 확인. 선택 체험·음식 구매 별도.",
         "checkedAt": "2026-10-26"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "goesan-kimjang-2026",
@@ -288,7 +306,9 @@
         "facts": "11월 5~8일 유기농엑스포광장 개최 계획 승인 확인. 체험 가격·시간 미확인.",
         "checkedAt": "2026-10-23"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "busan-fireworks-2026",
@@ -342,7 +362,9 @@
         "facts": "2026년 11월 7일, 광안리·해운대·이기대 행사 구역 확인.",
         "checkedAt": "2026-10-23"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "seogwipo-chilsimni-2026",
@@ -368,7 +390,9 @@
         "facts": "10월 23~25일 천지연 주차장 개최 및 퍼레이드 확인. 가격·시간 미확인.",
         "checkedAt": "2026-10-23"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "jeju-olle-2026",
@@ -408,7 +432,9 @@
         "facts": "현장 접수는 행사일 아침 등록부스 선착순,35,000원·할인30,000원. 사전신청은10/9종료. 청소년 출생연도는 본문과 상충하여 확정하지 않음.",
         "checkedAt": "2026-10-29"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "mcst-13344-2026",
@@ -436,7 +462,9 @@
         "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
         "checkedAt": "2026-10-23"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "mcst-12777-2026",
@@ -464,7 +492,9 @@
         "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
         "checkedAt": "2026-10-26"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "mcst-13337-2026",
@@ -492,7 +522,9 @@
         "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
         "checkedAt": "2026-10-23"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "mcst-12851-2026",
@@ -527,7 +559,9 @@
         "facts": "홈 공지에서 10/19 운영 재개와 일부 체험·공연 복구 안내를 확인. 개최기간과 요금은 문체부 상세 공지에 근거함.",
         "checkedAt": "2026-10-23"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "mcst-13561-2026",
@@ -555,7 +589,9 @@
         "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
         "checkedAt": "2026-10-23"
       }
-    ]
+    ],
+    "indoor": true,
+    "eventCategory": "indoor"
   },
   {
     "id": "mcst-13551-2026",
@@ -583,7 +619,9 @@
         "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
         "checkedAt": "2026-10-23"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "mcst-13542-2026",
@@ -611,7 +649,9 @@
         "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
         "checkedAt": "2026-10-23"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "mcst-13566-2026",
@@ -639,7 +679,9 @@
         "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
         "checkedAt": "2026-10-23"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "mcst-13334-2026",
@@ -667,7 +709,9 @@
         "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
         "checkedAt": "2026-10-23"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "mcst-12899-2026",
@@ -695,7 +739,9 @@
         "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
         "checkedAt": "2026-10-23"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "mcst-11752-2026",
@@ -723,7 +769,9 @@
         "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
         "checkedAt": "2026-10-23"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "mcst-13388-2026",
@@ -765,7 +813,9 @@
         "facts": "2026 11/6~8 성황지, 실제2026리플릿 앞뒷면·행사장 배치·프로그램 회차 확인. 상시체험10~17시, 별도 운영기관 카드10~18시는 상충하여 전체 종료시각 미확정.",
         "checkedAt": "2026-10-29"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "mcst-13539-2026",
@@ -793,7 +843,9 @@
         "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
         "checkedAt": "2026-10-23"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "mcst-11777-2026",
@@ -821,7 +873,9 @@
         "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
         "checkedAt": "2026-10-23"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "mcst-11775-2026",
@@ -849,7 +903,9 @@
         "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
         "checkedAt": "2026-10-23"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "mcst-13555-2026",
@@ -877,7 +933,9 @@
         "facts": "10월 30일~11월 8일·09:00~21:00·궁남지·무료 관람",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "mcst-12626-2026",
@@ -905,7 +963,9 @@
         "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
         "checkedAt": "2026-10-26"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "mcst-13512-2026",
@@ -933,7 +993,9 @@
         "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
         "checkedAt": "2026-10-23"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "mcst-11963-2026",
@@ -961,7 +1023,9 @@
         "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
         "checkedAt": "2026-10-23"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "mcst-11911-2026",
@@ -989,7 +1053,9 @@
         "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
         "checkedAt": "2026-10-23"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "mcst-13374-2026",
@@ -1017,7 +1083,9 @@
         "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
         "checkedAt": "2026-10-26"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "mcst-12854-2026",
@@ -1045,7 +1113,9 @@
         "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
         "checkedAt": "2026-10-23"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "mcst-12275-2026",
@@ -1073,7 +1143,9 @@
         "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
         "checkedAt": "2026-10-26"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "mcst-12036-2026",
@@ -1108,7 +1180,9 @@
         "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
         "checkedAt": "2026-10-26"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "mcst-11940-2026",
@@ -1136,7 +1210,9 @@
         "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
         "checkedAt": "2026-10-23"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "mcst-11909-2026",
@@ -1171,7 +1247,9 @@
         "facts": "10/22~25 비행 일정과 기상·운영 변경 가능 안내 확인.",
         "checkedAt": "2026-10-23"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "mcst-13559-2026",
@@ -1199,7 +1277,9 @@
         "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
         "checkedAt": "2026-10-23"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "mcst-12784-2026",
@@ -1227,7 +1307,9 @@
         "facts": "2026년 개최기간·장소·표기 요금 확인. 예약 잔여석과 개별 체험 요금은 확인하지 않음.",
         "checkedAt": "2026-10-23"
       }
-    ]
+    ],
+    "indoor": true,
+    "eventCategory": "indoor"
   },
   {
     "id": "sejong-hangeul-family-2026",
@@ -1259,7 +1341,9 @@
         "facts": "본문과 공식 첨부 안내 이미지에서 가족 회차 10/25·11/7, 시간·대상·비엔날레 전시관 확인. 요금 미확인.",
         "checkedAt": "2026-10-23"
       }
-    ]
+    ],
+    "indoor": true,
+    "eventCategory": "indoor"
   },
   {
     "id": "mcst-13422-2026",
@@ -1287,7 +1371,9 @@
         "facts": "2026년 개최기간 2026-05-01~2026-10-27, 실제 장소·시간·입장 무료 · 별도 판매·체험 비용은 확인 필요를 상세 표와 본문으로 대조. 연령·거주 제한·신청/취소 조건은 명시되지 않은 범위를 확정하지 않음.",
         "checkedAt": "2026-10-26"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "exhibition"
   },
   {
     "id": "mcst-13560-2026",
@@ -1321,7 +1407,9 @@
         "facts": "2026년 개최기간 2026-10-10~2026-10-31, 실제 장소·시간·입장 무료 · 일부 체험 프로그램 유료를 상세 표와 본문으로 대조. 실제 운영일4일을 본문으로 확인. 연령·거주 제한·신청/취소 조건은 명시되지 않은 범위를 확정하지 않음.",
         "checkedAt": "2026-10-26"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "mcst-13545-2026",
@@ -1349,7 +1437,9 @@
         "facts": "2026년 개최기간 2026-10-31~2026-10-31, 실제 장소·시간·기본 참여 무료 · 북마켓 구매 별도를 상세 표와 본문으로 대조. 연령·거주 제한·신청/취소 조건은 명시되지 않은 범위를 확정하지 않음.",
         "checkedAt": "2026-10-26"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "mcst-13528-2026",
@@ -1384,7 +1474,9 @@
         "facts": "2026년10/31토11~17시 장월로37길·간대어린이공원, 실제 양쪽 무대 회차·부스 지도·차량통제·미아 운영부스·다회용기 반납 확인. 개별 체험 비용/접수는 미확정.",
         "checkedAt": "2026-10-29"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "mcst-13510-2026",
@@ -1412,7 +1504,9 @@
         "facts": "2026년 개최기간 2026-09-01~2026-10-31, 실제 장소·시간·유료 · 연령별 입장료·감면 금액은 공식 관람안내 확인를 상세 표와 본문으로 대조. 연령·거주 제한·신청/취소 조건은 명시되지 않은 범위를 확정하지 않음.",
         "checkedAt": "2026-10-26"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "mcst-13333-2026",
@@ -1440,7 +1534,9 @@
         "facts": "2026년 개최기간 2026-10-30~2026-10-31, 실제 장소·시간·입장 무료 · 사과·음식 구매 및 개별 체험 별도를 상세 표와 본문으로 대조. 연령·거주 제한·신청/취소 조건은 명시되지 않은 범위를 확정하지 않음.",
         "checkedAt": "2026-10-26"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "mcst-12731-2026",
@@ -1468,7 +1564,9 @@
         "facts": "2026년 개최기간 2026-10-31~2026-10-31, 실제 장소·시간·기본 관람 무료 · 개별 부스 비용 별도 확인를 상세 표와 본문으로 대조. 연령·거주 제한·신청/취소 조건은 명시되지 않은 범위를 확정하지 않음.",
         "checkedAt": "2026-10-26"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "mcst-13554-2026",
@@ -1496,7 +1594,9 @@
         "facts": "2026년 개최기간 2026-10-30~2026-11-01, 실제 장소·시간·입장 무료 · 일부 체험 유료를 상세 표와 본문으로 대조. 연령·거주 제한·신청/취소 조건은 명시되지 않은 범위를 확정하지 않음.",
         "checkedAt": "2026-10-26"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "mcst-13552-2026",
@@ -1524,7 +1624,9 @@
         "facts": "2026년 개최기간 2026-10-30~2026-11-01, 실제 장소·시간·기본 관람 무료 · 개별 체험·판매 비용 별도 확인를 상세 표와 본문으로 대조. 연령·거주 제한·신청/취소 조건은 명시되지 않은 범위를 확정하지 않음.",
         "checkedAt": "2026-10-26"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "mcst-13533-2026",
@@ -1552,7 +1654,9 @@
         "facts": "2026년 개최기간 2026-10-31~2026-11-01, 실제 장소·시간·입장 무료 · 음식 구매·개별 체험 비용 별도를 상세 표와 본문으로 대조. 연령·거주 제한·신청/취소 조건은 명시되지 않은 범위를 확정하지 않음.",
         "checkedAt": "2026-10-26"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "mcst-13366-2026",
@@ -1580,7 +1684,9 @@
         "facts": "2026년 개최기간 2026-10-30~2026-11-01, 실제 장소·시간·입장 무료 · 커피·먹거리 구매 및 개별 체험 별도를 상세 표와 본문으로 대조. 연령·거주 제한·신청/취소 조건은 명시되지 않은 범위를 확정하지 않음.",
         "checkedAt": "2026-10-26"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "mcst-12919-2026",
@@ -1608,7 +1714,9 @@
         "facts": "2026년 개최기간 2026-10-17~2026-11-01, 실제 장소·시간·기본 관람 무료 · 개별 체험 비용 별도 확인를 상세 표와 본문으로 대조. 연령·거주 제한·신청/취소 조건은 명시되지 않은 범위를 확정하지 않음.",
         "checkedAt": "2026-10-26"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "mcst-12641-2026",
@@ -1636,7 +1744,9 @@
         "facts": "2026년 개최기간 2026-09-12~2026-11-01, 실제 장소·시간·유료 · 입장료·전기자전거 요금과 연령별 감면은 공식 안내 확인를 상세 표와 본문으로 대조. 연령·거주 제한·신청/취소 조건은 명시되지 않은 범위를 확정하지 않음.",
         "checkedAt": "2026-10-26"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "nowon-moonlight-2026",
@@ -1669,7 +1779,9 @@
         "facts": "2026년 전시 일정과 장소",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "unjeong-light-garden-2026",
@@ -1695,7 +1807,9 @@
         "facts": "불빛정원 운영 기간·시간과 10월 31일 불꽃축제 구분",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "incheon-sky-festival-2026",
@@ -1735,7 +1849,9 @@
         "facts": "11월 7~8일 개최",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "pyeongchang-kimjang-2026",
@@ -1768,7 +1884,9 @@
         "facts": "날짜 선택·회원가입·프리미엄 사전예약 조건",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "daejeon-wine-expo-2026",
@@ -1801,7 +1919,9 @@
         "facts": "연계행사를 포함한 엑스포 전체 개최 기간",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": true,
+    "eventCategory": "indoor"
   },
   {
     "id": "hampyeong-chrysanthemum-2026",
@@ -1834,7 +1954,9 @@
         "facts": "현장 요금·사전예매 기간·무료 대상",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "masan-chrysanthemum-2026",
@@ -1867,7 +1989,9 @@
         "facts": "전시장 및 운영시간",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "cheongsong-apple-2026",
@@ -1893,7 +2017,9 @@
         "facts": "2026년 행사 기간·장소·주요 프로그램·관람 조건",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "gimhae-buncheong-2026",
@@ -1919,7 +2045,9 @@
         "facts": "운영기관 제출 2026년 제31회 일정·롯데가든파크·프로그램",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "jeju-garden-expo-2026",
@@ -1952,7 +2080,9 @@
         "facts": "개최기간·개막식·장소",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "exhibition"
   },
   {
     "id": "iksan-treasure-2026",
@@ -1978,7 +2108,9 @@
         "facts": "행사 일시·장소·요금 및 AR 참여 방식",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "yeoju-sanbuk-kimjang-2026",
@@ -2004,7 +2136,9 @@
         "facts": "날짜·장소·관람 시간·무료 입장",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "goheung-yuja-2026",
@@ -2044,7 +2178,9 @@
         "facts": "2026년 11월 12~15일 풍양면 개최, 유자밭 체험과 야간 경관 프로그램 확인.",
         "checkedAt": "2026-11-12"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "daejeon-noodle-2026",
@@ -2077,7 +2213,9 @@
         "facts": "개최 기간과 요금만 확인. 장소명은 주최 측과 불일치하여 사용하지 않음.",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "pohang-fire-light-2026",
@@ -2124,7 +2262,9 @@
         "facts": "11월 21일 20:00~21:00 국제불꽃쇼, 19~21일 본행사 운영 시간표.",
         "checkedAt": "2026-11-20"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "sunchang-tteokbokki-2026",
@@ -2157,7 +2297,9 @@
         "facts": "입장료·프로그램 및 공식 홈페이지",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "seoul-souvenir-fair-2026",
@@ -2190,7 +2332,9 @@
         "facts": "한국관광공사 안내에 연결된 사전등록 양식",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "exhibition"
   },
   {
     "id": "incheon-art-show-2026",
@@ -2225,7 +2369,9 @@
         "facts": "입장권 및 관람조건",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "exhibition"
   },
   {
     "id": "suseong-biennale-2026",
@@ -2258,7 +2404,9 @@
         "facts": "공식 비엔날레 프로그램 안내",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "exhibition"
   },
   {
     "id": "ulsan-startup-festa-2026",
@@ -2291,7 +2439,9 @@
         "facts": "1층 A홀·행사 기간·강연과 전시",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": true,
+    "eventCategory": "indoor"
   },
   {
     "id": "gwangju-biennale-2026",
@@ -2347,7 +2497,9 @@
         "facts": "본전시 개최기간 9월 5일~11월 15일 확인.",
         "checkedAt": "2026-11-12"
       }
-    ]
+    ],
+    "indoor": true,
+    "eventCategory": "exhibition"
   },
   {
     "id": "uljin-jukbyeon-seafood-2026",
@@ -2373,7 +2525,9 @@
         "facts": "울진군 운영기관 제출 기간·장소·프로그램·요금",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "beautysum-suwon-2026",
@@ -2405,7 +2559,9 @@
         "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": true,
+    "eventCategory": "indoor"
   },
   {
     "id": "andong-independence-fair-2026",
@@ -2430,7 +2586,9 @@
         "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": true,
+    "eventCategory": "exhibition"
   },
   {
     "id": "busan-traditional-markets-2026",
@@ -2455,7 +2613,9 @@
         "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "exhibition"
   },
   {
     "id": "jeju-pet-fair-2026",
@@ -2480,7 +2640,9 @@
         "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": true,
+    "eventCategory": "indoor"
   },
   {
     "id": "tongyeong-port-village-2026",
@@ -2512,7 +2674,9 @@
         "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "busan-illustration-fair-2026",
@@ -2544,7 +2708,9 @@
         "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": true,
+    "eventCategory": "exhibition"
   },
   {
     "id": "gongju-hasuk-festival-2026",
@@ -2569,7 +2735,9 @@
         "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "jinju-agrex-experience-2026",
@@ -2601,7 +2769,9 @@
         "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "exhibition"
   },
   {
     "id": "busan-burak-festa-2026",
@@ -2626,7 +2796,9 @@
         "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "jeongdok-family-book-festival-2026",
@@ -2658,7 +2830,9 @@
         "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": true,
+    "eventCategory": "indoor"
   },
   {
     "id": "anseong-toktok-festival-2026",
@@ -2683,7 +2857,9 @@
         "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": true,
+    "eventCategory": "indoor"
   },
   {
     "id": "gimpo-marines-festival-2026",
@@ -2715,7 +2891,9 @@
         "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "gyeongju-peace-ondam-2026",
@@ -2748,7 +2926,9 @@
         "checkedAt": "2026-11-05"
       }
     ],
-    "familyNote": "행사 위치는 경주 첨성대 옆 잔디광장입니다."
+    "familyNote": "행사 위치는 경주 첨성대 옆 잔디광장입니다.",
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "ansan-science-festival-2026",
@@ -2780,7 +2960,9 @@
         "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "masan-outdoor-library-2026",
@@ -2805,7 +2987,9 @@
         "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": true,
+    "eventCategory": "indoor"
   },
   {
     "id": "seoul-materialism-exhibition-2026",
@@ -2832,7 +3016,9 @@
       }
     ],
     "scheduleType": "period",
-    "scheduleNote": "기간 중 실제 운영일과 회차는 공식 공지에서 확인하세요."
+    "scheduleNote": "기간 중 실제 운영일과 회차는 공식 공지에서 확인하세요.",
+    "eventCategory": "exhibition",
+    "indoor": true
   },
   {
     "id": "gwangju-yangdong-hongtak-2026",
@@ -2857,7 +3043,9 @@
         "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "seoul-k-sool-festival-2026",
@@ -2883,7 +3071,9 @@
         "checkedAt": "2026-11-05"
       }
     ],
-    "familyNote": "미성년자는 보호자와 동반할 때 입장 가능합니다. 주류 시음 조건은 현장에서 확인하세요."
+    "familyNote": "미성년자는 보호자와 동반할 때 입장 가능합니다. 주류 시음 조건은 현장에서 확인하세요.",
+    "indoor": true,
+    "eventCategory": "indoor"
   },
   {
     "id": "yeongju-apple-seoul-2026",
@@ -2915,7 +3105,9 @@
         "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "pocheon-petstar-2026",
@@ -2955,7 +3147,9 @@
         "checkedAt": "2026-11-22"
       }
     ],
-    "familyNote": "11/14 행사는 기상 예보에 따라 연기됐습니다. 반려견 동반 조건은 공식 안내를 확인하세요."
+    "familyNote": "11/14 행사는 기상 예보에 따라 연기됐습니다. 반려견 동반 조건은 공식 안내를 확인하세요.",
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "busan-run-festival-2026",
@@ -2987,7 +3181,9 @@
         "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "sejong-mind-walk-2026",
@@ -3012,7 +3208,9 @@
         "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "asan-ginkgo-art-street-2026",
@@ -3044,7 +3242,9 @@
         "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "changwon-dotseom-picnic-2026",
@@ -3069,7 +3269,9 @@
         "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "seoul-quad-flames-2026",
@@ -3104,7 +3306,9 @@
     ],
     "scheduleType": "period",
     "scheduleNote": "기간 중 실제 운영일과 회차는 공식 공지에서 확인하세요.",
-    "familyNote": "공연 관람은 만 16세 이상입니다. 월요일 공연 없음. 예매 페이지에서 실제 회차를 확인하세요."
+    "familyNote": "공연 관람은 만 16세 이상입니다. 월요일 공연 없음. 예매 페이지에서 실제 회차를 확인하세요.",
+    "eventCategory": "indoor",
+    "indoor": true
   },
   {
     "id": "busan-folk-arts-festival-2026",
@@ -3137,7 +3341,9 @@
         "checkedAt": "2026-11-05"
       }
     ],
-    "familyNote": "주최 측 변경 공지에 따라 11월 15일에 열립니다."
+    "familyNote": "주최 측 변경 공지에 따라 11월 15일에 열립니다.",
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "daejeon-energy-walk-2026",
@@ -3162,7 +3368,9 @@
         "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "busan-game-culture-festival-2026",
@@ -3194,7 +3402,9 @@
         "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": true,
+    "eventCategory": "indoor"
   },
   {
     "id": "incheon-design-fair-2026",
@@ -3226,7 +3436,9 @@
         "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "exhibition"
   },
   {
     "id": "muan-yd-festival-2026",
@@ -3258,7 +3470,9 @@
         "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "namhae-runtrip-2026",
@@ -3283,7 +3497,9 @@
         "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "seoul-boardgame-festa-2026",
@@ -3308,7 +3524,9 @@
         "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "suwon-rice-dessert-festa-2026",
@@ -3340,7 +3558,9 @@
         "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": true,
+    "eventCategory": "indoor"
   },
   {
     "id": "gangneung-dandan-festival-2026",
@@ -3379,7 +3599,9 @@
         "facts": "운영기관 제공 일정·장소·프로그램 및 비용을 상세 페이지에서 확인.",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "ulsan-culture-expo-2026",
@@ -3426,7 +3648,9 @@
         "checkedAt": "2026-11-05"
       }
     ],
-    "familyNote": "보호자를 동반한 초등학생과 영유아는 개별 사전등록을 생략할 수 있습니다."
+    "familyNote": "보호자를 동반한 초등학생과 영유아는 개별 사전등록을 생략할 수 있습니다.",
+    "eventCategory": "exhibition",
+    "indoor": true
   },
   {
     "id": "busan-christmas-village-2026",
@@ -3505,7 +3729,9 @@
     ],
     "scheduleType": "dates",
     "scheduleNote": "매주 목~일과 12/21~25 운영 · 지정일 예매",
-    "familyNote": "전 연령 관람. 36개월 미만은 증빙 제출 시 무료 입장."
+    "familyNote": "전 연령 관람. 36개월 미만은 증빙 제출 시 무료 입장.",
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "yeosu-jinnamgwan-media-2026",
@@ -3532,7 +3758,9 @@
       }
     ],
     "scheduleType": "period",
-    "scheduleNote": "기간 중 실제 운영일과 회차는 공식 공지에서 확인하세요."
+    "scheduleNote": "기간 중 실제 운영일과 회차는 공식 공지에서 확인하세요.",
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "yangjae-picturebook-2026",
@@ -3571,7 +3799,9 @@
       "2026-11-08"
     ],
     "scheduleType": "dates",
-    "scheduleNote": "주말에만 운영"
+    "scheduleNote": "주말에만 운영",
+    "indoor": true,
+    "eventCategory": "indoor"
   },
   {
     "id": "cheonan-maple-healing-2026",
@@ -3615,7 +3845,9 @@
       "2026-11-15"
     ],
     "scheduleType": "dates",
-    "scheduleNote": "매주 금·토·일에 축제 프로그램 운영"
+    "scheduleNote": "매주 금·토·일에 축제 프로그램 운영",
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "hongseong-namdang-shrimp-2026",
@@ -3642,7 +3874,9 @@
       }
     ],
     "scheduleType": "period",
-    "scheduleNote": "기간 중 실제 운영일과 회차는 공식 공지에서 확인하세요."
+    "scheduleNote": "기간 중 실제 운영일과 회차는 공식 공지에서 확인하세요.",
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "hwasun-unju-festival-2026",
@@ -3667,7 +3901,9 @@
         "facts": "2026년 행사 날짜와 장소, 프로그램 및 공개 관람 안내를 확인.",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "yesan-good-brothers-2026",
@@ -3692,7 +3928,9 @@
         "facts": "2026년 행사 날짜와 장소, 프로그램 및 공개 관람 안내를 확인.",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "yeongam-wolchulsan-chrysanthemum-2026",
@@ -3717,7 +3955,9 @@
         "facts": "2026년 행사 날짜와 장소, 프로그램 및 공개 관람 안내를 확인.",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "pohang-marines-festival-2026",
@@ -3742,7 +3982,9 @@
         "facts": "2026년 행사 날짜와 장소, 프로그램 및 공개 관람 안내를 확인.",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "jeju-moseulpo-yellowtail-2026",
@@ -3774,7 +4016,9 @@
         "facts": "11월 19~22일 10:00~19:00, 모슬포항 일원, 기본 무료 관람.",
         "checkedAt": "2026-11-20"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "jinan-kimchi-bossam-2026",
@@ -3799,7 +4043,9 @@
         "facts": "2026년 행사 날짜와 장소, 프로그램 및 공개 관람 안내를 확인.",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "paju-jangdan-bean-2026",
@@ -3831,7 +4077,9 @@
         "facts": "11/27 14시 개막, 운영일별 체험 시간표와 주차장·셔틀 안내 확인.",
         "checkedAt": "2026-11-22"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "goyang-k-rice-festa-2026",
@@ -3856,7 +4104,9 @@
         "facts": "11/27~29, 일요일 17시 종료, 킨텍스 제1전시장 2홀, 프로그램 확인.",
         "checkedAt": "2026-11-22"
       }
-    ]
+    ],
+    "eventCategory": "indoor",
+    "indoor": true
   },
   {
     "id": "seoul-design-festival-2026",
@@ -3888,7 +4138,9 @@
         "facts": "2026년 행사 날짜와 장소, 프로그램 및 공개 관람 안내를 확인.",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "eventCategory": "exhibition",
+    "indoor": true
   },
   {
     "id": "incheon-robotex-2026",
@@ -3913,7 +4165,9 @@
         "facts": "2026-11-28~29 송도컨벤시아 3·4홀 일정·장소는 유지되며, 공식 일정표에서 운영시간 08:00~18:00(입장마감 17:30)과 일반 관람 무료(경기 참가는 사전 등록팀 한정) 조건이 확인됨.",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "eventCategory": "indoor",
+    "indoor": true
   },
   {
     "id": "dangjin-chrysanthemum-2026",
@@ -3938,7 +4192,9 @@
         "facts": "2026년 행사 날짜와 장소, 프로그램 및 공개 관람 안내를 확인.",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "exhibition"
   },
   {
     "id": "gyeonggi-dmz-open-2026",
@@ -3965,7 +4221,9 @@
       }
     ],
     "scheduleType": "period",
-    "scheduleNote": "기간 중 실제 운영일과 회차는 공식 공지에서 확인하세요."
+    "scheduleNote": "기간 중 실제 운영일과 회차는 공식 공지에서 확인하세요.",
+    "eventCategory": "festival",
+    "indoor": false
   },
   {
     "id": "jeonju-jeolla-governor-2026",
@@ -3999,7 +4257,9 @@
       }
     ],
     "scheduleType": "period",
-    "scheduleNote": "기간 중 실제 운영일과 회차는 공식 공지에서 확인하세요."
+    "scheduleNote": "기간 중 실제 운영일과 회차는 공식 공지에서 확인하세요.",
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "incheon-jemulpo-wave-market-2026",
@@ -4024,7 +4284,9 @@
         "facts": "2026년 행사 날짜와 장소, 프로그램 및 공개 관람 안내를 확인.",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": true,
+    "eventCategory": "indoor"
   },
   {
     "id": "gyeongbuk-apple-promotion-seoul-2026",
@@ -4049,7 +4311,9 @@
         "facts": "11월 2~4일 서울광장 개최, 무료 관람. 월간 기록으로 수록.",
         "checkedAt": "2026-11-05"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "gwanak-sinwon-night-market-2026",
@@ -4081,7 +4345,9 @@
         "facts": "신원시장 11월 13~14일 행사와 구매 환급 조건을 확인.",
         "checkedAt": "2026-11-07"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "yeongdeungpo-dungdung-2026",
@@ -4121,7 +4387,9 @@
       "2026-11-26",
       "2026-11-27",
       "2026-11-28"
-    ]
+    ],
+    "eventCategory": "indoor",
+    "indoor": true
   },
   {
     "id": "maeheon-garden-concert-2026",
@@ -4146,7 +4414,9 @@
         "checkedAt": "2026-11-07",
         "facts": "개최일과 장소를 확인. 음악회 14:00~16:00 · 정원문화 체험 13:00~17:00. 가을 숲에서 열리는 팝·클래식·어쿠스틱 공연과 정원문화 체험."
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "yeouido-autumn-river-concert-2026",
@@ -4171,7 +4441,9 @@
         "checkedAt": "2026-11-07",
         "facts": "개최일과 장소를 확인. 17:00 시작 · 약 2시간. 여의도 물빛무대에서 네 팀의 어쿠스틱·앙상블 공연."
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "seoul-cafe-show-2026",
@@ -4204,7 +4476,9 @@
         "checkedAt": "2026-11-07"
       }
     ],
-    "familyNote": "토요일은 15:30 입장 마감. 접이식 카트를 포함한 캐리어는 반입할 수 없습니다."
+    "familyNote": "토요일은 15:30 입장 마감. 접이식 카트를 포함한 캐리어는 반입할 수 없습니다.",
+    "indoor": true,
+    "eventCategory": "indoor"
   },
   {
     "id": "seoul-independent-film-festival-2026",
@@ -4231,7 +4505,9 @@
       }
     ],
     "scheduleType": "period",
-    "scheduleNote": "개최 기간 중 상영작과 극장별 회차를 확인하세요."
+    "scheduleNote": "개최 기간 중 상영작과 극장별 회차를 확인하세요.",
+    "eventCategory": "indoor",
+    "indoor": true
   },
   {
     "id": "yangpyeong-migam-market-2026",
@@ -4263,7 +4539,9 @@
         "facts": "11월 7일 13~20시, 양평생활문화센터, 수제 플리마켓 개최를 확인.",
         "checkedAt": "2026-11-07"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "gwacheon-grandpark-autumn-2026",
@@ -4296,7 +4574,9 @@
         "checkedAt": "2026-11-07"
       }
     ],
-    "familyNote": "축제 공연·체험은 11월 7~8일입니다. 작가 초청 야외 특별전은 11월 29일까지 이어집니다."
+    "familyNote": "축제 공연·체험은 11월 7~8일입니다. 작가 초청 야외 특별전은 11월 29일까지 이어집니다.",
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "anyang-apap8-2026",
@@ -4330,7 +4610,9 @@
       }
     ],
     "scheduleType": "period",
-    "scheduleNote": "전시 기간입니다. 도원 릴레이와 벼룩시장 등은 공식 회차를 확인하세요."
+    "scheduleNote": "전시 기간입니다. 도원 릴레이와 벼룩시장 등은 공식 회차를 확인하세요.",
+    "eventCategory": "festival",
+    "indoor": false
   },
   {
     "id": "paju-hope-art-festival-2026",
@@ -4362,7 +4644,9 @@
         "facts": "11월 13일 음악회 상세 및 예매 안내.",
         "checkedAt": "2026-11-07"
       }
-    ]
+    ],
+    "indoor": true,
+    "eventCategory": "indoor"
   },
   {
     "id": "gwangju-hwadam-autumn-2026",
@@ -4396,7 +4680,9 @@
       }
     ],
     "scheduleType": "period",
-    "scheduleNote": "화담숲 입장 가능일·입장권은 예약 화면을 확인하세요."
+    "scheduleNote": "화담숲 입장 가능일·입장권은 예약 화면을 확인하세요.",
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "incheon-green-sharing-market-2026",
@@ -4421,7 +4707,9 @@
         "checkedAt": "2026-11-07",
         "facts": "개최일과 장소를 확인. 12:00~16:00. 시민 중고물품을 나누고 거래하는 플리마켓과 환경교육 체험."
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "incheon-resident-expo-2026",
@@ -4446,7 +4734,9 @@
         "checkedAt": "2026-11-07",
         "facts": "개최일과 장소를 확인. 세부 회차는 주최 측 안내 확인. 군·구 특산품 전시와 지역 음식 나눔, 주민자치센터 체험·동아리 경연."
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "exhibition"
   },
   {
     "id": "ganghwa-local-artists-2026",
@@ -4471,7 +4761,9 @@
         "checkedAt": "2026-11-07",
         "facts": "개최일과 장소를 확인. 10:00~16:00. 지역 예술인 공연과 작품·강화 특산품 아트마켓, 화개정원 분재전시회."
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "incheon-iap-open-studio-2026",
@@ -4498,7 +4790,9 @@
       }
     ],
     "scheduleType": "period",
-    "scheduleNote": "작업실 개방은 11월 6~8일입니다. 이후에는 결과발표 전시와 별도 프로그램이 운영됩니다."
+    "scheduleNote": "작업실 개방은 11월 6~8일입니다. 이후에는 결과발표 전시와 별도 프로그램이 운영됩니다.",
+    "eventCategory": "exhibition",
+    "indoor": true
   },
   {
     "id": "incheon-yeonsudam-food-2026",
@@ -4523,7 +4817,9 @@
         "checkedAt": "2026-11-07",
         "facts": "개최일과 장소를 확인. 10:00~18:00 · 13일 개막식 14:30. 김장품앗이와 전통음식 만들기, 떡메치기·투호 등 현장 전통놀이, 김치 판매."
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "incheon-art-t-day-tour-2026",
@@ -4562,7 +4858,9 @@
       "2026-11-28",
       "2026-11-29"
     ],
-    "familyNote": "20세 이상 인천 시민 대상, 회차당 20명 내외. 출발지와 이동 방식이 회차마다 다릅니다."
+    "familyNote": "20세 이상 인천 시민 대상, 회차당 20명 내외. 출발지와 이동 방식이 회차마다 다릅니다.",
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "bupyeong-campmarket-november-2026",
@@ -4594,7 +4892,9 @@
       "2026-11-08",
       "2026-11-14",
       "2026-11-15"
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "seongbuk-youth-market-2026",
@@ -4626,7 +4926,9 @@
         "facts": "성북구 발표를 인용한 후속 안내에서 2회차 11월 13~14일 및 성북천 분수마루 광장을 확인.",
         "checkedAt": "2026-11-07"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "anseong-namsadang-november-2026",
@@ -4669,7 +4971,9 @@
       "2026-11-22",
       "2026-11-28",
       "2026-11-29"
-    ]
+    ],
+    "eventCategory": "indoor",
+    "indoor": true
   },
   {
     "id": "seosan-chrysanthemum-2026",
@@ -4695,7 +4999,9 @@
         "facts": "2026년 11월 6~15일 개최, 고북면 행사장 주소, 국화정원과 수확 체험 확인.",
         "checkedAt": "2026-11-12"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "yangsan-chrysanthemum-2026",
@@ -4721,7 +5027,9 @@
         "facts": "2026년 10월 30일~11월 15일 개최, 황산공원 중부광장과 국화 작품 전시 확인.",
         "checkedAt": "2026-11-12"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "verificationStatus": "verified",
@@ -4754,7 +5062,9 @@
         "facts": "벡스코 일반 관람 11월 19~22일.",
         "checkedAt": "2026-11-16"
       }
-    ]
+    ],
+    "indoor": true,
+    "eventCategory": "exhibition"
   },
   {
     "verificationStatus": "verified",
@@ -4788,7 +5098,9 @@
         "facts": "올해 일정, 장소와 관람 정보 대조.",
         "checkedAt": "2026-11-22"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "verificationStatus": "verified",
@@ -4829,7 +5141,9 @@
         "facts": "기간, 금·토 및 성탄 주간 운영, 정문 풍차 일원, 마켓과 공연 프로그램.",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "verificationStatus": "verified",
@@ -4874,7 +5188,9 @@
         "facts": "사전예매 권종과 구매 경로.",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "eventCategory": "indoor",
+    "indoor": true
   },
   {
     "verificationStatus": "verified",
@@ -4901,7 +5217,9 @@
         "facts": "유성온천 크리스마스축제 개최 기간과 장소, 마켓 부스 운영 근거.",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "verificationStatus": "verified",
@@ -4933,7 +5251,9 @@
         "facts": "세 날짜와 각각의 시간, 광복로 장소, 거리공연과 퍼레이드.",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "verificationStatus": "verified",
@@ -4958,7 +5278,9 @@
         "facts": "기존 공고 파일 URL은 404로 만료되었으나, 논산문화관광재단 공식 행사 안내(mng_no=3981)와 2026-11-20 보도자료에서 2026-12-11~13, 운영시간 10:00~18:00, 양촌면 양촌리 체육공원 일원 개최 및 판매·체험·개폐막식·먹거리존 운영이 확인됨.",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "verificationStatus": "verified",
@@ -4990,7 +5312,9 @@
         "facts": "올해 청계천 구간과 운영 기간 교차 확인.",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "verificationStatus": "verified",
@@ -5022,7 +5346,9 @@
         "facts": "12/11~1/10, 광화문광장·세종로공원 일대, 크리스마스 마켓과 푸드·시즌 소품 확인.",
         "checkedAt": "2026-11-20"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "verificationStatus": "verified",
@@ -5047,7 +5373,9 @@
         "facts": "2027년 1월 10일까지 변경된 전시 기간, 시간과 프로그램.",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "verificationStatus": "verified",
@@ -5073,7 +5401,9 @@
         "facts": "축제 기간과 조명 유지 기간을 구분하고 운영시간·무료 행사·장소 확인.",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "verificationStatus": "verified",
@@ -5107,7 +5437,9 @@
         "checkedAt": "2026-11-16"
       }
     ],
-    "time": "13:00~21:00 · 12/24 점등식 18:00"
+    "time": "13:00~21:00 · 12/24 점등식 18:00",
+    "eventCategory": "festival",
+    "indoor": false
   },
   {
     "verificationStatus": "verified",
@@ -5133,7 +5465,9 @@
         "facts": "서울시 행사 기간과 보신각 장소 확인.",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "verificationStatus": "verified",
@@ -5159,7 +5493,9 @@
         "facts": "12월 항목에서 12월 31일~1월 1일, 광장 장소와 담당 부서를 확인.",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "verificationStatus": "verified",
@@ -5185,7 +5521,9 @@
         "facts": "올해 전체 기간, 서울광장 점등식과 정동길 거리축제 구분.",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "verificationStatus": "verified",
@@ -5217,7 +5555,9 @@
         "facts": "12월 4~5일 10:00~18:00, 12월 6일 10:00~17:00, 사전등록 무료 및 현장등록 5,000원 확인.",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "eventCategory": "exhibition",
+    "indoor": true
   },
   {
     "verificationStatus": "verified",
@@ -5242,7 +5582,9 @@
         "facts": "2026년 12월 31일까지, 제주 한경면, 입장 마감·요금 확인.",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "verificationStatus": "verified",
@@ -5274,7 +5616,9 @@
         "facts": "12월 4~6일 지정일 입장, 일반권 가격·예매 기간과 입장 규칙.",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "eventCategory": "exhibition",
+    "indoor": true
   },
   {
     "verificationStatus": "verified",
@@ -5300,7 +5644,9 @@
         "facts": "2026~2027 플라자 마켓 운영일과 시간, 연장일, 미디어파사드 화요일 휴연 확인.",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "eventCategory": "indoor",
+    "indoor": true
   },
   {
     "verificationStatus": "verified",
@@ -5332,7 +5678,9 @@
         "facts": "공식 온라인 사전등록 경로.",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "eventCategory": "exhibition",
+    "indoor": true
   },
   {
     "verificationStatus": "verified",
@@ -5365,7 +5713,9 @@
         "facts": "방문일별 공식 운영일과 운영시간 확인 경로.",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "verificationStatus": "verified",
@@ -5399,7 +5749,9 @@
         "facts": "충북 괴산 생태뮤지엄 장소와 기간 교차 확인.",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "eventCategory": "exhibition",
+    "indoor": true
   },
   {
     "verificationStatus": "verified",
@@ -5425,7 +5777,9 @@
         "facts": "12월 30일 회차, 장소, 관람연령, 가격과 예매 시작 예정일.",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "eventCategory": "indoor",
+    "indoor": true
   },
   {
     "id": "seoul-hangang-gym-run-2026",
@@ -5459,7 +5813,9 @@
       }
     ],
     "verificationStatus": "verified",
-    "checkedAt": "2026-11-20"
+    "checkedAt": "2026-11-20",
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "seoul-unfold-x-2026",
@@ -5493,7 +5849,9 @@
       }
     ],
     "verificationStatus": "verified",
-    "checkedAt": "2026-11-20"
+    "checkedAt": "2026-11-20",
+    "eventCategory": "exhibition",
+    "indoor": true
   },
   {
     "id": "seoul-lotte-town-christmas-market-2026",
@@ -5534,7 +5892,9 @@
       }
     ],
     "verificationStatus": "verified",
-    "checkedAt": "2026-11-20"
+    "checkedAt": "2026-11-20",
+    "eventCategory": "festival",
+    "indoor": false
   },
   {
     "id": "tongyeong-chudo-island-film-2026",
@@ -5568,7 +5928,9 @@
       }
     ],
     "verificationStatus": "verified",
-    "checkedAt": "2026-11-20"
+    "checkedAt": "2026-11-20",
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "chilgok-christmas-market-2026",
@@ -5596,7 +5958,9 @@
       }
     ],
     "verificationStatus": "verified",
-    "checkedAt": "2026-11-20"
+    "checkedAt": "2026-11-20",
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "seoul-geumcheon-winter-coat-market-2026",
@@ -5623,7 +5987,9 @@
       }
     ],
     "verificationStatus": "verified",
-    "checkedAt": "2026-11-20"
+    "checkedAt": "2026-11-20",
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "yangpyeong-ice-fishing-2026",
@@ -5651,7 +6017,9 @@
       }
     ],
     "verificationStatus": "verified",
-    "checkedAt": "2026-11-20"
+    "checkedAt": "2026-11-20",
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "gwangju-liquor-festa-2026",
@@ -5692,7 +6060,9 @@
       }
     ],
     "verificationStatus": "verified",
-    "checkedAt": "2026-11-20"
+    "checkedAt": "2026-11-20",
+    "eventCategory": "indoor",
+    "indoor": true
   },
   {
     "id": "jeju-christmas-village-2026",
@@ -5720,7 +6090,9 @@
         "facts": "11/28~12/25, 주소, 입장·공연 무료, 토요일 공연 시간, 도슨트 현장 접수 확인.",
         "checkedAt": "2026-11-20"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "seogwipo-jeju-icc-santa-2026",
@@ -5754,7 +6126,9 @@
         "facts": "관람객 사전등록 양식 확인. 접수 마감·요금 미확인.",
         "checkedAt": "2026-11-20"
       }
-    ]
+    ],
+    "eventCategory": "indoor",
+    "indoor": true
   },
   {
     "id": "seoul-plaza-ice-rink-2026",
@@ -5782,7 +6156,9 @@
         "facts": "12/18~2/9, 시간, 12/24·31 연장, 스케이트화·헬멧 포함 1,000원, 어린이 링크와 기상 변경 안내.",
         "checkedAt": "2026-11-20"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "incheon-yeonsu-christmas-tree-2026",
@@ -5814,7 +6190,9 @@
         "facts": "본청과 제2청사 포스터는 별도이며, 원문 이용 조건은 공공누리 제2유형. 요약은 본청 한마음광장 기준.",
         "checkedAt": "2026-11-22"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "suncheon-nammun-christmas-2026",
@@ -5854,7 +6232,9 @@
         "facts": "11/28 13~18시, 장소, 우천 장소, 가족 대상, 참가비와 부스 비용·현금 결제 확인.",
         "checkedAt": "2026-11-22"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "bucheon-moving-media-playground-2026",
@@ -5901,7 +6281,9 @@
         "facts": "포스터에서 11/27~28 10~16시, 부천시민미디어센터 확인.",
         "checkedAt": "2026-11-22"
       }
-    ]
+    ],
+    "eventCategory": "indoor",
+    "indoor": true
   },
   {
     "id": "yeongdeungpo-living-art-fair-2026",
@@ -5926,7 +6308,9 @@
         "facts": "날짜별 운영시간, 문래동 도림로128가길, 지역 크리에이터 전시·판매 확인.",
         "checkedAt": "2026-11-22"
       }
-    ]
+    ],
+    "eventCategory": "exhibition",
+    "indoor": true
   },
   {
     "id": "jeonju-kimjang-sharing-2026",
@@ -5958,7 +6342,9 @@
         "facts": "회차당 150명, 13·14·15시 운영, 무료 참여 확인.",
         "checkedAt": "2026-11-22"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "seoul-magok-wish-village-2026",
@@ -5983,7 +6369,9 @@
         "facts": "주최 측 포스터와 상세 본문에서 11/27~12/28 운영, 점등식 18~19시와 매일 17~23시 점등 확인.",
         "checkedAt": "2026-11-22"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "daejeon-artience-2026",
@@ -6031,7 +6419,9 @@
         "checkedAt": "2026-11-22"
       }
     ],
-    "familyNote": "11/28 워크숍은 14세 이상(2013년생 및 이전 출생자) 대상입니다."
+    "familyNote": "11/28 워크숍은 14세 이상(2013년생 및 이전 출생자) 대상입니다.",
+    "eventCategory": "indoor",
+    "indoor": true
   },
   {
     "id": "seocheon-migratory-bird-festival-2026",
@@ -6056,7 +6446,9 @@
         "facts": "11/28~29, 장소와 11/28 11시 개막 확인. 공식 포스터와 리플릿 제공.",
         "checkedAt": "2026-11-22"
       }
-    ]
+    ],
+    "eventCategory": "festival",
+    "indoor": false
   },
   {
     "id": "gwangju-baegun-street-food-2026",
@@ -6081,7 +6473,9 @@
         "facts": "2026년 토요일 16~22시 운영, 11/28 마지막 날과 장소 확인. 이번 주 회차만 수록.",
         "checkedAt": "2026-11-22"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "cheongju-ocean-stories-2026",
@@ -6114,7 +6508,9 @@
         "facts": "충북문화재단의 공식 공지가 연결한 사전 신청서.",
         "checkedAt": "2026-11-22"
       }
-    ]
+    ],
+    "eventCategory": "indoor",
+    "indoor": true
   },
   {
     "id": "busan-sciport-buildup-project-2026",
@@ -6149,7 +6545,9 @@
         "facts": "부산광역시 기장군 동부산관광6로 59 소재, 전시 구성 및 사전예약·관람안내 동일 확인.",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "eventCategory": "exhibition",
+    "indoor": true
   },
   {
     "id": "busan-museum-joseon-garden-2026",
@@ -6184,7 +6582,9 @@
         "facts": "화~일 09:00~18:00(17시 입장 마감), 월요일·1/1 휴관, 관람료 무료 및 부산 남구 유엔평화로 63 확인.",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "eventCategory": "exhibition",
+    "indoor": true
   },
   {
     "id": "daegu-art-museum-picasso-kiki-2026",
@@ -6219,7 +6619,9 @@
         "facts": "동절기(11~3월) 10:00~18:00(17시 마감), 특별전(2026.11.17.~2027.3.14.) 성인 10,000원·청년/청소년 7,000원·할인/무료 기준 확인.",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "eventCategory": "exhibition",
+    "indoor": true
   },
   {
     "id": "daegu-national-museum-dalgubeol-2026",
@@ -6254,7 +6656,9 @@
         "facts": "200건 300여 점 전시, 미디어타워·프롤로그/에필로그 영상 확인; 관람안내(kor/sub01_01.do)상 09:00~18:00 확인.",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "eventCategory": "exhibition",
+    "indoor": true
   },
   {
     "id": "sejong-winter-symphony-2026",
@@ -6285,7 +6689,9 @@
         "facts": "2026-12-16 19:30, 90분(인터미션 15분), 5세 이상, R석 35,000원/S석 20,000원, 지휘 백윤학·테너 김현수 확인.",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "eventCategory": "indoor",
+    "indoor": true
   },
   {
     "id": "sejong-arboretum-little-prince-2026",
@@ -6320,7 +6726,9 @@
         "facts": "동절기(11~2월) 화~일 09:00~17:00(입장마감 16:00), 어른 5,000/청소년 4,000/어린이 3,000원 확인.",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "eventCategory": "exhibition",
+    "indoor": true
   },
   {
     "id": "geochang-christmas-tree-festival-2026",
@@ -6355,7 +6763,9 @@
         "facts": "개막식 12.13.(일) 18:00, 매일 3팀 문화공연 18:30~, 산타랑 공예랑, 성탄절 하나의 밤 12.25.(금) 18:00, 공식 포스터 확인.",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "sangju-nnibr-dog-cat-2026",
@@ -6390,7 +6800,9 @@
         "facts": "화~일 09:30~17:30(17:00 입장 마감), 개인 대인 3,000원/청소년·소인 2,000원, 4세 이하·65세 이상 무료 확인.",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "eventCategory": "exhibition",
+    "indoor": true
   },
   {
     "id": "bonghwa-baekdudaegan-forest-open-2026",
@@ -6425,7 +6837,9 @@
         "facts": "동절기(11~2월) 화~일 09:00~17:00(입장마감 16:00), 어른 5,000/청소년 4,000/어린이 3,000원 확인.",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "eventCategory": "exhibition",
+    "indoor": true
   },
   {
     "id": "iksan-jeseoksa-temple-2026",
@@ -6460,7 +6874,9 @@
         "facts": "09:00~18:00(17:30 입장 마감), 월·1/1·설·추석 휴관, 관람료 무료·주차 무료·별도 예약 없이 관람 가능 확인.",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "eventCategory": "exhibition",
+    "indoor": true
   },
   {
     "id": "seocheon-nie-climate-ecosystems-2026",
@@ -6495,7 +6911,9 @@
         "facts": "09:30~17:30(1시간 전 매표마감), 월요일 휴관, 어른 5,000/청소년 3,000/어린이 2,000원, 만 4세 이하·65세 이상 무료 확인.",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "eventCategory": "exhibition",
+    "indoor": true
   },
   {
     "id": "jecheon-nutcracker-ballet-2026",
@@ -6526,7 +6944,9 @@
         "facts": "2026-11-29(일) 17:00, 제천예술의전당 대공연장, 85분(인터미션 15분), 무료(16:30부터 선착순 입장), 포스터 확인.",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "eventCategory": "indoor",
+    "indoor": true
   },
   {
     "id": "jecheon-red-fishcake-festival-2026",
@@ -6561,7 +6981,9 @@
         "facts": "동일 기간(2026.12.23.~2027.1.30.) 제천예술의전당 광장(시크릿 윈터랜드)·의림지(액티브 윈터존) 연계 개최 확인.",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "chuncheon-craft-masterpieces-2026",
@@ -6596,7 +7018,9 @@
         "facts": "어린이박물관 09:30~17:30(17시 마감), 매주 월·1/1·설·추석 휴관, 무료입장 및 주소 확인.",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "eventCategory": "exhibition",
+    "indoor": true
   },
   {
     "id": "naju-mahan-imported-artifacts-2026",
@@ -6631,7 +7055,9 @@
         "facts": "국보 1점 포함 242건 1,374점 전시, 체험존·격주 수요일 큐레이터와의 대화, 관람시간 09:00~18:00 및 관람안내(kor/sub01_01.do) 확인.",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "eventCategory": "exhibition",
+    "indoor": true
   },
   {
     "id": "jeju-kim-young-gap-photo-2026",
@@ -6666,7 +7092,9 @@
         "facts": "화~일 09:00~18:00(입장마감 17:30), 1월 1일·설·추석·매주 월요일 휴관, 제주시 일주동로 17 확인.",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "eventCategory": "exhibition",
+    "indoor": true
   },
   {
     "id": "gapyeong-morningcalm-starlight-2026",
@@ -6708,7 +7136,9 @@
         "facts": "오색별빛정원전 기간 10:00~21:00(토요일 23:00 연장·종료 1시간 전 마감), 어른 11,000원·청소년 8,500원·어린이 7,500원, 현장 매표, 반려동물 불가 확인",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "bucheon-bingpania-ice-world-2026",
@@ -6736,7 +7166,9 @@
         "facts": "2026.12.19~2027.2.9(53일간), 개장식 12.19 15:00, 부천종합운동장 원형광장, 11:30~20:00 6회차 운영, 1회 5,000원(장비 포함·부천사랑상품권 2,000원 환급), 공공누리 제4유형 확인",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "siheung-geobukseom-skating-rink-2026",
@@ -6771,7 +7203,9 @@
         "facts": "12월 18일부터 내년 2월 14일까지 거북섬 야외 스케이트장 운영 재확인",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "seoul-botanicpark-hesse-winter-2026",
@@ -6806,7 +7240,9 @@
         "facts": "동절기 주제원 09:30~17:00(16:00 마감)·매주 월요일 휴관, 온실·주제정원 성인 5,000원·청소년 3,000원·어린이 2,000원(6세 미만 무료, 공원부 무료 개방) 확인",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "eventCategory": "indoor",
+    "indoor": true
   },
   {
     "id": "seoul-cheonggyecheon-light-2026",
@@ -6834,7 +7270,9 @@
         "facts": "2026.12.11~12.31(최종 업데이트 2026.11.12), 매일 18:00~22:00, 무료, 청계광장 일대, 12.12 점등식·꼬마기차·발달장애 어린이 작가 작품 상영 확인",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "jecheon-winter-kingdom-2026",
@@ -6869,7 +7307,9 @@
         "facts": "2026.12.23~2027.1.30 겨울왕국 페스티벌·얼음썰매장 연계 운영 및 매주 월요일 휴무 안내 확인",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "taean-light-festival-2026",
@@ -6904,7 +7344,9 @@
         "facts": "2026-01-01~2026-12-31 기간, 유료 요금 및 태안꽃축제추진위원회 주최 정보 교차 확인",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "daegu-naturepark-christmas-winter-2026",
@@ -6939,7 +7381,9 @@
         "facts": "2026.11.17~2027.3.8 동절기 화요일 휴장(공휴일 제외), 주중·일 10:00~18:00·토요일 야간개장 10:00~21:00, 종일권 대인 20,000원·소인 18,000원 확인",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "ulsan-seongnamdong-snow-2026",
@@ -6974,7 +7418,9 @@
         "facts": "최종 업데이트 2026.11.20, 2026.12.24~12.27, 무료, 퍼레이드·윈터 버블쇼 등 프로그램 교차 확인",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "hwacheon-sancheoneo-2027",
@@ -7002,7 +7448,9 @@
         "facts": "2026-11-16 게시 공고문에서 2027년 1월 9일(토)~1월 31일(일) 23일간 개최 및 강원 화천군 화천읍 산천어길 137 소재 확인",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "pyeongchang-trout-festival-2027",
@@ -7030,7 +7478,9 @@
         "facts": "최종 업데이트 2026.11.03, 2027.01.01~2027.01.31 일정, 강원 평창군 진부면 경강로 3562 위치, 평창송어축제위원회 주최, 가격 유료(2027년 내용 업데이트 중) 확인",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "eventCategory": "festival",
+    "indoor": false
   },
   {
     "id": "pyeongchang-daegwallyeong-snow-2027",
@@ -7058,7 +7508,9 @@
         "facts": "2026-09-08 게시 공고에서 2027.1.29(금)~2.9(화) 09:30~17:30(예정), 대관령눈꽃축제장 어울마당 및 행사장 일원, 문의 033-335-3995 확인",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "cheorwon-hantan-ice-trekking-2027",
@@ -7086,7 +7538,9 @@
         "facts": "최종 업데이트 2026.11.02, 2027.01.16~2027.02.14 일정, 강원 철원군 동송읍 장흥리 725, 철원문화재단, 10,000원(철원사랑상품권 5,000원 환급·물윗길트레킹 연계) 확인",
         "checkedAt": "2026-11-25"
       }
-    ]
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
   },
   {
     "id": "jeju-seongsan-sunrise-2026",
@@ -7115,6 +7569,657 @@
         "title": "제34회 성산일출축제 공식 홈페이지",
         "url": "https://www.sunrisefestival.kr/",
         "facts": "제34회 성산일출축제 테마 '성산의 해오름 • 새해를 열고 세계를 품다', 기간 2026.12.31(목)~2027.1.1(금) 2일간, 장소 제주 서귀포시 성산일출봉 일원 확인",
+        "checkedAt": "2026-11-25"
+      }
+    ],
+    "indoor": false,
+    "eventCategory": "festival"
+  },
+  {
+    "id": "chuncheon-museum-magic-of-light-2026",
+    "title": "[11월 문화가 있는 날] 박물관에 빛의 마법이 찾아왔다",
+    "region": "강원",
+    "theme": "kids",
+    "eventCategory": "indoor",
+    "indoor": true,
+    "startDate": "2026-11-28",
+    "endDate": "2026-11-28",
+    "scheduleType": "dates",
+    "dates": [
+      "2026-11-28"
+    ],
+    "scheduleNote": "2026년 11월 28일(토) 14:00 1회 진행 (공연시간 60분)",
+    "location": "국립춘천박물관 본관 강당 (강원특별자치도 춘천시 우석로 70)",
+    "time": "14:00~15:00 (공연시간 60분 · 당일 13:00~13:30 티켓 수령)",
+    "program": "국립춘천박물관 본관 강당에서 11월 문화가 있는 날을 맞아 무료로 운영하는 60분 분량의 실내 문화공연입니다.",
+    "feeStatus": "free",
+    "fee": "무료 (총 200명)",
+    "booking": "국립춘천박물관 누리집 온라인 사전예약(11.18.~11.26., 1인 최대 4매) 및 당일 13:00~13:30 미수령 노쇼분 선착순 현장 접수",
+    "familyNote": "박물관 본관 강당에서 진행되는 실내 문화공연이며 당일 13:30까지 사전예약 관람표를 수령하지 않으면 현장 대기자에게 배정됩니다.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-25",
+    "sources": [
+      {
+        "publisher": "국립춘천박물관",
+        "title": "[11월 문화가 있는날] 박물관에 빛의 마법이 찾아왔다.",
+        "url": "https://chuncheon.museum.go.kr/prog/yeyakInfo/cultevtprg/kor/sub03_0201/prgview.do?yeyakPrgId=CULTEVT_000000000133",
+        "facts": "행사기간 2026-11-28, 시간 14:00(60분), 장소 국립춘천박물관 본관 강당, 입장료 무료, 총인원 200명, 사전접수(11.18.~11.26.) 및 당일 13:00~13:30 노쇼분 현장접수 확인",
+        "checkedAt": "2026-11-25"
+      }
+    ]
+  },
+  {
+    "id": "gangneung-artcenter-ssireum-season2-2026",
+    "title": "하늘나라 다섯장군 씨름비책을 지켜라 시즌2",
+    "region": "강원",
+    "theme": "kids",
+    "eventCategory": "indoor",
+    "indoor": true,
+    "startDate": "2026-12-10",
+    "endDate": "2026-12-10",
+    "scheduleType": "dates",
+    "dates": [
+      "2026-12-10"
+    ],
+    "scheduleNote": "2026년 12월 10일(목) 10:20·11:30 총 2회 공연 (40분)",
+    "location": "강릉아트센터 소공연장 (강원특별자치도 강릉시 종합운동장길 84)",
+    "time": "1회 10:20 / 2회 11:30 (공연시간 40분, 인터미션 없음)",
+    "program": "강릉아트센터 소공연장에서 대한씨름협회가 주최하고 문화팩토리 마굿간이 선보이는 5세 이상 관람가 무료 가족 뮤지컬입니다.",
+    "feeStatus": "free",
+    "fee": "전석무료 (선착순 입장)",
+    "booking": "별도 사전 예매 없이 공연 당일 선착순 입장 (문의 02-499-7391)",
+    "familyNote": "5세 이상부터 관람할 수 있는 실내 소공연장 뮤지컬이며 공연 시작 후에는 입장이 제한되므로 여유 있게 도착하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-25",
+    "sources": [
+      {
+        "publisher": "강릉아트센터",
+        "title": "하늘나라 다섯장군 씨름비책을 지켜라 시즌2",
+        "url": "https://www.gn.go.kr/artscenter/selectMoonhwainView.do?pageUnit=999&pageIndex=1&searchCnd=all&key=5728&searchYear=2026&searchMonth=12&searchSiteId=artscenter&searchMoon_p_idx=1425",
+        "facts": "공연기간 2026-12-10, 시간 10:20/11:30(40분), 장소 강릉아트센터 소공연장, 가격 전석무료(선착순 입장), 5세 이상 관람가 확인",
+        "checkedAt": "2026-11-25"
+      }
+    ]
+  },
+  {
+    "id": "gangneung-dream-orchestra-2026",
+    "title": "제14회 꿈의오케스트라 강릉 정기연주회",
+    "region": "강원",
+    "theme": "kids",
+    "eventCategory": "indoor",
+    "indoor": true,
+    "startDate": "2026-12-22",
+    "endDate": "2026-12-22",
+    "scheduleType": "dates",
+    "dates": [
+      "2026-12-22"
+    ],
+    "scheduleNote": "2026년 12월 22일(화) 19:30 1회 공연 (90분)",
+    "location": "강릉아트센터 사임당홀 (강원특별자치도 강릉시 종합운동장길 84)",
+    "time": "19:30~21:00 (공연시간 90분, 인터미션 없음)",
+    "program": "강릉문화원이 주관하고 꿈의오케스트라 강릉 단원들이 강릉아트센터 사임당홀에서 펼치는 초등학생 이상 무료 정기연주회입니다.",
+    "feeStatus": "free",
+    "fee": "전석무료 (선착순 입장)",
+    "booking": "별도 사전 예매 없이 공연 당일 선착순 입장 (문의 033-823-3203)",
+    "familyNote": "초등학생 이상 입장 가능한 실내 대공연장 연주회로 인터미션 없이 90분간 진행되며 공연 시작 후 입장이 제한될 수 있습니다.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-25",
+    "sources": [
+      {
+        "publisher": "강릉아트센터",
+        "title": "제14회 꿈의오케스트라 강릉 정기연주회",
+        "url": "https://www.gn.go.kr/artscenter/selectMoonhwainView.do?pageUnit=999&pageIndex=1&searchCnd=all&key=5728&searchYear=2026&searchMonth=12&searchSiteId=artscenter&searchMoon_p_idx=1458",
+        "facts": "공연기간 2026-12-22, 시간 오후 7시 30분(90분, 인터미션 없음), 장소 강릉아트센터 사임당홀, 가격 전석무료(선착순 입장), 연령 초등학생 이상 확인",
+        "checkedAt": "2026-11-25"
+      }
+    ]
+  },
+  {
+    "id": "daejeon-nsm-tech-expedition-winter-2026",
+    "title": "2026 첨단기술 원정대 겨울 시즌 체험",
+    "region": "대전",
+    "theme": "kids",
+    "eventCategory": "indoor",
+    "indoor": true,
+    "startDate": "2026-12-06",
+    "endDate": "2026-12-06",
+    "scheduleType": "dates",
+    "dates": [
+      "2026-12-06"
+    ],
+    "scheduleNote": "2026년 12월 6일(일) 1일 3회 운영 (회차당 시연 30분·체험 90분)",
+    "location": "국립중앙과학관 미래기술관 3층 특별전시실 (대전광역시 유성구 대덕대로 481)",
+    "time": "1회 10:00~12:00 / 2회 13:00~15:00 / 3회 15:30~17:30",
+    "program": "초등학생이 미래기술관에서 드론과 로봇·자율주행·인공지능을 직접 보고 만지며 조종해 보는 겨울 시즌 실내 과학체험입니다.",
+    "feeStatus": "free",
+    "fee": "무료 (단 주차료는 유료)",
+    "booking": "2026. 11. 23.(월) 10:00~11. 30.(월) 18:00 국립중앙과학관 누리집 온라인 사전 신청 (초등학생 대상, 회차당 100명)",
+    "familyNote": "초등학생 전용 체험 프로그램으로 보호자는 별도 대기하며, 미래기술관 실내에서 120분간 시연과 조종 체험이 이어집니다.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-25",
+    "sources": [
+      {
+        "publisher": "국립중앙과학관",
+        "title": "2026 첨단기술 원정대 겨울 시즌 체험 안내",
+        "url": "https://www.science.go.kr/mps/1070/bbs/431/moveBbsNttDetail.do?nttSn=50329",
+        "facts": "체험일자 2026-12-06, 시간 10:00~12:00/13:00~15:00/15:30~17:30(회차당 100명), 장소 미래기술관 3층 특별전시실, 대상 초등학생(보호자 별도 대기), 참가비 무료(주차료 유료), 신청 11.23.~11.30. 확인",
+        "checkedAt": "2026-11-25"
+      }
+    ]
+  },
+  {
+    "id": "sejong-child-museum-my-friend-robosi-2026",
+    "title": "국립어린이박물관 주말 교육 〈내 친구 로보시〉",
+    "region": "세종",
+    "theme": "kids",
+    "eventCategory": "indoor",
+    "indoor": true,
+    "startDate": "2026-11-07",
+    "endDate": "2026-12-12",
+    "scheduleType": "period",
+    "scheduleNote": "매주 토요일 11:00·14:00 운영 (11월 25일 이후 11/28·12/5·12/12 회당 60분 진행)",
+    "location": "국립박물관단지 국립어린이박물관 교육실 3 (세종특별자치시 어울누리로 130)",
+    "time": "매주 토요일 1회차 11:00~12:00 / 2회차 14:00~15:00",
+    "program": "버려진 장난감 나사와 회로판 등 재활용 부품 구조를 살펴보고 나만의 로봇 키링을 만들며 자원 순환을 배우는 가족 교육입니다.",
+    "feeStatus": "paid",
+    "fee": "2,000원 (교구재 재료는 참여 어린이 1인당 1세트 제공)",
+    "booking": "국립어린이박물관 누리집·통합예약시스템 온라인 선착순 사전 신청 (5세 이상 어린이 동반 가족, 회당 15명 내외)",
+    "familyNote": "어린이와 보호자가 함께 참여하는 실내 주말 교육으로, 당일 1층 로비 키오스크에서 교육 입장권을 발급해 강사에게 제출하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-25",
+    "sources": [
+      {
+        "publisher": "국립박물관단지 국립어린이박물관",
+        "title": "2026년 주말 교육프로그램 〈내 친구 로보시〉",
+        "url": "https://child.nmcik.or.kr/edu/current/all",
+        "facts": "교육기간 2026-11-07~2026-12-12 매주 토요일 11:00~12:00·14:00~15:00, 장소 교육실 3, 대상 5세 이상 어린이 동반 가족(회당 15명 내외), 교육비 2,000원, 온라인 선착순 신청 확인",
+        "checkedAt": "2026-11-25"
+      },
+      {
+        "publisher": "국립박물관단지 통합예약시스템",
+        "title": "국립어린이박물관 교육예약",
+        "url": "https://reserve.nmcik.or.kr/reservation/education/EducationListUI?lang=ko",
+        "facts": "국립박물관단지 통합예약시스템 교육예약 접수 경로 및 위치(세종특별자치시 어울누리로 130) 확인",
+        "checkedAt": "2026-11-25"
+      }
+    ]
+  },
+  {
+    "id": "cheongju-museum-little-match-girl-musical-2026",
+    "title": "[11월 문화가 있는 날] 성냥팔이 소녀 어린이 뮤지컬",
+    "region": "충북",
+    "theme": "kids",
+    "eventCategory": "indoor",
+    "indoor": true,
+    "startDate": "2026-11-28",
+    "endDate": "2026-11-28",
+    "scheduleType": "dates",
+    "dates": [
+      "2026-11-28"
+    ],
+    "scheduleNote": "2026년 11월 28일(토) 14:00~15:00 1회 공연 (13:00~13:50 현장 발권)",
+    "location": "국립청주박물관 청명관 대강당 (충청북도 청주시 상당구 명암로 143)",
+    "time": "14:00~15:00 (약 60분 · 13:55 입장 마감)",
+    "program": "국립청주박물관 청명관 대강당에서 안데르센의 명작 동화를 음악과 무대로 만나는 24개월 이상 권장 무료 어린이 뮤지컬입니다.",
+    "feeStatus": "free",
+    "fee": "무료 (238석)",
+    "booking": "공연 당일 13:00~13:50 선착순 현장 접수 및 티켓 배부 (13:55 이후 입장 제한)",
+    "familyNote": "미취학 아동은 보호자 동반이 필수이며, 현장 발권을 완료했더라도 공연 5분 전부터 입장이 제한되고 유모차 반입은 불가합니다.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-25",
+    "sources": [
+      {
+        "publisher": "국립청주박물관",
+        "title": "[11월 문화가 있는 날] 성냥팔이 소녀 어린이 뮤지컬",
+        "url": "https://cheongju.museum.go.kr/www/clturArtView.do?key=81&clturArtNo=416&searchProgrm=4",
+        "facts": "일시 2026.11.28.(토) 14:00~15:00(약 60분), 장소 청명관 대강당, 무료관람(238석 당일 13:00~13:50 선착순 현장접수, 13:55 입장마감), 24개월 이상 권장 확인",
+        "checkedAt": "2026-11-25"
+      }
+    ]
+  },
+  {
+    "id": "seoul-imagination-heat-energy-hide-and-seek-2026",
+    "title": "서울상상나라 〈후끈! 열에너지 숨바꼭질〉",
+    "region": "서울",
+    "theme": "kids",
+    "eventCategory": "indoor",
+    "indoor": true,
+    "startDate": "2026-11-01",
+    "endDate": "2026-12-27",
+    "scheduleType": "period",
+    "scheduleNote": "주말 및 공휴일 16:00~16:50 운영 (수업 전일 자정까지 온라인 예약)",
+    "location": "서울상상나라 지하 1층 표현놀이실 (서울특별시 광진구 능동로 216)",
+    "time": "주말·공휴일 16:00~16:50 (50분)",
+    "program": "색이 변하는 슬라임과 열화상 카메라로 숨바꼭질을 즐기고 온도 차로 전기를 만드는 실험에 도전하는 어린이 체험 교육입니다.",
+    "feeStatus": "paid",
+    "fee": "교육 참가비 8,000원 (36개월 이상 박물관 입장료 4,000원 별도)",
+    "booking": "서울상상나라 공식 누리집 온라인 사전예약 (수업 전일 자정까지, 5세 이상 어린이 반 구성 12명)",
+    "familyNote": "5세 이상 어린이만 참여하는 실내 체험 수업이며 취소·환불은 교육 시간 1시간 전까지만 가능합니다.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-25",
+    "sources": [
+      {
+        "publisher": "서울상상나라",
+        "title": "전시연계 교육 〈후끈! 열에너지 숨바꼭질〉",
+        "url": "https://www.seoulchildrensmuseum.org/education/educationView.do?id=2696",
+        "facts": "기간 2026.11.1.~12.27.(주말·공휴일), 일시 16:00~16:50, 장소 B1 표현놀이실, 대상 5세 이상 어린이 12명, 참가비 8,000원, 수업 전일 자정까지 온라인 예약 확인",
+        "checkedAt": "2026-11-25"
+      },
+      {
+        "publisher": "서울상상나라",
+        "title": "서울상상나라 입장안내",
+        "url": "https://www.seoulchildrensmuseum.org/reservation/viewAdmission.do",
+        "facts": "36개월 이상 어린이·성인 개인 입장료 4,000원, 개관시간 10:00~18:00(입장 마감 17:00, 매주 월요일 휴관) 확인",
+        "checkedAt": "2026-11-25"
+      }
+    ]
+  },
+  {
+    "id": "gyeonggi-child-museum-hear-your-voice-2026",
+    "title": "경기도어린이박물관 [주말가족] 너의 목소리가 들려",
+    "region": "경기",
+    "theme": "kids",
+    "eventCategory": "indoor",
+    "indoor": true,
+    "startDate": "2026-09-27",
+    "endDate": "2026-12-13",
+    "scheduleType": "period",
+    "scheduleNote": "매주 일요일 11:00·15:00 운영 (공휴일·휴관일 제외, 11월 25일 이후 11/29·12/6·12/13 진행)",
+    "location": "경기도어린이박물관 2층 교육실 1 (경기도 용인시 기흥구 상갈로 6)",
+    "time": "매주 일요일 1회차 11:00~11:50 / 2회차 15:00~15:50 (50분)",
+    "program": "귀 기울여 듣기를 몸으로 체험하며 자녀와 깊이 소통하고 가족 카드를 함께 만들어 보는 경기도어린이박물관 주말 가족 교육입니다.",
+    "feeStatus": "paid",
+    "fee": "팀당 2,000원 (박물관 입장권 별도 예매 필수)",
+    "booking": "지지씨멤버스(members.ggcf.kr) 온라인 사전예약 (운영 30일 전~1일 전, 회차당 6팀·1팀 보호자 1명+어린이 1명)",
+    "familyNote": "1회차는 만 4~6세, 2회차는 만 7~9세 어린이 동반 가족 권장이며 박물관 입장권을 먼저 예매해야 교육 참여가 가능합니다.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-25",
+    "sources": [
+      {
+        "publisher": "경기도어린이박물관",
+        "title": "[주말가족] 너의 목소리가 들려",
+        "url": "https://gcm.ggcf.kr/edus/800",
+        "facts": "교육일정 2026.9.27.~12.13. 매주 일요일, 시간 11:00~11:50·15:00~15:50, 장소 2층 교육실 1, 참가비 팀당 2,000원(입장권 별도), 지지씨멤버스 사전예약 확인",
+        "checkedAt": "2026-11-25"
+      }
+    ]
+  },
+  {
+    "id": "incheon-science-concert-2026",
+    "title": "2026년 인천어린이과학관 과학콘서트 (제3·4회)",
+    "region": "인천",
+    "theme": "kids",
+    "eventCategory": "indoor",
+    "indoor": true,
+    "startDate": "2026-11-29",
+    "endDate": "2026-12-05",
+    "scheduleType": "dates",
+    "dates": [
+      "2026-11-29",
+      "2026-12-05"
+    ],
+    "scheduleNote": "제3회 11월 29일(일) SF우주 · 제4회 12월 5일(토) 과학수사 (14:00~15:30)",
+    "location": "인천어린이과학관 (인천광역시 계양구 방축로 21)",
+    "time": "14:00~15:30 (90분)",
+    "program": "인천어린이과학관에서 우주과학과 과학수사를 주제로 강연과 체험을 함께 즐기는 초등학생·가족 대상 무료 과학콘서트입니다.",
+    "feeStatus": "free",
+    "fee": "무료",
+    "booking": "인천시설공단 통합예약 온라인 선착순 접수 (제3회 11.21.~11.27. 접수 / 제4회 11.27.~12.03. 접수, 회당 정원 170명)",
+    "familyNote": "초등학생과 가족 대상 무료 실내 강연·체험 행사이며 상설전시관 이용 시에는 별도 온라인 사전예약이 필요합니다.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-25",
+    "sources": [
+      {
+        "publisher": "인천시설공단 인천어린이과학관",
+        "title": "[무료강연] 2026년 과학콘서트 안내",
+        "url": "https://www.insiseol.or.kr/culture/icsmuseum/bbs/bbsMsgDetail.do?msg_seq=37099&bcd=notice",
+        "facts": "과학강연·체험 안내, 인천광역시 계양구 방축로 21, 홈페이지 교육신청 경로 안내 확인",
+        "checkedAt": "2026-11-25"
+      },
+      {
+        "publisher": "인천시설공단 통합예약",
+        "title": "인천어린이과학관 수강신청 목록 (제3회·제4회 과학콘서트)",
+        "url": "https://reserve.insiseol.or.kr/program/programInfoList.do?prgmdiv=child",
+        "facts": "제3회(11/29 일, SF우주, 접수 11.21.~11.27.) 및 제4회(12/5 토, 과학수사, 접수 11.27.~12.03.) 14:00~15:30, 수강료 0원, 정원 170명 선착순 확인",
+        "checkedAt": "2026-11-25"
+      }
+    ]
+  },
+  {
+    "id": "busan-sciport-sunday-science-theater-2026",
+    "title": "국립부산과학관 일요사이언스극장 시즌3 「찌릿찌릿! 전기대격돌 : 에디슨 VS 테슬라」",
+    "region": "부산",
+    "theme": "kids",
+    "eventCategory": "indoor",
+    "indoor": true,
+    "startDate": "2026-09-13",
+    "endDate": "2026-12-20",
+    "scheduleType": "period",
+    "scheduleNote": "매주 일요일 11:00·14:00·15:00 운영 (11/29·12/6·12/13·12/20 진행 · 9/27 미운영·10/3 추가운영)",
+    "location": "국립부산과학관 1층 대회의실 (부산 기장군 기장읍 동부산관광6로 59)",
+    "time": "11:00 · 14:00 · 15:00 (회차당 20분, 시작 15분 전 입장·5분 전 입장 권장)",
+    "program": "에디슨과 테슬라의 직류·교류 대결을 어린이 눈높이의 과학 뮤지컬로 풀어내며 온 가족이 함께 즐기는 주말 실내 공연입니다.",
+    "feeStatus": "free",
+    "fee": "무료 (회차당 정원 250명, 1인 최대 6매 발권)",
+    "booking": "국립부산과학관 온라인매표소 사전 예매 및 당일 15:00까지 현장 발권(유아·12세 이하 성인 보호자 필수 동반)",
+    "familyNote": "유아 및 만 12세 이하 어린이는 성인 보호자 동반이 필수이며 공연 시작 이후 입장이 제한되므로 5분 전까지 입장하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-25",
+    "sources": [
+      {
+        "publisher": "국립부산과학관 온라인매표소",
+        "title": "일요사이언스극장 시즌3 「찌릿찌릿! 전기대격돌 : 에디슨 VS 테슬라」 예매 안내",
+        "url": "https://ticket.sciport.or.kr/ticketOffice/pavln/exhibition_info.do?cate=008",
+        "facts": "2026.9.13~12.20 매주 일요일(9/27 미운영·10/3 추가운영), 11:00·14:00·15:00(회차당 20분), 1층 대회의실(기장군 동부산관광6로 59), 무료, 250명 정원 확인",
+        "checkedAt": "2026-11-25"
+      }
+    ]
+  },
+  {
+    "id": "busan-library-christmas-magic-balloon-2026",
+    "title": "부산도서관 크리스마스 매직 벌룬쇼",
+    "region": "부산",
+    "theme": "kids",
+    "eventCategory": "indoor",
+    "indoor": true,
+    "startDate": "2026-12-12",
+    "endDate": "2026-12-12",
+    "scheduleType": "dates",
+    "dates": [
+      "2026-12-12"
+    ],
+    "scheduleNote": "2026년 12월 12일(토) 11:00~12:00 1회 운영 · 12월 4일 10:00~12월 10일 16:00 온라인 접수",
+    "location": "부산도서관 모들락극장 (부산)",
+    "time": "11:00 ~ 12:00",
+    "program": "산타클로스 복장의 진행자가 관객에게 산타 모자를 만들어주며 선물상자 스토리텔링 마술과 풍선 퍼포먼스를 펼치는 체험형 공연입니다.",
+    "feeStatus": "unknown",
+    "fee": "공식 행사 안내 페이지 내 참가비 미기재 (준비물·재료비 공란, 문의 부산도서관 정보서비스팀 051-310-5460)",
+    "booking": "2026.12.04(금) 10:00~12.10(목) 16:00 부산도서관 홈페이지 온라인 선착순 접수(정원 200명·대기자 30명)",
+    "familyNote": "어린이와 보호자 대상 행사로 신청 시 가족 인원 수 칸에 신청자 외 동반 인원 수를 함께 입력해야 하며 주차 공간이 협소합니다.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-25",
+    "sources": [
+      {
+        "publisher": "부산도서관",
+        "title": "[12월 어린이 체험행사] 크리스마스 매직 벌룬쇼",
+        "url": "https://library.busan.go.kr/busanlibrary/module/teach/detail.do?homepage_id=h31&group_idx=11&category_idx=1&teach_idx=4814",
+        "facts": "2026-12-12(토) 11:00~12:00, 모들락극장, 어린이 및 보호자 대상, 정원 200명(대기자 30명), 접수 2026-12-04 10:00~12-10 16:00, 문의 051-310-5460 확인",
+        "checkedAt": "2026-11-25"
+      }
+    ]
+  },
+  {
+    "id": "daegu-childrens-world-wolf-christmas-2026",
+    "title": "대구어린이세상 겨울 맞이 특별공연 「늑대아저씨의 크리스마스 선물」",
+    "region": "대구",
+    "theme": "kids",
+    "eventCategory": "indoor",
+    "indoor": true,
+    "startDate": "2026-11-29",
+    "endDate": "2026-11-29",
+    "scheduleType": "dates",
+    "dates": [
+      "2026-11-29"
+    ],
+    "scheduleNote": "2026년 11월 29일(일) 13:00·15:00 총 2회 운영 (회당 러닝타임 40분 내외)",
+    "location": "대구어린이세상 꾀꼬리극장 (대구 수성구 동대구로 176)",
+    "time": "13:00 · 15:00 (러닝타임 40분 내외)",
+    "program": "관객이 극에 직접 참여해 함께 캐롤을 부르며 외로운 늑대 아저씨와 아이들의 따뜻한 변화를 만나는 가족 참여형 뮤지컬입니다.",
+    "feeStatus": "free",
+    "fee": "전석 무료 (전체관람가)",
+    "booking": "11월 21일(토) 16:00부터 공지 내 네이버 폼 링크로 선착순 예매 신청(문의 053-767-8992)",
+    "familyNote": "전체관람가로 어린이를 동반한 가족이 함께 40분간 부담 없이 즐길 수 있는 실내 극장 공연입니다.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-25",
+    "sources": [
+      {
+        "publisher": "대구어린이세상",
+        "title": "[기획공연] 2026 대구어린이세상 겨울 맞이 특별공연 「늑대아저씨의 크리스마스 선물」",
+        "url": "https://dcw.daegu.go.kr/ko/board/eventSchedule/view.do?docSeq=2456",
+        "facts": "2026-11-29(일) 13:00·15:00(40분 내외), 대구어린이세상 꾀꼬리극장(대구 수성구 동대구로 176), 전체관람가, 전석 무료, 네이버 폼 선착순 예매 확인",
+        "checkedAt": "2026-11-25"
+      }
+    ]
+  },
+  {
+    "id": "ulsan-ucac-cheoyong-children-2026",
+    "title": "울산문화예술회관 어린이 공연 「다섯 빛을 품은 아이, 처용」",
+    "region": "울산",
+    "theme": "kids",
+    "eventCategory": "indoor",
+    "indoor": true,
+    "startDate": "2026-12-05",
+    "endDate": "2026-12-06",
+    "scheduleType": "dates",
+    "dates": [
+      "2026-12-05",
+      "2026-12-06"
+    ],
+    "scheduleNote": "12월 5일(토)·6일(일) 각 14:00·17:00 총 4회 공연 (50분, 휴식 없음)",
+    "location": "울산문화예술회관 소공연장 (울산 남구 번영로 200)",
+    "time": "14:00 · 17:00 (러닝타임 50분, 휴식 없음)",
+    "program": "울산시와 울산문화예술회관이 주최해 소공연장에서 만 7세 이상 어린이를 위해 선보이는 50분 분량의 문화콘텐츠 실내 공연입니다.",
+    "feeStatus": "paid",
+    "fee": "전석 5,000원 (미취학·학생 50%, 회관 회원 30%, 단체 10매 이상 20% 할인)",
+    "booking": "울산문화예술회관 홈페이지 온라인 예매 (문의 052-275-9623)",
+    "familyNote": "전체관람가이나 만 7세 이상 관람이 권장되며 미취학·학생 할인 적용 시 현장에서 학생증 또는 청소년증을 지참해야 합니다.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-25",
+    "sources": [
+      {
+        "publisher": "울산문화예술회관",
+        "title": "어린이 공연 문화컨텐츠 「다섯 빛을 품은 아이, 처용」",
+        "url": "https://www.ulsan.go.kr/ucac/art/page.do?mnu_code=mnu001002&cmd=2&per_sn=556",
+        "facts": "2026-12-05~12-06 14:00·17:00(50분), 울산문화예술회관 소공연장(남구 번영로 200), 전석 5천원(미취학·학생 50% 할인), 만 7세 이상 권장 확인",
+        "checkedAt": "2026-11-25"
+      }
+    ]
+  },
+  {
+    "id": "changwon-jinhae-paris-boys-choir-2026",
+    "title": "창원문화재단 <파리나무십자가 소년합창단> 초청공연",
+    "region": "경남",
+    "theme": "kids",
+    "eventCategory": "indoor",
+    "indoor": true,
+    "startDate": "2026-12-10",
+    "endDate": "2026-12-10",
+    "scheduleType": "dates",
+    "dates": [
+      "2026-12-10"
+    ],
+    "scheduleNote": "2026년 12월 10일(목) 19:30 단회 공연 (115분, 7세 이상 관람 가능)",
+    "location": "진해아트홀 공연장 (경남 창원시 진해구 충장로 653)",
+    "time": "19:30 (러닝타임 115분)",
+    "program": "진해아트홀 공연장에서 7세 이상 관람객이 함께 감상할 수 있도록 창원문화재단이 기획해 선보이는 115분 내한 합창 무대입니다.",
+    "feeStatus": "paid",
+    "fee": "R석 80,000원 · S석 60,000원",
+    "booking": "창원문화재단 홈페이지, YES24 티켓, 네이버 예약 온라인 예매 (휠체어석·단체 055-719-7863, 일반문의 055-719-7800~1)",
+    "familyNote": "7세 이상 관람 가능하며 도서관과 주차장을 함께 사용해 주차 공간이 협소하므로 대중교통 이용을 권장합니다(시작 2시간 전 현장 수령).",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-25",
+    "sources": [
+      {
+        "publisher": "창원문화재단",
+        "title": "[기획] <파리나무십자가 소년합창단> 초청공연",
+        "url": "https://www.cwcf.or.kr/art_info/art_info_view.asp?p_idx=9116",
+        "facts": "2026-12-10(목) 19:30(115분), 진해아트홀 공연장(진해구 충장로 653), 7세 이상 관람 가능, R석 80,000원·S석 60,000원, 창원문화재단·YES24·네이버예약 확인",
+        "checkedAt": "2026-11-25"
+      }
+    ]
+  },
+  {
+    "id": "gyeongju-shilla-gochwidae-10th-2026",
+    "title": "경주시립신라고취대 제10회 정기공연 <경주 人>",
+    "region": "경북",
+    "theme": "kids",
+    "eventCategory": "indoor",
+    "indoor": true,
+    "startDate": "2026-12-10",
+    "endDate": "2026-12-10",
+    "scheduleType": "dates",
+    "dates": [
+      "2026-12-10"
+    ],
+    "scheduleNote": "2026년 12월 10일(목) 19:30 단회 공연 (80분, 초등학생 이상 관람 가능)",
+    "location": "경주예술의전당 화랑홀 (경북 경주시)",
+    "time": "19:30 (러닝타임 80분)",
+    "program": "경주예술의전당 화랑홀에서 초등학생 이상 관람객에게 천년 고도 신라의 전통 관악과 타악 울림을 선사하는 시립예술단 정기공연입니다.",
+    "feeStatus": "paid",
+    "fee": "전석 5,000원 (초등학생 이상)",
+    "booking": "경주예술의전당(경주문화재단) 홈페이지 온라인 예매 (공연문의 054-779-6091·6094)",
+    "familyNote": "초등학생 이상부터 관람할 수 있으며 평일 저녁 80분간 진행되므로 어린이는 미리 저녁 식사를 마치고 입장하는 것이 좋습니다.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-25",
+    "sources": [
+      {
+        "publisher": "경주문화재단 · 경주예술의전당",
+        "title": "경주시립신라고취대 제10회 정기공연 <경주 人>",
+        "url": "https://garts.kr/index.do?menuId=00000121&menuLink=/user/sched/detl.do&schedId=SCHED_0000021950",
+        "facts": "경주예술의전당 화랑홀, 2026-12-10(목) 19:30(80분), 전석 5천원, 초등학생 이상, 경주시립신라고취대 제10회 정기공연 및 문의 054-779-6091·6094 확인",
+        "checkedAt": "2026-11-25"
+      }
+    ]
+  },
+  {
+    "id": "gwangju-sciencecenter-dec-weekend-2026",
+    "title": "국립광주과학관 12월 주말 과학문화행사 「산타할아버지의 선물」",
+    "region": "광주",
+    "theme": "kids",
+    "eventCategory": "indoor",
+    "indoor": true,
+    "startDate": "2026-12-06",
+    "endDate": "2026-12-20",
+    "scheduleType": "dates",
+    "dates": [
+      "2026-12-06",
+      "2026-12-13",
+      "2026-12-20"
+    ],
+    "scheduleNote": "12월 6일·13일·20일 일요일 14:00~14:50 운영 (회당 150명 정원)",
+    "location": "국립광주과학관 본관 1층 상상홀 (광주 북구 첨단과기로 235)",
+    "time": "14:00 ~ 14:50 (행사 20분 전 선착순 입장)",
+    "program": "국립광주과학관 상상홀에서 전 연령 관람객이 마술 공연과 풍선 나눔, 어린이 소통 무대를 함께 즐기는 12월 주말 과학문화행사입니다.",
+    "feeStatus": "paid",
+    "fee": "1인 1,000원 (24개월 미만 증빙 시 무료 · 상설전시관 입장권 별도 필수 발권)",
+    "booking": "국립광주과학관 누리집 사전 온라인 예약(11/4~12/17) 및 잔여석 당일 무인매표소 현장 발권(문의 062-960-6142)",
+    "familyNote": "관람을 위해 상설전시관 입장권 별도 발권이 필수이며 비지정 선착순 좌석제로 시작 5분 전 이후 입장 시 간이의자·입석이 될 수 있습니다.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-25",
+    "sources": [
+      {
+        "publisher": "국립광주과학관",
+        "title": "2026년 12월 주말 과학문화행사 「12월, 산타할아버지의 선물」",
+        "url": "https://www.sciencecenter.or.kr/kor/ev/index.do?mode=view&menuId=18_337&evSEQ=956",
+        "facts": "2026.12.6·12.13·12.20(일) 14:00~14:50, 본관 1층 상상홀(광주 북구 첨단과기로 235), 1,000원(상설전시관 별도, 24개월 미만 증빙 시 무료), 정원 150명 확인",
+        "checkedAt": "2026-11-25"
+      }
+    ]
+  },
+  {
+    "id": "jeonju-hanbyeok-master-series-2026",
+    "title": "전주한벽문화관 2026 우수작품시리즈Ⅱ 마스터",
+    "region": "전북",
+    "theme": "kids",
+    "eventCategory": "indoor",
+    "indoor": true,
+    "startDate": "2026-11-07",
+    "endDate": "2026-12-05",
+    "scheduleType": "period",
+    "scheduleNote": "매주 토요일 11:00 총 5회 운영 (11/28 김태형·12/5 이동규 회차 예정)",
+    "location": "전주한벽문화관 한벽공연장 (전북 전주시 완산구)",
+    "time": "매주 토요일 11:00",
+    "program": "전주한벽문화관 한벽공연장에서 매주 토요일 오전 국내외 연주자와 클래시칸 앙상블이 수준 높은 실내악과 성악 무대를 선보입니다.",
+    "feeStatus": "paid",
+    "fee": "전석 30,000원",
+    "booking": "NOL 티켓 회차별 온라인 예매 (문의 한벽문화관운영팀 063-280-7003)",
+    "familyNote": "매주 토요일 오전 11시에 열리는 클래식 마티네 공연으로 회차별 연주자가 다르니 예매 전 출연진과 관람 가능 연령을 확인하세요.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-25",
+    "sources": [
+      {
+        "publisher": "전주문화재단",
+        "title": "2026 우수작품시리즈",
+        "url": "https://jjcf.or.kr/main/inner.php?sMenu=F7000&mode=view&no=1213",
+        "facts": "2026.11.07~2026.12.05 11:00, 전주한벽문화관 한벽공연장, 관람료 30,000원, 1~5회차 NOL 티켓 예매, 문의 063-280-7003 확인",
+        "checkedAt": "2026-11-25"
+      },
+      {
+        "publisher": "전주시 웹진 전주다움",
+        "title": "[전주다움 11월호] 2026 우수작품시리즈Ⅱ 마스터",
+        "url": "https://daum.jeonju.go.kr/main/menu?gc=1020SEHK&do=view&bwrite_id=VYkUv3Iu3wfj",
+        "facts": "매주 토 11:00 전주한벽문화관 한벽공연장, 김수연·김태형·손소향·황수미·이동규·고의석·클래시칸 앙상블 출연 확인",
+        "checkedAt": "2026-11-25"
+      }
+    ]
+  },
+  {
+    "id": "naju-museum-wednesday-treasure-hunt-2026",
+    "title": "국립나주박물관 어린이박물관 「문화가 있는 날」 마한의 보물찾기",
+    "region": "전남",
+    "theme": "kids",
+    "eventCategory": "indoor",
+    "indoor": true,
+    "startDate": "2026-07-01",
+    "endDate": "2026-12-30",
+    "scheduleType": "period",
+    "scheduleNote": "매주 수요일 14:00~17:00 운영 (11/25·12/2·12/9·12/16·12/23·12/30 진행)",
+    "location": "국립나주박물관 어린이박물관 (전남 나주시 반남면 고분로 747)",
+    "time": "매주 수요일 14:00 ~ 17:00 (박물관 관람 09:00~18:00, 월요일 휴관)",
+    "program": "매주 수요일 오후 국립나주박물관 어린이박물관 전시실 곳곳의 새집을 따라 스탬프 5개를 모아 기념품을 받는 실내 체험 행사입니다.",
+    "feeStatus": "free",
+    "fee": "무료 (박물관 및 어린이박물관 무료 관람)",
+    "booking": "사전 예약 없이 매주 수요일 오후 어린이박물관 현장 참여 (스탬프 완료 시 안내데스크 기념품 수령, 문의 061-330-7800)",
+    "familyNote": "어린이박물관 방문 어린이 관람객이라면 누구나 사전 신청 없이 참여해 전시 탐색과 스탬프 투어를 즐길 수 있습니다.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-25",
+    "sources": [
+      {
+        "publisher": "국립나주박물관",
+        "title": "2026년 하반기 문화가 있는 날 연계 행사",
+        "url": "https://naju.museum.go.kr/prog/clturevent/kor/sub03_03/view.do?clturEventId=CLTEVT_0000000000076",
+        "facts": "2026.7.1~12.30 매주 수요일 오후 2~5시, 어린이박물관(안녕, 마한! 우리 마을 이야기), 사전 예약 없이 현장 참여, 새집 찾기 및 마한의 보물 스탬프 5개 완료 시 기념품 제공 확인",
+        "checkedAt": "2026-11-25"
+      },
+      {
+        "publisher": "국립나주박물관",
+        "title": "관람안내",
+        "url": "https://naju.museum.go.kr/kor/sub01_01.do",
+        "facts": "전남 나주시 반남면 고분로 747, 관람료 무료(기획전시 일부 유료 가능), 매주 월요일 휴관 확인",
+        "checkedAt": "2026-11-25"
+      }
+    ]
+  },
+  {
+    "id": "jeju-acenter-nutcracker-ballet-2026",
+    "title": "제주아트센터 서울발레시어터 「호두까기인형」",
+    "region": "제주",
+    "theme": "kids",
+    "eventCategory": "indoor",
+    "indoor": true,
+    "startDate": "2026-12-11",
+    "endDate": "2026-12-12",
+    "scheduleType": "dates",
+    "dates": [
+      "2026-12-11",
+      "2026-12-12"
+    ],
+    "scheduleNote": "12월 11일(금) 19:30 · 12월 12일(토) 15:00 총 2회 공연 (120분, 인터미션 20분)",
+    "location": "제주아트센터 대극장 (제주 제주시 오남로 231)",
+    "time": "12.11(금) 19:30 · 12.12(토) 15:00 (러닝타임 120분, 인터미션 20분)",
+    "program": "제주아트센터 대극장에서 48개월 이상 어린이와 가족이 서울발레시어터의 겨울 클래식 발레 무대를 감상할 수 있는 기획 공연입니다.",
+    "feeStatus": "paid",
+    "fee": "R석 30,000원 · S석 20,000원 · A석 10,000원",
+    "booking": "제주아트센터 누리집 온라인 예매 (11월 12일 14:00 예매 시작, 문의 064-728-1509)",
+    "familyNote": "48개월 이상부터 관람할 수 있으며 오등봉공원 민간특례사업 공사로 주차장이 협소해 대중교통 이용을 권장합니다.",
+    "verificationStatus": "verified",
+    "checkedAt": "2026-11-25",
+    "sources": [
+      {
+        "publisher": "제주아트센터",
+        "title": "서울발레시어터 [호두까기인형]",
+        "url": "https://www.jejusi.go.kr/acenter/show/perf/view.do?showId=1728",
+        "facts": "2026.12.11(19:30)~12.12(15:00), 제주아트센터 대극장(제주시 오남로 231), 120분(인터미션 20분), 48개월 이상, R석 30,000원·S석 20,000원·A석 10,000원 확인",
         "checkedAt": "2026-11-25"
       }
     ]
